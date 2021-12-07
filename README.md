@@ -6,3 +6,7 @@ For compile options, see SG/VARS.INC.
 Thanks to Kandowontu and Vitor Vilela for the SuperFX2 Upgrade.
 
 Building is easy if you've used the Star Fox EZBuild.
+
+## Future things to do
+1. FastROM
+2. Organize source files and edit makefile accordingly
