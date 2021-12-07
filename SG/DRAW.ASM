@@ -1,7 +1,7 @@
 
 	INCPUBLICS	draw.ext
 
-	IFEQ	1
+	IFEQ	0
 
 clip_plot_l
 	jsr	clip_plot
