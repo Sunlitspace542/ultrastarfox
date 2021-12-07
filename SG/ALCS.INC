@@ -741,7 +741,7 @@ mio_mode	equ	$303a
 	alc	texxy,2
 	alc	head,2
 	alc	spare,2
-	alc	zbblks,zb_size*number_zb
+;	alc	zbblks,zb_size*number_zb			;1400 bytes free!
 
 	alc	numshapes,2
 	alc	dlptr,2
