@@ -18,8 +18,9 @@ Building is easy if you've used the Star Fox EZBuild.
 
 
 ## Future things to do
-OPTIMIZE
-1. Expanded texture space
-2. Annotate and document code
-3. FastROM
-4. Organize source files and edit makefile accordingly
+3. Fix debug mode crash
+2. OPTIMIZE
+3. Expanded texture space
+4. Annotate and document code
+5. FastROM
+6. Organize source files and edit makefile accordingly
