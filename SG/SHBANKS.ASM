@@ -56,8 +56,6 @@ bgmjlen	equ	*-bgmj
 	incshapes	ushapes.asm
 	incshapes	pshapes.asm
 
-	public	dogccr
-	inccru	dogccr,data\dog.ccr
 
 bgm7	incbinfile	snd\sgbgm7.bin
 bgm7len	equ	*-bgm7
@@ -66,6 +64,10 @@ bgm3len	equ	*-bgm3
 
 	bankend	17
 
+	bank	35
+	public	dogccr
+	inccru	dogccr,data\dog.ccr
+	bankend	35
 
 	include	tail.inc
 
