@@ -117,10 +117,13 @@ planetdmapos2	dw	100
 	incfile	draw.asm
 	minfo	draw
 	incfile	endseq.asm
+	bankend	31
+
+	bank	36
 	inccru	bgf1pcr,data\f-1.pcr
 	incfile	cont.asm
 	minfo	cont
-	bankend	31
+	bankend	36
 ;------------------------------------------------------------------
 
 
