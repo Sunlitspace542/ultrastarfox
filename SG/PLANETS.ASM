@@ -21,10 +21,9 @@
 ;*	Dylan Cuthbert.                                               *
 ;*                                                                         *
 ;***************************************************************************
-
 planetcheat	=	0
 
-	IFNE	debuginfo2
+	IFNE	planetcheaton
 planetcheat	=	1
 	ENDC
 
