@@ -1,0 +1,9 @@
+# Object files
+*.sob
+
+#ROMs
+*.sfc
+*.smc
+
+# build logs
+*.log
