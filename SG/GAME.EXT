@@ -1,0 +1,3 @@
+	global	random_l,MULS816LOG16_L
+	global	getview_l,arctan16_l
+

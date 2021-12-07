@@ -1,0 +1,17 @@
+	global	do_bgm_map,do_bgm_intro,do_bgm_endseq,do_bgm_title
+	global	do_bgm_10,do_bgm_20,do_bgm_30,do_bgm_ops,do_bgm_init
+	global	do_bgm_11,do_bgm_21,do_bgm_31
+	global	do_bgm_12,do_bgm_22,do_bgm_32,do_bgm_training
+	global	do_bgm_13,do_bgm_23,do_bgm_33
+	global	do_bgm_14,do_bgm_24,do_bgm_34
+	global	do_bgm_15,do_bgm_25,do_bgm_35
+	global	do_bgm_16,do_bgm_26,do_bgm_36,do_bgm_37
+	global	hitwallsound_l
+	global	do_bgm_continue,do_bgm_bhole,setport3_l,damenemysound_l
+	global	destenemysound_l,destbosssound_l
+	global	missilesound_l,movewallsound_l,lasersound_l
+	global	enemybattrysound_l,dooropensound_l,doorclosesound_l
+	global	enemyupsea_l,enemydownsea_l,ringlasersound_l
+
+
+
