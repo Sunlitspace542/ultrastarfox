@@ -899,7 +899,7 @@ mdamagemeter
 	move	r2,#damagey+2
 	move	r4,#damageheight-4
 
-	move	r0,#4
+	move	r0,#2
 	mcall	mdrawsolidbox
 	nop
 
