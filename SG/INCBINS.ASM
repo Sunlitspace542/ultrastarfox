@@ -126,7 +126,6 @@ bg33ccr
 	bankend	22
 
 	bank	23
-	inccru	dogpcr,data\dog.pcr
 
 	IFEQ	german
 	IFEQ	contest
@@ -219,6 +218,10 @@ facedata	inccolfile	data\face.cgx,0,360
 	inccru	bgmccr,data\m.ccr
 
 	bankend	23
+
+	bank	35
+	inccru	dogpcr,data\dog.pcr
+	bankend	35
 
 ;------------------------------------------------------------------
 
@@ -324,6 +327,7 @@ musicsize	=	0
 	fileslog	data\gfx\e-test0.col
 	fileslog	data\gfx\e-test.col
 	fileslog	data\gfx\obj-1.col
+
 
 
 	include	tail.inc
