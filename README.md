@@ -9,11 +9,11 @@ Building is easy if you've used the Star Fox EZBuild.
 
 ## Helpful Links
 
-[Star Fox - Source Code Mods](https://docs.google.com/document/d/1kdgPCBeQFYsAepSDNpmwO8ZysRJjdnwK_5gWT2FFQEk/edit?usp=sharing)
+[Star Fox - Source Code Mods](https://docs.google.com/document/d/1kdgPCBeQFYsAepSDNpmwO8ZysRJjdnwK_5gWT2FFQEk/edit?usp=sharing)  
 [StarFox Mods Wiki](https://starfox-mods.fandom.com)
 
 ## Discord Server
-[Star Fox: ES + SF Modding](https://discord.gg/fE5Xx99kWb) (MAIN)
+[Star Fox: ES + SF Modding](https://discord.gg/fE5Xx99kWb) (MAIN)  
 [Star Fox Hacking Project](https://discord.gg/GgyP84e)
 
 
