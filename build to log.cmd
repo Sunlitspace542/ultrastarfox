@@ -1,2 +1,2 @@
-dosbox-x bldtotxt.bat
-exit
+dosbox-x bldtolog.bat
+

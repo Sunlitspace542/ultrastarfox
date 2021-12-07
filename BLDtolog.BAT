@@ -7,3 +7,4 @@ copy sg\sg.rom SF.SFC
 del sg\sg.rom
 del sg\*.sob
 exit
+
