@@ -1051,10 +1051,10 @@ irqbit2	i16
 	lsr	a
 	lsr	a
 	sta	mscrbase
-	IFEQ	THIRTYFPSUNLOCK
-	jsr	startmus
-	rtl
-	ENDC
+	;IFEQ	THIRTYFPSUNLOCK
+	;jsr	startmus
+	;rtl
+	;ENDC
 	IFEQ	PAL
 	jsr	startmus
 	rtl
