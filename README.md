@@ -19,5 +19,5 @@ Building is easy if you've used the Star Fox EZBuild.
 
 ## Future things to do
 1. Expanded texture space
-2. Organize source files and edit makefile accordingly
-3. FastROM
+2. FastROM
+3. Organize source files and edit makefile accordingly
