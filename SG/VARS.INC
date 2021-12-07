@@ -1,5 +1,3 @@
-
-
 cesdemo	equ	0	; 0 is normal, 1/2
 debuginfo	equ	0	; full strategy debugging
 debuginfo2	equ	0	; stage selection/ speed up mode
@@ -10,6 +8,10 @@ contest	equ	0	; contest version
 german	equ	0	; german version
 french	equ	0	; french version
 
+;-----------NEW STUFF-----------
+planetcheaton	equ	0	;Allows you to enable planet select cheat on the map before you have selected a level. Press X+Y on the same frame to activate.
+
+;------------------------------
 
 ; angles
 deg360	equ	256
