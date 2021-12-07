@@ -1379,7 +1379,7 @@ playerintocock2_strat
 	s_start_strat
 	s_decbne_var		B,psvar_byte1,playerstraight_strat
 
-	s_playerfly_mode	bigspace,nomacro
+	;s_playerfly_mode	bigspace,nomacro
 
 	s_set_var		B,splayerflymode,#spfm_inside
 	s_clr_alsflag		x,colldisable
@@ -1495,7 +1495,7 @@ playeroutofcock_strat
 
 	s_decbne_var		B,psvar_byte1,playerstraight_strat
 
-	s_playerfly_mode	space,nomacro
+	;s_playerfly_mode	space,nomacro
 
 ;	lda			#pshipnum_norm		
 ;	s_jsl			select_ship_l
