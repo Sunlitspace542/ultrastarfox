@@ -954,11 +954,6 @@ initlight
 
 ;	mlbra	mandy
 
-	ifne	mario_sph_demo
-;	mlbra	mdrawsphere		; shaded sphere
-	mlbra	mdrawtsphere		; textured sphere
-	endc
-
 ;************************************************
 
 ; execute shape language
