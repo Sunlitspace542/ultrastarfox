@@ -1128,7 +1128,7 @@ adiv2	MACRO
 ;	cmp	#-1
 ;	bne	.not_m1s\@
 ;	lda	#0
-;	bra	.fuckoffend_to0\@
+;	bra	.frickoffend_to0\@
 ;.not_m1s\@
 	IFEQ	LONGA
 asz	=	1
@@ -1141,7 +1141,7 @@ asz	=	2
 	bpl	*+asz+3
 	adc	#0
 
-;.fuckoffend_to0\@
+;.frickoffend_to0\@
 	ENDM
 
 

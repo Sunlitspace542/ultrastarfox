@@ -657,10 +657,10 @@ viewopening_strat
 
 	s_achase_alvar		W,x,al_worldy,svar_word2,4
 	s_achase_alvar		W,x,al_worldx,svar_word1,3,.zoom
-	s_brl			.nfuck
+	s_brl			.nfrick
 .zoom 	s_add_alvar		W,x,al_worldz,#10
 	s_brl			.ns1
-.nfuck
+.nfrick
 	s_achase_alvar		W,x,al_worldz,svar_word3,4
 .ns1
 

@@ -2410,7 +2410,7 @@ aircar2_strat
 
 
 
-aircar3_Istrat		; come in from left and drive like a fucking maniac.
+aircar3_Istrat		; come in from left and drive like a fricking maniac.
 	s_start_strat
 	s_set_alptrs	x,aircar3_strat,hitflash_Istrat,explode_Istrat
 	s_set_aldata	x,#aircarHP,#aircarAP
