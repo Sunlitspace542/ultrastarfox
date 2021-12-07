@@ -12,4 +12,6 @@
 *.LOG
 *.log
 */SG/.DOC
+*/SG/.doc
 */SG/.TMP
+*/SG/.tmp
