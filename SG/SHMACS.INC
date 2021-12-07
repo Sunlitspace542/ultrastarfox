@@ -171,7 +171,8 @@ no_of_shapes	=	no_of_shapes+1
 	ENDC
 
 	IFNE	debuginfo
-	db	"\J"	;sh_name
+	db	"\J"
+	dw	0	;sh_name
 	run	"%tdefshapename%t%p"
 	ENDC
 
