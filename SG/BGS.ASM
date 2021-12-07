@@ -732,15 +732,11 @@ bg_title_1
 	bg2chr	cp
 	bg2scr	cp,vsc_base2+2*k,4*k
 
-	IFNE	janglish
-	palette	cp
-	elseif
 	IFEQ	contest
 	palette	cpus
 	ELSEIF
 	palette	contest
 	ENDC
-	endc
 
 	set_bg
 	lda	#(0e000h/2)>>12
