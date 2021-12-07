@@ -2,7 +2,7 @@
 ; ##HackerStarFox Assembler Options##
 
 cesdemo			equ	0	; 0 = off, 1 = CES Demo (timed) 2 = Untimed CES Demo w/ planet cheat
-debuginfo		equ	0	; full strategy debugging - Press P2 R Button in-game to activate [1 = on 0 = off]
+debuginfo		equ	1	; full strategy debugging - Press P2 R Button in-game to activate [1 = on 0 = off]
 debuginfo2		equ	0	; speed up mode? [0 = off 1 = on]
 janglish		equ	0	; 0 = english, 1 = japanese
 cestime			equ	5	; CES/SSFW timer countdown (in minutes)
@@ -10,12 +10,17 @@ pal				equ	0	; PAL/NTSC [0 = off 1 = on]
 contest			equ	0	; Super Star Fox Weekend [0 = off 1 = on]
 german			equ	0	; german version [0 = off 1 = on]
 ;french			equ	0	; french version [0 = off 1 = on] (UNUSED VARIABLE)
-;thirtyfpsunlock equ 0	; 30FPS unlock [1 = on 0 = off] (BUGGY, DON'T USE)
+thirtyfpsunlock equ 0	; 30FPS unlock [1 = on 0 = off]
 twentyonemhz	equ 1	; 21MHZ mode [1 = on 0 = off]
 planetcheaton 	equ 0   ; Allows you to enable planet select cheat on the map before you have selected a level.
 ;Press X+Y on the same frame to activate.
 
 ; Everything else is more advanced stuff, be careful!
+
+
+mario_stats3d	equ	0
+realchip	equ	1
+easytext	equ	0
 
 ; angles
 deg360	equ	256
@@ -41,6 +46,8 @@ deg144	equ	(deg360*2)/5
 deg216	equ	(deg360*3)/5
 deg288	equ	(deg360*4)/5
 
+wallhgt	equ	120
+walldist	equ	60+10
 
 p_n	equ	10000000b
 p_v	equ	01000000b
@@ -50,35 +57,6 @@ p_d	equ	00001000b
 p_int	equ	00000100b
 p_z	equ	00000010b
 p_c	equ	00000001b
-
-wallhgt	equ	120
-walldist	equ	60+10
-
-;ebugp	equ	0	; 0/1 off/on debug print carl 
-;debugpete	equ	0	; 0/1 off/on debug print pete
-;itlines	equ	0	; 0/1 off/on line bit flags
-dma_clr_screen equ	1	; 0/1 off/on
-mario_test	equ	0
-mario_test1	equ	0
-mario_board	equ	1
-FastTrans	equ	0	; 0/1 0ff/on Fast transfer
-;colours4	equ	1
-
-mario_stats3d	equ	0
-
-realchip	equ	1
-mario_showobj equ	1
-mario_spr_demo equ	1
-easytext	equ	0
-
-min_lockon	equ	8
-
-
-disableobj	equ	0
-
-soundon	equ	1
-
-mario_sph_demo	equ	0
 
 ;Key pad Codes		(ends in l = in contl0)
 Key_al	equ	$80
