@@ -1,142 +1,142 @@
 	DW	59431	; (1) all ships check in! ** ®­† ‚‰‡¥(
-	DW	59454	; (2) we did it! ** £º-(
-	DW	59468	; (3) slippy slippy## ** Œ§ºš¯- Œ§ºš¯-
-	DW	59487	; (4) go back to the base! ** ‰©¥§ †…­Œ¨(
-	DW	59511	; (5) ready, fox! ** ‚’®…® ”¨®(
-	DW	59526	; (6) i'm with you, fox! ** “®‚º’‰“˜” ‹‰®“®º®(
-	DW	59548	; (7) bogey on my six! ** º ›§†©—-®(
-	DW	59568	; (8) mind your own business, fox! ** ¥ˆ”‰“¬ ‹£…®º’+++
-	DW	59600	; (9) they got me! i'm gone!! ** ‚¶-º €“™ ˜­®®(
-	DW	59627	; (10) i'll blast 'em all! ** ‹‘‰£‘¦® †ƒƒ(
-	DW	59650	; (11) there's more on the way! ** º †§…®”®(
-	DW	59678	; (12) you can run, but you can't hide! ** •…®Œ…¥º ©º(
-	DW	59714	; (13) this one's mine! ** ›¶º‡Œ ’¬®Œ”¥(
-	DW	59734	; (14) watch it, fox! ** ‚‹ª˜£‘…® ‚¨Š®(
-	DW	59752	; (15) i'm hit!! ** º º™¯‘ ‡¦ºº(
-	DW	59765	; (16) here they come!  ** ’†Š­˜ „’®‹®®(
-	DW	59785	; (17) make the neck and tail shorter, fox!! ** ‡š®“‹º¯¬ Ÿ‹®…‡Œ¨­®(
-	DW	59826	; (18) shoot down its arms to hit its body! ** ®¡-‹®™ ‚’®…¦ ®’®³-• ‘«¨®
-	DW	59866	; (19) slow it down, fox! ** Œš¯-“®¬ ‰ªŒ­®¥(
-	DW	59888	; (20) roll, baby! rock 'n roll! ** ª-§­‡®’® ›§™¦ƒ(
-	DW	59917	; (21) my ship's messed up### ** ‹‡‹®º®++ †¸‚‹¸‘¬˜ 
-	DW	59943	; (22) hey! that one was mine! ** ‘™ „©˜ ƒ¢˜®®(
-	DW	59970	; (23) bogies, i'm comin' through! ** Š®‰™ šº‰­’®”(
-	DW	60001	; (24) i'll cover your tail! ** ‰‚‚¬ ƒ­‰®Œ¨®(
-	DW	60026	; (25) yeah - let's go! **  ·™ Œ¨”¥(
-	DW	60046	; (26) i'm behind you, fox! ** €­˜‚‹ª• ¨Š
-	DW	60070	; (27) get lost, you fiend! ** ‹º ™®º‡¬“¦©(
-	DW	60094	; (28) yeah! thanks! ** Œ­ ›¶º‡Œ+++
-	DW	60111	; (29) aargh!! i'm a goner! ** ‚«± ”­’‰º-(
-	DW	60135	; (30) let's smash 'em! ** -© £ºƒ-(
-	DW	60155	; (31) i got one! i got one!! ** ¥-‹ º¹‚€…®§(
-	DW	60181	; (32) take this, enemy brute! ** ›­ ‰©’®¢‡¦ƒ(
-	DW	60208	; (33) you're not getting away! ** •ˆ®¦©¨«ˆ ”®ª(
-	DW	60236	; (34) watch your aim, fox! ** „©® „©® ‚‘­‹®·”(
-	DW	60260	; (35) ouch! ouch! ** €++++
-	DW	60275	; (36) incoming enemy craft!  ** ®ª®ª“ „’®”Šº®(
-	DW	60301	; (37) please make the neck and tail shorter, fox! ** ‡š®“‹º¯¬ Ÿ‹®…‡Œ¨­®(
-	DW	60348	; (38) shoot down its arms to hit its body! ** ®¡-‹®™ ‚’®…¦ ®’®³-• ‘«¨®
-	DW	60388	; (39) retros!  fire retros! ** ›¶º‡Œ ›®©-†®(
-	DW	60413	; (40) roll over! shake it off! ** †¬ ª-§­‡®Šª(
-	DW	60441	; (41) pick me up on your way back! ** Œ­” …ƒ§• šªº’‡©¥
-	DW	60473	; (42) hey! he was mine! ** ˜‹Ÿ¬ “¦”’®‡©¥(
-	DW	60494	; (43) out of my way! ** ‹®·Œ¨”- †ƒª-(
-	DW	60512	; (44) i'm off your starboard! ** Ÿ†®…®« ƒ­‰®Œ¨(
-	DW	60539	; (45) ok!! ** …®­™®¨®- ˆªˆª(
-	DW	60547	; (46) ribbit! i'll bring up the rear,fox! ** ¢‚ ®¡…“ „¢º ˆ®ª
-	DW	60586	; (47) croak!  help me! ** ‚«±( ‹•‡”¥±(
-	DW	60606	; (48) ribbit!  thanks fer the save! ** ›´+++ Œ…º ˆª++
-	DW	60639	; (49) no! no! crrooakk! ** ˆ®ªˆ®ª ¢+¢‚®¡®±(
-	DW	60660	; (50) i'll get him -- ribbit! ** •ˆ®’¢  ® ˆª(
-	DW	60687	; (51) piece of c-c-cake! ** €¦¥º“ ˆªˆª(
-	DW	60709	; (52) take this, j-j-junk heap! ** ‡™®©( ˆª
-	DW	60738	; (53) i'll get this one! ribbit! ** ®† ®†(
-	DW	60768	; (54) hey! it's me, slippy! ** ˆ®ªˆ®ª „©®¥±º(
-	DW	60793	; (55) ribbit!  i'm hit!! ** ˆ®±º ‡¦º±(
-	DW	60815	; (56) there's too many of them! ** ˆ®ªˆ®ª ‰‚Š­‹·„‚…²(
-	DW	60844	; (57) let's turn back, okay?! ** ˆ®ªˆ®ª ¢‚…ƒ§¥±(
-	DW	60871	; (58) let's be careful! ** ˆ®ª± €›®”¥±(
-	DW	60892	; (59) something's sticking to me! ** ˆ®ª± ”­… šº‘±(
-	DW	60923	; (60) i c-c-couldn't go, fox! ** €±€º ™£‡ Œˆ• †’‡©¥
-	DW	60950	; (61) hey! don't be so g-g-greedy! ** ®‡•¢ £¦’¥±(
-	DW	60982	; (62) c-c-clear out, astro-geeks! ** ‹®·®¥± ˆªˆª(
-	DW	61013	; (63) hope there's no more! ** ‰º• †­¥‚•+++
-	DW	61038	; (64) did you see me? ** Ÿ’)( Ÿ’±)(
-	DW	61057	; (65) i can't tell which is real!! ** «± ›®­‹­‹®(
-	DW	61089	; (66) let's head in! ** €˜›—• ‘º‰ ®(
-	DW	61107	; (67) i'll follow you in! ** ‹­¹‚• ¢‡®§‰¡(
-	DW	61130	; (68) should we go in?! ** ‡‚®• “‘ˆ®† ˆª(
-	DW	61151	; (69) ###this one could be trouble### ** ‹‘‰£‘®®(
-	DW	61186	; (70) hurry! ** ˜ ( …Œ®ˆ’‡©(
-	DW	61196	; (71) hurry up, fox!  croak! ** ®…¦ …ƒ¨º’ º˜•±(
-	DW	61222	; (72) eyes forward, fox! ** ƒ¬ Ÿ’ª¥(
-	DW	61244	; (73) be careful, fox! ** ›¶º‡Œ †¬‘ˆª¥(
-	DW	61264	; (74) this time, i saved you! ** Œˆ§¢ Œ¨­®” ˆª(
-	DW	61291	; (75) no sweat, fox! ** ¹ª¢­®®(
-	DW	61309	; (76) ok, ok! what's next?! ** ¥º‹· ‘†®‰ ‘†®(
-	DW	61334	; (77) so far, so g-g-good! ** ”­“… †˜š®’¨­®”
-	DW	61358	; (78) look, look! ** Ÿ’ˆª Ÿ’ˆª(
-	DW	61373	; (79) it's looking good, fox! ** ‚’®…® ”º‚®(
-	DW	61400	; (80) we did it, let's go! ** ¹‚‹®” ›¶º‡Œ(
-	DW	61424	; (81) g-g-great! ** …­­”­®” ˆª(
-	DW	61438	; (82) be a bit more careful fox! ** ªª ­†¬ ®‚…—++++
-	DW	61468	; (83) please tread carefully, fox! ** ‹º…§ £º’‡©¥ §-®-(
-	DW	61500	; (84) remember not to shoot m-m-me! ** ®º ®‡¬ ‚”’®¥—(
-	DW	61533	; (85) it's going pretty badly! ** £™®‰“• ”ºº®+++
-	DW	61561	; (86) i don't think i'm going to make it! ** ¢‚ ®ª®ª®±( ”­“…‹’‡©+++
-	DW	61600	; (87) my ship's falling apart### ribbit! ** ¢‚®¡ˆ®ª( ¢‚®¡®ˆ®ª±(
-	DW	61638	; (88) star fox team, our last resort is to counter attack venom!  good luck! ** €-  Œ-›¶º‡Œ ˜ ‹¹‡­+++ «©«©• ˜‰Š©’™ œ®˜ ¬ ¹‡‘‡‰“®. «…® ‰-—§€¬¢¨¡ …®­™®º’‡©.
-	DW	61712	; (89) andross's forces intend to build a base in this area!  destroy their rock crusher! ** ›¶º‡Œ‡­ (  €­“®¨›˜‡®­®™ ‰˜†•†¬ ˆ­‘‹¥‚“‹’„¨.  ªº‡‡¦º‹·-¬ ™…‹’‡© (
-	DW	61798	; (90) the space armada consists of powerful battleships! destroy their energy cores! ** ›¶º‡Œ‡­( ‰˜ Œœ¯-Œ€®™ ‚¸‚ Š†¹‚˜ …­®. ­…­•­•¸‚‹ ˜ ƒ—¨†®-‰€¬ ™…‹’‡© (
-	DW	61880	; (91) be sure to use your retros if you're going too fast!  be careful with my arwings! ** ›®©-†+›®-Œ“¬ ‘…º’„¨…— œ®˜ ™ Œ‡®‰®. €-‚³­¬ ‰«Š–¥‚• …®­™®º’‡© Œ-›¶º‡Œ˜‹¹‡­ (
-	DW	61965	; (92) andross is hiding on venom!  fox, you must find his core brain and destroy it! ** ›¶º‡Œ‡­( €­“®¨›™ †º“‰˜œ®˜ • š­’®„¨. ’†‡®­˜‰­“ª-¨›®©­¬ Ÿ‘ˆ®‹ ™…‹’‡© (
-	DW	62047	; (93)         CORNERIA - THE BASE **        CORNERIA - THE BASE
-	DW	62078	; (94)            ASTEROID BELT **           ASTEROID BELT
-	DW	62106	; (95)               SECTOR  X **              SECTOR  X
-	DW	62133	; (96)        THE PLANET FORTUNA **       THE PLANET FORTUNA
-	DW	62162	; (97)      THE ANDROSS SPACE ARMADA **     THE ANDORF SPACE ARMADA
-	DW	62195	; (98)         THE PLANET TITANIA **        THE PLANET TITANIA
-	DW	62225	; (99)       THE AWESOME BLACK HOLE **      THE AWESOME BLACK HOLE
-	DW	62257	; (100)               SECTOR  Y **              SECTOR  Y
-	DW	62284	; (101)       THE BATTLE BASE METEOR **      THE BATTLE BASE METEOR
-	DW	62316	; (102)               SECTOR  Z **              SECTOR  Z
-	DW	62343	; (103)         THE PLANET MACBETH **        THE PLANET MACBETH
-	DW	62373	; (104)       VENOM - THE FINAL GOAL **      VENOM - THE FINAL GOAL
-	DW	62405	; (105)       OUT OF THIS DIMENSION **      OUT OF THIS DIMENSION
-	DW	62436	; (106) corneria's resource world has been overrun!  you must re-take the weather control unit! ** ‹¹‡­(  ‰‰™…‘’ «…®‰-—§€˜ ‹ˆ®­«‡®º. ’­‰‚‚Š¤•º“¬ Š“®‚Š …¬ ¤‚§•ŒŒ¡’‡© (
-	DW	62527	; (107) how are the arwings handling?  if an amoeba clings to your ship, use l or r to get rid of it# ** ‹¹‡­ €-‚³­˜ ¹‚‹™“®‚…—) ‰˜‡-’® €¡-™®-• “§‘…©¦ @+* ®­’® ›§™¦‚‰“® (
-	DW	62624	; (108) you've chosen course three###  a good choice to take venom by surprise! ** †Ÿ…® ‰˜‰-Œ¬ƒ¦›®”¦ «‹™”•¢ «­( ’†˜‚¦¬…‡•™ ¥­‡…¢ ‹©–.  ˆ­“‚¬˜¨ ›¶º‡Œ‡­ (
-	DW	62699	; (109) use the l or r button to escape the tractor beam of the enemy battleship! you can do it, fox! ** ’†™ €¦¤¨¢˜¬™—…ƒŒ ­…­¬ …™‘‹¥‚®.  “¦‡-š®- • ‘…º¦ @+* ®­’® ®º‹¸‘¥ (
-	DW	62796	; (110) andross has taken control of the huge creatures who live on fortuna!  take care, fox! ** ›¶-¸”™ †¹®›®‘…® ‡Œ¨ ‹®­• ¡‡®©‹®…® €­“®¨›™ ‰˜†¹®›®‘¬ €£‘§™‹®¡¥‚®
-	DW	62885	; (111) your team is doing well, fox!  i hope you're taking good care of my arwings!  go for macbeth! ** „-  ˆ®­†’®€º… ›¶º‡Œ‡­ ( €-‚³­™ ‰«©’„¦­®ª‚—) ‰˜‡-¬ –ˆ©™® ‡œ®Œ® (
-	DW	62982	; (112) the hollow interior of macbeth is ideal for a base!  prevent andross from building here! ** ›¶º‡Œ‡­(  ‰˜‹™ ‡‚“®‚¬¢‘. €­“®¨›…®†¬‘‡¨•™ …º‰‚˜‹® †˜ˆ­‘¬ …”¦Œ®£ ‹‹’‡© (
-	DW	63074	; (113) this space grave yard, created by andross's experiments, is where your father vanished, fox! ** †Ÿ˜‚ƒ¢ ‰˜›‹†®”‡‚…­’® †ƒ’‹º. ‰™€­“®¨›˜‹®ºˆ­…® ‚­® ™…™®®( †¬‘ˆª ›¶º‡Œ‡­ (
-	DW	63170	; (114) is everyone all right, fox?!  you're on course to sneak into venom's back door! ** ®­­ ›®‹®®º…( ›¶º‡Œ‡­++) œ®˜ ˜ ’††‰‚‚¥§­•¸‚¥ €­“®¨›™ €§™‹®¡’„¨¥‚®(
-	DW	63253	; (115) come in, arwings!  fox, where are you?!  we need you to protect corneria! ** ›¶º‡Œ‡­( ›¶º‡Œ(+++€-‚³­ º “®‰œ†ƒ’‹º˜®+++ ‰-—§€¬ ¢º’‡©(
-	DW	63330	; (116) you've made it this far### it's your fate to destroy andross!  we're counting on you, fox! ** „- †Ÿ…® ‰‰’®£¨“™++++ ( €­“®¨›¬„Œ˜™ £™§†Ÿ˜ ‹¸‡¡ ®º˜…¢‹©­. ˆ­“‚¬˜¨ ›¶º‡Œ(
-	DW	63424	; (117) the attack- carrier will be mine! ** €º‡ †·§€-™ ¢¦º®(
-	DW	63461	; (118) ok, fox! let's see your real ability! ** †Ÿ˜ ‹®‘§¹‡¬ Ÿ’¢¦‚¥
-	DW	63502	; (119) we've got to fly through all the rings! ** §­‡®¬ ‘‘®ˆ’ ‡‡®©º’Š (
-	DW	63545	; (120) i recommend you use control type a or b! ** «‹™ ‰­“ª-¨: ™=¬ ŒŒ¡¨
-	DW	63589	; (121) ahhh### you are quite skillful,   fox! ** „- ”…”…˜   ¢˜®”
-	DW	63631	; (122) ok, you passed! go fight the real enemy! ** ™£‡ ‹®º­•’®’ ‡© ’†…®º’„¨
-	DW	63675	; (123) hit start to   go back to the game, ribbit! ** Œ-“®­’® ˆ®- • ¢“®¨ ˆª(
-	DW	63722	; (124) i can't believe pepper has to test us! ** ›­ ( ”¡¦©¢­®® (
-	DW	63764	; (125) i'm sorry         i doubted you! press start! ** ‚…®º’ «¨…º Œ-“¬ „‹’‡© (
-	DW	63813	; (126) fox,           you are indeed a worthy foe### ** ›¶º‡Œ ( ¥‡ ‰‰’®† (
-	DW	63862	; (127) but, your foolish efforts are futile! ** “®‘¢ ‰‘¢ £‡•–£‘¦®
-	DW	63903	; (128) your arwings have no chance against me! ** „ƒ‰®“†• «‹…® „¨…)
-	DW	63946	; (129) i thought you might make it eventually### ** ¢‚ €¦«©¨‰ª“ „¢º’ (
-	DW	63991	; (130) general pepper has guided you well! ** œ¯º™¯-• ‚‡ ˜¦©„º’+++
-	DW	64030	; (131) however, you will not escape here alive! ** ‹…‹ „ƒ¬†’ …ƒŒ‰“™ ’®†–(
-	DW	64074	; (132) ah## your choice of routes took me by surprise! **   ++ ‘˜• ‰‰’®†)
-	DW	64125	; (133) your father was a reckless fighter too### ** „ƒ˜ „£‹®¢  ’º¯‚®º…®++
-	DW	64170	; (134) but this will be the mccloud's last battle! ** ‰©…® „ƒ•“º’ Š‰®˜ …®(
-	DW	64217	; (135) follow me, fox! ** ‘’‰¥ ›¶º‡Œ(
-	DW	64236	; (136) roll, fox! rock'n roll! ** ª-§­‡®®® ›¶º‡Œ (
-	DW	64263	; (137) stay in formation! ** œ­¬  Ÿ®Œ”¥ (
-	DW	64285	; (138) what's wrong with you today, fox?! ** †¹‚™ “®‚‹­® ›¶º‡Œ)
-	DW	64323	; (139) yer g-g-great, fox! ribbit! ** Š±Œ…® ›¶º‡Œ ˆªˆª (
-	DW	64354	; (140) beware of the big stingray! ** ’®…£‘•™ ’¬®Œ”¥ (
-	DW	64385	; (141) beware of the big stingray! ** ’®…£‘•™ ’¬®Œ”¥ (
-	DW	64416	; (142) beware of the big stingray! ** „„†˜™ º“’ ˆª (
+	DW	59447	; (2) we did it! ** £º-(
+	DW	59456	; (3) slippy slippy## ** Œ§ºš¯- Œ§ºš¯-
+	DW	59473	; (4) go back to the base! ** ‰©¥§ †…­Œ¨(
+	DW	59488	; (5) ready, fox! ** ‚’®…® ”¨®(
+	DW	59503	; (6) i'm with you, fox! ** “®‚º’‰“˜” ‹‰®“®º®(
+	DW	59529	; (7) bogey on my six! ** º ›§†©—-®(
+	DW	59545	; (8) mind your own business, fox! ** ¥ˆ”‰“¬ ‹£…®º’+++
+	DW	59566	; (9) they got me! i'm gone!! ** ‚¶-º €“™ ˜­®®(
+	DW	59587	; (10) i'll blast 'em all! ** ‹‘‰£‘¦® †ƒƒ(
+	DW	59607	; (11) there's more on the way! ** º †§…®”®(
+	DW	59623	; (12) you can run, but you can't hide! ** •…®Œ…¥º ©º(
+	DW	59639	; (13) this one's mine! ** ›¶º‡Œ ’¬®Œ”¥(
+	DW	59657	; (14) watch it, fox! ** ‚‹ª˜£‘…® ‚¨Š®(
+	DW	59677	; (15) i'm hit!! ** º º™¯‘ ‡¦ºº(
+	DW	59698	; (16) here they come!  ** ’†Š­˜ „’®‹®®(
+	DW	59718	; (17) make the neck and tail shorter, fox!! ** ‡š®“‹º¯¬ Ÿ‹®…‡Œ¨­®(
+	DW	59743	; (18) shoot down its arms to hit its body! ** ®¡-‹®™ ‚’®…¦ ®’®³-• ‘«¨®
+	DW	59775	; (19) slow it down, fox! ** Œš¯-“®¬ ‰ªŒ­®¥(
+	DW	59795	; (20) roll, baby! rock 'n roll! ** ª-§­‡®’® ›§™¦ƒ(
+	DW	59814	; (21) my ship's messed up### ** ‹‡‹®º®++ †¸‚‹¸‘¬˜ 
+	DW	59839	; (22) hey! that one was mine! ** ‘™ „©˜ ƒ¢˜®®(
+	DW	59860	; (23) bogies, i'm comin' through! ** Š®‰™ šº‰­’®”(
+	DW	59877	; (24) i'll cover your tail! ** ‰‚‚¬ ƒ­‰®Œ¨®(
+	DW	59896	; (25) yeah - let's go! **  ·™ Œ¨”¥(
+	DW	59910	; (26) i'm behind you, fox! ** €­˜‚‹ª• ¨Š
+	DW	59926	; (27) get lost, you fiend! ** ‹º ™®º‡¬“¦©(
+	DW	59945	; (28) yeah! thanks! ** Œ­ ›¶º‡Œ+++
+	DW	59961	; (29) aargh!! i'm a goner! ** ‚«± ”­’‰º-(
+	DW	59977	; (30) let's smash 'em! ** -© £ºƒ-(
+	DW	59992	; (31) i got one! i got one!! ** ¥-‹ º¹‚€…®§(
+	DW	60010	; (32) take this, enemy brute! ** ›­ ‰©’®¢‡¦ƒ(
+	DW	60026	; (33) you're not getting away! ** •ˆ®¦©¨«ˆ ”®ª(
+	DW	60045	; (34) watch your aim, fox! ** „©® „©® ‚‘­‹®·”(
+	DW	60068	; (35) ouch! ouch! ** €++++
+	DW	60081	; (36) incoming enemy craft!  ** ®ª®ª“ „’®”Šº®(
+	DW	60104	; (37) please make the neck and tail shorter, fox! ** ‡š®“‹º¯¬ Ÿ‹®…‡Œ¨­®(
+	DW	60129	; (38) shoot down its arms to hit its body! ** ®¡-‹®™ ‚’®…¦ ®’®³-• ‘«¨®
+	DW	60161	; (39) retros!  fire retros! ** ›¶º‡Œ ›®©-†®(
+	DW	60179	; (40) roll over! shake it off! ** †¬ ª-§­‡®Šª(
+	DW	60198	; (41) pick me up on your way back! ** Œ­” …ƒ§• šªº’‡©¥
+	DW	60219	; (42) hey! he was mine! ** ˜‹Ÿ¬ “¦”’®‡©¥(
+	DW	60239	; (43) out of my way! ** ‹®·Œ¨”- †ƒª-(
+	DW	60257	; (44) i'm off your starboard! ** Ÿ†®…®« ƒ­‰®Œ¨(
+	DW	60275	; (45) ok!! ** …®­™®¨®- ˆªˆª(
+	DW	60294	; (46) ribbit! i'll bring up the rear,fox! ** ¢‚ ®¡…“ „¢º ˆ®ª
+	DW	60315	; (47) croak!  help me! ** ‚«±( ‹•‡”¥±(
+	DW	60333	; (48) ribbit!  thanks fer the save! ** ›´+++ Œ…º ˆª++
+	DW	60353	; (49) no! no! crrooakk! ** ˆ®ªˆ®ª ¢+¢‚®¡®±(
+	DW	60375	; (50) i'll get him -- ribbit! ** •ˆ®’¢  ® ˆª(
+	DW	60392	; (51) piece of c-c-cake! ** €¦¥º“ ˆªˆª(
+	DW	60407	; (52) take this, j-j-junk heap! ** ‡™®©( ˆª
+	DW	60420	; (53) i'll get this one! ribbit! ** ®† ®†(
+	DW	60436	; (54) hey! it's me, slippy! ** ˆ®ªˆ®ª „©®¥±º(
+	DW	60455	; (55) ribbit!  i'm hit!! ** ˆ®±º ‡¦º±(
+	DW	60470	; (56) there's too many of them! ** ˆ®ªˆ®ª ‰‚Š­‹·„‚…²(
+	DW	60493	; (57) let's turn back, okay?! ** ˆ®ªˆ®ª ¢‚…ƒ§¥±(
+	DW	60514	; (58) let's be careful! ** ˆ®ª± €›®”¥±(
+	DW	60531	; (59) something's sticking to me! ** ˆ®ª± ”­… šº‘±(
+	DW	60551	; (60) i c-c-couldn't go, fox! ** €±€º ™£‡ Œˆ• †’‡©¥
+	DW	60574	; (61) hey! don't be so g-g-greedy! ** ®‡•¢ £¦’¥±(
+	DW	60591	; (62) c-c-clear out, astro-geeks! ** ‹®·®¥± ˆªˆª(
+	DW	60609	; (63) hope there's no more! ** ‰º• †­¥‚•+++
+	DW	60628	; (64) did you see me? ** Ÿ’)( Ÿ’±)(
+	DW	60644	; (65) i can't tell which is real!! ** «± ›®­‹­‹®(
+	DW	60661	; (66) let's head in! ** €˜›—• ‘º‰ ®(
+	DW	60678	; (67) i'll follow you in! ** ‹­¹‚• ¢‡®§‰¡(
+	DW	60696	; (68) should we go in?! ** ‡‚®• “‘ˆ®† ˆª(
+	DW	60715	; (69) ###this one could be trouble### ** ‹‘‰£‘®®(
+	DW	60730	; (70) hurry! ** ˜ ( …Œ®ˆ’‡©(
+	DW	60748	; (71) hurry up, fox!  croak! ** ®…¦ …ƒ¨º’ º˜•±(
+	DW	60770	; (72) eyes forward, fox! ** ƒ¬ Ÿ’ª¥(
+	DW	60783	; (73) be careful, fox! ** ›¶º‡Œ †¬‘ˆª¥(
+	DW	60800	; (74) this time, i saved you! ** Œˆ§¢ Œ¨­®” ˆª(
+	DW	60821	; (75) no sweat, fox! ** ¹ª¢­®®(
+	DW	60836	; (76) ok, ok! what's next?! ** ¥º‹· ‘†®‰ ‘†®(
+	DW	60855	; (77) so far, so g-g-good! ** ”­“… †˜š®’¨­®”
+	DW	60875	; (78) look, look! ** Ÿ’ˆª Ÿ’ˆª(
+	DW	60889	; (79) it's looking good, fox! ** ‚’®…® ”º‚®(
+	DW	60908	; (80) we did it, let's go! ** ¹‚‹®” ›¶º‡Œ(
+	DW	60928	; (81) g-g-great! ** …­­”­®” ˆª(
+	DW	60945	; (82) be a bit more careful fox! ** ªª ­†¬ ®‚…—++++
+	DW	60969	; (83) please tread carefully, fox! ** ‹º…§ £º’‡©¥ §-®-(
+	DW	60991	; (84) remember not to shoot m-m-me! ** ®º ®‡¬ ‚”’®¥—(
+	DW	61015	; (85) it's going pretty badly! ** £™®‰“• ”ºº®+++
+	DW	61038	; (86) i don't think i'm going to make it! ** ¢‚ ®ª®ª®±( ”­“…‹’‡©+++
+	DW	61067	; (87) my ship's falling apart### ribbit! ** ¢‚®¡ˆ®ª( ¢‚®¡®ˆ®ª±(
+	DW	61093	; (88) star fox team, our last resort is to counter attack venom!  good luck! ** €-  Œ-›¶º‡Œ ˜ ‹¹‡­+++ «©«©• ˜‰Š©’™ œ®˜ ¬ ¹‡‘‡‰“®. «…® ‰-—§€¬¢¨¡ …®­™®º’‡©.
+	DW	61180	; (89) andross's forces intend to build a base in this area!  destroy their rock crusher! ** ›¶º‡Œ‡­ (  €­“®¨›˜‡®­®™ ‰˜†•†¬ ˆ­‘‹¥‚“‹’„¨.  ªº‡‡¦º‹·-¬ ™…‹’‡© (
+	DW	61255	; (90) the space armada consists of powerful battleships! destroy their energy cores! ** ›¶º‡Œ‡­( ‰˜ Œœ¯-Œ€®™ ‚¸‚ Š†¹‚˜ …­®. ­…­•­•¸‚‹ ˜ ƒ—¨†®-‰€¬ ™…‹’‡© (
+	DW	61336	; (91) be sure to use your retros if you're going too fast!  be careful with my arwings! ** ›®©-†+›®-Œ“¬ ‘…º’„¨…— œ®˜ ™ Œ‡®‰®. €-‚³­¬ ‰«Š–¥‚• …®­™®º’‡© Œ-›¶º‡Œ˜‹¹‡­ (
+	DW	61417	; (92) andross is hiding on venom!  fox, you must find his core brain and destroy it! ** ›¶º‡Œ‡­( €­“®¨›™ †º“‰˜œ®˜ • š­’®„¨. ’†‡®­˜‰­“ª-¨›®©­¬ Ÿ‘ˆ®‹ ™…‹’‡© (
+	DW	61493	; (93)         CORNERIA - THE BASE **        CORNERIA - THE BASE
+	DW	61523	; (94)            ASTEROID BELT **           ASTEROID BELT
+	DW	61550	; (95)               SECTOR  X **              SECTOR  X
+	DW	61576	; (96)        THE PLANET FORTUNA **       THE PLANET FORTUNA
+	DW	61604	; (97)      THE ANDROSS SPACE ARMADA **     THE ANDORF SPACE ARMADA
+	DW	61635	; (98)         THE PLANET TITANIA **        THE PLANET TITANIA
+	DW	61664	; (99)       THE AWESOME BLACK HOLE **      THE AWESOME BLACK HOLE
+	DW	61695	; (100)               SECTOR  Y **              SECTOR  Y
+	DW	61721	; (101)       THE BATTLE BASE METEOR **      THE BATTLE BASE METEOR
+	DW	61752	; (102)               SECTOR  Z **              SECTOR  Z
+	DW	61778	; (103)         THE PLANET MACBETH **        THE PLANET MACBETH
+	DW	61807	; (104)       VENOM - THE FINAL GOAL **      VENOM - THE FINAL GOAL
+	DW	61838	; (105)       OUT OF THIS DIMENSION **      OUT OF THIS DIMENSION
+	DW	61868	; (106) corneria's resource world has been overrun!  you must re-take the weather control unit! ** ‹¹‡­(  ‰‰™…‘’ «…®‰-—§€˜ ‹ˆ®­«‡®º. ’­‰‚‚Š¤•º“¬ Š“®‚Š …¬ ¤‚§•ŒŒ¡’‡© (
+	DW	61948	; (107) how are the arwings handling?  if an amoeba clings to your ship, use l or r to get rid of it# ** ‹¹‡­ €-‚³­˜ ¹‚‹™“®‚…—) ‰˜‡-’® €¡-™®-• “§‘…©¦ @+* ®­’® ›§™¦‚‰“® (
+	DW	62023	; (108) you've chosen course three###  a good choice to take venom by surprise! ** †Ÿ…® ‰˜‰-Œ¬ƒ¦›®”¦ «‹™”•¢ «­( ’†˜‚¦¬…‡•™ ¥­‡…¢ ‹©–.  ˆ­“‚¬˜¨ ›¶º‡Œ‡­ (
+	DW	62101	; (109) use the l or r button to escape the tractor beam of the enemy battleship! you can do it, fox! ** ’†™ €¦¤¨¢˜¬™—…ƒŒ ­…­¬ …™‘‹¥‚®.  “¦‡-š®- • ‘…º¦ @+* ®­’® ®º‹¸‘¥ (
+	DW	62180	; (110) andross has taken control of the huge creatures who live on fortuna!  take care, fox! ** ›¶-¸”™ †¹®›®‘…® ‡Œ¨ ‹®­• ¡‡®©‹®…® €­“®¨›™ ‰˜†¹®›®‘¬ €£‘§™‹®¡¥‚®
+	DW	62266	; (111) your team is doing well, fox!  i hope you're taking good care of my arwings!  go for macbeth! ** „-  ˆ®­†’®€º… ›¶º‡Œ‡­ ( €-‚³­™ ‰«©’„¦­®ª‚—) ‰˜‡-¬ –ˆ©™® ‡œ®Œ® (
+	DW	62339	; (112) the hollow interior of macbeth is ideal for a base!  prevent andross from building here! ** ›¶º‡Œ‡­(  ‰˜‹™ ‡‚“®‚¬¢‘. €­“®¨›…®†¬‘‡¨•™ …º‰‚˜‹® †˜ˆ­‘¬ …”¦Œ®£ ‹‹’‡© (
+	DW	62420	; (113) this space grave yard, created by andross's experiments, is where your father vanished, fox! ** †Ÿ˜‚ƒ¢ ‰˜›‹†®”‡‚…­’® †ƒ’‹º. ‰™€­“®¨›˜‹®ºˆ­…® ‚­® ™…™®®( †¬‘ˆª ›¶º‡Œ‡­ (
+	DW	62502	; (114) is everyone all right, fox?!  you're on course to sneak into venom's back door! ** ®­­ ›®‹®®º…( ›¶º‡Œ‡­++) œ®˜ ˜ ’††‰‚‚¥§­•¸‚¥ €­“®¨›™ €§™‹®¡’„¨¥‚®(
+	DW	62581	; (115) come in, arwings!  fox, where are you?!  we need you to protect corneria! ** ›¶º‡Œ‡­( ›¶º‡Œ(+++€-‚³­ º “®‰œ†ƒ’‹º˜®+++ ‰-—§€¬ ¢º’‡©(
+	DW	62646	; (116) you've made it this far### it's your fate to destroy andross!  we're counting on you, fox! ** „- †Ÿ…® ‰‰’®£¨“™++++ ( €­“®¨›¬„Œ˜™ £™§†Ÿ˜ ‹¸‡¡ ®º˜…¢‹©­. ˆ­“‚¬˜¨ ›¶º‡Œ(
+	DW	62729	; (117) the attack- carrier will be mine! ** €º‡ †·§€-™ ¢¦º®(
+	DW	62752	; (118) ok, fox! let's see your real ability! ** †Ÿ˜ ‹®‘§¹‡¬ Ÿ’¢¦‚¥
+	DW	62775	; (119) we've got to fly through all the rings! ** §­‡®¬ ‘‘®ˆ’ ‡‡®©º’Š (
+	DW	62800	; (120) i recommend you use control type a or b! ** «‹™ ‰­“ª-¨: ™=¬ ŒŒ¡¨
+	DW	62826	; (121) ahhh### you are quite skillful,   fox! ** „- ”…”…˜   ¢˜®”
+	DW	62846	; (122) ok, you passed! go fight the real enemy! ** ™£‡ ‹®º­•’®’ ‡© ’†…®º’„¨
+	DW	62877	; (123) hit start to   go back to the game, ribbit! ** Œ-“®­’® ˆ®- • ¢“®¨ ˆª(
+	DW	62906	; (124) i can't believe pepper has to test us! ** ›­ ( ”¡¦©¢­®® (
+	DW	62928	; (125) i'm sorry         i doubted you! press start! ** ‚…®º’ «¨…º Œ-“¬ „‹’‡© (
+	DW	62958	; (126) fox,           you are indeed a worthy foe### ** ›¶º‡Œ ( ¥‡ ‰‰’®† (
+	DW	62982	; (127) but, your foolish efforts are futile! ** “®‘¢ ‰‘¢ £‡•–£‘¦®
+	DW	63008	; (128) your arwings have no chance against me! ** „ƒ‰®“†• «‹…® „¨…)
+	DW	63032	; (129) i thought you might make it eventually### ** ¢‚ €¦«©¨‰ª“ „¢º’ (
+	DW	63056	; (130) general pepper has guided you well! ** œ¯º™¯-• ‚‡ ˜¦©„º’+++
+	DW	63082	; (131) however, you will not escape here alive! ** ‹…‹ „ƒ¬†’ …ƒŒ‰“™ ’®†–(
+	DW	63110	; (132) ah## your choice of routes took me by surprise! **   ++ ‘˜• ‰‰’®†)
+	DW	63133	; (133) your father was a reckless fighter too### ** „ƒ˜ „£‹®¢  ’º¯‚®º…®++
+	DW	63162	; (134) but this will be the mccloud's last battle! ** ‰©…® „ƒ•“º’ Š‰®˜ …®(
+	DW	63192	; (135) follow me, fox! ** ‘’‰¥ ›¶º‡Œ(
+	DW	63209	; (136) roll, fox! rock'n roll! ** ª-§­‡®®® ›¶º‡Œ (
+	DW	63231	; (137) stay in formation! ** œ­¬  Ÿ®Œ”¥ (
+	DW	63250	; (138) what's wrong with you today, fox?! ** †¹‚™ “®‚‹­® ›¶º‡Œ)
+	DW	63274	; (139) yer g-g-great, fox! ribbit! ** Š±Œ…® ›¶º‡Œ ˆªˆª (
+	DW	63296	; (140) beware of the big stingray! ** ’®…£‘•™ ’¬®Œ”¥ (
+	DW	63318	; (141) beware of the big stingray! ** ’®…£‘•™ ’¬®Œ”¥ (
+	DW	63340	; (142) beware of the big stingray! ** „„†˜™ º“’ ˆª (
