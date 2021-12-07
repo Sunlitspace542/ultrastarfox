@@ -2,79 +2,71 @@ trainingmap	initlevel	training,mstarwipe_circle
 	setvar.n	prttraining,1
 ;-------------------------------------------------------------------------------
 		mapwait	2000
-;*************************      MSG TEST   *****************************
-;	mapwait	3000
-;
-;freddytest	=	1
-;	REPT	87
-;
-;;	start_65816
-;;	lda	#-1
-;;	sta	friends_meter
-;;	end_65816
-;;
-;	run	"%tmapmsg%t",freddytest
-;	mapwait	1000
-;freddytest	=	freddytest+1
-;
-;	ENDR
-;
-;	mapwait	1000
-;	mapmsg	117
-;	mapwait	1000
-;	mapmsg	118
-;	mapwait	1000
-;	mapmsg	119
-;	mapwait	1000
-;	mapmsg	120
-;	mapwait	1000
-;	mapmsg	121
-;	mapwait	1000
-;	mapmsg	122
-;	mapwait	1000
-;	mapmsg	123
-;	mapwait	1000
-;	mapmsg	124
-;	mapwait	1000
-;	mapmsg	125
-;	mapwait	1000
-;	mapmsg	126
-;	mapwait	1000
-;	mapmsg	127
-;	mapwait	1000
-;	mapmsg	128
-;	mapwait	1000
-;	mapmsg	129
-;	mapwait	1000
-;	mapmsg	130
-;	mapwait	1000
-;	mapmsg	131
-;	mapwait	1000
-;	mapmsg	132
-;	mapwait	1000
-;	mapmsg	133
-;	mapwait	1000
-;	mapmsg	134
-;	mapwait	1000
-;	mapmsg	135
-;	mapwait	1000
-;	mapmsg	136
-;	mapwait	1000
-;	mapmsg	137
-;	mapwait	1000
-;	mapmsg	138
-;	mapwait	1000
-;	mapmsg	139
-;	mapwait	1000
-;	mapmsg	140
-;	mapwait	1000
-;	mapmsg	141
-;	mapwait	1000
-;	mapmsg	142
-;	mapwait	1000
-;;.et0
-;	mapwait	4000
-;;	mapgoto	.et0
+	
+	IFNE	messagetest
+*************************      MSG TEST   *****************************
+	mapwait	3000
+
+	start_65816
+	lda	#-1
+	sta	friends_meter
+	end_65816
+
+
+	mapwait	1000
+	mapmsg	117
+	mapwait	1000
+	mapmsg	118
+	mapwait	1000
+	mapmsg	119
+	mapwait	1000
+	mapmsg	120
+	mapwait	1000
+	mapmsg	121
+	mapwait	1000
+	mapmsg	122
+	mapwait	1000
+	mapmsg	123
+	mapwait	1000
+	mapmsg	124
+	mapwait	1000
+	mapmsg	125
+	mapwait	1000
+	mapmsg	126
+	mapwait	1000
+	mapmsg	127
+	mapwait	1000
+	mapmsg	128
+	mapwait	1000
+	mapmsg	129
+	mapwait	1000
+	mapmsg	130
+	mapwait	1000
+	mapmsg	131
+	mapwait	1000
+	mapmsg	132
+	mapwait	1000
+	mapmsg	133
+	mapwait	1000
+	mapmsg	134
+	mapwait	1000
+	mapmsg	135
+	mapwait	1000
+	mapmsg	136
+	mapwait	1000
+	mapmsg	137
+	mapwait	1000
+	mapmsg	138
+	mapwait	1000
+	mapmsg	139
+	mapwait	1000
+	mapmsg	140
+	mapwait	1000
+	mapmsg	141
+	mapwait	1000
+	mapmsg	142
+	mapwait	1000
+	ENDC
 ;***********************************************************************
 	pathobj	0000,0000,0000,3000,zaco_5,trn_ck,10,10
 	mapobj	0000,1200,0000,5000,BU_8,HARD180YR_ISTRAT
