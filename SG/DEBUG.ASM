@@ -49,7 +49,7 @@ aldebugend	MACRO
 	ENDM
 
 aliendebugtable
-;	aldebug	shape,shapeptr,0,4
+	aldebug	shape,shapeptr,0,4
 	aldebug	worldx,norm,0,5
 	aldebug	worldy,norm,0,6
 	aldebug	worldz,zrel,0,7
