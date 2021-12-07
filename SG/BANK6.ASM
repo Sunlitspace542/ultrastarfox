@@ -20,7 +20,7 @@
 
 ;------------------------------------------------------------------
 	bank	6
-	incfile	gstrats.asm
+	incfile	blink.asm
 	incfile	gcstrats.asm
 	incfile	expstrat.asm
 
@@ -32,6 +32,10 @@ cacheon	=	1
 
 
 	bankend	6
+
+	bank	33
+	incfile	gstrats.asm
+	bankend	33
 
 	include	tail.inc
 
