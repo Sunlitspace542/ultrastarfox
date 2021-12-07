@@ -18,6 +18,7 @@ Building is easy if you've used the Star Fox EZBuild.
 
 
 ## Future things to do
+Squeeze best performance out of game without altering levels or models
 1. Expanded texture space
 2. Annotate and document code
 3. FastROM
