@@ -2,8 +2,8 @@
 ; ##HackerStarFox Assembler Options##
 
 cesdemo			equ	0	; 0 = off, 1 = CES Demo (timed) 2 = Untimed CES Demo w/ planet cheat
-debuginfo		equ	0	; full strategy debugging [1 = on 0 = off]
-debuginfo2		equ	0	; stage selection/ speed up mode [0 = off 1 = on]
+debuginfo		equ	0	; full strategy debugging - Press P2 R Button in-game to activate [1 = on 0 = off]
+debuginfo2		equ	0	; speed up mode? [0 = off 1 = on]
 janglish		equ	0	; 0 = english, 1 = japanese
 cestime			equ	5	; CES/SSFW timer countdown (in minutes)
 pal				equ	0	; PAL/NTSC [0 = off 1 = on]
