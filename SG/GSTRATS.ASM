@@ -3052,14 +3052,12 @@ changeviewmode_l
 
 	s_jmp_varNE	B,splayerflymode,#spfm_norm,.nnorm
 ;	s_set_var	W,outdist,#outviewdist
-;	s_set_var	W,viewdist,#outviewdist
-	jsl	set_playeroutofcock_l
+	s_set_var	W,viewdist,#outviewdist
 ;	s_set_strat	x,playerinspace_Istrat
 .nnorm
 	s_jmp_varNE	B,splayerflymode,#spfm_close,.nclose
 ;	s_set_var	W,outdist,#inviewdist
-;	s_set_var	W,viewdist,#inviewdist
-	jsl	set_playerintocock_l
+	s_set_var	W,viewdist,#inviewdist
 ;	s_set_strat	x,playerinspace_Istrat
 .nclose
 	s_jmp_varNE	B,splayerflymode,#spfm_toinside,.ntoinside
