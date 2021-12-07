@@ -12,7 +12,7 @@ german			equ	0	; german version [0 = off 1 = on]
 ;french			equ	0	; french version [0 = off 1 = on] (UNUSED VARIABLE)
 thirtyfpsunlock equ 0	; 30FPS unlock [1 = on 0 = off]
 twentyonemhz	equ 1	; 21MHZ mode [1 = on 0 = off]
-planetcheat		equ 0	; Planet select cheat, press x+y on map
+planetcheaton 	equ 0   ;Allows you to enable planet select cheat on the map before you have selected a level. Press X+Y on the same frame to activate.
 
 ; Everything else is more advanced stuff, be careful!
 
