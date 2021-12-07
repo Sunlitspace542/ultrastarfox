@@ -1,15 +1,19 @@
 
+; ##HackerStarFox Assembler Options##
 
-cesdemo	equ	0	; 0 is normal, 1/2
-debuginfo	equ	0	; full strategy debugging
-debuginfo2	equ	0	; stage selection/ speed up mode
-janglish	equ	0	; 0 = english, 1 = japanese
-cestime	equ	4	; ces countdown (in minutes)
-pal	equ	0	; PAL/NTSC (1/0)
-contest	equ	0	; contest version
-german	equ	0	; german version
-french	equ	0	; french version
+cesdemo			equ	0	; 0 = off, 1 = CES Demo (timed) 2 = Untimed CES Demo w/ planet cheat
+debuginfo		equ	0	; full strategy debugging [1 = on 0 = off]
+debuginfo2		equ	0	; stage selection/ speed up mode [0 = off 1 = on]
+janglish		equ	0	; 0 = english, 1 = japanese
+cestime			equ	5	; CES/SSFW timer countdown (in minutes)
+pal				equ	0	; PAL/NTSC [0 = off 1 = on]
+contest			equ	0	; Super Star Fox Weekend [0 = off 1 = on]
+german			equ	0	; german version [0 = off 1 = on]
+;french			equ	0	; french version [0 = off 1 = on] (UNUSED VARIABLE)
+thirtyfpsunlock equ 0	; 30FPS unlock [1 = on 0 = off]
+twentyonemhz	equ 1	; 21MHZ mode [1 = on 0 = off]
 
+; Everything else is more advanced stuff, be careful!
 
 ; angles
 deg360	equ	256

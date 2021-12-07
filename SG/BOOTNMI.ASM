@@ -24,13 +24,13 @@ startboot	disable
 	ai8
 
 	jsl	initialise_l
-
+	IFEQ	TWENTYONEMHZ
 	lda	#1
 	sta	$3039
 	stz	$3037
 	lda	#$15
 	sta	$ffd6
-
+	ENDC
 	IFEQ	contest
 	jsl	intro_l
 	ENDC
@@ -90,18 +90,22 @@ restart	ai16
 	ENDC
 	jsl	initialise_l
 firsttimeuse
+	IFEQ	TWENTYONEMHZ
 	lda	#1
 	sta	$3039
 	stz	$3037
 	lda	#$15
 	sta	$ffd6
+	ENDC
 	jsl	briefing_l
 	jsl	initialise_l
+	IFEQ	TWENTYONEMHZ
 	lda	#1
 	sta	$3039
 	stz	$3037
 	lda	#$15
 	sta	$ffd6
+	ENDC
 	jml	planetseq_l
 
 

@@ -1,1 +1,2 @@
-dosbox-x bldsg.bat
+dosbox-x build.bat
+exit
