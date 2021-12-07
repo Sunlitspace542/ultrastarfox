@@ -299,7 +299,7 @@ m_clipright	equ	m_sprxmax
 mmaxxpos	=	224
 mmaxypos	=	192
 
-mmaxpnts	=	128 ; max points a model can have, originally 80
+mmaxpnts	=	80 ; max points a model can have, originally 80
 mmaxpolysize	=	128
 mmaxgroups	=	16
 mmaxstack	=	256
