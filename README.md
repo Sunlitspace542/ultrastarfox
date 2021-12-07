@@ -8,5 +8,6 @@ Thanks to Kandowontu and Vitor Vilela for the SuperFX2 Upgrade.
 Building is easy if you've used the Star Fox EZBuild.
 
 ## Future things to do
-1. Organize source files and edit makefile accordingly
-2. FastROM
+1. Expanded texture space
+2. Organize source files and edit makefile accordingly
+3. FastROM
