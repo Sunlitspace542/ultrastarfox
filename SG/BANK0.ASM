@@ -100,8 +100,15 @@ bgandpcr
 	db	$20,$13,$a,$0,$1,$1,$0,$ff,$ff,$0,$0
 	ELSEIF
 
-	IFEQ	GERMAN+FRENCH
-; british
+	IFEQ	GERMAN
+; germany
+	db	"STAR FOX             "
+	db	$20,$13,$a,$0,$2,$1,$0,$ff,$ff,$0,$0
+
+	ENDC
+
+	IFEQ	FRENCH
+; france
 	db	"STAR FOX             "
 	db	$20,$13,$a,$0,$2,$1,$0,$ff,$ff,$0,$0
 
