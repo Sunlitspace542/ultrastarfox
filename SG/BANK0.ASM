@@ -47,15 +47,11 @@
 
 	db	0,0,0,0,0,0
 
-	incfile	blink.asm
-
 	incfile	sgtabs.asm
 	incfile	sgdata.asm
 
 	incfile	data\arctan.asm
 
-
-	incfile	istrats.asm
 
 Do_HDR	=	1
 	incfile	ushapes.asm
@@ -67,16 +63,6 @@ Do_HDR	=	1
 	incfile	shapes5.asm
 	incfile	kshapes.asm
 Do_HDR	=	0
-
-
-	incfile	d3strats.asm
-
-	public	bgandpcr
-	IFEQ	CONTEST
-	inccru	bgandpcr,data\and.pcr
-	ELSEIF
-bgandpcr
-	ENDC
 
 start	jmp.l	startboot
 
@@ -92,6 +78,17 @@ abort_vn
 	rti
 
 	bankend	0
+
+	bank	32
+	public	bgandpcr
+	IFEQ	CONTEST
+	inccru	bgandpcr,data\and.pcr
+	ELSEIF
+bgandpcr
+	ENDC
+	incfile	istrats.asm
+	incfile	d3strats.asm
+	bankend	32
 
 	org	$00ffc0,$7fc0
 
@@ -130,6 +127,8 @@ abort_vn
 	db	$20,$13,$a,$0,$0,$1,$0,$ff,$ff,$0,$0
 
 	ENDC
+
+
 
 ;------------------------------------
 
