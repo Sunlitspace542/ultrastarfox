@@ -211,6 +211,7 @@ printb_l
 	shorta
 printbsd
 	IFEQ	debuginfo
+printchar
 	rts
 	ELSEIF
 
@@ -236,11 +237,11 @@ printbsd
 printbd
 	IFEQ	debuginfo
 	rts
-printb_l
-printbsd_l
-printbd_l
-printw_l
-printt_l
+;printb_l
+;printbsd_l
+;printbd_l
+;printw_l
+;printt_l
 	rtl
 	ELSEIF
 
