@@ -8,7 +8,6 @@ Up - Camera Pan Forward (pviewposz)
 Down - Camera Pan Backwards (pviewposz)
 Left - Camera Pan Left (pviewposx)
 Right - Camera Pan Right (pviewposx)
-Start - Exit?
 
 Hold A and press:
 Up - OUTVY-
