@@ -1,6 +1,6 @@
-set path=%path%;c:\bin2
+set path=%path%;.\sf\bin
 set sasmheap=14400
-cd SF
+cd sf
 cd data
 cd gfx
 pc.bat

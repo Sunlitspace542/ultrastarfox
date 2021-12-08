@@ -1,6 +1,7 @@
 @del col.tmp
 @del col2.tmp
-@del allcol.col
+@del allcols.col
+@echo %null% > allcols.col
 @call mc bg2-a 0 7
 @call mc bg2-b 0 13
 @call mc bg2-c 0 7
@@ -24,14 +25,5 @@
 @call mc e-test 0 7
 @call mc obj-1 8 13
 @call mc 2ep 0 9
-@call mc fxdes 0 7
-@call mc fxblue 0 7
-@call mc fxgreen 0 7
-@call mc fxpink 0 7
-@call mc fortn 0 7
-@call mc corn 0 7
-@call mc newspace 0 7
-@call mc vortex 0 7
-@call mc city 0 7
-@call mc corn2 0 7
-@packer /4000 allcol.col allcol.pac
+@packer /4000 allcols.col allcols.pac
+pause
