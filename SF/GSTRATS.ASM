@@ -399,6 +399,12 @@ init_strats_l
 .npst
 
 ;----------------------------------------------------
+
+	IFNE	godmode
+	s_or_var		B,pshipflags3,#psf3_nocollisions 	;Set the god mode on
+	ENDC
+
+;----------------------------------------------------
 	a16
 	ldx	internalplaypt
 	lda	al_worldx,x
