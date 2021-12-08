@@ -1,0 +1,844 @@
+; start in tunnel
+;	initlevel	1_7a
+	mapplayermode	toCslow	
+	mapjsr	Ltunnelexit
+	mapplayercantdie
+	mapwait	200
+	setbg	1_7a
+;	maptexitwait	-200
+	mapwait	medpspeed*3
+	initbg
+	mapplayercantdie
+	mapobj	0000,0,space_viewCY+64,2000,door_l,lseqdoor1_Istrat
+	setalvar	rotx,0
+	mapobj	0000,0000,space_viewCy,(100<<4)+2000,last_b_2,nocoll_Istrat
+	setalvar	rotx,deg90
+	mapobj	0000,0,space_viewCY,((148<<4)-30)+2000,last_b_3,nocollanim0_Istrat
+	setalvar	rotx,-deg90
+	start_65816
+	lda	bgmspeed
+	beq	.nochange111
+	cmp	#1
+	beq	.slow111
+	cmp	#2
+	beq	.fast111
+.slow111
+	startbgm	$f4
+	bra	.nochange111
+.fast111
+	startbgm	$f5
+.nochange111
+	end_65816
+
+	mapwait		1800+500
+
+	mapplayermode	outofLB2b
+	mapplayercantdie
+	mapwait		500
+
+	setbg	1_7b
+	initbg
+	mapplayercantdie
+	start_65816
+	lda	whichroute
+	cmp	#2
+	bmi	.doneandross2
+	end_65816
+	start_65816
+	lda	bgmspeed
+	beq	.nochange12
+	cmp	#1
+	beq	.slow12
+	cmp	#2
+	beq	.fast12
+.slow12
+	startbgm	$f4
+	bra	.nochange12
+.fast12
+	startbgm	$f5
+.nochange12
+	end_65816
+	andross2
+	start_65816
+.doneandross2
+	jsl		clearmap_l
+	end_65816	
+	mapplayercantdie
+
+; outside view of player's ship escaping.
+
+	mapobj	0000,0000,0000,1000,last_b_0,gnd_Istrat
+	setvarobj	mapvar1
+	setalvar	roty,deg180
+	mapobj	0000,0000,-48<<4,1000,last_b_3,lseqdoor2_Istrat
+
+;-----------------------
+	mapif	shipdifferent,.notdifferent
+	start_65816
+	a16
+	lda	curr_ship
+	a8
+	cmp	#7
+	beq	.7
+	cmp	#8
+	beq	.8
+	cmp	#9
+	beq	.9
+	cmp	#10
+	beq	.10
+	jmp	.next
+.7
+	end_65816
+	mapobj	0000,0000,0,1000,plane1,pshipoutoflb1_Istrat	
+	mapgoto	.resume
+.8
+	end_65816
+	mapobj	0000,0000,0,1000,my_demoS,pshipoutoflb1_Istrat	
+	mapgoto	.resume
+.9
+	end_65816
+	mapobj	0000,0000,0,1000,old_type2,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.10
+	end_65816
+	mapobj	0000,0000,0,1000,ryousan,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+
+
+
+.notdifferent
+;-------------------------
+	mapobj	0000,0000,0,1000,my_demoS,pshipoutoflb1_Istrat
+.resume
+	mapgoto	.keepgoing
+.next
+	a16
+	lda	curr_ship
+	a8
+	cmp	#11
+	beq	.11
+	cmp	#12
+	beq	.12
+	cmp	#13
+	beq	.13
+	cmp	#14
+	beq	.14
+	cmp	#15
+	beq	.15
+	jmp	.next2
+.11
+	end_65816
+	mapobj	0000,0000,0,1000,a_wing,pshipoutoflb1_Istrat	
+	mapgoto	.resume
+.12
+	end_65816
+	mapobj	0000,0000,0,1000,b_wing,pshipoutoflb1_Istrat	
+	mapgoto	.resume
+.13
+	end_65816
+	mapobj	0000,0000,0,1000,c_wing,pshipoutoflb1_Istrat	
+	mapgoto	.resume2
+.14
+	end_65816
+	mapobj	0000,0000,0,1000,wolf,pshipoutoflb1_Istrat	
+	mapgoto	.resume2
+.15
+	end_65816
+	mapobj	0000,0000,0,1000,wolf_1,pshipoutoflb1_Istrat	
+	mapgoto	.resume2
+
+
+.resume2
+	mapgoto	.keepgoing
+
+.next2
+	a16
+	lda	curr_ship
+	a8
+	cmp	#16
+	beq	.16
+	cmp	#17
+	beq	.17
+	cmp	#18
+	beq	.18
+	cmp	#19
+	beq	.19
+	cmp	#20
+	beq	.20
+	jmp	.next3
+.16
+	end_65816
+	mapobj	0000,0000,0,1000,c_robo,pshipoutoflb1_Istrat	
+	mapgoto	.resume2
+.17
+	end_65816
+	mapobj	0000,0000,0,1000,petecube,pshipoutoflb1_Istrat	
+	mapgoto	.resume2
+.18
+	end_65816
+	mapobj	0000,0000,0,1000,androsscubee,pshipoutoflb1_Istrat	
+	mapgoto	.resume2
+.19
+	end_65816
+	mapobj	0000,0000,0,1000,boss_g_s,pshipoutoflb1_Istrat	
+	mapgoto	.resume3
+.20
+	end_65816
+	mapobj	0000,0000,0,1000,ray_bluep,pshipoutoflb1_Istrat	
+	mapgoto	.resume3
+
+.resume3
+	mapgoto	.keepgoing
+
+.next3
+	a16
+	lda	curr_ship
+	a8
+	cmp	#21
+	beq	.21
+	cmp	#22
+	beq	.22
+	cmp	#23
+	beq	.23
+	cmp	#24
+	beq	.24
+	cmp	#25
+	beq	.25
+	bra	.next4
+.21
+	end_65816
+	mapobj	0000,0000,0,1000,ray_bredp,pshipoutoflb1_Istrat	
+	mapgoto	.resume3
+.22
+	end_65816
+	mapobj	0000,0000,0,1000,ray_0p,pshipoutoflb1_Istrat	
+	mapgoto	.resume3
+.23
+	end_65816
+	mapobj	0000,0000,0,1000,wire_man,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.24
+	end_65816
+	mapobj	0000,0000,0,1000,cockpit,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.25
+	end_65816
+	mapobj	0000,0000,0,1000,f_fish,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+
+
+.next4
+	a16
+	lda	curr_ship
+	a8
+	cmp	#26
+	beq	.26
+	cmp	#27
+	beq	.27
+	cmp	#28
+	beq	.28
+	cmp	#29
+	beq	.29
+	cmp	#30
+	beq	.30
+	cmp	#31
+	beq	.31
+	bra	.next5
+.26
+	end_65816
+	mapobj	0000,0000,0,1000,tadpole,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.27
+	end_65816
+	mapobj	0000,0000,0,1000,whale1,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.28
+	end_65816
+	mapobj	0000,0000,0,1000,my_bird,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.29
+	end_65816
+	mapobj	0000,0000,0,1000,shark1,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.30
+	end_65816
+	mapobj	0000,0000,0,1000,zaco_1,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.31
+	end_65816
+	mapobj	0000,0000,0,1000,zaco_5,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+
+
+.next5
+	a16
+	lda	curr_ship
+	a8
+	cmp	#32
+	beq	.32
+	cmp	#33
+	beq	.33
+	cmp	#34
+	beq	.34
+	cmp	#35
+	beq	.35
+	cmp	#36
+	beq	.36
+	cmp	#37
+	beq	.37
+	cmp	#38
+	beq	.38
+	cmp	#39
+	lbeq	.39
+	cmp	#40
+	lbeq	.40
+	jmp	.next6
+.32
+	end_65816
+	mapobj	0000,0000,0,1000,zaco_6,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.33
+	end_65816
+	mapobj	0000,0000,0,1000,zaco_8,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.34
+	end_65816
+	mapobj	0000,0000,0,1000,zaco_a,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.35
+	end_65816
+	mapobj	0000,0000,0,1000,zaco_b,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing	
+.36
+	end_65816
+	mapobj	0000,0000,0,1000,heli,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing	
+.37
+	end_65816
+	mapobj	0000,0000,0,1000,ika,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.38
+	end_65816
+	mapobj	0000,0000,0,1000,f_dragon,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.39
+	end_65816
+	mapobj	0000,0000,0,1000,air_1,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.40
+	end_65816
+	mapobj	0000,0000,0,1000,car_10,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+	
+	
+.next6
+	lda	curr_ship
+	a8
+	cmp	#41
+	beq	.41
+	cmp	#42
+	beq	.42
+	cmp	#43
+	beq	.43
+	cmp	#44
+	beq	.44
+	cmp	#45
+	beq	.45
+	cmp	#46
+	lbeq	.46
+	cmp	#47
+	lbeq	.47
+	cmp	#48
+	lbeq	.48
+	cmp	#49
+	lbeq	.49
+	jmp	.keepgoing
+.41
+	end_65816
+	mapobj	0000,0000,0,1000,phazer,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.42
+	end_65816
+	mapobj	0000,0000,0,1000,boss_d_a,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.43
+	end_65816
+	mapobj	0000,0000,0,1000,wired,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.44
+	end_65816
+	mapobj	0000,0000,0,1000,Bmyship_4,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.45
+	end_65816
+	mapobj	0000,0000,0,1000,myship2,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.46
+	end_65816
+	mapobj	0000,0000,0,1000,dfx,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.47
+	end_65816
+	mapobj	0000,0000,0,1000,fcta,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.48
+	end_65816
+	mapobj	0000,0000,0,1000,sjpa,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+.49
+	end_65816
+	mapobj	0000,0000,0,1000,djpa,pshipoutoflb1_Istrat	
+	mapgoto	.keepgoing
+
+.keepgoing
+	mapobj	0000,-50,-1500,1100,nullshape,viewoutoflb1_Istrat
+	mapplayercantdie
+	mapwait	9500-(medpspeed*6)
+	mapmsg	1
+
+
+
+friendwait	=	medpspeed*30
+
+fdeadmes_cock	=	21
+fdeadmes_bunny	=	41
+fdeadmes_frog	=	60
+
+
+	mapjmpfrienddead	frog,.nf1
+	mapwait	friendwait
+	mapmsg	46
+	mapgoto	.df
+.nf1	
+;	setvar.b	frog,1
+;	mapmsg	60
+;	setvar.b	frog,0
+.df
+	mapjmpfrienddead	bunny,.nb1
+	mapwait	friendwait
+	mapmsg	26
+	mapgoto	.dr
+.nb1	
+;	setvar.b	bunny,1
+;	mapmsg	41
+;	setvar.b	bunny,0
+.dr
+	mapjmpfrienddead	cock,.nc1
+	mapwait	friendwait
+	mapmsg	6
+	mapgoto	.dc
+.nc1
+;	setvar.b	cock,1
+;	mapmsg	21
+;	setvar.b	cock,0
+.dc
+
+
+.endwait
+	mapif	chkstratdone1,.endcont
+	mapwait	1
+   	mapgoto	.endwait
+
+.endcont
+
+
+	setfadedown
+	mapwaitfade
+
+	start_65816
+	jsl		clearmap_l
+	end_65816
+
+	meters_off		trans
+
+;	start_65816
+;	a8
+;	stz	frog
+;	stz	cock
+;	stz	bunny
+;	end_65816
+
+; space end demo.
+
+	setbg	1_7c
+	initbg
+	mapplayercantdie
+;--------------
+	mapif	shipdifferent,.notdifferent2
+	start_65816
+	a16
+	lda	curr_ship
+	a8
+	cmp	#7
+	beq	.72
+	cmp	#8
+	beq	.82
+	cmp	#9
+	beq	.92
+	cmp	#10
+	beq	.102
+	jmp	.nnext
+.72
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,plane1,pshipoutofLB3_Istrat	
+	mapgoto	.resume4
+.82
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,my_demoS,pshipoutofLB3_Istrat	
+	mapgoto	.resume4
+.92
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,old_type2,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.102
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,ryousan,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.nnext
+	cmp	#11
+	beq	.112
+	cmp	#12
+	beq	.122
+	cmp	#13
+	beq	.132
+	cmp	#14
+	beq	.142
+	cmp	#15
+	beq	.152
+	jmp	.nnext2
+.112
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,a_wing,pshipoutofLB3_Istrat	
+	mapgoto	.resume4
+.122
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,b_wing,pshipoutofLB3_Istrat	
+	mapgoto	.resume4
+.132
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,c_wing,pshipoutofLB3_Istrat	
+	mapgoto	.resume4
+.142
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,wolf,pshipoutofLB3_Istrat	
+	mapgoto	.resume4
+.152
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,wolf_1,pshipoutofLB3_Istrat	
+	mapgoto	.resume4
+
+.nnext2
+	cmp	#16
+	beq	.162
+	cmp	#17
+	beq	.172
+	cmp	#18
+	beq	.182
+	cmp	#19
+	beq	.192
+	jmp	.nnext3
+.162
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,c_robo,pshipoutofLB3_Istrat	
+	mapgoto	.resume4
+.172
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,petecube,pshipoutofLB3_Istrat	
+	mapgoto	.resume4
+.182
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,androsscubee,pshipoutofLB3_Istrat	
+	mapgoto	.resume4
+.192
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,boss_g_s,pshipoutofLB3_Istrat	
+	mapgoto	.resume4
+
+
+.nnext3
+	a16
+	lda	curr_ship
+	a8
+	cmp	#20
+	beq	.202
+	cmp	#21
+	beq	.212
+	cmp	#22
+	beq	.222
+	cmp	#23
+	beq	.232
+	cmp	#24
+	beq	.242
+	cmp	#25
+	beq	.252
+	bra	.nnext4
+.202
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,ray_bluep,pshipoutofLB3_Istrat	
+	mapgoto	.resume4
+.212
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,ray_bredp,pshipoutofLB3_Istrat	
+	mapgoto	.resume4
+.222
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,ray_0p,pshipoutofLB3_Istrat	
+	mapgoto	.resume4
+.232
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,wire_man,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.242
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,cockpit,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.252
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,f_fish,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+
+
+.nnext4
+	a16
+	lda	curr_ship
+	a8
+	cmp	#26
+	beq	.262
+	cmp	#27
+	beq	.272
+	cmp	#28
+	beq	.282
+	cmp	#29
+	beq	.292
+	cmp	#30
+	beq	.302
+	cmp	#31
+	beq	.312
+	bra	.nnext5
+.262
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,tadpole,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.272
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,whale1,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.282
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,my_bird,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.292
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,shark1,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.302
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,zaco_1,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.312
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,zaco_5,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+
+
+.nnext5
+	a16
+	lda	curr_ship
+	a8
+	cmp	#32
+	beq	.322
+	cmp	#33
+	beq	.332
+	cmp	#34
+	beq	.342
+	cmp	#35
+	beq	.352
+	cmp	#36
+	beq	.362
+	cmp	#37
+	beq	.372
+	cmp	#38
+	beq	.382
+	cmp	#39
+	lbeq	.392
+	cmp	#40
+	lbeq	.402
+	jmp	.nnext6
+.322
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,zaco_6,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.332
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,zaco_8,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.342
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,zaco_a,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.352
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,zaco_b,pshipoutofLB3_Istrat		
+	mapgoto	.resume4	1
+.362
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,heli,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.372
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,ika,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.382
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,f_dragon,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.392
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,air_1,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.402
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,car_10,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+
+	
+.nnext6
+	a16
+	lda	curr_ship
+	a8
+	cmp	#41
+	beq	.412
+	cmp	#42
+	beq	.422
+	cmp	#43
+	beq	.432
+	cmp	#44
+	beq	.442
+	cmp	#45
+	beq	.452
+	cmp	#46
+	lbeq	.462
+	cmp	#47
+	lbeq	.472
+	cmp	#48
+	lbeq	.482
+	cmp	#49
+	lbeq	.492
+	jmp	.resume4
+	
+.412
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,phazer,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.422
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,boss_d_a,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.432
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,wired,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.442
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,Bmyship_4,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.452
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,myship2,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.462
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,dfx,pshipoutofLB3_Istrat		
+	mapgoto	.resume4	
+.472
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,fcta,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.482
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,sjpa,pshipoutofLB3_Istrat		
+	mapgoto	.resume4
+.492
+	end_65816
+	mapobj	0000,0000,space_viewcy,1000,djpa,pshipoutofLB3_Istrat		
+	mapgoto	.resume4	
+	
+.notdifferent2
+;------------------------
+	mapobj	0000,0000,space_viewcy,0000,my_demoS,pshipoutofLB3_Istrat
+.resume4
+
+	setalvar	sbyte2,45	; 50
+	mapobj	0000,0000,space_viewcy,5000,nullshape,viewoutofLB3_Istrat
+
+	mapjmpfrienddead	cock,.nc,nowait
+	mapobj	0000,0000,space_viewcy-100,0000,falco2,shipoutofLB3_Istrat
+	setalvar.w	sword1,0
+	setalvar.w	sword2,-100
+	setalvar.w	ptr,600
+	setalvar	sbyte2,10
+.nc
+	mapjmpfrienddead	frog,.nf,nowait
+	mapobj	0000,70,space_viewcy+70,200,slippy2,shipoutofLB3_Istrat
+	setalvar	rotz,deg45
+	setalvar.w	sword1,-100
+	setalvar.w	sword2,50
+	setalvar.w	ptr,400
+	setalvar	sbyte2,20
+.nf
+	mapjmpfrienddead	bunny,.nb,nowait
+	mapobj	0000,-70,space_viewcy+70,400,peppy2,shipoutofLB3_Istrat
+	setalvar	rotz,-deg45
+	setalvar.w	sword1,100
+	setalvar.w	sword2,75
+	setalvar.w	ptr,200
+	setalvar	sbyte2,30
+.nb
+	mapwait	1000
+	start_65816
+	lda	bgmspeed
+	beq	.nochange1
+	cmp	#1
+	beq	.slow1
+	cmp	#2
+	beq	.fast1
+.slow1
+	startbgm	$f4
+	bra	.nochange1
+.fast1
+	startbgm	$f5
+.nochange1
+	end_65816
+;	start_65816
+;	a8
+;	lda	bgmspeed
+;	beq	.nochange13
+;	cmp	#1
+;	beq	.slow13
+;	cmp	#2
+;	beq	.fast13
+;.slow13
+;	startbgm	$f4
+;	bra	.nochange13
+;.fast13
+;	startbgm	$f5
+;.nochange13
+;	a16
+;	end_65816
+	setfadeup
+	mapwaitfade
+
+
+.endwait1	mapif	chkstratdone1,.endcont1
+	mapwait	1
+   	mapgoto	.endwait1
+.endcont1
+	
+;	mapwait	2500
+
+	setvar.n	levelfinished,6
+
+.lp	mapwait	30000
+	mapgoto	.lp
+
+

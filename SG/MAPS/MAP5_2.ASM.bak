@@ -1,0 +1,164 @@
+;----------5_3--------------
+MAP5_3 ;titania
+	meters_off
+	initlevel	2_3a,nofadenostage,mscramwipe_circle
+	setfadeup	quick
+	setbg	2_3zz
+	initbg
+.ll	
+	mapwait	3000
+	
+	mapplayermode	onplanet
+	mapwait	100
+	fadeoutbgm
+	setbgm	bgm_boss1
+	maprem	whale1
+	maprem	whale
+	mapobj	0000,0000,-060,3000,boss_g_s,bossg_istrat
+;	mapwait	20000
+	mapwaitboss2
+	mapwait	500
+	maprem	boss_g_0
+	maprem	boss_g_s
+	maprem	barrier
+
+	setbgm	$f1
+	mapwait	2200	; 700
+	
+;	mapCLplayermode	ClearBridge
+	setbgm	bgm_fanfare
+	mapwait	2900
+;	printlevelfin
+
+
+friendwait	=	medpspeed*120
+	setvar.n	stageclear,1
+;	mapmsg	1
+	mapwait	friendwait
+
+	mapwait	5000
+	setvar.b	clb2,0
+	setvar.n	stageclear,0
+	printlevelfin	
+.eswait	mapwait		1
+	maploop		.eswait,100
+	mapendwipe	roundwipefill,32*medpspeed	
+	mapjsr	map5_2
+.end333
+	mapwait	50
+	mapgoto	.ll
+;----------6_4----------------------------------------------
+MAP6_4 ;venom 1-6
+	meters_off
+	initlevel	1_6a,nofadenostage,mscramwipe_circle
+	setfadeup	quick
+	
+.ll	
+	mapwait	3000
+	
+	mapplayermode	onplanet
+	mapwait	100
+	fadeoutbgm
+	setbgm	bgm_boss1
+	mapobj	0000,0000,-1000,4000,boss_b_1,bossBrob_Istrat
+;	mapwait	20000
+	mapwaitboss2
+	mapwait	500
+	maprem	boss_b_0
+	maprem	boss_b_1
+
+	setbgm	$f1
+	mapwait	2200	; 700
+	
+;	mapCLplayermode	ClearBridge
+	setbgm	bgm_fanfare
+	mapwait	2900
+;	printlevelfin
+
+
+friendwait	=	medpspeed*120
+	setvar.n	stageclear,1
+;	mapmsg	1
+	mapwait	friendwait
+
+	mapwait	5000
+	setvar.b	clb2,0
+	setvar.n	stageclear,0
+	printlevelfin	
+.eswait	mapwait		1
+	maploop		.eswait,100
+	mapendwipe	roundwipefill,32*medpspeed	
+	mapjsr	map5_4
+.end333
+
+	mapwait	50
+	mapgoto	.ll
+;------------5_2--------------------------------------------------
+MAP5_2 ;Nucleus
+	meters_off
+	initlevel	1_3d,nofadenostage,mscramwipe_circle
+	setfadeup	quick
+	
+.ll	
+	
+	mapwait	3000
+	start_65816
+	mapplayermode	onplanet
+	mapwait	100
+	fadeoutbgm
+	setbgm	$12
+	mapobj	0000,0000,(-50<<3)+((100/2)<<3),210<<3,boss_8_0,boss8_Istrat
+	setvarobj	mapvar1
+	mapobj	0000,0000,(-50<<3)+((100/2)<<3),150<<3,hou_4,nucleuslauncher_Istrat
+	setalvar	sbyte2,deg90+deg22
+	mapobj	0000,0000,(-50<<3)+((100/2)<<3),150<<3,hou_4,nucleuslauncher_Istrat
+	setalvar	sbyte2,deg135+deg22
+	mapobj	0000,0000,(-50<<3)+((100/2)<<3),150<<3,hou_4,nucleuslauncher_Istrat
+	setalvar	sbyte2,deg270-deg22
+	mapobj	0000,0000,(-50<<3)+((100/2)<<3),150<<3,hou_4,nucleuslauncher_Istrat
+	setalvar	sbyte2,-deg22
+	mapobj	0000,0000,0000+((100/2)<<3),150<<3,boss_8_4,nucleuspillar_Istrat
+	setalvar	sbyte2,deg45*0
+	mapwait	6000
+	mapwaitboss2
+	mapwait	500
+	maprem	boss_8_0
+	maprem	boss_8_4
+	maprem	boss_8_0
+	maprem	boss_8_4
+	maprem	boss_8_5
+	maprem	boss_8_5
+	maprem	hou_4
+	maprem	boss_8_5
+	maprem	hou_4
+	maprem	boss_8_5
+	maprem	BOSS_8_1c
+	maprem	hou_4
+	maprem	hou_4
+	maprem	hou_4
+	maprem	hou_4
+	setbgm	$f1
+	mapwait	2200	; 700
+	
+;	mapCLplayermode	ClearBridge
+	setbgm	bgm_fanfare
+	mapwait	2900
+;	printlevelfin
+
+
+friendwait	=	medpspeed*120
+	setvar.n	stageclear,1
+;	mapmsg	1
+	mapwait	friendwait
+
+	mapwait	5000
+	setvar.b	clb2,0
+	setvar.n	stageclear,0
+	printlevelfin	
+.eswait	mapwait		1
+	maploop		.eswait,100
+	mapendwipe	roundwipefill,32*medpspeed	
+	mapjsr	map6_4
+.end333
+	mapwait	50
+	mapgoto	.ll

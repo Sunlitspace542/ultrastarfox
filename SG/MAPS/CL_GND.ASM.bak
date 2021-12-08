@@ -1,0 +1,64 @@
+cl_ground
+;	mapplayeroutview
+
+;	mapwait	1000               DON'T REMOVE COMENT
+
+	setbgm	$f1
+
+	mapwait	2000
+	setbgm	bgm_fanfare
+
+	mapwait	3000
+	mapif	chkfastend,.hello
+	mapgoto	.ending
+.hello
+	setvar.n	stageclear,1
+	mapCLplayermode	ClearDemo
+
+friendwait	=	medpspeed*30
+
+	mapmsg	1
+	mapif	chkfastend,.hello2
+	mapgoto	.ending
+.hello2
+
+	mapwait	friendwait
+
+	mapjmpfrienddead	frog,.nf
+	clfriendmsg	frog
+	mapobj	friendwait,0500,-50,50,slippy1,clshipGNDb_Istrat
+.nf
+	mapif	chkfastend,.hello3
+	mapgoto	.ending
+.hello3
+
+	mapjmpfrienddead	bunny,.nb
+	clfriendmsg	bunny
+	mapobj	friendwait,-500,-50,50,peppy1,clshipGNDa_Istrat
+.nb
+	mapif	chkfastend,.hello4
+	mapgoto	.ending
+.hello4
+
+	mapjmpfrienddead	cock,.nc
+	clfriendmsg	cock
+	mapobj	friendwait,0000,-500,-300,falco1,clshipGNDc_Istrat
+.nc
+	mapif	chkfastend,.hello5
+	mapgoto	.ending
+.hello5
+	mapwait	3800
+
+	setvar.b	clb2,0
+	setvar.n	stageclear,0
+	printlevelfin
+	mapif	chkfastend,.hello6
+	mapgoto	.ending
+.hello6
+.eswait	mapwait		1
+	maploop		.eswait,100
+.ending
+	mapendwipe	roundwipefill,32*medpspeed
+	maprts
+
+

@@ -1,0 +1,186 @@
+;****************************************************************
+;*								*
+;*		Reset.x65					*
+;*		Super NES Mouse Reset file			*
+;*		March 10, 1992          			*
+;*		(c) 1992 Nintendo of America Inc.		*
+;*								*
+;****************************************************************
+;
+;
+;===================================================================
+;		Reset
+;===================================================================
+;
+	off16ai
+;obe	assume	$00,$00
+;
+;
+reset
+	sei			; Disable interrupt
+	clc			; 
+	xce			; Emulation mode off(Acc 16 bit)
+
+	idx16			; Index 16Bit mode
+
+	ldx	#$1fff
+	txs			; Stack pointer set
+	ldy	#$0000
+	phy
+	pld			; direct register
+
+	accidx8			; acc. & index 8 bit
+
+	lda	#$00		; NMI off
+	sta	$4200
+	lda	#$8f		; forced blanking (screen off)
+	sta	$2100
+
+	jsr	ram_init	; Ram initialization (0 - 1ff0)
+	jsr	vram_init	; Vram initialization
+	jsr	obj_clr		; ObjRam initialization
+	jsr	cpu_reg_init	; CPU register initialization
+	jsr	ppu_reg_init	; PPU register initialization
+	jsr	another_init	; 
+
+
+;sound_addres	equ $038000		; sound program address
+
+;	lda	#<sound_addres		; address low
+;	sta	reg0
+;	lda	#>sound_addres		; address high
+;	sta	reg0+1
+;	lda	#:sound_addres		; address bank
+;	sta	reg0+2
+;	jsr	boot_apu		; sound program load
+
+	jsr	bg_write
+;	dw	title_data
+
+	jsr	blkn_off
+	jsr	nmi_on
+
+;	jsr	nmi_wt			; wait for sound to start
+;	jsr	nmi_wt
+;	jsr	nmi_wt
+;	jsr	nmi_wt
+;	jsr	nmi_wt
+
+;	lda	#$01			; bgm start
+;	sta	apuio0
+
+
+
+	lda	#$70		
+	sta	cursol_x	
+	lda	#122
+	sta	cursol_y	
+	lda	#$2f		
+	sta	obj_ram+2	
+	lda	#$30
+	sta	obj_ram+3	
+
+
+	lda	#$80		
+	sta	cursol_x1	
+	lda	#122
+	sta	cursol_y1	
+	lda	#$2f		
+	sta	obj_ram+6	
+	lda	#$3c
+	sta	obj_ram+7	
+
+syokichi			
+;	lda	#$01		
+;	sta	apuio0		
+
+;	ldx	#00
+;_10
+;	stz	check1,x
+;	inx
+;	cpx	#70
+;	bne	_10
+
+	ldy	#00
+_20
+	lda	#$0c
+	sta	kekka+1,y
+	iny
+	iny
+	cpy	#200
+	bne	_20
+
+	ldy	#00
+_30
+	lda	#$40
+	sta	kekka,y
+	iny
+	iny
+	cpy	#200
+	bne	_30
+
+	ldy	#00
+_40
+	lda	#$0c
+	sta	kekka2+1,y
+	iny
+	iny
+	cpy	#250
+	bne	_40
+
+	ldy	#00
+_50
+	lda	#$40
+	sta	kekka2,y
+	iny
+	iny
+	cpy	#250
+	bne	_50
+
+	ldy	#00
+_60
+	lda	#$0c
+	sta	kekka3+1,y
+	iny
+	iny
+	cpy	#150
+	bne	_60
+
+	ldy	#00
+_70
+	lda	#$40
+	sta	kekka3,y
+	iny
+	iny
+	cpy	#150
+	bne	_70
+
+	ldy	#00
+_80
+	lda	#$0c
+	sta	kekka4+1,y
+	iny
+	iny
+	cpy	#150
+	bne	_80
+
+	ldy	#00
+_90
+	lda	#$40
+	sta	kekka4,y
+	iny
+	iny
+	cpy	#150
+	bne	_90
+
+	lda	#$00
+	sta	g_seq
+
+	jmp	main
+
+;
+;//////////////  End of File  //////////////////////////
+;
+;
+	end
+

@@ -1,0 +1,14 @@
+	global	fire_bonfire_l
+	GLOBAL	BOSSA_ISTRAT
+	GLOBAL	BOSSB_ISTRAT
+	GLOBAL	BOSSBROB_ISTRAT
+	GLOBAL	MONOLITH_ISTRAT
+	global	nucleusbeaml_Istrat,boss8shrap_Istrat
+	global	boss8_Istrat
+	GLOBAL	BOSSBROBdemo_ISTRAT
+
+	global	boss7_Istrat
+	global	boss7hatch_Istrat
+	global	boss7shield_Istrat
+	global	boss7launcherT_Istrat
+	global	boss7launcherB_Istrat

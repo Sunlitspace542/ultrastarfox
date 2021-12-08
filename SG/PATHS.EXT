@@ -1,0 +1,199 @@
+	global	path_e_dragon
+	global	path_e_hand
+	global	path_bigfly
+	global	path_bigfly2
+	global	path_cricket
+	global	path_break3
+	global	path_gameover
+	global	path_flyawayplease
+;;	global	path_over
+
+	global	path_theendt
+	global	path_theendh
+	global	path_theende
+	global	path_theende2
+	global	path_theendn
+	global	path_theendd
+	global	path_total
+	global	path_totaln
+	global	path_ave
+	global	path_aven
+	global	path_fadeintotal
+	global	path_stage1
+	global	path_stage2
+	global	path_stage3
+	global	path_stage4
+	global	path_stage5
+	global	path_stage6
+	global	path_stage7
+
+	global	path_chase1_1
+	global	path_chase1_2
+	global	path_chase2_1
+	global	path_chase2_2
+	global	path_chase3_1
+	global	path_chase3_2
+	global	path_chase4_1
+	global	path_chase4_2
+	global	path_chase4_3
+	global	path_chase5_1
+	global	path_chase5_2
+	global	path_chase5_3
+	global	path_chase6_1
+	global	path_chase6_2
+	global	path_chase7_1
+	global	path_chase7_2
+	global	path_chase8_1
+	global	path_chase8_2
+	global	path_chase8_3
+
+	global	path_minicastanet,path_istrat,path_minicastanetlr
+
+	global	path_egu1
+	global	path_egu1_ifal
+	global	path_egu1_irab
+	global	path_egu1_ifro
+;	global	path_egu2
+	global	path_egu3
+	global	path_egu4
+	global	path_egu5
+	global	path_egu6
+	global	path_egu6_ifal
+	global	path_egu6_irab
+	global	path_egu6_ifro
+	global	path_e_walk_1
+	global	path_e_heli
+	global	path_e_dosun
+	global	path_itadosun
+	global	path_e_kururi
+	global	path_e_shieldr
+	global	path_e_ray_0
+	global	path_e_ray_1
+	global	path_minicas0
+	global	path_minicas2
+	
+;	global	path_dtest1
+;	global	path_dtest2
+
+	global	path_e_ika
+	global	path_ika_2
+	global	path_l_clisla
+	global	path_r_clisla
+	global	path_kanihaha
+	global	path_e_gate
+	global	path_ponpon
+	global	path_e_ufo
+	global	path_tomhaha
+	global	path_tes
+	global	path_astemsg
+	global	path_braymsg
+	global	path_dragonmsg
+	global	path_handmsg
+	global	path_kastmsg
+	global	path_kastmsg2
+	global	path_amebmsg
+	global	path_amebmsg2
+	global	path_totumsg
+	global	path_e_shawer
+	global	path_e_shawerr
+	global	path_e_shawerl
+	global	path_patrol
+	global	patht_Istrat
+	global	path_dnintendo
+	global	path_dstarfox
+	global	path_dpresented
+	global	path_dsideslip
+	global	path_matemsg
+	global	path_patret
+	global	path_screw
+	global	path_damyscr
+	global	path_kamome
+	global	path_tomset
+	global	path_patcom
+
+	global	path_e_tank
+	global	path_e_bee
+	global	path_dintro1
+	global	path_check
+	global	path_tmp_tank
+	global	path_call_fol
+	global	path_patret_ifal
+	global	path_patret_irab
+	global	path_patret_ifro
+	global	path_korori
+	global	path_robotwithlog
+	global	path_robot
+	global	path_robotswithlog
+	global	path_pyonta
+	global	path_e_whale
+	global	path_rem_whale
+	global	path_my_bird
+	global	path_ring
+	global	path_insekikun
+	global	path_frog1_1
+	global	path_falcon3_1
+	global	path_e_kani_0
+	global	path_mini_cli
+	global	path_falco_lv1
+	global	path_frog_lv1
+	global	path_itachi_a
+	global	path_itachi_b
+	global	path_pinita_a
+	global	path_flip_board
+	global	path_bird_meteor
+	global	path_tenki_on
+	global	path_tenki_dm
+	global	path_saka_hou
+
+	global	pathdha_istrat
+	global	path_break1
+	global	path_break2
+	global	path_slotmachine
+	global	path_e_flyfish
+	global	path_trn_ck
+	global	path_trn_ring
+	global	path_trn_ring2
+	global	path_hentai_fal
+	global	path_hentai_fro
+	global	path_hentai_rab
+	global	path_mes_andross1
+	global	path_mes_andross2
+	global	path_mes_andross3
+	global	path_mes_andross4
+	global	path_e_flower
+	global	path_tow_0
+
+	global	path_paper_1
+	global	path_paper_3
+	global	path_paper_1b
+
+
+	IFNE	CONTEST
+
+	global	path_mato_0_100
+      	global	path_mato_0_500
+	global	path_mato_2
+	global	path_mato_3
+	global	path_bell_0
+
+	global	path_BringS
+	global	path_BringR
+	global	path_BringL
+	global	path_BringU
+	global	path_BringD
+		       
+	global	path_RringS
+	global	path_RringR
+	global	path_RringL
+	global	path_RringU
+	global	path_RringD
+
+	global	path_kzaco_0
+	global	path_kzaco_1
+	global	path_kzaco_2
+	global	path_kzaco_3
+	global	path_kzaco_4
+
+	ENDC
+
+

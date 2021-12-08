@@ -1,0 +1,75 @@
+;****************************************************************
+;*								*
+;*		Macro.x65					*
+;*		Super NES Mouse Macro file			*
+;*		March 10, 1992         				*
+;*		(c) 1992 Nintendo of America Inc.		*
+;*								*
+;****************************************************************
+;
+;
+;===================================================================
+;
+
+ai8	macro		; Start Macro
+	longa off
+	longi off
+	endm		; End Macro
+;
+;	..................
+;
+on16ai	macro
+	longa on
+	longi on
+	endm
+;
+;	..................
+;
+i16	macro
+	longi on
+	rep	#%00010000
+	endm
+;
+;	..................
+;
+i8	macro
+	longi off
+	sep	#%00010000
+	endm
+;
+;	..................
+;
+a16	macro
+	longa on
+	rep	#%00100000	; Reset processor status bit
+	endm
+;
+;	..................
+;
+a8	macro
+	longa off
+	sep	#%00100000 	; Set processor status bit
+	endm
+;
+;	..................
+;
+ai16	macro
+	longa on
+	longi on
+	rep	#%00110000
+	endm
+;
+;	..................
+;
+ai8	macro
+	longa off
+	longi off
+	sep	#%00110000
+	endm
+
+
+;
+;////////////////// End of File ///////////////////
+;
+	end
+

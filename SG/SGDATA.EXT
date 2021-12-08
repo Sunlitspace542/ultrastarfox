@@ -1,0 +1,5 @@
+	global	sintab,costab,reciptab16s,mrndtab,debugchars,debugchars2
+	global	mycrapchars,pyoftab,sintab16
+	global	pxoftab,pbittabn,pbittab
+	global	bg2ptrs
+

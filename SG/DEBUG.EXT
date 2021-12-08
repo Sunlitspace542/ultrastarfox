@@ -1,0 +1,4 @@
+	global	dup_alien
+	GLOBAL	ALDEBUG
+	global	pausedebug_l
+	global	stratdebug_l

@@ -1,0 +1,10 @@
+	global	kill_list_l,credstuff,initialise2_l
+	global	setpal_l,xinidisp1,xinidisp2
+	global	initialise_l,gamestart,initgame_l
+	global	clearhvofs_l,initgame3d_l
+	global	fadered_l,makebg2black_l,setcharmapgame_l
+	global	screenoff_l,setcharmapfrommap_l
+	global	setinidisp1_l,setnoclash_l,gameoverpal
+
+
+

@@ -1,0 +1,549 @@
+;****************************************************************
+;*								*
+;*		equ_tbl.x65					*
+;*		Super NES Mouse System file			*
+;*		March 10, 1992        				*
+;*		(c) 1992 Nintendo of Ameica Inc.		*
+;*								*
+;****************************************************************
+;===================================================================
+;               BG Space for character code
+space	equ	$005c
+;
+;===================================================================
+;		RAM Definitions
+;
+;********  Index Register Area  ********
+;
+reg0
+reg0l		ds	1
+reg0h		ds	1
+
+reg1
+reg1l		ds	1
+reg1h		ds	1
+
+reg2
+reg2l		ds	1
+reg2h		ds	1
+
+reg3
+reg3l		ds	1
+reg3h		ds	1
+
+reg4
+reg4l		ds	1
+reg4h		ds	1
+
+reg5
+reg5l		ds	1
+reg5h		ds	1
+;
+;	................
+;
+rega
+regal		ds	1
+regah		ds	1
+regab		ds	1
+;
+regb
+regbl		ds	1
+regbh		ds	1
+regbb		ds	1
+;
+regc
+regcl		ds	1
+regch		ds	1
+regcb		ds	1
+;
+;********  General Work Area  ********
+;
+;	16 Bit work $0A
+;
+work0
+work0l		ds	1
+work0h		ds	1
+
+work1
+work1l		ds	1
+work1h		ds	1
+
+work2
+work2l		ds	1
+work2h		ds	1
+
+work3
+work3l		ds	1
+work3h		ds	1
+
+work4
+work4l		ds	1
+work4h		ds	1
+
+work5
+work5l		ds	1
+work5h		ds	1
+
+work6
+work6l		ds	1
+work6h		ds	1
+
+work7
+work7l		ds	1
+work7h		ds	1
+
+work8
+work8l		ds	1
+work8h		ds	1
+
+work9
+work9l		ds	1
+work9h		ds	1
+
+;
+;********  SYS Subroutine Work Area  ********
+;
+;
+worka
+workal		ds	1
+workah		ds	1
+
+workb
+workbl		ds	1
+workbh		ds	1
+
+workc
+workcl		ds	1
+workch		ds	1
+
+workd
+workdl		ds	1
+workdh		ds	1
+
+worke
+workel		ds	1
+workeh		ds	1
+
+workf
+workfl		ds	1
+workfh		ds	1
+
+;*************** For Main Program *****************
+g_seq		ds	1
+
+kekka		ds	200	; For results display
+kekka2		ds	250
+kekka3		ds	81
+kekka4		ds	150
+
+;******  Confirm check flags *******
+check1		ds	1	; 
+check2		ds	1	; 
+check3		ds	1	; 
+check4		ds	1	; 
+check5		ds	1	; 
+check6		ds	1	; 
+check7		ds	1	; 
+check8		ds	1	; 
+check9		ds	1	; 
+check10		ds	1	; 
+check11		ds	1	; 
+check12		ds	1	; 
+check13		ds	1	; 
+check14		ds	1	; 
+check15		ds	1	; 
+check16		ds	1	; 
+check17		ds	1	; 
+check18		ds	1	; 
+check19		ds	1	; 
+check20		ds	1	; 
+check21		ds	1	; 
+check22		ds	1	; 
+check23		ds	1	; 
+check24		ds	1	; 
+check25		ds	1	; 
+check26		ds	1	; 
+check27		ds	1	; 
+check28		ds	1	; 
+check29		ds	1	; 
+check30		ds	1	; 
+check31		ds	1	; 
+check32		ds	1	; 
+check33		ds	1	; 
+check34		ds	1	; 
+check35		ds	1	; 
+check36		ds	1	; 
+check37		ds	1	; 
+check38		ds	1	; 
+check39		ds	1	; 
+check40		ds	1	; 
+check41		ds	1	; 
+check42		ds	1	; 
+check43		ds	1	; 
+check44		ds	1	; 
+check45		ds	1	; 
+check46 	ds	1	; 
+check47		ds	1	; 
+check48		ds	1	; 
+check49		ds	1	; 
+check50		ds	1	; 
+check51		ds	1	; 
+check52		ds	1	; 
+check53		ds	1	; 
+check54		ds	1	; 
+check55		ds	1	; 
+check56		ds	1	; 
+check57		ds	1	; 
+check58		ds	1	; 
+check59		ds	1	; 
+check60		ds	1	; 
+check101	ds	1	;
+check102	ds	1	; 
+check103	ds	1	; 
+check104	ds	1	; 
+check105	ds	1	; 
+check106	ds	1	; 
+check107	ds	1	; 
+check108	ds	1	; 
+
+box_no		ds	1	;bg_box number (multiple of 7)
+box_no2		ds	1	;bg_box number (multiple of 7)
+box_no3		ds	1	;bg_box number (multiple of 7)
+box_no4		ds	1	;bg_box number (multiple of 7)
+box_no5		ds	1	;bg_box number (multiple of 7)
+
+bg_box		ds	35
+   
+speed_chk	ds	1
+
+;***************** For mouse *******************
+mouse_sp_set
+mouse_sp_set0	ds	1	; Register to set mouse speed       
+mouse_sp_set1	ds	1	; Register to set mouse speed       
+
+
+mouse_con
+mouse_con0	ds	1	; Mouse connection port d0 = 4016
+mouse_con1	ds	1	; Mouse connection port d0 = 4017
+
+mouse_y
+mouse_y0	ds	1	; Mouse Y-direction value (joy1)
+mouse_y1	ds	1	; Mouse Y-direction value (joy2)
+
+mouse_x
+mouse_x0	ds	1	; Mouse X-direction value (joy1)
+mouse_x1	ds	1	; Mouse X-direction value (joy2)
+
+mouse_sp
+mouse_sp0	ds	1	; Mouse speed 00=slow 01=mid 10=fast (joy1)
+mouse_sp1	ds	1	; Mouse speed 00=slow 01=mid 10=fast (joy2)
+
+mouse_sw
+mouse_sw0	ds	1	; Mouse button d0=left d1=right (joy1)
+mouse_sw1	ds	1	; Mouse button d0=left d1=right (joy2)
+
+mouse_swt
+mouse_swt0	ds	1	; Mouse button trigger
+mouse_swt1	ds	1	; Mouse button trigger
+
+mouse_sb			; Previous switch status 
+mouse_sb0	ds	1
+mouse_sb1	ds	1
+
+connect_st0	ds	1	; Mouse connection change flag
+connect_st1	ds	1	
+
+cursol_x	ds	1	; Cursor X-position (player1)
+cursol_x1	ds	1	; Cursor X-position (player2)
+cursol_y	ds	1	; Cursor Y-position (player1)
+cursol_y1	ds	1	; Cursor Y-position (player2)
+
+;
+;
+;********  PPU Storage Registers  ********
+;
+;
+r2118
+r2118l		ds	1	;
+r2118h		ds	1
+r2100		ds	1	;
+r2101		ds	1	;
+r2105		ds	1	;
+r2106		ds	1	;
+r2107		ds	1	;
+r2108		ds	1	;
+r2109		ds	1	;
+r210a		ds	1	;
+r210b		ds	1	;
+r210c		ds	1	;
+r210d		ds	1	;
+r210e		ds	1	;
+r210f		ds	1	;
+r2110		ds	1	;
+r2111		ds	1	;
+r2112		ds	1	;
+r2113		ds	1	;
+r2114		ds	1	;
+r211a		ds	1	;
+r211b		ds	1	;
+r211c		ds	1	;
+r211d		ds	1	;
+r211e		ds	1	;
+r211f		ds	1	;
+r2120		ds	1	;
+r2123		ds	1	;
+r2124		ds	1	;
+r2125		ds	1	;
+r2126		ds	1	;
+r2127		ds	1	;
+r2128		ds	1	;
+r2129		ds	1	;
+r212a		ds	1	;
+r212b		ds	1	;
+r212c		ds	1	;
+r212d		ds	1	; 
+r212e		ds	1	; 
+r212f		ds	1	; 
+r2130		ds	1	; 
+r2131		ds	1	; 
+r2132		ds	1	; 
+r2133		ds	1	;
+;
+;
+;********  CPU Storage Registers  ********
+;
+r4200		ds	1	;
+r4201		ds	1
+r4202		ds	1
+r4203		ds	1
+r4204		ds	1
+r4205		ds	1
+r4206		ds	1
+r4207		ds	1
+r4208		ds	1
+r4209		ds	1
+r420a		ds	1
+r420b		ds	1
+r420c		ds	1
+r420d		ds	1
+r420e		ds	1
+r420f		ds	1
+r4210		ds	1
+r4211		ds	1
+r4212		ds	1
+r4213		ds	1
+r4214		ds	1
+r4215		ds	1
+r4216		ds	1
+
+;
+;********  Key Status Area  ********
+;
+;********  Current Key   ********
+;
+joy_n1			; Controller 1
+joy_n1l	ds	1
+joy_n1h	ds	1
+
+joy_n2			; Controller 2 
+joy_n2l	ds	1
+joy_n2h	ds	1
+
+joy_n3			; Controller 3
+joy_n3l	ds	1
+joy_n3h	ds	1
+
+joy_n4			; Controller 4
+joy_n4l	ds	1
+joy_n4h	ds	1
+;
+;********  Trigger Key  ************
+;
+joy_t1			; Controller 1   
+joy_t1l	ds	1
+joy_t1h	ds	1
+
+joy_t2			; Controller 2   
+joy_t2l	ds	1
+joy_t2h	ds	1
+
+joy_t3			; Controller 3   
+joy_t3l	ds	1
+joy_t3h	ds	1
+
+joy_t4			; Controller 4
+joy_t4l	ds	1
+joy_t4h	ds	1
+;
+;******** Key Buffer ***************
+;
+joy_bf1			; Controller 1   
+joy_bf1l	ds	1
+joy_bf1h	ds	1
+
+joy_bf2			; Controller 2   
+joy_bf2l	ds	1
+joy_bf2h	ds	1
+
+joy_bf3			; Controller 3   
+joy_bf3l	ds	1
+joy_bf3h	ds	1
+
+joy_bf4			; Controller 4   
+joy_bf4l	ds	1
+joy_bf4h	ds	1
+;
+;********  NMI Flag  ********
+;
+nmiwt_f		ds	1	; NMI Wait Flag      
+;
+;********  OBJ RAM   ********
+;
+;		272 Byte
+;
+oam_ad				; OAM access address   
+oam_adl		ds	1
+oam_adh		ds	1
+
+obj_ram		ds	$200	; OBJ data 1 (character)       
+obj_ram2	ds	$20	; OBJ data 2 (attribute)  
+
+rdm_s		ds	1
+rdm_p		ds	1
+rdm		ds	$100
+
+;
+;==================================================================
+;
+;__________________________________________________________________
+;//////////////////////////////////////////////////////////////////
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;		PPU - Registers     
+;
+	ifeq	1
+inidisp		equ	$2100
+objsel		equ	$2101
+oamaddl		equ	$2102
+oamaddh		equ	$2103
+;oamdata		equ	$2104
+bgmode		equ	$2105
+mozaiku		equ	$2106
+bg1sc		equ	$2107
+bg2sc		equ	$2108
+bg3sc		equ	$2109
+bg4sc		equ	$210a
+bg12nba		equ	$210b
+bg34nba		equ	$210c
+bg1hofs		equ	$210d
+bg1vofs		equ	$210e
+bg2hofs		equ	$210f
+bg2vofs		equ	$2110
+bg3hofs		equ	$2111
+bg3vofs		equ	$2112
+bg4hofs		equ	$2113
+bg4vofs		equ	$2114
+vmainc		equ	$2115
+vmaddl		equ	$2116
+vmaddh		equ	$2117
+;vmdatal		equ	$2118
+;vmdatah		equ	$2119
+m7sel		equ	$211a
+m7a		equ	$211b
+m7b		equ	$211c
+m7c		equ	$211d
+m7d		equ	$211e
+m7x		equ	$211f
+m7y		equ	$2120
+cgadd		equ	$2121
+;cgdata		equ	$2122
+w12sel		equ	$2123
+w34sel		equ	$2124
+wobjsel		equ	$2125
+wh0		equ	$2126
+wh1		equ	$2127
+wh2		equ	$2128
+wh3		equ	$2129
+wbglog		equ	$212a
+wobjlog		equ	$212b
+tm		equ	$212c
+ts		equ	$212d
+tmw		equ	$212e
+tsw		equ	$212f
+cgswsel		equ	$2130
+cgaddsub	equ	$2131
+coldata		equ	$2132
+setini		equ	$2133
+mpyl		equ	$2134
+mpym		equ	$2135
+mpyh		equ	$2136
+slhv		equ	$2137
+oamdata		equ	$2138
+vmdatal		equ	$2139
+vmdatah		equ	$213a
+cgdata		equ	$213b
+ophct		equ	$213c
+opvct		equ	$213d
+stat77		equ	$213e
+stat78		equ	$213f
+apuio0		equ	$2140
+apuio1		equ	$2141
+apuio2		equ	$2142
+apuio3		equ	$2143
+;
+;
+;__________________________________________________________________
+;//////////////////////////////////////////////////////////////////
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;		CPU - Registers 
+;
+nmitimen	equ	$4200
+wrio		equ	$4201
+wrmpya		equ	$4202
+wrmpyb		equ	$4203
+wrdivl		equ	$4204
+wrdivh		equ	$4205
+wrdivb		equ	$4206
+htimel		equ	$4207
+htimeh		equ	$4208
+vtimel		equ	$4209
+vtimeh		equ	$420a
+mdmaen		equ	$420b
+hdmaen		equ	$420c
+memsel		equ	$420d
+rdnmi		equ	$4210
+timeup		equ	$4211
+hvbjoy		equ	$4212
+rdio		equ	$4213
+rddivl		equ	$4214
+rddivh		equ	$4215
+rdmpyl		equ	$4216
+rdmpyh		equ	$4217
+joy1l		equ	$4218
+joy1h		equ	$4219
+joy2l		equ	$421a
+joy2h		equ	$421b
+joy3l		equ	$421c
+joy3h		equ	$421d
+joy4l		equ	$421e
+joy4h		equ	$421f
+dmapa0		equ	$4300
+dmabb0		equ	$4301
+dmaabl0		equ	$4302
+dmaabh0		equ	$4303
+dmaabb0		equ	$4304
+dmadbl0		equ	$4305
+dmadbh0		equ	$4306
+dmaaal		equ	$4308
+dmaaah		equ	$4309
+hdmadal0	equ	$4305
+hdmadah0	equ	$4306
+hdmadab0	equ	$4307
+hdmadl		equ	$430a
+	endc
+output_port	equ	$4016
+input_port	equ	$4016
+
+;
+;//////////////  End of File  //////////////////////////
+;
+	end

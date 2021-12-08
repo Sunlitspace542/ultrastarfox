@@ -1,0 +1,169 @@
+MAP5_2 ;corneria
+
+	meters_off
+	initlevel	3_1c,nofadenostage,mstarwipe_circle
+	setfadeup	quick
+	mapwait	3000
+.ll		mapplayermode	onplanet
+	mapwait	100
+	
+	fadeoutbgm
+	
+	setbgm	bgm_boss1
+	mapobj	0000,0000,-70<<boss7_scale,-200,boss_7_1,boss7_Istrat
+	mapwaitboss2
+	maprem	boss_7_0
+	maprem	boss_7_1
+	maprem	boss_7_2
+	maprem	boss_7_3
+	maprem	boss_7_4
+	maprem	boss_7_1o
+	maprem	zaco_6
+	maprem	zaco_6
+	maprem	zaco_6
+	maprem	zaco_6
+	mapwait	500
+	setbgm	$f1
+	mapwait	2200	; 700
+	
+;	mapCLplayermode	ClearBridge
+	setbgm	bgm_fanfare
+	mapwait	2900
+;	printlevelfin
+
+
+friendwait	=	medpspeed*120
+	setvar.n	stageclear,1
+;	mapmsg	1
+	mapwait	friendwait
+
+	mapwait	5000
+	setvar.b	clb2,0
+	setvar.n	stageclear,0
+	printlevelfin	
+.eswait	mapwait		1
+	maploop		.eswait,100
+	mapendwipe	roundwipefill,32*medpspeed	
+	mapwait	500
+	mapjsr	map5_1
+
+.end333
+	mapwait	50
+	mapgoto	.ll
+;----------5_1----------------------------------------------
+MAP5_1 ;special
+	meters_off
+	initlevel	special,nofadenostage,mstarwipe_circle
+	setfadeup	quick
+	mapwait	3000
+	
+.ll0	mapplayermode	inspace
+	
+	setbgm	5
+	mapwait	2000
+	pathobj	0000,3000,0000,4200,slot_0,slotmachine,10,10
+	mapobj	000,972,-969,1000,font_t2,theend_t_istrat
+	mapobj	000,-1120,1377,1000,font_h2,theend_h_istrat
+	mapobj	000,-1019,-1530,1000,font_e2,theend_e_istrat
+	mapobj	000,1070,-1326,1000,font_e3,theend_e2_istrat
+	mapobj	000,1550+29,1323+54,1000,font_n2,theend_n_istrat
+	mapobj	000,-1050+129,1428,1000,font_d2,theend_d_istrat
+	mapwaitboss2
+	maprem	font_t2
+	maprem	font_h2
+	maprem	font_e2
+	maprem	font_e3
+	maprem	font_n2
+	maprem	font_d2
+	maprem	font_t
+	maprem	font_h
+	maprem	font_e
+	maprem	font_e
+	maprem	font_n
+	maprem	font_d
+	maprem	slot_0
+	maprem	slot_1
+	maprem	slot_2
+	maprem	slot_2
+	maprem	slot_2
+	maprem	slot_4
+	maprem	slot_4
+	maprem	slot_4
+	mapwait	500
+	setbgm	$f1
+	mapwait	2200	; 700
+	
+;	mapCLplayermode	ClearBridge
+	setbgm	bgm_fanfare
+	mapwait	2900
+;	printlevelfin
+
+
+friendwait	=	medpspeed*120
+	setvar.n	stageclear,1
+;	mapmsg	1
+	mapwait	friendwait
+
+	mapwait	5000
+	setvar.b	clb2,0
+	setvar.n	stageclear,0
+	printlevelfin	
+.eswait	mapwait		1
+	maploop		.eswait,100
+	mapendwipe	roundwipefill,32*medpspeed	
+	mapjsr	map5_11
+.end333
+	mapwait	50
+	mapgoto	.ll0
+	
+;----------5_10---------------------------------------------	
+MAP5_10 ;andross
+	meters_off
+	initlevel	3_7a,nofadenostage,mscramwipe_circle
+	setfadeup	quick
+	setbg	1_6c
+	initbg
+	mapwait	3000
+	
+.ll0	mapplayermode	inspace
+	start_65816
+	lda	pshipflags3
+	ORA	#psf3_nocollisions
+	sta	pshipflags3	
+	end_65816
+	setbgm	$13
+	mapwait	2000
+	mapobj	1000,0,Space_viewCY,-200,face_b,monolith_istrat
+	mapwait	6000
+	mapwaitboss2	nosound
+	maprem	face_0
+	maprem	face_0_1
+	maprem	face_1
+	maprem	face_b
+	maprem	sface2_b
+	mapwait	500
+	setbgm	$f1
+	mapwait	2200	; 700
+	
+;	mapCLplayermode	ClearBridge
+	setbgm	bgm_fanfare
+	mapwait	2900
+;	printlevelfin
+
+
+friendwait	=	medpspeed*120
+	setvar.n	stageclear,1
+;	mapmsg	1
+	mapwait	friendwait
+
+	mapwait	5000
+	setvar.b	clb2,0
+	setvar.n	stageclear,0
+	printlevelfin	
+.eswait	mapwait		1
+	maploop		.eswait,100
+	mapendwipe	roundwipefill,32*medpspeed	
+	mapjsr	map5_2
+.end333
+	mapwait	50
+	mapgoto	.ll0

@@ -1,0 +1,9 @@
+	global	planetseq_l
+	global	waitdma_l
+	global	routechange1_l
+	global	routechange2_l
+	global	routechange3_l
+	global	routechangebhole1_l
+	global	routechangebhole2_l
+	global	routechangebhole3_l
+

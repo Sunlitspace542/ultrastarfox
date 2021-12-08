@@ -1,0 +1,164 @@
+; disable player's movement and wobble:
+	setfadedown	quick
+	mapwaitfade
+	setbg	title
+	initbg
+
+timeovercont
+	start_65816
+	a16
+	stz	lastplayz
+	stz	pviewposz
+	ldx	playpt
+	stz	al_worldz,x
+	a8
+	end_65816
+
+	mapcode_jsl	initblack_l
+	setvar		stayblack,10
+
+	mapwait	800
+
+	mapobj	0,0,0,0,whale1,tit_istrat
+
+	setfadeup	quick
+
+	start_65816
+	a8
+	lda	playerflymode
+	and	#~pfm_wobble
+	sta	playerflymode
+
+	lda	pshipflags
+	ora	#psf_noctrl!psf_nofire
+	sta	pshipflags
+
+	end_65816
+
+.ll	start_65816
+	jmp_keyup	right,.end333
+	jmp_lastkeydown	right,.end333
+	a16
+	lda	bgmtest
+	cmp	#23 ;set to 23 as 24-27 are broken
+	lbeq	.resetbgm
+	inc	bgmtest
+	brl	.continuebgm
+.resetbgm
+	stz	bgmtest
+	inc	bgmtest
+.continuebgm
+	lda	bgmtest
+	cmp	#24 ;broken
+	lbeq	.24 ;broken
+	cmp	#25 ;broken
+	lbeq	.25 ;broken
+	cmp	#26 ;broken
+	lbeq	.26 ;broken
+	cmp	#27 ;broken
+	lbeq	.27 ;broken
+	a8
+	bgmtesting	bgmtest
+	brl	.end333
+.24 ;broken
+	trigse		$10
+	startbgm	$f1
+	brl	.end333
+.25 ;broken
+	trigse		$10
+	startbgm	$12
+	brl	.end333
+.26 ;broken
+	trigse		$10
+	startbgm	$13
+	brl	.end333
+.27 ;broken
+	trigse		$10
+	startbgm	$14
+	brl	.end333
+
+.end333
+
+	jmp_keyup	left,.end3333
+	jmp_lastkeydown	left,.end3333
+	a16
+	lda	bgmtest
+	cmp	#2 ;set to 23 as 24-27 are broken
+	lbmi	.resetbgm1
+	dec	bgmtest
+	brl	.continuebgm1
+.resetbgm1
+	lda	#24
+	sta	bgmtest
+	dec	bgmtest
+.continuebgm1
+;	lda	bgmtest
+;	cmp	#24 ;broken
+;	lbeq	.241 ;broken
+;	cmp	#25 ;broken
+;	lbeq	.251 ;broken
+;	cmp	#26 ;broken
+;	lbeq	.261 ;broken
+;	cmp	#27 ;broken
+;	lbeq	.271 ;broken
+	a8
+	bgmtesting	bgmtest
+	brl	.end3333
+.end3333
+	a8
+	end_65816
+	mapwait	50
+	mapgoto	.ll
+;------------------------------------------------------------
+
+
+contmap	setfadedown	quick
+	mapwaitfade
+	setbg	cont
+	initbg
+
+	start_65816
+	a16
+	stz	lastplayz
+	stz	pviewposz
+	ldx	playpt
+	stz	al_worldz,x
+	a8
+	lda	playerflymode
+	and	#~pfm_wobble
+	sta	playerflymode
+
+;	lda	pshipflags
+;	ora	#psf_noctrl!psf_nofire
+;	sta	pshipflags
+	end_65816
+
+	mapwait	medpspeed*4
+
+	mapcode_jsl	initblack_l
+	setvar.n	stayblack,3
+	setfadeup	quick
+.ll	mapwait	4000
+	mapgoto	.ll
+
+waitmap
+;;	setfadedown	quick
+;;	mapwaitfade
+;;	setbg	gameover
+;;	initbg
+;;	setfadeup	quick
+;;	mapcode_jsl	initblack_l
+;;	setvar	stayblack,5
+;;
+;;	pathobj	0,-285,200,3400,gamesh,game,255,0
+;;	pathobj	0,0285,200,3400,oversh,over,255,0
+;;
+;;	pathobj	0,-285,200,3400,gamesh,gameover,255,0
+;;	pathobj	0,0285,200,3400,oversh,gameover,255,0
+
+.ll	mapwait	4000
+	mapgoto	.ll
+
+
+
+

@@ -1,0 +1,31 @@
+;****************************************************************
+;*								*
+;*		main.x65					*
+;*		Super NES Mouse System file			*
+;*		March 10, 1992          			*
+;*		(c) 1992 Nintendo of Ameica Inc.		*
+;*								*
+;****************************************************************
+;
+;*******************************************************************
+;*                                                                 *
+;*        Mouse Check Main Program 		                   *
+;*                                                      	   *
+;*******************************************************************
+main
+	jsr	mouse_read	; Mouse data read routine (mouse.x65)
+	jsr	cursol		; Cursor obj move routine (sub.x65)
+	jsr	mouse_test	; Mouse test routine (m_test1.x65)
+	jsr	sokudo		; During test, change speed (che_sub.x65)
+	jsr	reset_chk	; Quit test (che_sub.x65)
+
+	JSR	NMI_WT		; Save return address, jump to NMI_WT  
+	JMP	MAIN
+
+
+;
+;///////////////  End of File  ////////////////////////
+;
+	END
+
+

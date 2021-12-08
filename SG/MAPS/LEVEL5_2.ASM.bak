@@ -1,0 +1,46 @@
+level5_2
+	start_65816
+	lda	playertwoactivated
+	cmp	#0
+	beq	.anop2
+	lda	#40
+	sta	playertwoready
+.anop2
+	end_65816
+
+	initlevel	5_2,mscramwipe_circle
+
+	mapwait	1000
+	
+	setrestart
+	
+
+
+
+
+
+
+
+
+;boss
+
+	mapwait	200
+	
+	fadeoutbgm
+
+	setbgm	5
+	mapobj	0000,0000,0000,3500,luigihs,newboss1_istrat
+	mapwaitboss
+
+	mapplayermode	onplanet
+;	mapjsr	map4_1
+	start_65816
+	stz	stage51			;turn link phantron off
+	end_65816
+	mapjsr	cl_ground
+
+;.loo	mapwait	1000
+;	mapgoto	.loo
+
+
+	mapend
