@@ -1,5 +1,5 @@
 cls
-set path=%path%;.\bin
+set path=%path%;C:\bin
 set sasmheap=14400
 cd sf
 make sg.rom > ..\build.log
