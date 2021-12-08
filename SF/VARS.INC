@@ -8,7 +8,7 @@ debuginfo		equ	0	; full strategy debugging - Press P2 R Button in-game to activa
 debuginfo2		equ	0	; speed up mode? [0 = off 1 = on]
 janglish		equ	0	; 0 = english, 1 = japanese
 cestime			equ	5	; CES/SSFW timer countdown (in minutes)
-pal				equ	0	; PAL/NTSC [0 = off 1 = on]
+pal				equ	0	; PAL/NTSC [0 = NTSC 1 = PAL]
 contest			equ	0	; Super Star Fox Weekend [0 = off 1 = on]
 german			equ	0	; german version [0 = off 1 = on]
 french			equ	0	; french version [0 = off 1 = on] (UNUSED VARIABLE)
