@@ -1,1 +1,0 @@
-@\viper\vprmode vesa
