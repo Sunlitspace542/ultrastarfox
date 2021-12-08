@@ -1,10 +1,10 @@
 set path=%path%;c:\bin
 set sasmheap=14400
-cd sg
+cd sf
 make sg.rom
 cd ..
-copy sg\sg.rom SF.SFC
-del sg\sg.rom
-del sg\*.sob
+copy sf\sg.rom SF.SFC
+del sf\sg.rom
+del sf\*.sob
 pause
 exit
