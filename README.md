@@ -1,9 +1,11 @@
 # HackerStarFox
 Star Fox (SNES, 1993), with modifications for easier creation of ROM hacks 
 
-For compile options, see SG/VARS.INC.
+## Features
 
-Thanks to Kandowontu and Vitor Vilela for the SuperFX2 Upgrade.
+- SuperFX2 support  
+- lots of free bank space for new models, assets and code
+- kando was involved so you know it's good
 
 ## Building
 
