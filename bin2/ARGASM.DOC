@@ -1,0 +1,475 @@
+See ArgAsm 68000 manual
+
+v.0.68 Additions over and above ArgAsm 68000:
+---------------------------------------------
+
+* local labels accessable directly ie. jmp parent.local
+* longa/longi instructions + reserved symbols
+* nestable repts
+* ?<expression> pseudo-op for printing symbols etc
+eg.
+	fish	equ	200
+		?fish
+
+* org <program address>,<rom offset>
+eg.	org	$8000,0		; start of rom (rom starts at $8000)
+
+* brief compatability : goto error line in brief
+bcasm="!arg example.asm;" 	should be in config.sys after setting up brief
+				(the ! and ; are significant)
+* org block overlap checking
+* db/dw	
+
+*	lda.d	fish		load from direct page
+*	lda.l	fish		load absolute (24bit)
+*	lda.w	fish		load word address
+*	lda.n	fish		ignores .n (used for blank \0 in macro)
+ (the extensions may be used only where required)
+* < and > are unary functions in expression evaluator for high & low bytes
+* error directive to produce user errors
+eg	error	"There's a hole in my bucket"
+
+* reserved symbol _ARG identifies that the assembler is argasm.
+* ArgAsm uses EMS memory if it is available
+
+command line options:
+---------------------
+	-o<output filename>
+	-r 	- print rom block contents (looking for gaps in the rom)
+	-l	turn on listing	
+	-s	print symbols
+	-f	print files required
+
+*****************************************************************************
+************************* Update log from v0.68 *****************************
+*****************************************************************************
+
+Version 0.68 *--------------------------------------------------------------*
+
+Features added:
+Selected printing of symbol table
+	ie 	SYMBOL ON/OFF
+similar to list in that all symbols between the symbol on and the symbol off
+are marked to be output by the symbol table print routine. As with list,
+multiple invocations of the symbol directive are allowed.
+
+if no symbol on/off command is executed then all symbols are printed, if 
+opt s+.
+
+Version 0.69 *--------------------------------------------------------------*
+
+Features added:
+\<symbol> and \<$symbol>	to print decimal and hex values of a label
+MEXIT directive: exits out of a macro after balancing the macro's conditionals
+RS - 	label	rs.x	<no of instances of x>   where b=1 w=2 l=3
+RSSET	- sets __RS (rs counter) to the value given in the expression
+RSRESET	- sets __RS to 0
+Symbol not found error now states the label which is undefined
+blank command line prints help message
+incdir	<directory to get includes & incbins from>
+
+Bugs fixed:
+Blank macro parameters handled correctly, both <> and ,, types of blank parm.
+ifc	"",""	is now true
+ifnd	"",""	is now false
+Initial filename being corrupted if using full length filename
+Supressed listing in error in errors at the end of the file.
+Added check for conditional level on exit of macros (files do this already)
+Corrected line number printing for above error + file cond. checks
+problem with last-label not being cancelled after it's line
+corrected macro line number which was causing _huge_ numbers for total lines
+improved incbin error reporting
+made symbol printing neater
+allowed first error to have a line of listing
+
+Found a problem with brief: If three errors are in file1,file2 & file1
+then ctrl-n does not go back to file1 for the third error.
+
+Version 0.70 *--------------------------------------------------------------*
+5/11/91
+
+Features added:
+	rs.a	is now reserve 3 bytes (a for address)
+***	rs.l	is now reserve 4 bytes (it was reserve 3 bytes in v0.69)
+number of files loaded is printed in stats
+
+cli:	-f <optional filename>	print files required to file or console
+
+Bugs fixed:
+Fixed nasty splat bug which was being caused by some of giles's code
+Nasty bug where macro definitions were running out of buffer
+
+Noticed that ramboy-present code is fooled by software sentinel dongle
+
+Version 0.71 *--------------------------------------------------------------*
+
+Features added:
+all command line features that print something can have their output redirected
+to a file by specifying a filename after the option eg. -l list.txt
+-r option displays info on gaps in the rom
+
+Bugs fixed:
+changed parser error from unrecognised instruction to invalid addressing mode
+ as error occurs if a valid instruction and a valid addressing mode are	not
+ allowed to be used together.
+Fixed problem with large files including other files
+Fixed problem with unsigned long multiply corrupting pc
+
+Version 0.72 *--------------------------------------------------------------*
+
+Features added:
+ send can be used to specify the rom type (default $3d) by specifying the
+romtype as a parameter. Eg for a rambaby,
+	send	$ff
+for ramboy4,
+	send
+or	send	$3d
+
+Bugs fixed:
+ A macro command with no label generates a proper error
+ All fatal errors (I think) should make brief flip up the error window
+ many bugfixes to mario code + errors for mario
+ jml now works properly
+ fixed problem left over from bug in 0.71 with files including other ones
+
+Noticed problems with:
+ 0 and -ve parameters for REPT's
+ file not found hangs until you press return
+	-These will be fixed in 0.73
+
+
+Version 0.73 *--------------------------------------------------------------*
+
+Features added:
+ All directives (I think) are now available from the mario assembler
+
+Bugs fixed:
+ Out of memory errors terminate assembly
+ Fixed problem where zero counts where being accepted by rept as -$100000000
+ negative counts are now outlawed. In future possibly, zero count values will
+ be supported (as if a false if) without generating an error.
+ Prog waited for return when an invalid filename was specified
+ Fixed mario branches, and some mario instructions
+ Elseif now objects if it doesn't have a corresponding IF.
+ Fixed bug where the line after an ENDM could be ignored
+ ENDM now gives a sensible error if it is used outside a macro definition
+ LIST on its own could cause the next line to be ignored
+ Fixed problem with listings for the line after a macro with opt m+
+
+Version 0.73a
+Bug fixed:
+ Lines in macros which are preceded by a comment are ignored
+
+
+Version 0.74 *--------------------------------------------------------------*
+Feature added:
+ DOS memory heap space requirements reduced by putting FR expressions in EMS
+
+Bug fixed:
+ Line directly after a macro call is now listed.
+
+Version 0.74a
+Bugs fixed:
+ A number of small mariocode related errors (lms/stw)
+
+Version 0.75 *--------------------------------------------------------------*
+31/1/92
+
+Bugs fixed:
+ Symbol defined twice crash bug
+ Fixed problem with intructions with bits missing
+  eg.	lda	
+ IBT now size-checks properly
+
+Features added:
+ ** New mario instruction ** LEA **
+	LEA r3,$123456 		is equivalent to
+	IWT r4,#$123456&$ffff
+ie same as IWT except for the hash and that it ignores the bank byte
+
+Version 0.76 *--------------------------------------------------------------*
+
+features added:
+* INCCGX:
+ 	incgcx	filename,[bitmode=2/4/8]
+ - loads in the first $4000/$8000/$10000 of the specified file depending on
+  whether 2,4 or 8 bit screen mode is selected
+
+* INCSCR:
+	incscr	filename,[screen=0-3],[blanking char]
+ - Loads in the specified screen from the .cgx file, processes it using the
+blanking information in the file, using the word blanking char specified.
+The amount of data included will always be $800 long.
+
+* INCCOL:
+	inccol	filname,[start palette],[end palette]	pallettes=0-15
+ - Loads in the specified palletes from the .col file. Each palette
+ is 32 bytes long.
+
+Version 0.76a *---------------*
+
+Bugs fixed:
+	?a-b	where a or b are undefined now causes an error rather than
+		bombing in a most spectacular fashion.
+
+Version 0.76b *---------------*
+
+Bugs fixed:
+	stx absolute,y now gives an error
+
+Version 0.76c *---------------*
+
+Bugs fixed:
+	rept's do not now corrupt the line number
+
+Version 0.76d *---------------*
+	Fixed a crash bug with equr
+
+Version 0.76e *---------------*
+	This version uses 80k less DOS memory for SG.ASM,
+	achieved by reducing the size of each symbol's data block.
+
+
+Version 0.77 *--------------------------------------------------------------*
+
+Bugs fixed:
+	Problem with characters at the end of lines in mario assembler
+	The ? command now prints the real line number when in a macro
+	macros beginning with z,y etc now work in the mario assembler
+
+Features added:
+*	The macro text can now be placed in EMS memory (an extra 2 secs in
+	starglider) but uses a lot less DOS memory
+	Can be turned on by using the 'LOWMEM' directive (at the start please)
+	or by using the -w option on the command line.
+
+*	The -g cli option has been added. When used with a filename, any
+	listing/errors/?-print/etc goes to the filename specified, ie it
+	is similar to -l, but does not turn on listing. When it is used 
+	without a filename, output is suppressed.
+
+Version 0.77a *---------------*
+12/5/92
+
+Bugs fixed:
+	Fixed problem with equr's conflicting with local labels
+	The ERROR directive now increments the number of errors
+
+Version 0.77b *---------------*
+12/5/92
+
+Bugs fixed:
+	LMS/SMS now insert correct values when given f.r. operands
+	 and disallow odd addresses.
+	MOVE does not accept odd addresses, so if a load from an odd
+	 address is required then LM/SM must be used.
+
+Version 0.77c *---------------*
+13/5/92
+
+Features added:
+	Include/incbin/inccol etc: If a filename is specified explicitly,
+	 then the include directory (specified with INCDIR) is not added
+	 to the filename. 
+	   e.g. include c:\foo\bar
+		incbin	\foo\bar
+
+Version 0.77d *---------------*
+29/5/92
+
+Bugs fixed:
+	EQU now can define locals without losing the parent label
+
+Version 0.78 *--------------------------------------------------------------*
+
+Now a version of 0.78 is available which can use extended memory as DOS
+memory, thus removing the need for EMS drivers etc. (zpm.exe must be
+somewhere in the PATH however)
+
+Features added:
+	RAMBoy5 downloader: specified by the 'ramboy5' and 'ramboy4'
+	 directives.
+
+Bugs fixed:
+	Lines per minute counter now doesn't print negative numbers
+	DOS memory free printout gives a sensible figure
+	fixed hangup when out of memory (No EMS)
+
+Version 0.78a *---------------*
+16/7/92
+
+Bugs fixed:
+	INCBIN etc now store filenames which begin with / \ or : in the
+	file list.
+
+Version 0.78b *---------------*
+10/8/92
+
+Features added:
+	{ and } are acceptable in label names (aaaaaaargh!)
+	[ Nick (cripple) asked for this as he is a sicko ]
+
+Bugs fixed:
+	Macros defined with a junk character (such as [ etc) now produce
+	 an error.
+
+Version 0.78c *---------------*
+24/8/92
+
+Features added:
+	Improved checking of whether RAMBoy is present/turned on.
+
+Bugs fixed:
+	Fixed bug where ['s were being treated as whitespaces at the start
+	of expressions.
+
+
+
+
+
+Update for ArgAsm 65816 - starting with v0.80a
+----------------------------------------------
+
+
+16/11/92: v0.80a
+
+ Source for v0.78c renamed as v0.80a (a new start so to speak)
+	
+ Bug fixed in PRINTSYMBOLS to stop corrupt listing of symbols.
+(CH was undefined at the start).
+ Bug fixed in INT21RS/INT21RF to allow a 1 byte block to be downloaded
+to the RAMBABY/RAMBOY.
+	
+ Map File generation has been added: filename is same as object file
+name except with a .MAP extension. File currently contains only the
+non-MACRO, non-LOCAL, non-EQUR symbols.
+
+
+07/01/93: v0.80b
+
+ Fixed the bug where if you specified an invalid object file name the ROM
+image was dumped to STDOUT.
+
+ Modified the map file output to include all addresses where a SHORTA, 
+SHORTI, LONGA or LONGI occurs in the source code. This allows the debugger
+to disassemble the ROM image correctly.
+
+
+08/02/93: v0.80c
+
+ The assembler has had the following commands added to allow it to download
+to the new ADS hardware
+
+	ADS_SYSTEM sys_no,cic_switch_flag
+	ADS_BOARD board_number,board_type
+	ADS_SEND board_number
+
+	e.g.
+
+	ads_system 1,0          ; select system 1 and default CIC
+	ads_board 0,0           ; board 0 is in use and is a RAMChild1
+	ads_board 1,0           ; board 1 is in use and is a RAMChild1
+	ads_send 0              ; download data to board 0
+
+ The parameters have the following valid values:
+
+	sys_no - 1..4           ; ADS system number
+	cic_switch_flag - any   ; 0=use default CIC, otherwise use other CIC
+	board_number - 0..15    ; ADS board number
+	board_type - 0..        ; current types are:
+				; 0 - RAMChild1
+				; others will be added later
+
+ The download code has also been modified ala DL.EXE so that the above
+commands actually do something meaningful.
+
+ By allowing multiple boards to be defined it allows the assembler to
+configure the entire ADS thus ensuring that nothing is in an undefined
+state.
+
+
+10/02/93: v0.80d
+
+ Bug fixed in map file generation which would cause the EMM clean-up
+code to fail if you specified an object file name that didn't have an
+extension on it i.e. TEST.ROM would work, TEST would fail.
+
+ Added a new hunk to the map file that contains the specified ADS setup.
+So now just define your ADS setup in the assembler and the debugger will
+use the same information. This stuff is ignored if you are downloaded to
+any sort of RAMBoy/RAMBaby.
+
+11/02/93: v0.80e
+
+ Bug fixed in INC assembly to allow an INC.W to assemble correctly and
+not to be assumed to be a macro.
+
+ WARNING command added. Similar to ERROR command except that it generates
+a warning and not an error! e.g.
+
+	warning "This is a warning message for something or other"
+
+ ArgAsm now returns an errorlevel if any errors (not warnings) occurred
+during assembly. This allows the assembler to work properly within make
+utilities and editors such as Brief.
+
+
+19/02/93: v0.80f
+
+ Bug fixed in expression evaluator to stop things going horribly wrong
+in a variety of ways when an expression had an extraneous close
+parenthesis ')' at the end of it.
+
+
+23/02/93: v0.80g
+
+ Download code modified very slightly to ensure full compatability with
+the new JetGirl chip on the RAMChild1 boards.
+
+
+16/04/93: v0.80h
+
+ Bug fixed in command line parser so that if there are any errors in the
+command line the assembler will quit at that point and not attempt to
+assemble any code.
+
+ DLFLAGS is now parsed to get the hardware configuration specified for
+the PC/SNES stuff you are using. The information taken from DLFLAGS can
+be over-ridden using the various source code commands such as ADS_BOARD
+and RAMBOY5. To go along with this the SEND command has been modified so
+that the ROM type parameter is now optional.
+
+ The download code has been modified so that you can now download to ADS
+hardware via the printer port. All hardware configurations (RamBoy4,
+RamBoy5 and ADS systems) have been tested with both ArgAsm and DL (the
+versions in the T:\ARGTOOLS directory) downloading via FABcards and the
+printer port.
+
+
+19/07/93: v0.80i
+
+ A bug was fixed that stopped the assembler initialising a SuperChild
+board correctly for downloading.
+
+
+24/08/93: v0.81a
+
+ A bug was fixed so that map files are generated correctly when a file
+path is specified in the object filename.
+
+
+06/10/93: v0.81b
+
+ The download code was modified to account for the new features of the
+JetGirl 5 ROM emulation chip.
+
+
+14/10/93: v0.81c
+
+ The assembly of the COP instruction was modified so that the immediate
+data operand was actually processed.
+
+
+
+
+

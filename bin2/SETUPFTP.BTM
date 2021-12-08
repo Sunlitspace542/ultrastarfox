@@ -1,0 +1,10 @@
+@echo off
+loadbtm on
+setlocal
+
+call put c:\bin\ncftp.exe %1 c:\bin
+call put c:\bin\put.bat %1 c:\bin
+call put c:\bin\get.bat %1 c:\bin
+call put c:\bin\netrc %1 c:\bin
+
+:end

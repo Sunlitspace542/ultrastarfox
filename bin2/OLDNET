@@ -1,0 +1,45 @@
+machine modem
+	login modem
+	password
+	cd \telix\download
+	macdef init
+
+machine giles
+	login giles
+	password
+	macdef init
+
+machine spam
+	login spam
+	password
+	macdef init
+
+machine lemons
+	login lemons
+	password
+	macdef init
+
+machine kawagoe
+	login kawagoe
+	password
+	macdef init
+
+machine kawaguchi
+	login kawaguchi
+	password
+	macdef init
+
+machine kimura
+	login kimura
+	password
+	macdef init
+
+machine yamamoto
+	login yamamoto
+	password
+	macdef init
+
+
+
+
+	

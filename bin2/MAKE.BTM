@@ -1,0 +1,6 @@
+@echo off
+set time=%@eval[(%@substr[%_TIME,0,2]*3600) + (%@substr[%_TIME,3,2]*60) + (%@substr[%_TIME,6,2]) ]
+make.exe %1 %2 %3
+set time=%@eval[(%@substr[%_TIME,0,2]*3600) + (%@substr[%_TIME,3,2]*60) + (%@substr[%_TIME,6,2]) - %time]
+echo Compile time was %time seconds.
+
