@@ -995,10 +995,10 @@ mdrawbossHP
 	move	r4,#6
 
 	move	r0,#gameNum_col*8-2
-	to	r1
+	to	r1	;set as X position
 	sub	r3
 
-	move	r2,#2
+	move	r2,#2 ;Y
 
 	move	r5,r1
 	move	r6,r2		; store x,y
