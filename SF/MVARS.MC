@@ -243,12 +243,12 @@ m_clipright	equ	m_sprxmax
 ;	zmalc	m_uc,2
 ;	zmalc	m_ud,2
 ;	zmalc	m_vax,2
-	zmalc	m_va,2
-	zmalc	m_vb,2
-	zmalc	m_vc,2
-	zmalc	m_vd,2
-	zmalc	m_vx,2
-	zmalc	m_vy,2
+;	zmalc	m_va,2
+;	zmalc	m_vb,2
+;	zmalc	m_vc,2
+;	zmalc	m_vd,2
+;	zmalc	m_vx,2
+;	zmalc	m_vy,2
 	zmalc	m_xlen,2
 
 	zmalc	m_bossmaxHP,2
