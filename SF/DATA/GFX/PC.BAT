@@ -1,7 +1,6 @@
 @del col.tmp
 @del col2.tmp
 @del allcols.col
-@echo %null% > allcols.col
 @call mc bg2-a 0 7
 @call mc bg2-b 0 13
 @call mc bg2-c 0 7
