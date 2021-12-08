@@ -4,8 +4,8 @@ Star Fox (SNES, 1993), with modifications for easier creation of ROM hacks
 ## Features
 
 - SuperFX 2 support and various optimizations
-- lots of free bank space for new models, assets and code
-- kando was involved so you know it's good
+- Lots of free bank space for new models, assets and code
+- Kando was involved so you know it's good
 
 ## Building
 
