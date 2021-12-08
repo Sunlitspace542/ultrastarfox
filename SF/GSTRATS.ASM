@@ -59,7 +59,7 @@ initgame_strats_l
 	stz	bossflags
 	stz	stratflags
 	lda	#1
-	sta	sheildon
+	sta	shieldon
 
 
 	lda	#40

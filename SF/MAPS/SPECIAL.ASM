@@ -86,6 +86,7 @@ endofspecialmap
 
 	start_65816
 	a8
+	sta.l m_meters
 	lda	pshipflags
 	and	#~psf_nofire
 	sta	pshipflags

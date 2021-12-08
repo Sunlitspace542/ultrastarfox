@@ -62,6 +62,7 @@ prot	=	prot+1
 	start_65816
 	lda	#0
 	sta.l	m_bossmaxHP
+	sta.l	m_meters
 	end_65816
 
 ;-------------------------------------------------

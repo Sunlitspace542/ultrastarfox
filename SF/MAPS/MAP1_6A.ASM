@@ -307,6 +307,10 @@ boss1666
 	mapobj	0000,0000,-1000,4000,boss_b_1,bossBrob_Istrat
 	mapwaitboss
 	markboss	boss16
+	start_65816
+	lda	#1
+	sta.l	m_meters
+	end_65816
 	maprts
 
 

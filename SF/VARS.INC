@@ -19,6 +19,19 @@ messagetest		equ	0	; Run message test in training level
 
 ; Everything else is more advanced stuff, be careful!
 
+; Original Lives position ($YYXX)
+livesPos1 equ $1110
+livesPos2 equ $1118
+livesPos3 equ $1120
+
+; Original Shield text position ($YYXX)
+ShieldTextPos1 equ $b718
+ShieldTextPos2 equ $b720
+ShieldTextPos3 equ $b728
+ShieldTextPos4 equ $b730
+
+; Original Nova Bomb Icon Position ($YYXX)
+BombIconPos equ $b6e0
 
 mario_stats3d	equ	0
 realchip	equ	1

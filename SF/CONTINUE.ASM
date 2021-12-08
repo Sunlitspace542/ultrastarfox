@@ -745,10 +745,10 @@ friends_messages_l
 
 	ldx	friends_msg
 	ai16
-	lda	#83
-	sta.l	m_x1
-	lda	#177-7
-	sta.l	m_y1
+	lda	#83 ;set message x pos
+	sta.l	m_x1 ;save value for later
+	lda	#177-7 ;set message y pos
+	sta.l	m_y1 ;save value for later
 	txa
 	sta.l	m_txtdata
 	jsr	.chkmeter
@@ -760,10 +760,10 @@ friends_messages_l
 ; real text
 	ldx	friends_msg
 	ai16
-	lda	#82
-	sta.l	m_x1
-	lda	#177-8
-	sta.l	m_y1
+	lda	#82 ;set message x pos
+	sta.l	m_x1 ;save value for later
+	lda	#177-8 ;set message y pos
+	sta.l	m_y1 ;save value for later
 	txa
 	sta.l	m_txtdata
 	jsr	.chkmeter
@@ -895,9 +895,9 @@ friends_messages_l
 	adc	x1
 	adc	#facedata&WM
 	sta.l	m_faceptr
-	lda	#6
+	lda	#6 ; Character Portrait X pos
 	sta.l	m_bigx
-	lda	#19*8
+	lda	#19*8 ; Character Portrait Y pos
 	sta.l	m_bigy
 	call_mario	mcopyface
 	plp

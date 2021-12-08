@@ -1086,6 +1086,7 @@ mapwaitboss	MACRO	[nosound]
 	sta	pshipflags	
 	lda	#0
 	sta.l	m_bossmaxHP
+	sta.l	m_meters
 	end_65816
 
 	IFND	mwb_{nosound}

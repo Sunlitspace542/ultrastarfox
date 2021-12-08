@@ -86,7 +86,7 @@ initgame_l
 
 	a8
 	lda	#1
-	sta	sheildon
+	sta	shieldon
 	stz	showtype
 	stz	msg_count1
 	stz	msg_count2

@@ -153,4 +153,8 @@ map2_6a
 	mapwait	medpspeed*15*2
 	setbgm	$12
 	markboss	boss26
+	start_65816
+	lda	#1
+	sta.l	m_meters
+	end_65816
 	maprts

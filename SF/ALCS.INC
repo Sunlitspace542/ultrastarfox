@@ -149,7 +149,7 @@ xlen	=	22*1024+450
 	alc	doingend,1
 	alc	spranimcnt,2
 	alc	crosshairon,1
-	alc	sheildon,1
+	alc	shieldon,1
 	alc	specwepcnt,2
 	alc	spritespos,2
 	alc	mespos,2

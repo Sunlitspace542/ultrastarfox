@@ -70,11 +70,11 @@ do_sprites_l
 	jsr	do_lives
 	ENDC
 
-	jsr	do_sheild
+	jsr	do_shield
 	jsr	do_enemy
 	jsr	do_arrows
-	jsr	prt_stageclear
 .nodo
+	jsr	prt_stageclear
 	jsr	do_1credit
 	a8
 	lda	doingwipe
@@ -115,12 +115,12 @@ do_lives	ai16
 	ldx	spritespos
 	ldaspr	03dh,pri2
 	sta	spriteblk+2,x
-	lda	#$1110
+	lda	#livesPos1
 	sta	spriteblk,x
 
 	ldaspr	062h,pri2
 	sta	spriteblk+6,x
-	lda	#$1118
+	lda	#livesPos2
 	sta	spriteblk+4,x
 
 	lda	lives
@@ -134,7 +134,7 @@ do_lives	ai16
 	clc
 	adc	x1
 	sta	spriteblk+10,x
-	lda	#$1120
+	lda	#livesPos3
 	sta	spriteblk+8,x
 
 	txa
@@ -144,15 +144,18 @@ do_lives	ai16
 	rts
 
 
-do_sheild	ai16
+do_shield	ai16 
+; This is the "Shield" text sprite, for 
+; the actual meter go to mdamagemeter in MDRAWLIS.MC.
+; The boost meter is also in there under mboostmeter.
 	ldx	spritespos
-	lda	#$b718
+	lda	#ShieldTextPos1
 	sta	spriteblk,x
-	lda	#$b720
+	lda	#ShieldTextPos2
 	sta	spriteblk+4,x
-	lda	#$b728
+	lda	#ShieldTextPos3
 	sta	spriteblk+8,x
-	lda	#$b730
+	lda	#ShieldTextPos4
 	sta	spriteblk+12,x
 	ldaspr	04bh,pri2
 	sta	spriteblk+2,x
@@ -675,7 +678,7 @@ dspr	dw	$38+3<<12+spradd,$48+3<<12+spradd
 
 ;set specflash with 50 to flash 1 smartbomb
 do_spec_weap	a16
-	lda	#$b6e0
+	lda	#BombIconPos
 	sta	tpx
 	ldx	spritespos
 	ldy	specwepcnt

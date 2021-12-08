@@ -757,8 +757,8 @@ rzrad	equr	6
 	mnop		; return to caller
 
 
-boostx	=	22*8
-boosty	=	22*8
+boostx	=	22*8 ; Boost meter X pos
+boosty	=	22*8 ; Boost meter Y pos
 boostheight =	8
 
 mboostmeter
@@ -867,8 +867,8 @@ damageheight =	8
 mdamagemeter
 	mpush	r11
 
-	move	r1,#damagex
-	move	r2,#damagey
+	move	r1,#damagex ; Shield meter (Damage meter) X pos
+	move	r2,#damagey ; Shield meter (Damage meter) Y pos
 	move	r3,#40
 	move	r4,#damageheight
 
