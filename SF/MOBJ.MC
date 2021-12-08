@@ -3991,10 +3991,10 @@ mdo_colour_ng
 
 	from	r3
 	lob
-	bpl	.lo			; test hi nibble mode (bit 13)
+	bpl	.lo			; test hi nybble mode (bit 13)
 	nop
 
-	miwt	r0,1<<(2+8)		; cmode bit 2 (hi nibble mode)
+	miwt	r0,1<<(2+8)		; cmode bit 2 (hi nybble mode)
 	sms	[m_tcmodecol],r0
 .lo
 	from	r3
