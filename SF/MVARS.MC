@@ -227,17 +227,17 @@ m_clipright	equ	m_sprxmax
 	zmalc	m_fpb,2
 	zmalc	m_fpc,2
 
-	zmalc	m_fpdlo,2
-	zmalc	m_fpdhi,2
-	zmalc	m_paxlo,2
-	zmalc	m_paxhi,2
-	zmalc	m_palo,2
-	zmalc	m_pahi,2
-	zmalc	m_pblo,2
-	zmalc	m_pbhi,2
-	zmalc	m_pclo,2
-	zmalc	m_pchi,2
-	zmalc	m_uax,2
+;	zmalc	m_fpdlo,2
+;	zmalc	m_fpdhi,2
+;	zmalc	m_paxlo,2
+;	zmalc	m_paxhi,2
+;	zmalc	m_palo,2
+;	zmalc	m_pahi,2
+;	zmalc	m_pblo,2
+;	zmalc	m_pbhi,2
+;	zmalc	m_pclo,2
+;	zmalc	m_pchi,2
+;	zmalc	m_uax,2
 	zmalc	m_ua,2
 	zmalc	m_ub,2
 	zmalc	m_uc,2
