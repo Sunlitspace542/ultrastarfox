@@ -275,24 +275,24 @@ m_clipright	equ	m_sprxmax
 ;	malc	x_data_blk,0
 
 
-	malc	m_count,2
-	malc	m_charset,2	; char set ptr
-	malc	m_textpos,0	; text x,y pos
-	malc	m_textposx,1
-	malc	m_textposy,1
+;	malc	m_count,2
+;	malc	m_charset,2	; char set ptr
+;	malc	m_textpos,0	; text x,y pos
+;	malc	m_textposx,1
+;	malc	m_textposy,1
 	malc	m_textcolour,0	; text colours c1,c2
-	malc	m_textc1,1
-	malc	m_textc2,1
-	malc	m_textr0,2	; text reg save area
-	malc	m_textr1,2
-	malc	m_textr2,2
-	malc	m_textr3,2
-	malc	m_textr4,2
-	malc	m_textr5,2
-	malc	m_textr11,2
-	malc	m_textr12,2
-	malc	m_textr13,2
-	malc	m_textr14,2
+;	malc	m_textc1,1
+;	malc	m_textc2,1
+;	malc	m_textr0,2	; text reg save area
+;	malc	m_textr1,2
+;	malc	m_textr2,2
+;	malc	m_textr3,2
+;	malc	m_textr4,2
+;	malc	m_textr5,2
+;	malc	m_textr11,2
+;	malc	m_textr12,2
+;	malc	m_textr13,2
+;	malc	m_textr14,2
 
 
 
