@@ -18,7 +18,7 @@ planetcheaton 		equ 0   ; Allows you to enable planet select cheat on the map be
 							; a level. Press X+Y on the same frame to activate.										#
 godmode				equ	1	; No collision for the player															#
 messagetest			equ	0	; Run message test in training level													#
-crosshairalwayson	equ	1	; Crosshair in third person view														#
+crosshairalwayson	equ	0	; Crosshair in third person view														#
 ;####################################################################################################################
 
 ; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
