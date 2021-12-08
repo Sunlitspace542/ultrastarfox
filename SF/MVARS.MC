@@ -238,11 +238,11 @@ m_clipright	equ	m_sprxmax
 ;	zmalc	m_pclo,2
 ;	zmalc	m_pchi,2
 ;	zmalc	m_uax,2
-	zmalc	m_ua,2
-	zmalc	m_ub,2
-	zmalc	m_uc,2
-	zmalc	m_ud,2
-	zmalc	m_vax,2
+;	zmalc	m_ua,2
+;	zmalc	m_ub,2
+;	zmalc	m_uc,2
+;	zmalc	m_ud,2
+;	zmalc	m_vax,2
 	zmalc	m_va,2
 	zmalc	m_vb,2
 	zmalc	m_vc,2
