@@ -5,5 +5,4 @@ cd data
 cd gfx
 pc.bat
 pause
-;ips sg.sfc Header.ips
 exit
