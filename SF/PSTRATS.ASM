@@ -372,6 +372,8 @@ nolwcoll
 ;-----------------------------------------------------------------------------
 PLWbrk_Istrat
 	s_start_strat
+	s_jmp_varAND	B,pshipflags3,#psf3_nocollisions,.ncoll
+
 	TRIGSE			se_wingdestructleft
 	s_set_alvar		B,x,al_HP,#-1
 	s_set_alvar		B,x,al_AP,#0
@@ -381,6 +383,7 @@ PLWbrk_Istrat
 	s_set_alvar		B,y,al_collcount,#framesperAP
 	s_jsl			makesmlexpobj_srou 
 	s_set_alvar		W,y,al_vz,pviewvelz
+.ncoll
 	s_jmpto_strat		
 
 
@@ -506,6 +509,8 @@ norwcoll
 
 PRWbrk_Istrat
 	s_start_strat
+	s_jmp_varAND	B,pshipflags3,#psf3_nocollisions,.ncoll
+
 	TRIGSE		se_wingdestructright
 	s_set_alvar		B,x,al_HP,#-1
 	s_set_alvar		B,x,al_AP,#0
@@ -515,6 +520,7 @@ PRWbrk_Istrat
 	s_set_alvar		B,y,al_collcount,#framesperAP
 	s_jsl			makesmlexpobj_srou
 	s_set_alvar		W,y,al_vz,pviewvelz
+.ncoll
 	s_jmpto_strat		
 
 
