@@ -3,20 +3,22 @@
 ; ## HackerStarFox Assembler Options ##
 ; #####################################
 
-cesdemo			equ	0	; 0 = off, 1 = CES Demo (timed) 2 = Untimed CES Demo w/ planet cheat
-debuginfo		equ	0	; full strategy debugging - Press P2 R Button in-game to activate [1 = on 0 = off]
-debuginfo2		equ	0	; speed up mode? [0 = off 1 = on]
-janglish		equ	0	; 0 = english, 1 = japanese
-cestime			equ	5	; CES/SSFW timer countdown (in minutes)
-pal				equ	0	; PAL/NTSC [0 = NTSC 1 = PAL]
-contest			equ	0	; Super Star Fox Weekend [0 = off 1 = on]
-german			equ	0	; german version [0 = off 1 = on]
-french			equ	0	; french version [0 = off 1 = on] (UNUSED VARIABLE)
-;thirtyfpsunlock equ 0	; 30FPS unlock [1 = on 0 = off]
-twentyonemhz	equ 1	; 21MHZ mode [1 = on 0 = off]
-planetcheaton 	equ 0   ; Allows you to enable planet select cheat on the map before you have selected a level.
-;Press X+Y on the same frame to activate.
-messagetest		equ	0	; Run message test in training level
+;###############################################################################################################
+cesdemo			equ	0	; 0 = off, 1 = CES Demo (timed) 2 = Untimed CES Demo w/ planet cheat                   #
+debuginfo		equ	0	; full strategy debugging - Press P2 R Button in-game to activate [1 = on 0 = off]     #
+debuginfo2		equ	0	; speed up mode? [0 = off 1 = on]                                                      #
+janglish		equ	0	; 0 = english, 1 = japanese                                                            #
+cestime			equ	5	; CES/SSFW timer countdown (in minutes)                                                #
+pal				equ	0	; PAL/NTSC [0 = NTSC 1 = PAL]                                                          #
+contest			equ	0	; Super Star Fox Weekend [0 = off 1 = on]                                              #
+german			equ	0	; german version [0 = off 1 = on]                                                      #
+french			equ	0	; french version [0 = off 1 = on] (UNUSED VARIABLE)                                    #
+;thirtyfpsunlock equ 0	; 30FPS unlock [1 = on 0 = off]                                                        #
+twentyonemhz	equ 1	; 21MHZ mode [1 = on 0 = off]                                                          #
+planetcheaton 	equ 0   ; Allows you to enable planet select cheat on the map before you have selected         #
+; a level. Press X+Y on the same frame to activate.                                                            #
+messagetest		equ	0	; Run message test in training level                                                   #
+;###############################################################################################################
 
 ; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ; !! Everything else is more advanced stuff, be careful! !!
