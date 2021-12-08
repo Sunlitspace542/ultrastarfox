@@ -1,4 +1,0 @@
-	global	alloc_l,initmem_l,free_l,avail_l
-	global	sallfree_l,sfree_l,salloc_l
-	global	mpush_l,mpull_l,smpush_l,smpull_l
-

@@ -1,7 +1,0 @@
-	global	playercoll_istrat
-	global	checkview_l
-	global	assault1_Istrat
-	global	assault2_istrat
-	global	assault3_istrat
-	global	clearallobj
-	global	PLWbrk_Istrat
