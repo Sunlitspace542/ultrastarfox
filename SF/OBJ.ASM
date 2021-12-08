@@ -96,7 +96,7 @@ copychars_l
 	sta	count1
 .loopy
 	lda	debugchars,y
-	sta.l	m_debugchars,x
+;	sta.l	m_debugchars,x
 	inx
 	iny
 	iny

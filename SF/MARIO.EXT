@@ -19,7 +19,7 @@
 	global	msprite,mdrawtsphere,m_rotz,m_xc
 	global	m_yc,m_decoffset
 	global	mdecclear,m_xleft,m_xright,m_ytop,m_ybot
-	global	m_debugchars,mcrotwmatzxy16
+	global	mcrotwmatzxy16
 	global	m_wmat11,m_wmat12,m_wmat13
 	global	m_wmat21,m_wmat22,m_wmat23
 	global	m_wmat31,m_wmat32,m_wmat33

@@ -336,7 +336,7 @@ mmaxvistab	=	128
 	malc	m_particlesON,2
 	malc	m_defaultID,2
 
-	malc	m_debugchars,8*16	; always last!
+;	malc	m_debugchars,8*16	; always last!
 
 ; 0000 vars	    512		4
 ; 0200 stack	    256		2
