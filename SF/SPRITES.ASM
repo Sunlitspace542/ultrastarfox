@@ -742,12 +742,12 @@ do_crosshair	php
 	lda	splayerflymode
 	cmp	#spfm_inside
 	bne	.off
-	ENDC
-	
 	lda	crosshairon
 	bne	.on
 .off	plp
 	rts
+	ENDC
+
 .on
 	a16
 	lda	arsebandX
