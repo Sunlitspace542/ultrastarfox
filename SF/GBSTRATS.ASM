@@ -1,21 +1,21 @@
 ;***************************************************************************
 ;*                                                                         *
-;*                              StarGlider                                 *
+;*                               Star Fox                                  *
 ;*                              -----------                                *
 ;*                                                                         *
 ;*                           SuperNES version.                             *
 ;*                                                                         *
 ;*                                                                         *
-;*                           Argonaut Software.      		      *	   
+;*                           Argonaut Software.      		               *
 ;*                                                                         *
 ;*_________________________________________________________________________*
 ;*                                                                         *
-;*   File: GBSTRATS.ASM                                                     *
+;*   File: GBSTRATS.ASM                                                    *
 ;*                                                                         *
 ;*                                                                         *
 ;*_________________________________________________________________________*
 ;*                                                                         *
-;*  Descr: GILES' BOSS STRATEGY ROUTINES.                                       *
+;*  Descr: GILES' BOSS STRATEGY ROUTINES.                                  *
 ;*                                                                         *
 ;*                                                                         *
 ;*_________________________________________________________________________*
@@ -25,9 +25,9 @@
 ;*                                                                         *
 ;*_________________________________________________________________________*
 ;*                                                                         *
-;* Author:								      *
+;* Author:								                                   *
 ;*                                                                         *
-;*		Giles Goddard.      				      *	
+;*		Giles Goddard.      				                               *
 ;*                                                                         *
 ;***************************************************************************
 				 
@@ -496,20 +496,12 @@ boss2_Istrat
 	s_set_alvar	B,y,al_sbyte2,#deg180+deg90
 
 	ifeq	0
-;	s_make_childobj	#boss_2_0,#6,boss2turret_Istrat,enemy1
-;	s_set_alvar	B,y,al_sbyte2,#0
 	s_make_childobj	#boss_2_0,#7,boss2turret_Istrat,enemy1
 	s_set_alvar	B,y,al_sbyte2,#deg45
-;	s_make_childobj	#boss_2_0,#8,boss2turret_Istrat,enemy1
-;	s_set_alvar	B,y,al_sbyte2,#deg90
 	s_make_childobj	#boss_2_0,#9,boss2turret_Istrat,enemy1
 	s_set_alvar	B,y,al_sbyte2,#deg45+deg90
-;	s_make_childobj	#boss_2_0,#10,boss2turret_Istrat,enemy1
-;	s_set_alvar	B,y,al_sbyte2,#deg180
 	s_make_childobj	#boss_2_0,#11,boss2turret_Istrat,enemy1
 	s_set_alvar	B,y,al_sbyte2,#deg180+deg45
-;	s_make_childobj	#boss_2_0,#12,boss2turret_Istrat,enemy1
-;	s_set_alvar	B,y,al_sbyte2,#deg180+deg90
 	s_make_childobj	#boss_2_0,#13,boss2turret_Istrat,enemy1
 	s_set_alvar	B,y,al_sbyte2,#deg180+deg90+deg45
 	endc
@@ -699,16 +691,6 @@ boss2_strat
 .nf
 
 .ns5
-;------------------------------------------------------------------ 
-;	s_jmp_ifnotstate	6,.ns6
-;.nf
-;	s_set_alvar2alvartab	B,B,B,x,al_rotx,x,al_sbyte2,sintab,-3
-;	s_add_alvar		B,x,al_roty,#8
-;	s_add_alvar		W,x,al_worldz,#20
-;	s_dec_lifecnt		x,1
-;
-;.ns6
-;------------------------------------------------------------------ 
 
 
 	
@@ -735,7 +717,6 @@ boss2top_strat
 	s_set_objtobemother	y,x
 	s_copy_pos		x,y
 	s_copy_rots		x,y
-;	s_sub_alvar		B,x,al_roty,#4	
 
 	s_jmpNOT_alsflag	y,sflag3,.nocol
 	s_clr_alsflag		x,colldisable
@@ -809,7 +790,6 @@ boss2turret_strat
 
 
 
-;	s_jmp_alvareq		B,x,al_roty,#deg180-8,.dfire
 	s_jmp_alvarne		B,x,al_roty,#deg180,.nfire
 .dfire
 	s_weapon_pos		#0,#(-26*8)>>weapon_scale,#(36*8)>>weapon_scale
@@ -1147,11 +1127,6 @@ boss5_strat
 
 
 ;-------------------------------------------------------------
-	
-;	d_print_alvar		B,x,al_sbyte1,1
-;	d_print_alvar		B,x,al_sbyte2,2
-;	d_print_alvar		B,x,al_sbyte3,3
-;	d_print_alvar		B,x,al_sbyte4,4
 
 
 

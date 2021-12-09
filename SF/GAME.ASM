@@ -61,10 +61,7 @@ getview_l
 
 
 ;***************************************************************
-;* I'M SORRY BUT THESE ARE 2 VERY BIG HACKS, BECAUSE I DON'T WANT
-;* TO FRICK WITH PETE'S CODE. (Giles) 
-
-
+; According to Giles Goddard's comments, the following is very hacky, as he didn't want to break Pete Warnes' code.
 
 ;* JUST X ROTATE VIEW POS.
 	a16

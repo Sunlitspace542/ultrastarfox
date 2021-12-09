@@ -1,12 +1,12 @@
 ;***************************************************************************
 ;*                                                                         *
-;*                              StarGlider                                 *
+;*                               Star Fox                                  *
 ;*                              -----------                                *
 ;*                                                                         *
 ;*                           SuperNES version.                             *
 ;*                                                                         *
 ;*                                                                         *
-;*                           Argonaut Software.      		   *	   
+;*                           Argonaut Software.      		               *
 ;*                                                                         *
 ;*_________________________________________________________________________*
 ;*                                                                         *
@@ -15,7 +15,7 @@
 ;*                                                                         *
 ;*_________________________________________________________________________*
 ;*                                                                         *
-;*  Descr: Kristers' STRATEGY ROUTINES.                                    *
+;*  Descr: Krister's STRATEGY ROUTINES.                                    *
 ;*                                                                         *
 ;*                                                                         *
 ;*_________________________________________________________________________*
@@ -25,9 +25,9 @@
 ;*                                                                         *
 ;*_________________________________________________________________________*
 ;*                                                                         *
-;* Author:						   *
+;* Author:						                                           *
 ;*                                                                         *
-;*		Krister Wombell    		               *	
+;*		Krister Wombell    		                                           *
 ;*                                                                         *
 ;***************************************************************************
 
@@ -1035,8 +1035,6 @@ theend_flip_istrat
 	jmp		.fail
 .2	s_make_obj	#zaco_B,.fail
 	s_copy_pos	y,x
-;	s_set_strat	y,path_istrat
-;	s_set_path	y,egu3
 	s_set_strat	y,szaco5_istrat
 	s_set_aldata	y,#2,#6
 	s_add_alvar	W,y,al_worldx,#-400

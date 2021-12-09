@@ -1,29 +1,29 @@
-;ษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
-;บ                                                                         บ
-;บ                               StarFox                                   บ
-;บ                              ---------                                  บ
-;บ                                                                         บ
-;บ                           SuperNES version.                             บ
-;บ                                                                         บ
-;บ                           Argonaut Software.                            บ
-;บ                                                                         บ
-;ฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
-;บ                                                                         บ
-;บ  File : trans.asm                                                       บ
-;บ                                                                         บ
-;ฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
-;บ                                                                         บ
-;บ  Descr : Transfer loop, etc.                                            บ
-;บ                                                                         บ
-;ฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
-;บ                                                                         บ
-;บ  Date created : 15/2/1992                                               บ
-;บ                                                                         บ
-;ฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
-;บ                                                                         บ
-;บ  Author: Krister Wombell                                                บ
-;บ                                                                         บ
-;ศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+;***************************************************************************
+;*                                                                         *
+;*                                StarFox                                  *
+;*                              -----------                                *
+;*                                                                         *
+;*                           SuperNES version.                             *
+;*                                                                         *
+;*                           Argonaut Software.                            *	   
+;*                                                                         *
+;*_________________________________________________________________________*
+;*                                                                         *
+;*  File : trans.asm                                                       *
+;*                                                                         *
+;*_________________________________________________________________________*
+;*                                                                         *
+;*  Descr : Transfer loop, etc.                                            *
+;*                                                                         *
+;*_________________________________________________________________________*
+;*                                                                         *
+;*  Date created : 15/2/1992                                               *
+;*                                                                         *
+;*_________________________________________________________________________*
+;*                                                                         *
+;*  Author: Krister Wombell                                                *
+;*                                                                         *
+;***************************************************************************
 
 	INCPUBLICS	trans.ext
 
@@ -267,52 +267,7 @@ stratsfrozen
 
 
 
-;
-;	lda	gameflags2
-;	and	#gf2_ingame
-;	printd	25,2
-;
-;	lda	pshipflags2
-;	and	#psf2_playerHP0
-;	printd	25,3
-;
-;	lda	thatfunnyolevalue2
-;	printd	25,4
-;
-;	lda	thatfunnyolevalue
-;	printd	22,4
 
-;	a8
-;	lda	specials_dead
-;	printb	1,1
-;	lda	specialobjtotal
-;	printb	1,2
-
-;	a8i16
-;	sprint	0,5
-;	ldx	#0
-;.lpdfd	lda	sdport3,x
-;	phx
-;	jsl	printb_l
-;	plx
-;	inx
-;	cpx	#16
-;	bne	.lpdfd
-
-;	a8
-;	lda	port1bolox
-;	lda	pshipflags3
-;	and	#psf3_enginesnd
-;	printb	0,1
-;	lda	port1bolox
-;	printb	0,2
-;	lda	playersndflag
-;	printb	0,3
-;	lda	apu_port1
-;	printb	0,4
-
-;	lda	circleanim
-;	printb
 	rtl
 
 
@@ -573,19 +528,6 @@ bhole	lda	viewposx
 
 	longa
 bholescaledown
-;	lda.l	bholescaleval
-;	cmp	#512
-;	beq	.sk
-;	inc	a
-;	sta.l	bholescaleval
-;.sk	sta.l	m_y1
-;	lda	viewposx
-;	sta.l	m_viewposx
-;	a8
-;	lda	#mbholescaledown>>16
-;	ldx	#mbholescaledown&WM
-;	jsl	runmario_l
-;	rts
 
 	longa
 nograd	lda	viewposx
