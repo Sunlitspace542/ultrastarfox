@@ -33,3 +33,18 @@ This repo is intended for building on Windows, but can probably be easily modifi
 3. Annotate and document code
 4. FastROM
 5. Organize source files and edit makefile accordingly
+
+## Project Structure
+```
+hackerstarfox
+├── BIN: exe files needed to compile game
+├── optionalstuff: optional graphics files
+├── SF: Main source code is located here
+│   ├── DATA: GFX files, arc tangent table
+│   │   └── GFX: Palette files and Palette Packer
+│   ├── MAPS: level scripts
+│   ├── MSPRITES: contains 4 DAT files, purpose/use unknown.
+│   └── SOUND: sound/music data
+└──  tools: tools such as packer and ShapeEd
+```
+    
