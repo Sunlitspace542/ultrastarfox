@@ -8,11 +8,11 @@ STRATFILES= STRATMAC.INC STRATLIB.INC STRATEQU.INC SHMACS.INC STRATHDR.INC WEAPO
 ASM=SASMX
 ASMFLAGS=-efilelist=0
 include symson.mak
-LINK=SL
-LOPTS=-b30 -h1024 -t7d
-#ARGLINK linking (EXPERIMENTAL)
-#LINK=ARGLINK
+#LINK=SL
 #LOPTS=-b30 -h1024 -t7d
+#ARGLINK linking (EXPERIMENTAL)
+LINK=ARGLINK
+LOPTS=-b30 -h1024 -t7d
 
 ALLFILES= bank0.sob bank1.sob bank2.sob \
  bank4.sob bank5.sob bank6.sob bank7.sob \
