@@ -543,17 +543,6 @@ lev13mes	dw	onespr-sprsbase
 	dw	threespr-sprsbase
 	dw	-1
 
-;gameovermes	dw	gspr-sprsbase
-;	dw	aspr-sprsbase
-;	dw	mspr-sprsbase
-;	dw	espr-sprsbase
-;	dw	spacespr-sprsbase
-;	dw	ospr-sprsbase
-;	dw	vspr-sprsbase
-;	dw	espr-sprsbase
-;	dw	rspr-sprsbase
-;	dw	-1
-
 trainingmes	dw	tspr-sprsbase
 	dw	rspr-sprsbase
 	dw	aspr-sprsbase
@@ -563,13 +552,6 @@ trainingmes	dw	tspr-sprsbase
 	dw	nspr-sprsbase
 	dw	gspr-sprsbase
 	dw	-1
-
-;continuemes	dw	smco1spr-sprsbase
-;	dw	smco2spr-sprsbase
-;	dw	smco3spr-sprsbase
-;	dw	smco4spr-sprsbase
-;	dw	smco5spr-sprsbase
-;	dw	-1
 
 okmes	dw	smok1spr-sprsbase
 	dw	smok2spr-sprsbase

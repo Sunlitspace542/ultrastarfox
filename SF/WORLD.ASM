@@ -53,12 +53,10 @@ update_objects_l
 	ai16
 	ldx	playpt
 	lda	al_worldz,x
-;	lda	viewposz
 	sec
 	sbc	lastplayz
 	sta	lastzchange
 	lda	al_worldz,x
-;	lda	viewposz
 	sta	lastplayz
 	ldx	mapptr
 	lda	mapcnt
