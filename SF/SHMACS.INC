@@ -574,9 +574,45 @@ frames	macro
 	db	\1
 	endm
 
+rndbyte	macro
+rndval =	(rndval*91+$61d7)&$ffff
+	db	rndval&63
+	endm
+
+rndword	macro
+rndval =	(rndval*91+$61d7)&$ffff
+	dw	rndval&63
+	endm
+	
+rndval	=	$5a79
+
+	IFEQ	randverts1
+	IFEQ	randverts2
 pb	macro
 	db	\1,\2,\3
 	endm
+	ENDC
+	ENDC
+	
+	IFNE	randverts1
+pb	macro
+rndval =	(rndval*91+$61d7)&randvertandbit
+	db	(\1)+rndval
+rndval =	(rndval*91+$61d7)&randvertandbit
+	db	(\2)+rndval
+rndval =	(rndval*91+$61d7)&randvertandbit
+	db	(\3)+rndval
+	endm
+	ENDC
+	
+	IFNE	randverts2
+pb	macro
+	rndbyte
+	rndbyte
+	rndbyte
+	ENDM
+	ENDC
+
 
 pbd2	macro
 	db	(\1)/2,(\2)/2,(\3)/2
@@ -586,9 +622,32 @@ pby2	macro
 	db	\1,(\2)*2,\3
 	endm
 
+	IFEQ	randverts1
+	IFEQ	randverts2
 pw	macro
 	dw	\1,\2,\3
 	endm
+	ENDC
+	ENDC
+	
+	IFNE	randverts1
+pw	macro
+rndval =	(rndval*91+$61d7)&randvertandbit
+	dw	(\1)+rndval
+rndval =	(rndval*91+$61d7)&randvertandbit
+	dw	(\2)+rndval
+rndval =	(rndval*91+$61d7)&randvertandbit
+	dw	(\3)+rndval
+	endm
+	ENDC
+
+	IFNE	randverts2
+pw	macro
+	rndword
+	rndword
+	rndword
+	ENDM
+	ENDC
 
 jumptab	macro
 	dw	\1-*-1

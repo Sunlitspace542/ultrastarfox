@@ -2,6 +2,11 @@ cls
 set path=%path%;c:\bin
 set sasmheap=14400
 cd sf
+@echo off
+del *.sob
+del lastasm.*
+del *.bak /s
+@echo on
 make sg.rom
 cd ..
 copy sf\sg.rom SF.SFC
