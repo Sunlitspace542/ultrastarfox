@@ -3,12 +3,10 @@ cl_chase
 	mapplayeroutview
 
 	setbgm	$f1
-;	mapwait	2200	; 700
 	
 	mapCLplayermode	clearChase
 	setbgm	bgm_fanfare
 	mapwait	3800
-;	printlevelfin
 
 
 

@@ -44,34 +44,6 @@
 .five
 	p_soundeffect	5
 	p_return
-;*******************************************************************
-;	example2
-;*******************************************************************
-
-;	start_path	stop_ring3
-;	p_inc		pbyte1
-;	start_path	stop_ring2
-;	p_inc		pbyte1
-;	start_path	stop_ring1
-;	p_inc		pbyte1
-;	p_set		coltab,id_1_c&wm
-;	p_igoto		pstop_ring
-
-
-;	p_set		coltab,id_1_c&WM
-;	p_set		pbyte,1
-;	p_igoto		pstop_ring
-
-;	start_path	stop_ring2
-;	p_set		coltab,id_1_c&WM
-;	p_set		pbyte,0
- 
-;	start_path	stop_ring
-;	p_reltoplayer	on
-;	p_setvel	-15
-;	p_trigger	.Rot_ring,Always
-;	p_end
-
 
 ;*******************************************************************
 ;		mato_0_100
@@ -406,7 +378,6 @@ show_score_500
 	p_set		coltab,pword1
 	p_trigger	.flash,4		;flash check
 	p_reltoplayer	on
-;	p_setvel	0
 	p_wait		10
 	p_remove
 	p_end
@@ -1043,20 +1014,6 @@ show_score_500
 	P_SET		roty,128
 	P_GOSUB		facefire
 
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FIRE
-
 	P_IFSAME		pbyte2,0,.itachi_back
 	P_EXPLODE
 .itachi_back
@@ -1192,13 +1149,6 @@ show_score_500
 	P_SET		roty,128
 	P_ADD		worldy,-50
 	P_GOSUB		facefire
-
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FIRE
 
 	P_SET		roty,0
 	P_SET		rotx,0
@@ -1492,68 +1442,7 @@ show_score_500
 	P_END
 .fol_adz
 	P_ADD		worldz,61
-;	P_IFSAME		pbyte1,0,.adz_1
-;	P_IFSAME		pbyte1,1,.adz_2
-;	P_IFSAME		pbyte1,2,.adz_3
-;	P_IFSAME		pbyte1,3,.adz_4
-;	P_IFSAME		pbyte1,4,.adz_5
-;	P_IFSAME		pbyte1,5,.adz_6
-;	P_SET		pbyte1,0
 	P_RETURN
-;.adz_1
-;	P_ADD		worldy,2
-;	P_ADD		pbyte2,1
-;	P_IFSAME		pbyte2,6,.adz_11
-;	P_RETURN
-;.adz_11
-;	P_ADD		pbyte1,1
-;	P_SET		pbyte2,0
-;	P_RETURN
-;.adz_2
-;	P_ADD		worldy,5
-;	P_ADD		pbyte2,1
-;	P_IFSAME		pbyte2,6,.adz_22
-;	P_RETURN
-;.adz_22
-;	P_ADD		pbyte1,1
-;	P_SET		pbyte2,0
-;	P_RETURN
-;.adz_3
-;	P_ADD		worldy,2
-;	P_ADD		pbyte2,1
-;	P_IFSAME		pbyte2,6,.adz_33
-;	P_RETURN
-;.adz_33
-;	P_ADD		pbyte1,1
-;	P_SET		pbyte2,0
-;	P_RETURN
-;.adz_4
-;	P_ADD		worldy,-2
-;	P_ADD		pbyte2,1
-;	P_IFSAME		pbyte2,6,.adz_44
-;	P_RETURN
-;.adz_44
-;	P_ADD		pbyte1,1
-;	P_SET		pbyte2,0
-;	P_RETURN
-;.adz_5
-;	P_ADD		worldy,-5
-;	P_ADD		pbyte2,1
-;	P_IFSAME		pbyte2,6,.adz_55
-;	P_RETURN
-;.adz_55
-;	P_ADD		pbyte1,1
-;	P_SET		pbyte2,0
-;	P_RETURN
-;.adz_6
-;	P_ADD		worldy,-2
-;	P_ADD		pbyte2,1
-;	P_IFSAME		pbyte2,6,.adz_66
-;	P_RETURN
-;.adz_66
-;	P_SET		pbyte1,0
-;	P_SET		pbyte2,0
-;	P_RETURN
 .fol_exp
 	P_FORCE		.fol_ex
 	P_RETURN
@@ -1613,13 +1502,6 @@ show_score_500
 .at_atck
 	P_DO		5
 	P_GOSUB		facefire
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FIRE
 	P_WAIT		4
 	P_NEXT
 
@@ -2497,61 +2379,6 @@ dummyparent
 .e1_z3
 	P_END
 ;;----------------------------------------------------------------------
-;;use set pos (migigawa no hou)
-;;x >= 800
-;;z = about 600
-;
-;	START_PATH	egu2
-;
-;	P_WEAPON		RelSlowElaser
-;	P_RELTOPLAYER	ON
-;	P_ALWAYSGENVECS	OFF
-;	P_SOUND		3
-;	P_SET		hp,2
-;	P_SET		ap,6
-;
-;	P_WAITCHASE		roty,DEG90
-;
-;	P_SETVEL		50
-;
-;	P_WAIT		16
-;	
-;;stop
-;	P_SETVEL		20
-;     
-;	P_WAITCHASE		rotx,DEG45
-;
-;	P_SETVEL		0
-;
-;;back	
-;	P_WAITCHASE		rotx,0
-;
-;	P_SETVEL		-20
-;	P_WAIT		16
-;
-;;shoot
-;	P_SETVEL		0
-;	
-;	P_DO		2
-;	P_WAITFACEPLAYER
-;	P_FIRE
-;	P_WAIT		6
-;	P_NEXT
-;
-;.e2_1
-;	P_CHASE		roty,192
-;	P_CHASE		rotx,0
-;	P_LOOP		20,.e2_1
-;
-;	P_SETVEL		50
-;
-;	P_WAIT		30
-;
-;	P_REMOVE
-;
-;	P_END
-;
-;------------------------------------------------------------------
 ;use set pos
 ;x>=0,y<-1300,z>2000
 
@@ -3577,17 +3404,6 @@ dummyparent
 
 .etan_s
 	P_GOSUB		facefire
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;
-;	P_FIRE
 
 	P_REMOVE
 ;-------------------------------------------------------------------
@@ -5273,22 +5089,6 @@ eguchi1
 	P_INVISIBLE		ON
 
 	P_GOSUB		facefire
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;
-;	P_FIRE
 
 	P_REMOVE
 
@@ -5684,10 +5484,6 @@ eguchi1
 
 	P_DO		10
 	P_GOSUB		facefire
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FIRE
 	P_WAIT		1
 	P_FACEPLAYER
 	P_WAIT		1
@@ -5721,10 +5517,6 @@ eguchi1
 
 	P_DO		10
 	P_GOSUB		facefire
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FACEPLAYER
-;	P_FIRE
 	P_WAIT		1
 	P_FACEPLAYER
 	P_WAIT		1
@@ -9563,13 +9355,6 @@ save
 .fit_start_0	LOCAL
 
 	P_GOSUB			friend_inib
-
-;	P_WEAPON		friendelaser
-;	P_TRIGGER		yamete,whenhitbyplayer
-;	P_TRIGGER		recover,whenhit
-;	P_TRIGGER		clpby2,32
-;	P_RELTOPLAYER	ON
-;	P_ALWAYSGENVECS	ON
 
 	P_ZREMOVE		ON
 	P_SPACESHIP		OFF

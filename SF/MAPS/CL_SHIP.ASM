@@ -23,7 +23,6 @@ cl_ship_cont
 friendwait	=	medpspeed*30
 
 	mapwait	9000-friendwait
-;	printlevelfin
 
 	mapmother	0,0,0,3000,mother1,mother1_istrat,mother_CLasteroids
 

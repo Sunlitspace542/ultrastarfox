@@ -1,10 +1,6 @@
 ; SPACE
 map3_2
 
-;
-;	pathcspecial	1000,0000,-100,2700,zaco_0,itachi_a,10,10
-;	pathcspecial	1000,0000,-100,2700,zaco_0,itachi_b,10,10
-;
 	mapwait		3300
 ; M formation
 	szaco2_mapobj	0,2000,0,0,100
@@ -114,7 +110,6 @@ map3_2
 	ENDR
 
 	mapobj	2000,000,100,2000,spacepilon,spacepilon_istrat
-;	pathcspecial	2000,000,-130,4000,zaco_0,itachi_a,2,4
 	pathcspecial	2000,-200,000,4000,zaco_0,itachi_b,2,4
 ;mini_worm
 	special	0000,200,Space_viewCY+100,2300,d_head_0,wormhead_Istrat
@@ -145,7 +140,6 @@ map3_2
 	pathcspecial	2000,200,-200,4000,zaco_0,itachi_b,2,4
 
 	pathcspecial	2000,000,-100,4000,zaco_0,itachi_a,2,4
-;	pathcspecial	3000,-200,000,4000,zaco_0,itachi_b,2,4
 	mapobj	3000,000,200,2000,spacepilon,spacepilon_istrat
 
 	mapobj	2250,0000,0000,4000,meteo_0,meteo0_Istrat

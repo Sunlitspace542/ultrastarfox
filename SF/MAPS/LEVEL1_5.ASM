@@ -7,9 +7,6 @@ level1_5
 
 	mapjsr	map1_5
 
-;	mapwait	4000
-;	setvar.W	bg2Yscroll,172+60
-
 	mapjsr	cl_dive
 
 	mapend__not	level1_6

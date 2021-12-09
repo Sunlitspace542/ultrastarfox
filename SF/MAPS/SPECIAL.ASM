@@ -1,49 +1,6 @@
 specialmap
 	mapwait	5000
 
-
-;	mapmother	8000,0000,0500,2000,mother1,mother1_istrat,map_mine2
-;	mapwait	2000
-;
-;
-;	maprem		mother1
-;
-;	map_setbarshape	solid
-;
-;
-;	map_SBtype1		0,0,-2,0	   ;S
-;	map_SBtypeb		0,-2,-1,0
-;	map_SBtype1		0,0,0,0
-;	map_SBtypeb		0,2,1,0
-;	map_SBtype1		20,0,2,0
-;
-;	map_SBtype4		20,0,-1,0	   ;T
-;
-;	map_SBtype1		0,0,0,0
-;	map_SBtype0		0,2,1,0,3,0
-;	map_SBtype0		0,-2,1,0,5,0
-;	map_SBtype18	0,1,-2,0,3,0   ;A
-;	map_SBtype18	20,-1,-2,0,5,0
-;
-;	map_SBtype19	0,2,1,0,7,0   ;R
-;	map_SBtypeb		0,2,-1,0
-;	map_SBtype1		0,0,0,0
-;	map_SBtype1		0,0,-2,0
-;	map_SBtype0		40,-2,0,0
-;
-;	map_SBtype1		0,0,-2,0  ;F
-;	map_SBtypec		0,-1,0,0
-;	map_SBtype0		20,-2,0,0
-;	map_SBtype0		0,-2,0,0  ;O
-;	map_SBtype0		0,2,0,0
-;	map_SBtype1		0,0,-2,0
-;	map_SBtype1		20,0,2,0
-;;			w,x,y,z,init(0-7),speed
-;	map_SBtype18	0,0,0,0,1,0   ;X
-;	map_SBtype18	0,0,0,0,3,0
-;
-;	mapwait	4000
-;------------------------------------------
 	pathobj	5000,0000,0000,3000,paper_1,paper_1b,10,10
 	pathobj	5000,0300,-100,3000,paper_1,paper_1b,10,10
 	pathobj	6000,-200,100,3000,paper_1,paper_1b,10,10

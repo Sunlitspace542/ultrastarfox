@@ -60,8 +60,5 @@ event
 	special	0000,0*Xlen,space_viewCY+(1*Ylen),dist,s_wark_0,spacebarwalker_Istrat
 	map_SBtype1	4*2,0,1,0
 	mapwait	3000
-;.e12
-;	mapwait	10000	 map2_2
-;	maprem pilon
 	mapgoto	.event1
 

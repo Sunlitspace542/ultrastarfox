@@ -7,7 +7,6 @@ cl_bridge
 	mapCLplayermode	ClearBridge
 	setbgm	bgm_fanfare
 	mapwait	2900
-;	printlevelfin
 
 
 friendwait	=	medpspeed*30

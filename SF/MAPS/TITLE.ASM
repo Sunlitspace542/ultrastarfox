@@ -74,9 +74,6 @@ contmap	setfadedown	quick
 	and	#~pfm_wobble
 	sta	playerflymode
 
-;	lda	pshipflags
-;	ora	#psf_noctrl!psf_nofire
-;	sta	pshipflags
 	end_65816
 
 	mapwait	medpspeed*4
@@ -88,19 +85,6 @@ contmap	setfadedown	quick
 	mapgoto	.ll
 
 waitmap
-;;	setfadedown	quick
-;;	mapwaitfade
-;;	setbg	gameover
-;;	initbg
-;;	setfadeup	quick
-;;	mapcode_jsl	initblack_l
-;;	setvar	stayblack,5
-;;
-;;	pathobj	0,-285,200,3400,gamesh,game,255,0
-;;	pathobj	0,0285,200,3400,oversh,over,255,0
-;;
-;;	pathobj	0,-285,200,3400,gamesh,gameover,255,0
-;;	pathobj	0,0285,200,3400,oversh,gameover,255,0
 
 .ll	mapwait	4000
 	mapgoto	.ll

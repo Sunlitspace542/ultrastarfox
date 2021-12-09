@@ -1,15 +1,6 @@
 map1_3a1
 ;					9 specials
 	mapwait	2500
-
-;	map_farships0	0,-1000,8000,20,-40,1
-;	mapobj	0000,space_minX-4000,space_viewCY-500,6000,ship_1,ship1a_Istrat
-;	setalvar	vel,60
-;	setalvar	roty,160
-;	setalvar	rotx,010
-;	mapwait	4000
-;	mapobj	0000,-400,space_viewcy+200,4000,zaco_7,szaco5_Istrat	; fly out of ship2
-;	mapwait	2000
 	
 	mapobj	0000,space_minX+2000,space_viewCY+600,9000,ship_1,ship1a_Istrat
 	setalvar	vel,60

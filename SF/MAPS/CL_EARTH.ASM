@@ -3,12 +3,10 @@ cl_earth
 	mapplayeroutview
 
 	setbgm	$f1
-;	mapwait	1700	; 700
 	
 	mapCLplayermode	ClearEarth
 	setbgm	bgm_fanfare
 	mapwait	3300
-;	printlevelfin
 
 
 friendwait	=	medpspeed*30

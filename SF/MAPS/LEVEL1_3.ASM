@@ -15,14 +15,6 @@ level1_3
 ;-----------------------------------------------------------------------------
 ; SPACE 
 
-;	mapwait	2000
-;	mapplayeroutview
-;	mapwait	2000
-
-;	mapgoto	.fin
-;	mapgoto	.bigship
-;	mapgoto	.start2
-
 	mapjsr	map1_3a	
 
 
@@ -62,10 +54,6 @@ level1_3
    	mapgoto	.again2
 .oks2
 
-
-;	setrestart
-
-
 ;--------------------------------------------------------
 ; big ship
 .bigship
@@ -86,7 +74,6 @@ level1_3
 	mapobj	1000,-070,-060,4000,bou_1,HARD180yr_ISTRAT
 	incmap	washent
 
-;	setbg	1_3d
 	mapjsr	map1_3d			; washing machine room
 
 .fin

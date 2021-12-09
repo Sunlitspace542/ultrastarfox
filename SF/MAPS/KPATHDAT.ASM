@@ -29,9 +29,6 @@ checkifend	macro
 .lp2	P_ADD	roty,4
 	P_LOOP	16,.lp2
 
-;.lp3	P_ADD	roty,4
-;	P_LOOP	6,.lp3
-
 	P_SET	rotx,0
 	P_SET	roty,0
 .wait	P_GOTO	.wait

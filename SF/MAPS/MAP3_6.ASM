@@ -53,12 +53,6 @@ map3_6
 	mapmother	6000,0000,1035+space_viewcy,1800,mother1,mother2_istrat,map_mine2
 	maprem	mother1
 	cspecial	3000,0000,space_viewCY,4000,asteroid1,misspod_istrat	
-;item or gate
-;
-;	map_setbarshape	solid
-;	map_SBtype11	1,1,-1,0
-;	map_setbarshape	wire
-;	map_SBtype14	0,-1,-1,0
 ;skillfly
 	skillfly_init
 	skillfly_set 0000,space_viewCY,6000,100
@@ -76,11 +70,6 @@ map3_6
 	mapwait	1500
 	skillfly_bonus 0000,0000,space_viewCY,1500,item_7,item7_istrat
 	setalvar	sbyte1,1
-;	map_SBtype6	0,-3,7,0
-;	map_SBtype13	0,3,1,0
-;			w,x,y,z,init(0-7),speed
-;	map_SBtype18	0,0,0,0,1,2   ;X
-;	map_SBtype18	0,0,0,0,3,-2
 
 	mapwait	1000
 ;friend

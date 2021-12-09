@@ -5,27 +5,12 @@ map1_2
 
 	mapwait		1000
 
-;	mapgoto	map12boss
-;-------------------------------------------------------------------------
-;.e12
-;	pathspecial	3000,0000,-100,4000,nullshape,insekikun,10,10
-;	pathspecial	8000,300,Space_viewCY-100,7000,walker_2,pyonta,10,10
-;	pathobj	8000,0000,0000,4000,walker_2,korori,10,10
-;	pathobj	10000,1000,-700,2000,shark,call_fol,10,10
-;	pathobj	10000,-1000,-700,2000,shark,call_fol,10,10
-;	pathobj	8500,0050,-75,2000,clisla_s,l_clisla,10,10
-;	pathobj	8500,0050,-75,2000,clisla_s,r_clisla,10,10
-;	pathobj	10000,800,-170,5000,nullshape,kanihaha,10,10
-;
-;	mapgoto	.e12
 ;-------------------------------------------------------------------------
 .z4test
 	cspecial	1800,0,Space_viewCY-1000,800,zaco_4,szaco0_istrat
 	pathobj	5000,3000,3000,3000,nullshape,astemsg,10,10
 	cspecial	2000,1000,Space_viewCY,800,zaco_4,szaco0_istrat
 	cspecial	5000,1000,Space_viewCY+1000,800,zaco_4,szaco0_istrat
-;hazusu
-;	cspecial	1000,-400,space_viewCY,3000,w_l,winglazerman_istrat ;;;
 ; M formation
 	szaco2_mapobj	0,2000,0,0,100
 	mapwait	500
@@ -136,12 +121,6 @@ map1_2
 	setalvarptr.w	sword1,mapvar1
 	setvarobj	mapvar1
 	mapwait	2500
-;	mapmother	1200,0000,0,4000,mother1,mother1_istrat,mother_1
-;	maprem	mother1
-;	mapwait	2000
-;	mapmother	0200,0000,0,4000,mother1,mother1_istrat,mother_0
-;	maprem	mother1
-;	mapwait	2000
 ;tadpoles
 	cspecial	1000,0200,space_viewcy-500,3000,tadpole,tadpole_Istrat	
 	skillfly_init
@@ -201,28 +180,6 @@ map1_2
 	cspecial	0500,-200,0100,7000,r_hou_0,shou0a_istrat
 
 	mapobj	1000,-400,Space_viewCY-500,7000,big_meteor,big_meteor_istrat
-;;; PAL CUT
-;	cspecial	1000,600,-300,4000,asteroid2,break_meteort_istrat
-;	mapobj	2000,-800,-300,4000,asteroid2,break_meteort_istrat
-;	mapobj	1000,800,400,4000,asteroid2,break_meteort_istrat
-
-;	special	3000,0000,0000,800,cameleon,cameleon2_istrat
-;	mapobj	0400,-500,Space_viewCY+100,4000,asteroid1,slowmeteor_Istrat
-;	cspecial	1000,0000,0000,800,cameleon,cameleon2_istrat
-
-;	special	2500,0200,space_viewcy-200,3000,tadpole,tadpole_Istrat	
-;	mapobj	0200,0200,-300,4000,asteroid2,break_meteort_istrat
-;	pathspecial	1000,300,Space_viewCY-100,7000,walker_2,pyonta,10,10
-;	cspecial	1000,400,-200,3500,asteroid2,break_meteor_istrat
-;	cspecial	1000,0200,space_viewcy,3000,tadpole,tadpole_Istrat	
-;	cspecial	0800,100,-200,3000,asteroid2,break_meteor_istrat
-;	cspecial	1500,-200,space_viewcy-100,3000,tadpole,tadpole_Istrat	
-;	mapobj	1200,100,400,3000,asteroid2,break_meteor_istrat
-;	mapobj	1200,-300,-200,4000,asteroid2,break_meteor_istrat
-;supply_bird
-;	mapobj	2000,-500,Space_viewCY-400,4000,asteroid1,slowmeteor_Istrat
-;	mapobj	2000,-200,Space_viewCY+100,4000,asteroid1,slowmeteor_Istrat
-;;;;;;
 
 	mapmother	07000,0000,0,4000,mother1,mother1_istrat,map_shou0
 	maprem		mother1

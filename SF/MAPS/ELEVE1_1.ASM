@@ -57,15 +57,6 @@ level1_1
 	pathobj	0000,-750,-400,0000,friendship_4,chase6_1,10,10	
 	pathcspecial	2000,-720,-400,0000,zaco_a,chase6_2,10,10	
 
-;	pathobj	0000,00000,-400,-100,friendship_4,frog1_1,10,10
-
-
-;.ll	wipein	fillscreen_circle
-;	mapwait	16000
-;	wipein	mroundwipefill_circle
-;	mapwait	4000
-;	mapgoto	.ll
-
 	setrestart	
 	mapplayermode	onplanet
 	mapjsr	map1_1b

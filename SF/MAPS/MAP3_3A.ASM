@@ -1,31 +1,7 @@
 map3_3a
 
 	mapwait	2500
-;--------------------------------------------------
-;	pathobj	6000,0000,0000,3000,nullshape,trn_ck,10,10
-;.et
-;	mapwait	2000
-;	pathobj	0000,-750,-400,0000,friendship_4,chase6_1,10,10
-;	pathobj	19000,-720,-400,0000,zaco_a,chase6_2,10,10
-;	pathobj	0000,000,-400,-150,friendship_4,chase7_1,10,10
-;	pathobj	19000,000,-400,-150,zaco_a,chase7_2,10,10
-;	pathobj	0000,750,-100,000,friendship_4,chase8_1,10,10
-;	pathobj	0000,3800,-3600,4260,zaco_a,chase8_2,10,10
-;	pathobj	19000,750,-100,000,zaco_a,chase8_3,10,10
-;	pathobj	19000,000,-170,5000,nullshape,kanihaha,10,10
-;	mapwait	19000
-;	pathobj	5000,0000,-100,2000,r_bu_2,e_kururi,10,10
-;	pathobj	4000,1000,-600,1300,zaco_5,cyou,10,10
-;	pathobj	1000,1000,-100,0000,boss_d_4,kamome,10,10
-;	pathobj	10000,-1000,-100,0000,boss_d_4,kamome,10,10
-;	pathobj	10000,0000,-40,3500,stalk,tomset,10,10
-;	pathobj	10000,0000,-100,3500,beeanim,e_bee,10,10
-;	pathobj	10000,0000,0000,3500,walker_2,korori,10,10
-;	pathcspecial	5000,0200,000,6000,f_fish,e_flyfish,10,10
-;	pathobj	5000,-200,000,6000,f_fish,e_flyfish,10,10
-;
-;	mapgoto	.et
-;-----------------------------------------------------
+
 	pathobj	1000,0000,0000,2500,nullshape,e_flower,10,8
 	pathobj	1000,-200,0000,2500,nullshape,e_flower,10,8
 	pathobj	1000,0200,0000,2500,nullshape,e_flower,10,8

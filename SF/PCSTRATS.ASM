@@ -75,17 +75,6 @@ playerclearbridge_strat
 	s_jmp			playeronbridge_strat
 
 playerclearbridge2_init
-;	s_set_strat		x,playerclearbridge2_strat
-;playerclearbridge2_strat
-;	s_start_strat
-;
-;	s_beqdec_var		B,psvar_byte1,playerclearbridge3_init
-;
-;
-;	s_add_alvar		W,x,al_worldx,#2
-;
-;	s_jmp			playeronbridge_strat
-
 
 playerclearbridge3_init
 	jsr			dupplayer 
@@ -114,7 +103,6 @@ playerEscapeNucleus_Istrat
 	s_set_speed		x,#0		  
 	s_set_alvar		B,x,al_roty,#0
 	s_set_alsflag		x,colldisable  
-;	s_set_speed		x,#30	
 
 playerEscapeNucleus_strat
 	s_start_strat	
@@ -130,11 +118,8 @@ playerEscapeNucleus2_init
 	s_set_alvar		B,x,al_sbyte3,#15
 	s_set_vartobeobj	boostobj,x
 	boost_sprite
-;	s_clr_alsflag		x,sflag4
 playerEscapeNucleus2_start
 	s_start_strat	
-
-;	s_speedto		x,#40,1
 
 	s_decbne_alvar		B,x,al_sbyte3,playerEscapeNucleus_cont
 	s_set_alvar		B,x,al_sbyte3,#1
@@ -148,10 +133,6 @@ playerEscapeNucleus2_start
 	s_add_alvar		B,x,al_roty,#8
 	brl			playerEscapeNucleus_cont
 .boost
-;	s_jmp_alsflag		x,sflag4,playerEscapeNucleus_cont
-;	s_set_alsflag		x,sflag4
-;	s_set_vartobeobj	boostobj,x
-;	boost_sprite
 
 playerEscapeNucleus_cont
 
@@ -440,8 +421,6 @@ playerClearShip_strat
 	cmp		#4000
 	bmi		.nrem
 	a8
-;	lda			#nullpship
-;	s_jsl			select_ship_l
  	s_set_alsflag		x,invisible
 	a16
 .nrem
@@ -499,7 +478,6 @@ playerClearShip2_Istrat
 	s_set_alvar		B,x,al_rotz,#0
 	s_set_alvar		W,x,al_worldx,#0
 	s_set_alvar		W,x,al_worldy,#space_viewcy
-;	s_add_var		W,viewposz,#1000
 	s_copy_alvar2var	W,x,viewposz,al_worldz
 	s_add_var		W,viewposz,#1832
 	s_add_var		W,viewposx,#-20
@@ -626,15 +604,8 @@ playerClearTurn2_init
 	s_clr_alsflag		y,sflag2
 	s_set_strat		x,playerClearTurn2_strat
 	s_set_var		W,outvy,#0
-;	s_set_var		W,psvar_word1,#30
 playerClearTurn2_strat
 	s_start_strat		
-;	s_decbne_var		W,psvar_word1,.nadd
-;	s_set_var		W,psvar_word1,#1
-
-;	s_jmp_varEQ		W,outvy,#-(deg22)*256,.nadd
-;	s_sub_var		W,outvy,#256/4
-;.nadd
 	s_jmp			playerinspace_strat
 
 
@@ -769,7 +740,6 @@ playerCHASE2_init
 	s_and_var		B,pshipflags3,#~psf3_enginesnd
 playerCHASE2_strat
 	s_start_strat
-;	s_add_var		W,outvy,#64
 	s_jmp			playerinSPACE_strat
 
 
@@ -990,7 +960,6 @@ set_playerOutOfLB2a_l
 
 playerOutofLB2a_Istrat
 	s_set_strat		x,playeroutofLB2a_strat
-;	jsl			makeLexpobj_srou
 	
 	s_set_vartobeobj	boostobj,x
 	s_set_speed		x,#maxpspeed
@@ -1009,7 +978,6 @@ set_playerOutOfLB2_l
 	s_set_objtobeplayer	x
 	s_set_strat		x,playerOutOfLB2_Istrat
 	s_set_var		W,outvx,#-deg90*256
-;	jsl		calcbgscroll_l
 	rtl
 
 playerOutofLB2_Istrat
@@ -1026,7 +994,6 @@ playerOutofLB2_Istrat
 playerOutofLB2_strat
 	s_start_strat
 	s_add_alvar		W,x,al_worldz,#medpspeed
-;	jsl		calcbgscroll_l
 	s_end_strat
 
 
@@ -1107,7 +1074,6 @@ playerOutofLB3_strat
 	
 
 	s_add_alvar		W,x,al_worldz,#medpspeed
-;	jsl		calcbgscroll_l
 	s_end_strat
 
 
@@ -1120,12 +1086,9 @@ set_playerclearcolony_l
 
 playerclearcolony_Istrat
 	s_playerctrl	off
-;	s_or_var		B,gameflags,#gf_noZremove
 	s_set_strat		x,playerclearcolony_strat
 	jsr			dupplayer
 	s_set_strat		y,pshipcolony_Istrat
-;	s_set_vartobeobj	viewtoobj,y
-;	s_set_var		B,viewtype,#viewtype_toobj
 playerclearcolony_strat
 	s_start_strat
 	s_add_alvar		W,x,al_worldz,#medpspeed

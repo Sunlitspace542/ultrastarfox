@@ -19,10 +19,8 @@
 	pathcspecial	0000,-820,-400,0000,zaco_a,chase6_2,10,10
 
 	pathcspecial	0400,0000,-50,3200,bom_wing,ponpon,2,8
-;	cspecial	0500,-300,-50,2200,PARA_0,PARA_ISTRAT
 	mapobj	0000,-1000,0000,5000,BU_0,HARD180YR_ISTRAT
 	mapobj	2000,01000,0000,5000,BU_0,HARD180YR_ISTRAT
-;	special	0000,0200,-800,-500,zaco_a,zaco1R_istrat
 ;rader
 	mapobj	0000,-300,-110,4000,RADER_0,RADER0_ISTRAT
 	mapobj	0000,-300,0000,4000,RADER_1,RADER1_ISTRAT
@@ -141,11 +139,8 @@
 	mapobj	0000,-1000,0000,5000,TOWER_2,TOWER0_ISTRAT
 	mapobj	2000,01000,0000,5000,TOWER_2,TOWER0_ISTRAT
 
-;	cspecial	0000,-500,-250,4000,kamikaze,zaco3_istrat
 	pathobj	0000,0300,0000,4000,tow_0,tow_0,10,10
 	pathobj	3000,-300,0000,4000,tow_0,tow_0,10,10
-;	mapobj	0000,0300,0000,4000,HOUDAI_0,HOUDAI_ISTRAT
-;	mapobj	3000,-300,0000,4000,HOUDAI_0,HOUDAINS_ISTRAT
 
 	mapobj	0000,0600,0000,4000,BU_4,HARD180YR_ISTRAT
 	mapobj	1000,-600,0000,4000,BU_5,HARD180YR_ISTRAT
@@ -162,7 +157,7 @@
 	pathcspecial	3000,0000,-350,-150,zaco_a,chase7_2,10,10
 	pathcspecial	0000,0150,-50,3100,bom_wing,ponpon,10,10
 
-;;;;;	mapHARDRot	wait,   x,   y,   z, shape, x,y,z(+or- speed)
+;	mapHARDRot	wait,   x,   y,   z, shape, x,y,z(+or- speed)
 	mapHARDRot	0000,0400,0000,4000,tower_2,0,4,0
 	mapHARDRot	0800,-400,0000,4000,tower_2,0,-4,0
 	skillfly_bonus 0000,0000,-80,1500,gate_0,gate3_istrat

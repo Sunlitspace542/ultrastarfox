@@ -1,11 +1,11 @@
 *****************************************************************
-*								*
-* SGOBJ.ASM							*
-*								*
-* 6502 3D SHAPE KERNAL						*
-*								*
-* by P. R. Warnes, Copyright 1990				*
-*								*
+*								                                *
+* OBJ.ASM							                            *
+*								                                *
+* 6502 3D SHAPE KERNAL						                    *
+*								                                *
+* by P. R. Warnes, Copyright 1990				                *
+*								                                *
 *****************************************************************
 
 
@@ -15,7 +15,6 @@ init3d2
 init3d_l
 	php
 	ai8
-;	jsr	gameclipwindow
 
 init3d1
 	lda	#$3a
@@ -26,8 +25,6 @@ init3d1
 	sta	rand+2
 	lda	#$7f
 	sta	rand+3
-
-;	colouri	linecolour
 
 	stz	pauseflag
 	stz	expcnt
@@ -212,31 +209,15 @@ crotmat16_l
 
 showobj_l
 
-;	lda strptr		; if strptr<>0 then showmess
-;	lbne showmess
-
-;	lda shapenum		; get shape data ptr
-;	asl a
-;	tax
-;	lda shapetab,x
-;	sta sptr
-;	lda shapetab+1,x
-;	sta sptr+1
-
 
 
 showobj0_l
-;	lda	expcnt
-;	beq	.ok
-;	rtl
 .ok
 
 
 
 	lda	gameframe	; animate shading
 	and	#15
-;	sta	tshade
-;	stz	tshade+1
 
 	ldy #0			; get point data ptr
 	lda (sptr),y
@@ -272,7 +253,6 @@ showobj0_l
 	ldy	#sh_shift
 	lda	(sptr),y
 
-;	lda	#0		; shape scale
 	sta.l	m_shift
 	lda	#0
 	sta.l	m_shift+1
@@ -486,7 +466,6 @@ divu3115_l
 	rtl
 
 
-;divu3216
 divu3216test
 divu3115
 	phx
@@ -809,9 +788,6 @@ mshowgrid_l
 	lda	gridz
 	sta.l	m_gridz
 
-;	lda	#mshowgrid>>16
-;	ldx	#mshowgrid&$ffff
-;	jsl	runmario_l
 	ai8
 
 	rtl
@@ -876,11 +852,7 @@ mshowdust_l
 	sta.l	m_wmat32
 	lda	wmat33w
 	sta.l	m_wmat33
-			
-;	a8i16
-;	lda	#mshowdust>>16
-;	ldx	#mshowdust&$ffff
-;	jsl	runmario_l
+
 	ai8
 	rtl
 

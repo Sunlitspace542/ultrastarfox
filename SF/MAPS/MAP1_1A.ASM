@@ -1,17 +1,14 @@
 map1_1a
 fudge	=	250
 
-;	mapobjnomem	0000,0000,0000,fudge,opening,nocoll_Istrat
 	mapobjnomem	0000,0000,0000,fudge,op_0,gnd_Istrat
 	setalxvar	depthoffset,1
 	mapobjnomem	0000,0000,0000,fudge,op_1,nocoll_Istrat
 	setalxvar	depthoffset,1
-;	mapobjnomem	0000,0000,0000,fudge+(100<<3),opening,nocoll_Istrat	; 220
 	mapobjnomem	0000,0000,0000,fudge+(100<<3),op_0,gnd_Istrat	; 220
 	setalxvar	depthoffset,1
 	mapobjnomem	0000,0000,0000,fudge+(100<<3),op_1,nocoll_Istrat	; 220
 	setalxvar	depthoffset,1
-;	mapobjnomem	0000,0000,0000,fudge+(200<<3),opening,nocoll_Istrat	; 240
 	mapobjnomem	0000,0000,0000,fudge+(200<<3),op_0,gnd_Istrat	; 240
 	setalxvar	depthoffset,1
 	mapobjnomem	0000,0000,0000,fudge+(200<<3),op_1,nocoll_Istrat	; 240
@@ -31,7 +28,6 @@ fudge	=	250
 
 .here2	
 	mapwait		(100<<3)-medpspeed
-;	mapobjnomem	0000,0000,0000,fudge+(200<<3),opening,nocoll_Istrat
 	mapobjnomem	0000,0000,0000,fudge+(200<<3),op_0,gnd_Istrat
 	setalxvar	depthoffset,1
 	mapobjnomem	0000,0000,0000,fudge+(200<<3),op_1,nocoll_Istrat
@@ -43,8 +39,6 @@ fudge	=	250
 	mapwait		(100<<3)-medpspeed
 	mapobjnomem	0000,0000,0000,fudge+(200<<3),op_2,gnd_Istrat
 	setalxvar	depthoffset,1
-;	mapobjnomem	0000,0000,0000,fudge+(200<<3),op_1,nocoll_Istrat
-;	setalxvar	depthoffset,1
 	mapif	chkstratdone1,.fin
 	mapgoto		.here3
 .fin

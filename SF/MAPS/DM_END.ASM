@@ -6,7 +6,6 @@
 	mapjsr	Ltunnelexit
 	mapwait	200
 	setbg	1_7a
-;	maptexitwait	-200
 	mapwait	medpspeed*3
 	initbg
 
@@ -58,27 +57,18 @@ fdeadmes_frog	=	60
 	mapmsg	46
 	mapgoto	.df
 .nf1	
-;	setvar.b	frog,1
-;	mapmsg	60
-;	setvar.b	frog,0
 .df
 	mapjmpfrienddead	bunny,.nb1
 	mapwait	friendwait
 	mapmsg	26
 	mapgoto	.dr
 .nb1	
-;	setvar.b	bunny,1
-;	mapmsg	41
-;	setvar.b	bunny,0
 .dr
 	mapjmpfrienddead	cock,.nc1
 	mapwait	friendwait
 	mapmsg	6
 	mapgoto	.dc
 .nc1
-;	setvar.b	cock,1
-;	mapmsg	21
-;	setvar.b	cock,0
 .dc
 
 
@@ -96,13 +86,6 @@ fdeadmes_frog	=	60
 	end_65816
 
 	meters_off		trans
-
-;	start_65816
-;	a8
-;	stz	frog
-;	stz	cock
-;	stz	bunny
-;	end_65816
 
 ; space end demo.
 
@@ -147,8 +130,6 @@ fdeadmes_frog	=	60
 	mapwait	1
    	mapgoto	.endwait1
 .endcont1
-	
-;	mapwait	2500
 
 	setvar.n	levelfinished,6
 

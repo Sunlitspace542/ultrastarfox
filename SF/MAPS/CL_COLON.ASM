@@ -8,7 +8,6 @@ gpipescale	=	16
 	mapobjnomem	0,0,-60,4200,pipe_8,colonyexit_Istrat
 	mapwait		4000
 
-;pdist	=	((120/2)<<4)+20*pipescale
 pdist	=	960+(20*pipescale)
 
 	setbg	2_6b

@@ -4,7 +4,6 @@ cl_warp
 
 	setbgm	$f1
 
-;	mapwait	2000
 	setbgm	bgm_fanfare
 	mapCLplayermode	Warp
 	mapwait	2800		; MUST be 2800 for music timing ! 

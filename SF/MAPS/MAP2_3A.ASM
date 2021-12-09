@@ -4,10 +4,6 @@ map2_3a
 	SETVAR.N	INFOG,1
 	mapwait	2000
 ;-----------------------------------------------------------------------
-;.e2_3
-;	pathobj	15000,0000,-170,3000,walk_4_0,e_kani_0,10,10
-;	mapgoto	.e2_3
-;-----------------------------------------------------------------------
 	pathobj	0000,0400,-120,2500,r_but_2,pinita_b,10,10
 	pathobj	0000,-400,-120,2500,r_but_2,pinita_b,10,10
 	pathobj	2000,0000,-120,2500,r_but_2,pinita_a,10,10
@@ -131,21 +127,11 @@ map2_3a
 	sta.l	m_planetstars+1
 
 	end_65816
-;-
 	pathspecial		0000,-2100,-200,3500,zaco_a,egu4,10,10
-;	pathcspecial	0000,-2300,-300,3000,zaco_5,egu4,10,10
 	pathcspecial	4000,-2300,-100,2500,zaco_5,egu4,10,10
 
 	pathcspecial	0000,-150,0000,5000,heli,e_heli,10,10
 	pathcspecial	4200,0150,0000,5800,heli,e_heli,10,10
-;	maphardrot	0000,0000,-75,5000,clisla_m,0,8,0
-;	pathobj	0000,-200,-110,5000,clisla_s,r_clisla,10,10
-;	pathobj	1000,200,-20,5000,clisla_s,l_clisla,10,10
-;	mapobj	0000,-600,0000,5000,clisla_l,hard180yr_istrat
-;	mapobj	1000,1000,0000,5000,clisla_l,hard180yr_istrat
-;;;;
-;;	mapHARDRot	0600,-400,-100,4000,clisla_s,0,12,0
-;	pathobj	0600,-400,-100,4000,clisla_s,mini_cli,10,10
 
 	pathobj	0000,0000,-400,-150,friendship_4,chase7_1,10,10
 	pathcspecial	1600,0000,-400,-150,zaco_a,chase7_2,10,10
@@ -178,28 +164,6 @@ map2_3a
 	pathobj	1500,-300,-120,3000,r_but_2,pinita_b,10,10
 	pathobj	1500,0100,-120,3000,r_but_2,pinita_a,10,10
 	skillfly_bonus 0000,0100,-120,1700,gate_0,gate3_istrat
-;truck
-;
-;
-;	mapobj	0000,-300,0000,5000,clisla_l,hard180yr_istrat
-;	tstart	0,0,east
-;	teast
-;	teast
-;;	tanothertruck
-;;	tanothertruck
-;	tsouth
-;	tsouth
-;	tsouth
-;	tsouth
-;	tsouth
-;	teast
-;	teast
-;	teast
-;	teast
-;	tright
-;	mapwait	10*tsize*4
-;
-;misstank
 	cspecial	0000,1000,0000,3000,m_tank,misstank_istrat
 	setalvar	roty,deg90
 	addalvarptr.w	worldx,player_posx
@@ -211,8 +175,6 @@ map2_3a
 
 	special	0400,0550,0000,4000,s_tank_0,tank3_istrat
 	pathcspecial	0400,0000,0000,4000,tank_1,e_tank,10,10
-;	pathspecial	0000,-2300,-200,3000,zaco_a,egu4,10,10
-;	pathspecial	0000,2300,-200,2500,zaco_a,egu4,10,10
 	special	6000,-550,0000,4000,s_tank_0,tank3_istrat
 	pathobj	0000,-750,-400,0000,friendship_4,chase6_1,10,10
 	pathcspecial	4000,-720,-400,0000,zaco_a,chase6_2,10,10
@@ -235,8 +197,6 @@ kichi2_pos	=	kichi2_pos+kichi2_len
 	mapobj	0000,0000,0000,kichi2_pos,kichi_3,kichi2_istrat
 kichi2_pos	=	kichi2_pos+kichi2_len
 	mapobj	0000,0000,0000,kichi2_pos,kichi_3,kichi2_istrat
-;kichi2_pos	=	kichi2_pos+kichi2_len
-;	mapobj	0000,0000,0000,kichi2_pos,kichi_3,kichi2_istrat
 kichi2_pos	=	kichi2_pos+kichi2_len/2
 	mapobj	0000,0000,0000,kichi2_pos,k_door,kdoor2_istrat
 	mapobj	kichi2_pos-kichi2_len-kichi2_len/2-medpspeed*20,0000,0000,bigbasez,kichi_0,massivebase_istrat

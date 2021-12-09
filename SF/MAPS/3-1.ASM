@@ -1,5 +1,3 @@
-
-;	IFEQ	1
 ;3-1-1;
 	setrestart
 	pathobj	1000,3000,0000,1000,nullshape,e_gate,10,10
@@ -246,13 +244,6 @@
 	pathobj	0000,-1400,0000,5000,nullshape,robotwithlog,6,4
 	setalxvar.w	pword1,boss_7_1
 	setalvar	roty,-deg45-deg22
-;	mapwait	1000
-;	special	1100,-2000,-600,5100,zaco_a,zaco0_istrat
-;	cspecial	3000,-2000,-600,4500,zaco_5,zaco0_istrat
-;35 specials
-;chase 2 times
-
-;	ENDC
 
 
 

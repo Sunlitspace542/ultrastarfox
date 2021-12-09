@@ -28,10 +28,6 @@ map3_3b
 	mapobj	500,-200,0000,1000,nullshape,torpedo_Istrat
 	mapobj	500,0200,0000,1000,nullshape,torpedo_Istrat
 
-;	mapobj	2000,0150,0000,1000,saucer,saucer_istrat
-;	mapobj	1200,0000,0000,0100,saucer,saucer_istrat
-;	mapobj	7000,-150,0000,0100,saucer,saucer_istrat
-
 	mapobj	500,-200,0000,1000,nullshape,torpedo_Istrat
 	mapobj	500,0200,0000,1000,nullshape,torpedo_Istrat
 

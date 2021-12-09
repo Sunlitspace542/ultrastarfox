@@ -11,7 +11,6 @@ pipescale	=	16
 	mapobjnomem	0,0,-60,4200,pipe_9,colonyexit_Istrat
 	mapwait		4000
 
-;pdist	=	((120/2)<<4)+20*pipescale
 pdist	=	960+(20*pipescale)
 
 	setbg	1_3da
@@ -43,13 +42,6 @@ pdist	=	960+(20*pipescale)
 	mappipewait	
 	mappipewait	
 	mappipewait	
-
-;	start_65816
-;	a8
-;	lda	pshipflags3
-;	ora	#psf3_forcebrake
-;	sta	pshipflags3
-;	end_65816
 
 
 

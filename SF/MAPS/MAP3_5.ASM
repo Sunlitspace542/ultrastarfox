@@ -2,10 +2,6 @@ map3_5
 
 high	=	-600
 ;--------------------------------------------------------------------------
-;.e3_5
-;	pathcspecial	6000,0000,-600,3300,hou_5,saka_hou,10,10
-;	mapgoto	.e3_5
-;--------------------------------------------------------------------------
 ;	mapwait	0100
 				;start
 	mapobj	0000,-600,0000,0800,RO_4,rockhard_ISTRAT    ; L      R  ;
@@ -67,9 +63,6 @@ high	=	-600
 ;friend
 	pathobj	0000,-750,-400,0000,friendship_4,chase6_1,10,10
 	pathobj	1500,-750,-400,0000,zaco_a,chase6_2,10,10
-;	mapobj	0000,-700,-600,5000,RO_6,hard180yr_ISTRAT
-;	setalvar	rotz,deg180
-;	mapwait	0500
 	skillfly_bonus 0000,0000,-120,1300,item_5,item5_istrat
 	setalvar	sbyte1,1
 	mapobj	0000,0700,-600,4000,RO_6,hard180yr_ISTRAT
@@ -129,7 +122,6 @@ high	=	-600
 	setalvar	rotx,deg90
 	pathspecial	0000,-150,0000,3000,s_tank_0,e_tank,10,10
 	pathspecial	2000,150,0000,3000,s_tank_0,e_tank,10,10
-;	mapobj	2000,1500,00,5000,RO_6,hard180yr_ISTRAT 
 	mapobj	0000,-400,-600,4000,bu_0,hard180yr_ISTRAT
 	setalvar	rotz,deg180
 	mapobj	0000,0400,-600,4000,bu_0,hard180yr_ISTRAT

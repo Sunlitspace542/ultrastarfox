@@ -9077,13 +9077,6 @@ save
 
 	P_GOSUB			friend_inib
 
-;	P_WEAPON		friendelaser
-;	P_TRIGGER		yamete,whenhitbyplayer
-;	P_TRIGGER		recover,whenhit
-;	P_TRIGGER		clpby2,32
-;	P_RELTOPLAYER	ON
-;	P_ALWAYSGENVECS	ON
-
 	P_ZREMOVE		ON
 	P_SPACESHIP		OFF
 	P_SOUND		1
@@ -9602,11 +9595,6 @@ display_pword1
 	P_PULL	coltab
 
 	P_RETURN
-
-; pword1/coltab = pbyte1
-; pword1 = number that we are displaying
-; coltab = divisor
-; returns pbyte1 = result
 
 .dividedown
 	P_SET	pbyte1,-1

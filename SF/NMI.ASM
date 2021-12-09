@@ -26,13 +26,7 @@ copy_to_0101_l
 
 nmihan
 	blink	2
-;	rti		;$0101	brk
-;	nop		;$0102
-;	nop		;$0103
 	blink	2
-;	rti		;$0104	cop
-;	nop		;$0105
-;	nop		;$0106
 	brl	.nmi	;$0108	NMI
 	nop		;$010b
 .irq	ai16		;$010c	irq

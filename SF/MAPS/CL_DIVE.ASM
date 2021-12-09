@@ -1,12 +1,10 @@
 cl_dive
-;	mapwait	2600
 	mapplayeroutview
 	setbgm	$f1
 
 	setbgm	bgm_fanfare
 	mapCLplayermode	Dive
 	mapwait	2800
-;	printlevelfin
 	
 
 friendwait	=	medpspeed*30

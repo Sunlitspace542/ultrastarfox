@@ -4,7 +4,6 @@
 
 	incpublics sgtabs.ext
 tabstart
-;	?tabstart 
 	incbinfile data\etabs.dat
 
 alogtab8ul	equ tabstart

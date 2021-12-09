@@ -1,5 +1,4 @@
 
-;;	mapmother	0000,0000,0000,1000,mother1,mother1_istrat,map_roadlines
 	mapobj	1000,-400,-60,1000,air_1,madbiker_istrat
 	mapobj	1000,-300,-60,0300,air_1,madbiker_istrat
 .mad	mapobj	1000,-050,-060,4000,WALL_4,HARD180yr_ISTRAT
@@ -59,7 +58,6 @@
 	mapobj	0000,40,0,2400,line_2,roadline_istrat
 	mapobj	0000,20,0,3100,line_2,roadline_istrat
 	mapobj	0000,00,0,3400,line_2,roadline_istrat
-;	mapobj	0000,80,0,3600,wall_2,hard180YR_istrat
 	mapobj	0000,90,-60,3600,bou_1b,hard180YR_istrat
 	maprts
 

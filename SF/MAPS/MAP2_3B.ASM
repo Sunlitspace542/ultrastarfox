@@ -45,14 +45,6 @@ map2_3b
 
 ;---------------------------------------------------
 
-;	mapobj	0050,0000,0000,3000-2000,sea_0_0,seamon_Istrat
-;	mapobj	0000,-100,0000,3100-2000,sea_0_0,seamon_Istrat
-;	mapobj	0050,0100,0000,3100-2000,sea_0_0,seamon_Istrat
-;	mapobj	0000,-200,0000,3200-2000,sea_0_0,seamon_Istrat
-;	mapobj	0050,0200,0000,3200-2000,sea_0_0,seamon_Istrat
-;	mapobj	0000,-300,0000,3300-2000,sea_0_0,seamon_Istrat
-;	mapobj	8000,0300,0000,3300-2000,sea_0_0,seamon_Istrat
-
 	mapgoto	.waitabit
 .carryon
 	mapwaitboss	nosound

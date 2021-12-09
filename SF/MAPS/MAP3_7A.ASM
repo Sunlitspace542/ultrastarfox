@@ -1,6 +1,4 @@
 restart3_7
-;	mapplayermode	onplanet
-;	setvar	keeppstrat,1
 	mapwait	2000
 	mapgoto	cont3_7
 
@@ -26,10 +24,6 @@ cont3_7
 	mapobj	0200,-300,0,3000,bu_0,hard180YR_Istrat
 	map_setbarshape	solid
 
-; twisty thing.
-;map_spacebarIC	x,y,z,init Z rot,speed
-;map_spacebarX		x,y,z,init Z rot
-;map_spacebarZ		x,y,z,init Z rot
 .ougi
 	map_spacebarIC	0,0,15,0,-2
 	map_spacebarX	-2,0,-15,0

@@ -38,8 +38,6 @@ map1_3c
 	pathcspecial	0800,500,-100,-100,bzaco_8,patret,10,10
 	pathcspecial	4000,-400,200,-100,bzaco_8,patret,10,10
 	cspecial	1000,0000,0200,4000,s_hou_0,shou0_istrat
-;supply_bird
-;	pathobj	1000,-380,-180,0,my_bird,my_bird,10,10
 
 
 spsdist	=	13000
@@ -78,10 +76,6 @@ sphigh	equ	6000
 
 
 	incmap	1-3-t3
-
-
-;	mapjsr	Mtunnelexit
-;	setbgm	$f1	; fade out music
 
 
 	maprts

@@ -61,11 +61,6 @@ spsdist	=	6000
 	mapgoto	.loop2
 
 .again
-;	mapobj	0000,-100,space_viewcy+100,1500,zaco_7,szaco5_Istrat	; fly out of ship2
-;	mapwait		1000
-;	mapobj	0000,0100,space_viewcy-100,1500,zaco_7,szaco5_Istrat	; fly out of ship2
-;	mapwait		1000
-;	mapobj	0000,-100,space_viewcy,1500,zaco_7,szaco5_Istrat	; fly out of ship2
 	mapgoto	map1_3a2
 	
 

@@ -1675,7 +1675,6 @@ sa_max	=	400
 	P_SHAPEDEAD	.spawn
 	P_RETURN
 .spawn
-;	P_QSPAWN	walker_0,dintro2,10,10
 	P_RETURN
 
 .keep4000
@@ -1763,12 +1762,6 @@ sa_max	=	400
 	ENDC
 
 ; non exploding meteor without tadpoles
-
-;.createsmallones
-;	P_FORCE		pexplode
-;	P_SPAWN		0,0,0,-10,-10+deg180,-10,asteroid1,break,4,12
-;	P_SPAWN		0,0,0,10,10+deg180,10,asteroid1,break,4,12
-;	P_RETURN
 
 ; meteor fragments (with 50% chance of tadpoles)
 	START_PATH	break1
@@ -1925,7 +1918,6 @@ preturn	P_RETURN
 .zipright	P_DO		11
 	P_ADD		worldx,150
 	P_NEXT
-;	P_LOOP		10,.zipright
 .prwait
 	P_TRAIL		OFF
 	P_WAIT		60

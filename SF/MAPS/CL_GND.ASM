@@ -1,7 +1,4 @@
 cl_ground
-;	mapplayeroutview
-
-;	mapwait	1000               DON'T REMOVE COMENT
 
 	setbgm	$f1
 

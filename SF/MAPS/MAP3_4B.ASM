@@ -11,9 +11,6 @@ map3_4b
 	special		1500,0000,-100,4000,s_hou_0,shou0_istrat
 	cspecial	1000,-400,200,4000,r_hou_0,shou0a_istrat
 	pathcspecial	1000,0000,-200,4000,zaco_0,itachi_b,2,4
-;	special	0400,0000,space_viewCY+500,-100,swing,swing_Istrat
-;	mapobj	0000,-200,space_viewCY+600,-100,swing,swing_Istrat
-;	mapobj	6000,0200,space_viewCY+600,-100,swing,swing_Istrat
 
 ;friend
 	pathobj	0000,-900,0000,0000,friendship_4,chase2_1,10,10
@@ -39,18 +36,13 @@ map3_4b
 	skillfly_bonus 0000,0,0,1500,item_5,item5_istrat
 	setalvar	sbyte1,1
 
-;map_SBtypeNO(0-19)		wait,x,y,z,init(0-7),speed
-
-;big_missille
+;big_missile
 
 	mapobj	0500,-200,0,4000,pole_0,pole0_istrat
 	mapobj	2000,0000,space_viewcy,4000,big_m,misspod_istrat
 	map_SBtype7	1,5,1,0
 	mapobj	0500,200,100,4000,pole_0,pole0_istrat
-;	special	000,0200,0100,4000,r_hou_0,shou0a_istrat
 	mapobj	2000,0200,space_viewCY-100,4000,big_m,misspod_istrat	
-;	map_SBtype8	4,0,3,0
-;	map_SBtype13	2,-2,-1,0
 	mapobj	1000,-100,space_viewCY+200,4000,big_m,misspod_istrat
 	map_SBtype6	1,4,-1,0
 ;colony
@@ -58,7 +50,6 @@ map3_4b
 	mapobj	0200,4*Xlen,space_viewCY+(0*Ylen),5000,colony3L,nocoll_Istrat
 	map_SBtype13	10,-3,0,0
 	map_SBtype6	4,-4,-1,0
-;;;;;	pathobj	000,0000,-700,1000,nullshape,check,10,10
 ;windmill
 	special	0000,1800,space_viewCY-100,4000,round_0,windmill_istrat
 	setalvar	roty,064	;deg90
@@ -171,8 +162,6 @@ map3_4b
 ;friend
 	pathobj	0000,0000,0400,0000,friendship_4,chase3_1,200,10
 	pathobj	0000,0000,400,0000,zaco_b,chase3_2,10,10
-
-;;;;;;	pathobj	000,0000,-700,1000,nullshape,check,10,10
 ;colony
 	mapobj	0000,-4*Xlen,space_viewCY+(0*Ylen),5000,colony3R,nocoll_Istrat
 	mapobj	0000,4*Xlen,space_viewCY+(0*Ylen),5000,colony3L,nocoll_Istrat
@@ -182,21 +171,10 @@ map3_4b
 	map_SBtype8	0,-1,0,0
 	map_SBtype8	4,1,0,0
 	maploop	.sbbar1,06
-;	map_setbarshape	wire
-;.sbbar2
-;	map_SBtype8	0,-1,0,0
-;	map_SBtype8	4,1,0,0
-;	maploop	.sbbar2,02
-;	map_setbarshape	solid
-;.sbbar3
-;	map_SBtype8	0,-1,0,0
-;	map_SBtype8	4,1,0,0
-;	maploop	.sbbar3,02
 ;colony
 	mapobj	0000,-4*Xlen,space_viewCY+(0*Ylen),5000,colony3R,nocoll_Istrat
 	mapobj	0000,4*Xlen,space_viewCY+(0*Ylen),5000,colony3L,nocoll_Istrat
 
-;	map_setbarshape	wire
 	pathcspecial	00,-300,-100,4000,zaco_0,itachi_a,2,4
 .sbbar4
 	map_SBtype8	0,-1,1,0
@@ -214,7 +192,6 @@ map3_4b
 	map_SBtype8	0,-1,0,0
 	map_SBtype8	4,1,0,0
 	maploop	.sbbar6,02
-;;;;;	pathobj	000,0000,-700,1000,nullshape,check,10,10
 ;colony
 	mapobj	0000,-4*Xlen,space_viewCY+(0*Ylen),5000,colony3R,nocoll_Istrat
 	mapobj	0000,4*Xlen,space_viewCY+(0*Ylen),5000,colony3L,nocoll_Istrat
@@ -226,25 +203,11 @@ map3_4b
 	map_SBtype8	0,0,1,0
 	map_SBtype8	4,0,-1,0
 	maploop	.sbbar7,04
-;	map_setbarshape	wire
-;.sbbar8
-;	map_SBtype8	0,0,1,0
-;	map_SBtype8	4,0,-1,0
-;	maploop	.sbbar8,02
-;	map_setbarshape	solid
 	cspecial	0000,0,space_viewCY+(1*Ylen),dist+(0*Zlen),Bwarker_3,spacebarwalker_Istrat
 
 .sbbar9
 	map_SBtype8	0,0,1,0
 	map_SBtype8	4,0,-1,0
-;	maploop	.sbbar9,04
-;	map_setbarshape	wire
-;.sbbara
-;	map_SBtype8	0,0,1,0
-;	map_SBtype8	4,0,-1,0
-;	maploop	.sbbara,02
-;;;;;	pathobj	000,0000,-700,1000,nullshape,check,10,10
-;	map_setbarshape	solid
 	special	0000,0,space_viewCY+(1*Ylen),dist+(0*Zlen),s_wark_0,spacebarwalker_Istrat
 
 ;colony
@@ -256,13 +219,6 @@ map3_4b
 	map_SBtype8	4,0,-1,0
 	maploop	.sbbarb,04
 
-;	map_setbarshape	wire
-;.sbbarc
-;	map_SBtype8	0,0,1,0
-;	map_SBtype8	4,0,-1,0
-;	maploop	.sbbarc,02
-;
-;	map_setbarshape	solid
 	map_SBtype8	0,0,1,0
 	map_SBtype8	8,0,-1,0
 ;skillfly
@@ -282,23 +238,17 @@ map3_4b
 	mapwait		3000
 	skillfly_bonus 0000,-50,0,2000,gate_0,gate3_istrat
 	map_SBtype14	4,0,0,0
-;	map_setbarshape	wire
-;	mapobj	0500,-200,-100,4000,pole_0,pole0_istrat
 	map_SBtypea	2,-2,1,5	       ;	8,-5,0,0
 	map_SBtype8	2,4,0,5	       ;	8,-5,0,0
 	map_SBtypec	2,2,-1,5	       ;	8,-5,0,0
 	map_SBtypeb	2,-1,0,5	       ;	8,-5,0,0
-;	mapobj	0500,00,0,4000,pole_0,pole0_istrat
 
 
 	cspecial	1000,0200,0200,4000,r_hou_0,shou0a_istrat
-;;;;;	pathobj	000,00,-700,3000,nullshape,check,10,10
 ;wire&solid
 	map_SBtype1	1,0,1,0
 	special	0000,-2*Xlen,space_viewCY+(1*Ylen),dist+(0*Zlen),s_wark_0,spacebarwalker_Istrat
 	cspecial	0000,2*Xlen,space_viewCY+(1*Ylen),dist+(0*Zlen),Bwarker_3,spacebarwalker_Istrat
-
-;	map_setbarshape	solid
 
 	map_SBtype3	0,4,-1,1
 	map_SBtype10	0,-4,1,1
@@ -393,8 +343,6 @@ map3_4b
 	map_SBtype1	8,0,1,0
 
 	map_SBtypea	2,-2,1,5
-;	map_SBtype4	2,00,01,5
-;	map_SBtype7	2,01,-2,5
 ;---------------------------------------------------------------------------
 
 
@@ -429,7 +377,6 @@ speed	=	30
 	mapobj	0800,000,0,2500,pole_0,pole0_istrat
 	mapobj	0800,400,100,2500,pole_0,pole0_istrat
 	mapobj	0800,-400,-100,2500,pole_0,pole0_istrat
-;	mapwait	1500
 ;friend
 	pathobj	0000,1200,0200,0600,friendship_4,chase1_1,200,10
 	pathobj	1000,1200,200,0600,zaco_b,chase1_2,10,10
@@ -449,7 +396,6 @@ speed	=	30
 	cspecial	0000,-100,0100,800,cameleon,cameleon_istrat
 	special	1000,100,0100,800,cameleon,cameleon_istrat
 	mapobj	0000,000,0,3000,pole_0,pole0_istrat
-;;;;	pathobj	000,0000,-700,1000,nullshape,check,10,10
 
 ;---------------------------------------------------------------------------
 

@@ -1,10 +1,6 @@
 map2_4
 
 ;--------------------------------------------------------------------
-;.e2_4
-;	pathobj	10000,1500,900,3200,ika,tes,10,10
-;	mapgoto	.e2_4
-;--------------------------------------------------------------------
 	mapwait	600
 
 	pathobj	0000,0180,-300,-200,whale,e_whale,10,10
@@ -27,9 +23,6 @@ map2_4
 	pathobj	0000,-900,0000,0000,friendship_4,chase2_1,10,10
 	pathcspecial	4000,-900,0000,0000,zaco_b,chase2_2,10,10
 
-;	map_sfish	1000,0300,100,1000,4
-;	map_sfish	1400,-300,-200,1000,4
-
 	pathcspecial	0500,300,-1400,2000,zaco_b,egu3,10,10
 	pathcspecial	12000,-300,-1400,2000,zaco_b,egu3,10,10
 	
@@ -38,14 +31,6 @@ map2_4
 
 	mapwait	1000
 	maploop	.amoebas1,03
-;	mapmother	200,0000,0000,4000,mother1,mother2_istrat,map_amoebas
-;	maprem	mother1   
-;
-;	mapwait	1000
-;	mapmother	200,0000,0000,4000,mother1,mother2_istrat,map_amoebas
-;	maprem	mother1   
-;
-;	mapwait	1000
 	pathobj	0000,3000,3000,3000,nullshape,amebmsg,10,10
 
 	mapmother	200,0000,0000,4000,mother1,mother2_istrat,map_amoebas

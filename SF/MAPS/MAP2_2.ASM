@@ -3,49 +3,6 @@ map2_2
 	map_setbarshape	solid
 
 	mapwait	600
-;---
-;	mapwait	1000
-;.e
-;	pathobj	0000,1200,0200,0600,friendship_4,chase1_1,200,10
-;	pathobj	19000,1200,0200,0600,zaco_b,chase1_2,10,10
-;	pathobj	0000,-900,0000,0000,friendship_4,chase2_1,10,10
-;	pathobj	19000,-900,0000,0000,zaco_b,chase2_2,10,10
-;	pathobj	0000,0000,0400,0000,friendship_4,chase3_1,200,10
-;	pathobj	19000,0000,0400,0000,zaco_b,chase3_2,10,10
-;	pathobj	0000,900,-60,0000,friendship_4,chase4_1,200,10
-;	pathobj	0000,900,-60,0000,zaco_b,chase4_2,200,10
-;	pathobj	19000,900,-60,0000,zaco_b,chase4_3,200,10
-;	pathobj	0000,0000,-600,0000,friendship_4,chase5_1,10,10
-;	pathobj	0000,1500,0100,1300,zaco_b,chase5_2,10,10
-;	pathobj	19000,0000,-600,0000,zaco_b,chase5_3,10,10
-;	pathobj	0000,-750,-400,0000,friendship_4,chase6_1,10,10
-;	pathobj	19000,-720,-400,0000,zaco_a,chase6_2,10,10
-;	pathobj	0000,000,-400,-150,friendship_4,chase7_1,10,10
-;	pathobj	19000,000,-400,-150,zaco_a,chase7_2,10,10
-;	pathobj	0000,750,-100,0000,friendship_4,chase8_1,200,10
-;	pathobj	0000,3800,-3600,4260,zaco_a,chase8_2,200,10
-;	pathobj	19000,750,-100,0000,zaco_a,chase8_3,200,10
-;	pathobj	10000,0000,-100,700,boss_d_4,tes,10,10
-;	pathobj	10000,0000,-100,3500,zaco_7,patcom,10,10
-;	pathobj	000,0000,-700,1000,nullshape,check,10,10
-;	pathobj	10000,1000,-700,2000,shark,call_fol,10,10
-;	pathobj	10000,-1000,-700,2000,shark,call_fol,10,10
-;	pathobj	19000,0000,100,-100,bzaco_8,patret_ifal,10,10
-;	pathobj	19000,0000,100,-100,bzaco_8,patret_irab,10,10
-;	pathobj	19000,0000,100,-100,bzaco_8,patret_ifro,10,10
-;	pathobj	19000,2000,2000,2000,bzaco_8,egu6_ifal,10,10
-;	pathobj	19000,2000,2000,2000,bzaco_8,egu6_irab,10,10
-;	pathobj	19000,2000,2000,2000,bzaco_8,egu6_ifro,10,10
-;	pathobj	19000,0300,-400,000,bzaco_8,egu1_ifal,10,10
-;	pathobj	19000,0300,-400,000,bzaco_8,egu1_irab,10,10
-;	pathobj	19000,0300,-400,000,bzaco_8,egu1_ifro,10,10
-;	pathobj	10000,0300,-100,3000,walker_2,pyonta,10,10
-;
-;	pathobj	10000,0000,-100,2700,zaco_0,itachi_a,10,10
-;	pathobj	10000,0000,-100,2700,zaco_0,itachi_b,10,10
-;
-;	mapgoto	.e
-;---
 
 	cspecial	1500,0,Space_viewCY-1000,800,zaco_4,szaco0_istrat
 	cspecial	1500,1000,Space_viewCY-500,800,zaco_4,szaco0_istrat
@@ -155,7 +112,6 @@ map2_2
 	map_SBtype8	1*2,-2,0,0
 	map_SBtype8	1*2,1,0,0
 	map_SBtypeA	1*2,-2,0,0
-;	map_SBtypeB	0*2,0,0,0
 	map_SBtypeD	6*2,2,0,0
 
 	mapobj	0000,(5-5)*Xlen,space_viewCY+(0*Ylen),dist,item_5,item5_Istrat
@@ -188,7 +144,6 @@ map2_2
 
 	mapobj	0000,0000,-60,2800,gate_0,gate_istrat
 
-;	pathobj	1000,3000,0,1000,nullshape,e_gate,10,10
 	mapwait	1000
 	mapwait	3000
 

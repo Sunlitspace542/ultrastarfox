@@ -48,7 +48,6 @@ level3_1
 	mapobj	0000,-500,0000,5000,HOUDAI_0,houdains_ISTRAT
 	mapobj	2000,0500,0000,5000,HOUDAI_0,houdains_ISTRAT
 
-;	cspecial	0000,-500,-800,0000,zaco_5,zaco1l_istrat
 	cspecial	0000,-500,-300,0000,zaco_5,zaco1l_istrat
 	mapobj	0000,-1200,0000,4800,bu_1,hard180yr_ISTRAT
 	mapobj	2000,01200,0000,4800,bu_1,hard180yr_ISTRAT
@@ -59,9 +58,6 @@ level3_1
 	mapobj	0000,01200,0000,4800,bu_1,hard180yr_ISTRAT
 	mapobj	0000,-600,0000,5000,HOUDAI_0,houdains_ISTRAT
 	mapobj	0000,0600,0000,5000,HOUDAI_0,houdai_ISTRAT
-
-
-;	mapwait		4000
 
 	setrestart	
 	mapplayermode	onplanet

@@ -6,21 +6,12 @@ map1_1b
 	IFEQ	1
 	mapgoto	.boss
 
-;	mapgoto	.z1t	
-
 .faw	
 	mapobj	0425,0200,-100,-200,zaco_5,fzaco_Istrat
 	mapobj  0425,0200,-100,-200,zaco_6,fzaco_Istrat
 	mapobj	2000,0200,-100,-200,zaco_5,fzaco_Istrat
 
 	mapobj	0000,0100,-100,-200,myship_4,friend0_Istrat
-
-
-;	mapwait	16000
-;	mapgoto	.faw
-
-	
-
 
 	tstart	4,0,south
 	tsouth
@@ -51,21 +42,9 @@ map1_1b
 
 	mapwait	11*tsize*4
 
-
-
-; houdai test
-;.here4
-;	mapobj	0000,-300,0000,2000,houdai_0,houdai_Istrat
-;	mapobj	0000,300,0000,2400,houdai_0,houdai_Istrat
-;	mapwait	3000
-;	maploop	.here3,2
-;	mapgoto .here4
-
-
 ;-------------------------------------------------------
 ; missile tank test
 .here3
-;	mapgoto	.missthislot
 	mapobj	0000,-1000,0000,2000,m_tank,misstank_Istrat
 	setalvar	roty,-deg90
 	addalvarptr.w	worldx,player_posx
@@ -102,23 +81,6 @@ map1_1b
 	setalvar	rotx,-deg90
 	mapwait	1000
 	maploop	.here1,3
-
-
-;-------------------------------------------------------
-; cameleon2 test
-;
-;	mapobj	0000,0000,0000,1000,cameleon,cameleon2_Istrat
-;.here1	mapwait	2000
-;	mapgoto	.here1
-
-;-------------------------------------------------------
-; evader test
-;.here1	
-;	mapobj	8000,0,-600,2000,mosra_1,evader_Istrat
-;	mapwait	2000
-;	mapgoto	.here1
-
-
 
 ;-------------------------------------------------------
 	mapwait	4000
@@ -306,17 +268,6 @@ map1_1b
 .boss
 	fadeoutbgm
 	setbgm	bgm_boss1
-
-; boss B robot test
-;	mapobj	0000,0000,-1000,4000,boss_b_1,bossBrob_Istrat
-
-
-; boss A test
-;	mapobj	0000,3000,0000,375<<bossa_scale,boss_A_2,bossA_Istrat
-
-; boss 2 test
-;	mapobj	0000,0000,0<<boss2_scale,1100,boss_2_2,boss2_Istrat
-
 
 ; boss 7 test
 	mapobj	0000,0000,-70<<boss7_scale,-200,boss_7_1,boss7_Istrat

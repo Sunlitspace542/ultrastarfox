@@ -1,7 +1,5 @@
  	start_shapes
 
-
-
 ;--Shape file ----- nshapes\bu_3.txt ----
 	ifne	DO_HDR
 

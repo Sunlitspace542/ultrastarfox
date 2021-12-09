@@ -940,10 +940,6 @@ setport3_l
 	and	#psf2_playerHP0
 	bne	.noset
 
-;	lda	gameflags
-;	and	#GF_PLAYERDYING
-;	bne	.noset
-
 .dosnd	pla
 .ok
 	phx

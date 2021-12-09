@@ -1,6 +1,5 @@
 ;1-3-T2
 ;CRANE
-;	mapobj		2500,0060,-050,2000,crane_0,crane0_Istrat
 	mapwait	0500
 	maplrdoor	1200,3500
 	mapobj	0000,090,-120,4000,tunnel_0,topright1_istrat
@@ -73,10 +72,7 @@ WALKER_3
 	maploop	.tunnel7,07
 
 	mapobj	0000,0000,-60,4200,iris,iris_ISTRAT
-.tunnel8;	mapobj	0000,090,-120,4000,tunnel_0,topright1_istrat
-;	mapobj	0000,-90,-120,4000,tunnel_0,topleft1_istrat
-;	mapobj	0000,090,0,4000,tunnel_0,botright1_istrat
-;	mapobj	0700,-90,0,4000,tunnel_0,botleft1_istrat
+.tunnel8
 	mapobj	0000,0070,-060,4800,bou_1,HARD180yr_ISTRAT
 	mapobj	0700,-070,-060,4800,bou_1,HARD180yr_ISTRAT
 	maploop	.tunnel8,03
@@ -85,10 +81,6 @@ WALKER_3
 	mapobj	1000,0000,0000,4700,CORE_1_1,CORE1_ISTRAT
 	mapobj	0000,0070,-060,4200,bou_1,HARD180yr_ISTRAT
 	mapobj	0500,-070,-060,4200,bou_1,HARD180yr_ISTRAT
-;	mapobj	0000,090,-120,4000,tunnel_0,topright1_istrat
-;	mapobj	0000,-90,-120,4000,tunnel_0,topleft1_istrat
-;	mapobj	0000,090,0,4000,tunnel_0,botright1_istrat
-;	mapobj	0800,-90,0,4000,tunnel_0,botleft1_istrat
 
 
 

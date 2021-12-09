@@ -6,13 +6,11 @@ mothermap2
 	motherrnd	0250,512,0,512,bouncyball,cubefall_istrat
 	motherloop	0,mothermap2,10
 	motherwait	250
-;	motherobj	0400,0,100,0,fly1,highfly_istrat
 .mloop
 	motherrnd	0250,512,0,512,asteroid3,cubefall_istrat
 	motherrnd	0250,512,0,512,asteroid4,cubefall_istrat
 	motherloop	0,.mloop,5
 	motherwait	250
-;	motherobj	0400,0,100,0,fly1,highfly_istrat
 	mothergoto	0,mothermap2
 
 
@@ -57,7 +55,6 @@ map_ast
 	motherrnd	0200,1024,1024,0000,asteroid1,meteor_istrat
 	motherrnd	0200,1024,1024,0000,asteroid1,meteor_istrat
 	motherrnd	0200,1024,1024,0000,asteroid1,meteor_istrat
-;	motherrnd	0200,1024,1024,0000,hider,hider_istrat
 
 	mothergoto	0,.here
 
@@ -78,8 +75,6 @@ map_pillars
 	mothergoto	map_pillars
 
 map_mountains
-;	motherobj	0400,-350,0000,0000,build_0,hard_istrat
-;	motherobj	0400,0350,0000,0000,build_0,hard_istrat
 	mothergoto	map_mountains
 
 map_flypillars
@@ -128,13 +123,7 @@ largetunnelbits
 	motherobj	0000,-120,-120,0,tunnel_0,topleft1_istrat
 	motherobj	0000,120,0,0,tunnel_0,botright1_istrat
 	motherobj	0000,-120,0,0,tunnel_0,botleft1_istrat
-;	motherobj	0000,0,-120,0000,tunnel_7,duct_istrat
 	motherwait	600
-;	motherobj	0000,120,-120,0,tunnel_0,topright1_istrat
-;	motherobj	0000,-120,-120,0,tunnel_0,topleft1_istrat
-;	motherobj	0000,120,0,0,tunnel_0,botright1_istrat
-;	motherobj	0000,-120,0,0,tunnel_0,botleft1_istrat
-;	motherwait	400
 	motherobj	0000,-120,0000,0000,tunnel_4,leftwall_istrat
 	motherobj	0000,120,0000,0000,tunnel_4,rightwall_istrat
 	motherobj	0000,0,-120,0000,tunnel_7,duct_istrat
@@ -233,13 +222,10 @@ map_shou0
 	ELSEIF
 	motherrnd	250,1024,2048,0000,asteroid1,meteor_istrat
 	motherrnd	250,1024,2048,0000,asteroid1,meteor_istrat
-;	motherrnd	250,1024,1024,0000,r_hou_0,shou0a_istrat
 	motherrnd	250,1024,2048,0000,asteroid1,meteor_istrat
 	motherrnd	250,1024,2048,0000,asteroid1,meteor_istrat
-;	motherrnd	250,1024,1024,0000,r_hou_0,shou0a_istrat
 	motherrnd	250,1024,2048,0000,asteroid1,meteor_istrat
 	motherrnd	250,1024,2048,0000,asteroid1,meteor_istrat
-;	motherrnd	250,1024,1024,0000,s_hou_0,shou0_istrat
 	ENDC
 	mothergoto	map_shou0
 

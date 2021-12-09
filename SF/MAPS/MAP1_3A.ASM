@@ -27,14 +27,6 @@ map1_3a
 	cspecial	1000,0000,space_viewcy-200,3000,zaco_7,szaco5_Istrat	; fly out of ship2
 	cspecial	0000,400,space_viewcy+200,3000,zaco_7,szaco5_Istrat	; fly out of ship2
 	cspecial	3000,-400,space_viewcy+200,3000,zaco_7,szaco5_Istrat	; fly out of ship2
-;	szaco2_mapobj	-500,2000,-300,100,0
-;	szaco2_mapobj	500,2000,300,100,200
-;	szaco2_mapobj	-1000,2000,-500,-100,0
-;	szaco2_mapobj	1000,2000,500,-100,100
-;
-;	mapwait	3000	
-;
-;	cspecial	1000,-200,space_viewcy+200,3400,zaco_7,szaco5_Istrat	; fly out of ship2
 
 	mapobj	0000,100,-100,5000,nullshape,up1man_Istrat
 	maprts

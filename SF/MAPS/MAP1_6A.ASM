@@ -1,17 +1,9 @@
 restart1_6
-;	mapplayermode	onplanet
-;	setvar	keeppstrat,1
 	mapwait	2000
 	mapgoto	cont1_6
 
 map1_6a
-;				16 specials
 	incmap	planet
-;
-;	mapgoto	map1_6a
-;
-
-;	mapgoto	map1666
 
 	mapobj	0000,0200,-0125,2000,r_bu_7,hard180YR_Istrat
 	mapobj	0400,-200,-0125,2000,r_bu_7,hard180YR_Istrat
@@ -228,8 +220,6 @@ speed	=	30
 	map_SBtype17	0,2,-12,0,speed,0
 	map_SBtype17	5,4,-12,0,speed,0
 
-;	mapHARDRot	0000,-250,-100,4000,gate_0,12,6,6
-;	mapHARDRot	0000,0250,-100,4000,gate_0,6,6,12
 	mapobj	0000,-250,-100,4000,gate_0,gate3_ISTRAT
 	mapobj	0000,0250,-100,4000,gate_0,gate3_ISTRAT
 	mapobj	0000,0000,-200,4000,gate_0,gate_ISTRAT
@@ -288,14 +278,8 @@ speed	=	30
 	mapmother	8000,0000,0,4000,mother1,mother1_istrat,map_flypillars
 	maprem		mother1
 ;---------------------------------------------------------------
-;	include	maps\planet.asm
-
-;	endc
 
 	mapwait	3000
-;.wait16a
-;	incmap	1-1
-;	mapgoto	.wait16a
 
 
 boss1666
