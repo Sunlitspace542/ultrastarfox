@@ -21,7 +21,7 @@ messagetest			equ	0	; Run message test in training level													#
 crosshairalwayson	equ	0	; Crosshair in third person view														#
 
 ;------------------------------------------------------------------------------
-randverts1		equ	0		; randomize the vertices slightly
+randverts1		equ	1		; randomize the vertices slightly
 randvertandbit	equ	15		; decimal value of the binary AND value of the max number you want to add to each point
 							; Recommended values: 1, 3, 7, 15, 31, 63 
 							; (representing 00000001,00000011,00000111,00001111,00011111,00111111)
