@@ -1,3 +1,26 @@
+;***************************************************************************
+;*                                                                         *
+;*                               Star Fox                                  *
+;*                              -----------                                *
+;*                                                                         *
+;*                           SuperNES version.                             *
+;*                                                                         *
+;*                                                                         *
+;*                           Argonaut Software.      		               *
+;*                                                                         *
+;*_________________________________________________________________________*
+;*                                                                         *
+;*   File: BLINK.ASM                                                       *
+;*                                                                         *
+;*                                                                         *
+;*_________________________________________________________________________*
+;*                                                                         *
+;*  Descr: CRASH HANDLER.                                                  *
+;*                                                                         *
+;*                                                                         *
+;***************************************************************************
+; Appears to be a crash handler, as seen in the September 23rd, 1992 prototype.
+; The "Opps, I think I just blinked" text appears to have been removed.
 
 	INCPUBLICS	blink.ext
 
@@ -7,12 +30,12 @@ doblink	ai16
 	ldx	#256-86
 	bra	stopall
 doblink1	ai16
-	lda	#$1f+($1f<<10)	; pink
+	lda	#$1f+($1f<<10)		; pink
 	sta	blinkcol
 	ldx	#256-70
 	bra	stopall
 doblink2	ai16
-	lda	#$1f+($1f<<5)	; yellow
+	lda	#$1f+($1f<<5)		; yellow
 	sta	blinkcol
 	ldx	#256-70
 	bra	stopall
@@ -60,7 +83,7 @@ stopall	stx	blinkval
 	sta	bg12nba
 
 	stz	w12sel
-	stz	w34sel		;wh0,1 set with hdma
+	stz	w34sel	;wh0,1 set with hdma
 	stz	wobjsel
 	stz	wbglog
 	stz	wobjlog

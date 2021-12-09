@@ -1,3 +1,7 @@
+; #############################
+; ## Star Fox Boot Routines. ##
+; #############################
+
 	incpublics	bootnmi.ext
 
 	shorti
@@ -32,9 +36,6 @@ startboot	disable
 	IFEQ	contest
 	jsl	intro_l
 	ENDC
-
-;** TEST, COMMENT OUT IN FINAL VERSION
-;	jsl	endseq_l
 
 	jsl	titleseq_l
 
