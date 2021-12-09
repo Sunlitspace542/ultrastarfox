@@ -1386,10 +1386,6 @@ printspeclp
 
 	ENDC
 
-;	a16
-;	lda	#2000
-;.lll	dec	a
-;	bne	.lll
 
 	a8
 	lda	clb2
@@ -2161,9 +2157,6 @@ marioshowview
 	sbc	viewposz
 	sta.l	dl_z,x
 
-;	s_jmp_NOTalsflag	y,invisible,.notinvis
-;	lda	#nullshape
-;	bra	.invis
 .notinvis
 	lda.w	al_shape,y
 .invis
@@ -2532,17 +2525,6 @@ zb_infront	equ	2
 
 deferredinsert
 	ai16
-;	lda	bigx
-;	bpl	.posx
-;	eor	#-1
-;.posx	lsr	a
-;	adc	bigz
-;	sta	sortz
-;	lda	bigy
-;	bpl	.posy
-;	eor	#-1
-;.posy	lsr	a
-;	adc	sortz
 	
 	lda	bigz
 	sta	sortz
