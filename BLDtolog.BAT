@@ -7,6 +7,8 @@ cd ..
 copy sf\sg.rom SF.SFC
 del sf\sg.rom
 del sf\*.sob
+del sf\status.doc
+del sf\lastasm.tmp
 pause
 exit
 
