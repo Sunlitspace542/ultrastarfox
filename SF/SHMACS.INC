@@ -606,13 +606,14 @@ rndval =	(rndval*91+$61d7)&randvertandbit
 	ENDC
 	
 	IFNE	randverts2
+	IFEQ	randverts1
 pb	macro
 	rndbyte
 	rndbyte
 	rndbyte
 	ENDM
 	ENDC
-
+	ENDC
 
 pbd2	macro
 	db	(\1)/2,(\2)/2,(\3)/2
@@ -642,11 +643,13 @@ rndval =	(rndval*91+$61d7)&randvertandbit
 	ENDC
 
 	IFNE	randverts2
+	IFEQ	randverts1
 pw	macro
 	rndword
 	rndword
 	rndword
 	ENDM
+	ENDC
 	ENDC
 
 jumptab	macro

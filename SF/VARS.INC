@@ -26,7 +26,7 @@ randvertandbit	equ	15		; decimal value of the binary AND value of the max number
 							; Recommended values: 1, 3, 7, 15, 31, 63 
 							; (representing 00000001,00000011,00000111,00001111,00011111,00111111)
 randverts2		equ	0		; randomize the vertices a lot
-							; DO NOT activate both at once
+							; Both will not activate at once
 ;------------------------------------------------------------------------------
 ;####################################################################################################################
 
