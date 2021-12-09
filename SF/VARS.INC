@@ -20,9 +20,11 @@ godmode				equ	0	; No collision for the player															#
 messagetest			equ	0	; Run message test in training level													#
 crosshairalwayson	equ	0	; Crosshair in third person view														#
 ;####################################################################################################################
+
 ; ###############
 ; ## Fun Stuff ##
 ; ###############
+
 ;------------------------------------------------------------------------------
 randverts1		equ	0		; randomize the vertices slightly
 randvertandbit	equ	15		; decimal value of the binary AND value of the max number you want to add to each point
@@ -35,6 +37,8 @@ randverts2		equ	0		; randomize the vertices a lot
 ; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ; !! Everything else is more advanced stuff, be careful! !!
 ; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+; Sprite position stuff
 
 ; Original Lives position ($YYXX)
 livesPos1 equ $1110
@@ -49,6 +53,8 @@ ShieldTextPos4 equ $b730
 
 ; Original Nova Bomb Icon Position ($YYXX)
 BombIconPos equ $b6e0
+
+; other variables
 
 mario_stats3d	equ	0
 realchip	equ	1
