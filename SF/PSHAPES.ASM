@@ -112,7 +112,7 @@ nullplayer
 Bmyship_4	ShapeHdr	myship_4_P,0,myship_4_F,0,0,0,0,0,playerB_col,36,14,80,80,black_c,0,0,0,0,<myship_4>
 Imyship_4	ShapeHdr	myship_4_P,0,myship_4_F,0,500,0,0,0,playerB_col,36,14,80,80,id_0_c,0,0,0,0,<myship_4>
 myship_4	ShapeHdr	myship_4_P,0,myship_4_F,0,0,0,0,0,playerB_col,36,14,80,80,id_0_c,0,0,0,0,<myship_4>
-	IFEQ	highpolyarwing
+	IFEQ	hipolyarwing
 friendship_4	ShapeHdr	myship_4_P,0,myship_4_F,0,0,0,0,0,0,36,14,80,80,id_0_c,0,0,0,0,<myship_4>
 	elseif
 friendship_4	ShapeHdr	mydemo_4_P,0,mydemo_4_F,0,0,0,0,0,playerB_col,35,14,60,60,id_0_c,0,0,0,0,<mydemo_4>
