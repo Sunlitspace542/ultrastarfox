@@ -137,8 +137,8 @@ shbanks.sob: shbanks.asm shmacs.inc stratequ.inc \
 $(STDFILES) shapes.asm shapes.asm kshapes.asm \
 kshapes.asm snd\sgbgmm.bin snd\psgbgmm.bin shapes2.asm \
 shapes2.asm data\m.pcr snd\sgbgm2.bin shapes3.asm \
-shapes3.asm snd\sgbgmn.bin shapes4.asm shapes4.asm \
-snd\sgbgmj.bin shapes5.asm shapes5.asm ushapes.asm \
+shapes3.asm snd\sgbgmn.bin shapes4.asm shapes4.asm shapes6.asm \
+snd\sgbgmj.bin shapes5.asm shapes5.asm ushapes.asm shapes7.asm \
 ushapes.asm pshapes.asm pshapes.asm data\dog.ccr \
 snd\sgbgm7.bin snd\sgbgm3.bin 
 
