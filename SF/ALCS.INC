@@ -743,6 +743,15 @@ mio_mode	equ	$303a
 	alc	spare,2
 ;	alc	zbblks,zb_size*number_zb			;1400 bytes free!
 
+;ADD NEW ALCS HERE------------------------------
+
+
+
+
+
+
+
+;---------------------------------------------------
 	alc	numshapes,2
 	alc	dlptr,2
 	alc	palfade,2
