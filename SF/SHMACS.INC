@@ -97,6 +97,7 @@ err	=	0
 
 	ifne	err
 	printf	"Shape %phas a funny collision box%n"
+	FAIL
 	endc
 
 ;;	printf	"\1:%xchar %n"
