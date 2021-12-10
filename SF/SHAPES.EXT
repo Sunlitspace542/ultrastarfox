@@ -2,6 +2,10 @@
 	extern	mydemo_l
 	extern	mydemo_r
 	extern	mydemo_b
+	extern	wiremydemo_4
+	extern	wiremydemo_l
+	extern	wiremydemo_r
+	extern	wiremydemo_b
 
 	extern	NULLSHAPE
 	extern	FOLARGESHAPE
