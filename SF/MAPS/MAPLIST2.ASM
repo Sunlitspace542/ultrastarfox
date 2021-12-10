@@ -53,9 +53,7 @@
 	INCMAP	map3_7d
 
 
-	INCMAP	level_bh
-	INCMAP	level_s
-	INCMAP	special
+
 
 mexitstart
 	INCMAP	mexitmap
