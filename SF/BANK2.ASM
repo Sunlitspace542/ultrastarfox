@@ -65,6 +65,7 @@ xoffset	equ	*-ramstart
 
 	ifle	xlen-xoffset
 	error	<Extended code more than xlen>
+	fail
 	endc
 
 	org	$28000+xoffset,$8000*2+xoffset
