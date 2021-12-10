@@ -61,6 +61,9 @@ real_istrats =	0
 	bankend	13
 ;------------------------------------------------------------------
 
+	bank	39
+	incfile	maps\maplist3.asm
+	bankend	39
 
 
 	include	tail.inc

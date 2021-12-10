@@ -37,7 +37,7 @@ $(STDFILES) blink.asm data\etabs.dat sgtabs.asm \
 data\nintendo.pal data\map-obj.cgx sgdata.asm data\arctan.asm \
 istrats.asm ushapes.asm shapes.asm shapes2.asm \
 shapes3.asm pshapes.asm shapes4.asm shapes5.asm \
-kshapes.asm d3strats.asm 
+shapes6.asm shapes7.asm kshapes.asm d3strats.asm 
 
 ## Bank 1
 bank1.sob: bank1.asm shmacs.inc gamemsgs.inc \
@@ -101,7 +101,7 @@ maps\level3_1.asm maps\level3_2.asm maps\level3_3.asm maps\washmap.asm \
 maps\level3_4.asm maps\level3_5.asm maps\level3_6.asm maps\level3_7.asm \
 maps\cl_turn.asm maps\cl_bridg.asm maps\cl_warpo.asm maps\bhole.asm \
 maps\training.asm maps\credits.asm maps\intro.asm maps\title.asm \
-maps\maplist2.asm 
+maps\maplist2.asm maps\maplist3.asm
 
 ## Bank 6
 bank6.sob: bank6.asm \

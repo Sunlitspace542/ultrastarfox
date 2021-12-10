@@ -65,6 +65,14 @@ bgm3len	equ	*-bgm3
 
 	bankend	17
 
+	bank	37
+	incshapes	shapes6.asm
+	bankend	37
+	
+	bank	38
+	incshapes	shapes7.asm
+	bankend	38
+
 
 	include	tail.inc
 

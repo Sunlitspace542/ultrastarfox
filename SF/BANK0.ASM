@@ -61,6 +61,8 @@ Do_HDR	=	1
 	incfile	pshapes.asm
 	incfile	shapes4.asm
 	incfile	shapes5.asm
+	incfile	shapes6.asm
+	incfile	shapes7.asm
 	incfile	kshapes.asm
 Do_HDR	=	0
 
