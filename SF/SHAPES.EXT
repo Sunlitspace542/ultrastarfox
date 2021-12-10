@@ -2,6 +2,10 @@
 	extern	mydemo_l
 	extern	mydemo_r
 	extern	mydemo_b
+	extern	mydemoLG_4
+	extern	mydemoLG_l
+	extern	mydemoLG_r
+	extern	mydemoLG_b
 	extern	wiremydemo_4
 	extern	wiremydemo_l
 	extern	wiremydemo_r
