@@ -103,6 +103,9 @@ lexitstart
 	INCMAP	cl_bridg
 	INCMAP	cl_warpo
 
+	INCMAP	level_bh
+	INCMAP	level_s
+	INCMAP	special
 	INCMAP	bhole
 
 	incmap	training
