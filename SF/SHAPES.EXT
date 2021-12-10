@@ -1,3 +1,8 @@
+	extern	mydemo_4
+	extern	mydemo_l
+	extern	mydemo_r
+	extern	mydemo_b
+
 	extern	NULLSHAPE
 	extern	FOLARGESHAPE
 	extern	LARGESHAPE
@@ -574,7 +579,3 @@
 	extern	target_2
 	extern	target_3
 	extern	pilon_1
-	extern	mydemo_4
-	extern	mydemo_l
-	extern	mydemo_r
-	extern	mydemo_b
