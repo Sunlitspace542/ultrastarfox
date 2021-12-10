@@ -7,8 +7,6 @@
 	global	tunnel3_col1
 	global	pyramid_col1
 	global	pillar2_col1
-	global	floor1_col1
-	global	floor2_col1
 	global	walker_col1
 	global	beambox_col1
 	global	wallr_col1
@@ -38,7 +36,6 @@
 	global	core1_1_col
 	global	boss_b_col
 	global	boss_f_col
-	global	sfloor1_col1
 	global	spillar2_col1
 	global	leng_0_col
 	global	leng_1_col

@@ -167,53 +167,6 @@ pillar3ns_col8	colbox	0,0,0,80,roty,6,5,6,HF1,0,2
 
 
 
-floor1_col1
-	colframes	8
-	colbox	0,0,0,0,norot,100,31*2,15,HF1,0,1	; first frame has no hole
-	colbox	floor1_col2,-80,0,0,norot,20,37*2,15,HF1,0,1
-	colbox	floor1_col2,-80,0,0,norot,20,41*2,15,HF1,0,1
-	colbox	floor1_col2,-80,0,0,norot,20,47*2,15,HF1,0,1
-	colbox	floor1_col2,-80,0,0,norot,20,51*2,15,HF1,0,1
-	colbox	floor1_col2,-80,0,0,norot,20,57*2,15,HF1,0,1
-	colbox	floor1_col2,-80,0,0,norot,20,61*2,15,HF1,0,1
-	colbox	floor1_col2,-80,0,0,norot,20,66*2,15,HF1,0,1
-
-floor1_col2
-	colframes	8
-	colbox	floor1_col3,80,0,0,norot,20,31*2,15,HF1,0,1
-	colbox	floor1_col3,80,0,0,norot,20,37*2,15,HF1,0,1
-	colbox	floor1_col3,80,0,0,norot,20,41*2,15,HF1,0,1
-	colbox	floor1_col3,80,0,0,norot,20,47*2,15,HF1,0,1
-	colbox	floor1_col3,80,0,0,norot,20,51*2,15,HF1,0,1
-	colbox	floor1_col3,80,0,0,norot,20,57*2,15,HF1,0,1
-	colbox	floor1_col3,80,0,0,norot,20,61*2,15,HF1,0,1
-	colbox	floor1_col3,80,0,0,norot,20,66*2,15,HF1,0,1
-
-floor1_col3
-	colframes	8
-	colbox	0,0,-15*2,0,norot,100,15*2,15,HF1,0,1
-	colbox	0,0,-20*2,0,norot,100,15*2,15,HF1,0,1
-	colbox	0,0,-25*2,0,norot,100,15*2,15,HF1,0,1
-	colbox	0,0,-30*2,0,norot,100,15*2,15,HF1,0,1
-	colbox	0,0,-35*2,0,norot,100,15*2,15,HF1,0,1
-	colbox	0,0,-40*2,0,norot,100,15*2,15,HF1,0,1
-	colbox	0,0,-45*2,0,norot,100,15*2,15,HF1,0,1
-	colbox	0,0,-50*2,0,norot,100,15*2,15,HF1,0,1
-
-
-
-
-
-floor2_col1
-	colframes	8
-	colbox	0,0,0,0,norot,100,31*2,15,HF1,0,1
-	colbox	0,0,0,0,norot,100,37*2,15,HF1,0,1
-	colbox	0,0,0,0,norot,100,41*2,15,HF1,0,1
-	colbox	0,0,0,0,norot,100,47*2,15,HF1,0,1
-	colbox	0,0,0,0,norot,100,51*2,15,HF1,0,1
-	colbox	0,0,0,0,norot,100,57*2,15,HF1,0,1
-	colbox	0,0,0,0,norot,100,61*2,15,HF1,0,1
-	colbox	0,0,0,0,norot,100,66*2,15,HF1,0,1
 
 
 walker_col1
@@ -599,42 +552,6 @@ boss00_col7	colframes	16
 	colbox	0,16,09,-60,rotz,10,10,10,HF1,0,boss00_scale
 	colbox	0,09,05,-60,rotz,10,10,10,HF1,0,boss00_scale
 
-
-
-
-
-sfloor1_col1
-	colframes	8
-	colbox	0,0,0,0,norot,90,31*2*2,15,HF1,0,0	; first frame has no hole
-	colbox	sfloor1_col2,-72,0,0,norot,18,37*2,15,HF1,0,0
-	colbox	sfloor1_col2,-72,0,0,norot,18,41*2,15,HF1,0,0
-	colbox	sfloor1_col2,-72,0,0,norot,18,47*2,15,HF1,0,0
-	colbox	sfloor1_col2,-72,0,0,norot,18,51*2,15,HF1,0,0
-	colbox	sfloor1_col2,-72,0,0,norot,18,57*2,15,HF1,0,0
-	colbox	sfloor1_col2,-72,0,0,norot,18,61*2,15,HF1,0,0
-	colbox	sfloor1_col2,-72,0,0,norot,18,66*2,15,HF1,0,0
-					   
-sfloor1_col2
-	colframes	8
-	colbox	sfloor1_col3,72,0,0,norot,18,31*2,15,HF1,0,0
-	colbox	sfloor1_col3,72,0,0,norot,18,37*2,15,HF1,0,0
-	colbox	sfloor1_col3,72,0,0,norot,18,41*2,15,HF1,0,0
-	colbox	sfloor1_col3,72,0,0,norot,18,47*2,15,HF1,0,0
-	colbox	sfloor1_col3,72,0,0,norot,18,51*2,15,HF1,0,0
-	colbox	sfloor1_col3,72,0,0,norot,18,57*2,15,HF1,0,0
-	colbox	sfloor1_col3,72,0,0,norot,18,61*2,15,HF1,0,0
-	colbox	sfloor1_col3,72,0,0,norot,18,66*2,15,HF1,0,0
-						 
-sfloor1_col3
-	colframes	8
-	colbox	0,0,-15*2,0,norot,90,15*2,15,HF1,0,0
-	colbox	0,0,-20*2,0,norot,90,15*2,15,HF1,0,0
-	colbox	0,0,-25*2,0,norot,90,15*2,15,HF1,0,0
-	colbox	0,0,-30*2,0,norot,90,15*2,15,HF1,0,0
-	colbox	0,0,-35*2,0,norot,90,15*2,15,HF1,0,0
-	colbox	0,0,-40*2,0,norot,90,15*2,15,HF1,0,0
-	colbox	0,0,-45*2,0,norot,90,15*2,15,HF1,0,0
-	colbox	0,0,-50*2,0,norot,90,15*2,15,HF1,0,0
 
 
 
