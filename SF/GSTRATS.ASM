@@ -151,7 +151,7 @@ maxpships	=	maxpships+1
 maxpships	=	0
 player_shapes
 	IFNE 	hipolyarwing
-	def_playership	mydemo_4,mydemo_r,mydemo_l,mydemo_b	
+	def_playership	mydemo_4,mydemo_l,mydemo_r,mydemo_b	
 pwireshapes	def_playership	wiremydemo_4,wiremydemo_r,wiremydemo_l,wiremydemo_b		; 1 
 	ELSEIF
 	def_playership	myship_4,myship_r,myship_l,myship_b	
