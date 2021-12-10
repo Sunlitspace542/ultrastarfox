@@ -1,8 +1,3 @@
-	INCMAP	map1_1a
-
-	INCMAP	MAPP
-
-
 	IFEQ	cesdemo-1
 	INCMAP	cmap1_1b
 	INCMAP	cmap2_1b
