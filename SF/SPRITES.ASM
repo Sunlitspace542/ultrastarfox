@@ -704,17 +704,17 @@ do_spec_weap	a16
 do_crosshair	php
 	a8i16
 
-	IFEQ	crosshairalwayson
-	lda	splayerflymode
-	cmp	#spfm_inside
-	bne	.off
 	lda	crosshairon
 	bne	.on
 .off	plp
 	rts
+.on
+	IFEQ	crosshairalwayson
+	lda	splayerflymode
+	cmp	#spfm_inside
+	bne	.off
 	ENDC
 
-.on
 	a16
 	lda	arsebandX
 	sta	xs
