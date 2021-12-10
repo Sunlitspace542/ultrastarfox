@@ -19,6 +19,7 @@ planetcheaton 		equ 0   ; Allows you to enable planet select cheat on the map be
 godmode				equ	0	; No collision for the player															#
 messagetest			equ	0	; Run message test in training level													#
 crosshairalwayson	equ	0	; Crosshair in third person view														#
+hipolyarwing		equ	0	; high poly arwing [0 = low poly (default) 1 = hi poly]									#
 ;####################################################################################################################
 
 ; ###############

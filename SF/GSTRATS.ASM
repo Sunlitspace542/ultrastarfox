@@ -150,9 +150,13 @@ maxpships	=	maxpships+1
 ;-----------------------------------------------------------------------------
 maxpships	=	0
 player_shapes
-;	def_playership	myship_4,myship_r,myship_l,myship_b	
+	IFNE 	hipolyarwing
 	def_playership	mydemo_4,mydemo_r,mydemo_l,mydemo_b	
 pwireshapes	def_playership	wiremydemo_4,wiremydemo_r,wiremydemo_l,wiremydemo_b		; 1 
+	ELSEIF
+	def_playership	myship_4,myship_r,myship_l,myship_b	
+pwireshapes	def_playership	my_w,my_r_w,my_l_w,my_b_w		; 1 
+	ENDC
 pnullshapes	def_playership	nullshape,nullshape,nullshape,nullshape	; 2
 	def_playership	my_up,my_up,my_up,my_up			; 5
 	def_playership	nullshape,nullshape,nullshape,nullshape	; 2
