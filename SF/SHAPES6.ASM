@@ -625,9 +625,9 @@ mydemo_b_EBSP
 	ifne	DO_HDR
 
 wiremydemo_4
-	ShapeHdr	mydemo_4_P,0,mydemo_4_F,0,0,0,0,0,playerB_col,35,14,60,60,id_0_c,0,0,0,0,<mydemo_4>
+	ShapeHdr	wiremydemo_4_P,0,wiremydemo_4_F,0,0,0,0,0,playerB_col,35,14,60,60,id_0_c,0,0,0,0,<wiremydemo_4>
 	elseif
-mydemo_4_P
+wiremydemo_4_P
 	Pointsb	37
 	pb	-9,4,0	;0
 	pb	-14,12,20	;1
@@ -668,7 +668,7 @@ mydemo_4_P
 	pb	0,0,-5	;36
 
 	EndPoints
-mydemo_4_F
+wiremydemo_4_F
 	Vizis	42
 	Viz	5,1,2,-94,69,51	;0
 	Viz	3,1,4,71,-96,-43	;1
@@ -712,19 +712,19 @@ mydemo_4_F
 	Viz	31,36,35,41,-117,-29	;39
 	Viz	5,34,36,-23,-114,-50	;40
 	Viz	36,34,35,0,-109,-65	;41
-	BSPInit	mydemo_4_EBSP
-	BSP	28,mydemo_4_f1,.bsp2
-	BSPE	mydemo_4_f3
-.bsp2	BSP	23,mydemo_4_f4,.bsp5
-	BSP	21,mydemo_4_f6,.bsp7
-	BSPE	mydemo_4_f8
-.bsp7	BSPE	mydemo_4_f9
-.bsp5	BSPE	mydemo_4_f10
+	BSPInit	wiremydemo_4_EBSP
+	BSP	28,wiremydemo_4_f1,.bsp2
+	BSPE	wiremydemo_4_f3
+.bsp2	BSP	23,wiremydemo_4_f4,.bsp5
+	BSP	21,wiremydemo_4_f6,.bsp7
+	BSPE	wiremydemo_4_f8
+.bsp7	BSPE	wiremydemo_4_f9
+.bsp5	BSPE	wiremydemo_4_f10
 
-mydemo_4_f1	Faces
+wiremydemo_4_f1	Faces
 	aface3	0,28,-6,-119,-43,8,5,30
 	FendQ
-mydemo_4_f3	Faces
+wiremydemo_4_f3	Faces
 	aface3	7,0,-94,69,51,5,1,2
 	aface3	7,2,-92,87,11,5,2,3
 	aface3	7,4,113,41,41,2,1,3
@@ -755,21 +755,21 @@ mydemo_4_f3	Faces
 	aface3	7,12,23,-114,-51,4,1,5
 	aface3	43,41,0,-109,-65,36,34,35
 	FendQ
-mydemo_4_f4	Faces
+wiremydemo_4_f4	Faces
 	aface3	0,23,68,-106,-16,25,8,26
 	FendQ
-mydemo_4_f6	Faces
+wiremydemo_4_f6	Faces
 	aface3	0,21,0,-111,62,8,23,26
 	FendQ
-mydemo_4_f8	Faces
+wiremydemo_4_f8	Faces
 	aface3	0,24,0,-123,31,27,28,25
 	aface3	0,20,0,123,-32,25,23,8
 	aface3	0,22,-71,-92,51,23,25,26
 	FendQ
-mydemo_4_f9	Faces
+wiremydemo_4_f9	Faces
 	aface4	0,19,0,106,70,22,8,23,24
 	FendQ
-mydemo_4_f10	Faces
+wiremydemo_4_f10	Faces
 	aface3	0,15,0,-111,62,19,16,5
 	aface3	0,14,0,123,-32,5,16,18
 	aface3	0,16,-68,-106,-16,19,5,18
@@ -777,7 +777,7 @@ mydemo_4_f10	Faces
 	aface3	0,18,71,-92,51,19,18,16
 	aface4	0,13,0,106,70,15,16,5,17
 	FendQ
-mydemo_4_EBSP
+wiremydemo_4_EBSP
 	EndShape
 
 	endc
@@ -786,9 +786,9 @@ mydemo_4_EBSP
 	ifne	DO_HDR
 
 wiremydemo_r
-	ShapeHdr	mydemo_r_P,0,mydemo_r_F,0,0,0,0,0,playerB_col,34,14,60,60,id_0_c,0,0,0,0,<mydemo_r>
+	ShapeHdr	wiremydemo_r_P,0,wiremydemo_r_F,0,0,0,0,0,playerB_col,34,14,60,60,id_0_c,0,0,0,0,<wiremydemo_r>
 	elseif
-mydemo_r_P
+wiremydemo_r_P
 	Pointsb	35
 	pb	-9,4,0	;0
 	pb	-14,12,20	;1
@@ -827,7 +827,7 @@ mydemo_r_P
 	pb	20,8,-9	;34
 
 	EndPoints
-mydemo_r_F
+wiremydemo_r_F
 	Vizis	41
 	Viz	5,1,2,-94,69,51	;0
 	Viz	3,1,4,71,-96,-43	;1
@@ -870,17 +870,17 @@ mydemo_r_F
 	Viz	8,23,34,0,-111,62	;38
 	Viz	23,33,34,-86,-82,46	;39
 	Viz	33,8,34,82,9,-96	;40
-	BSPInit	mydemo_r_EBSP
-	BSP	23,mydemo_r_f1,.bsp2
-	BSPE	mydemo_r_f3
-.bsp2	BSP	15,mydemo_r_f4,.bsp5
-	BSPE	mydemo_r_f6
-.bsp5	BSPE	mydemo_r_f7
+	BSPInit	wiremydemo_r_EBSP
+	BSP	23,wiremydemo_r_f1,.bsp2
+	BSPE	wiremydemo_r_f3
+.bsp2	BSP	15,wiremydemo_r_f4,.bsp5
+	BSPE	wiremydemo_r_f6
+.bsp5	BSPE	wiremydemo_r_f7
 
-mydemo_r_f1	Faces
+wiremydemo_r_f1	Faces
 	aface3	0,23,-6,-119,-43,8,5,26
 	FendQ
-mydemo_r_f3	Faces
+wiremydemo_r_f3	Faces
 	aface3	7,0,-94,69,51,5,1,2
 	aface3	7,2,-92,87,11,5,2,3
 	aface3	7,4,113,41,41,2,1,3
@@ -911,10 +911,10 @@ mydemo_r_f3	Faces
 	aface3	7,12,23,-114,-51,4,1,5
 	aface3	43,36,0,-109,-65,32,30,31
 	FendQ
-mydemo_r_f4	Faces
+wiremydemo_r_f4	Faces
 	aface3	0,15,0,-111,62,19,16,5
 	FendQ
-mydemo_r_f6	Faces
+wiremydemo_r_f6	Faces
 	aface3	0,14,0,123,-32,5,16,18
 	aface3	0,16,-68,-106,-16,19,5,18
 	aface3	0,17,0,123,-31,20,21,18
@@ -924,22 +924,22 @@ mydemo_r_f6	Faces
 	aface3	4,38,0,-111,62,8,23,34
 	aface3	4,39,-86,-82,46,23,33,34
 	FendQ
-mydemo_r_f7	Faces
+wiremydemo_r_f7	Faces
 	aface4	0,13,0,106,70,15,16,5,17
 	aface4	0,19,0,106,70,22,8,23,24
 	FendQ
-mydemo_r_EBSP
+wiremydemo_r_EBSP
 	EndShape
 
 	endc
 
-;--Shape file ----- C:\3DG1\HIPOL\MYDEMO_L.TXT ----
+;--Shape file ----- C:\3DG1\HIPOL\wiremydemo_L.TXT ----
 	ifne	DO_HDR
 
 wiremydemo_l
-	ShapeHdr	mydemo_l_P,0,mydemo_l_F,0,0,0,0,0,playerB_col,35,13,60,60,id_0_c,0,0,0,0,<mydemo_l>
+	ShapeHdr	wiremydemo_l_P,0,wiremydemo_l_F,0,0,0,0,0,playerB_col,35,13,60,60,id_0_c,0,0,0,0,<wiremydemo_l>
 	elseif
-mydemo_l_P
+wiremydemo_l_P
 	Pointsb	35
 	pb	10,3,0	;0
 	pb	14,-3,3	;1
@@ -978,7 +978,7 @@ mydemo_l_P
 	pb	-19,9,-9	;34
 
 	EndPoints
-mydemo_l_F
+wiremydemo_l_F
 	Vizis	41
 	Viz	5,1,2,108,49,46	;0
 	Viz	3,4,2,-90,-81,-37	;1
@@ -1021,17 +1021,17 @@ mydemo_l_F
 	Viz	7,34,24,0,-111,62	;38
 	Viz	24,34,33,85,-82,46	;39
 	Viz	33,34,7,-78,20,-98	;40
-	BSPInit	mydemo_l_EBSP
-	BSP	23,mydemo_l_f1,.bsp2
-	BSPE	mydemo_l_f3
-.bsp2	BSP	15,mydemo_l_f4,.bsp5
-	BSPE	mydemo_l_f6
-.bsp5	BSPE	mydemo_l_f7
+	BSPInit	wiremydemo_l_EBSP
+	BSP	23,wiremydemo_l_f1,.bsp2
+	BSPE	wiremydemo_l_f3
+.bsp2	BSP	15,wiremydemo_l_f4,.bsp5
+	BSPE	wiremydemo_l_f6
+.bsp5	BSPE	wiremydemo_l_f7
 
-mydemo_l_f1	Faces
+wiremydemo_l_f1	Faces
 	aface3	0,23,-6,-119,-43,7,26,5
 	FendQ
-mydemo_l_f3	Faces
+wiremydemo_l_f3	Faces
 	aface3	7,0,108,49,46,5,1,2
 	aface3	7,2,106,70,1,5,3,1
 	aface3	7,4,-101,63,46,1,3,2
@@ -1062,10 +1062,10 @@ mydemo_l_f3	Faces
 	aface3	7,12,-23,-114,-51,4,5,2
 	aface3	43,36,0,-109,-65,32,31,30
 	FendQ
-mydemo_l_f4	Faces
+wiremydemo_l_f4	Faces
 	aface3	0,15,0,-111,62,19,5,17
 	FendQ
-mydemo_l_f6	Faces
+wiremydemo_l_f6	Faces
 	aface3	0,16,68,-106,-16,19,18,5
 	aface3	4,40,-78,20,-98,33,34,7
 	aface3	0,14,0,123,-32,5,18,17
@@ -1074,23 +1074,23 @@ mydemo_l_f6	Faces
 	aface3	4,37,0,127,-10,33,7,24
 	aface3	4,39,85,-82,46,24,34,33
 	FendQ
-mydemo_l_f7	Faces
+wiremydemo_l_f7	Faces
 	aface3	4,38,0,-111,62,7,34,24
 	aface4	0,13,0,106,70,15,16,5,17
 	aface4	0,19,0,106,70,22,23,24,7
 	FendQ
-mydemo_l_EBSP
+wiremydemo_l_EBSP
 	EndShape
 
 	endc
 
-;--Shape file ----- C:\3DG1\HIPOL\MYDEMO_B.TXT ----
+;--Shape file ----- C:\3DG1\HIPOL\wiremydemo_B.TXT ----
 	ifne	DO_HDR
 
 wiremydemo_b
-	ShapeHdr	mydemo_b_P,0,mydemo_b_F,0,0,0,0,0,playerB_col,25,12,60,60,id_0_c,0,0,0,0,<mydemo_b>
+	ShapeHdr	wiremydemo_b_P,0,wiremydemo_b_F,0,0,0,0,0,playerB_col,25,12,60,60,id_0_c,0,0,0,0,<wiremydemo_b>
 	elseif
-mydemo_b_P
+wiremydemo_b_P
 	Pointsb	35
 	pb	10,3,0	;0
 	pb	14,-3,3	;1
@@ -1129,7 +1129,7 @@ mydemo_b_P
 	pb	20,8,-9	;34
 
 	EndPoints
-mydemo_b_F
+wiremydemo_b_F
 	Vizis	40
 	Viz	5,1,2,108,49,46	;0
 	Viz	3,4,2,-90,-81,-37	;1
@@ -1171,22 +1171,22 @@ mydemo_b_F
 	Viz	32,34,31,0,111,-62	;37
 	Viz	31,34,33,86,82,-46	;38
 	Viz	33,34,32,-82,-9,96	;39
-	BSPInit	mydemo_b_EBSP
-	BSP	14,mydemo_b_f1,.bsp2
-	BSP	3,mydemo_b_f3,.bsp4
-	BSPE	mydemo_b_f5
-.bsp4	BSPE	mydemo_b_f6
-.bsp2	BSP	7,mydemo_b_f7,.bsp8
-	BSPE	mydemo_b_f9
-.bsp8	BSPE	mydemo_b_f10
+	BSPInit	wiremydemo_b_EBSP
+	BSP	14,wiremydemo_b_f1,.bsp2
+	BSP	3,wiremydemo_b_f3,.bsp4
+	BSPE	wiremydemo_b_f5
+.bsp4	BSPE	wiremydemo_b_f6
+.bsp2	BSP	7,wiremydemo_b_f7,.bsp8
+	BSPE	wiremydemo_b_f9
+.bsp8	BSPE	wiremydemo_b_f10
 
-mydemo_b_f1	Faces
+wiremydemo_b_f1	Faces
 	aface3	0,14,94,85,10,14,15,7
 	FendQ
-mydemo_b_f3	Faces
+wiremydemo_b_f3	Faces
 	aface3	7,3,-21,-105,-68,4,3,5
 	FendQ
-mydemo_b_f5	Faces
+wiremydemo_b_f5	Faces
 	aface3	7,0,108,49,46,5,1,2
 	aface3	7,2,106,70,1,5,3,1
 	aface3	7,4,-101,63,46,1,3,2
@@ -1209,17 +1209,17 @@ mydemo_b_f5	Faces
 	aface3	0,22,95,53,-65,11,7,17
 	aface3	43,30,0,-109,-65,26,25,24
 	FendQ
-mydemo_b_f6	Faces
+wiremydemo_b_f6	Faces
 	aface4	0,35,0,-106,-70,29,30,31,32
 	aface3	4,36,0,-126,19,33,32,31
 	aface3	4,38,86,82,-46,31,34,33
 	aface3	4,39,-82,-9,96,33,34,32
 	aface3	4,37,0,111,-62,32,34,31
 	FendQ
-mydemo_b_f7	Faces
+wiremydemo_b_f7	Faces
 	aface3	7,7,23,-114,-51,7,9,10
 	FendQ
-mydemo_b_f9	Faces
+wiremydemo_b_f9	Faces
 	aface3	7,5,-92,87,11,6,7,8
 	aface3	7,8,-94,69,51,8,7,10
 	aface3	7,10,113,41,41,6,8,10
@@ -1227,14 +1227,14 @@ mydemo_b_f9	Faces
 	aface3	7,11,21,-106,-66,6,9,7
 	aface3	7,6,71,-96,-43,9,6,10
 	FendQ
-mydemo_b_f10	Faces
+wiremydemo_b_f10	Faces
 	aface3	4,32,0,-111,62,23,28,22
 	aface3	4,31,0,127,-10,27,23,22
 	aface3	4,33,85,-82,46,22,28,27
 	aface3	4,34,-78,20,-98,27,28,23
 	aface4	0,26,0,106,70,20,21,22,23
 	FendQ
-mydemo_b_EBSP
+wiremydemo_b_EBSP
 	EndShape
 
 	endc
