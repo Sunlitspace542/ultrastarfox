@@ -936,6 +936,26 @@ face12	macro
 shnumfaces	=	shnumfaces+1
 	endm
 
+
+aface3	macro
+	db	2,-1,44,0,0,0,\7,\8
+shnumfaces	=	shnumfaces+1
+	db	2,-1,44,0,0,0,\6,\7
+shnumfaces	=	shnumfaces+1
+	db	2,-1,44,0,0,0,\6,\8
+shnumfaces	=	shnumfaces+1
+	endm
+aface4	macro
+	db	2,-1,44,0,0,0,\6,\7
+shnumfaces	=	shnumfaces+1
+	db	2,-1,44,0,0,0,\7,\8
+shnumfaces	=	shnumfaces+1
+	db	2,-1,44,0,0,0,\8,\9
+shnumfaces	=	shnumfaces+1
+	db	2,-1,44,0,0,0,\9,\6
+shnumfaces	=	shnumfaces+1
+	endm
+	
 	endc
 
 ;************************************************
