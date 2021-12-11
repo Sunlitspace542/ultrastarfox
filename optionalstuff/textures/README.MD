@@ -20,6 +20,7 @@ This will make it compatible with YY-CHR.NET.
 All tools mentioned (except SCAD) are in the links section.
 
 ## Notes
+- The first colour in each palette row of P_COL.COL is transparent in-game
 - The maping and misc textures are not drop in replacements for the final textures, they need to be defined
 - Textures are defined in DEFSPR.ASM, entries are in COLTABS.ASM
 
