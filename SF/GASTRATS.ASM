@@ -2644,7 +2644,7 @@ wldie_Istrat
 
 
 ;*****************************************************************************
-item3_Istrat	; add 5 to player's body HP
+item3_Istrat	; add 5 to player's body HP ; Pyramidal Power-Up from Starxxon's tweet
 	s_set_alptrs		x,item3_strat,0,0
 	s_set_alsflag		x,colldisable
 item3_strat
@@ -2883,17 +2883,24 @@ winglazermandie_Istrat
 
 	s_jmp_varAND		B,pshipflags,#psf_brkLwing!psf_brkRwing,.dlaser
 	s_jmpNOT_varAND		B,pshipflags3,#psf3_beamball,.dlaser
+	IFNE	winglazerman_helperball
 ;.helpball
-;	s_make_obj	#item_7,.badobj2		; help ball
-;	s_set_strat	y,item7a_istrat
-;	s_copy_pos	y,x
-;.badobj2	
+.dlaser	s_make_obj	#item_3,.badobj ; it seems the laser upgrade/wing repair enemy originally would have also given helperballs.
+	; help ball (HELPERBALL) ;would normally use item_7, however,
+	;to help diffrentiate, it has been changed to item_3.
+	;unfortunately, .helpball does not exist, so It's either
+	;laser upgrade (winglazerman_helperball equ 0) or helper ball (winglazerman_helperball equ 1), not both.
+	s_set_strat	y,item7a_istrat
+	s_copy_pos	y,x
+.badobj
+	ELSEIF
 	s_brl		.badobj
 
 .dlaser	s_make_obj	#item_7,.badobj		; double laser / repair
 	s_set_strat	y,item7_istrat
 	s_copy_pos	y,x
 .badobj
+	ENDC
 	s_jmp		explode_Istrat
 
 
@@ -2944,7 +2951,7 @@ item7_strat
 
 
 ;*****************************************************************************
-item7a_Istrat	; player's special help ball
+item7a_Istrat	; player's special help ball ; HELPERBALL
 	s_set_alptrs		x,item7a_strat,0,0
 	s_set_alsflag		x,colldisable
 item7a_strat
