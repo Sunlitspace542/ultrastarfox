@@ -5,7 +5,7 @@
 
 ;####################################################################################################################
 cesdemo				equ	0	; 0 = off, 1 = CES Demo (timed) 2 = Untimed CES Demo w/ planet cheat					#
-debuginfo			equ	1	; full strategy debugging - Press P2 R Button in-game to activate [1 = on 0 = off]		#
+debuginfo			equ	0	; full strategy debugging - Press P2 R Button in-game to activate [0 = off 1 = on]		#
 debuginfo2			equ	0	; speed up mode? [0 = off 1 = on]														#
 janglish			equ	0	; 0 = english, 1 = japanese																#
 cestime				equ	5	; CES/SSFW timer countdown (in minutes)													#
@@ -14,12 +14,12 @@ contest				equ	0	; Super Star Fox Weekend [0 = off 1 = on]												#
 german				equ	0	; german version [0 = off 1 = on]														#
 french				equ	0	; french version [0 = off 1 = on] (UNUSED VARIABLE)										#
 twentyonemhz		equ 1	; 21MHZ mode [1 = on 0 = off]															#
-planetcheaton 		equ 1   ; Allows you to enable planet select cheat on the map before you have selected			#
+planetcheaton 		equ 0   ; Allows you to enable planet select cheat on the map before you have selected			#
 							; a level. Press X+Y on the same frame to activate.										#
-godmode				equ	1	; No collision for the player															#
+godmode				equ	0	; No collision for the player															#
 messagetest			equ	0	; Run message test in training level													#
-crosshairalwayson	equ	1	; Crosshair in third person view														#
-hipolyarwing		equ	1	; high poly arwing [0 = low poly (default) 1 = hi poly]									#
+crosshairalwayson	equ	0	; Crosshair in third person view														#
+hipolyarwing		equ	0	; high poly arwing [0 = low poly (default) 1 = hi poly]									#
 ;####################################################################################################################
 
 ; ###############
@@ -34,6 +34,8 @@ randvertandbit	equ	15		; decimal value of the binary AND value of the max number
 randverts2		equ	0		; randomize the vertices a lot
 							; Both will not activate at once
 ;------------------------------------------------------------------------------
+
+; for player health values, see STRATEQU.INC
 
 ; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ; !! Everything else is more advanced stuff, be careful! !!
