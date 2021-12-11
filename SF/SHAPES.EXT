@@ -66,15 +66,15 @@
 	extern	WALKER_L
 	extern	WALKER_R
 	extern	WALKER_0
-;	extern	TUNNEL1
-;	extern	TUNNEL2
-;	extern	TUNNEL3
+	extern	TUNNEL1
+	extern	TUNNEL2
+	extern	TUNNEL3
 	extern	PLANE1
-;	extern	PHAZER
-;	extern	STARBULL
+	extern	PHAZER
+	extern	STARBULL
 	extern	PILLAR2
-;	extern	SHADOW2
-;	extern	MOTHERF2
+	extern	SHADOW2
+	extern	MOTHERF2
 	extern	FLY1
 	extern	LMISSILE
 	extern	MISSILE
@@ -95,13 +95,13 @@
 	extern	EXPL_4
 	extern	FLOOR2
 ;	extern	FLOOR1
-;	extern	BEAMBOX
-;	extern	BEAMBOX2
+	extern	BEAMBOX
+	extern	BEAMBOX2
 	extern	SHIP_1_S
-;	extern	CRAB_0
+	extern	CRAB_0
 	extern	HOU_L
 	extern	HOU_R
-;	extern	SWING
+	extern	SWING
 	extern	D_HEAD_0
 	extern	D_BODY_0
 	extern	CAMELEON
@@ -221,13 +221,13 @@
 	extern	ITEM_5
 	extern	ITEM_6
 	extern	RIPAIR_W
-;	extern	ITEM_3
-;	extern	RIP_MAN
+	extern	ITEM_3
+	extern	RIP_MAN
 	extern	ITEM_4
 	extern	UP1_MAN
 	extern	ITEM_0
-;	extern	ITEM_1
-;	extern	ITEM_2
+	extern	ITEM_1
+	extern	ITEM_2
 	extern	BOM_WING
 	extern	WIRE_MAN
 	extern	BOSS_8_0

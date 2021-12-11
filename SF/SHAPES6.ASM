@@ -1246,3 +1246,132 @@ wiremydemo_b_EBSP
 	EndShape
 
 	endc
+
+;--Shape file ----- C:\SHED\NSHAPES\ITEM_3.TXT ----
+	ifne	DO_HDR
+
+ITEM_3
+	ShapeHdr	ITEM_3_P,0,ITEM_3_F,0,0,0,0,0,0,20,23,18,28,id_0_c,0,0,0,0,<ITEM_3>
+	elseif
+ITEM_3_P
+	datahdr
+	Pointsb	1
+	pb	0,-9,0	;0
+	PointsXb	1
+	pb	-10,8,-9	;1
+	Pointsb	1
+	pb	0,8,9	;3
+	PointsXb	1
+	pb	20,-9,-18	;4
+	Pointsb	2
+	pb	0,23,0	;6
+	pb	0,-9,18	;7
+
+	EndPoints
+ITEM_3_F
+	Vizis	4
+	Viz	0,1,2,0,59,-112	;4
+	Viz	2,1,3,0,-127,0	;5
+	Viz	1,0,3,108,32,60	;6
+	Viz	3,0,2,-108,32,60	;7
+
+ITEM_3_f1	Faces
+	Face3	7,0,0,59,-112,0,1,2
+	Face3	7,1,0,-127,0,2,1,3
+	Face3	7,2,108,32,60,1,0,3
+	Face3	7,3,-108,32,60,3,0,2
+	Face2	43,-1,0,123,31,5,6
+	Face2	43,-1,0,-123,31,6,4
+	Face2	43,-1,120,0,42,6,7
+	Face2	43,-1,-120,0,42,7,5
+	Face2	43,-1,0,123,-31,4,7
+	Face2	43,-1,0,-123,31,4,5
+	Fend
+	EndShape
+
+	endc
+
+
+;--Shape file ----- C:\SHED\NSHAPES\RIP_MAN.TXT ----
+	ifne	DO_HDR
+
+RIP_MAN
+	ShapeHdr	RIP_MAN_P,0,RIP_MAN_F,0,0,0,0,0,0,40,40,20,50,id_0_c,0,0,0,0,<RIP_MAN>
+	elseif
+RIP_MAN_P
+	datahdr
+	PointsXb	1
+	pb	5,-20,-5	;0
+	Pointsb	2
+	pb	0,-20,4	;2
+	pb	0,0,9	;3
+	PointsXb	1
+	pb	-10,0,-9	;4
+	Pointsb	4
+	pb	0,-25,-2	;6
+	pb	0,10,-2	;7
+	pb	-11,-40,1	;8
+	pb	-40,-30,5	;9
+	PointsXb	1
+	pb	-37,-20,2	;10
+	Pointsb	5
+	pb	40,-30,5	;12
+	pb	11,-40,1	;13
+	pb	-16,30,7	;14
+	pb	0,30,-20	;15
+	pb	16,30,7	;16
+
+	EndPoints
+RIP_MAN_F
+	Vizis	13
+	Viz	6,0,2,-96,64,53	;0
+	Viz	2,1,6,96,64,53	;1
+	Viz	0,1,4,0,25,-125	;2
+	Viz	5,3,2,-110,15,61	;3
+	Viz	1,2,3,110,15,61	;4
+	Viz	6,1,0,0,65,-109	;5
+	Viz	4,3,7,98,-60,54	;6
+	Viz	7,3,5,-98,-60,54	;7
+	Viz	7,5,4,0,-73,-104	;8
+	Viz	8,9,10,26,28,-121	;9
+	Viz	1,10,9,-26,-28,121	;10
+	Viz	0,11,12,-26,28,-121	;11
+	Viz	13,12,11,26,-28,121	;12
+	BSPInit	RIP_MAN_EBSP
+	BSP	0,RIP_MAN_f1,.bsp2
+	BSP	1,RIP_MAN_f3,.bsp4
+	BSPE	RIP_MAN_f5
+.bsp4	BSPE	RIP_MAN_f6
+.bsp2	BSPE	RIP_MAN_f7
+
+RIP_MAN_f1	Faces
+	Face3	25,0,-96,64,53,6,0,2
+	FendQ
+RIP_MAN_f3	Faces
+	Face3	27,1,96,64,53,2,1,6
+	FendQ
+RIP_MAN_f5	Faces
+	Face3	25,6,98,-60,54,4,3,7
+	Face3	23,7,-98,-60,54,7,3,5
+	Face3	21,8,0,-73,-104,7,5,4
+	Face4	14,2,0,25,-125,0,1,4,5
+	Face4	16,3,-110,15,61,5,3,2,0
+	Face4	20,4,110,15,61,1,2,3,4
+	Face2	44,-1,0,0,0,14,7
+	Face2	44,-1,0,0,0,15,7
+	Face2	44,-1,0,0,0,7,16
+	Face3	23,5,0,65,-109,6,1,0
+	FendQ
+RIP_MAN_f6	Faces
+	Face4	14,9,26,28,-121,8,9,10,1
+	Face4	45,10,-26,-28,121,1,10,9,8
+	FendQ
+RIP_MAN_f7	Faces
+	Face4	14,11,-26,28,-121,0,11,12,13
+	Face4	45,12,26,-28,121,13,12,11,0
+	FendQ
+RIP_MAN_EBSP
+	EndShape
+
+	endc
+

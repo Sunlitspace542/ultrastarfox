@@ -125,10 +125,6 @@ initgame_strats_l
 	s_set_alsflag		x,playerobj
 
 ;------------------------------------------------------------------------------
-; make help ball weapon.
-;	s_make_obj		#helpball,.bad1
-;	s_set_strat		y,helpball_Istrat
-;.bad1
 
 ;------------------------------------------------------------------------------
 	plb
