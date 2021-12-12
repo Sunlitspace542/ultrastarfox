@@ -25,6 +25,7 @@
 @call mc e-test 0 7
 @call mc obj-1 8 13
 @call mc contest 0 7
-@call mc 2ep 0 9
+@call mc cp-g 0 7
+@call mc bg2-ep 0 9
 @packer /4000 allcols.col allcols.pac
 pause
