@@ -11,7 +11,7 @@
 	message	falcon,<there's more on the way!>,<da vorne sind noch mehr!>,other	; (11)
 	message	falcon,<you can run, but you can't hide!>,<abhauen n‚tzt euch gar nichts!>,other	; (12)
 	message	falcon,<this one's mine!>,<der geh„rt mir!>,other	; (13)
-	message	falcon,<watch it, fox!>,<pass auf, fox!>,help	; (14)
+	message	falcon,<watch it, fox!>,<pass auf, fox! >,help	; (14)
 	message	falcon,<i'm hit!!>,<ich bin getroffen###>,other	; (15)
 	message	falcon,<here they come!>,<da kommen sie!>,other	; (16)
 	message	falcon3,<make the neck and tail shorter, fox!!>,<jetzt wird es eng, fox!>,other	; (17)

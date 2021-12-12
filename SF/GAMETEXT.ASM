@@ -1,4 +1,8 @@
+	IFEQ	GERMAN
 pausetxt	TXT	14,<PAUSED>
+	ELSEIF
+pausetxt	TXT	14,<PAUSE>
+	ENDC
 
 	IFEQ	GERMAN
 totalscoretxt	TXT	14,<TOTAL SCORE>
@@ -49,7 +53,7 @@ bombbon		TXT	2,<BOMB BONUS>
 frogtxt	TXT	14,<SLIPPY>
 bunnytxt	TXT	14,<PEPPY>
 cocktxt	TXT	14,<FALCO>
-deadtxt	TXT	14,< . . . . >
+deadtxt	TXT	14,<. . . . . .>
 stagetxt	TXT	14,<STAGE>
 cesmintxt	TXT	2,<m>
 cessectxt	TXT	2,<s>
