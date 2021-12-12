@@ -104,7 +104,7 @@ bgandpcr
 
 	IFEQ	GERMAN
 ; germany
-	db	"STAR FOX             "
+	db	"STAR WING            "
 	db	$20,$13,$a,$0,$2,$1,$0,$ff,$ff,$0,$0
 
 	ENDC
