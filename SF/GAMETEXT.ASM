@@ -43,6 +43,8 @@ stagetxt	TXT	14,<STAGE>
 cesmintxt	TXT	2,<m>
 cessectxt	TXT	2,<s>
 scoretxt2	TXT	2,<score>
+shieldbon	TXT	2,<SHIELD BONUS>
+bombbon		TXT	2,<BOMB BONUS>
 	ELSEIF
 frogtxt	TXT	14,<SLIPPY>
 bunnytxt	TXT	14,<PEPPY>
@@ -52,6 +54,8 @@ stagetxt	TXT	14,<STAGE>
 cesmintxt	TXT	2,<m>
 cessectxt	TXT	2,<s>
 scoretxt2	TXT	2,<punkte>
+shieldbon	TXT	2,<SCHILD BONUS>
+bombbon		TXT	2,<BOMBE BONUS>
 	ENDC
 
 ;-------------------------------------------------------------------
