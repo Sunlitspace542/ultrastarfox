@@ -15,7 +15,7 @@ Star Fox (SNES, 1993), with modifications for easier creation of ROM hacks
 
 ## Building
 
-Requirements: Microsoft Windows, DOSBox
+Requirements: Microsoft Windows, DOSBox (DOSBox-X for Windows included)
 
 Download repo as ZIP and extract somewhere or clone repo with git via the command line.  
 
