@@ -6,6 +6,7 @@ Star Fox (SNES, 1993), with modifications for easier creation of ROM hacks
 - SuperFX 2 support and various optimizations
 - Lots of free bank space for new models, assets and code
 - Bugfixes and improvements
+- Uses ARGLINK from Star Fox 2 as linker instead of SL
 - rebuild color palette data using the palette packer (bldpal.bat)
 - Easier creation of wireframe models
 - Kando was involved so you know it's good
