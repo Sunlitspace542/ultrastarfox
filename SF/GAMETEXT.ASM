@@ -1,8 +1,4 @@
-	IFEQ	GERMAN
 pausetxt	TXT	14,<PAUSED>
-	ELSEIF
-pausetxt	TXT	14,<PAUSE>
-	ENDC
 
 	IFEQ	GERMAN
 totalscoretxt	TXT	14,<TOTAL SCORE>
@@ -38,6 +34,7 @@ teamtxt	TXT	14,<SHIELD OF TEAMMATES>
 teamtxt	TXT	14,<TEAM POWER>
 	ENDC
 
+	IFEQ	GERMAN
 frogtxt	TXT	14,<SLIPPY>
 bunnytxt	TXT	14,<PEPPY>
 cocktxt	TXT	14,<FALCO>
@@ -46,6 +43,16 @@ stagetxt	TXT	14,<STAGE>
 cesmintxt	TXT	2,<m>
 cessectxt	TXT	2,<s>
 scoretxt2	TXT	2,<score>
+	ELSEIF
+frogtxt	TXT	14,<SLIPPY>
+bunnytxt	TXT	14,<PEPPY>
+cocktxt	TXT	14,<FALCO>
+deadtxt	TXT	14,< . . . . >
+stagetxt	TXT	14,<STAGE>
+cesmintxt	TXT	2,<m>
+cessectxt	TXT	2,<s>
+scoretxt2	TXT	2,<punkte>
+	ENDC
 
 ;-------------------------------------------------------------------
 
