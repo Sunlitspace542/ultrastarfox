@@ -23,7 +23,7 @@ to build ROM, run ``build.cmd`` (Windows) or ``BUILD.BAT`` (DOSBox)
 
 to build ROM with Logging, run ``build to log.cmd`` (Windows) or ``BLDtolog.BAT`` (DOSBox)  
 
-to rebuild color palettes, run ``build palettes.cmd`` (Windows) ``BLDPAL.BAT`` (DOSBox)  
+to rebuild color palettes, run ``build palette.cmd`` (Windows) ``BLDPAL.BAT`` (DOSBox)  
 
 the .BAT versions of these can be run via DOSBox if you do not use Windows.
 
