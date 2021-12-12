@@ -52,7 +52,7 @@
 	message	frog3,<take this, j-j-junk heap!>,<nimm das, aliens-s- schrott!>,other	; (52)
 	message	frog3,<i'll get this one! ribbit!>,<dieser hier geh„rt mir! ribbit!>,other	; (53)
 	message	frog,<hey! it's me, slippy!>,<hey! ich bin's doch, slippy!>,help	; (54)
-	message	frog,<ribbit!  i'm hit!!>,<ribbit! ich bin getroffen..>,other	; (55)
+	message	frog,<ribbit!  i'm hit!!>,<ribbit! ich bin getroffen##>,other	; (55)
 	message	frog,<there's too many of them!>,<es sind einfach zu viele!>,other	; (56)
 	message	frog,<let's turn back, okay?!>,<wir sollten lieber umkehren!>,other	; (57)
 	message	frog,<let's be careful!>,<wir sollten vorsichtig sein!>,other	; (58)

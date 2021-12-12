@@ -52,7 +52,7 @@
 	DW	60722	; (52) take this, j-j-junk heap! ** nimm das, aliens-s- schrott!
 	DW	60754	; (53) i'll get this one! ribbit! ** dieser hier geh„rt mir! ribbit!
 	DW	60789	; (54) hey! it's me, slippy! ** hey! ich bin's doch, slippy!
-	DW	60821	; (55) ribbit!  i'm hit!! ** ribbit! ich bin getroffen..
+	DW	60821	; (55) ribbit!  i'm hit!! ** ribbit! ich bin getroffen##
 	DW	60852	; (56) there's too many of them! ** es sind einfach zu viele!
 	DW	60881	; (57) let's turn back, okay?! ** wir sollten lieber umkehren!
 	DW	60913	; (58) let's be careful! ** wir sollten vorsichtig sein!
