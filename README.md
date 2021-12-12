@@ -10,7 +10,7 @@ Star Fox (SNES, 1993), with modifications for easier creation of ROM hacks and g
 - rebuild color palette data using the palette packer (bldpal.bat)
 - Easier creation of wireframe models
 - Kando was involved so you know it's good
-- Matching German Script
+- Matching text data
 - (soon to be) Working StarWing title screen
 
 ## Building
