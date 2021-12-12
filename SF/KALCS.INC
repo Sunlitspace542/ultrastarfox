@@ -160,10 +160,6 @@ bgfoxpac	equ	bg2bpac
 	IFEQ	PAL
 bgcontpac	equ	bg2epac
 	ELSEIF
-	IFEQ	GERMAN
-bgcontpac	equ	bg2epac
-	ELSEIF
 bgcontpac	equ	bg2eppac
-	ENDC
 	ENDC
 obj2pac	equ	bg2epac+8*32
