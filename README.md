@@ -15,8 +15,17 @@ Star Fox (SNES, 1993), with modifications for easier creation of ROM hacks
 
 ## Building
 
-Building is easy if you've used the Star Fox EZBuild.  
-This repo is intended for building on Windows, but can probably be easily modified for other platforms.
+Requirements: Microsoft Windows, DOSBox
+
+Download repo as ZIP and extract somewhere or clone repo with git via the command line.  
+
+to build ROM, run ``build.cmd`` (Windows) or ``BUILD.BAT`` (DOSBox)  
+
+to build ROM with Logging, run ``build to log.cmd`` (Windows) or ``BLDtolog.BAT`` (DOSBox)  
+
+to rebuild color palettes, run ``build palettes.cmd`` (Windows) ``BLDPAL.BAT`` (DOSBox)  
+
+the .BAT versions of these can be run via DOSBox if you do not use Windows.
 
 ## Helpful Links
 
