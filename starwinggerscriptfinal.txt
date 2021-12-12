@@ -1,0 +1,162 @@
+-- gametext.asm --
+
+ PAUSE
+ GESAMTPUNKTZAHL
+ PUNKTE
+ /
+ PERCENTAGE
+ BONUS 1 VERSUCH
+ %
+ PERFECT//
+TEAM POWER
+SLIPPY
+PEPPY
+FALCO
+ . . . . 
+STAGE
+m
+s
+punkte
+SCHILD BONUS 
+BOMBE BONUS
+
+-- german.inc -- 
+
+alles okay, jungs?!
+geschafft!
+slippy slippy!
+zur‚ck zur basis!
+auf geht's, fox!
+wir sind ein team!
+sie verfolgen mich!
+schieb ab, fox!
+sie haben mich! gehe runter###
+ich werde sie alle vernichten!
+da vorne sind noch mehr!
+abhauen n‚tzt euch gar nichts!
+der geh„rt mir!
+pass auf, fox!
+ich bin getroffen### da kommen sie!
+jetzt wird es eng, fox!
+zerst„re erst die beiden arme!
+mach langsamer, fox!
+und jetzt auf die stabile seitenlage!
+mich hat's erwischt###
+hey! das war meiner!
+aufgepasst, ich komme!
+ich gebe dir r‚ckendeckung!
+yeah - auf geht's!
+ich bin hinter dir, fox!
+hau ab, du mistkerl!
+yeah! danke!
+aargh! mich hat's erwischt!
+jetzt sind sie dran!
+ich hab' ihn! ich hab' ihn!
+nimm das, du bastard!
+du entwischst mir nicht!
+was soll das, fox???
+aaaarrrghhh!
+feind n€hert sich!
+gleich wird es eng, fox!
+zerst„re erst die beiden arme!
+r‚ckschub! du musst bremsen!
+jetzt zeig mal, was du kannst!
+hol' mich ab, wenn du zur‚ckkommst!
+hey! das war meiner!
+aus dem weg! ich bin rechts von dir, fox!
+okay!
+ribbit! ich bilde die nachhut!
+quak! helft mir!
+ribbit! vielen dank!
+oh nein! quuuaaak!
+den kriege ich - ribbit!
+n-n-null problemo!
+nimm das, aliens-s- schrott!
+dieser hier geh„rt mir! ribbit!
+hey! ich bin's doch, slippy!
+ribbit! ich bin getroffen..
+es sind einfach zu viele!
+wir sollten lieber umkehren!
+wir sollten vorsichtig sein!
+irgendetwas klebt an mir!
+ich hab's nicht g-g-geschafft, fox!
+hey! lass mir auch n-n-noch einen!
+verzieh dich, abschaum!
+ich hoffe, das war's!
+hast du tomaten auf den augen?
+ich weiss nicht, welcher echt ist!
+da m‚ssen wir rein!
+ich folge dir rein!
+m‚ssen wir da wirklich rein?!
+das riecht nach €rger##!
+beeilung! beeil dich, fox! quak!
+vor dir, fox!
+sei vorsichtig, fox!
+diesmal habe ich dich noch retten k„nnen!
+war das alles? okay! und weiter##?
+so weit, so g-g-gut!
+schau mal, da!
+es sieht gut aus, fox!
+wir haben es geschafft!
+s-s-super!
+ein bisschen vorsichtiger!
+in zukunft vorsichtiger!
+nicht mehr auf mich s-schiessen!
+das sieht nicht gut aus!
+ich glaube, ich schaffe es nicht!
+mein schiff ist demoliert!
+star fox team! euer ziel ist der planet venom, den ihr vernichten m‚sst! viel gl‚ck!
+andross l€sst in diesem gebiet eine basis errichten!  ihr m‚sst alle maschinen zerst„ren!
+die raumflotte besteht aus gewaltigen schlachtschiffen! zerst„rt ihre energiekerne!
+nur ein tip... benutzt den r‚ckschub, wenn ihr zu schnell seid. viel gl‚ck!
+andross h€lt sich auf venom versteckt! finde und zerst„re sein hauptquartier, fox!
+CORNERIA - DIE BASIS
+ASTEROIDEN GRTEL
+SEKTOR  X
+DER PLANET FORTUNA
+DIE ANDROSS RAUMFLOTTE
+DER PLANET TITANIA
+DAS SCHWARZE LOCH
+SEKTOR  Y
+DIE METEOR SCHLACHTBASIS
+SEKTOR  Z
+DER PLANET MACBETH
+VENOM - DAS ZIEL
+EINE ANDERE DIMENSION
+cornerias versorgungsplanet wird belagert! erobere die klimakontrollstation zur‚ck!
+sollte sich eine der am„ben an deinem schiff festsetzen, benutze l und r, um sie loszuwerden!
+du hast dich f‚r die dritte route entschieden### damit rechnet andross nie!
+benutze l und r, um den traktorstrahlen des feindlichen schlachtschiffes auszuweichen!
+andross kontrolliert die riesigen gesch„pfe, die auf fortuna leben! alles klar, fox?
+du hast ein starkes team, fox! dein n€chstes ziel ist der planet macbeth!
+das innere des planeten macbeth eignet sich gut f‚r den bau einer basis! haltet andross davon ab!
+diesen weltraumfriedhof haben wir andross zu verdanken! hier ist dein vater verschwunden, fox!
+alles in ordnung, fox? okay, dann schleiche dich jetzt durch die hintert‚r an venom ran!
+star fox team - bitte melden! wir brauchen euch, um corneria zu besch‚tzen!
+du bist weit gekommen### jetzt musst du nur noch andross vernichten! wir z€hlen auf dich!
+das kommandoschiff geh„rt mir!
+okay, fox! zeig mal, was du drauf hast! 
+wir m‚ssen durch alle ringe fliegen!
+ich rate dir zu tastenbelegung a oder b!
+nicht schlecht, fox!
+okay, das war gut, aber jetzt wird es ernst!
+dr‚cke start, um das spiel zu beginnen!
+general pepper will uns wohl testen!
+na gut! du kannst jetzt start dr‚cken!
+fast k„nnte ich angst vor dir bekommen, fox##
+### aber gegen mich hast du keine chance!
+dein starfighter hat gegen mich keine chance!
+ich ahnte, dass es mit dir nicht leicht wird##!
+general pepper ist ein guter lehrer!
+du kannst mir nicht mehr entkommen!
+mit dieser flug route habe ich nicht gerechnet#
+dein vater war der gleiche draufg€nger###
+jetzt werde ich die mcclouds ausrotten!
+nicht zur‚ckbleiben!
+und jetzt auf die seite, fox!
+bleibe in der formation!
+ist mit dir alles in ordnung, fox?!
+nicht s-s-schlecht, fox! ribbit!
+pass auf den stingray auf!
+pass auf den stingray auf!
+pass auf den stingray auf! 
