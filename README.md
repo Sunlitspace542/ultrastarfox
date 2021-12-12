@@ -40,12 +40,12 @@ the .BAT versions of these can be run via DOSBox if you do not use Windows.
 
 
 ## Future things to do
-~~1. Fix debug mode crash~~ turns out it's not a crash or a softlock, just hold P2 L until debug UI reappears  
-1. OPTIMIZE
-2. Expanded texture space
-3. Annotate and document code
-4. FastROM
-5. Organize source files and edit makefile accordingly
+3. Figure out German ALARM text
+2. OPTIMIZE
+3. Expanded texture space
+4. Annotate and document code
+5. FastROM
+6. Organize source files and edit makefile accordingly
 
 ## Project Structure
 ```
