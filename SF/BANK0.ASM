@@ -102,23 +102,16 @@ bgandpcr
 	db	$20,$13,$a,$0,$1,$1,$0,$ff,$ff,$0,$0
 	ELSEIF
 
-	IFEQ	GERMAN
-; germany
+	IFEQ	GERMAN+FRENCH
+; british
 	db	"STAR WING            "
-	db	$20,$13,$a,$0,$2,$1,$0,$ff,$ff,$0,$0
-
-	ENDC
-
-	IFEQ	FRENCH
-; france
-	db	"STAR FOX             "
 	db	$20,$13,$a,$0,$2,$1,$0,$ff,$ff,$0,$0
 
 	ENDC
 
 	IFNE	GERMAN
 ; german
-	db	"STAR FOX             "
+	db	"STAR WING            "
 	db	$20,$13,$a,$0,$9,$1,$0,$ff,$ff,$0,$0
 	ENDC
 
@@ -136,8 +129,6 @@ bgandpcr
 	db	$20,$13,$a,$0,$0,$1,$0,$ff,$ff,$0,$0
 
 	ENDC
-
-
 
 ;------------------------------------
 
