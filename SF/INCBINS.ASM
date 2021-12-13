@@ -176,21 +176,16 @@ bg33ccr
 	ENDC
 
 	IFEQ	german					;if german = 0
-	inccru	bgti3ccr,data\ti-3-us.ccr ;why the hell are the if's backwards???
+	IFEQ	PAL						;if pal = 1
+	inccru	bgti3ccr,data\ti-3-us.ccr ;these are the same
 	inccru	bgti3pcr,data\ti-3-us.pcr
+	ELSEIF							;elseif pal = 0
+	inccru	bgti3ccr,data\ti-3-us.ccr ;these are the same, redundant
+	inccru	bgti3pcr,data\ti-3-us.pcr
+	ENDC							;end if
 	ELSEIF							;if german = 1
 	inccru	bgti3ccr,data\ti-3-g.ccr
 	inccru	bgti3pcr,data\ti-3-g.pcr
-	ENDC
-
-	IFEQ	PAL						;if pal = 0
-	inccru	bgti3ccr,data\ti-3-us.ccr ;why the hell are the if's backwards???
-	inccru	bgti3pcr,data\ti-3-us.pcr
-	ELSEIF							;if pal = 1
-	IFEQ	GERMAN					;and if german = 0
-	inccru	bgti3ccr,data\ti-3-g.ccr
-	inccru	bgti3pcr,data\ti-3-g.pcr
-	ENDC
 	ENDC
 	
 	fileslog	data\cont.ccr
@@ -199,18 +194,18 @@ bg33ccr
 	fileslog	data\ti-3.ccr
 	endc
 
-	IFEQ	CONTEST
+	IFEQ	CONTEST					;if contest = 0
 	inccru	bg24ccr,data\2-4.ccr
 	fileslog	data\ti.ccr
 	fileslog	data\ti.pcr
-	ELSEIF
+	ELSEIF							;if contest = 1
 	inccru	bgticcr,data\ti.ccr
 	inccru	bgtipcr,data\ti.pcr
 	fileslog	data\2-4.ccr
 bg24ccr	=	bgticcr
 	ENDC
 
-	IFEQ	GERMAN
+	IFEQ	GERMAN					
 	IFEQ	CONTEST
 	inccru	bgcpccr,data\cp.ccr
 	fileslog	data\cp-g.ccr
