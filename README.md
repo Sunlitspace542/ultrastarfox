@@ -6,6 +6,7 @@ Star Fox / StarWing (SNES, 1993), with modifications for easier creation of ROM 
 - SuperFX 2 (21Mhz) support and various optimizations
 - Lots of free bank space for new models, assets and code
 - 256 texture slots
+- 245 max vertices/points
 - Bugfixes and improvements
 - Uses ARGLINK from Star Fox 2 as linker instead of SL
 - rebuild color palette data using the palette packer (bldpal.bat)
