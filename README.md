@@ -1,5 +1,5 @@
-# HackerStarFox
-Star Fox (SNES, 1993), with modifications for easier creation of ROM hacks and general ease-of-use.
+# HackerStarFox / HackerStarWing
+Star Fox / StarWing (SNES, 1993), with modifications for easier creation of ROM hacks and general ease-of-use.
 
 ## Features
 
