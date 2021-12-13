@@ -312,7 +312,7 @@ mmaxvistab	=	128
 	malc	m_meters,2
 	malc	m_dlptr,2
 	malc	m_shadowheight,2
-	malc	bg_scrollbuffer,224*3
+	malc	bg_scrollbuffer,2	;not 224*3
 	malc	m_stack,mmaxstack
 	malc	m_zlist,0
 	malc	m_rotpnts,6*mmaxpnts
