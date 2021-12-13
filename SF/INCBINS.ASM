@@ -175,22 +175,24 @@ bg33ccr
 
 	ENDC
 
-	IFEQ	german
+	IFEQ	german					;if german = 0
 	inccru	bgti3ccr,data\ti-3-us.ccr ;why the hell are the if's backwards???
 	inccru	bgti3pcr,data\ti-3-us.pcr
-	ELSEIF
+	ELSEIF							;if german = 1
 	inccru	bgti3ccr,data\ti-3-g.ccr
 	inccru	bgti3pcr,data\ti-3-g.pcr
 	ENDC
 
-	IFEQ	PAL
+	IFEQ	PAL						;if pal = 0
 	inccru	bgti3ccr,data\ti-3-us.ccr ;why the hell are the if's backwards???
 	inccru	bgti3pcr,data\ti-3-us.pcr
-	ELSEIF
+	ELSEIF							;if pal = 1
+	IFEQ	GERMAN					;and if german = 0
 	inccru	bgti3ccr,data\ti-3-g.ccr
 	inccru	bgti3pcr,data\ti-3-g.pcr
 	ENDC
-
+	ENDC
+	
 	fileslog	data\cont.ccr
 	fileslog	data\cont.pcr
 	fileslog	data\ti-3.pcr
