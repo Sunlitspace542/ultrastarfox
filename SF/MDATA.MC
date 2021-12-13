@@ -998,7 +998,15 @@ msg_starfox
 	ifeq	german
 	mariomsg	<STARWING>
 	elseif
+	ifeq	janglish
 	mariomsg	<STAR FOX>
+	elseif
+	ifne	janglish
+	mariomsg	<STAR FOX>
+	elseif
+	mariomsg	<STAR FOX>
+	endc
+	endc
 	endc
 	endc
 
