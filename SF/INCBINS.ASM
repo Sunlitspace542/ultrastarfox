@@ -176,9 +176,9 @@ bg33ccr
 	ENDC
 
 	IFEQ	german					;if german = 0
-	IFEQ	PAL						;if pal = 1
-	inccru	bgti3ccr,data\ti-3-us.ccr ;these are the same
-	inccru	bgti3pcr,data\ti-3-us.pcr
+	IFNE	PAL						;if pal = 1
+	inccru	bgti3ccr,data\ti-3-g.ccr ;these are the same
+	inccru	bgti3pcr,data\ti-3-g.pcr
 	ELSEIF							;elseif pal = 0
 	inccru	bgti3ccr,data\ti-3-us.ccr ;these are the same, redundant
 	inccru	bgti3pcr,data\ti-3-us.pcr

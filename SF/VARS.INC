@@ -12,11 +12,11 @@ debuginfo2			equ	0	; speed up mode? [0 = off 1 = on]														#
 janglish			equ	0	; 0 = english, 1 = japanese																#
 german				equ	0	; german version [0 = off 1 = on]														#
 french				equ	0	; french version [0 = off 1 = on] (UNUSED VARIABLE)										#
-pal					equ	1	; PAL/NTSC [0 = NTSC 1 = PAL]															#
+pal					equ	0	; PAL/NTSC [0 = NTSC 1 = PAL]															#
 twentyonemhz		equ 1	; 21MHZ mode [1 = on 0 = off]															#
-planetcheaton 		equ 0   ; Allows you to enable planet select cheat on the map before you have selected			#
+planetcheaton 		equ 1   ; Allows you to enable planet select cheat on the map before you have selected			#
 							; a level. Press X+Y on the same frame to activate.										#
-godmode				equ	0	; No collision for the player															#
+godmode				equ	1	; No collision for the player															#
 messagetest			equ	0	; Run message test in training level													#
 crosshairalwayson	equ	0	; Crosshair in third person view														#
 hipolyarwing		equ	0	; high poly arwing [0 = low poly (default) 1 = hi poly]									#
