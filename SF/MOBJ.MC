@@ -3990,18 +3990,22 @@ mdo_colour_ng
 	nop
 
 	from	r3
-	lob
-	bpl	.lo			; test hi nybble mode (bit 13)
+	hib
+	ror
+	ror
+	ror
+	ror
+	ror
+	ror
+	
+	bcc	.lo			; test hi nibble mode (bit 13)
 	nop
 
 	miwt	r0,1<<(2+8)		; cmode bit 2 (hi nybble mode)
 	sms	[m_tcmodecol],r0
 .lo
 	from	r3
-	add	r3
 	lob
-	lsr				; clear the hi bit
-					; sprite no. in lo 7 bits
 	umult	#3
 	miwt	r1,textureaddrtab
 	to	r14
@@ -4013,7 +4017,7 @@ mdo_colour_ng
 
 	from	r3
 	hib
-	ibt	r1,#$3f
+	ibt	r1,#$1f
 	and	r1	
 	add	r0
 	miwt	r1,texturexytab
