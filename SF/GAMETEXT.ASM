@@ -39,10 +39,10 @@ teamtxt	TXT	14,<TEAM POWER>
 	ENDC
 
 	IFEQ	GERMAN
-frogtxt	TXT	14,<SLIPPY>
+frogtxt		TXT	14,<SLIPPY>
 bunnytxt	TXT	14,<PEPPY>
-cocktxt	TXT	14,<FALCO>
-deadtxt	TXT	14,<IS DOWN>
+cocktxt		TXT	14,<FALCO>
+deadtxt		TXT	14,<IS DOWN>
 stagetxt	TXT	14,<STAGE>
 cesmintxt	TXT	2,<m>
 cessectxt	TXT	2,<s>
@@ -50,16 +50,16 @@ scoretxt2	TXT	2,<score>
 shieldbon	TXT	2,<SHIELD BONUS>
 bombbon		TXT	2,<BOMB BONUS>
 	ELSEIF
-frogtxt	TXT	14,<SLIPPY>
+frogtxt		TXT	14,<SLIPPY>
 bunnytxt	TXT	14,<PEPPY>
-cocktxt	TXT	14,<FALCO>
-deadtxt	TXT	14,<. . . . . .>
+cocktxt		TXT	14,<FALCO>
+deadtxt		TXT	14,<. . . . . .>
 stagetxt	TXT	14,<STAGE>
 cesmintxt	TXT	2,<m>
 cessectxt	TXT	2,<s>
 scoretxt2	TXT	2,<punkte>
-shieldbon	TXT	2,<SCHILD BONUS>
-bombbon		TXT	2,<BOMBE BONUS>
+shieldbonus	TXT	2,<SCHILD BONUS>
+bombbonus	TXT	2,<BOMBE BONUS>
 	ENDC
 
 ;-------------------------------------------------------------------

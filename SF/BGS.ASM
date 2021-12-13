@@ -742,6 +742,18 @@ bg_title_1
 	ENDC
 ;	endc
 
+	IFEQ	GERMAN
+	palette	cpus
+	ELSEIF
+	palette	cpg
+	ENDC
+
+	IFEQ	PAL
+	palette	cpus
+	ELSEIF
+	palette	cpg
+	ENDC
+
 	set_bg
 	lda	#(0e000h/2)>>12
 	sta	bg34nba

@@ -19,6 +19,7 @@
 @call mc stars 0 7
 @call mc cp 0 7
 @call mc cp-us 0 7
+@call mc cp-g 0 7
 @call mc hole 0 7
 @call mc l 0 7
 @call mc e-test0 0 7

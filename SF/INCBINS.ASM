@@ -175,9 +175,21 @@ bg33ccr
 
 	ENDC
 
-	inccru	bgti3ccr,data\ti-3-us.ccr
+	IFEQ	german
+	inccru	bgti3ccr,data\ti-3-us.ccr ;why the hell are the if's backwards???
 	inccru	bgti3pcr,data\ti-3-us.pcr
+	ELSEIF
+	inccru	bgti3ccr,data\ti-3-g.ccr
+	inccru	bgti3pcr,data\ti-3-g.pcr
+	ENDC
 
+	IFEQ	PAL
+	inccru	bgti3ccr,data\ti-3-us.ccr ;why the hell are the if's backwards???
+	inccru	bgti3pcr,data\ti-3-us.pcr
+	ELSEIF
+	inccru	bgti3ccr,data\ti-3-g.ccr
+	inccru	bgti3pcr,data\ti-3-g.pcr
+	ENDC
 
 	fileslog	data\cont.ccr
 	fileslog	data\cont.pcr
