@@ -471,7 +471,9 @@ stagemes
 
 	ENDC
 
-scramblemes	dw	sspr-sprsbase
+scramblemes
+	IFEQ	GERMAN	
+	dw	sspr-sprsbase
 	dw	cspr-sprsbase
 	dw	rspr-sprsbase
 	dw	aspr-sprsbase
@@ -480,6 +482,20 @@ scramblemes	dw	sspr-sprsbase
 	dw	lspr-sprsbase
 	dw	espr-sprsbase
 	dw	-1
+	
+	ELSEIF
+	
+	dw	spacespr-sprsbase
+	dw	spacespr-sprsbase
+	dw	spacespr-sprsbase
+	dw	aspr-sprsbase
+	dw	lspr-sprsbase
+	dw	aspr-sprsbase
+	dw	rspr-sprsbase
+	dw	mspr-sprsbase
+	dw	-1
+	ENDC
+	
 clearmes
 	IFEQ	GERMAN
 	dw	cspr-sprsbase
