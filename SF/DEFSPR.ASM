@@ -15,7 +15,7 @@ cpa	=	cpa+1
 	endm
 
 defspr_hi	macro
-\1_spr	=	cps!(1<<7)
+\1_spr	=	cps!(1<<13)
 	dw	(\$1+((cpa&7)*32)+(256*32*((cpa&31)/8)))&$ffff
 	db	(\$1+((cpa&7)*32)+(256*32*((cpa&31)/8)))>>16
 cps	=	cps+1
@@ -31,7 +31,7 @@ cps	=	cps+1
 	endm
 
 defsprabs_hi	macro	[name,x,y]
-{name}_spr	=	cps!(1<<7)
+{name}_spr	=	cps!(1<<13)
 	dw	(\$1+(({x})*8)+(256*8*({y})))&$ffff
 	db	(\$1+(({x})*8)+(256*8*({y})))>>16
 cps	=	cps+1
@@ -54,7 +54,7 @@ cps	=	cps+1
 	endm
 
 defspr64_hi	macro
-\1_spr	=	cps!(1<<7)
+\1_spr	=	cps!(1<<13)
 	dw	(\$1+((cpa&3)*64)+(256*64*((cpa&15)/4)))&$ffff
 	db	(\$1+((cpa&3)*64)+(256*64*((cpa&15)/4)))>>16
 cpa	=	cpa+1
@@ -62,7 +62,7 @@ cps	=	cps+1
 	endm
 
 defsprdoub_hi	macro
-\1_spr	=	cps!(1<<7)
+\1_spr	=	cps!(1<<13)
 	dw	(\$1+((cpa&7)*32)+(256*32*((cpa&31)/8)))&$ffff
 	db	(\$1+((cpa&7)*32)+(256*32*((cpa&31)/8)))>>16
 cps	=	cps+1
