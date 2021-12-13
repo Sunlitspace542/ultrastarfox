@@ -174,7 +174,7 @@ snd\psgsnda.bin snd\sgbgma.bin snd\sgbgmb.bin snd\sgbgmc.bin \
 snd\sgbgmo.bin snd\sgbgme.bin snd\sgbgmf.bin snd\sgbgmg.bin \
 snd\sgbgmh.bin snd\sgbgmi.bin snd\sgbgmk.bin snd\sgbgmp.bin \
 snd\sgbgm1.bin snd\sgbgm4.bin snd\sgbgm5.bin snd\sgbgm6.bin \
-snd\sgbgm8.bin snd\sgbgm9.bin snd\sgbgm10.bin data\obj-3.ccr \
+snd\sgbgm8.bin snd\sgbgm9.bin snd\sgbgm10.bin data\obj-3.ccr data\obj-4.ccr \
 data\obj-2.ccr data\gfx\bg2-a.col data\gfx\bg2-b.col data\gfx\bg2-c.col \
 data\gfx\bg2-d.col data\gfx\bg2-e.col data\gfx\bg2-f.col data\gfx\bg2-g.col \
 data\gfx\t-m.col data\gfx\t-m-2.col data\gfx\t-m-3.col data\gfx\t-m-4.col \

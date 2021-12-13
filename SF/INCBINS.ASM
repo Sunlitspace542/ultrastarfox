@@ -303,12 +303,20 @@ musicsize	=	0
 	incsnd	bgm9,snd\sgbgm9.bin
 	incsnd	bgm10,snd\sgbgm10.bin
 
-	ifne	janglish
-	inccru	obj2ccr,data\obj-2.ccr
+	ifne	janglish ; if janglish = 1
+	inccru	obj2ccr,data\obj-2.ccr ; training/game text (JP)
 	fileslog data\obj-3.ccr
 	elseif
-	inccru	obj2ccr,data\obj-3.ccr
+	ifne	german ; if german = 1
+	inccru	obj2ccr,data\obj-4.ccr ; training/game text (GER)
+	elseif
+	ifne	pal ; if german = 1
+	inccru	obj2ccr,data\obj-3.ccr ; training/game text (US/EU)
+	elseif
+	inccru	obj2ccr,data\obj-3.ccr ; training/game text (US/EU)
 	fileslog data\obj-2.ccr
+	endc
+	endc
 	endc
 
 	printf	:$*,"%n"
