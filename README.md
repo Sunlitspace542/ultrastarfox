@@ -40,7 +40,7 @@ the .BAT versions of these can be run via DOSBox if you do not use Windows.
 [Star Fox Hacking Project](https://discord.gg/GgyP84e)
 
 
-## Future things to do
+## TODO
 1. Figure out German ALARM text
 2. OPTIMIZE
 3. Annotate and document code
