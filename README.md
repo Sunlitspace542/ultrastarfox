@@ -12,7 +12,7 @@ Star Fox (SNES, 1993), with modifications for easier creation of ROM hacks and g
 - Easier creation of wireframe models
 - Kando was involved so you know it's good
 - Matching text data
-- Working StarWing title screen and German StarWing assets
+- Working StarWing title screen and German/PAL StarWing assets (in vars.inc, set ``german`` and ``PAL`` to 1 for German Starwing, set only ``PAL`` to 1 for PAL StarWing)
 
 ## Building
 
