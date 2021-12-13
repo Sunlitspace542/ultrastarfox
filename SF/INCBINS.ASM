@@ -180,8 +180,8 @@ bg33ccr
 	inccru	bgti3ccr,data\ti-3-us.ccr ;these are the same
 	inccru	bgti3pcr,data\ti-3-us.pcr
 	ELSEIF							;elseif pal = 1
-	inccru	bgti3ccr,data\ti-3-us.ccr ;these are the same, redundant
-	inccru	bgti3pcr,data\ti-3-us.pcr
+	inccru	bgti3ccr,data\ti-3-g.ccr ;these are the same, redundant
+	inccru	bgti3pcr,data\ti-3-g.pcr
 	ENDC							;end if
 	ELSEIF							;if german = 1
 	inccru	bgti3ccr,data\ti-3-g.ccr
