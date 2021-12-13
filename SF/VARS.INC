@@ -7,7 +7,7 @@
 cesdemo				equ	0	; 0 = off, 1 = CES Demo (timed) 2 = Untimed CES Demo w/ planet cheat					#
 contest				equ	0	; Super Star Fox Weekend [0 = off 1 = on]												#
 cestime				equ	5	; CES/SSFW timer countdown (in minutes)													#
-debuginfo			equ	0	; full strategy debugging - Press P2 R Button in-game to activate [0 = off 1 = on]		#
+debuginfo			equ	1	; full strategy debugging - Press P2 R Button in-game to activate [0 = off 1 = on]		#
 debuginfo2			equ	0	; speed up mode? [0 = off 1 = on]														#
 janglish			equ	0	; 0 = english, 1 = japanese																#
 pal					equ	0	; PAL/NTSC [0 = NTSC Star Fox, 1 = PAL Starwing]										#
@@ -20,7 +20,7 @@ godmode				equ	0	; No collision for the player															#
 messagetest			equ	0	; Run message test in training level													#
 crosshairalwayson	equ	0	; Crosshair in third person view														#
 hipolyarwing		equ	0	; high poly arwing [0 = low poly (default) 1 = hi poly]									#
-;winglazerman_helperball	equ	0 ; Restore Laser Upgrade enemy code to spawn helperball items						#
+winglazerman_helperball	equ	0 ; Restore Laser Upgrade enemy code to spawn helperball items							#
 ; instead of laser upgrades	[0 = off 1 = on] ;kando please make better												#						#
 ;####################################################################################################################
 
