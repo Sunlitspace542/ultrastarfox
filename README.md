@@ -5,6 +5,7 @@ Star Fox (SNES, 1993), with modifications for easier creation of ROM hacks and g
 
 - SuperFX 2 (21Mhz) support and various optimizations
 - Lots of free bank space for new models, assets and code
+- 256 texture slots
 - Bugfixes and improvements
 - Uses ARGLINK from Star Fox 2 as linker instead of SL
 - rebuild color palette data using the palette packer (bldpal.bat)
@@ -40,12 +41,11 @@ the .BAT versions of these can be run via DOSBox if you do not use Windows.
 
 
 ## Future things to do
-3. Figure out German ALARM text
+1. Figure out German ALARM text
 2. OPTIMIZE
-3. Expanded texture space
-4. Annotate and document code
-5. FastROM
-6. Organize source files and edit makefile accordingly
+3. Annotate and document code
+4. FastROM
+5. Organize source files and edit makefile accordingly
 
 ## Project Structure
 ```
