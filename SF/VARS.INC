@@ -9,7 +9,7 @@ contest				equ	0	; Super Star Fox Weekend [0 = off 1 = on]												#
 cestime				equ	5	; CES/SSFW timer countdown (in minutes)													#
 debuginfo			equ	0	; full strategy debugging - Press P2 R Button in-game to activate [0 = off 1 = on]		#
 debuginfo2			equ	0	; speed up mode? [0 = off 1 = on]														#
-janglish			equ	1	; 0 = english, 1 = japanese																#
+janglish			equ	0	; 0 = english, 1 = japanese																#
 pal					equ	0	; PAL/NTSC [0 = NTSC Star Fox, 1 = PAL Starwing]										#
 german				equ	0	; german version [0 = off 1 = on] (also needs pal set to 1)								#
 french				equ	0	; french version [0 = off 1 = on] (UNUSED VARIABLE)										#
@@ -20,7 +20,10 @@ godmode				equ	0	; No collision for the player															#
 messagetest			equ	0	; Run message test in training level													#
 crosshairalwayson	equ	0	; Crosshair in third person view														#
 hipolyarwing		equ	0	; high poly arwing [0 = low poly (default) 1 = hi poly]									#
-winglazerman_helperball	equ	0 ; Restore Laser Upgrade enemy code to spawn helperball items							#
+wnglzrman_helpball	equ	0 ; Restore Laser Upgrade enemy code to spawn helperball items								#
+titlelogo			equ 2 ; Title screen logo to use, 0 = Star Fox JP, 1 = Star Fox US, 2 = StarWing 				#
+; (also affects which game name is shown in credits)																#
+controlsscreenpal	equ 0 ; Controls screen palette to use, 0 = US, 1 = Japan, 2 = PAL/Germany 						#
 ; instead of laser upgrades	[0 = off 1 = on] ;kando please make better												#						#
 ;####################################################################################################################
 

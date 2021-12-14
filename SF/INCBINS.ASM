@@ -172,36 +172,30 @@ bg33ccr
 	inccru	bgcontpcr,data\cont-2-g.pcr
 	fileslog	data\cont-2.ccr
 	fileslog	data\cont-2.pcr
+	ENDC
+	endc
 
+	IFNE	titlelogo-1 ; if titlelogo=0
+	inccru	bgti3ccr,data\ti-3-us.ccr
+	inccru	bgti3pcr,data\ti-3-us.pcr
 	ENDC
 
-	IFEQ	german					;if german = 0
-	IFEQ	PAL						;if pal = 0
-	inccru	bgti3ccr,data\ti-3-us.ccr ;these are the same
+	IFEQ	titlelogo-1 ; if titlelogo=1
+	inccru	bgti3ccr,data\ti-3-us.ccr
 	inccru	bgti3pcr,data\ti-3-us.pcr
-	ELSEIF							;elseif pal = 1
-	inccru	bgti3ccr,data\ti-3-g.ccr ;these are the same, redundant
-	inccru	bgti3pcr,data\ti-3-g.pcr
-	ENDC							;end if
-	ELSEIF							;if german = 1
+	ENDC
+
+	IFEQ	titlelogo-2 ; if titlelogo=2
 	inccru	bgti3ccr,data\ti-3-g.ccr
 	inccru	bgti3pcr,data\ti-3-g.pcr
 	ENDC
-	
-	fileslog	data\cont.ccr
-	fileslog	data\cont.pcr
-	fileslog	data\ti-3.pcr
-	fileslog	data\ti-3.ccr
-	endc
 
 	IFEQ	CONTEST					;if contest = 0
 	inccru	bg24ccr,data\2-4.ccr
-	fileslog	data\ti.ccr
-	fileslog	data\ti.pcr
 	ELSEIF							;if contest = 1
 	inccru	bgticcr,data\ti.ccr
 	inccru	bgtipcr,data\ti.pcr
-	fileslog	data\2-4.ccr
+
 bg24ccr	=	bgticcr
 	ENDC
 
@@ -224,12 +218,11 @@ bg24ccr	=	bgticcr
 facedata	inccolfile	data\face.cgx,0,360
 	inccru	allcolscru,data\gfx\allcols.pac
 
-	inccru	bgmccr,data\m.ccr
-
 	bankend	23
 
 	bank	35
 	inccru	dogpcr,data\dog.pcr
+	inccru	bgmccr,data\m.ccr
 	bankend	35
 
 ;------------------------------------------------------------------

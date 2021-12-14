@@ -734,25 +734,19 @@ bg_title_1
 
 ; -TITLE PALETTE CHECKS-----------
 
-	IFNE	janglish ; TODO: Fix JP title palette, the pal and germany checks are interfering with this one
-	palette	cp
-	elseif
 	IFEQ	contest
-	palette	cpus
-	ELSEIF
-	palette	contest ; also TODO: make sure JP and PAL title palettes aren't loaded instead of contest when contest = 1
-	ENDC
-	endc
-
-	IFEQ	GERMAN
-	palette	cpus
-	ELSEIF
-	palette	cpg
+	palette	contest
 	ENDC
 
-	IFEQ	PAL
+	IFNE	titlelogo-1
 	palette	cpus
-	ELSEIF
+	ENDC
+
+	IFEQ	titlelogo-1
+	palette	cp
+	ENDC
+
+	IFEQ	titlelogo-2
 	palette	cpg
 	ENDC
 

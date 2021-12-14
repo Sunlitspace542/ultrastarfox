@@ -2883,13 +2883,13 @@ winglazermandie_Istrat
 
 	s_jmp_varAND		B,pshipflags,#psf_brkLwing!psf_brkRwing,.dlaser
 	s_jmpNOT_varAND		B,pshipflags3,#psf3_beamball,.dlaser
-	IFNE	winglazerman_helperball
+	IFNE	wnglzrman_helpball
 ;.helpball
 .dlaser	s_make_obj	#item_3,.badobj ; it seems the laser upgrade/wing repair enemy originally would have also given helperballs.
 	; help ball (HELPERBALL) ;would normally use item_7, however,
 	;to help diffrentiate, it has been changed to item_3.
 	;unfortunately, .helpball does not exist, so It's either
-	;laser upgrade (winglazerman_helperball equ 0) or helper ball (winglazerman_helperball equ 1), not both.
+	;laser upgrade (wnglzrman_helpball equ 0) or helper ball (wnglzrman_helpball equ 1), not both.
 	s_set_strat	y,item7a_istrat
 	s_copy_pos	y,x
 .badobj
