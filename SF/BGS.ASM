@@ -738,12 +738,12 @@ bg_title_1
 	palette	contest
 	ENDC
 
-	IFNE	titlelogo-1
-	palette	cpus
+	IFEQ	titlelogo
+	palette	cp
 	ENDC
 
 	IFEQ	titlelogo-1
-	palette	cp
+	palette	cpus
 	ENDC
 
 	IFEQ	titlelogo-2

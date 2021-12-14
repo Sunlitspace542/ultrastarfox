@@ -992,13 +992,15 @@ mariomsg	macro
 
 mariomsgs
 msg_starfox
-	ifeq	pal				;if pal = 0
-	mariomsg	<STAR FOX>	;'MURICA/Japan
-	elseif					;if pal = 1
-	ifeq	german			;if german = 0
-	mariomsg	<STARWING>	;EU STARWING
-	elseif					;if german = 1
-	mariomsg	<STARWING>	;GERMAN STARWING
+	ifeq	titlelogo
+	mariomsg	<STAR FOX>
+	elseif
+	ifeq	titlelogo-1
+	mariomsg	<STAR FOX>
+	elseif
+	ifeq	titlelogo-2	
+	mariomsg	<STARWING>
+	endc
 	endc
 	endc
 
