@@ -7,9 +7,9 @@
 cesdemo				equ	0	; 0 = off, 1 = CES Demo (timed) 2 = Untimed CES Demo w/ planet cheat					#
 contest				equ	0	; Super Star Fox Weekend [0 = off 1 = on]												#
 cestime				equ	5	; CES/SSFW timer countdown (in minutes)													#
-debuginfo			equ	1	; full strategy debugging - Press P2 R Button in-game to activate [0 = off 1 = on]		#
+debuginfo			equ	0	; full strategy debugging - Press P2 R Button in-game to activate [0 = off 1 = on]		#
 debuginfo2			equ	0	; speed up mode? [0 = off 1 = on]														#
-janglish			equ	0	; 0 = english, 1 = japanese																#
+janglish			equ	1	; 0 = english, 1 = japanese																#
 pal					equ	0	; PAL/NTSC [0 = NTSC Star Fox, 1 = PAL Starwing]										#
 german				equ	0	; german version [0 = off 1 = on] (also needs pal set to 1)								#
 french				equ	0	; french version [0 = off 1 = on] (UNUSED VARIABLE)										#

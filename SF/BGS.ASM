@@ -732,15 +732,17 @@ bg_title_1
 	bg2chr	cp
 	bg2scr	cp,vsc_base2+2*k,4*k
 
-;	IFNE	janglish
-;	palette	cp
-;	elseif
+; -TITLE PALETTE CHECKS-----------
+
+	IFNE	janglish ; TODO: Fix JP title palette, the pal and germany checks are interfering with this one
+	palette	cp
+	elseif
 	IFEQ	contest
 	palette	cpus
 	ELSEIF
-	palette	contest
+	palette	contest ; also TODO: make sure JP and PAL title palettes aren't loaded instead of contest when contest = 1
 	ENDC
-;	endc
+	endc
 
 	IFEQ	GERMAN
 	palette	cpus
@@ -753,6 +755,8 @@ bg_title_1
 	ELSEIF
 	palette	cpg
 	ENDC
+
+; -------------------------------
 
 	set_bg
 	lda	#(0e000h/2)>>12
