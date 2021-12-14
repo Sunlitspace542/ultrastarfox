@@ -148,8 +148,6 @@ bg33ccr
 	inccru	bgcmccr,data\c-m.ccr
 
 	IFNE	janglish
-	inccru	bgti3ccr,data\ti-3.ccr
-	inccru	bgti3pcr,data\ti-3.pcr
 	inccru	bgcontccr,data\cont.ccr
 	inccru	bgcontpcr,data\cont.pcr
 
@@ -175,9 +173,9 @@ bg33ccr
 	ENDC
 	endc
 
-	IFNE	titlelogo-1 ; if titlelogo=0
-	inccru	bgti3ccr,data\ti-3-us.ccr
-	inccru	bgti3pcr,data\ti-3-us.pcr
+	IFEQ	titlelogo ; if titlelogo=0
+	inccru	bgti3ccr,data\ti-3.ccr
+	inccru	bgti3pcr,data\ti-3.pcr
 	ENDC
 
 	IFEQ	titlelogo-1 ; if titlelogo=1
