@@ -992,7 +992,21 @@ mariomsg	macro
 
 mariomsgs
 msg_starfox
+<<<<<<< HEAD
 	db	41,42,43,44,45,46,47,48,0
+=======
+	ifeq	titlelogo
+	mariomsg	<STAR FOX>
+	elseif
+	ifeq	titlelogo-1
+	mariomsg	<STAR FOX>
+	elseif
+	ifeq	titlelogo-2	
+	mariomsg	<STARWING>
+	endc
+	endc
+	endc
+>>>>>>> 5865b050b48b0d83d82a299202522ab89485642c
 
 msg_nintendo
 	mariomsg	<NINTENDO>

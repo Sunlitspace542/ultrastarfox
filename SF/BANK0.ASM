@@ -104,14 +104,14 @@ bgandpcr
 
 	IFEQ	GERMAN+FRENCH
 ; british
-	db	"STAR WING            "
+	db	"STAR FOX             "
 	db	$20,$13,$a,$0,$2,$1,$0,$ff,$ff,$0,$0
 
 	ENDC
 
 	IFNE	GERMAN
 ; german
-	db	"STAR WING            "
+	db	"STAR FOX             "
 	db	$20,$13,$a,$0,$9,$1,$0,$ff,$ff,$0,$0
 	ENDC
 
