@@ -43,9 +43,10 @@ the .BAT versions of these can be run via DOSBox if you do not use Windows.
 
 ## TODO
 1. OPTIMIZE
-2. Annotate and document code
-3. FastROM
-4. Organize source files and edit makefile accordingly
+2. Strip out all Super Star Fox weekend-related code
+3. Annotate and document code
+4. FastROM
+5. Organize source files and edit makefile accordingly
 
 ## Project Structure
 ```
