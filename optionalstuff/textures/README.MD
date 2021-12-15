@@ -5,7 +5,7 @@ A short explanation of textures in Star Fox
 These are all the texture files for the final game (English + German), along with early files, backups, and misc textures found in the leak.
 Textures in Star Fox are .CGX files which are interleaved using MERGE.EXE (found in TOOLS), which is how the .dat files in MSPRITES are made.
 
-P_COL.COL is the palette used for textures, found in the DATA folder.
+P_COL.COL is the palette used for textures, found in the texture folder (this one).
 
 ## Editing/Viewing
 For viewing these texture files, you can use SCAD (found in Gigaleak 2), or Hyper CG-CAD by LuigiBlood (hcgcad).
