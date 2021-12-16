@@ -969,7 +969,7 @@ msgtmp	macro
 	REPT	12
 	irs	3,"0","1","2","3","4","5","6","7","8","9","#","-"
 	run	" IFS 1,1,'%$3'"
-	irs	3,"\\","]","^","_","`","a","b","c","d","e","�","["
+	irs	3,"\\","]","^","_","`","a","b","c","d","e","","["
 	defs	1,"%$3"
 	ENDC
 	ENDR
@@ -992,17 +992,13 @@ mariomsg	macro
 
 mariomsgs
 msg_starfox
-	ifeq	titlelogo
-	mariomsg	<STAR FOX>
-	elseif
-	ifeq	titlelogo-1
-	mariomsg	<STAR FOX>
-	elseif
-	ifeq	titlelogo-2	
+;	db	41,42,43,44,45,46,47,48,0
+	IFEQ	titlelogo-2				;if titlelogo = 2
 	mariomsg	<STARWING>
 	endc
-	endc
-	endc
+	IFNE	titlelogo-2				;if titlelogo != 2
+	mariomsg	<STAR FOX>
+	ENDC
 
 msg_nintendo
 	mariomsg	<NINTENDO>
