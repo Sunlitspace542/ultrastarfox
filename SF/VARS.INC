@@ -13,7 +13,7 @@ janglish			equ	0	; 0 = English, 1 = Japanese	(IF 1, DO NOT USE WITH PAL)								
 pal					equ	0	; PAL/NTSC [0 = NTSC, 1 = PAL]															#
 german				equ	0	; german version [0 = off 1 = on]														#
 french				equ	0	; french version [0 = off 1 = on] (UNUSED VARIABLE)										#
-twentyonemhz		equ 1	; 21MHZ mode [1 = on 0 = off]															#
+twentyonemhz		equ 1	; SuperFX 21MHZ Fast mode [1 = on 0 = off]															#
 planetcheaton 		equ 0   ; Allows you to enable planet select cheat on the map before you have selected			#
 							; a level. Press X+Y on the same frame to activate.										#
 godmode				equ	0	; No collision for the player															#
@@ -22,7 +22,7 @@ crosshairalwayson	equ	0	; Crosshair in third person view														#
 hipolyarwing		equ	0	; high poly arwing [0 = low poly (default) 1 = hi poly]									#
 wnglzrman_helpball	equ	0 	; Restore Laser Upgrade enemy code to spawn helperball items							#
 							; instead of laser upgrades	[0 = off 1 = on] ;kando please make better					#
-titlelogo			equ 1	; Title screen logo to use, 0 = Star Fox JP, 1 = Star Fox US, 2 = StarWing 				#
+titlelogo			equ 0	; Title screen logo to use, 0 = Star Fox JP, 1 = Star Fox US, 2 = StarWing 				#
 							; (also affects which game name is shown in credits, 0/1 = STAR FOX, 2 = STARWING)		#
 ;####################################################################################################################
 
