@@ -23,8 +23,6 @@ hipolyarwing		equ	0	; high poly arwing [0 = low poly (default) 1 = hi poly]					
 wnglzrman_helpball	equ	0 ; Restore Laser Upgrade enemy code to spawn helperball items								#
 ; instead of laser upgrades	[0 = off 1 = on] ;kando please make better												#
 titlelogo			equ 1 ; Title screen logo to use, 0 = Star Fox JP, 1 = Star Fox US, 2 = StarWing 				#
-; (also affects which game name is shown in credits)																#
-controlsscreenpal	equ 0 ; Controls screen palette to use, 0 = US, 1 = Japan, 2 = PAL/Germany 						#
 ; (also affects which game name is shown in credits, 0/1 = STAR FOX, 2 = STARWING)									#
 ;####################################################################################################################
 
