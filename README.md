@@ -29,8 +29,6 @@ to rebuild color palettes, run ``build palette.cmd`` (Windows) ``BLDPAL.BAT`` (D
 
 the .BAT versions of these can be run via DOSBox if you do not use Windows.
 
-Built ROM will located in the ``build`` directory.
-
 ## Helpful Links
 
 [Star Fox - Source Code Mods](https://docs.google.com/document/d/1kdgPCBeQFYsAepSDNpmwO8ZysRJjdnwK_5gWT2FFQEk/edit?usp=sharing)  
