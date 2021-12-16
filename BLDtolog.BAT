@@ -9,11 +9,10 @@ del *.bak /s
 @echo on
 make sg.rom > ..\build.log
 cd ..
-copy sf\sg.rom SF.SFC
+copy sf\sg.rom build\SF.SFC
 del sf\sg.rom
 del sf\*.sob
 del sf\status.doc
 del sf\lastasm.tmp
 pause
 exit
-
