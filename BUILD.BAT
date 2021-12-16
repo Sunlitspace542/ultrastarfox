@@ -9,7 +9,7 @@ del *.bak /s
 @echo on
 make sg.rom
 cd ..
-copy sf\sg.rom build\SF.SFC
+copy sf\sg.rom SFBuilt.SFC
 del sf\sg.rom
 del sf\*.sob
 del sf\status.doc
