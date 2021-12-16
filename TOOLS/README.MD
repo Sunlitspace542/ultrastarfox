@@ -1,5 +1,5 @@
 # Tools
-All these tools are DOS executables and are intended to be run through DOSBox, with the exception of sf_decrunch/crunch, and RomExtender.py.
+All these tools are DOS executables and are intended to be run through DOSBox, with the exception of sf_decrunch/crunch (Windows EXE), and RomExtender.py(Python 3 Script), and SuperFamiCheckx64.exe (Windows EXE)
 
 ## PACKER
 Star Fox Palette packer. A copy of this EXE is run from SF/DATA/GFX when you run ``build palette.cmd`` or ``BLDPAL.BAT``.
@@ -12,6 +12,10 @@ Tool that can convert Videoscape 3DG1 models to Star Fox ASM BSP format.
 
 ## romExtender.py
 What it says on the tin. drag+drop rom onto script to extend rom to 2mb.
+
+## superfamicheckx64.exe
+**Tool made by [Optiroc](https://github.com/Optiroc) on GitHub**
+Super NES checksum tool.
 
 ## sf_crunch + sf_decrunch
 **Tool made by [Everything](https://www.romhacking.net/community/3898/) on RHDN**
