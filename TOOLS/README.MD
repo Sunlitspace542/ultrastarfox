@@ -1,5 +1,5 @@
 # Tools
-All these tools are DOS executables and are intended to be run through DOSBox, with the exception of sf_decrunch/crunch.
+All these tools are DOS executables and are intended to be run through DOSBox, with the exception of sf_decrunch/crunch, and RomExtender.py.
 
 ## PACKER
 Star Fox Palette packer. A copy of this EXE is run from SF/DATA/GFX when you run ``build palette.cmd`` or ``BLDPAL.BAT``.
@@ -9,6 +9,9 @@ Texture interleaving tool.
 
 ## SHAPED
 Tool that can convert Videoscape 3DG1 models to Star Fox ASM BSP format.
+
+## romExtender.py
+What it says on the tin. drag+drop rom onto script to extend rom to 2mb.
 
 ## sf_crunch + sf_decrunch
 **Tool made by [Everything](https://www.romhacking.net/community/3898/) on RHDN**
