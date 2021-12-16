@@ -899,7 +899,11 @@ mdamagemeter
 	move	r2,#damagey+2
 	move	r4,#damageheight-4
 
+	IFNE	shieldboostcolorbox
+	move	r0,#4
+	ELSEIF
 	move	r0,#2
+	ENDC
 	mcall	mdrawsolidbox
 	nop
 
