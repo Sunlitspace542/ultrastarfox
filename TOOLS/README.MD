@@ -13,7 +13,7 @@ Tool that can convert Videoscape 3DG1 models to Star Fox ASM BSP format.
 ## romExtender.py
 What it says on the tin. drag+drop rom onto script to extend rom to 2mb.
 
-## superfamicheckx64.exe
+## superfamicheckx64.exe  
 **Tool made by [Optiroc](https://github.com/Optiroc) on GitHub**
 Super NES checksum tool.
 
