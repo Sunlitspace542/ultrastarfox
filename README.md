@@ -29,7 +29,7 @@ to rebuild color palettes, run ``build palette.cmd`` (Windows) ``BLDPAL.BAT`` (D
 
 the .BAT versions of these can be run via DOSBox if you do not use Windows.
 
-Built ROM is located in the ``build`` directory.
+Built ROM will located in the ``build`` directory.
 
 ## Helpful Links
 
