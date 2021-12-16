@@ -11,9 +11,9 @@ Star Fox / StarWing (SNES, 1993), with modifications for easier creation of ROM 
 - Uses ARGLINK from Star Fox 2 as linker instead of SL
 - rebuild color palette data using the palette packer (bldpal.bat)
 - Easier creation of wireframe models
-- Kando was involved so you know it's good
 - Matching text data
 - Working StarWing title screen and German/PAL StarWing assets
+- Kando was involved so you know it's good
 
 ## Building
 
