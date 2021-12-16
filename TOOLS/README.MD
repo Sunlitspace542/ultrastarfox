@@ -10,6 +10,9 @@ Texture interleaving tool.
 ## SHAPED
 Tool that can convert Videoscape 3DG1 models to Star Fox ASM BSP format.
 
+## romExtender.py
+What it says on the tin. drag+drop rom onto script to extend rom to 2mb.
+
 ## sf_crunch + sf_decrunch
 **Tool made by [Everything](https://www.romhacking.net/community/3898/) on RHDN**
 
