@@ -26,7 +26,7 @@ titlelogo			equ 1	; Title screen logo to use, [0 = Star Fox JP, 1 = Star Fox US 
 							; 2 = Star Fox US Rev 0, 3 = StarWing]													#
 							; (also affects which game name is shown in credits, 0/1 = STAR FOX, 2 = STARWING)		#
 shieldboostcolorbox	equ	1	; enable weird color box thing on shield and boost meters								#
-							; (set to 0 if moving meter positions)													#
+							; (set to 0 if moving meter positions)	(also disables hud hide on boss win/level end)	#
 ;####################################################################################################################
 
 ; ###############
