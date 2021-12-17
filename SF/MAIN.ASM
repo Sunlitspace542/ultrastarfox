@@ -1924,12 +1924,6 @@ SetCharMapgame_l
 	lda	#646+(2<<10)+(1<<13)
 	sta	vmdatal
 .nometers
-	ELSEIF
-	lda.l	m_meters
-	and	#255
-	beq	.nometers
-
-.nometers
 	ENDC
 
 	ldx	#((gamenum_col*gamenum_row)*16)+vchr_base1
