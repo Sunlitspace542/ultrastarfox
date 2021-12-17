@@ -149,6 +149,7 @@ __totpallen	=	0
 	defpac	bgstarspac,7
 	defpac	bgcppac,7
 	defpac	bgcpuspac,7
+	defpac	bgcpusppac,7
 	defpac	bgcpgpac,7
 	defpac	bgholepac,7
 	defpac	bglpac,7

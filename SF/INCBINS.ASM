@@ -173,17 +173,22 @@ bg33ccr
 	ENDC
 	endc
 
-	IFEQ	titlelogo ; if titlelogo=0
+	IFEQ	titlelogo ; if titlelogo=0 (JP)
 	inccru	bgti3ccr,data\ti-3.ccr
 	inccru	bgti3pcr,data\ti-3.pcr
 	ENDC
 
-	IFEQ	titlelogo-1 ; if titlelogo=1
+	IFEQ	titlelogo-1 ; if titlelogo=1 (US Rev. 1/2)
 	inccru	bgti3ccr,data\ti-3-us.ccr
 	inccru	bgti3pcr,data\ti-3-us.pcr
 	ENDC
 
-	IFEQ	titlelogo-2 ; if titlelogo=2
+	IFEQ	titlelogo-2 ; if titlelogo=2 (US Rev. 0)
+	inccru	bgti3ccr,data\ti-3-us.ccr
+	inccru	bgti3pcr,data\ti-3-us.pcr
+	ENDC
+
+	IFEQ	titlelogo-3 ; if titlelogo=3 (PAL/Germany StarWing)
 	inccru	bgti3ccr,data\ti-3-g.ccr
 	inccru	bgti3pcr,data\ti-3-g.pcr
 	ENDC

@@ -739,15 +739,19 @@ bg_title_1
 	ENDC
 
 	IFEQ	titlelogo
-	palette	cp
+	palette	cp ; JP
 	ENDC
 
 	IFEQ	titlelogo-1
-	palette	cpus
+	palette	cpus ; US Rev. 1/2
 	ENDC
 
 	IFEQ	titlelogo-2
-	palette	cpg
+	palette	cpusp ; US Rev. 0
+	ENDC
+
+	IFEQ	titlelogo-3
+	palette	cpg ; Pal/Germany StarWing
 	ENDC
 
 ; -------------------------------

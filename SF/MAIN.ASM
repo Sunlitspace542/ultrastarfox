@@ -1876,12 +1876,12 @@ SetCharMapgame_l
 	cpy	#gamenum_row
 	bne	.lolv
 
+	IFNE	shieldboostcolorbox
+	; why was this done in the first place? added a flag for vanilla game purposes
 	lda.l	m_meters
 	and	#255
 	beq	.nometers
 
-	IFNE	shieldboostcolorbox
-	; why was this done in the first place? added a flag for vanilla game purposes
 	lda	#vsc_base1+24*32+3	;damage
 	sta	vmaddl
 	lda	#46+(2<<10)+(1<<13)
@@ -1894,7 +1894,7 @@ SetCharMapgame_l
 	sta	vmaddl
 	lda	#94+(2<<10)+(1<<13)
 	sta	vmdatal
-	lda	#vsc_base1+24*32+6	;******************
+	lda	#vsc_base1+24*32+6
 	sta	vmaddl
 	lda	#118+(2<<10)+(1<<13)
 	sta	vmdatal
@@ -1923,9 +1923,14 @@ SetCharMapgame_l
 	sta	vmaddl
 	lda	#646+(2<<10)+(1<<13)
 	sta	vmdatal
-	ENDC
+.nometers
+	ELSEIF
+	lda.l	m_meters
+	and	#255
+	beq	.nometers
 
 .nometers
+	ENDC
 
 	ldx	#((gamenum_col*gamenum_row)*16)+vchr_base1
 	stx	vmaddl

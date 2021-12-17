@@ -993,10 +993,10 @@ mariomsg	macro
 mariomsgs
 msg_starfox
 ;	db	41,42,43,44,45,46,47,48,0
-	IFEQ	titlelogo-2				;if titlelogo = 2
+	IFEQ	titlelogo-3				;if titlelogo = 3
 	mariomsg	<STARWING>
 	endc
-	IFNE	titlelogo-2				;if titlelogo != 2
+	IFNE	titlelogo-3				;if titlelogo != 3
 	mariomsg	<STAR FOX>
 	ENDC
 
