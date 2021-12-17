@@ -1086,7 +1086,9 @@ mapwaitboss	MACRO	[nosound]
 	sta	pshipflags	
 	lda	#0
 	sta.l	m_bossmaxHP
+	IFEQ	shieldboostcolorbox
 	sta.l	m_meters
+	ENDC
 	end_65816
 
 	IFND	mwb_{nosound}

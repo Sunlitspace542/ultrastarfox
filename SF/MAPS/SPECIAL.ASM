@@ -43,7 +43,9 @@ endofspecialmap
 
 	start_65816
 	a8
+	IFEQ	shieldboostcolorbox
 	sta.l m_meters
+	ENDC
 	lda	pshipflags
 	and	#~psf_nofire
 	sta	pshipflags

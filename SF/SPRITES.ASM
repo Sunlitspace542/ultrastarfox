@@ -72,8 +72,13 @@ do_sprites_l
 	jsr	do_shield
 	jsr	do_enemy
 	jsr	do_arrows
-.nodo
+	IFEQ	shieldboostcolorbox
 	jsr	prt_stageclear
+	ENDC
+.nodo
+	IFNE	shieldboostcolorbox
+	jsr	prt_stageclear
+	ENDC
 	jsr	do_1credit
 	a8
 	lda	doingwipe
