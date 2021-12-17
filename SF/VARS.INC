@@ -161,7 +161,7 @@ xmempt	=	$7e2000	;extended RAM
 xxmempt	=	$7f0000	;extended RAM
 zmmempt	=	$700000
 mmempt	=	$700200
-bitmap1	equ	$2c00
+bitmap1	equ	16384
 bitmapbase	equ	$700000
 
 WM	equ	$ffff

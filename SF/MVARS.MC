@@ -299,20 +299,20 @@ m_clipright	equ	m_sprxmax
 mmaxxpos	=	224
 mmaxypos	=	192
 
-mmaxpnts	=	220 ; max points a model can have, originally 80
-mmaxpolysize	=	220
+mmaxpnts	=	255 ; max points a model can have, originally 80
+mmaxpolysize	=	255
 mmaxgroups	=	16
 mmaxstack	=	256
 mmaxbsp	=	64
 mmaxdust	=	120
 mmaxdrawlist	=	dl_sizeof*number_al
-mmaxvistab	=	220
+mmaxvistab	=	255
 
 
 	malc	m_meters,2
 	malc	m_dlptr,2
 	malc	m_shadowheight,2
-	malc	bg_scrollbuffer,0	;not 224*3
+	malc	bg_scrollbuffer,224*3
 	malc	m_stack,mmaxstack
 	malc	m_zlist,0
 	malc	m_rotpnts,6*mmaxpnts
@@ -320,17 +320,17 @@ mmaxvistab	=	220
 	malc	m_uvlist,0
 	malc	m_polybuf,mmaxpolysize
 	malc	m_clippolybuf,mmaxpolysize
-	malc	m_cpolybuf,0
+	malc	m_cpolybuf,mmaxpolysize
 	malc	m_bsplist,mmaxbsp
 	malc	m_zbuf,mmaxgroups
 	malc	m_uvlist2,0
 	malc	m_dustpnts,6*mmaxdust
-	malc	m_intpnts,0
+	malc	m_intpnts,mmaxpnts
 	malc	m_vistab,mmaxvistab
 	malc	m_drawlist,mmaxdrawlist
 
-	malc	m_scuptab,0
-	malc	m_scdwntab,0*2
+	malc	m_scuptab,mmaxypos*2
+	malc	m_scdwntab,mmaxypos*2
 
 	malc	m_planetstars,2
 	malc	m_particlesON,2

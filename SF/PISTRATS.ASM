@@ -707,7 +707,17 @@ playerExitBaseFollow_strat
 	s_AND_var		B,gameflags,#~gf_nozremove
 	s_set_var		B,player_medspeed,#medpspeed
 
+	lda	shpmode
+	beq	.normalship
+	s_make_obj		#P1SHPARWING,.badobj	
+	
+	bra	.continue
+.normalship
 	s_make_obj		#myship_4,.badobj
+
+
+
+.continue
 	s_set_strat		y,friendstart3_Istrat
 	s_set_alsflag		y,colldisable
 	s_copy_pos		y,x
