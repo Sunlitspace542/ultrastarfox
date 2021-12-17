@@ -2731,13 +2731,7 @@ up1man_strat
 	s_jmp_alvarNE		B,x,al_sbyte3,#3,.ninrng
 	s_jmp_alsflag		x,sflag1,.ninrng
 	s_set_alsflag		x,sflag1
-	lda	shpmode
-	beq	.normship
-	s_make_obj		#P1SHPARWING,.badobj
-	bra	.continue	
-.normship
 	s_make_obj		#myship_4,.badobj
-.continue
 	s_set_alvar		B,y,al_rotx,#-deg90
 	s_set_strat		y,item0_Istrat
 	s_copy_pos		y,x
