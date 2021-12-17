@@ -46,9 +46,9 @@ deadtxt		TXT	14,<IS DOWN>
 stagetxt	TXT	14,<STAGE>
 cesmintxt	TXT	2,<m>
 cessectxt	TXT	2,<s>
-scoretxt2	TXT	2,<score>
-shieldbon	TXT	2,<SHIELD BONUS>
-bombbon		TXT	2,<BOMB BONUS>
+scoretxt2	TXT	2,<score>			; SSFW/SWC leftover, added to get text chunk of ROM to match
+shldbonus	TXT	2,<SHIELD BONUS>	; SSFW/SWC leftover, added to get text chunk of ROM to match
+bombbonus	TXT	2,<BOMB BONUS>		; SSFW/SWC leftover, added to get text chunk of ROM to match
 	ELSEIF
 frogtxt		TXT	14,<SLIPPY>
 bunnytxt	TXT	14,<PEPPY>
@@ -57,9 +57,9 @@ deadtxt		TXT	14,<. . . . . .>
 stagetxt	TXT	14,<STAGE>
 cesmintxt	TXT	2,<m>
 cessectxt	TXT	2,<s>
-scoretxt2	TXT	2,<punkte>
-shieldbonus	TXT	2,<SCHILD BONUS>
-bombbonus	TXT	2,<BOMBE BONUS>
+scoretxt2	TXT	2,<punkte>			; SSFW/SWC leftover, added to get text chunk of ROM to match
+shldbonus	TXT	2,<SCHILD BONUS>	; SSFW/SWC leftover, added to get text chunk of ROM to match
+bombbonus	TXT	2,<BOMBE BONUS>		; SSFW/SWC leftover, added to get text chunk of ROM to match
 	ENDC
 
 ;-------------------------------------------------------------------
