@@ -159,9 +159,9 @@ __totpallen	=	0
 	defpac	bgcontestpac,7
 	defpac	bg2eppac,9
 bgfoxpac	equ	bg2bpac
-	IFEQ	PAL
-bgcontpac	equ	bg2epac
+	IFEQ	CONTROLSSCREENPAL
+bgcontpac	equ	bg2epac ; ntsc
 	ELSEIF
-bgcontpac	equ	bg2eppac
+bgcontpac	equ	bg2eppac ; pal
 	ENDC
 obj2pac	equ	bg2epac+8*32

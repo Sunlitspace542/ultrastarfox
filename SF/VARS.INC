@@ -9,7 +9,7 @@ contest				equ	0	; Super Star Fox Weekend [0 = off 1 = on]												#
 cestime				equ	5	; CES/SSFW timer countdown (in minutes)													#
 debuginfo			equ	0	; full strategy debugging - Press P2 R Button in-game to activate [0 = off 1 = on]		#
 debuginfo2			equ	0	; speed up mode? [0 = off 1 = on]														#
-janglish			equ	0	; 0 = English, 1 = Japanese	(IF 1, DO NOT USE WITH PAL)									#
+janglish			equ	0	; [0 = English, 1 = Japanese] (IF 1, DO NOT USE WITH PAL. HEADER CONFLICTS WILL OCCUR.)	#
 pal					equ	0	; PAL/NTSC [0 = NTSC, 1 = PAL]															#
 german				equ	0	; german version [0 = off 1 = on]														#
 french				equ	0	; french version [0 = off 1 = on] (UNUSED VARIABLE)										#
@@ -25,6 +25,7 @@ wnglzrman_helpball	equ	0 	; Restore Laser Upgrade enemy code to spawn helperball
 titlelogo			equ 1	; Title screen logo to use, [0 = Star Fox JP, 1 = Star Fox US Rev 1/2,					#
 							; 2 = Star Fox US Rev 0, 3 = StarWing]													#
 							; (also affects which game name is shown in credits, 0/1 = STAR FOX, 2 = STARWING)		#
+controlsscreenpal	equ	0	; Controls screen palette to use, 0 = NTSC, 1 = PAL	(DOES NOT AFFECT JP)				#
 shieldboostcolorbox	equ	1	; enable weird color box thing on shield and boost meters								#
 							; (set to 0 if moving meter positions)	(also disables hud hide on boss win/level end)	#
 ;####################################################################################################################
