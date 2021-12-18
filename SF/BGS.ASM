@@ -743,11 +743,11 @@ bg_title_1
 	ENDC
 
 	IFEQ	titlelogo-1
-	palette	cpus ; US Rev. 1/2
+	palette	cpusp ; US Rev. 0
 	ENDC
 
 	IFEQ	titlelogo-2
-	palette	cpusp ; US Rev. 0
+	palette	cpus ; US Rev. 1/2
 	ENDC
 
 	IFEQ	titlelogo-3
