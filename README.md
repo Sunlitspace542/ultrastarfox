@@ -13,10 +13,7 @@ Star Fox / StarWing (SNES, 1993), with modifications for easier creation of ROM 
 - Easier creation of wireframe models
 - Matching text data
 - Working StarWing title screen and German/PAL StarWing assets
-- Kando was involved so you know it's good  
-
-Upcoming features:
-- FastROM
+- Kando was involved so you know it's good
 
 ## Building
 
