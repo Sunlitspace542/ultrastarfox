@@ -14,6 +14,8 @@ Star Fox / StarWing (SNES, 1993), with modifications for easier creation of ROM 
 - Matching text data
 - Working StarWing title screen and German/PAL StarWing assets
 - Kando was involved so you know it's good
+Upcoming:
+- FastROM
 
 ## Building
 
@@ -45,8 +47,7 @@ the .BAT versions of these can be run via DOSBox if you do not use Windows.
 1. OPTIMIZE
 2. Strip out all Super Star Fox weekend-related code
 3. Annotate and document code
-4. FastROM
-5. Organize source files and edit makefile accordingly
+4. Organize source files and edit makefile accordingly
 
 ## Project Structure
 ```
