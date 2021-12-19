@@ -85,7 +85,7 @@
 	message	falcon,<it's going pretty badly!>,<ca sent pas bon ici!!>,help	; (85)
 	message	rabbit,<i don't think i'm going to make it!>,<je le crois pas! je l'ai fait!!>,help	; (86)
 	message	frog,<my ship's falling apart### ribbit!>,<mon vaisseau est abime###!>,help	; (87)
-	message	fox,<star fox team, our last resort is to counter attack venom!  good luck!>,<equipe starfox, il ne reste plus qu'a contrer l'attaque! bonne chance!>,other	; (88)
+	message	fox,<star fox team, our last resort is to counter attack venom!  good luck!>,<equipe star fox, il ne reste plus qu'a contrer l'attaque! bonne chance!>,other	; (88)
 	message	fox,<andross's forces intend to build a base in this area!  destroy their rock crusher!>,<andross veut construire une base dans cette zone! detruisez son concasseur!!>,other	; (89)
 	message	fox,<the space armada consists of powerful battleships! destroy their energy cores!>,<l'armada spatiale est constitue de vaisseaux puissants! detruisez leur coeur!>,other	; (90)
 	message	fox,<be sure to use your retros if you're going too fast!  be careful with my arwings!>,<utilisez vos freins si vous allez trop vite! faites attention a mes arwings!>,other	; (91)
