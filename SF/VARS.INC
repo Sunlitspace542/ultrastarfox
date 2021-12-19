@@ -12,7 +12,7 @@ debuginfo2			equ	0	; speed up mode? [0 = off 1 = on]														#
 janglish			equ	0	; [0 = English, 1 = Japanese] (IF 1, DO NOT USE WITH PAL. HEADER CONFLICTS WILL OCCUR.)	#
 pal					equ	0	; PAL/NTSC [0 = NTSC, 1 = PAL]															#
 german				equ	0	; german version [0 = off 1 = on]														#
-french				equ	0	; french version [0 = off 1 = on] (UNUSED VARIABLE)										#
+french				equ	0	; french version [0 = off 1 = on] (WIP)	(TEXT ONLY)	(NO DIACRITICS)						#
 twentyonemhz		equ 1	; SuperFX 21MHZ Fast mode [1 = on 0 = off]												#
 planetcheaton 		equ 0   ; Allows you to enable planet select cheat on the map before you have selected			#
 							; a level. Press X+Y on the same frame to activate.										#
