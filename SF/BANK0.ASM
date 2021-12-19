@@ -94,12 +94,16 @@ bgandpcr
 
 	org	$00ffc0,$7fc0
 
+; Star Fox/StarWing ROM header is laid out as such:
+; Internal ROM Name
+; Map mode ($20 = SlowROM $30 = FastROM), ROM type, ROM size, SRAM size, Country, $1, version, checksum compliment, checksum, $0, $0
+
 	IFEQ	JANGLISH
 
 	IFEQ	PAL
 ; american
-	db	"STAR FOX             "
-	db	$20,$13,$a,$0,$1,$1,$0,$ff,$ff,$0,$0
+	db	"STAR FOX             "  
+	db	$20,$13,$a,$0,$1,$1,$0,$ff,$ff,$0,$0 
 	ELSEIF
 
 	IFEQ	GERMAN+FRENCH
