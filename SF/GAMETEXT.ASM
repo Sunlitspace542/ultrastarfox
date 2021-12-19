@@ -10,14 +10,25 @@ totalscoretxt	TXT	14,<TOTAL SCORE>
 totalscoretxt	TXT	14,<GESAMTPUNKTZAHL>
 	ENDC
 
+	IFEQ	FRENCH
+totalscoretxt	TXT	14,<TOTAL SCORE>
+	ELSEIF
+totalscoretxt	TXT	14,<SCORE TOTAL>
+	ENDC
+
 	IFEQ	GERMAN
 scoretxt	TXT	14,<SCORE>
 	ELSEIF
 scoretxt	TXT	14,<PUNKTE>
 	ENDC
 
+	IFEQ	FRENCH
 slashtxt	TXT	14,</>
 percenttxt	TXT	14,<PERCENTAGE>
+	ELSEIF
+slashtxt	TXT	14,</>
+percenttxt	TXT	14,<POURCENTAGE>
+	ENDC
 
 	IFEQ	GERMAN
 	IFEQ	CONTEST
@@ -29,27 +40,27 @@ bonustxt	TXT	14,<PERFECT BONUS 1OOOOO>
 bonustxt	TXT	14,<BONUS 1 VERSUCH>
 	ENDC
 
+	IFEQ	FRENCH
 percenttxt2	TXT	14,<%>
 perfecttxt	TXT	14,<PERFECT//>
+	ELSEIF
+percenttxt2	TXT	14,<%>
+perfecttxt	TXT	14,<PARFAIT//>
+	ENDC
 
 	IFEQ	GERMAN
 teamtxt	TXT	14,<SHIELD OF TEAMMATES>
 	ELSEIF
 teamtxt	TXT	14,<TEAM POWER>
+	ELSEIF
+	IFEQ	FRENCH
+teamtxt	TXT	14,<SHIELD OF TEAMMATES>
+	ELSEIF
+teamtxt	TXT	14,<BOUCLIER DE TEAMATE>
+	ENDC
 	ENDC
 
-	IFEQ	GERMAN
-frogtxt		TXT	14,<SLIPPY>
-bunnytxt	TXT	14,<PEPPY>
-cocktxt		TXT	14,<FALCO>
-deadtxt		TXT	14,<IS DOWN>
-stagetxt	TXT	14,<STAGE>
-cesmintxt	TXT	2,<m>
-cessectxt	TXT	2,<s>
-scoretxt2	TXT	2,<score>			; SSFW/SWC leftover, added to get text chunk of ROM to match
-shldbonus	TXT	2,<SHIELD BONUS>	; SSFW/SWC leftover, added to get text chunk of ROM to match
-bombbonus	TXT	2,<BOMB BONUS>		; SSFW/SWC leftover, added to get text chunk of ROM to match
-	ELSEIF
+	IFNE	GERMAN	; if german = 1
 frogtxt		TXT	14,<SLIPPY>
 bunnytxt	TXT	14,<PEPPY>
 cocktxt		TXT	14,<FALCO>
@@ -60,6 +71,34 @@ cessectxt	TXT	2,<s>
 scoretxt2	TXT	2,<punkte>			; SSFW/SWC leftover, added to get text chunk of ROM to match
 shldbonus	TXT	2,<SCHILD BONUS>	; SSFW/SWC leftover, added to get text chunk of ROM to match
 bombbonus	TXT	2,<BOMBE BONUS>		; SSFW/SWC leftover, added to get text chunk of ROM to match
+	ENDC
+
+	IFNE	FRENCH	; if french = 1
+frogtxt		TXT	14,<SLIPPY>
+bunnytxt	TXT	14,<PEPPY>
+cocktxt		TXT	14,<FALCO>
+deadtxt		TXT	14,<ES MORT>
+stagetxt	TXT	14,<STAGE>
+cesmintxt	TXT	2,<m>
+cessectxt	TXT	2,<s>
+scoretxt2	TXT	2,<score>			; SSFW/SWC leftover, added to get text chunk of ROM to match
+shldbonus	TXT	2,<SHIELD BONUS>	; SSFW/SWC leftover, added to get text chunk of ROM to match
+bombbonus	TXT	2,<BOMB BONUS>		; SSFW/SWC leftover, added to get text chunk of ROM to match
+	ENDC
+
+	IFEQ	GERMAN	; german = 0
+	IFEQ	FRENCH	; french = 0
+frogtxt		TXT	14,<SLIPPY>
+bunnytxt	TXT	14,<PEPPY>
+cocktxt		TXT	14,<FALCO>
+deadtxt		TXT	14,<IS DOWN>
+stagetxt	TXT	14,<STAGE>
+cesmintxt	TXT	2,<m>
+cessectxt	TXT	2,<s>
+scoretxt2	TXT	2,<score>			; SSFW/SWC leftover, added to get text chunk of ROM to match
+shldbonus	TXT	2,<SHIELD BONUS>	; SSFW/SWC leftover, added to get text chunk of ROM to match
+bombbonus	TXT	2,<BOMB BONUS>		; SSFW/SWC leftover, added to get text chunk of ROM to match
+	ENDC
 	ENDC
 
 ;-------------------------------------------------------------------
