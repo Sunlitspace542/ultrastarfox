@@ -37,7 +37,7 @@
 	message	rabbit3,<please make the neck and tail shorter, fox!>,<racourcit son cou et sa queue, fox!>,other	; (37)
 	message	rabbit3,<shoot down its arms to hit its body!>,<detruit ses bras puis vise le corps! relentit! ralentit!!!>,other	; (38)
 	message	rabbit,<retros!  fire retros!>,<he! fox! evite ca!>,other	; (39)
-	message	rabbit,<roll over! shake it off!>,<jetzt zeig mal, was du kannst!>,other	; (40)
+	message	rabbit,<roll over! shake it off!>,<Retourne-toi! Secoue-toi!>,other	; (40)
 	message	rabbit3,<pick me up on your way back!>,<recupere moi a ton retour!>,other	; (41)
 	message	rabbit,<hey! he was mine!>,<c'etait le mien!>,other	; (42)
 	message	rabbit,<out of my way!>,<degage!!>,other	; (43)
