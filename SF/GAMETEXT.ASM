@@ -94,6 +94,8 @@ msgnum	=	1
 	include	german.inc
 	ENDC
 
+	; TODO: get french working (FRENCH.INC)
+
 	fclose	!
 
 messages	include	msgs.txt
