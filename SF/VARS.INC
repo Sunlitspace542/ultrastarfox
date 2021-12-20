@@ -27,7 +27,7 @@ wnglzrman_helpball	equ	0 	; Restore Laser Upgrade enemy code to spawn helperball
 titlelogo			equ 1	; Title screen logo to use, [0 = Star Fox JP, 1 = Star Fox US Rev 0,					#
 							; 2 = Star Fox US Rev 1/2, 3 = StarWing]												#
 							; (also affects which game name is shown in credits, 0/1 = STAR FOX, 2 = STARWING)		#
-controlsscreenpal	equ	1	; Controls screen palette to use, 0 = NTSC, 1 = PAL	(DOES NOT AFFECT JP)				#
+controlsscreenpal	equ	0	; Controls screen palette to use, 0 = NTSC, 1 = PAL	(DOES NOT AFFECT JP)				#
 shieldboostcolorbox	equ	1	; enable weird color box thing on shield and boost meters								#
 							; (set to 0 if moving meter positions)	(also disables hud hide on boss win/level end)	#
 ;####################################################################################################################
