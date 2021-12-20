@@ -1,7 +1,7 @@
 	IFNE	GERMAN
-pausetxt	TXT	14,<PAUSED>		;german pause
+pausetxt	TXT	14,<PAUSE>		;german pause
 scoretxt	TXT	14,<PUNKTE>
-totalscoretxt	TXT	14,<GESAMTPUNKTZAHL SCORE>		;german total score
+totalscoretxt	TXT	14,<GESAMTPUNKTZAHL>		;german total score
 slashtxt	TXT	14,</>
 percenttxt	TXT	14,<PERCENTAGE>
 bonustxt	TXT	14,<BONUS 1 VERSUCH>
@@ -9,17 +9,17 @@ teamtxt	TXT	14,<TEAM POWER>
 
 	ENDC
 	IFNE	FRENCH
-pausetxt	TXT	14,<PAUSE>		;french pause
+pausetxt	TXT	14,<PAUSED>		;french pause
 scoretxt	TXT	14,<SCORE>
-totalscoretxt	TXT	14,<TOTAL SCORE>		;french total score
+totalscoretxt	TXT	14,<SCORE TOTAL>		;french total score
 slashtxt	TXT	14,</>
-percenttxt	TXT	14,<PERCENTAGE>
+percenttxt	TXT	14,<POURCENTAGE>
 bonustxt	TXT	14,<BONUS 1 CREDIT>
-teamtxt	TXT	14,<SHIELD OF TEAMMATES>
+teamtxt	TXT	14,<BOUCLIER DE TEAMATE>
 
 	ENDC
 	IFNE	JANGLISH
-pausetxt	TXT	14,<PAUSE>		;japanese pause
+pausetxt	TXT	14,<PAUSED>		;japanese pause
 scoretxt	TXT	14,<SCORE>		;japanese score
 totalscoretxt	TXT	14,<TOTAL SCORE>		;japanese total score
 slashtxt	TXT	14,</>
@@ -31,7 +31,7 @@ teamtxt	TXT	14,<SHIELD OF TEAMMATES>
 	IFEQ	GERMAN
 	IFEQ	FRENCH
 	IFEQ	JANGLISH
-pausetxt	TXT	14,<PAUSE>		;english pause
+pausetxt	TXT	14,<PAUSED>		;english pause
 scoretxt	TXT	14,<SCORE>
 totalscoretxt	TXT	14,<TOTAL SCORE>		;english total score
 slashtxt	TXT	14,</>
