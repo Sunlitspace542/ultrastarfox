@@ -1,10 +1,21 @@
 ; WARNING: Confusing spaghetti code ahead
 
-	IFEQ	GERMAN
-pausetxt	TXT	14,<PAUSED>
-	ELSEIF
-pausetxt	TXT	14,<PAUSE>
-	ENDC
+    IFNE    GERMAN
+pausetxt    TXT    14,<PAUSE>        ;german pause
+    ENDC
+    IFNE    FRENCH
+pausetxt    TXT    14,<PAUSED>        ;french pause
+    ENDC
+    IFNE    JANGLISH
+pausetxt    TXT    14,<PAUSED>        ;japanese pause
+    ENDC
+    IFEQ    GERMAN
+    IFEQ    FRENCH
+    IFEQ    JANGLISH
+pausetxt    TXT    14,<PAUSED>        ;english pause
+    ENDC
+    ENDC
+    ENDC
 
 	IFNE	GERMAN
 totalscoretxt	TXT	14,<GESAMTPUNKTZAHL>
