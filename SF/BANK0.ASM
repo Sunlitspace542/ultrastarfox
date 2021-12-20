@@ -99,9 +99,9 @@ bgandpcr
 ; Map mode ($20 = SlowROM $30 = FastROM), ROM type, ROM size, SRAM size, Country, $1, version, checksum compliment, checksum, $0, $0
 
 	IFEQ	internalname	; if internalname = 0
-	db	"STAR WING            "  
-	ELSEIF					; if internalname = 1
 	db	"STAR FOX             "  
+	ELSEIF					; if internalname = 1
+	db	"STAR WING            "  
 	ENDC
 
 	IFEQ	JAPAN
