@@ -4004,15 +4004,27 @@ trigse_rge	macro
 
 txt	macro
 	db	\1
-	ifeq	janglish+german
-	db	"\2",0
-	elseif
-	IFEQ	NARG-2
-	db	"\2",0
-	ELSEIF
+
+	IFNE	janglish		;janglish = 1
 	db	"\3",0
 	ENDC
+	
+	IFNE	french			;french = 1
+	db	"\3",0
+	ENDC
+	
+	IFNE	german			;german = 1
+	db	"\3",0
+	ENDC
+	
+	IFEQ	janglish
+	IFEQ	french
+	IFEQ	german
+	db	"\2",0
+	ENDC
 	endc
+	endc
+	
 	endm
 
 ;------------------------------------------------------------------------
