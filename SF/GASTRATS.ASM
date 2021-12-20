@@ -2880,10 +2880,10 @@ winglazerman3_strat
 
 winglazermandie_Istrat
 	s_start_strat
-	s_jmp_varAND		B,pshipflags3,#psf3_beamball,.helperball
 	s_jmp_varAND		B,pshipflags,#psf_brkLwing!psf_brkRwing,.dlaser
 	s_jmpNOT_varAND		B,pshipflags3,#psf3_beamball,.dlaser
 	IFNE	wnglzrman_helpball
+	s_jmp_varAND		B,pshipflags3,#psf3_beamball,.helperball
 ;.helpball
 .dlaser	
 	s_make_obj	#item_7,.badobj 
