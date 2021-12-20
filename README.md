@@ -49,7 +49,7 @@ the .BAT versions of these can be run via DOSBox if you do not use Windows.
 5. FastROM
 
 ## Maybe?
-- MSU-1 support
+- MSU-1 support (big maybe, probably won't happen)
 
 ## Project Structure
 ```
