@@ -98,38 +98,39 @@ bgandpcr
 ; Internal ROM Name
 ; Map mode ($20 = SlowROM $30 = FastROM), ROM type, ROM size, SRAM size, Country, $1, version, checksum compliment, checksum, $0, $0
 
-	IFEQ	JANGLISH
+	IFEQ	internalname	; if internalname = 0
+	db	"STAR WING            "  
+	ELSEIF					; if internalname = 1
+	db	"STAR FOX             "  
+	ENDC
+
+	IFEQ	JAPAN
 
 	IFEQ	PAL
 ; american
-	db	"STAR FOX             "  
 	db	$20,$13,$a,$0,$1,$1,$0,$ff,$ff,$0,$0 
 	ELSEIF
 
 	IFEQ	GERMAN+FRENCH
 ; british
-	db	"STAR FOX             "
 	db	$20,$13,$a,$0,$2,$1,$0,$ff,$ff,$0,$0
 
 	ENDC
 
 	IFNE	GERMAN
 ; german
-	db	"STAR FOX             "
 	db	$20,$13,$a,$0,$9,$1,$0,$ff,$ff,$0,$0
 	ENDC
 
 	IFNE	FRENCH
 ; france
-	db	"STAR FOX             "
 	db	$20,$13,$a,$0,$6,$1,$0,$ff,$ff,$0,$0
 	ENDC
 
 	ENDC
 
 	ELSEIF
-
-	db	"STAR FOX             "
+; japan
 	db	$20,$13,$a,$0,$0,$1,$0,$ff,$ff,$0,$0
 
 	ENDC

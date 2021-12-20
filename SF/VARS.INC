@@ -9,10 +9,12 @@ contest				equ	0	; Super Star Fox Weekend [0 = off 1 = on]												#
 cestime				equ	5	; CES/SSFW timer countdown (in minutes)													#
 debuginfo			equ	0	; full strategy debugging - Press P2 R Button in-game to activate [0 = off 1 = on]		#
 debuginfo2			equ	0	; speed up mode? [0 = off 1 = on]														#
-janglish			equ	0	; [0 = English, 1 = Japanese] (IF 1, DO NOT USE WITH PAL. HEADER CONFLICTS WILL OCCUR.)	#
+japan				equ 0	; Japanese ROM Header [0 = off, 1 = on]	(DO NOT USE IF PAL = 1)							#
 pal					equ	0	; PAL/NTSC [0 = NTSC, 1 = PAL]															#
-german				equ	0	; german version [0 = off 1 = on]														#
-french				equ	0	; french version [0 = off 1 = on] (WIP)	(TEXT ONLY)	(NO DIACRITICS)						#
+janglish			equ	0	; Language [0 = English, 1 = Japanese]													#
+german				equ	0	; German language version [0 = off 1 = on]												#
+french				equ	0	; French language version [0 = off 1 = on] (WIP) (TEXT ONLY, NO DIACRITICS OR GFX)		#
+internalname		equ	0	; internal rom name, [0 = STAR WING, 1 = STAR FOX]										#
 twentyonemhz		equ 1	; SuperFX 21MHZ Fast mode [1 = on 0 = off]												#
 planetcheaton 		equ 0   ; Allows you to enable planet select cheat on the map before you have selected			#
 							; a level. Press X+Y on the same frame to activate.										#
