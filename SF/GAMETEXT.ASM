@@ -1,3 +1,5 @@
+; WARNING: Confusing spaghetti code ahead
+
 	IFEQ	GERMAN
 pausetxt	TXT	14,<PAUSED>
 	ELSEIF
@@ -10,10 +12,6 @@ totalscoretxt	TXT	14,<GESAMTPUNKTZAHL>
 
 	IFNE	FRENCH
 totalscoretxt	TXT	14,<SCORE TOTAL>
-	ENDC
-
-	IFNE	GERMAN
-totalscoretxt	TXT	14,<TOTAL SCORE>
 	ENDC
 
 	IFEQ	GERMAN
