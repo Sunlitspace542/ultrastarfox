@@ -81,12 +81,26 @@ msgnum	=	1
 
 	fopen	msgs.txt
 
-	IFEQ	german
-	include	gamemsgs.inc
-	ELSEIF
+	IFNE	german			;if german = 1 and french = 1
+	IFNE	french
+	printf	"You cannot have german and french on at the same time"
+	fail
+	endc
+	endc
+	
+	IFNE	german			;if german = 1
 	include	german.inc
 	ENDC
 
+	IFNE	french			;if french = 1
+	include	french.inc
+	ENDC
+
+	IFEQ	german
+	IFEQ	french
+	include	gamemsgs.inc
+	endc
+	endc
 	fclose	!
 
 messages	include	msgs.txt
