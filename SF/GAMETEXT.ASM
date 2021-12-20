@@ -31,7 +31,7 @@ perfecttxt	newtext	14,<PARFAIT//>
 frogtxt	newtext	14,<SLIPPY>
 bunnytxt	newtext	14,<PEPPY>
 cocktxt	newtext	14,<FALCO>
-deadtxt		TXT	14,<ES MORT>
+deadtxt		newtext	14,<ES MORT>
 stagetxt	newtext	14,<STAGE>
 cesmintxt	newtext	2,<m>
 cessectxt	newtext	2,<s>

@@ -68,7 +68,7 @@
 	message	frog,<should we go in?!>,<on peut entrer?!>,other	; (68)
 	message	falcon,<###this one could be trouble###>,<###il doit pas etre bien###>,help	; (69)
 	message	rabbit,<hurry!>,<allez!>,help	; (70)
-	message	frog,<allez, fox! croaa!!>,<beeil dich, fox! quak!>,help	; (71)
+	message	frog,<allez, fox! croaa!!>,<allez, fox! croaa!!>,help	; (71)
 	message	falcon,<eyes forward, fox!>,<derriere toi, fox!>,other	; (72)
 	message	rabbit,<be careful, fox!>,<attention, fox!>,other	; (73)
 	message	frog3,<this time, i saved you!>,<on est quitte, fox!!>,other	; (74)
