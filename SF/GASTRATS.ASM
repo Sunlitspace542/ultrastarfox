@@ -2975,6 +2975,14 @@ item7a_strat
 	s_make_obj		#helpball,.bad1
 	s_set_strat		y,helpball_Istrat
 	TRIGSE			$10
+	
+	phx
+	ldx			pcboxobj_LW
+	s_jsl			pLWing_Istrat
+	ldx			pcboxobj_RW
+	s_jsl			pRWing_Istrat
+	plx
+
 .bad1
 	s_set_strat		x,flashplayer_Istrat
 	s_jmpto_strat		x
