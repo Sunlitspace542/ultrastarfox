@@ -6,6 +6,16 @@ slashtxt	newtext	14,</>
 percenttxt	newtext	14,<PERCENTAGE>
 bonustxt	newtext	14,<BONUS 1 VERSUCH>
 teamtxt	newtext	14,<TEAM POWER>
+percenttxt2	newtext	14,<%>
+perfecttxt	newtext	14,<PERFECT//>
+frogtxt	newtext	14,<SLIPPY>
+bunnytxt	newtext	14,<PEPPY>
+cocktxt	newtext	14,<FALCO>
+deadtxt	newtext	14,<. . . . . .>
+stagetxt	newtext	14,<STAGE>
+cesmintxt	newtext	2,<m>
+cessectxt	newtext	2,<s>
+scoretxt2	newtext	2,<score>
 	ENDC
 
 	IFNE	FRENCH
@@ -16,6 +26,16 @@ slashtxt	newtext	14,</>
 percenttxt	newtext	14,<POURCENTAGE>
 bonustxt	newtext	14,<BONUS 1 CREDIT>
 teamtxt	newtext	14,<BOUCLIER DE TEAMATE>
+percenttxt2	newtext	14,<%>
+perfecttxt	newtext	14,<PARFAIT//>
+frogtxt	newtext	14,<SLIPPY>
+bunnytxt	newtext	14,<PEPPY>
+cocktxt	newtext	14,<FALCO>
+deadtxt		TXT	14,<ES MORT>
+stagetxt	newtext	14,<STAGE>
+cesmintxt	newtext	2,<m>
+cessectxt	newtext	2,<s>
+scoretxt2	newtext	2,<score>
 	ENDC
 
 	IFNE	JANGLISH
@@ -26,6 +46,16 @@ slashtxt	newtext	14,</>
 percenttxt	newtext	14,<PERCENTAGE>
 bonustxt	newtext	14,<BONUS 1 CREDIT>
 teamtxt	newtext	14,<SHIELD OF TEAMMATES>
+percenttxt2	newtext	14,<%>
+perfecttxt	newtext	14,<PERFECT//>
+frogtxt	newtext	14,<SLIPPY>
+bunnytxt	newtext	14,<PEPPY>
+cocktxt	newtext	14,<FALCO>
+deadtxt	newtext	14,<IS DOWN>
+stagetxt	newtext	14,<STAGE>
+cesmintxt	newtext	2,<m>
+cessectxt	newtext	2,<s>
+scoretxt2	newtext	2,<score>
 	ENDC
 
 	IFEQ	GERMAN
@@ -38,11 +68,6 @@ slashtxt	newtext	14,</>
 percenttxt	newtext	14,<PERCENTAGE>
 bonustxt	newtext	14,<BONUS 1 CREDIT>
 teamtxt	newtext	14,<SHIELD OF TEAMMATES>
-	ENDC
-	ENDC
-	ENDC
-
-
 percenttxt2	newtext	14,<%>
 perfecttxt	newtext	14,<PERFECT//>
 frogtxt	newtext	14,<SLIPPY>
@@ -53,6 +78,9 @@ stagetxt	newtext	14,<STAGE>
 cesmintxt	newtext	2,<m>
 cessectxt	newtext	2,<s>
 scoretxt2	newtext	2,<score>
+	ENDC
+	ENDC
+	ENDC
 
 ;-------------------------------------------------------------------
 
