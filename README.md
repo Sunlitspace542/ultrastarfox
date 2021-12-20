@@ -47,6 +47,9 @@ the .BAT versions of these can be run via DOSBox if you do not use Windows.
 3. Annotate and document code
 4. Organize source files and edit makefile accordingly
 
+## Maybe
+- MSU-1 support
+
 ## Project Structure
 ```
 hackerstarfox
