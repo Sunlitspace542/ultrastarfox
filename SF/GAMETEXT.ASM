@@ -1,58 +1,58 @@
 	IFNE	GERMAN
-pausetxt	TXT	14,<PAUSE>		;german pause
-scoretxt	TXT	14,<PUNKTE>
-totalscoretxt	TXT	14,<GESAMTPUNKTZAHL>		;german total score
-slashtxt	TXT	14,</>
-percenttxt	TXT	14,<PERCENTAGE>
-bonustxt	TXT	14,<BONUS 1 VERSUCH>
-teamtxt	TXT	14,<TEAM POWER>
+pausetxt	newtext	14,<PAUSE>		;german pause
+scoretxt	newtext	14,<PUNKTE>
+totalscoretxt	newtext	14,<GESAMTPUNKTZAHL>		;german total score
+slashtxt	newtext	14,</>
+percenttxt	newtext	14,<PERCENTAGE>
+bonustxt	newtext	14,<BONUS 1 VERSUCH>
+teamtxt	newtext	14,<TEAM POWER>
 	ENDC
 
 	IFNE	FRENCH
-pausetxt	TXT	14,<PAUSED>,<PAUSED>		;french pause
-scoretxt	TXT	14,<SCORE>,<SCORE>
-totalscoretxt	TXT	14,<SCORE TOTAL>,<SCORE TOTAL>		;french total score
-slashtxt	TXT	14,</>,</>
-percenttxt	TXT	14,<POURCENTAGE>,<POURCENTAGE>
-bonustxt	TXT	14,<BONUS 1 CREDIT>,<BONUS 1 CREDIT>
-teamtxt	TXT	14,<BOUCLIER DE TEAMATE>,<BOUCLIER DE TEAMATE>
+pausetxt	newtext	14,<PAUSED>		;french pause
+scoretxt	newtext	14,<SCORE>
+totalscoretxt	newtext	14,<SCORE TOTAL>		;french total score
+slashtxt	newtext	14,</>
+percenttxt	newtext	14,<POURCENTAGE>
+bonustxt	newtext	14,<BONUS 1 CREDIT>
+teamtxt	newtext	14,<BOUCLIER DE TEAMATE>
 	ENDC
 
 	IFNE	JANGLISH
-pausetxt	TXT	14,<PAUSED>		;japanese pause
-scoretxt	TXT	14,<SCORE>		;japanese score
-totalscoretxt	TXT	14,<TOTAL SCORE>		;japanese total score
-slashtxt	TXT	14,</>
-percenttxt	TXT	14,<PERCENTAGE>
-bonustxt	TXT	14,<BONUS 1 CREDIT>
-teamtxt	TXT	14,<SHIELD OF TEAMMATES>
+pausetxt	newtext	14,<PAUSED>		;japanese pause
+scoretxt	newtext	14,<SCORE>		;japanese score
+totalscoretxt	newtext	14,<TOTAL SCORE>		;japanese total score
+slashtxt	newtext	14,</>
+percenttxt	newtext	14,<PERCENTAGE>
+bonustxt	newtext	14,<BONUS 1 CREDIT>
+teamtxt	newtext	14,<SHIELD OF TEAMMATES>
 	ENDC
 
 	IFEQ	GERMAN
 	IFEQ	FRENCH
 	IFEQ	JANGLISH
-pausetxt	TXT	14,<PAUSED>		;english pause
-scoretxt	TXT	14,<SCORE>
-totalscoretxt	TXT	14,<TOTAL SCORE>		;english total score
-slashtxt	TXT	14,</>
-percenttxt	TXT	14,<PERCENTAGE>
-bonustxt	TXT	14,<BONUS 1 CREDIT>
-teamtxt	TXT	14,<SHIELD OF TEAMMATES>
+pausetxt	newtext	14,<PAUSED>		;english pause
+scoretxt	newtext	14,<SCORE>
+totalscoretxt	newtext	14,<TOTAL SCORE>		;english total score
+slashtxt	newtext	14,</>
+percenttxt	newtext	14,<PERCENTAGE>
+bonustxt	newtext	14,<BONUS 1 CREDIT>
+teamtxt	newtext	14,<SHIELD OF TEAMMATES>
 	ENDC
 	ENDC
 	ENDC
 
 
-percenttxt2	TXT	14,<%>
-perfecttxt	TXT	14,<PERFECT//>
-frogtxt	TXT	14,<SLIPPY>
-bunnytxt	TXT	14,<PEPPY>
-cocktxt	TXT	14,<FALCO>
-deadtxt	TXT	14,<IS DOWN>
-stagetxt	TXT	14,<STAGE>
-cesmintxt	TXT	2,<m>
-cessectxt	TXT	2,<s>
-scoretxt2	TXT	2,<score>
+percenttxt2	newtext	14,<%>
+perfecttxt	newtext	14,<PERFECT//>
+frogtxt	newtext	14,<SLIPPY>
+bunnytxt	newtext	14,<PEPPY>
+cocktxt	newtext	14,<FALCO>
+deadtxt	newtext	14,<IS DOWN>
+stagetxt	newtext	14,<STAGE>
+cesmintxt	newtext	2,<m>
+cessectxt	newtext	2,<s>
+scoretxt2	newtext	2,<score>
 
 ;-------------------------------------------------------------------
 
