@@ -6,18 +6,18 @@ slashtxt	TXT	14,</>
 percenttxt	TXT	14,<PERCENTAGE>
 bonustxt	TXT	14,<BONUS 1 VERSUCH>
 teamtxt	TXT	14,<TEAM POWER>
-
 	ENDC
+
 	IFNE	FRENCH
-pausetxt	TXT	14,<PAUSED>		;french pause
-scoretxt	TXT	14,<SCORE>
-totalscoretxt	TXT	14,<SCORE TOTAL>		;french total score
-slashtxt	TXT	14,</>
-percenttxt	TXT	14,<POURCENTAGE>
-bonustxt	TXT	14,<BONUS 1 CREDIT>
-teamtxt	TXT	14,<BOUCLIER DE TEAMATE>
-
+pausetxt	TXT	14,<PAUSED>,<PAUSED>		;french pause
+scoretxt	TXT	14,<SCORE>,<SCORE>
+totalscoretxt	TXT	14,<SCORE TOTAL>,<SCORE TOTAL>		;french total score
+slashtxt	TXT	14,</>,</>
+percenttxt	TXT	14,<POURCENTAGE>,<POURCENTAGE>
+bonustxt	TXT	14,<BONUS 1 CREDIT>,<BONUS 1 CREDIT>
+teamtxt	TXT	14,<BOUCLIER DE TEAMATE>,<BOUCLIER DE TEAMATE>
 	ENDC
+
 	IFNE	JANGLISH
 pausetxt	TXT	14,<PAUSED>		;japanese pause
 scoretxt	TXT	14,<SCORE>		;japanese score
@@ -26,8 +26,8 @@ slashtxt	TXT	14,</>
 percenttxt	TXT	14,<PERCENTAGE>
 bonustxt	TXT	14,<BONUS 1 CREDIT>
 teamtxt	TXT	14,<SHIELD OF TEAMMATES>
-
 	ENDC
+
 	IFEQ	GERMAN
 	IFEQ	FRENCH
 	IFEQ	JANGLISH
@@ -38,7 +38,6 @@ slashtxt	TXT	14,</>
 percenttxt	TXT	14,<PERCENTAGE>
 bonustxt	TXT	14,<BONUS 1 CREDIT>
 teamtxt	TXT	14,<SHIELD OF TEAMMATES>
-
 	ENDC
 	ENDC
 	ENDC
