@@ -55,6 +55,7 @@ hackerstarfox
 ├── BIN: exe files needed to compile game
 ├── optionalstuff: optional graphics files
 ├── SF: Main source code is located here
+│   ├── ASM: Main game code located here (65816)
 │   ├── DATA: GFX files
 │   │   └── GFX: Palette files and Palette Packer
 │   ├── EXT: .ext files needed by several .asm files
