@@ -20,7 +20,7 @@ msprites2	incbinfile	msprites\spritesg.dat
 	bankend	19
 
 	bank	20
-	incfile	mdata.mc
+	incfile	MARIO\mdata.mc
 msprites3
 	inccru	bgdemoccr,data\demo.ccr
 	inccru	bgdemopcr,data\demo.pcr

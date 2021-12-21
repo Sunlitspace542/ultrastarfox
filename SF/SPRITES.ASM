@@ -150,7 +150,7 @@ do_lives	ai16
 
 do_shield	ai16 
 ; This is the "Shield" text sprite, for 
-; the actual meter go to mdamagemeter in MDRAWLIS.MC.
+; the actual meter go to mdamagemeter in MARIO\MDRAWLIS.MC.
 ; The boost meter is also in there under mboostmeter.
 	ldx	spritespos
 	lda	#ShieldTextPos1

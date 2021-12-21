@@ -25,9 +25,9 @@
 	incfile	expstrat.asm
 
 cacheon	=	1
-     	incfile	mmacs.mc
+     	incfile	MARIO\mmacs.mc
 	mario	on
-	incfile	mhofs.mc		;Kristers .mc files
+	incfile	MARIO\mhofs.mc		;Kristers .mc files
 	mario	off
 
 

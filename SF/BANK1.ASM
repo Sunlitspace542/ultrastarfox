@@ -21,28 +21,27 @@
 rztab
 mariobegin
 yyy	mario	on
-	incfile	mvars.mc
-     	incfile	mmacs.mc
-	incfile	mshtab.mc	; must be at start of bank
-	incfile	mmaths.mc
-	incfile	mwrot.mc
-	incfile	mwcrot.mc
-	incfile	mobj.mc
-	incfile	mclip.mc
-	incfile	mdrawc.mc
-	incfile	mdrawp.mc
-	incfile	msprite.mc
-	incfile	mgdots.mc
-	incfile	mcircle.mc
-	incfile	mdrawlis.mc
-	incfile	mdecru.mc
-	incfile	mtxtprt.mc
-	incfile	mplanet.mc
-	incfile	mdsprite.mc
-;	incfile	mhofs.mc		;Kristers .mc files
-	incfile	mpart.mc
-	incfile	mbumwipe.mc
-	incfile	mhud.mc
+	incfile	MARIO\mvars.mc
+    	incfile	MARIO\mmacs.mc
+	incfile	MARIO\mshtab.mc	; must be at start of bank
+	incfile	MARIO\mmaths.mc
+	incfile	MARIO\mwrot.mc
+	incfile	MARIO\mwcrot.mc
+	incfile	MARIO\mobj.mc
+	incfile	MARIO\mclip.mc
+	incfile	MARIO\mdrawc.mc
+	incfile	MARIO\mdrawp.mc
+	incfile	MARIO\msprite.mc
+	incfile	MARIO\mgdots.mc
+	incfile	MARIO\mcircle.mc
+	incfile	MARIO\mdrawlis.mc
+	incfile	MARIO\mdecru.mc
+	incfile	MARIO\mtxtprt.mc
+	incfile	MARIO\mplanet.mc
+	incfile	MARIO\mdsprite.mc
+	incfile	MARIO\mpart.mc
+	incfile	MARIO\mbumwipe.mc
+	incfile	MARIO\mhud.mc
 	mario	off
 
 
