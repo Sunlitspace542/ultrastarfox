@@ -33,7 +33,7 @@
 
 	strats_start
 
-	INCPUBLICS	GB3STRATS.EXT
+	INCPUBLICS	EXT\GB3STRATS.EXT
 
 ;*****************************************************************************
 ; WASHING MACHINE MAP BOSS.	

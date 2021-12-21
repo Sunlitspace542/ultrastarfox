@@ -1,16 +1,16 @@
 	include	INCLUDE\header.inc
 	include	INCLUDE\strathdr.inc
-	include	gstrats.ext
-	include	gastrats.ext
-	include	pistrats.ext
-	include	pstrats.ext	
-	include	dstrats.ext	
-	include	d2strats.ext
-	include	d3strats.ext
-	include	planets.ext
-	include	expstrat.ext
-	include	paths.ext
-	include	bootnmi.ext
+	include	EXT\gstrats.ext
+	include	EXT\gastrats.ext
+	include	EXT\pistrats.ext
+	include	EXT\pstrats.ext	
+	include	EXT\dstrats.ext	
+	include	EXT\d2strats.ext
+	include	EXT\d3strats.ext
+	include	EXT\planets.ext
+	include	EXT\expstrat.ext
+	include	EXT\paths.ext
+	include	EXT\bootnmi.ext
 
 	bank	10
 	incfile	kstrats.asm

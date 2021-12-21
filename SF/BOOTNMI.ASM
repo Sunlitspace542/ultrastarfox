@@ -2,7 +2,7 @@
 ; ## Star Fox Boot Routines. ##
 ; #############################
 
-	incpublics	bootnmi.ext
+	incpublics	EXT\bootnmi.ext
 
 	shorti
 startboot	disable

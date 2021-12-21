@@ -31,7 +31,7 @@
 ;*                                                                         *
 ;***************************************************************************
 
-	incpublics	ga2strats.ext
+	incpublics	EXT\ga2strats.ext
 
 	strats_start
 

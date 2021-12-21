@@ -5,42 +5,41 @@
 	include	INCLUDE\stratmac.inc
 	include	INCLUDE\stratlib.inc
 
-	include	stratrou.ext
-	include	game.ext
-	include	world.ext
-	include	main.ext
-	include	draw.ext
-;	include	blink.ext
-	include	mario.ext
-	include	mother.ext
-	include	sound.ext
-	include	trans.ext
-	include	sprites.ext
-	include	windows.ext
+	include	EXT\stratrou.ext
+	include	EXT\game.ext
+	include	EXT\world.ext
+	include	EXT\main.ext
+	include	EXT\draw.ext
+	include	EXT\mario.ext
+	include	EXT\mother.ext
+	include	EXT\sound.ext
+	include	EXT\trans.ext
+	include	EXT\sprites.ext
+	include	EXT\windows.ext
 
 
-	include	gstrats.ext
-	include	dstrats.ext
-	include	kstrats.ext
-	include	d2strats.ext
-	include	gastrats.ext
-	include	ga2strats.ext
-	include	gbstrats.ext
-	include	gb2strats.ext
-	include	gb3strats.ext
-	include	gistrats.ext
-	include	gcstrats.ext
-	include	pstrats.ext
-	include	pistrats.ext
-	include	pcstrats.ext
-	include	expstrat.ext
+	include	EXT\gstrats.ext
+	include	EXT\dstrats.ext
+	include	EXT\kstrats.ext
+	include	EXT\d2strats.ext
+	include	EXT\gastrats.ext
+	include	EXT\ga2strats.ext
+	include	EXT\gbstrats.ext
+	include	EXT\gb2strats.ext
+	include	EXT\gb3strats.ext
+	include	EXT\gistrats.ext
+	include	EXT\gcstrats.ext
+	include	EXT\pstrats.ext
+	include	EXT\pistrats.ext
+	include	EXT\pcstrats.ext
+	include	EXT\expstrat.ext
 
-	include	coltabs.ext
-	include	bootnmi.ext
-	include	colboxes.ext
-	include	paths.ext
-	include	mem.ext
-	include	endseq.ext
+	include	EXT\coltabs.ext
+	include	EXT\bootnmi.ext
+	include	EXT\colboxes.ext
+	include	EXT\paths.ext
+	include	EXT\mem.ext
+	include	EXT\endseq.ext
 
 ;------------------------------------
 	bank	0		;Bank 0

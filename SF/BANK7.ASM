@@ -1,16 +1,16 @@
 	include	INCLUDE\header.inc
 	include	INCLUDE\strathdr.inc
-	include	gstrats.ext
-	include	gastrats.ext
-	include	ga2strats.ext
-	include	gb2strats.ext
-	include	gcstrats.ext
-	include	pistrats.ext
-	include	pstrats.ext
-	include	dstrats.ext
+	include	EXT\gstrats.ext
+	include	EXT\gastrats.ext
+	include	EXT\ga2strats.ext
+	include	EXT\gb2strats.ext
+	include	EXT\gcstrats.ext
+	include	EXT\pistrats.ext
+	include	EXT\pstrats.ext
+	include	EXT\dstrats.ext
 	include	INCLUDE\shmacs.inc
-	include	expstrat.ext
-	include	bootnmi.ext
+	include	EXT\expstrat.ext
+	include	EXT\bootnmi.ext
 
 	bank	7
 	incfile	gistrats.asm

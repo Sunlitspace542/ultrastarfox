@@ -1,5 +1,5 @@
 
-	incpublics	stratrou.ext
+	incpublics	EXT\stratrou.ext
 
 wchrlen		equ	15*32
 

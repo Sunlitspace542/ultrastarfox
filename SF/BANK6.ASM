@@ -1,22 +1,22 @@
 	include	INCLUDE\header.inc
 	include	INCLUDE\strathdr.inc
-	include	gastrats.ext
-	include	pstrats.ext
-	include	paths.ext
-	include	pistrats.ext
-	include	pcstrats.ext
-	include	gb2strats.ext
-	include	ga2strats.ext
-	include	dstrats.ext
+	include	EXT\gastrats.ext
+	include	EXT\pstrats.ext
+	include	EXT\paths.ext
+	include	EXT\pistrats.ext
+	include	EXT\pcstrats.ext
+	include	EXT\gb2strats.ext
+	include	EXT\ga2strats.ext
+	include	EXT\dstrats.ext
 	include	INCLUDE\shmacs.inc
-	include	windows.ext
+	include	EXT\windows.ext
 	include	INCLUDE\bgmacs.inc
 	include	maps\maplist.ext
 	include	INCLUDE\marioi.inc
-	include	bootnmi.ext
+	include	EXT\bootnmi.ext
 	
 
-	incpublics	mhofs.ext
+	incpublics	EXT\mhofs.ext
 
 ;------------------------------------------------------------------
 	bank	6

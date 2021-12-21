@@ -1,14 +1,14 @@
 	include	INCLUDE\header.inc
 	include	INCLUDE\strathdr.inc
-	include	gstrats.ext
-	include	pstrats.ext
-	include	paths.ext
-	include	d2strats.ext
-	include	d3strats.ext
-	include	coltabs.ext
-	include	expstrat.ext
-	include	windows.ext
-	include	bootnmi.ext
+	include	EXT\gstrats.ext
+	include	EXT\pstrats.ext
+	include	EXT\paths.ext
+	include	EXT\d2strats.ext
+	include	EXT\d3strats.ext
+	include	EXT\coltabs.ext
+	include	EXT\expstrat.ext
+	include	EXT\windows.ext
+	include	EXT\bootnmi.ext
 
 	bank	9
 	incfile	dstrats.asm

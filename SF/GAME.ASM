@@ -1,5 +1,5 @@
 
-	incpublics	game.ext
+	incpublics	EXT\game.ext
 
 getview_l
 

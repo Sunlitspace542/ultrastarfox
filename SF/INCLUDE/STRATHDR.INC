@@ -2,19 +2,19 @@
 	include	INCLUDE\stratmac.inc
 	include	INCLUDE\stratlib.inc
 
-	include	stratrou.ext
-	include	game.ext
-	include	sgdata.ext
-	include	shapes.ext
-	include	world.ext
-	include	main.ext
-	include	draw.ext
-	include	blink.ext
-	include	mario.ext
-	include	mother.ext
-	include	sound.ext
-	include	trans.ext
-	include	sprites.ext
+	include	EXT\stratrou.ext
+	include	EXT\game.ext
+	include	EXT\sgdata.ext
+	include	EXT\shapes.ext
+	include	EXT\world.ext
+	include	EXT\main.ext
+	include	EXT\draw.ext
+	include	EXT\blink.ext
+	include	EXT\mario.ext
+	include	EXT\mother.ext
+	include	EXT\sound.ext
+	include	EXT\trans.ext
+	include	EXT\sprites.ext
 
 	IFD	makefile
 	fileslog <$(STRATFILES)>

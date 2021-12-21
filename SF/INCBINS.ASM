@@ -1,7 +1,7 @@
 
 	include	INCLUDE\header.inc
 
-	incpublics	incbins.ext
+	incpublics	EXT\incbins.ext
 
 
 	bank	18

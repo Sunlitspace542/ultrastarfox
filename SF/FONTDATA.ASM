@@ -1,5 +1,5 @@
 
-	incpublics	fontdata.ext
+	incpublics	EXT\fontdata.ext
 
 fontdata
 charbanks	dw	font0fon&WM,font0wid&WM,font0trn&WM

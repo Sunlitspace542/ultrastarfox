@@ -36,7 +36,7 @@
 
 	strats_start
 
-	incpublics	pcstrats.ext
+	incpublics	EXT\pcstrats.ext
 
 ;*****************************************************************************
 set_playerClearbridge_l

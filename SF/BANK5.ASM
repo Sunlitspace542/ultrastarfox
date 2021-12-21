@@ -6,37 +6,37 @@
 	include	INCLUDE\stratequ.inc
 	include	INCLUDE\mapstructs.inc
 
-	include	mario.ext
-	include	dstrats.ext
-	include	d2strats.ext
-	include	d3strats.ext
-	include	pstrats.ext
-	include	pistrats.ext
-	include	pcstrats.ext
-	include	gb2strats.ext
-	include	gstrats.ext
-	include	gbstrats.ext
-	include	gcstrats.ext
-	include	gistrats.ext
-	include	kstrats.ext
-	include	ga2strats.ext
-	include	ga3strats.ext
-	include	gb3strats.ext
-	include	shapes.ext
-	include	stratrou.ext
-	include	sgtabs.ext
-	include	gastrats.ext
-	include	main.ext
-	include	bgs.ext
-	include	paths.ext
-	include	blink.ext
-	include	sound.ext
-	include	mdata.ext
-	include	endseq.ext
-	include	windows.ext
-	include	expstrat.ext
-	include	continue.ext
-	include	trans.ext
+	include	EXT\mario.ext
+	include	EXT\dstrats.ext
+	include	EXT\d2strats.ext
+	include	EXT\d3strats.ext
+	include	EXT\pstrats.ext
+	include	EXT\pistrats.ext
+	include	EXT\pcstrats.ext
+	include	EXT\gb2strats.ext
+	include	EXT\gstrats.ext
+	include	EXT\gbstrats.ext
+	include	EXT\gcstrats.ext
+	include	EXT\gistrats.ext
+	include	EXT\kstrats.ext
+	include	EXT\ga2strats.ext
+	include	EXT\ga3strats.ext
+	include	EXT\gb3strats.ext
+	include	EXT\shapes.ext
+	include	EXT\stratrou.ext
+	include	EXT\sgtabs.ext
+	include	EXT\gastrats.ext
+	include	EXT\main.ext
+	include	EXT\bgs.ext
+	include	EXT\paths.ext
+	include	EXT\blink.ext
+	include	EXT\sound.ext
+	include	EXT\mdata.ext
+	include	EXT\endseq.ext
+	include	EXT\windows.ext
+	include	EXT\expstrat.ext
+	include	EXT\continue.ext
+	include	EXT\trans.ext
 	include	INCLUDE\bgmacs.inc
 
 

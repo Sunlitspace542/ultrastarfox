@@ -1,14 +1,14 @@
 	include	INCLUDE\header.inc
 	include	INCLUDE\strathdr.inc
-	include	gstrats.ext
-	include	gcstrats.ext
-	include	gistrats.ext
-	include	gastrats.ext
-	include	expstrat.ext
-	include	windows.ext
-	include	ga2strats.ext
-	include	dstrats.ext
-	include	bootnmi.ext
+	include	EXT\gstrats.ext
+	include	EXT\gcstrats.ext
+	include	EXT\gistrats.ext
+	include	EXT\gastrats.ext
+	include	EXT\expstrat.ext
+	include	EXT\windows.ext
+	include	EXT\ga2strats.ext
+	include	EXT\dstrats.ext
+	include	EXT\bootnmi.ext
 
 	bank	11
 	incfile	pistrats.asm

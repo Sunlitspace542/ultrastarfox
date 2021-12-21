@@ -34,7 +34,7 @@
 	shorta
 	longi
 
-	INCPUBLICS	expstrat.ext
+	INCPUBLICS	EXT\expstrat.ext
 
 
 ;*******************************************************************************

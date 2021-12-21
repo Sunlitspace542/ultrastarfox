@@ -9,7 +9,7 @@
 ;--------------------------------------------------------------------
 
 
-	INCPUBLICS	colboxes.ext
+	INCPUBLICS	EXT\colboxes.ext
 
 
 

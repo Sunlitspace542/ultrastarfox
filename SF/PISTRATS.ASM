@@ -36,7 +36,7 @@
 
 	strats_start
 
-	incpublics	pistrats.ext
+	incpublics	EXT\pistrats.ext
 
 ;*****************************************************************************
 playeropening_Istrat

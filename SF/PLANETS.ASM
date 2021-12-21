@@ -31,7 +31,7 @@ planetcheat	=	1
 planetcheat	=	1
 	ENDC
 
-	incpublics	planets.ext
+	incpublics	EXT\planets.ext
 
 p_bg1_cgx1	=	0
 p_bg1_scr2	=	(22*k)/2

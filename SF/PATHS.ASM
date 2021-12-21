@@ -26,7 +26,7 @@ pathinfo	=	0	; output path information?
 
 	strats_start
 
-	incpublics	paths.ext
+	incpublics	EXT\paths.ext
 
 ; alvars used:
 ; al_sbyte1 =  used for child macros

@@ -25,7 +25,7 @@
 ;*                                                                         *
 ;***************************************************************************
 
-	INCPUBLICS	trans.ext
+	INCPUBLICS	EXT\trans.ext
 
 
 	printf	"aldead= ",:$aldead,"%n"

@@ -1,6 +1,6 @@
 
 
-	INCPUBLICS	sgdata.ext
+	INCPUBLICS	EXT\sgdata.ext
 
 
 	public	logtab8s

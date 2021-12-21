@@ -22,7 +22,7 @@
 ;***************************************************************************
 
 
-	INCPUBLICS	continue.ext
+	INCPUBLICS	EXT\continue.ext
 
 ; shadow temp vars with unused existing zero page
 foxy_option	equ	ocode1

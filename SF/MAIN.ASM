@@ -1,6 +1,6 @@
 safeinidisptop	equ	1
 
-	incpublics	main.ext
+	incpublics	EXT\main.ext
 
 initialise_l
 

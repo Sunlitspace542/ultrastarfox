@@ -47,7 +47,7 @@
 			; s_jmp_zdistless	x,y,A.w,... returns in a8 C if jump
 ; dfallyvec_x		; s_falldown_Yvec	x,2,#4,#0,... returns C
 
-	INCPUBLICS	dstrats.ext
+	INCPUBLICS	EXT\dstrats.ext
 
 	strats_start
 

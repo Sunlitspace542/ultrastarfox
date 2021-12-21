@@ -43,7 +43,7 @@ cl_warp_btime	equ	430
 
 	strats_start
 
-	incpublics	gcstrats.ext	
+	incpublics	EXT\gcstrats.ext	
 
 ;*****************************************************************************
 flyinleft_srou

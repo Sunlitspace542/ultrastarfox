@@ -22,7 +22,7 @@
 ; Appears to be a crash handler, as seen in the September 23rd, 1992 prototype.
 ; The "Opps, I think I just blinked" text appears to have been removed.
 
-	INCPUBLICS	blink.ext
+	INCPUBLICS	EXT\blink.ext
 
 doblink	ai16
 	lda	#$1f+($1f<<5)+($1f<<10)

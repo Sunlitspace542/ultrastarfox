@@ -34,7 +34,7 @@
 	shorta
 	longi
 
-	incpublics	gistrats.ext
+	incpublics	EXT\gistrats.ext
 
 	strats_start
 

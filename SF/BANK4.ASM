@@ -3,25 +3,25 @@
 	include	INCLUDE\strathdr.inc
 	include	INCLUDE\bgmacs.inc
 
-	include	gstrats.ext
-	include	pstrats.ext
-	include	dstrats.ext
-	include	d3strats.ext
-	include	incbins.ext
-	include	fontdata.ext
-	include	bgs.ext
-	include	planets.ext
-	include	ramstuff.ext
-	include	irq.ext
-	include	bootnmi.ext
-	include	mdata.ext
-	include	expstrat.ext
-	include	gastrats.ext
-	include	ga2strat.ext
-	include	continue.ext
-	include	coltabs.ext
-	include	mem.ext
-	include	kstrats.ext
+	include	EXT\gstrats.ext
+	include	EXT\pstrats.ext
+	include	EXT\dstrats.ext
+	include	EXT\d3strats.ext
+	include	EXT\incbins.ext
+	include	EXT\fontdata.ext
+	include	EXT\bgs.ext
+	include	EXT\planets.ext
+	include	EXT\ramstuff.ext
+	include	EXT\irq.ext
+	include	EXT\bootnmi.ext
+	include	EXT\mdata.ext
+	include	EXT\expstrat.ext
+	include	EXT\gastrats.ext
+	include	EXT\ga2strat.ext
+	include	EXT\continue.ext
+	include	EXT\coltabs.ext
+	include	EXT\mem.ext
+	include	EXT\kstrats.ext
 
 ;------------------------------------------------------------------
 	bank	4

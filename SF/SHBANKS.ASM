@@ -3,10 +3,10 @@
 
 	include	INCLUDE\shmacs.inc
 
-	include	colboxes.ext
-	include	coltabs.ext
+	include	EXT\colboxes.ext
+	include	EXT\coltabs.ext
 
-	INCPUBLICS shbanks.ext
+	INCPUBLICS EXT\shbanks.ext
 
 do_hdr	=	0
 

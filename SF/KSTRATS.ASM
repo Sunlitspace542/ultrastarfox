@@ -31,7 +31,7 @@
 ;*                                                                         *
 ;***************************************************************************
 
-	incpublics	kstrats.ext
+	incpublics	EXT\kstrats.ext
 
 	strats_start
 

@@ -25,7 +25,7 @@
 
 	strats_start
 
-	INCPUBLICS	d3strats.ext
+	INCPUBLICS	EXT\d3strats.ext
 
 
 ;---------------------------------------------------------------

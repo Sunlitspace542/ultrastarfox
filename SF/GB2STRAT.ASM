@@ -37,7 +37,7 @@
 
 	strats_start
 
-	incpublics	gb2strat.ext
+	incpublics	EXT\gb2strat.ext
 
 
 ;*****************************************************************************

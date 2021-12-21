@@ -1,5 +1,5 @@
 
-	incpublics	ramstuff.ext
+	incpublics	EXT\ramstuff.ext
 
 	incfile	irq.asm
 

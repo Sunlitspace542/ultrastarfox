@@ -34,7 +34,7 @@
 	shorta
 	longi
 
-	INCPUBLICS	gstrats.ext
+	INCPUBLICS	EXT\gstrats.ext
 
 	strats_start
 

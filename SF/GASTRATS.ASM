@@ -31,7 +31,7 @@
 ;*                                                                         *
 ;***************************************************************************
 
-	incpublics	gastrats.ext
+	incpublics	EXT\gastrats.ext
 
 	strats_start
 

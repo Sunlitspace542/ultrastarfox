@@ -45,7 +45,7 @@ bg2yspd	equ	1
 bg3xspd	equ	4
 bg3yspd	equ	2
 
-	incpublics	endseq.ext
+	incpublics	EXT\endseq.ext
 
 
 ;--------------------------------------------------------------------------

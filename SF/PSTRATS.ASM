@@ -31,7 +31,7 @@
 ;*                                                                         *
 ;***************************************************************************
 
-	incpublics	pstrats.ext
+	incpublics	EXT\pstrats.ext
 
 	strats_start
 

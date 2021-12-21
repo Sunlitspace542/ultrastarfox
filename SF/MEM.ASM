@@ -22,7 +22,7 @@
 ;*                                                                         *
 ;***************************************************************************
 
-	INCPUBLICS	mem.ext
+	INCPUBLICS	EXT\mem.ext
 
 ; free memory structure
 

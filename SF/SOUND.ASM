@@ -15,7 +15,7 @@
 ;*                                                                         *
 ;***************************************************************************
 
-	INCPUBLICS	sound.ext
+	INCPUBLICS	EXT\sound.ext
 
 obsdist	equ	100	;320
 

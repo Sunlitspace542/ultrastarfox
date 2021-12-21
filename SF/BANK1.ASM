@@ -1,8 +1,8 @@
 
 	include	INCLUDE\header.inc
-	include	coltabs.ext
-	include	mdata.ext
-	include	sgdata.ext
+	include	EXT\coltabs.ext
+	include	EXT\mdata.ext
+	include	EXT\sgdata.ext
 	include	INCLUDE\marioi.inc
 	include	INCLUDE\shmacs.inc
 	include	INCLUDE\gridvars.inc
@@ -11,9 +11,9 @@
 
 	extern	arctantab
 
-	include	incbins.ext
+	include	EXT\incbins.ext
 
-	incpublics	mario.ext
+	incpublics	EXT\mario.ext
 
 
 ;------------------------------------------------------------------

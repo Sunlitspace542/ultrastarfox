@@ -1,5 +1,5 @@
 
-	incpublics	coltabs.ext
+	incpublics	EXT\coltabs.ext
 
 
 ;Colour tables ----------------------------------------------------

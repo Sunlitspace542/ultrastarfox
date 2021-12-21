@@ -1,5 +1,5 @@
 
-	INCPUBLICS	draw.ext
+	INCPUBLICS	EXT\draw.ext
 
 	IFEQ	0
 

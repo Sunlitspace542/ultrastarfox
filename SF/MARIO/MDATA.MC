@@ -1,6 +1,6 @@
 ; mario data tables
 
-	incpublics	mdata.ext
+	incpublics	EXT\mdata.ext
 
 
 

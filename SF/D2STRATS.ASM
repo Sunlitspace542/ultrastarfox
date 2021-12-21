@@ -33,7 +33,7 @@ seadragonAP	equ	6
 	strats_start
 
 
-	INCPUBLICS	d2strats.ext
+	INCPUBLICS	EXT\d2strats.ext
 
 	SHORTA
 d2copypos_yx

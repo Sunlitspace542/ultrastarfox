@@ -3,43 +3,42 @@
 	include	INCLUDE\stratmac.inc
 	include	INCLUDE\stratlib.inc
 	include	INCLUDE\bgmacs.inc
-	include	blink.ext
+	include	EXT\blink.ext
 
 	include	INCLUDE\mapstructs.inc
 	include	INCLUDE\mapmacs.inc
 	include	INCLUDE\shmacs.inc
 
-	include	mario.ext
-	include	incbins.ext
-	include	mdata.ext
+	include	EXT\mario.ext
+	include	EXT\incbins.ext
+	include	EXT\mdata.ext
 
-	include	sgdata.ext
-	include	dstrats.ext
-	include	d3strats.ext
-	include	pstrats.ext
-	include	pistrats.ext
-	include	pcstrats.ext
-	include	gb2strats.ext
-	include	gstrats.ext
-	include	gbstrats.ext
-	include	gcstrats.ext
-	include	gistrats.ext
-	include	kstrats.ext
-	include	ga2strats.ext
-	include	gb3strats.ext
-	include	shapes.ext
-;	include	stratrou.ext
-	include	sgtabs.ext
-	include	gastrats.ext
+	include	EXT\sgdata.ext
+	include	EXT\dstrats.ext
+	include	EXT\d3strats.ext
+	include	EXT\pstrats.ext
+	include	EXT\pistrats.ext
+	include	EXT\pcstrats.ext
+	include	EXT\gb2strats.ext
+	include	EXT\gstrats.ext
+	include	EXT\gbstrats.ext
+	include	EXT\gcstrats.ext
+	include	EXT\gistrats.ext
+	include	EXT\kstrats.ext
+	include	EXT\ga2strats.ext
+	include	EXT\gb3strats.ext
+	include	EXT\shapes.ext
+	include	EXT\sgtabs.ext
+	include	EXT\gastrats.ext
 	include	maps\maplist.ext
-	include	fontdata.ext
-	include	paths.ext
-	include	expstrat.ext
-	include	shbanks.ext
-	include	mem.ext
+	include	EXT\fontdata.ext
+	include	EXT\paths.ext
+	include	EXT\expstrat.ext
+	include	EXT\shbanks.ext
+	include	EXT\mem.ext
 	include	INCLUDE\istrats.inc
 
-	include	mhofs.ext
+	include	EXT\mhofs.ext
 
 scr_offset	equ	(vchr_logback-vchr_physback)/16
 
