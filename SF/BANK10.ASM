@@ -1,5 +1,5 @@
-	include	header.inc
-	include	strathdr.inc
+	include	INCLUDE\header.inc
+	include	INCLUDE\strathdr.inc
 	include	gstrats.ext
 	include	gastrats.ext
 	include	pistrats.ext
@@ -23,5 +23,5 @@ bgml	incbinfile	snd\sgbgml.bin
 bgmllen	equ	*-bgml
 	bankend	10
 
-	include	tail.inc
+	include	INCLUDE\tail.inc
 

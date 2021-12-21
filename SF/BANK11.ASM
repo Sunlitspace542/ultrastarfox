@@ -1,5 +1,5 @@
-	include	header.inc
-	include	strathdr.inc
+	include	INCLUDE\header.inc
+	include	INCLUDE\strathdr.inc
 	include	gstrats.ext
 	include	gcstrats.ext
 	include	gistrats.ext
@@ -17,6 +17,6 @@
 	incfile	gb2strats.asm
 	bankend	11
 
-	include	tail.inc
+	include	INCLUDE\tail.inc
 
 

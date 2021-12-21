@@ -2,9 +2,9 @@
 # Star Fox Makefile #
 #####################
 
-STDFILES= HEADER.INC MACROS.INC VARS.INC SOUNDEQU.INC STRUCTS.INC ALCS.INC \
- GILESALX.INC GILESALC.INC GILESAL.INC KALCS.INC DALCS.INC
-STRATFILES= STRATMAC.INC STRATLIB.INC STRATEQU.INC SHMACS.INC STRATHDR.INC WEAPONS.INC
+STDFILES= INCLUDE\HEADER.INC INCLUDE\MACROS.INC VARS.INC INCLUDE\SOUNDEQU.INC INCLUDE\STRUCTS.INC INCLUDE\ALCS.INC \
+ INCLUDE\GILESALX.INC INCLUDE\GILESALC.INC INCLUDE\GILESAL.INC INCLUDE\KALCS.INC INCLUDE\DALCS.INC
+STRATFILES= INCLUDE\STRATMAC.INC INCLUDE\STRATLIB.INC INCLUDE\STRATEQU.INC INCLUDE\SHMACS.INC INCLUDE\STRATHDR.INC INCLUDE\WEAPONS.INC
 ASM=SASMX
 ASMFLAGS=-efilelist=0
 include symson.mak
@@ -40,7 +40,7 @@ shapes3.asm pshapes.asm shapes4.asm shapes5.asm \
 shapes6.asm shapes7.asm kshapes.asm d3strats.asm 
 
 ## Bank 1
-bank1.sob: bank1.asm shmacs.inc MSG\janglish.inc \
+bank1.sob: bank1.asm INCLUDE\shmacs.inc MSG\janglish.inc \
 $(STDFILES) MARIO\mvars.mc MARIO\mmacs.mc MARIO\mshtab.mc \
 MARIO\mmaths.mc MARIO\mwrot.mc MARIO\mwcrot.mc MARIO\mobj.mc \
 MARIO\mclip.mc MARIO\mdrawc.mc MARIO\mdrawp.mc MARIO\msprite.mc \
@@ -50,7 +50,7 @@ MARIO\mbumwipe.mc MARIO\mhud.mc data\moji_0.fon data\moji_0.trn \
 data\moji_d.fon data\moji_d.trn gametext.asm fontdata.asm \
 
 ## Bank 2, 3
-bank2.sob: bank2.asm bgmacs.inc\
+bank2.sob: bank2.asm INCLUDE\bgmacs.inc\
 $(STDFILES) irq.asm hdmatabs.asm colboxes.asm \
 coldet.asm ramstuff.asm trans.asm data\gfx\mist.col \
 data\gfx\bg2-c.col data\gfx\bg2-c.col data\gfx\over_d.col main.asm \
@@ -69,7 +69,7 @@ maps\epathdat.asm maps\dpathdat.asm maps\kpathdat.asm paths.asm \
 d2strats.asm 
 
 ## Bank 5, bank 13
-bank5.sob: bank5.asm mapmacs.inc istrats.asm \
+bank5.sob: bank5.asm INCLUDE\mapmacs.inc istrats.asm \
 $(STDFILES) maps\map2_3a.asm maps\map2_3b.asm maps\airlock1.asm \
 maps\map2_3c.asm maps\map2_4.asm maps\castanet.asm maps\map2_5.asm \
 maps\trucker.asm maps\map2_6a.asm maps\map2_6b.asm maps\map2_6c.asm \
@@ -133,7 +133,7 @@ $(STDFILES) $(STRATFILES) pistrats.asm pcstrats.asm \
 pstrats.asm gb2strats.asm 
 
 ## Banks 12, 13, 14, 15, 16, 17
-shbanks.sob: shbanks.asm shmacs.inc stratequ.inc \
+shbanks.sob: shbanks.asm INCLUDE\shmacs.inc INCLUDE\stratequ.inc \
 $(STDFILES) shapes.asm shapes.asm kshapes.asm \
 kshapes.asm snd\sgbgmm.bin snd\psgbgmm.bin shapes2.asm \
 shapes2.asm data\m.pcr snd\sgbgm2.bin shapes3.asm \

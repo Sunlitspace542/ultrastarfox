@@ -1,5 +1,5 @@
-	include	header.inc
-	include	strathdr.inc
+	include	INCLUDE\header.inc
+	include	INCLUDE\strathdr.inc
 	include	gastrats.ext
 	include	pstrats.ext
 	include	paths.ext
@@ -8,11 +8,11 @@
 	include	gb2strats.ext
 	include	ga2strats.ext
 	include	dstrats.ext
-	include	shmacs.inc
+	include	INCLUDE\shmacs.inc
 	include	windows.ext
-	include	bgmacs.inc
+	include	INCLUDE\bgmacs.inc
 	include	maps\maplist.ext
-	include	marioi.inc
+	include	INCLUDE\marioi.inc
 	include	bootnmi.ext
 	
 
@@ -37,7 +37,7 @@ cacheon	=	1
 	incfile	gstrats.asm
 	bankend	33
 
-	include	tail.inc
+	include	INCLUDE\tail.inc
 
 
 

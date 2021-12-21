@@ -1,7 +1,7 @@
-	include	header.inc
-	include	stratequ.inc
+	include	INCLUDE\header.inc
+	include	INCLUDE\stratequ.inc
 
-	include	shmacs.inc
+	include	INCLUDE\shmacs.inc
 
 	include	colboxes.ext
 	include	coltabs.ext
@@ -74,5 +74,5 @@ bgm3len	equ	*-bgm3
 	bankend	38
 
 
-	include	tail.inc
+	include	INCLUDE\tail.inc
 

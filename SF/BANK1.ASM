@@ -1,13 +1,13 @@
 
-	include	header.inc
+	include	INCLUDE\header.inc
 	include	coltabs.ext
 	include	mdata.ext
 	include	sgdata.ext
-	include	marioi.inc
-	include	shmacs.inc
-	include	gridvars.inc
+	include	INCLUDE\marioi.inc
+	include	INCLUDE\shmacs.inc
+	include	INCLUDE\gridvars.inc
 
-	include	stratequ.inc
+	include	INCLUDE\stratequ.inc
 
 	extern	arctantab
 
@@ -56,6 +56,6 @@ oopspic	;incbin	data\oops.pic
 	bankend	1
 
 
-	include	tail.inc
+	include	INCLUDE\tail.inc
 
 

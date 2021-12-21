@@ -449,7 +449,7 @@ total_stratmac_len	=	0
 
 
 
-	INCLUDE	STRATEQU.INC
+	INCLUDE	INCLUDE\STRATEQU.INC
 
 ;-----------------------------------------------------------------------------
 strats_start	MACRO

@@ -1,7 +1,7 @@
 
-	include	header.inc
-	include	strathdr.inc
-	include	bgmacs.inc
+	include	INCLUDE\header.inc
+	include	INCLUDE\strathdr.inc
+	include	INCLUDE\bgmacs.inc
 
 	include	gstrats.ext
 	include	pstrats.ext
@@ -31,7 +31,7 @@
 ;------------------------------------------------------------------
 
 
-	include	tail.inc
+	include	INCLUDE\tail.inc
 
 
 

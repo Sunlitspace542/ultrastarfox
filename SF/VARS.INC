@@ -49,7 +49,7 @@ randverts2		equ	0		; randomize the vertices a lot																#
 ; !! Everything else is more advanced stuff, be careful! !!
 ; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-; for player health values, see STRATEQU.INC
+; for player health values, see INCLUDE\STRATEQU.INC
 
 ; Sprite position stuff
 

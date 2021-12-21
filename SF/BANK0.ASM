@@ -1,9 +1,9 @@
-	include	header.inc
-	include	shmacs.inc
+	include	INCLUDE\header.inc
+	include	INCLUDE\shmacs.inc
 
 
-	include	stratmac.inc
-	include	stratlib.inc
+	include	INCLUDE\stratmac.inc
+	include	INCLUDE\stratlib.inc
 
 	include	stratrou.ext
 	include	game.ext
@@ -160,6 +160,6 @@ bgandpcr
 ;------------------------------------
 
 
-	include	tail.inc
+	include	INCLUDE\tail.inc
 
 

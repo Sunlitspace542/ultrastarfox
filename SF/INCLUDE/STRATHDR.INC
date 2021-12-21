@@ -1,6 +1,6 @@
 
-	include	stratmac.inc
-	include	stratlib.inc
+	include	INCLUDE\stratmac.inc
+	include	INCLUDE\stratlib.inc
 
 	include	stratrou.ext
 	include	game.ext

@@ -1,5 +1,5 @@
-	include	header.inc
-	include	strathdr.inc
+	include	INCLUDE\header.inc
+	include	INCLUDE\strathdr.inc
 	include	gstrats.ext
 	include	pstrats.ext
 	include	paths.ext
@@ -21,6 +21,6 @@ bgm11len	equ	*-bgm11
 
 	bankend	9
 
-	include	tail.inc
+	include	INCLUDE\tail.inc
 
 

@@ -137,7 +137,7 @@ alcon	=	1
 	alc	windowarray,maxwindows*wm_sizeof
 	alc	windowmode,1
 
-	include	GILESalc.inc
+	include	INCLUDE\GILESalc.inc
 
 	xalc	friends,2
 xlen	=	22*1024+450
@@ -784,9 +784,9 @@ mio_mode	equ	$303a
 	alc	defaultID,2
 
 
-	include	kalcs.inc
-	include	dalcs.inc
-	include	ealcs.inc
+	include	INCLUDE\kalcs.inc
+	include	INCLUDE\dalcs.inc
+	include	INCLUDE\ealcs.inc
 
 	IFGT	wmempt-$2000
 	printf	"%n%nTOO MANY ALCS USED%n%n"

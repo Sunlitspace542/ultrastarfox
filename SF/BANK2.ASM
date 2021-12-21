@@ -1,13 +1,13 @@
-	include	header.inc
-	include	marioi.inc
-	include	stratmac.inc
-	include	stratlib.inc
-	include	bgmacs.inc
+	include	INCLUDE\header.inc
+	include	INCLUDE\marioi.inc
+	include	INCLUDE\stratmac.inc
+	include	INCLUDE\stratlib.inc
+	include	INCLUDE\bgmacs.inc
 	include	blink.ext
 
-	include	mapstructs.inc
-	include	mapmacs.inc
-	include	shmacs.inc
+	include	INCLUDE\mapstructs.inc
+	include	INCLUDE\mapmacs.inc
+	include	INCLUDE\shmacs.inc
 
 	include	mario.ext
 	include	incbins.ext
@@ -37,7 +37,7 @@
 	include	expstrat.ext
 	include	shbanks.ext
 	include	mem.ext
-	include	istrats.inc
+	include	INCLUDE\istrats.inc
 
 	include	mhofs.ext
 
@@ -128,7 +128,7 @@ planetdmapos2	dw	100
 ;------------------------------------------------------------------
 
 
-	include	tail.inc
+	include	INCLUDE\tail.inc
 
 
 
