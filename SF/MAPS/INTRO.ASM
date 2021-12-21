@@ -32,11 +32,12 @@
 
 	end_65816
 
-; Starfox presented by Nintendo
+; NINTENDO PRESENTS
 	IFEQ	cesdemo
 	textpath 0000,-3000,-100,4000,nintendo,dintro1,14
 	textpath 0000,3000,0100,4000,presents,dintro1,14,-32
 	ELSEIF
+; CES DEMO VERSION
 	textpath 0000,-3000,-150,4000,ces,dintro1,14,42
 	textpath 0000,3000,0150,4000,demo,dintro1,14,42
 	ENDC

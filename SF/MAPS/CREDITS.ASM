@@ -61,7 +61,7 @@ credwait	=	4000
 	ENDC
 
 actualcreds
-; Starfox presented by Nintendo
+; Star Fox presented by Nintendo
 	mapjsr	cutcreds
 	mapwait	credwait
 	textpath	1000,2000,-1000,3500,superfxstaff,dsideslip,14
