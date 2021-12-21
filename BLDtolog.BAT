@@ -15,5 +15,6 @@ del sf\*.sob
 del sf\status.doc
 del sf\lastasm.tmp
 del sf\msgs.txt
+del sf\alvars.txt
 pause
 exit
