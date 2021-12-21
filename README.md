@@ -64,6 +64,7 @@ hackerstarfox
 │   ├── MARIO: .MC SuperFX Code files
 │   ├── MSG: Message files for English, Japanese, German, and French
 │   ├── MSPRITES: contains 4 DAT files (interleaved textures)
+│   ├── SHAPES: contains all shape files
 │   └── SND: sound/music data
 └──  tools: tools such as packer and ShapeEd
 ```
