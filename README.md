@@ -61,9 +61,9 @@ hackerstarfox
 │   │   └── GFX: Palette files and Palette Packer
 │   ├── MAPS: level scripts
 │   ├── MARIO: .MC SuperFX Code files
-│   ├── MSPRITES: contains 4 DAT files (interleaved textures)
 │   ├── MSG: Message files for English, Japanese, German, and French
-│   └── SOUND: sound/music data
+│   ├── MSPRITES: contains 4 DAT files (interleaved textures)
+│   └── SND: sound/music data
 └──  tools: tools such as packer and ShapeEd
 ```
     
