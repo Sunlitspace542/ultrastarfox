@@ -55,9 +55,10 @@ hackerstarfox
 ├── BIN: exe files needed to compile game
 ├── optionalstuff: optional graphics files
 ├── SF: Main source code is located here
-│   ├── DATA: GFX files, arc tangent table
+│   ├── DATA: GFX files
 │   │   └── GFX: Palette files and Palette Packer
 │   ├── EXT: .ext files needed by several .asm files
+│   ├── INCLUDE: .inc files, arc tangent table
 │   ├── MAPS: level scripts
 │   ├── MARIO: .MC SuperFX Code files
 │   ├── MSG: Message files for English, Japanese, German, and French
