@@ -44,7 +44,7 @@ the .BAT versions of these can be run via DOSBox if you do not use Windows.
 ## TODO
 1. OPTIMIZE
 2. Strip out all Super Star Fox weekend-related code
-3. Annotate and document cod
+3. Annotate and document code
 
 ## Maybe?
 - MSU-1 support (big maybe, probably won't happen)
