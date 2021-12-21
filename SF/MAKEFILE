@@ -40,7 +40,7 @@ shapes3.asm pshapes.asm shapes4.asm shapes5.asm \
 shapes6.asm shapes7.asm kshapes.asm d3strats.asm 
 
 ## Bank 1
-bank1.sob: bank1.asm shmacs.inc janglish.inc \
+bank1.sob: bank1.asm shmacs.inc MSG\janglish.inc \
 $(STDFILES) mvars.mc mmacs.mc mshtab.mc \
 mmaths.mc mwrot.mc mwcrot.mc mobj.mc \
 mclip.mc mdrawc.mc mdrawp.mc msprite.mc \

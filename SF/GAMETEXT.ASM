@@ -116,16 +116,16 @@ msgnum	=	1
 	endc
 	
 	IFNE	german			;if german = 1
-	include	german.inc		;use german message file
+	include	MSG\german.inc		;use german message file
 	ENDC
 
 	IFNE	french			;if french = 1
-	include	french.inc		;use french message file
+	include	MSG\french.inc		;use french message file
 	ENDC
 
 	IFEQ	german			;if german = 0
 	IFEQ	french			;if french = 0
-	include	janglish.inc	;use english/japanese message file
+	include	MSG\janglish.inc	;use english/japanese message file
 	endc
 	endc
 	fclose	!
