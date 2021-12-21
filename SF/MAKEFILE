@@ -34,7 +34,7 @@ info: $(ALLFILES)
 ## Bank 0
 bank0.sob: bank0.asm $(STRATFILES) \
 $(STDFILES) ASM\blink.asm data\etabs.dat ASM\sgtabs.asm \
-data\nintendo.pal data\map-obj.cgx ASM\sgdata.asm data\arctan.asm \
+data\nintendo.pal data\map-obj.cgx ASM\sgdata.asm INCLUDE\arctan.asm \
 ASM\istrats.asm SHAPES\ushapes.asm SHAPES\shapes.asm SHAPES\shapes2.asm \
 SHAPES\shapes3.asm SHAPES\pshapes.asm SHAPES\shapes4.asm SHAPES\shapes5.asm \
 SHAPES\shapes6.asm SHAPES\shapes7.asm SHAPES\kshapes.asm ASM\d3strats.asm 
