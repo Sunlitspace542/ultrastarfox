@@ -59,7 +59,7 @@ scr_offset	equ	(vchr_logback-vchr_physback)/16
 	endc
 
 	org	xroutines,$8000*2
-ramstart	incfile	ramstuff.asm
+ramstart	incfile	ASM\ramstuff.asm
 xoffset	equ	*-ramstart
 
 	ifle	xlen-xoffset
@@ -69,13 +69,13 @@ xoffset	equ	*-ramstart
 
 	org	$28000+xoffset,$8000*2+xoffset
 	minfo
-	incfile	trans.asm
+	incfile	ASM\trans.asm
 	minfo	trans
-	incfile	main.asm
+	incfile	ASM\main.asm
 	minfo	main
-	incfile	game.asm
+	incfile	ASM\game.asm
 	minfo	game
-	incfile	windows.asm
+	incfile	ASM\windows.asm
 	minfo	windows
 	bankend	2
 
@@ -86,42 +86,42 @@ xoffset	equ	*-ramstart
 planetdmapos1	dw	228
 planetdmapos2	dw	100
 	minfo
-	incfile	coltabs.asm
+	incfile	ASM\coltabs.asm
 	minfo	coltabs
-	incfile	bgs.asm
+	incfile	ASM\bgs.asm
 	minfo	bgs
-	incfile	sound.asm
+	incfile	ASM\sound.asm
 	minfo	sound
-	incfile	obj.asm
+	incfile	ASM\obj.asm
 	minfo	obj
-	incfile	planets.asm
+	incfile	ASM\planets.asm
 	minfo	planets
-	incfile	sprites.asm
+	incfile	ASM\sprites.asm
 	minfo	sprites
-	incfile	continue.asm
+	incfile	ASM\continue.asm
 	minfo	<continue>
-	incfile	world.asm
+	incfile	ASM\world.asm
 	minfo	world
 	bankend	3
 
 	org	$1f8000+$3db0,$8000*$1f+$3db0
 	minfo
-	incfile	debug.asm
+	incfile	ASM\debug.asm
 	minfo	<debug>
-	incfile	bootnmi.asm
+	incfile	ASM\bootnmi.asm
 	minfo	bootnmi
-	incfile	stratrou.asm
+	incfile	ASM\stratrou.asm
 	minfo	<stratrou>
-	incfile	nmi.asm
+	incfile	ASM\nmi.asm
 	minfo	nmi
-	incfile	draw.asm
+	incfile	ASM\draw.asm
 	minfo	draw
-	incfile	endseq.asm
+	incfile	ASM\endseq.asm
 	bankend	31
 
 	bank	36
 	inccru	bgf1pcr,data\f-1.pcr
-	incfile	cont.asm
+	incfile	ASM\cont.asm
 	minfo	cont
 	bankend	36
 ;------------------------------------------------------------------

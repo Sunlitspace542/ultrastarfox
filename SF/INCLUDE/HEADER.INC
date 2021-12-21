@@ -37,7 +37,7 @@ filelist	=	0
 	ENDC
 
 
-	INCLUDE	ifcold.asm
+	INCLUDE	ASM\ifcold.asm
 
 	include	INCLUDE\macros.inc
 

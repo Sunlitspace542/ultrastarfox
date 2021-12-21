@@ -13,8 +13,8 @@
 	include	EXT\bootnmi.ext
 
 	bank	7
-	incfile	gistrats.asm
-	incfile	gb3strats.asm
+	incfile	ASM\gistrats.asm
+	incfile	ASM\gb3strats.asm
 	bankend	7
 
 	include	INCLUDE\tail.inc

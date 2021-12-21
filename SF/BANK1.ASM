@@ -45,7 +45,7 @@ yyy	mario	on
 	mario	off
 
 
-	incfile	fontdata.asm
+	incfile	ASM\fontdata.asm
 
 mariocodelen	=	*-mariobegin
 

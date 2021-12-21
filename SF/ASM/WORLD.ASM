@@ -1991,7 +1991,7 @@ mapwait
 .zero	jmp	newobjex
 
 
-	incfile	mother.asm
+	incfile	ASM\mother.asm
 
 
 

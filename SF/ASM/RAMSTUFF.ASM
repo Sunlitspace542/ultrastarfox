@@ -1,9 +1,9 @@
 
 	incpublics	EXT\ramstuff.ext
 
-	incfile	irq.asm
+	incfile	ASM\irq.asm
 
-	incfile	hdmatabs.asm
+	incfile	ASM\hdmatabs.asm
 
 ;-------------------------------------
 ; RUN MARIO ROUTINE ------------------
@@ -70,7 +70,7 @@ parallel_stuff
 	jsl	init_strats_ram_l
 	rts
 
-	incfile	coldet.asm
+	incfile	ASM\coldet.asm
 
 
 gamepalbuff	dw	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

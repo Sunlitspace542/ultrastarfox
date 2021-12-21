@@ -13,9 +13,9 @@
 	include	EXT\bootnmi.ext
 
 	bank	10
-	incfile	kstrats.asm
-	incfile	ga2strats.asm
-	incfile	mem.asm
+	incfile	ASM\kstrats.asm
+	incfile	ASM\ga2strats.asm
+	incfile	ASM\mem.asm
 
 	public	bgml
 	public	bgmllen

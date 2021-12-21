@@ -25,5 +25,5 @@ font0fon	equ	font0wid+\2
 	fileslog	data\moji_0.trn
 	ENDC
 
-	incfile	gametext.asm
+	incfile	ASM\gametext.asm
 

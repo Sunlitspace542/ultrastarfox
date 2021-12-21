@@ -11,8 +11,8 @@
 	include	EXT\bootnmi.ext
 
 	bank	9
-	incfile	dstrats.asm
-	incfile	ga3strats.asm
+	incfile	ASM\dstrats.asm
+	incfile	ASM\ga3strats.asm
 
 	public	bgm11
 	public	bgm11len

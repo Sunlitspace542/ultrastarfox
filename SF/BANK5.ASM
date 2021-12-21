@@ -42,7 +42,7 @@
 
 
 real_istrats =	0
-	include	istrats.asm
+	include	ASM\istrats.asm
 
 
 ;------------------------------------------------------------------

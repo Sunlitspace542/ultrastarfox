@@ -12,8 +12,8 @@ do_hdr	=	0
 
 ;------------------------------------------------------------------
 	bank	12
-	incshapes	shapes.asm	
-	incshapes	kshapes.asm
+	incshapes	SHAPES\shapes.asm	
+	incshapes	SHAPES\kshapes.asm
 
 	IFEQ	PAL
 bgmm	incbinfile	snd\sgbgmm.bin
@@ -28,7 +28,7 @@ bgmmlen	equ	*-bgmm
 
 ;------------------------------------------------------------------
 	bank	14
-	incshapes	shapes2.asm
+	incshapes	SHAPES\shapes2.asm
 	inccru	bgmpcr,data\m.pcr
 bgm2	incbinfile	snd\sgbgm2.bin
 bgm2len	equ	*-bgm2
@@ -36,7 +36,7 @@ bgm2len	equ	*-bgm2
 
 ;------------------------------------------------------------------
 	bank	15
-	INCshapes	shapes3.asm
+	INCshapes	SHAPES\shapes3.asm
 
 bgmn	incbinfile	snd\sgbgmn.bin
 bgmnlen	equ	*-bgmn
@@ -44,7 +44,7 @@ bgmnlen	equ	*-bgmn
 
 ;------------------------------------------------------------------
 	bank	16
-	incshapes	shapes4.asm
+	incshapes	SHAPES\shapes4.asm
 
 bgmj	incbinfile	snd\sgbgmj.bin
 bgmjlen	equ	*-bgmj
@@ -52,9 +52,9 @@ bgmjlen	equ	*-bgmj
 
 ;------------------------------------------------------------------
 	bank	17
-	incshapes	shapes5.asm
-	incshapes	ushapes.asm
-	incshapes	pshapes.asm
+	incshapes	SHAPES\shapes5.asm
+	incshapes	SHAPES\ushapes.asm
+	incshapes	SHAPES\pshapes.asm
 
 	public	dogccr
 	inccru	dogccr,data\dog.ccr
@@ -66,11 +66,11 @@ bgm3len	equ	*-bgm3
 	bankend	17
 
 	bank	37
-	incshapes	shapes6.asm
+	incshapes	SHAPES\shapes6.asm
 	bankend	37
 	
 	bank	38
-	incshapes	shapes7.asm
+	incshapes	SHAPES\shapes7.asm
 	bankend	38
 
 

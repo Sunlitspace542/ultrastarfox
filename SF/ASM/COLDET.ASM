@@ -1367,4 +1367,4 @@ ramcostab
 	DB	126
 	DB	126
 
-	incfile	colboxes.asm
+	incfile	ASM\colboxes.asm

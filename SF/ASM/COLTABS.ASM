@@ -1376,7 +1376,7 @@ ovalbeam_a1	db	4
 	COLTEXT	oval3_spr
 
 
-	incfile	defspr.asm
+	incfile	ASM\defspr.asm
 
 dbh	macro
 	db	$\1,$\2,$\3,$\4,$\5,$\6,$\7,$\8
@@ -1485,9 +1485,9 @@ shadestab2_3
 
 depthtabs
 ; the actual colour values for the depth tabs
-	incfile	coltab.asm
+	incfile	ASM\coltab.asm
 
-	incfile	light.asm
+	incfile	ASM\light.asm
 
 ;------------------------------------------------------
 def_depthz	macro	[name,1,2,3,4]

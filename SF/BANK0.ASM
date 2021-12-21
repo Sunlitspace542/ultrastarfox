@@ -46,23 +46,23 @@
 
 	db	0,0,0,0,0,0
 
-	incfile	sgtabs.asm
-	incfile	sgdata.asm
+	incfile	ASM\sgtabs.asm
+	incfile	ASM\sgdata.asm
 
 	incfile	data\arctan.asm
 
 
 Do_HDR	=	1
-	incfile	ushapes.asm
-	incfile	shapes.asm
-	incfile	shapes2.asm
-	incfile	shapes3.asm
-	incfile	pshapes.asm
-	incfile	shapes4.asm
-	incfile	shapes5.asm
-	incfile	shapes6.asm
-	incfile	shapes7.asm
-	incfile	kshapes.asm
+	incfile	SHAPES\ushapes.asm
+	incfile	SHAPES\shapes.asm
+	incfile	SHAPES\shapes2.asm
+	incfile	SHAPES\shapes3.asm
+	incfile	SHAPES\pshapes.asm
+	incfile	SHAPES\shapes4.asm
+	incfile	SHAPES\shapes5.asm
+	incfile	SHAPES\shapes6.asm
+	incfile	SHAPES\shapes7.asm
+	incfile	SHAPES\kshapes.asm
 Do_HDR	=	0
 
 start	jmp.l	startboot
@@ -87,8 +87,8 @@ abort_vn
 	ELSEIF
 bgandpcr
 	ENDC
-	incfile	istrats.asm
-	incfile	d3strats.asm
+	incfile	ASM\istrats.asm
+	incfile	ASM\d3strats.asm
 	bankend	32
 
 	org	$00ffc0,$7fc0

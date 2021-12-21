@@ -11,10 +11,10 @@
 	include	EXT\bootnmi.ext
 
 	bank	11
-	incfile	pistrats.asm
-	incfile	pcstrats.asm
-	incfile	pstrats.asm
-	incfile	gb2strats.asm
+	incfile	ASM\pistrats.asm
+	incfile	ASM\pcstrats.asm
+	incfile	ASM\pstrats.asm
+	incfile	ASM\gb2strats.asm
 	bankend	11
 
 	include	INCLUDE\tail.inc
