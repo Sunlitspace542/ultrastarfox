@@ -27,7 +27,9 @@ to build ROM with Logging, run ``build to log.cmd`` (Windows) or ``BLDtolog.BAT`
 
 to rebuild color palettes, run ``build palette.cmd`` (Windows) ``BLDPAL.BAT`` (DOSBox)  
 
-the .BAT versions of these can be run via DOSBox if you do not use Windows.
+the .BAT versions of these can be run via DOSBox if you do not use Windows.  
+
+After building, a debug symbol map will be created at ``SF\SYMBOLS.TXT``.
 
 ## Helpful Links
 
