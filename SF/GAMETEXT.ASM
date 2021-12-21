@@ -123,9 +123,9 @@ msgnum	=	1
 	include	french.inc
 	ENDC
 
-	IFEQ	german
-	IFEQ	french
-	include	gamemsgs.inc
+	IFEQ	german			;if german = 0
+	IFEQ	french			;if french = 0
+	include	janglish.inc
 	endc
 	endc
 	fclose	!
