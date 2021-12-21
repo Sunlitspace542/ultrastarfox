@@ -16,5 +16,7 @@ del sf\status.doc
 del sf\lastasm.tmp
 del sf\msgs.txt
 del sf\alvars.txt
+copy sf\symbols.txt symbols.txt
+del sf\symbols.txt
 pause
 exit
