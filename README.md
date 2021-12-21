@@ -29,7 +29,7 @@ to rebuild color palettes, run ``build palette.cmd`` (Windows) ``BLDPAL.BAT`` (D
 
 the .BAT versions of these can be run via DOSBox if you do not use Windows.  
 
-After building, a debug symbol map will be created at ``SF\SYMBOLS.TXT``.
+After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 
 ## Helpful Links
 
