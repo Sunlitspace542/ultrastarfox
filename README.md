@@ -59,6 +59,7 @@ hackerstarfox
 ├── SF: Main source code is located here
 │   ├── DATA: GFX files, arc tangent table
 │   │   └── GFX: Palette files and Palette Packer
+│   ├── EXT: .ext files needed by several .asm files
 │   ├── MAPS: level scripts
 │   ├── MARIO: .MC SuperFX Code files
 │   ├── MSG: Message files for English, Japanese, German, and French
