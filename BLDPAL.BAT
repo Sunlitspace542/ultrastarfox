@@ -4,5 +4,3 @@ cd sf
 cd data
 cd gfx
 pc.bat
-pause
-exit
