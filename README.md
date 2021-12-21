@@ -44,9 +44,7 @@ the .BAT versions of these can be run via DOSBox if you do not use Windows.
 ## TODO
 1. OPTIMIZE
 2. Strip out all Super Star Fox weekend-related code
-3. Annotate and document code
-4. Organize source files and edit makefile accordingly
-5. FastROM
+3. Annotate and document cod
 
 ## Maybe?
 - MSU-1 support (big maybe, probably won't happen)
