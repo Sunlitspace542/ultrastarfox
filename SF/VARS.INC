@@ -16,7 +16,7 @@ german				equ	0	; German language version [0 = off 1 = on]												#
 french				equ	0	; French language version [0 = off 1 = on] (TEXT ONLY, NO DIACRITICS OR GFX)			#
 internalname		equ	0	; internal rom name, [0 = STAR FOX, 1 = STAR WING]										#
 twentyonemhz		equ 1	; SuperFX 21MHZ Fast mode [0 = off 1 = on]												#
-planetcheaton 		equ 1   ; Allows you to enable planet select cheat on the map before you have selected			#
+planetcheaton 		equ 0   ; Allows you to enable planet select cheat on the map before you have selected			#
 							; a level. Press X+Y on the same frame to activate.										#
 godmode				equ	0	; No collision for the player															#
 messagetest			equ	0	; Run message test in training level													#
