@@ -14,5 +14,6 @@ del sf\sg.rom
 del sf\*.sob
 del sf\status.doc
 del sf\lastasm.tmp
+del sf\msgs.txt
 pause
 exit
