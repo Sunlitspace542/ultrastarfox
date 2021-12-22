@@ -65,7 +65,7 @@ ShieldTextPos3 equ $b728
 ShieldTextPos4 equ $b730
 
 ; Original Nova Bomb Icon Position ($YYXX)
-BombIconPos equ $b6e0
+BombIconPos equ $b6e1
 
 ; ## other variables ##
 
