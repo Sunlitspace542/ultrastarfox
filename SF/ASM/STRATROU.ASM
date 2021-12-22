@@ -111,7 +111,7 @@ velvecs_l
 
 	i8
 
-	lda	#0
+	lda	#$80
 	pha
 	plb
 
@@ -164,7 +164,7 @@ nvecs_l
 
 	i8
 	phb
-	lda	#0
+	lda	#$80
 	pha
 	plb
 
@@ -223,7 +223,7 @@ vel3vecs_l
 
 	i8
 	phb
-	lda	#0
+	lda	#$80
 	pha
 	plb
 
@@ -285,7 +285,7 @@ n3dvecs_l
 	sty	tmpy
 	
 	phb
-	lda	#0
+	lda	#$80
 	pha
 	plb
 	
@@ -356,7 +356,7 @@ sidevecs_l
 
 	i8
 	phb
-	lda	#0
+	lda	#$80
 	pha
 	plb
 
@@ -403,7 +403,7 @@ frontvecs_l
 	i8
 
 	phb
-	lda	#0
+	lda	#$80
 	pha
 	plb
 
@@ -957,7 +957,7 @@ rotate_8xz_l
 
 	nega
 	tax
-	lda	#0
+	lda	#$80
 	pha
 	plb
 	lda	costab,x
@@ -1021,7 +1021,7 @@ rotate_8yz_l
 	i8
 
 	tax
-	lda	#0
+	lda	#$80
 	pha
 	plb
 	lda	costab,x
@@ -1086,7 +1086,7 @@ rotate_8yx_l
 	i8
 
 	tax
-	lda	#0
+	lda	#$80
 	pha
 	plb
 	lda	costab,x
@@ -1150,7 +1150,7 @@ rotate_16xz_l
 	i8
 
 	tax
-	lda	#0
+	lda	#$80
 	pha
 	plb
 	lda sintab,x
@@ -1223,7 +1223,7 @@ rotate_16yz_l
 
 	nega
 	tax
-	lda	#0
+	lda	#$80
 	pha
 	plb
 	lda sintab,x

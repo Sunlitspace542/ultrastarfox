@@ -52,7 +52,7 @@ initgame_l
 	php
 	phb
 	a8
-	lda	#0
+	lda	#$80
 	pha
 	plb
 
@@ -1837,7 +1837,7 @@ setcharmapfrommap_l
 SetCharMapgame_l
 	a8
 	phb
-	lda	#0
+	lda	#$80
 	pha
 	plb
 	lda	#128
@@ -2916,7 +2916,7 @@ fadered_l	php
 	phb
 
 	a8
-	lda	#0
+	lda	#$80
 	pha
 	plb
 

@@ -74,7 +74,7 @@ printt_l
 	phy
 
 	a8i16
-	lda	#0
+	lda	#$80
 	pha
 	plb
 
@@ -146,7 +146,7 @@ printbd_l
 
 	a8i16
 	sta	printbtemp
-	lda	#0
+	lda	#$80
 	pha
 	plb
 
@@ -169,7 +169,7 @@ printbsd_l
 
 	a8i16
 	sta	printbtemp
-	lda	#0
+	lda	#$80
 	pha
 	plb
 
@@ -193,7 +193,7 @@ printb_l
 
 	a8i16
 	sta	printbtemp
-	lda	#0
+	lda	#$80
 	pha
 	plb
 	lda	printbtemp

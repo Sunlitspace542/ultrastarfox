@@ -157,7 +157,7 @@ initialise_ram
 	bpl	.ooop2
 
 	a8
-	lda	#0
+	lda	#$80
 	pha
 	plb
 	a16

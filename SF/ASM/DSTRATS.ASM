@@ -1846,7 +1846,7 @@ restart_l
 	php
 	phb
 	a8
-	lda	#0
+	lda	#$80
 	pha
 	plb
 

@@ -43,7 +43,7 @@ foxy_continue_l
 	php
 	phb
 	a8i16
-	lda	#0
+	lda	#$80
 	pha
 	plb
 	lda	credits

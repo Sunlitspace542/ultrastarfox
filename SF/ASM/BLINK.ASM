@@ -60,7 +60,7 @@ stopall	stx	blinkval
 	disable
 	stz	tm
 	stz	ts
-	lda	#0
+	lda	#$80
 	pha
 	plb
 	a8i16

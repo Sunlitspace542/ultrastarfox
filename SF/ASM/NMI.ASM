@@ -38,7 +38,7 @@ nmihan
 	phx
 	phy
 	ai8
-	lda	#0
+	lda	#$80
 	pha
 	plb
 
@@ -59,7 +59,7 @@ nmihan
 	phx
 	phy
 	a8
-	lda	#0
+	lda	#$80
 	pha
 	plb
 

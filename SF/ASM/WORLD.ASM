@@ -226,7 +226,7 @@ map65816	tyx
 	adc	#mapbase&WM
 	tax
 	a8
-	lda	#0
+	lda	#$80
 	pha
 	plb	; dbr=0
 	lda	#newobjex>>16
@@ -253,7 +253,7 @@ mapcodejsl	tyx
 	ldy	mapbase&WM+1,x
 	phy
 	ldx	lastmapobj
-	lda	#0
+	lda	#$80
 	pha
 	plb	; dbr=0
 	rtl
@@ -1036,7 +1036,7 @@ mapifdo
 	pha
 
 	a8
-	lda	#0
+	lda	#$80
 	pha
 	plb	; dbr=0
 

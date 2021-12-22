@@ -14,7 +14,7 @@ runmario_l
 	sta.l	mcodebank	;code bank
 
 	phb
-	lda	#0
+	lda	#$80
 	pha
 	plb
 
