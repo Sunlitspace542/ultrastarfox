@@ -54,7 +54,7 @@ scr_offset	equ	(vchr_logback-vchr_physback)/16
 
 ;-------------------------------------------------------
 	bank	2
-	ifne	*-$28000
+	ifne	*-$828000
 	error	<X Routines bank must be start of bank 2>
 	endc
 
@@ -67,7 +67,7 @@ xoffset	equ	*-ramstart
 	fail
 	endc
 
-	org	$28000+xoffset,$8000*2+xoffset
+	org	$828000+xoffset,$8000*2+xoffset
 	minfo
 	incfile	ASM\trans.asm
 	minfo	trans
@@ -104,7 +104,7 @@ planetdmapos2	dw	100
 	minfo	world
 	bankend	3
 
-	org	$1f8000+$3db0,$8000*$1f+$3db0
+	org	$9f8000+$3db0,$8000*$1f+$3db0
 	minfo
 	incfile	ASM\debug.asm
 	minfo	<debug>

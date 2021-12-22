@@ -4231,11 +4231,11 @@ bankend	macro
 	ENDC
 
 
-	IFEQ	\1
-bank\1left	=	65536-*
-	ELSEIF
-bank\1left	=	32768-(*-((\1*$10000)+$8000))
-	ENDC
+;	IFEQ	\1
+;bank\1left	=	65536-*
+;	ELSEIF
+bank\1left	=	32768-(*-((\1*$10000)+$808000))
+;	ENDC
 
 	IFND	totalromspaceleft
 totalromspaceleft	=	0
@@ -4277,7 +4277,7 @@ bank	macro
 
 	printf	"%01-- BANK \1:%00%n"
 
-	org	((\1)*$10000)+$8000,$8000*(\1)
+	org	((\1)*$10000)+$808000,$8000*(\1)
 
 banknum	=	\1
 Assembling_bank	=	\1
@@ -5808,7 +5808,7 @@ rompos	=	(firstsndbnk*$8000)+musicsize
 sndbank	=	(rompos/$8000)
 sndoffset	=	rompos-(sndbank*$8000)
 
-	org	sndbank*$10000+$8000+sndoffset,rompos
+	org	sndbank*$10000+$808000+sndoffset,rompos
 
 
 \1	incbin	\2

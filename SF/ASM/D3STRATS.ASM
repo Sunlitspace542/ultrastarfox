@@ -25,7 +25,7 @@
 
 	strats_start
 
-	INCPUBLICS	EXT\d3strats.ext
+	INCPUBLICS	ext\d3strats.ext
 
 
 ;---------------------------------------------------------------
@@ -178,7 +178,7 @@ bossh_istrat
 
 ;**********
 .teleport	SHORTA
-	s_make_childobjrotpos	#boss_h_3,#bossh_teleport,#0,#0,#0,#0,#0,#0,teleporter_istrat,ENEMY1
+	s_make_childobjrotpos	#boss_h_3&$FFFF,#bossh_teleport,#0,#0,#0,#0,#0,#0,teleporter_istrat,ENEMY1
 
 	trigse		$98
 	s_set_objtobechild	y,x,#bossh_teleport
@@ -380,7 +380,7 @@ bossh_istrat
 
 ;- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 .createsmoke	SHORTA
-	s_make_obj	#Lsmoke,.ng2
+	s_make_obj	#Lsmoke&$FFFF,.ng2
 	s_set_strat	y,.smoke
 	s_init_colanim	y,#0
 	s_set_alsflag	y,colldisable
@@ -476,17 +476,17 @@ bossh_istrat
 gggy	=	(10<<bossh_scale)>>childscale
 .generate	SHORTA
 	s_make_mother	x
-	s_make_childobjrotpos	#boss_h_1,#bossh_leg1,#0,#gggy,#(30<<bossh_scale)>>childscale,#0,#-deg180,#0,bosshleg_istrat,ENEMY1
+	s_make_childobjrotpos	#boss_h_1&$FFFF,#bossh_leg1,#0,#gggy,#(30<<bossh_scale)>>childscale,#0,#-deg180,#0,bosshleg_istrat,ENEMY1
 
-	s_make_childobjrotpos	#boss_h_1,#bossh_leg2,#(28<<bossh_scale)>>childscale,#gggy,#(9<<bossh_scale)>>childscale,#0,#-deg72-deg180,#0,bosshleg_istrat,ENEMY1
+	s_make_childobjrotpos	#boss_h_1&$FFFF,#bossh_leg2,#(28<<bossh_scale)>>childscale,#gggy,#(9<<bossh_scale)>>childscale,#0,#-deg72-deg180,#0,bosshleg_istrat,ENEMY1
 
-	s_make_childobjrotpos	#boss_h_1,#bossh_leg3,#(18<<bossh_scale)>>childscale,#gggy,#(-24<<bossh_scale)>>childscale,#0,#-deg144-deg180,#0,bosshleg_istrat,ENEMY1
+	s_make_childobjrotpos	#boss_h_1&$FFFF,#bossh_leg3,#(18<<bossh_scale)>>childscale,#gggy,#(-24<<bossh_scale)>>childscale,#0,#-deg144-deg180,#0,bosshleg_istrat,ENEMY1
 
-	s_make_childobjrotpos	#boss_h_1,#bossh_leg4,#(-18<<bossh_scale)>>childscale,#gggy,#(-24<<bossh_scale)>>childscale,#0,#-deg216+deg180,#0,bosshleg_istrat,ENEMY1
+	s_make_childobjrotpos	#boss_h_1&$FFFF,#bossh_leg4,#(-18<<bossh_scale)>>childscale,#gggy,#(-24<<bossh_scale)>>childscale,#0,#-deg216+deg180,#0,bosshleg_istrat,ENEMY1
 
-	s_make_childobjrotpos	#boss_h_1,#bossh_leg5,#(-28<<bossh_scale)>>childscale,#gggy,#(9<<bossh_scale)>>childscale,#0,#-deg288+deg180,#0,bosshleg_istrat,ENEMY1
+	s_make_childobjrotpos	#boss_h_1&$FFFF,#bossh_leg5,#(-28<<bossh_scale)>>childscale,#gggy,#(9<<bossh_scale)>>childscale,#0,#-deg288+deg180,#0,bosshleg_istrat,ENEMY1
 
-	s_make_childobjrotpos	#boss_h_2,#bossh_top,#0,#0,#0,#0,#0,#0,bosshtop_istrat,ENEMY1
+	s_make_childobjrotpos	#boss_h_2&$FFFF,#bossh_top,#0,#0,#0,#0,#0,#0,bosshtop_istrat,ENEMY1
 
 	s_jsr	.position
 	rts
@@ -836,9 +836,9 @@ bosshleg_istrat
 .move
 	s_cmp_anim	x,#13
 	s_bcc		.oneshape
-	s_set_alvar	W,x,al_shape,#boss_h_1a
+	s_set_alvar	W,x,al_shape,#boss_h_1a&$FFFF
 	bra		.othershape
-.oneshape	s_set_alvar	W,x,al_shape,#boss_h_1
+.oneshape	s_set_alvar	W,x,al_shape,#boss_h_1&$FFFF
 .othershape
 ;- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 .end	s_end_strat
@@ -931,7 +931,7 @@ teleporter_istrat
 	s_end_strat
 ;- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 fire_bonfire
-	s_make_obj	#fireball,.ng
+	s_make_obj	#fireball&$FFFF,.ng
 	s_copy_pos	y,x
 	s_set_alvar	W,y,al_worldy,#0
 	s_set_strat	y,bonfire_istrat
@@ -955,7 +955,7 @@ bonfire_istrat
 	s_set_alvar	B,x,al_vel,#120
 	s_gen_3dvecs	x,al_roty,al_rotx,al_vel
 .strat	s_start_strat
-	s_make_obj	#fireball,.ng
+	s_make_obj	#fireball&$FFFF,.ng
 	s_copy_pos	y,x
 	s_set_strat	y,.dummdumm_strat
 	s_set_alsflag	y,colldisable
@@ -979,7 +979,7 @@ bonfire_istrat
 ;--------------------------------------------------------------------
 
 fire_ironball4
-	s_make_obj		#ironball,.nocando
+	s_make_obj		#ironball&$FFFF,.nocando
 	s_bcs			.nocando
 	s_copy_rots		y,x
 	s_copy_pos		y,x

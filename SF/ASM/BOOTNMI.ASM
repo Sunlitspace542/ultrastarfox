@@ -292,8 +292,11 @@ startsfx_l
 	sta	$420a
 	sta	$420b
 	sta	$420c
+	pha
+	a8
+	lda	#1
 	sta	$420d
-
+	pla
 
 	rtl
 
