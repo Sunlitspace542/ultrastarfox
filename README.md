@@ -1,9 +1,16 @@
 # HackerStarFox / HackerStarWing
 Star Fox / StarWing (SNES, 1993), with modifications for easier creation of ROM hacks and general ease-of-use.
 
+```diff
+- WARNING! -
+
+The rom built from this code currently does not boot on SNES9x.
+```
+
 ## Features
 
 - SuperFX Fast mode (21Mhz) support and various optimizations
+- FastROM
 - Lots of free bank space for new models, assets and code
 - 256 texture slots
 - 250 Faces/Vertices limit
