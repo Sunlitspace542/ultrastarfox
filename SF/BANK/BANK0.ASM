@@ -107,30 +107,30 @@ bgandpcr
 
 	IFEQ	PAL
 ; american
-	db	$20,$15,$a,$0,$1,$1,$0,$ff,$ff,$0,$0 
+	db	$30,$15,$a,$0,$1,$1,$0,$ff,$ff,$0,$0 
 	ELSEIF
 
 	IFEQ	GERMAN+FRENCH
 ; british
-	db	$20,$15,$a,$0,$2,$1,$0,$ff,$ff,$0,$0
+	db	$30,$15,$a,$0,$2,$1,$0,$ff,$ff,$0,$0
 
 	ENDC
 
 	IFNE	GERMAN
 ; german
-	db	$20,$15,$a,$0,$9,$1,$0,$ff,$ff,$0,$0
+	db	$30,$15,$a,$0,$9,$1,$0,$ff,$ff,$0,$0
 	ENDC
 
 	IFNE	FRENCH
 ; france
-	db	$20,$15,$a,$0,$6,$1,$0,$ff,$ff,$0,$0
+	db	$30,$15,$a,$0,$6,$1,$0,$ff,$ff,$0,$0
 	ENDC
 
 	ENDC
 
 	ELSEIF
 ; japan
-	db	$20,$15,$a,$0,$0,$1,$0,$ff,$ff,$0,$0
+	db	$30,$15,$a,$0,$0,$1,$0,$ff,$ff,$0,$0
 
 	ENDC
 
