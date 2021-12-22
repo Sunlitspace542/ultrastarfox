@@ -14,6 +14,7 @@ startboot	disable
 	ldx	#$02ff
 	txs
 	ai8
+	lda	#$80
 	pha
 	plb
 
