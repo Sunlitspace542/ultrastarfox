@@ -4,7 +4,7 @@ Star Fox / StarWing (SNES, 1993), with modifications for easier creation of ROM 
 ```diff
 - WARNING! -
 
-The rom built from this code currently does not boot on SNES9x.
+The ROM built from this code currently does not boot on SNES9x.
 ```
 
 ## Features
