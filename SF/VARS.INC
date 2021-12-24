@@ -30,8 +30,6 @@ titlelogo			equ 1	; Title screen logo to use, [0 = Star Fox JP, 1 = Star Fox US 
 controlsscreenpal	equ	0	; Controls screen palette to use, 0 = NTSC, 1 = PAL	(DOES NOT AFFECT JP)				#
 shieldboostcolorbox	equ	1	; enable weird color box thing on shield and boost meters								#
 							; (set to 0 if moving meter positions)	(also disables hud hide on boss win/level end)	#
-allrange			equ	0	; "All-Range Mode", Press P1 L and R to rotate player. Press select to unload objects.	#
-							; [0 = off 1 = on]																		#
 ;####################################################################################################################
 
 ; ###############
@@ -45,6 +43,8 @@ randvertandbit	equ	15		; decimal value of the binary AND value of the max number
 							; (representing 00000001,00000011,00000111,00001111,00011111,00111111)						#
 randverts2		equ	0		; randomize the vertices a lot																#
 							; Both will not activate at once															#
+allrange		equ	0		; "All-Range Mode", Press P1 L and R to rotate player. Press select to unload objects.		#
+							; [0 = off 1 = on]																			#
 ;########################################################################################################################
 
 ; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
