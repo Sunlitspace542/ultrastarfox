@@ -2043,9 +2043,7 @@ Pelaser_strat
 
 	s_decbne_lifecnt	x,.lnd
 	s_remove_obj		x
-	IFEQ	RAPIDFIRE
 	dec			numplasers
-	ENDC
 	s_end_strat
 .lnd
 	s_brl			miss_end
@@ -2053,17 +2051,13 @@ Pelaser_strat
 pelaser2die_Istrat
 	s_start_strat
 	s_setnoremove_behind	x
-	IFEQ	RAPIDFIRE
 	dec			numplasers
-	ENDC
 	s_jmp			elaser2die_Istrat
 
 
 playerbeamdie_Istrat
 	s_start_strat
-	IFEQ	RAPIDFIRE
 	dec			numplasers
-	ENDC
 	s_set_expstrat		x,remove_Istrat
 	s_end_strat
 

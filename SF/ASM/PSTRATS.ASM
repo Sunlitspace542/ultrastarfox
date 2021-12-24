@@ -2558,23 +2558,17 @@ playerfire_srou
 	s_weapon_rot		#0,#0
 	s_fire_weapon		x,ELASER,.npfy
 	trigse	se_laser
-	IFEQ	RAPIDFIRE
 	inc			numplasers
-	ENDC
 	s_brl			.npfy
 
 .dubfl
 	s_weapon_pos		#-playerW_x>>weapon_scale,#playerW_y>>weapon_scale,#80
 	s_weapon_rot		#0,#0
 	s_fire_weapon		x,ELASER,.npfy
-	IFEQ	RAPIDFIRE
 	inc			numplasers
-	ENDC
 	s_weapon_pos		#playerW_x>>weapon_scale,#playerW_y>>weapon_scale,#80
 	s_fire_weapon		x,ELASER,.npfy
-	IFEQ	RAPIDFIRE
 	inc			numplasers
-	ENDC
 	trigse			$34
 	s_brl			.npfy
 .beamb
@@ -2582,14 +2576,10 @@ playerfire_srou
 	s_weapon_pos		#-playerW_x>>weapon_scale,#playerW_y>>weapon_scale,#10
 	s_weapon_rot		#0,#0
 	s_fire_weapon		x,PLAYERBEAM,.npfy
-	IFEQ	RAPIDFIRE
 	inc			numplasers
-	ENDC
 	s_weapon_pos		#playerW_x>>weapon_scale,#playerW_y>>weapon_scale,#10
 	s_fire_weapon		x,PLAYERBEAM,.npfy
-	IFEQ	RAPIDFIRE
 	inc			numplasers
-	ENDC
 	trigse			$36
 .npfy
 	s_bra			.noresetfc
