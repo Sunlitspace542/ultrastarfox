@@ -18,9 +18,8 @@ internalname		equ	0	; internal rom name, [0 = STAR FOX, 1 = STAR WING]										
 twentyonemhz		equ 1	; SuperFX 21MHZ Fast mode [0 = off 1 = on]												#
 planetcheaton 		equ 0   ; Allows you to enable planet select cheat on the map before you have selected			#
 							; a level. Press X+Y on the same frame to activate.										#
-godmode				equ	0	; No collision for the player															#
 messagetest			equ	0	; Run message test in training level													#
-crosshairalwayson	equ	0	; Crosshair in third person view														#
+crosshairalwayson	equ	0	; Crosshair in third person view [0 = off 1 = on]										#
 hipolyarwing		equ	0	; high poly arwing [0 = low poly (default) 1 = hi poly]									#
 wnglzrman_helpball	equ	0 	; Restore Laser Upgrade enemy code to spawn helperball items							#
 							; instead of laser upgrades	[0 = off 1 = on]											#
@@ -45,6 +44,9 @@ randverts2		equ	0		; randomize the vertices a lot																#
 							; Both will not activate at once															#
 allrange		equ	0		; "All-Range Mode", Press P1 L and R to rotate player. Press select to unload objects.		#
 							; [0 = off 1 = on]																			#
+godmode			equ	0		; No collision for the player [0 = off 1 = on]												#
+infbrake		equ	0		; Infinite Braking	[0 = off 1 = on]														#
+infboost		equ	0		; Infinite Boosting	[0 = off 1 = on]														#
 ;########################################################################################################################
 
 ; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

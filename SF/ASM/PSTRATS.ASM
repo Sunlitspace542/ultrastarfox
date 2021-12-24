@@ -2059,13 +2059,18 @@ playermove_srou
 
 	s_or_var		B,pshipflags2,#psf2_boosting
 
+
 	lda			#1
+	IFEQ	INFBOOST
 	sta.l			m_boostcnt
+	ENDC
 
 	s_set_vartobeobj	boostobj,x
 	s_set_speed		x,#maxpspeed
 	s_set_var		B,player_tospeed,#maxpspeed
+	IFEQ	INFBOOST
 	s_set_alvar		B,x,al_sbyte2,#20
+	ENDC
       	s_jmp_varEQ		B,splayerflymode,#spfm_inside,.nboostspr
 	boost_sprite
 .nboostspr
@@ -2087,19 +2092,31 @@ playermove_srou
 	
 
 .brake
-	s_or_var		B,pshipflags2,#psf2_braking
+	IFNE	INFBRAKE
+    s_or_var	B,pshipflags2,#psf2_braking
+    trigse	$33
+    lda	#1
+    s_set_vartobeobj	boostobj,x
+    s_set_speed	x,#minpspeed
+    s_set_var	B,player_tospeed,#minpspeed
 
+.npsd
 
-	trigse			$33
-	lda			#1
-	sta.l			m_boostcnt
-	s_set_var		B,player_tospeed,#minpspeed
-	s_set_alvar		B,x,al_sbyte2,#30
+	ENDC
+
+	IFEQ	INFBRAKE
+	s_or_var	B,pshipflags2,#psf2_braking
+	trigse	$33
+	lda	#1
+	sta.l	m_boostcnt
+	s_set_var	B,player_tospeed,#minpspeed
+	s_set_alvar	B,x,al_sbyte2,#30
 
 .npsd
 
 	s_test_var		B,pshipflags,#psf_noctrl
 	s_bne			.no_pctrl
+	ENDC
 
 
 ;----------------------------------------------------
