@@ -9,6 +9,7 @@ contest				equ	0	; Super Star Fox Weekend [0 = off 1 = on]												#
 cestime				equ	5	; CES/SSFW timer countdown (in minutes)													#
 debuginfo			equ	0	; full strategy debugging - Press P2 R Button in-game to activate [0 = off 1 = on]		#
 debuginfo2			equ	0	; speed up mode? [0 = off 1 = on]														#
+mario_stats3d		equ	0	; 3D Stats (FPS, shapes drawn, etc.)													#
 japan				equ 0	; Japanese ROM Header [0 = off, 1 = on]	(DO NOT USE IF PAL = 1)							#
 pal					equ	0	; PAL/NTSC [0 = NTSC, 1 = PAL] (DO NOT USE IF JAPAN = 1)								#
 janglish			equ	0	; Language [0 = English, 1 = Japanese]													#
@@ -73,8 +74,6 @@ ShieldTextPos4 equ $b730
 BombIconPos equ $b6e1
 
 ; ## other variables ##
-
-mario_stats3d	equ	0
 realchip		equ	1
 easytext		equ	0
 

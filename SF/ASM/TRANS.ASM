@@ -223,44 +223,41 @@ stratsfrozen
 	sbc	#60
 	sta	framecount
 .noreset	
-;	lda	nosetport3
-;	printd	25,1
-
-
-
-
 
 	ifne	mario_stats3d
 
-	lda.l	m_numshapes		; shapes in drawlist
-	printd	25,2
+	lda	framesb ; framerate
+	printd	1,2
 
-	lda.l	m_shapes_notdrawn+1	; shapes rejected by new quick tests
-	printd	21,3
-	lda.l	m_shapes_notdrawn	; shapes rejected after rot\proj pnts
-	printd	25,3
+	lda.l	m_numshapes		; shapes in drawlist
+	printd	1,3
+
+	;lda.l	m_shapes_notdrawn+1	; shapes rejected by new quick tests
+	;printd	1,3
+	;lda.l	m_shapes_notdrawn	; shapes rejected after rot\proj pnts
+	;printd	5,3
 
 	lda.l	m_polys_drawn
-	printd	25,4
+	printd	1,4
 
 	lda.l	m_lines_drawn
-	printd	25,5
+	printd	1,5
 
-	lda.l	m_points_done+1		; I've seen >600 pnts being rotated!
-	printd	21,6
+	;lda.l	m_points_done+1		; I've seen >600 pnts being rotated!
+	;printd	1,6
 	lda.l	m_points_done
-	printd	25,6
+	printd	1,6
 
-	lda.l	m_visis_done+1
-	printd	21,7
-	lda.l	m_visis_done
-	printd	25,7
+	;lda.l	m_visis_done+1
+	;printd	1,7
+	;lda.l	m_visis_done
+	;printd	5,7
 
-	lda.l	m_polys_clip2d
-	printd	25,8
+	;lda.l	m_polys_clip2d
+	;printd	5,8
 		
-	lda.l	m_polys_clip3d
-	printd	25,9
+	;lda.l	m_polys_clip3d
+	;printd	5,9
 
 	endc
 

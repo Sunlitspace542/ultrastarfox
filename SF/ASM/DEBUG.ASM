@@ -56,9 +56,9 @@ aliendebugtable
 	aldebug	rotx,norm!SIGNED,0,8
 	aldebug	roty,norm!SIGNED,0,9
 	aldebug	rotz,norm!SIGNED,0,10
-;	aldebug	vel,norm!SIGNED,0,11
-;	aldebug	animframe,norm,0,12
-;	aldebug	colframe,norm,0,13
+	aldebug	vel,norm!SIGNED,0,11
+	aldebug	animframe,norm,0,12
+	aldebug	colframe,norm,0,13
 	aldebug	tx,norm,0,14
 
 
