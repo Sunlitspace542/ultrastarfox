@@ -2098,8 +2098,14 @@ alienflags_l
 	and	#~affrontpl
 	sta.w	al_flags,y
 
+	IFNE ALLRANGE
+	testjoypad	select
+    beq	.dontkill
+	ENDC
+	IFEQ ALLRANGE
 	s_test_var	B,gameflags,#gf_nozremove
-	bne	.dontkill	
+	bne	.dontkill
+	ENDC
 ;	s_jmp_varAND		B,gameflags,#gf_nozremove,.dontkill
 
 	test_alcollflags	y,acf_firstframe

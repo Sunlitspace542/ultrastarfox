@@ -10,12 +10,18 @@
 	include	EXT\dstrats.ext
 	include	EXT\bootnmi.ext
 
+	; admittedly, this is probably really dumb.
+	; probably should just move gb2 here for good or something instead.
+
 	bank	11
 	incfile	ASM\pistrats.asm
 	incfile	ASM\pcstrats.asm
 	incfile	ASM\pstrats.asm
-	incfile	ASM\gb2strats.asm
 	bankend	11
+
+	bank	40
+	incfile	ASM\gb2strats.asm
+	bankend 40
 
 	include	INCLUDE\tail.inc
 

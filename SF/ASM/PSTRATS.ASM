@@ -2299,33 +2299,6 @@ playermove_srou
 
 
 
-;------------------------------------------------------------------------
-
-
-
-;	s_jmp_higher		x,#-30,.nothitgnd
-;	s_set_alvar		W,x,al_worldy,#-30
-;	s_set_alvar		W,x,al_vy,#0
-;.nothitgnd
-
-
-;	s_jmp_alvarmore	W,x,al_worldy,minpmoveY,.nminy
-;	s_set_alvar	W,x,al_worldy,minpmoveY
-;.nminy
-
-
-;	s_jmp_alvarless	W,x,al_worldy,maxpmoveY,.nmaxy
-;	s_set_alvar	W,x,al_worldy,maxpmoveY
-;	s_set_alvar		W,x,al_vy,#0
-;	a16
-;	lda		plrotx
-;	nega
-;	sta		plrotx
-;	a8
-;.nmaxy
-
-
-
 ;-------------------------------------------------------------------
 ; Z rotation chase.
 	IFEQ	player_quickstop
@@ -2434,12 +2407,20 @@ playermove_srou
 
 .npsc
 
-;	s_jmp_keyup		left,.nleft
-;	s_add_var		W,player_turnrot,#2*256
-;.nleft
-;	s_jmp_keyup		right,.nright
-;	s_sub_var		W,player_turnrot,#2*256
-;.nright
+; ## ALL-RANGE MODE ##
+	IFNE	ALLRANGE
+	; This was likely originally used to test rotating the player around,
+	; as seen in the Great Commander I boss.
+	; Here, we use it for funsies. :)
+	; -SunlitSpace542
+	s_jmp_keyup		left,.nleft
+	s_add_var		W,player_turnrot,#2*256
+.nleft
+	s_jmp_keyup		right,.nright
+	s_sub_var		W,player_turnrot,#2*256
+.nright
+	ENDC
+; ####################
 
 
 
