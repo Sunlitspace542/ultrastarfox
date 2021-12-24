@@ -47,6 +47,8 @@ allrange		equ	0		; "All-Range Mode", Press P1 L and R to rotate player. Press se
 godmode			equ	0		; No collision for the player [0 = off 1 = on]												#
 infbrake		equ	0		; Infinite Braking	[0 = off 1 = on]														#
 infboost		equ	0		; Infinite Boosting	[0 = off 1 = on]														#
+infbombs		equ 0		; Infinite Bombs [0 = off 1 = on]															#
+rapidfire		equ 0		; rapid fire mode [0 = off 1 = on]															#
 ;########################################################################################################################
 
 ; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

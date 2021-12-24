@@ -2578,7 +2578,9 @@ item5_strat
 	s_jmp_XYdistmore	x,y,#30*2,.nitem
 
 	s_jmp_varmoreEQ		W,specwepcnt,#5,.maxspec
+	IFEQ	INFBOMBS
 	s_inc_var		W,specwepcnt
+	ENDC
 	s_set_var		B,specflash,#30
 	TRIGSE			$18
 	s_score			#100

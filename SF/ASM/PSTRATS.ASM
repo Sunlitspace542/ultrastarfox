@@ -2515,14 +2515,10 @@ playerfire_srou
 
 	s_jmp_keyup		a,.npfa
 	s_jmp_lastkeydown	a,.npfa
-
-
-;	s_weapon_pos		#0,#0,#80>>weapon_scale
-;	s_weapon_rot		#0,#0
-;	s_fire_weapon		x,spread,.npfa
-
+	IFEQ	INFBOMBS
 	s_set_var		B,specialdelay,#specialdelayfrms
 	s_beqdec_var		W,specwepcnt,.npfa
+	ENDC
 
 	trigse			$31
 
@@ -2531,22 +2527,9 @@ playerfire_srou
 	s_fire_weapon		x,NUKE,.npfa
 	s_set_alvar		B,y,al_sbyte4,#2
 
-;	ldy			pcboxobj_B
-;	s_set_alvar		B,y,al_hp,#0
-
-
-;	s_make_obj		#nullshape,.badobj
-;	s_set_strat		y,bigparticleexplode_Istrat
-;	s_copy_pos		y,x
-;	s_add_alvar		W,y,al_worldz,#2000
-;	s_set_alsflag		y,relexplode
-;.badobj
-
 .npfa
 
 ;------------------------------------------------------------
-;	d_print_var		B,numplasers,1
-
 
 	s_jmp_keyup		y,.resetfirecnt
 
@@ -2555,7 +2538,6 @@ playerfire_srou
 	s_set_var		B,firedelay,#player_firespeed
 
 	s_beqdec_var		B,firecnt,.npfy
-
 
 ;------------------------------------------------------------
 
@@ -2575,18 +2557,24 @@ playerfire_srou
 	s_weapon_pos		#0,#0,#80     
 	s_weapon_rot		#0,#0
 	s_fire_weapon		x,ELASER,.npfy
-	trigse			se_laser		
+	trigse	se_laser
+	IFEQ	RAPIDFIRE
 	inc			numplasers
+	ENDC
 	s_brl			.npfy
 
 .dubfl
 	s_weapon_pos		#-playerW_x>>weapon_scale,#playerW_y>>weapon_scale,#80
 	s_weapon_rot		#0,#0
 	s_fire_weapon		x,ELASER,.npfy
+	IFEQ	RAPIDFIRE
 	inc			numplasers
+	ENDC
 	s_weapon_pos		#playerW_x>>weapon_scale,#playerW_y>>weapon_scale,#80
 	s_fire_weapon		x,ELASER,.npfy
+	IFEQ	RAPIDFIRE
 	inc			numplasers
+	ENDC
 	trigse			$34
 	s_brl			.npfy
 .beamb
@@ -2594,10 +2582,14 @@ playerfire_srou
 	s_weapon_pos		#-playerW_x>>weapon_scale,#playerW_y>>weapon_scale,#10
 	s_weapon_rot		#0,#0
 	s_fire_weapon		x,PLAYERBEAM,.npfy
+	IFEQ	RAPIDFIRE
 	inc			numplasers
+	ENDC
 	s_weapon_pos		#playerW_x>>weapon_scale,#playerW_y>>weapon_scale,#10
 	s_fire_weapon		x,PLAYERBEAM,.npfy
+	IFEQ	RAPIDFIRE
 	inc			numplasers
+	ENDC
 	trigse			$36
 .npfy
 	s_bra			.noresetfc
