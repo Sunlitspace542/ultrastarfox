@@ -159,6 +159,10 @@ pblackshapes	def_playership	Bmyship_4,Bmyship_r,Bmyship_l,Bmyship_b
 
 	ELSEIF
 
+; replacing the default ship is fairly easy.
+; add your shape to one of the shape files and then replace references of the myship models with your model's name.
+; you can make separate models for wireframe, all black/silhouette, and broken wings as well, just replace the corresponding model references.
+
 	def_playership	myship_4,myship_r,myship_l,myship_b	
 pwireshapes	def_playership	my_w,my_r_w,my_l_w,my_b_w		; 1 
 pnullshapes	def_playership	nullshape,nullshape,nullshape,nullshape	; 2
