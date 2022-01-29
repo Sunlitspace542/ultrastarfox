@@ -2052,6 +2052,17 @@ playermove_srou
 	cmp			#40
 	lbcc			.npsd
 
+	IFNE	mouseon
+	lda	mousemode
+	beq	.nomouse
+	lda	boostorbrake
+	bne	.nomouse
+	lda	mouse_sw1
+	cmp	#3
+	beq	.boost
+	
+.nomouse
+	ENDC
 	s_jmp_keyup		x,.npsi
 	s_jmp_keydown		b,.npsi
 	
@@ -2079,6 +2090,19 @@ playermove_srou
 	s_jmp			.npsd
 .npsi
 ;--------------------------------------------------------
+
+	IFNE	mouseon
+	lda	mousemode
+	beq	.nomouse2
+	lda	boostorbrake
+	beq	.nomouse2
+	lda	mouse_sw1
+	cmp	#3
+	beq	.brake
+	
+.nomouse2
+	ENDC
+
 	s_jmp_keyup		b,.npsd
 	s_jmp_keydown		x,.npsd
 
@@ -2513,8 +2537,19 @@ playerfire_srou
 	s_decbne_var		B,specialdelay,.npfa
 	s_set_var		B,specialdelay,#1
 
+	IFNE	mouseon
+	lda	mousemode
+	beq	.nomouse4
+	lda	mouse_sw1
+	cmp	#2
+	beq	.bombtime
+	
+.nomouse4
+	ENDC
+	
 	s_jmp_keyup		a,.npfa
 	s_jmp_lastkeydown	a,.npfa
+.bombtime
 	IFEQ	INFBOMBS
 	s_set_var		B,specialdelay,#specialdelayfrms
 	s_beqdec_var		W,specwepcnt,.npfa
@@ -2531,9 +2566,18 @@ playerfire_srou
 
 ;------------------------------------------------------------
 
+	IFNE	mouseon
+	lda	mousemode
+	beq	.nomouse3
+	lda	mouse_sw1
+	cmp	#1
+	beq	.firetime
+	
+.nomouse3
+	ENDC
 	s_jmp_keyup		y,.resetfirecnt
 
-
+.firetime
 	s_decbne_var		B,firedelay,.npfy
 	s_set_var		B,firedelay,#player_firespeed
 

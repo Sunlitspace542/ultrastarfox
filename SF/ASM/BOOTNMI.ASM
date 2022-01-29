@@ -33,6 +33,12 @@ startboot	disable
 	fast
 	ENDC
 
+	IFNE	mouseon
+	lda	#1
+	sta	mousemode
+	sta	mousemodetemp
+	ENDC
+
 	IFEQ	contest
 	jsl	intro_l
 	ENDC
@@ -69,7 +75,21 @@ restart	ai16
 	lda	c_type
 	pha
 
+	IFNE	mouseon
+	lda	mousemode
+	pha
+	lda	mousemodetemp
+	pha
+	ENDC
+
 	jsr	initialise_ram
+
+	IFNE	mouseon
+	pla
+	sta	mousemodetemp
+	pla
+	sta	mousemode
+	ENDC
 
 	pla
 	sta	c_type

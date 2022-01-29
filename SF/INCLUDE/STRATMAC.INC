@@ -8047,12 +8047,23 @@ s_playerfly_mode	MACRO	name, [NOMACRO]
 s_setpctrl_off	MACRO
 	stratmac_start
 	s_or_var		B,pshipflags,#psf_noctrl!psf_nofire
+
+	IFNE	mouseon
+	stz	mousemode
+	ENDC
+
 	stratmac_end
 	ENDM
 
 s_setpctrl_on	MACRO
 	stratmac_start
 	s_and_var		B,pshipflags,#~(psf_noctrl!psf_nofire!psf_noYctrl)
+
+	IFNE	mouseon
+	lda	mousemodetemp
+	sta	mousemode
+	ENDC	
+
 	stratmac_end
 	ENDM
 

@@ -1,0 +1,27 @@
+	global	bossexplode_istrat,explode_istrat,stopexplode_Istrat
+	global	Qbossexplode_istrat
+	global	makemedexpobj_srou,addrnd2posy_srou
+	global	makesmlexpobj_srou,makeexpobj_srou
+	global	makelexpobj_srou,bigexplode_Istrat
+	global	EXPLODEDEBRIS_ISTRAT
+	global	MAKEBOSSCIRCEXP_SROU		
+	global	MAKEFOLEXPOBJ_SROU		
+	global	SMARKEXPLODE_ISTRAT		
+	global	particlefire_Istrat
+	global	particlefiredown_Istrat
+	global	explodeBigParts_Istrat
+	global	bigparticleexplode_Istrat
+	global	particleexplode_Istrat
+	global	bossbigoutexplode_Istrat
+	global	bossbigoutexplodeoff_Istrat
+	global	BIGWHITEFOSPRITE_L		
+	global	ADDRND2POSXYZ2_SROU
+	global	explodegate2_Istrat
+	global	pillar3explode_Istrat
+	global	fastexplodedebris_Istrat
+	global	makepollen_srou_l
+	global	escapeeexplode_Istrat
+	global	escapeeexplode2_Istrat
+	global	tow0explode_Istrat
+
+

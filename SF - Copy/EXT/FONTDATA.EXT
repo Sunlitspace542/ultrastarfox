@@ -1,0 +1,7 @@
+	global	font0wid,font0fon,font0trn
+	global	fontdata
+	global	perfecttxt,teamtxt,deadtxt,frogtxt,bunnytxt,cocktxt
+	global	pausetxt,messages,totalscoretxt,scoretxt,slashtxt,percenttxt,percenttxt2,stagetxt
+	global	bonustxt,cessectxt,cesmintxt,scoretxt2
+
+

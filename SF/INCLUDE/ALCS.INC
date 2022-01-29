@@ -744,9 +744,11 @@ mio_mode	equ	$303a
 ;	alc	zbblks,zb_size*number_zb			;1400 bytes free!
 
 ;ADD NEW ALCS HERE------------------------------
-
-
-
+	IFNE	mouseon
+	alc	mousemode,2
+	alc	mousemodetemp,2
+	alc	boostorbrake,2
+	ENDC
 
 
 
@@ -783,7 +785,7 @@ mio_mode	equ	$303a
 	alc	spectot,1
 	alc	defaultID,2
 
-
+	include	INCLUDE\mousealc.inc
 	include	INCLUDE\kalcs.inc
 	include	INCLUDE\dalcs.inc
 	include	INCLUDE\ealcs.inc
