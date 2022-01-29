@@ -2203,7 +2203,20 @@ playermove_srou
 .dztl	s_add_var		B,player_Ztilt,#deg45/15
 .nztl
 	s_add_var		W,plrotz,#Zrotspeed
+	IFEQ	mouseon
 	s_add_var		W,plroty,#Zrotspeed
+	ENDC
+	
+	IFNE	mouseon
+	a8
+	lda	mousemode
+	bne	.mouseleftleft
+	s_add_var		W,plroty,#Zrotspeed
+	bra	.eplrc
+.mouseleftleft
+	s_sub_alvar		W,x,al_worldx,#16
+	ENDC
+;right
 .eplrc
 	s_test_var		B,pmovelimit,#pml_rwright
 	s_bne			.eprrc
@@ -2215,9 +2228,85 @@ playermove_srou
 .dztr	s_sub_var		B,player_Ztilt,#deg45/15
 .nztr
 	s_sub_var		W,plrotz,#Zrotspeed
+	IFEQ	mouseon
 	s_sub_var		W,plroty,#Zrotspeed
-.eprrc
+	ENDC
 
+	IFNE	mouseon
+	lda	mousemode
+	bne	.mouserightright
+	s_sub_var		W,plroty,#Zrotspeed
+	bra	.eprrc
+.mouserightright
+	s_add_alvar		W,x,al_worldx,#16
+	ENDC
+.eprrc
+	IFNE	mouseon
+	lda	mousemode
+	lbeq	.nomouse
+	lda	mouse_x1
+	lbeq	.nomouse
+	and	#%10000000
+	lbeq	.rightmouse
+	bra		.leftmouse
+
+.leftmouse
+	s_test_var		B,pmovelimitAND,#pml_Bbottom
+	beq			.dztl2
+	s_jmp_lower		x,svar_word1,.nztl2
+.dztl2	s_add_var		B,player_Ztilt,#deg45/15
+.nztl2
+	s_add_var		W,plrotz,#Zrotspeed
+	lda.w			al_roty,x
+	cmp				#(deg11*(2))
+	lbpl	.nomouse
+	lda	mouse_x1
+	cmp	#$84
+	bmi	.slower3
+	cmp	#$88
+	bmi	.norm3
+	bra	.faster3
+
+.slower3
+	s_add_var		W,plroty,#(Zrotspeed/4)*3
+	jmp	.nomouse
+
+.faster3
+	s_add_var		W,plroty,#(Zrotspeed*3)/2
+	jmp	.nomouse
+
+.norm3
+	s_add_var		W,plroty,#Zrotspeed
+	jmp	.nomouse
+
+
+.rightmouse									;if mouse, jumps here
+	s_sub_var		W,plrotz,#Zrotspeed
+	lda.w			al_roty,x
+	cmp				#(-deg11*(2))
+	lbmi	.nomouse
+	lda	mouse_x1
+	cmp	#4
+	bmi	.slower4
+	cmp	#8
+	bmi	.norm4
+	bra	.faster4
+
+.slower4
+	s_sub_var		W,plroty,#(Zrotspeed/4)*3
+	bra	.nomouse
+
+.norm4
+	s_sub_var		W,plroty,#Zrotspeed
+	bra	.nomouse
+
+.faster4
+	s_sub_var		W,plroty,#(Zrotspeed*3)/2
+	bra	.nomouse
+
+
+.nomouse
+	ENDC
 
 ;-----------------------------------------------------------------------
 
@@ -2316,10 +2405,13 @@ playermove_srou
 
 ;-----------------------------------------------------------------------
 
-	
+	IFNE	mouseon
+	lda	mousemode
+	bne	.nochase1
+	ENDC
 	s_Achase_var		W,plroty,#0,3
 
-
+.nochase1
 
 ;--------------------------------------
 ; super speed.
@@ -2349,10 +2441,12 @@ playermove_srou
 	ENDC
 ;-------------------------------------------------------------------
 
-
-
+	IFNE	mouseon
+	lda	mousemode
+	bne	.nochase2
+	ENDC
 	s_Achase_var	W,plrotx,#0,3
-	
+.nochase2	
 
 	STZ			pmovelimit
 
@@ -2537,8 +2631,19 @@ playerfire_srou
 	s_decbne_var		B,specialdelay,.npfa
 	s_set_var		B,specialdelay,#1
 
+	IFNE	mouseon
+	lda	mousemode
+	beq	.nomouse4
+	lda	mouse_sw1
+	cmp	#2
+	beq	.bombtime
+	
+.nomouse4
+	ENDC
+	
 	s_jmp_keyup		a,.npfa
 	s_jmp_lastkeydown	a,.npfa
+.bombtime
 	IFEQ	INFBOMBS
 	s_set_var		B,specialdelay,#specialdelayfrms
 	s_beqdec_var		W,specwepcnt,.npfa
