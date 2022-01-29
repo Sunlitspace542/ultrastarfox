@@ -2315,13 +2315,93 @@ playermove_srou
 	s_bne			.no_yctrl
 
 	s_jmp_keyup		jup,.nhu
+	IFEQ	mouseon
 	s_add_var		W,plrotx,#Xrotspeed
+	ENDC
+
+	IFNE	mouseon
+	lda	mousemode
+	bne	.mouseupup
+	s_add_var		W,plrotx,#Xrotspeed
+	bra	.nhu
+.mouseupup
+	s_add_alvar		W,x,al_worldy,#16
+	ENDC
 .nhu
 	s_jmp_keyup		jdown,.nhd
 ;	s_jmp_alvarlesseq	W,x,al_worldy,minpmoveY,.nhd
+	IFEQ	mouseon
 	s_sub_var		W,plrotx,#Xrotspeed
+	ENDC
+	IFNE	mouseon
+	lda	mousemode
+	bne	.mousedowndown
+	s_sub_var		W,plrotx,#Xrotspeed
+	bra	.nhd
+.mousedowndown
+	s_sub_alvar		W,x,al_worldy,#16
+	ENDC
 .nhd
+	IFNE	mouseon
+	lda	mousemode
+	lbeq	.no_yctrl
+	lda	mouse_y1		;loading mouse_y1
+	lbeq	.no_yctrl
+	and	#%10000000
+	beq	.ypos			;if its less than 0, its going down?
+	bra	.yneg			;if its greater than 0, its going up (can add speeds later)
 
+.ypos			;down, sorry for label
+.oneptfiveup
+	lda.w	al_rotx,x
+	cmp	#(deg11*(3/2))+5
+	lbpl	.noyinc
+	lda	mouse_y1
+	cmp	#4
+	bmi	.slower1
+	cmp	#8
+	bpl	.faster1
+	bra	.norm1
+
+.slower1
+	s_add_var		W,plrotx,#(Xrotspeed/4)*3
+	bra	.noyinc
+
+.faster1
+	s_add_var		W,plrotx,#(Xrotspeed*3)/2
+	bra	.noyinc
+
+.norm1
+	s_add_var		W,plrotx,#Xrotspeed
+	bra	.noyinc
+
+	
+.yneg					;up, sorry for label
+.oneptfivedown
+	lda.w	al_rotx,x
+
+	cmp	#(-deg11*(3/2))
+	bmi	.noyinc
+	lda	mouse_y1
+	cmp	#$84
+	bmi	.slower2
+	cmp	#$88
+	bpl	.faster2
+	bra	.norm2
+
+.slower2
+	s_sub_var		W,plrotx,#(Xrotspeed/4)*3
+	bra	.noyinc
+
+.faster2
+	s_sub_var		W,plrotx,#(Xrotspeed*3)/2
+	bra	.noyinc
+
+.norm2
+	s_sub_var		W,plrotx,#Xrotspeed
+	bra	.noyinc
+.noyinc
+	ENDC
 .no_yctrl
 
 .nhjr

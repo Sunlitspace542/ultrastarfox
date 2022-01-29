@@ -2243,9 +2243,9 @@ playermove_srou
 .eprrc
 	IFNE	mouseon
 	lda	mousemode
-	lbeq	.nomouse
+	lbeq	.nomouse5
 	lda	mouse_x1
-	lbeq	.nomouse
+	lbeq	.nomouse5
 	and	#%10000000
 	lbeq	.rightmouse
 	bra		.leftmouse
@@ -2259,7 +2259,7 @@ playermove_srou
 	s_add_var		W,plrotz,#Zrotspeed
 	lda.w			al_roty,x
 	cmp				#(deg11*(2))
-	lbpl	.nomouse
+	lbpl	.nomouse5
 	lda	mouse_x1
 	cmp	#$84
 	bmi	.slower3
@@ -2269,22 +2269,22 @@ playermove_srou
 
 .slower3
 	s_add_var		W,plroty,#(Zrotspeed/4)*3
-	jmp	.nomouse
+	jmp	.nomouse5
 
 .faster3
 	s_add_var		W,plroty,#(Zrotspeed*3)/2
-	jmp	.nomouse
+	jmp	.nomouse5
 
 .norm3
 	s_add_var		W,plroty,#Zrotspeed
-	jmp	.nomouse
+	jmp	.nomouse5
 
 
 .rightmouse									;if mouse, jumps here
 	s_sub_var		W,plrotz,#Zrotspeed
 	lda.w			al_roty,x
 	cmp				#(-deg11*(2))
-	lbmi	.nomouse
+	lbmi	.nomouse5
 	lda	mouse_x1
 	cmp	#4
 	bmi	.slower4
@@ -2294,18 +2294,18 @@ playermove_srou
 
 .slower4
 	s_sub_var		W,plroty,#(Zrotspeed/4)*3
-	bra	.nomouse
+	bra	.nomouse5
 
 .norm4
 	s_sub_var		W,plroty,#Zrotspeed
-	bra	.nomouse
+	bra	.nomouse5
 
 .faster4
 	s_sub_var		W,plroty,#(Zrotspeed*3)/2
-	bra	.nomouse
+	bra	.nomouse5
 
 
-.nomouse
+.nomouse5
 	ENDC
 
 ;-----------------------------------------------------------------------
@@ -2315,11 +2315,32 @@ playermove_srou
 	s_bne			.no_yctrl
 
 	s_jmp_keyup		jup,.nhu
+	IFEQ	mouseon
 	s_add_var		W,plrotx,#Xrotspeed
+	ENDC
+
+	IFNE	mouseon
+	lda	mousemode
+	bne	.mouseupup
+	s_add_var		W,plrotx,#Xrotspeed
+	bra	.nhu
+.mouseupup
+	s_add_alvar		W,x,al_worldy,#16
+	ENDC
 .nhu
 	s_jmp_keyup		jdown,.nhd
 ;	s_jmp_alvarlesseq	W,x,al_worldy,minpmoveY,.nhd
+	IFEQ	mouseon
 	s_sub_var		W,plrotx,#Xrotspeed
+	ENDC
+	IFNE	mouseon
+	lda	mousemode
+	bne	.mousedowndown
+	s_sub_var		W,plrotx,#Xrotspeed
+	bra	.nhd
+.mousedowndown
+	s_sub_alvar		W,x,al_worldy,#16
+	ENDC
 .nhd
 
 .no_yctrl
