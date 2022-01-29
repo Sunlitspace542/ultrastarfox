@@ -1,7 +1,0 @@
-	global	bossg_istrat
-	global	para_istrat
-	global	mother1_istrat
-	global	mother2_istrat
-	global	kdoor_istrat,kichi2_istrat,kdoor2_istrat,massivebase_istrat
-	global	snake_istrat
-

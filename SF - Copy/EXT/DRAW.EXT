@@ -1,5 +1,0 @@
-	global	printb_l
-	global	printw_l
-	global	printbd_l
-	global	printbsd_l
-	global	printt_l
