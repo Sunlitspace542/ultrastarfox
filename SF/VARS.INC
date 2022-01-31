@@ -7,7 +7,7 @@
 cesdemo				equ	0	; 0 = off, 1 = CES Demo (timed) 2 = Untimed CES Demo w/ planet cheat					#
 contest				equ	0	; Super Star Fox Weekend [0 = off 1 = on]												#
 cestime				equ	5	; CES/SSFW timer countdown (in minutes)													#
-debuginfo			equ	1	; full strategy debugging - Press P2 R Button in-game to activate [0 = off 1 = on]		#
+debuginfo			equ	0	; full strategy debugging - Press P2 R Button in-game to activate [0 = off 1 = on]		#
 debuginfo2			equ	0	; speed up mode? [0 = off 1 = on]														#
 mario_stats3d		equ	0	; 3D Stats (FPS, shapes drawn, etc.)													#
 japan				equ 0	; Japanese ROM Header [0 = off, 1 = on]	(DO NOT USE IF PAL = 1)							#
@@ -30,7 +30,7 @@ titlelogo			equ 2	; Title screen logo to use, [0 = Star Fox JP, 1 = Star Fox US 
 controlsscreenpal	equ	0	; Controls screen palette to use, 0 = NTSC, 1 = PAL	(DOES NOT AFFECT JP)				#
 shieldboostcolorbox	equ	1	; enable weird color box thing on shield and boost meters								#
 							; (set to 0 if moving meter positions)	(also disables hud hide on boss win/level end)	#
-mouseon				equ	1	; Enable mouse control in port 2
+mouseon				equ	0	; Enable mouse control in port 2
 ;####################################################################################################################
 
 ; ###############

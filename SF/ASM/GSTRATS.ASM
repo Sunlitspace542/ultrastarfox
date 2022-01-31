@@ -2093,8 +2093,15 @@ nuke_strat
 .notdead
 
 
+	IFNE	mouseon
+	lda	mouse_swt1
+	cmp	#2
+	beq	.blowupthenuke
+	ENDC
+	
 	s_jmp_keyup		a,.nexp
 	s_jmp_lastkeydown	a,.nexp
+.blowupthenuke
 	s_kill_obj		x
 .nexp
 
