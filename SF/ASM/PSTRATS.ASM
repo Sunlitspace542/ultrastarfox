@@ -2052,20 +2052,61 @@ playermove_srou
 	cmp			#40
 	lbcc			.npsd
 
-	IFNE	mouseon
+	IFNE	MOUSEON
 	lda	mousemode
-	beq	.nomouse
+	lbeq	.nomouse4
 	lda	boostorbrake
-	bne	.nomouse
+	lbne	.nomouse4
+	s_jmp_alvareq	B,x,al_sbyte5,#70,.noswapper2
 	lda	mouse_sw1
 	cmp	#3
-	beq	.boost
+	beq	.mousebooststuff
+	bra	.nomouse3
+.mousebooststuff
+	s_jmp_alvareq	B,x,al_sbyte6,#1,.boostitup			;if sbyte 6 is 1, don't process any of this, time is up
+
+	s_jmp_alvareq	B,x,al_sbyte5,#0,.setit				;if sbyte 5 is 0, set it to the timer value
+	s_sub_alvar		B,x,al_sbyte5,#1					;otherwise, subtract 1
+	s_jmp_alvareq	B,x,al_sbyte5,#1,.noswapper			;if sbyte 5 is 1, jump to .noswapper
+
+	lda	mouse_swt1							
+	cmp	#3
+	beq	.swaptobrake									;if mouse trigger is 3, go to .swaptobrake
+	bra	.boostitup										;otherwise, boost it like normal
 	
-.nomouse
+.noswapper
+	s_set_alvar		B,x,al_sbyte6,#1					;no more opportunity until this is reset
+	s_set_alvar		B,x,al_sbyte5,#50
+	bra	.boostitup										;continue boosting
+
+.noswapper2
+	s_set_alvar		B,x,al_sbyte6,#0					;reset sbyte5/6
+	s_set_alvar		B,x,al_sbyte5,#0
+	bra	.nomouse4
+	
+.swaptobrake											;when ready to swap, go here
+	turnonoff	boostorbrake
+	s_set_alvar		B,x,al_sbyte5,#60					;frame timer for brake
+	s_set_alvar		B,x,al_sbyte6,#0
+	bra	.nomouse4
+.setit
+	s_set_alvar		B,x,al_sbyte5,#10					;frame timer
+	s_set_alvar		B,x,al_sbyte6,#0
+	bra	.boostitup
+	
+.nomouse3
+	s_jmp_alvareq	B,x,al_sbyte5,#0,.nomouse4
+	s_jmp_alvareq	B,x,al_sbyte5,#50,.noswapper2
+	s_sub_alvar		B,x,al_sbyte5,#1
+
+.nomouse4
 	ENDC
+
 	s_jmp_keyup		x,.npsi
-	s_jmp_keydown		b,.npsi
-	
+;	s_jmp_keydown		b,.npsi
+.boostitup
+	s_jmp_varAND		B,pshipflags2,#psf2_boosting,.boost
+	trigse			$32
 .boost
 
 	s_or_var		B,pshipflags2,#psf2_boosting
@@ -2090,30 +2131,59 @@ playermove_srou
 	s_jmp			.npsd
 .npsi
 ;--------------------------------------------------------
-
-	IFNE	mouseon
+	IFNE	MOUSEON
 	lda	mousemode
-	beq	.nomouse2
+	lbeq	.nomousebrake
 	lda	boostorbrake
-	beq	.nomouse2
+	lbeq	.nomousebrake
+	s_jmp_alvareq	B,x,al_sbyte5,#60,.noswapper21
 	lda	mouse_sw1
 	cmp	#3
-	beq	.brake
+	beq	.mousebrakestuff
+	bra	.nomousebrake2
 	
-.nomouse2
+.mousebrakestuff
+	s_jmp_alvareq	B,x,al_sbyte6,#1,.brake			;if sbyte 6 is 1, don't process any of this, time is up
+
+	s_jmp_alvareq	B,x,al_sbyte5,#0,.setit1				;if sbyte 5 is 0, set it to the timer value
+	s_sub_alvar		B,x,al_sbyte5,#1					;otherwise, subtract 1
+	s_jmp_alvareq	B,x,al_sbyte5,#1,.noswapper1			;if sbyte 5 is 1, jump to .noswapper
+
+	lda	mouse_swt1							
+	cmp	#3
+	beq	.swaptobrake1								;if mouse trigger is 3, go to .swaptobrake
+	bra	.brake										;otherwise, boost it like normal
+	
+.noswapper1
+	s_set_alvar		B,x,al_sbyte6,#1					;no more opportunity until this is reset
+	s_set_alvar		B,x,al_sbyte5,#50
+	bra	.brake										;continue boosting
+
+.noswapper21
+	s_set_alvar		B,x,al_sbyte6,#0					;reset sbyte5/6
+	s_set_alvar		B,x,al_sbyte5,#0
+	bra	.brake
+	
+.swaptobrake1											;when ready to swap, go here
+	turnonoff	boostorbrake
+	s_set_alvar		B,x,al_sbyte5,#70
+	s_set_alvar		B,x,al_sbyte6,#1
+	bra	.brake
+.setit1
+	s_set_alvar		B,x,al_sbyte5,#10
+	s_set_alvar		B,x,al_sbyte6,#0
+	bra	.brake
+	
+.nomousebrake2
+	s_jmp_alvareq	B,x,al_sbyte5,#0,.nomousebrake
+	s_jmp_alvareq	B,x,al_sbyte5,#50,.noswapper21
+	s_sub_alvar		B,x,al_sbyte5,#1
+
+
+.nomousebrake
 	ENDC
+	s_jmp_keyup		b,.notbraking
 
-	s_jmp_keyup		b,.npsd
-	s_jmp_keydown		x,.npsd
-
-;	ldy			pcboxobj_B
-;	s_set_alvar		B,y,al_hp,#0
-
-;	ldy			pcboxobj_LW
-;	s_set_alvar		B,y,al_hp,#0
-;	ldy			pcboxobj_RW
-;	s_set_alvar		B,y,al_hp,#0
-	
 
 .brake
 	IFNE	INFBRAKE
@@ -2141,7 +2211,7 @@ playermove_srou
 	s_test_var		B,pshipflags,#psf_noctrl
 	s_bne			.no_pctrl
 	ENDC
-
+.notbraking
 
 ;----------------------------------------------------
 ; movement left/right.

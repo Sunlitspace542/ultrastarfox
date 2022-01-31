@@ -7,7 +7,7 @@
 cesdemo				equ	0	; 0 = off, 1 = CES Demo (timed) 2 = Untimed CES Demo w/ planet cheat					#
 contest				equ	0	; Super Star Fox Weekend [0 = off 1 = on]												#
 cestime				equ	5	; CES/SSFW timer countdown (in minutes)													#
-debuginfo			equ	0	; full strategy debugging - Press P2 R Button in-game to activate [0 = off 1 = on]		#
+debuginfo			equ	1	; full strategy debugging - Press P2 R Button in-game to activate [0 = off 1 = on]		#
 debuginfo2			equ	0	; speed up mode? [0 = off 1 = on]														#
 mario_stats3d		equ	0	; 3D Stats (FPS, shapes drawn, etc.)													#
 japan				equ 0	; Japanese ROM Header [0 = off, 1 = on]	(DO NOT USE IF PAL = 1)							#
@@ -24,7 +24,7 @@ crosshairalwayson	equ	1	; Crosshair in third person view [0 = off 1 = on]							
 hipolyarwing		equ	0	; high poly arwing [0 = low poly (default) 1 = hi poly]									#
 wnglzrman_helpball	equ	0 	; Restore Laser Upgrade enemy code to spawn helperball items							#
 							; instead of laser upgrades	[0 = off 1 = on]											#
-titlelogo			equ 1	; Title screen logo to use, [0 = Star Fox JP, 1 = Star Fox US Rev 0,					#
+titlelogo			equ 2	; Title screen logo to use, [0 = Star Fox JP, 1 = Star Fox US Rev 0,					#
 							; 2 = Star Fox US Rev 1/2, 3 = StarWing]												#
 							; (also affects which game name is shown in credits, 0/1 = STAR FOX, 2 = STARWING)		#
 controlsscreenpal	equ	0	; Controls screen palette to use, 0 = NTSC, 1 = PAL	(DOES NOT AFFECT JP)				#

@@ -21,4 +21,6 @@
 	defal	vy,2
 	defal	vz,2
 	defal	hitflags,1
+	defal	sbyte5,1
+	defal	sbyte6,1
 

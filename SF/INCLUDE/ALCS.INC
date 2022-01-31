@@ -749,7 +749,7 @@ mio_mode	equ	$303a
 	alc	mousemodetemp,2
 	alc	boostorbrake,2
 	ENDC
-
+	alc	open_text,2
 
 
 

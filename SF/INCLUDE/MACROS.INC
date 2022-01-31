@@ -1,3 +1,135 @@
+turnonoff	macro	[var]		;turns a variable on or off, whichever is the opposite of its current state
+	pha							;push anything in the accumulator out into the stack to retrieve later
+	lda	{var}					;load the variable into the accumulator
+	and	#1
+	eor	#1
+	sta	{var}
+	pla							;pull accumulator back out that we pushed earlier
+	endm
+
+;--------------------------------------------------------------
+settext	macro	[column,row]					;Sets the column + row for upcoming text
+	a16											;16 bit accumulator
+	pha
+	lda	#<({column}*col_size+{row}*32)			;#<(column)*col_size+(row)*32
+	sta	printpt									;Store to low 2 bytes of printpt
+	lda	#>({column}*col_size+{row}*32)			;#>(column)*col_size+(row)*32
+	sta	printpt+1								;Store to upper 2 bytes of printpt
+	pla
+	endm
+;--------------------------------------------------------------
+settxt	macro	[column,row]
+	settext	{column},{row}
+	endm
+;----------------------------------------------------------------
+showtext	macro	[table]
+	showtxt	{table}
+	endm
+	
+showtxt	macro	[table]				;Shows the full text in a single table
+	stz	textpt
+	pha								;Push accumulator
+	a16
+	ldx	#-2							;load 0 into x index
+.stringloop\@
+	inx
+	lda.l	{table},x				;load the next letter from the current pointer area from the table
+	beq	.stringdone\@				;end this part of the code if equal to 0
+	inx								;increase x by 1 again (letters after the first one are added in pairs)
+	lda.l	{table},x				;load the next letter from the current pointer area from the table
+	beq	.stringdone\@				;end this part of the code if equal to 0
+.start\@
+	sta	open_text					;store this letter into open_text
+
+	lda	#open_text					;Load weapon text back into accumulator
+	sta	textpt						;store this into textpt (which gets printed with printt_l)
+	
+	jsl	printt_l					;Run routine to display the letter
+	bra	.stringloop\@				;Go back and continue looking for letters (until it hits a 0)
+
+.stringdone\@						;Done displaying the string "versiontext", continue
+	pla								;pull accumulator
+	endm
+
+;--------------------------------------------------------------
+
+onofftxtspcl	macro	[var]				;Displays ON or OFF depending on the value of [var]
+	pha									;push accumulator
+	lda	{var}							;Check if variable is 1 or 0
+	and	#7
+	beq	\@off							;If its 0, jump to off
+	cmp	#2
+	beq	\@onplus
+	cmp	#3
+	bpl	\@onplusplus
+	showtxt	p2text						;otherwise, display ON
+	bra	\@done						;jump to end
+\@onplus
+	showtxt	p2plustext						;display ON+
+	bra	\@done
+\@onplusplus
+	showtxt	p4text						;display ON+
+	bra	\@done
+\@off
+	showtxt	offtext						;display OFF
+	bra	\@done
+\@done
+	pla									;pull accumulator
+	endm
+
+;--------------------------------------------------------------
+
+
+onofftxt	macro	[var]				;Displays ON or OFF depending on the value of [var]
+	pha									;push accumulator
+	lda	{var}							;Check if variable is 1 or 0
+	and	#7
+	beq	\@off							;If its 0, jump to off
+	cmp	#2
+	beq	\@onplus
+	cmp	#3
+	bpl	\@onplusplus
+	showtxt	ontext						;otherwise, display ON
+	bra	\@done						;jump to end
+\@onplus
+	showtxt	onplustext						;display ON+
+	bra	\@done
+\@onplusplus
+	showtxt	onplusplustext						;display ON+
+	bra	\@done
+\@off
+	showtxt	offtext						;display OFF
+	bra	\@done
+\@done
+	pla									;pull accumulator
+	endm
+;--------------------------------------------------------------
+onofftext	macro	[var]
+	onofftxt	{var}
+	endm
+
+;--------------------------------------------------------------
+offontxt	macro	[var]				;Displays ON or OFF depending on the value of [var] (Opposite of value)
+	pha									;push accumulator
+	lda	{var}							;Check if variable is 1 or 0
+	and	#1
+	beq	.off\@							;If its 0, jump to off
+	showtxt	offtext						;otherwise, display ON
+	bra	.done\@							;jump to end
+.off\@
+	showtxt	ontext						;display OFF
+.done\@
+	pla									;pull accumulator
+	endm
+;--------------------------------------------------------------
+
+
+printvar	macro	[var]				;displays value of a variable to set text point
+	lda	{var}							;load variable to accumulator
+	printd								;display decimal value of accumulator to screen
+	endm
+;--------------------------------------------------------------
+
 ;------------------------------------------------------------------------
 
 wait	macro
