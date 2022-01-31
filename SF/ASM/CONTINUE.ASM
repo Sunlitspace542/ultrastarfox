@@ -838,7 +838,7 @@ friends_messages_l
 .chkmeter
 	php
 	a8
-	IFEQ	JANGLISH
+	IFEQ	JAPANESE
 	lda	whichfriend
 	bit	#128
 	bne	.3lines

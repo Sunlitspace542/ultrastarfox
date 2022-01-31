@@ -40,7 +40,7 @@ SHAPES\shapes3.asm SHAPES\pshapes.asm SHAPES\shapes4.asm SHAPES\shapes5.asm \
 SHAPES\shapes6.asm SHAPES\shapes7.asm SHAPES\kshapes.asm ASM\d3strats.asm 
 
 ## Bank 1
-bank1.sob: BANK\bank1.asm INCLUDE\shmacs.inc MSG\janglish.inc \
+bank1.sob: BANK\bank1.asm INCLUDE\shmacs.inc MSG\JAPANESE.inc \
 $(STDFILES) MARIO\mvars.mc MARIO\mmacs.mc MARIO\mshtab.mc \
 MARIO\mmaths.mc MARIO\mwrot.mc MARIO\mwcrot.mc MARIO\mobj.mc \
 MARIO\mclip.mc MARIO\mdrawc.mc MARIO\mdrawp.mc MARIO\msprite.mc \

@@ -12,7 +12,7 @@ debuginfo2			equ	0	; speed up mode? [0 = off 1 = on]														#
 mario_stats3d		equ	0	; 3D Stats (FPS, shapes drawn, etc.)													#
 japan				equ 0	; Japanese ROM Header [0 = off, 1 = on]	(DO NOT USE IF PAL = 1)							#
 pal					equ	0	; PAL/NTSC [0 = NTSC, 1 = PAL] (DO NOT USE IF JAPAN = 1)								#
-janglish			equ	0	; Language [0 = English, 1 = Japanese]													#
+JAPANESE			equ	0	; Language [0 = English, 1 = Japanese]													#
 german				equ	0	; German language version [0 = off 1 = on]												#
 french				equ	0	; French language version [0 = off 1 = on] (TEXT ONLY, NO DIACRITICS OR GFX)			#
 spanish				equ	0	; Spanish language version [0 = off 1 = on] (TEXT ONLY, NO DIACRITICS OR GFX)			#

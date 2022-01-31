@@ -38,7 +38,7 @@ cessectxt	newtext	2,<s>
 scoretxt2	newtext	2,<score>
 	ENDC
 
-	IFNE	JANGLISH
+	IFNE	JAPANESE
 pausetxt	newtext	14,<PAUSED>		;japanese pause
 scoretxt	newtext	14,<SCORE>		;japanese score
 totalscoretxt	newtext	14,<TOTAL SCORE>		;japanese total score
@@ -81,7 +81,7 @@ scoretxt2	newtext	2,<score>
 	IFEQ	SPANISH
 	IFEQ	GERMAN
 	IFEQ	FRENCH
-	IFEQ	JANGLISH
+	IFEQ	JAPANESE
 pausetxt	newtext	14,<PAUSED>		;english pause
 scoretxt	newtext	14,<SCORE>
 totalscoretxt	newtext	14,<TOTAL SCORE>		;english total score
@@ -167,7 +167,7 @@ msgnum	=	1
 	IFEQ	spanish
 	IFEQ	german			;if german = 0
 	IFEQ	french			;if french = 0
-	include	MSG\janglish.inc	;use english/japanese message file
+	include	MSG\JAPANESE.inc	;use english/japanese message file
 	endc
 	endc
 	endc

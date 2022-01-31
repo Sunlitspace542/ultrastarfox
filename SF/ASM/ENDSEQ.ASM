@@ -1635,7 +1635,7 @@ bossfinaltxt	SETDPOS	7*32+6
 	ENDC
 	DB	0
 bossfinaltxt2	SETDPOS	25*32+6
-	ifne	janglish
+	ifne	JAPANESE
 	DB	"NAME   - ANDORF..."
 	elseif
 	DB	"NAME   - ANDROSS..."

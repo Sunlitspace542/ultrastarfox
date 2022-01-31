@@ -4137,7 +4137,7 @@ trigse_rge	macro
 txt	macro
 	db	\1
 
-	IFNE	janglish		;janglish = 1
+	IFNE	JAPANESE		;JAPANESE = 1
 	db	"\3",0
 	ENDC
 	
@@ -4154,7 +4154,7 @@ txt	macro
 	ENDC
 	
 	IFEQ	spanish
-	IFEQ	janglish
+	IFEQ	JAPANESE
 	IFEQ	french
 	IFEQ	german
 	db	"\2",0

@@ -147,7 +147,7 @@ bg33ccr
 	inccru	bgtspccr,data\t-sp.ccr
 	inccru	bgcmccr,data\c-m.ccr
 
-	IFNE	janglish
+	IFNE	JAPANESE
 	inccru	bgcontccr,data\cont.ccr
 	inccru	bgcontpcr,data\cont.pcr
 
@@ -294,7 +294,7 @@ musicsize	=	0
 	incsnd	bgm9,snd\sgbgm9.bin
 	incsnd	bgm10,snd\sgbgm10.bin
 
-	ifne	janglish ; if janglish = 1
+	ifne	JAPANESE ; if JAPANESE = 1
 	inccru	obj2ccr,data\obj-2.ccr ; training/game text (JP)
 	fileslog data\obj-3.ccr
 	elseif
