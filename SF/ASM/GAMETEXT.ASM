@@ -57,7 +57,28 @@ cesmintxt	newtext	2,<m>
 cessectxt	newtext	2,<s>
 scoretxt2	newtext	2,<score>
 	ENDC
+	
+	IFNE	SPANISH			
+pausetxt	newtext	14,<PAUSED>		;spanish pause
+scoretxt	newtext	14,<SCORE>		;spanish score
+totalscoretxt	newtext	14,<TOTAL SCORE>		;spanish total score
+slashtxt	newtext	14,</>
+percenttxt	newtext	14,<PERCENTAGE>
+bonustxt	newtext	14,<BONUS 1 CREDIT>
+teamtxt	newtext	14,<SHIELD OF TEAMMATES>
+percenttxt2	newtext	14,<%>
+perfecttxt	newtext	14,<PERFECT//>
+frogtxt	newtext	14,<SLIPPY>
+bunnytxt	newtext	14,<PEPPY>
+cocktxt	newtext	14,<FALCO>
+deadtxt	newtext	14,<IS DOWN>
+stagetxt	newtext	14,<STAGE>
+cesmintxt	newtext	2,<m>
+cessectxt	newtext	2,<s>
+scoretxt2	newtext	2,<score>
+	ENDC
 
+	IFEQ	SPANISH
 	IFEQ	GERMAN
 	IFEQ	FRENCH
 	IFEQ	JANGLISH
@@ -78,6 +99,7 @@ stagetxt	newtext	14,<STAGE>
 cesmintxt	newtext	2,<m>
 cessectxt	newtext	2,<s>
 scoretxt2	newtext	2,<score>
+	ENDC
 	ENDC
 	ENDC
 	ENDC
@@ -115,6 +137,20 @@ msgnum	=	1
 	endc
 	endc
 	
+	IFNE	german			;if german = 1 and spanish = 1
+	IFNE	spanish
+	printf	"You cannot have german and french on at the same time"
+	fail
+	endc
+	endc
+	
+	IFNE	french			;if spanish = 1 and french = 1
+	IFNE	spanish
+	printf	"You cannot have german and french on at the same time"
+	fail
+	endc
+	endc
+	
 	IFNE	german			;if german = 1
 	include	MSG\german.inc		;use german message file
 	ENDC
@@ -123,9 +159,16 @@ msgnum	=	1
 	include	MSG\french.inc		;use french message file
 	ENDC
 
+
+	IFNE	spanish			;if spanish = 1
+	include	MSG\spanish.inc		;use spanish message file
+	ENDC
+
+	IFEQ	spanish
 	IFEQ	german			;if german = 0
 	IFEQ	french			;if french = 0
 	include	MSG\janglish.inc	;use english/japanese message file
+	endc
 	endc
 	endc
 	fclose	!

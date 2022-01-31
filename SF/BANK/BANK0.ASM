@@ -110,7 +110,7 @@ bgandpcr
 	db	$20,$15,$a,$0,$1,$1,$0,$ff,$ff,$0,$0 
 	ELSEIF
 
-	IFEQ	GERMAN+FRENCH
+	IFEQ	GERMAN+FRENCH+SPANISH
 ; british
 	db	$20,$15,$a,$0,$2,$1,$0,$ff,$ff,$0,$0
 
@@ -124,6 +124,11 @@ bgandpcr
 	IFNE	FRENCH
 ; france
 	db	$20,$15,$a,$0,$6,$1,$0,$ff,$ff,$0,$0
+	ENDC
+	
+	IFNE	SPANISH
+; spanish
+	db	$20,$15,$a,$0,$8,$1,$0,$ff,$ff,$0,$0
 	ENDC
 
 	ENDC

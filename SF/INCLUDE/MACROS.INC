@@ -4149,11 +4149,17 @@ txt	macro
 	db	"\3",0
 	ENDC
 	
+	IFNE	spanish			;german = 1
+	db	"\3",0
+	ENDC
+	
+	IFEQ	spanish
 	IFEQ	janglish
 	IFEQ	french
 	IFEQ	german
 	db	"\2",0
 	ENDC
+	endc
 	endc
 	endc
 	
