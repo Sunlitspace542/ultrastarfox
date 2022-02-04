@@ -1849,14 +1849,24 @@ playermove_srou
 .fast
 	s_set_alvar		W,x,al_worldy,maxpmoveY
 
+	lda	mousemode
+	beq	.normalwingbounce
+	a16
+	lda			plrotx
+	sec
+	sbc	#1
+	sta			plrotx		
+	a8
+	bra	.donewingbounce
+	
+.normalwingbounce
 	a16
 	lda			plrotx
 	nega
 	asra
 	sta			plrotx		
 	a8
-
-
+.donewingbounce
 	s_or_var		B,pmovelimit,#pml_lwbottom!pml_rwbottom
 
 	s_set_var		B,player_noctrlcnt,#4
@@ -1940,6 +1950,17 @@ playermove_srou
 	s_test_var		B,pmovelimit,#pml_lwbottom!pml_rwbottom
 	s_beq			.nwb
 
+	lda	mousemode
+	beq	.normalbounce
+	a16
+	lda			plrotx
+	nega
+	sec
+	sbc			#1		; 256*10 = push wing up 
+	sta			plrotx		; so not hit gnd again.	
+	a8
+	bra	.donebounce
+.normalbounce
 	a16
 	lda			plrotx
 	nega
@@ -1948,6 +1969,8 @@ playermove_srou
 	sta			plrotx		; so not hit gnd again.	
 	a8
 
+
+.donebounce
 	s_set_var		B,player_noctrlcnt,#4
 .nwb
 
@@ -2395,7 +2418,7 @@ playermove_srou
 	s_add_var		W,plrotx,#Xrotspeed
 	bra	.nhu
 .mouseupup
-	s_add_alvar		W,x,al_worldy,#16
+	s_add_alvar		W,x,al_worldy,#20
 	ENDC
 .nhu
 	s_jmp_keyup		jdown,.nhd
@@ -2409,7 +2432,7 @@ playermove_srou
 	s_sub_var		W,plrotx,#Xrotspeed
 	bra	.nhd
 .mousedowndown
-	s_sub_alvar		W,x,al_worldy,#16
+	s_sub_alvar		W,x,al_worldy,#20
 	ENDC
 .nhd
 	IFNE	mouseon
