@@ -47,7 +47,7 @@ pathinfo	=	0	; output path information?
 ; sflag7    =  normal collision flag
 ; sflag8    =  flag macros
 
-	incfile	ASM\pathmacs.asm
+	incfile	ASM\PATH\pathmacs.asm
 
 friendhp_unit	=	10
 

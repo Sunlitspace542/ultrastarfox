@@ -1707,19 +1707,20 @@ window_buffer	php
 
 
 ;****************************************************************
-;*								*
-;*		mouse.x65					*
-;*		Super NES Mouse System file			*
-;*		March 11, 1992          			*
-;*		(c) 1992 Nintendo of Ameica Inc.		*
-;*								*
+;*																*
+;*		Super NES Mouse BIOS									*
+;*		March 10, 1992        									*
+;*		Modified by Kandowontu for ultrastarfox					*
+;*		(c) 1992 Nintendo of America Inc.						*
+;*		2022 Kandowontu											*
+;*																*
 ;****************************************************************
 ;
 ;****************************************************************
 ;****************************************************************
-;*								*
-;*		  Mouse Driver Routine (Ver 1.00)		*
-;*						         	*
+;*																*
+;*		  Mouse Driver Routine (Ver 1.00)						*
+;*						         								*
 ;****************************************************************
 ;****************************************************************
 		db	'START OF MOUSE BIOS'	;do not delete
@@ -1768,7 +1769,7 @@ window_buffer	php
 ;*  ============================================================== *
 ;*        Mouse_read                                               *
 ;*  ============================================================== *
-;*								   *
+;*								   								   *
 ;*  If this routine is called every frame, then the mouse status   *
 ;*     will be set to the appropriate registers.                   *
 ;*                                                                 *
@@ -1777,7 +1778,7 @@ window_buffer	php
 ;*                                                                 *
 ;* OUTPUT                                                          *
 ;*     Connection status (mouse_con) D0=1 Mouse connected to Joy1  *
-;*	                             D1=1 Mouse connected to Joy2  *
+;*	                             D1=1 Mouse connected to Joy2  	   *
 ;*                                                                 *
 ;*     Switch (mouse_sw0,1)  D0=left switch turbo                  *
 ;*                           D1=right switch turbo                 *
@@ -1787,9 +1788,9 @@ window_buffer	php
 ;*                                                                 *
 ;*     Mouse movement (ball) value                                 *
 ;*            (mouse_x) D7=0 Positive Turn, D7=1 Negative Turn     *
-;*			     D6-D0 X movement value                *
+;*			     D6-D0 X movement value							   *
 ;*            (mouse_y) D7=0 Positive Turn, D7=1 Negative Turn     *
-;*			     D6-D0 Y movement value                *
+;*			     D6-D0 Y movement value                			   *
 ;*                                                                 *
 ;*                                                                 *
 ;******************************************************************* 
@@ -1895,25 +1896,25 @@ mouse_data
 
 ;*******************************************************************
 ;*  =============================================================  *
-;*	Speed_change                                   		   *
+;*	Speed_change                                   		   		   *
 ;*  =============================================================  *
 ;*  Set speed to mouse_sp_set.  Give mouse port the value of x and *
-;*	call this routine.					   *
+;*	call this routine.					   						   *
 ;*  If this routine is called without setting mouse_sp_set, then   *
 ;*      previous speed will be assigned to current speed.          *
-;*  Normally, mouse speed data will be saved to mouse_sp.	   *
+;*  Normally, mouse speed data will be saved to mouse_sp.	   	   *
 ;*  If mouse speed cannot be set properly, then error code will    *
-;*  	be set to mouse_sp.					   *	
-;*								   *
-;* INPUT							   *
+;*  	be set to mouse_sp.					   					   *
+;*								   								   *
+;* INPUT							   							   *
 ;*      X=connection port (X:0=joy1 1=joy2)                        *
 ;*      MOUSE_sp_seT0= JOY1 setting speed                          *
-;*      MOUSE_sp_seT1= JOY2 setting speed                          * 
-;* OUTPUT							   *
+;*      MOUSE_sp_seT1= JOY2 setting speed                          *
+;* OUTPUT							   							   *
 ;*      MOUSE_sp0 = Joy1 Mouse speed                               *
-;*	          (0=slow, 1=medium, 2=fast, $80=error code        *
+;*	          (0=slow, 1=medium, 2=fast, $80=error code        	   *
 ;*      MOUSE_sp1 = Joy2 Mouse speed                               *
-;*	          (0=slow, 1=medium, 2=fast, $80=error code        *
+;*	          (0=slow, 1=medium, 2=fast, $80=error code        	   *
 ;*******************************************************************
 
 speed_change
@@ -1941,7 +1942,7 @@ speed_change
 
 	ldy	#10		; Shift register read has no meaning
 .s20
-	lda	$4016,x		;
+	lda	$4016,x
 	dey
 	bne	.s20
 
@@ -1967,12 +1968,12 @@ speed_change
 	plp
 	rts
 
-	db	'NINTENDO SHVC MOUSE BIOS Ver1.00' 	;do not delete
+	db	'NINTENDO SHVC MOUSE BIOS Ver1.00'	;do not delete
 ;
-;            if user modifies program, then change to 
-;            'MODIFIED FROM SHVC MOUSE BIOS Ver1.00'
+;			if user modifies program, then change to 
+;			'MODIFIED FROM SHVC MOUSE BIOS Ver1.00'
 ;
-	db	'END OF MOUSE BIOS'	    		;do not delete
+	db	'END OF MOUSE BIOS'	    			;do not delete
 
 
 

@@ -1,10 +1,12 @@
 ;****************************************************************
-;*								*
-;*		equ_tbl.x65					*
-;*		Super NES Mouse System file			*
-;*		March 10, 1992        				*
-;*		(c) 1992 Nintendo of Ameica Inc.		*
-;*								*
+;*																*
+;*		MOUSEALC.INC											*
+;*		Super NES Mouse System file								*
+;*		March 10, 1992        									*
+;*		Modified by Kandowontu for ultrastarfox					*
+;*		(c) 1992 Nintendo of America Inc.						*
+;*		2022 Kandowontu											*
+;*																*
 ;****************************************************************
 ;===================================================================
 ;               BG Space for character code
