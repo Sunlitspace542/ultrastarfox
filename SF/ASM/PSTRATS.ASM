@@ -1854,7 +1854,7 @@ playermove_srou
 	a16
 	lda			plrotx
 	sec
-	sbc	#10
+	sbc	#40
 	sta			plrotx		
 	a8
 	bra	.donewingbounce
@@ -1956,7 +1956,7 @@ playermove_srou
 	lda			plrotx
 	nega
 	sec
-	sbc			#10		; 256*10 = push wing up 
+	sbc			#40		; 256*10 = push wing up 
 	sta			plrotx		; so not hit gnd again.	
 	a8
 	bra	.donebounce
