@@ -1849,6 +1849,7 @@ playermove_srou
 .fast
 	s_set_alvar		W,x,al_worldy,maxpmoveY
 
+	IFNE	mouseon
 	lda	mousemode
 	beq	.normalwingbounce
 	a16
@@ -1860,6 +1861,7 @@ playermove_srou
 	bra	.donewingbounce
 	
 .normalwingbounce
+	ENDC
 	a16
 	lda			plrotx
 	nega
@@ -1950,6 +1952,8 @@ playermove_srou
 	s_test_var		B,pmovelimit,#pml_lwbottom!pml_rwbottom
 	s_beq			.nwb
 
+
+	IFNE	MOUSEON
 	lda	mousemode
 	beq	.normalbounce
 	a16
@@ -1960,6 +1964,8 @@ playermove_srou
 	sta			plrotx		; so not hit gnd again.	
 	a8
 	bra	.donebounce
+	ENDC
+
 .normalbounce
 	a16
 	lda			plrotx
