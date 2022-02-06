@@ -64,8 +64,8 @@ ASM\draw.asm ASM\endseq.asm data\f-1.pcr ASM\cont.asm \
 
 ## Bank 4
 bank4.sob: BANK\bank4.asm \
-$(STDFILES) $(STRATFILES) ASM\PATH\pathmacs.asm maps\pathdata.asm \
-maps\epathdat.asm maps\dpathdat.asm maps\kpathdat.asm ASM\PATH\paths.asm \
+$(STDFILES) $(STRATFILES) PATH\pathmacs.asm PATH\pathdata.asm \
+PATH\epathdat.asm PATH\dpathdat.asm PATH\kpathdat.asm PATH\paths.asm \
 ASM\STRAT\d2strats.asm 
 
 ## Bank 5, bank 13

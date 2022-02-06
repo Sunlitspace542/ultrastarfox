@@ -25,7 +25,7 @@
 
 ;------------------------------------------------------------------
 	bank	4
-	incfile	ASM\PATH\paths.asm
+	incfile	PATH\paths.asm
 	incfile	ASM\STRAT\d2strats.asm
 	bankend	4
 ;------------------------------------------------------------------

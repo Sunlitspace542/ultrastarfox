@@ -32,7 +32,6 @@ controlsscreenpal	equ	0	; Controls screen palette to use, 0 = NTSC, 1 = PAL	(DOE
 shieldboostcolorbox	equ	1	; enable weird color box thing on shield and boost meters								#
 							; (set to 0 if moving meter positions)	(also disables hud hide on boss win/level end)	#
 mouseon				equ	0	; Enable SNES mouse (connect to port 2)													#
-							; (MUST BE ON, currently cannot be disabled without compile errors)						#
 							; (if using this, setting "crosshairalwayson" to 1 is recommended)						#
 ;####################################################################################################################
 
