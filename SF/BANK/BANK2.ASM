@@ -1,13 +1,13 @@
-	include	INCLUDE\header.inc
-	include	INCLUDE\marioi.inc
-	include	INCLUDE\stratmac.inc
-	include	INCLUDE\stratlib.inc
-	include	INCLUDE\bgmacs.inc
+	include	INC\header.inc
+	include	INC\marioi.inc
+	include	INC\stratmac.inc
+	include	INC\stratlib.inc
+	include	INC\bgmacs.inc
 	include	EXT\blink.ext
 
-	include	INCLUDE\mapstructs.inc
-	include	INCLUDE\mapmacs.inc
-	include	INCLUDE\shmacs.inc
+	include	INC\mapstructs.inc
+	include	INC\mapmacs.inc
+	include	INC\shmacs.inc
 
 	include	EXT\mario.ext
 	include	EXT\incbins.ext
@@ -36,7 +36,7 @@
 	include	EXT\expstrat.ext
 	include	EXT\shbanks.ext
 	include	EXT\mem.ext
-	include	INCLUDE\istrats.inc
+	include	INC\istrats.inc
 
 	include	EXT\mhofs.ext
 
@@ -110,7 +110,7 @@ planetdmapos2	dw	100
 	minfo	<debug>
 	incfile	ASM\bootnmi.asm
 	minfo	bootnmi
-	incfile	ASM\stratrou.asm
+	incfile	ASM\STRAT\stratrou.asm
 	minfo	<stratrou>
 	incfile	ASM\nmi.asm
 	minfo	nmi
@@ -127,7 +127,7 @@ planetdmapos2	dw	100
 ;------------------------------------------------------------------
 
 
-	include	INCLUDE\tail.inc
+	include	INC\tail.inc
 
 
 

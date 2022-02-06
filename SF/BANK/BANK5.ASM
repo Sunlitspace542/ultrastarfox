@@ -1,10 +1,10 @@
 
 
-	include	INCLUDE\header.inc
-	include	INCLUDE\mapmacs.inc
+	include	INC\header.inc
+	include	INC\mapmacs.inc
 
-	include	INCLUDE\stratequ.inc
-	include	INCLUDE\mapstructs.inc
+	include	INC\stratequ.inc
+	include	INC\mapstructs.inc
 
 	include	EXT\mario.ext
 	include	EXT\dstrats.ext
@@ -37,12 +37,12 @@
 	include	EXT\expstrat.ext
 	include	EXT\continue.ext
 	include	EXT\trans.ext
-	include	INCLUDE\bgmacs.inc
+	include	INC\bgmacs.inc
 
 
 
 real_istrats =	0
-	include	ASM\istrats.asm
+	include	ASM\STRAT\istrats.asm
 
 
 ;------------------------------------------------------------------
@@ -66,6 +66,6 @@ real_istrats =	0
 	bankend	39
 
 
-	include	INCLUDE\tail.inc
+	include	INC\tail.inc
 
 

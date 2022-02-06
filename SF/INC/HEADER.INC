@@ -39,7 +39,7 @@ filelist	=	0
 
 	INCLUDE	ASM\ifcold.asm
 
-	include	INCLUDE\macros.inc
+	include	INC\macros.inc
 
 
 totaltime	=	0
@@ -48,10 +48,10 @@ totaltime	=	0
 
 	include	vars.inc
 
-	include	INCLUDE\sfxregs.inc
-	include	INCLUDE\soundequ.inc
-	include	INCLUDE\structs.inc
-	include	INCLUDE\alcs.inc
+	include	INC\sfxregs.inc
+	include	INC\soundequ.inc
+	include	INC\structs.inc
+	include	INC\alcs.inc
 
 
 

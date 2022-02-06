@@ -1,5 +1,5 @@
-	include	INCLUDE\header.inc
-	include	INCLUDE\strathdr.inc
+	include	INC\header.inc
+	include	INC\strathdr.inc
 	include	EXT\gstrats.ext
 	include	EXT\gistrats.ext
 	include	EXT\gcstrats.ext
@@ -12,8 +12,8 @@
 	include	EXT\bootnmi.ext
 
 	bank	8
-	incfile	ASM\gbstrats.asm
-	incfile	ASM\gastrats.asm
+	incfile	ASM\STRAT\gbstrats.asm
+	incfile	ASM\STRAT\gastrats.asm
 
 	public	bgmd
 	public	bgmdlen
@@ -22,6 +22,6 @@ bgmdlen	equ	*-bgmd
 
 	bankend	8
 
-	include	INCLUDE\tail.inc
+	include	INC\tail.inc
 
 

@@ -1,5 +1,5 @@
 
-	include	INCLUDE\header.inc
+	include	INC\header.inc
 
 	incpublics	EXT\incbins.ext
 
@@ -343,6 +343,6 @@ musicsize	=	0
 
 
 
-	include	INCLUDE\tail.inc
+	include	INC\tail.inc
 
 

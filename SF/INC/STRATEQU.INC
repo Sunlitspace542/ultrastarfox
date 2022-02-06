@@ -965,7 +965,7 @@ gasf_killtype3	equ	4
 gasf_flag1	equ	8
 
 weaphdr	=	1
-	include	INCLUDE\weapons.inc
+	include	INC\weapons.inc
 
 ; Dylan's scale equates
 boss00_scale	=	2

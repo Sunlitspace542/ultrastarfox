@@ -1,5 +1,5 @@
-	include	INCLUDE\header.inc
-	include	INCLUDE\strathdr.inc
+	include	INC\header.inc
+	include	INC\strathdr.inc
 	include	EXT\gstrats.ext
 	include	EXT\gastrats.ext
 	include	EXT\ga2strats.ext
@@ -8,14 +8,14 @@
 	include	EXT\pistrats.ext
 	include	EXT\pstrats.ext
 	include	EXT\dstrats.ext
-	include	INCLUDE\shmacs.inc
+	include	INC\shmacs.inc
 	include	EXT\expstrat.ext
 	include	EXT\bootnmi.ext
 
 	bank	7
-	incfile	ASM\gistrats.asm
-	incfile	ASM\gb3strats.asm
+	incfile	ASM\STRAT\gistrats.asm
+	incfile	ASM\STRAT\gb3strats.asm
 	bankend	7
 
-	include	INCLUDE\tail.inc
+	include	INC\tail.inc
 

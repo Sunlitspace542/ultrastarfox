@@ -1,7 +1,7 @@
 
-	include	INCLUDE\header.inc
-	include	INCLUDE\strathdr.inc
-	include	INCLUDE\bgmacs.inc
+	include	INC\header.inc
+	include	INC\strathdr.inc
+	include	INC\bgmacs.inc
 
 	include	EXT\gstrats.ext
 	include	EXT\pstrats.ext
@@ -26,12 +26,12 @@
 ;------------------------------------------------------------------
 	bank	4
 	incfile	ASM\paths.asm
-	incfile	ASM\d2strats.asm
+	incfile	ASM\STRAT\d2strats.asm
 	bankend	4
 ;------------------------------------------------------------------
 
 
-	include	INCLUDE\tail.inc
+	include	INC\tail.inc
 
 
 

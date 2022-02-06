@@ -23,7 +23,7 @@ alcon	=	1
 	defal	roty,1
 	defal	rotz,1
 	defal	vel,1
-	include	INCLUDE\GILESal.inc
+	include	INC\GILESal.inc
 	struct	al_size,0
 
 	alc	viewblk,al_size
@@ -32,7 +32,7 @@ alcon	=	1
 
 	structure	xalblks-alblks
 	struct	alx_start,0
-	include	INCLUDE\GILESalx.inc
+	include	INC\GILESalx.inc
 	defalx	colframe,1
 	defalx	animframe,1
 	defalx	snd1,1

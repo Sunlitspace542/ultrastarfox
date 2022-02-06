@@ -2049,7 +2049,7 @@ fire_weapon_l
 
 
 weaphdr	=	0
-	include	INCLUDE\weapons.inc
+	include	INC\weapons.inc
 
 
 

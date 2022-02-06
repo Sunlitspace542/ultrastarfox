@@ -1,9 +1,9 @@
-	include	INCLUDE\header.inc
-	include	INCLUDE\shmacs.inc
+	include	INC\header.inc
+	include	INC\shmacs.inc
 
 
-	include	INCLUDE\stratmac.inc
-	include	INCLUDE\stratlib.inc
+	include	INC\stratmac.inc
+	include	INC\stratlib.inc
 
 	include	EXT\stratrou.ext
 	include	EXT\game.ext
@@ -49,7 +49,7 @@
 	incfile	ASM\sgtabs.asm
 	incfile	ASM\sgdata.asm
 
-	incfile	INCLUDE\arctan.asm
+	incfile	INC\arctan.asm
 
 
 Do_HDR	=	1
@@ -87,8 +87,8 @@ abort_vn
 	ELSEIF
 bgandpcr
 	ENDC
-	incfile	ASM\istrats.asm
-	incfile	ASM\d3strats.asm
+	incfile	ASM\STRAT\istrats.asm
+	incfile	ASM\STRAT\d3strats.asm
 	bankend	32
 
 	org	$00ffc0,$7fc0
@@ -164,6 +164,6 @@ bgandpcr
 ;------------------------------------
 
 
-	include	INCLUDE\tail.inc
+	include	INC\tail.inc
 
 
