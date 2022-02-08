@@ -4,7 +4,7 @@ Star Fox / StarWing (SNES, 1993), with modifications for easier creation of ROM 
 ## Features
 
 - SuperFX Fast mode (21Mhz) support and various optimizations
-- FastROM
+- FastROM (As a result of this, the game only functions properly on 1CHIP revisions of the SNES.)
 - Lots of free bank space for new models, assets and code
 - 256 texture slots
 - 250 Faces/Vertices limit
