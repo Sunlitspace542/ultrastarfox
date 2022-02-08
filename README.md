@@ -55,7 +55,7 @@ After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 
 ## Project Structure
 ```
-hackerstarfox
+ultrastarfox
 ├── BIN: exe files needed to compile game
 ├── optionalstuff: optional graphics files
 ├── SF: Main source code is located here
