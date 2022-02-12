@@ -322,8 +322,8 @@ coreAP	equ	4
 ;-----------------------------------------------------------------------------
 ; PLAYER.
 
-playerW_HP	equ	5	; Wings HP (Stock = 5)
-playerB_HP	equ	40	; Player Body HP (Stock = 40)
+playerW_HP	equ	5	; Wings HP/health/shield (Stock = 5)
+playerB_HP	equ	40	; Player Body HP/health/shield (Stock = 40)
 playerW_AP	equ	3
 playerB_AP	equ	3	       
 playerB_boxsize	equ	10

@@ -1723,7 +1723,8 @@ window_buffer	php
 ;*						         								*
 ;****************************************************************
 ;****************************************************************
-		db	'START OF MOUSE BIOS'	;do not delete
+		db	'START OF SNES MOUSE BIOS'	;do not delete
+; original: 'START OF MOUSE BIOS'
 ;	incpublics	mouse.ext
 ;================================================================
 ;		RAM Definition    
@@ -1968,12 +1969,13 @@ speed_change
 	plp
 	rts
 
-	db	'NINTENDO SHVC MOUSE BIOS Ver1.00'	;do not delete
+	db	'MODIFIED FROM SNES MOUSE BIOS Ver1.00'	;do not delete
 ;
 ;			if user modifies program, then change to 
 ;			'MODIFIED FROM SHVC MOUSE BIOS Ver1.00'
+;			Original: 'NINTENDO SHVC MOUSE BIOS Ver1.00'
 ;
-	db	'END OF MOUSE BIOS'	    			;do not delete
-
+	db	'END OF SNES MOUSE BIOS'	    			;do not delete
+;	original: 'END OF MOUSE BIOS'
 
 

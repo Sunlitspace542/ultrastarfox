@@ -93,9 +93,8 @@ bgandpcr
 
 	org	$00ffc0,$7fc0
 
-; Star Fox/StarWing ROM header is laid out as such:
-; Internal ROM Name
-; Map mode ($20 = SlowROM $30 = FastROM), ROM type, ROM size, SRAM size, Country, $1, version, checksum compliment, checksum, $0, $0
+; TODO: make this cleaner by adding IF's for dest code (and map mode if we decide to make fastrom disable-able, that is, if snes9x 1.61 is ever released)
+; also check to make sure each dest code is correct
 
 	IFEQ	internalname	; if internalname = 0
 	db	"STAR FOX             "  
@@ -107,35 +106,83 @@ bgandpcr
 
 	IFEQ	PAL
 ; american
-	db	$20,$15,$a,$0,$1,$1,$0,$ff,$ff,$0,$0 
+	db	$20					;Map Mode (SlowROM LoROM)
+	db	$15					;Cartridge Type (13 = MC1, 15 = GSU-2)
+	db	$0a					;ROM Size
+	db	$00					;RAM Size (if 0, use exp RAM size above)
+	db	$01					;Destination Code (USA)
+	db	$01					;Fixed Value
+	db	$00					;Mask ROM Version
+	dw	$ffff				;Compliment Check
+	dw	$0000				;Check Sum
 	ELSEIF
 
 	IFEQ	GERMAN+FRENCH+SPANISH
 ; british
-	db	$20,$15,$a,$0,$2,$1,$0,$ff,$ff,$0,$0
+	db	$20					;Map Mode (SlowROM LoROM)
+	db	$15					;Cartridge Type
+	db	$0a					;ROM Size
+	db	$00					;ROM Size (if 0, use exp RAM size above)
+	db	$02					;Destination Code (PAL)
+	db	$01					;Fixed Value
+	db	$00					;Mask ROM Version
+	dw	$ffff				;Compliment Check
+	dw	$0000				;Check Sum
 
 	ENDC
 
 	IFNE	GERMAN
 ; german
-	db	$20,$15,$a,$0,$9,$1,$0,$ff,$ff,$0,$0
+	db	$20					;Map Mode (SlowROM LoROM)
+	db	$15					;Cartridge Type (13 = MC1, 15 = GSU-2)
+	db	$0a					;ROM Size
+	db	$00					;RAM Size (if 0, use exp RAM size above)
+	db	$09					;Destination Code (GER)
+	db	$01					;Fixed Value
+	db	$00					;Mask ROM Version
+	dw	$ffff				;Compliment Check
+	dw	$0000				;Check Sum
 	ENDC
 
 	IFNE	FRENCH
 ; france
-	db	$20,$15,$a,$0,$6,$1,$0,$ff,$ff,$0,$0
+	db	$20					;Map Mode (SlowROM LoROM)
+	db	$15					;Cartridge Type (13 = MC1, 15 = GSU-2)
+	db	$0a					;ROM Size
+	db	$00					;RAM Size (if 0, use exp RAM size above)
+	db	$06					;Destination Code (FRA)
+	db	$01					;Fixed Value
+	db	$00					;Mask ROM Version
+	dw	$ffff				;Compliment Check
+	dw	$0000				;Check Sum
 	ENDC
 	
 	IFNE	SPANISH
 ; spanish
-	db	$20,$15,$a,$0,$8,$1,$0,$ff,$ff,$0,$0
+	db	$20					;Map Mode (SlowROM LoROM)
+	db	$15					;Cartridge Type (13 = MC1, 15 = GSU-2)
+	db	$0a					;ROM Size
+	db	$00					;RAM Size (if 0, use exp RAM size above)
+	db	$08					;Destination Code (SPN)
+	db	$01					;Fixed Value
+	db	$00					;Mask ROM Version
+	dw	$ffff				;Compliment Check
+	dw	$0000				;Check Sum
 	ENDC
 
 	ENDC
 
 	ELSEIF
 ; japan
-	db	$20,$15,$a,$0,$0,$1,$0,$ff,$ff,$0,$0
+	db	$20					;Map Mode (SlowROM LoROM)
+	db	$15					;Cartridge Type (13 = MC1, 15 = GSU-2)
+	db	$0a					;ROM Size
+	db	$00					;RAM Size (if 0, use exp RAM size above)
+	db	$00					;Destination Code (JPN)
+	db	$01					;Fixed Value
+	db	$00					;Mask ROM Version
+	dw	$ffff				;Compliment Check
+	dw	$0000				;Check Sum
 
 	ENDC
 

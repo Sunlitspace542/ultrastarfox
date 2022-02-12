@@ -2512,6 +2512,8 @@ playermove_srou
 .nsupersLRkey
 	ENDC
 
+; Peppy's favorite part
+
 	s_jmp_varNOTZERO	B,player_rollZvel,.nroll
 
 	s_beqdec_var		B,player_rolldelay,.lragain
@@ -2525,7 +2527,7 @@ playermove_srou
 .isright
 .lragain
 	s_jmp_anyLRkeyup	.nroll
-	s_set_var		B,player_rolldelay,#3
+	s_set_var		B,player_rolldelay,#3 ; change #3 to another number to change how responsive barrel rolls are (ex. #5)
 .nroll
 
 

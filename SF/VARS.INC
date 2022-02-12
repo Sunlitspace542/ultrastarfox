@@ -25,11 +25,11 @@ hipolyarwing		equ	0	; high poly arwing [0 = low poly (default) 1 = hi poly]					
 wnglzrman_helpball	equ	0 	; Restore Laser Upgrade enemy code to spawn helperball items							#
 							; instead of laser upgrades	[0 = off 1 = on]											#
 internalname		equ	0	; internal rom name, [0 = STAR FOX, 1 = STAR WING]										#
-titlelogo			equ 2	; Title screen logo to use, [0 = Star Fox JP, 1 = Star Fox US Rev 0,					#
+titlelogo			equ 1	; Title screen logo to use, [0 = Star Fox JP, 1 = Star Fox US Rev 0,					#
 							; 2 = Star Fox US Rev 1/2, 3 = StarWing]												#
 							; (also affects which game name is shown in credits, 0/1 = STAR FOX, 2 = STARWING)		#
 controlsscreenpal	equ	0	; Controls screen palette to use, 0 = NTSC, 1 = PAL	(DOES NOT AFFECT JP)				#
-shieldboostcolorbox	equ	1	; enable weird color box thing on shield and boost meters								#
+shieldboostcolorbox	equ	0	; enable weird color box thing on shield and boost meters								#
 							; (set to 0 if moving meter positions)	(also disables hud hide on boss win/level end)	#
 mouseon				equ	0	; Enable SNES mouse (connect to port 2)													#
 							; (if using this, setting "crosshairalwayson" to 1 is recommended)						#
