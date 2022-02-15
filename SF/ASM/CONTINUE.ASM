@@ -796,9 +796,9 @@ friends_messages_l
 .same	a16
 	and	#127
 	sta.l	m_z1
-	lda	#82
+	lda	#82  ; friend hp x
 	sta.l	m_x1
-	lda	#177
+	lda	#177 ; friend hp y
 	sta.l	m_y1
 
 	call_mario	mshowteammate2
@@ -895,9 +895,9 @@ friends_messages_l
 	adc	x1
 	adc	#facedata&WM
 	sta.l	m_faceptr
-	lda	#6 ; Character Portrait X pos
+	lda	#6    ; Character Portrait/mugshot X pos
 	sta.l	m_bigx
-	lda	#19*8 ; Character Portrait Y pos
+	lda	#19*8 ; Character Portrait/mugshot Y pos
 	sta.l	m_bigy
 	call_mario	mcopyface
 	plp

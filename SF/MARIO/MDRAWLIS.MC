@@ -860,15 +860,15 @@ mboostmeter
 
 	ENDC
 
-damagex	=	8
-damagey	=	22*8
+damagex	=	8 ; Shield meter (Damage meter) X pos
+damagey	=	22*8 ; Shield meter (Damage meter) Y pos
 damageheight =	8
 
 mdamagemeter
 	mpush	r11
 
-	move	r1,#damagex ; Shield meter (Damage meter) X pos
-	move	r2,#damagey ; Shield meter (Damage meter) Y pos
+	move	r1,#damagex
+	move	r2,#damagey
 	move	r3,#40
 	move	r4,#damageheight
 
