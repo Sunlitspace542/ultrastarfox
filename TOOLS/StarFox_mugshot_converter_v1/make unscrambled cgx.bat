@@ -1,1 +1,1 @@
-superfamiconv -i FACE.png -t FACE.CGX --no-remap --no-discard
+superfamiconv -i FACE.png -t FACE2.CGX --no-remap --no-discard
