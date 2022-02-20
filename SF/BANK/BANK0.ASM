@@ -91,10 +91,20 @@ bgandpcr
 	incfile	ASM\STRAT\d3strats.asm
 	bankend	32
 
-	org	$00ffc0,$7fc0
+	org $00ffb0,$7fb0
+	db	"01"				;Maker Code
+	db	"FO  "				;Game Code
+	db	0,0,0,0,0,0,0		;Fixed Value
+	db	6					;Expansion RAM Size (5 = 32kbyte, 6 = 64kbyte)
+	db	0					;Special Version
+	db	0					;Cartridge Type (Sub-number)
 
-; TODO: make this cleaner by adding IF's for dest code (and map mode if we decide to make fastrom disable-able, that is, if snes9x 1.61 is ever released)
-; also check to make sure each dest code is correct
+; TODO:
+; (done) make this cleaner by adding IF's for dest code
+; and map mode if we decide to make fastrom disable-able, that is, if snes9x 1.61 is ever released)
+; (done) also check to make sure each dest code is correct
+
+	org	$00ffc0,$7fc0
 
 	IFEQ	internalname	; if internalname = 0
 	db	"STAR FOX             "  
@@ -102,109 +112,78 @@ bgandpcr
 	db	"STAR WING            "  
 	ENDC
 
+
+	; hardware info
+	db	$20					;Map Mode (SlowROM LoROM)
+	db	$14					;Cartridge Type
+							 ;(13) Super FX 1 (StarFox 1)
+							 ;(14) Super FX 2 (DOOM)
+							 ;(15) Battery + Super FX 2 (Yoshi's Island)
+							 ;(1A) Battery + Super FX 1 (Stunt Race FX)
+	db	$0b					;ROM Size (0A = 8mbit, 0B = 16mbit)
+	db	$00					;RAM Size (if 0, use exp RAM size above)
+
+
+	; region
 	IFEQ	JAPAN
 
-	IFEQ	PAL
-; american
-	db	$20					;Map Mode (SlowROM LoROM)
-	db	$15					;Cartridge Type (13 = MC1, 15 = GSU-2)
-	db	$0a					;ROM Size
-	db	$00					;RAM Size (if 0, use exp RAM size above)
-	db	$01					;Destination Code (USA)
-	db	$01					;Fixed Value
-	db	$00					;Mask ROM Version
-	dw	$ffff				;Compliment Check
-	dw	$0000				;Check Sum
-	ELSEIF
+		IFEQ	PAL			; american
+		db	$01				; Destination Code (USA)
+		ELSEIF
 
-	IFEQ	GERMAN+FRENCH+SPANISH
-; british
-	db	$20					;Map Mode (SlowROM LoROM)
-	db	$15					;Cartridge Type
-	db	$0a					;ROM Size
-	db	$00					;ROM Size (if 0, use exp RAM size above)
-	db	$02					;Destination Code (PAL)
-	db	$01					;Fixed Value
-	db	$00					;Mask ROM Version
-	dw	$ffff				;Compliment Check
-	dw	$0000				;Check Sum
+		IFEQ	GERMAN+FRENCH+SPANISH	; british
+		db	$02							; Destination Code (PAL)
+		ENDC
+
+		IFNE	GERMAN		; german
+		db	$09				; Destination Code (GER)
+		ENDC
+
+		IFNE	FRENCH		; france
+		db	$06				; Destination Code (FRA)
+		ENDC
+		
+		IFNE	SPANISH		; spanish
+		db	$08				; Destination Code (SPN)
+		ENDC
 
 	ENDC
 
-	IFNE	GERMAN
-; german
-	db	$20					;Map Mode (SlowROM LoROM)
-	db	$15					;Cartridge Type (13 = MC1, 15 = GSU-2)
-	db	$0a					;ROM Size
-	db	$00					;RAM Size (if 0, use exp RAM size above)
-	db	$09					;Destination Code (GER)
-	db	$01					;Fixed Value
-	db	$00					;Mask ROM Version
-	dw	$ffff				;Compliment Check
-	dw	$0000				;Check Sum
-	ENDC
-
-	IFNE	FRENCH
-; france
-	db	$20					;Map Mode (SlowROM LoROM)
-	db	$15					;Cartridge Type (13 = MC1, 15 = GSU-2)
-	db	$0a					;ROM Size
-	db	$00					;RAM Size (if 0, use exp RAM size above)
-	db	$06					;Destination Code (FRA)
-	db	$01					;Fixed Value
-	db	$00					;Mask ROM Version
-	dw	$ffff				;Compliment Check
-	dw	$0000				;Check Sum
-	ENDC
-	
-	IFNE	SPANISH
-; spanish
-	db	$20					;Map Mode (SlowROM LoROM)
-	db	$15					;Cartridge Type (13 = MC1, 15 = GSU-2)
-	db	$0a					;ROM Size
-	db	$00					;RAM Size (if 0, use exp RAM size above)
-	db	$08					;Destination Code (SPN)
-	db	$01					;Fixed Value
-	db	$00					;Mask ROM Version
-	dw	$ffff				;Compliment Check
-	dw	$0000				;Check Sum
-	ENDC
+	ELSEIF					; japan
+	db	$00					; Destination Code (JPN)
 
 	ENDC
 
-	ELSEIF
-; japan
-	db	$20					;Map Mode (SlowROM LoROM)
-	db	$15					;Cartridge Type (13 = MC1, 15 = GSU-2)
-	db	$0a					;ROM Size
-	db	$00					;RAM Size (if 0, use exp RAM size above)
-	db	$00					;Destination Code (JPN)
-	db	$01					;Fixed Value
-	db	$00					;Mask ROM Version
-	dw	$ffff				;Compliment Check
-	dw	$0000				;Check Sum
 
-	ENDC
+	; last data of internal header
+	db	$33					; Fixed Value
+	db	$00					; Mask ROM Version
+	dw	$ffff				; Compliment Check
+	dw	$0000				; Check Sum
 
 ;------------------------------------
 
 ;Hardware Vectors	-------------------------
-	org	$00ffe4,$7fe4
-	dw	cop_vn
-	dw	break_vn
-	dw	abort_vn
-	dw	$0108
-	dw	$0000
-	dw	$010c
+	;Native
+	org	$00ffe0,$7fe0
+	dw	$00,$00				;4 bytes unused
+	dw	cop_vn				;COP
+	dw	break_vn			;BRK
+	dw	abort_vn			;ABORT
+	dw	$0108				;NMI
+	dw	$0000				;unused (would be RESET, but the SNES always boots in Emulation mode)
+	dw	$010c				;IRQ
 
-	org	$00fff4,$7ff4
-	dw	cop_ve
-	dw	0
-	dw	abort_ve
-	dw	nmi_ve
-	dw	start
-	dw	irq_ve
-
+	;Emulation
+	org	$00fff0,$7ff0
+	dw	$00,$00				;unused
+	dw	cop_ve				;COP
+	dw	$00					;unused (would be BRK, but BRK and IRQ share the same vector in Emulation mode)
+	dw	abort_ve			;ABORT
+	dw	nmi_ve				;NMI
+	dw	start				;RESET
+	dw	irq_ve				;IRQ/BRK
+	
 
 
 
