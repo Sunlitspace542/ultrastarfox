@@ -19,17 +19,15 @@ Star Fox / StarWing (SNES, 1993), with modifications for easier creation of ROM 
 
 ## Building
 
-Requirements: Microsoft Windows, DOSBox (DOSBox-X for Windows included), Python
+Requirements: Microsoft Windows, Python 3
 
-Download repo as ZIP and extract somewhere or clone repo with git via the command line.  
+Download repo as ZIP and extract somewhere, or clone the repo with git via the command line.  
 
-to build ROM, run ``build.cmd`` (Windows) or ``BUILD.BAT`` (DOSBox)  
+to build ROM, run ``build.cmd``  
 
-to build ROM with Logging, run ``build to log.cmd`` (Windows) or ``BLDtolog.BAT`` (DOSBox)  
+to build ROM with Logging, run ``build to log.cmd``
 
-to rebuild color palettes, run ``build palette.cmd`` (Windows) ``BLDPAL.BAT`` (DOSBox)  
-
-the .BAT versions of these can be run via DOSBox if you do not use Windows.  
+to rebuild color palettes, run ``build palette.cmd``  
 
 After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 
