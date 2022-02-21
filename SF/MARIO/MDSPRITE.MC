@@ -1597,64 +1597,66 @@ mlargescale
 
 
 ; this copies the face graphic into the bitmap
+; 640 bytes per portrait
+; 32 x 40 pixels
 
 facex	=	6
 facey	=	21*8
 
 mcopyface
 
-	sub	r0
-	ramb
+	sub	r0			; r0 = 0
+	ramb				; set RAM bank to 0
 	ibt	r0,#facedata>>16
-	romb
+	romb				; set ROM bank to data\face.cgx
 	mcache
 
 ; r4 = bitmap1+facex*col_size+facey*4
-	lms	r4,[m_bigx]
-	iwt	r0,#col_size/4
+	lms	r4,[m_bigx]		; x-pos to draw, (Peppy:2 Falco:12 Slippy:22)
+	iwt	r0,#col_size/4		; col_size equ 32*24
 	umult	r4
 	add	r0
 	to	r4
-	add	r0	; facex*col_size
+	add	r0			; facex*col_size
 
-	lms	r0,[m_bigy]
-	umult	#4	; facey*4
-	add	r4	; +facex*col_size
+	lms	r0,[m_bigy]		; y-pos to draw, (All: 12*8)
+	umult	#4			; facey*4
+	add	r4			; +facex*col_size
 
-	iwt	r4,#bitmap1&WM
+	iwt	r4,#bitmap1&WM		; bitmap1 equ 16384
 	to	r4
-	add	r4	; +bitmap1 = r4
+	add	r4			; +bitmap1 = r4
 
 	
-	iwt	r5,#col_size
+	iwt	r5,#col_size		; col_size equ 32*24
 	
 
-	lms	r14,[m_faceptr]
-	ibt	r3,#4
+	lms	r14,[m_faceptr]		; begin ROM buffering first byte of portrait
+	ibt	r3,#4			; draw 4 columns
 .looptohere
 
-	move	r1,r4
+	move	r1,r4			; r4 = bitmap1 address, r1 = bitmap1 pointer
 
-	ibt	r12,#40*4/2
-	move	r13,r15
+	ibt	r12,#40*4/2		; copy 40 words (1 column of 5 tiles)
+	move	r13,r15			; store pc for loop below
 ;inner loop
-	getb
-	inc	r14
-	getbh
-	inc	r14
-	stw	[r1]
-	inc	r1
-	loop
-	inc	r1
+	getb				; get byte from ROM buffer into lower byte of r0
+	inc	r14			; inc ROM pointer (begin buffering)
+	getbh				; get byte from ROM buffer into upper byte of r0
+	inc	r14			; inc ROM pointer (begin buffering)
+	stw	[r1]			; store word at bitmap1 ptr
+	inc	r1			; inc bitmap1 ptr
+	loop				; jump to "inner loop"
+	inc	r1			; inc bitmap1 ptr (executed regardless of loop instruction)
 
 	with	r4
-	add	r5
+	add	r5			; add col_size to bitmap1 address
 
-	dec	r3
+	dec	r3			; draw next column
 	bne	.looptohere
 	nop
 
-	stop
+	stop				; return to SNES CPU
 	nop
 
 
