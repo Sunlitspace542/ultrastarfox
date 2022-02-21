@@ -6,6 +6,6 @@ The PNG must be 40 pixels tall, and a multiple of 32 pixels wide. Use superfamic
 
 Then use foxchr to convert the SNES 4bpp image from horizontal alignment into vertical alignment.
 
-The included .bat file does this for you.
+The included ``make_FACE.bat`` file does this for you.
 
 The source code to foxchr is included in the zip file.
