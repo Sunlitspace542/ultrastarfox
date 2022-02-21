@@ -36,7 +36,6 @@ After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 ## Helpful Links
 
 [Star Fox - Source Code Mods](https://docs.google.com/document/d/1kdgPCBeQFYsAepSDNpmwO8ZysRJjdnwK_5gWT2FFQEk/edit?usp=sharing)  
-[Star Fox Mods Wiki](https://starfox-mods.fandom.com)  
 [65c816 reference](https://en.wikibooks.org/wiki/Super_NES_Programming/65c816_reference)  
 [SuperFX ASM Tutorial/Reference](https://en.m.wikibooks.org/wiki/Super_NES_Programming/Super_FX_tutorial)
 
