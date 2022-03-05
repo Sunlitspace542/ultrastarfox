@@ -1,4 +1,4 @@
-# Path Language Documentation (from PATHMACS.ASM)
+# PATH Language Documentation (from PATHMACS.ASM)
 ```
 ************************** PATH MACROS *****************************
 
