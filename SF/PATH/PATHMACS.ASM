@@ -1488,6 +1488,7 @@ P_DEBUG		MACRO
 MYNARG	=	NARG
 	PNARG	0
 	db	p_debug
+	blink
 	pathmac_end
 		ENDM
 ;--------------------------------------------------------------------

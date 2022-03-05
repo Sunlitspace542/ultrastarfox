@@ -49,11 +49,13 @@ yyy	mario	on
 
 mariocodelen	=	*-mariobegin
 
-oopspal	;incbin	data\oops.pal
-oopschr	;incbin	data\oops.chr
-oopspic	;incbin	data\oops.pic
-
 	bankend	1
+
+	bank	41
+oopspal	incbin	data\oops.pal
+oopschr	incbin	data\oops.chr
+oopspic	incbin	data\oops.pic
+	bankend	41
 
 
 	include	INC\tail.inc
