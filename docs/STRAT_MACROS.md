@@ -1,3 +1,4 @@
+# Strat Macro Documentation (From STRATMAC.INC)
 ```
 ************************** STRAT MACROS *****************************
 
