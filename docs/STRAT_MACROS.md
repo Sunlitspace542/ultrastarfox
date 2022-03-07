@@ -397,6 +397,4 @@
 ```
 
 # Undocumented Strat Macros
-```
-s_set_path
 ```s_set_path x,(path strat name)``` Calls a PATH script (no parentheses)
