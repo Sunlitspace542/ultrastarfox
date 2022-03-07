@@ -397,7 +397,7 @@
 ```
 
 # Other Strat Macros
-```s_set_path x,(path script name)``` Calls a PATH script (no parentheses)
+```s_set_path x,(path script name)``` Calls a PATH script
 
 # Running a PATH script from a strat
 
