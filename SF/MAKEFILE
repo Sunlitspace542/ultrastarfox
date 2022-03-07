@@ -35,9 +35,9 @@ info: $(ALLFILES)
 bank0.sob: BANK\bank0.asm $(STRATFILES) \
 $(STDFILES) ASM\blink.asm data\etabs.dat ASM\sgtabs.asm \
 data\nintendo.pal data\map-obj.cgx ASM\sgdata.asm INC\arctan.asm \
-ASM\STRAT\istrats.asm SHAPES\ushapes.asm SHAPES\shapes.asm SHAPES\shapes2.asm \
+STRAT\istrats.asm SHAPES\ushapes.asm SHAPES\shapes.asm SHAPES\shapes2.asm \
 SHAPES\shapes3.asm SHAPES\pshapes.asm SHAPES\shapes4.asm SHAPES\shapes5.asm \
-SHAPES\shapes6.asm SHAPES\shapes7.asm SHAPES\kshapes.asm ASM\STRAT\d3strats.asm 
+SHAPES\shapes6.asm SHAPES\shapes7.asm SHAPES\kshapes.asm STRAT\d3strats.asm 
 
 ## Bank 1
 bank1.sob: BANK\bank1.asm INC\shmacs.inc MSG\JAPANESE.inc \
@@ -59,17 +59,17 @@ data\gfx\red.col data\gfx\blue.col ASM\coltab.asm ASM\light.asm \
 ASM\coltabs.asm ASM\bgs.asm ASM\sound.asm ASM\obj.asm \
 data\gfx\map_c.col data\map-obj.col data\mapanim.chr ASM\planets.asm \
 ASM\sprites.asm ASM\continue.asm ASM\mother.asm ASM\world.asm \
-ASM\debug.asm ASM\bootnmi.asm ASM\stratrou.asm ASM\nmi.asm \
+ASM\debug.asm ASM\bootnmi.asm STRATrou.asm ASM\nmi.asm \
 ASM\draw.asm ASM\endseq.asm data\f-1.pcr ASM\cont.asm \
 
 ## Bank 4
 bank4.sob: BANK\bank4.asm \
 $(STDFILES) $(STRATFILES) PATH\pathmacs.asm PATH\pathdata.asm \
 PATH\epathdat.asm PATH\dpathdat.asm PATH\kpathdat.asm PATH\paths.asm \
-ASM\STRAT\d2strats.asm 
+STRAT\d2strats.asm 
 
 ## Bank 5, bank 13
-bank5.sob: BANK\bank5.asm INC\mapmacs.inc ASM\STRAT\istrats.asm \
+bank5.sob: BANK\bank5.asm INC\mapmacs.inc STRAT\istrats.asm \
 $(STDFILES) maps\map2_3a.asm maps\map2_3b.asm maps\airlock1.asm \
 maps\map2_3c.asm maps\map2_4.asm maps\castanet.asm maps\map2_5.asm \
 maps\trucker.asm maps\map2_6a.asm maps\map2_6b.asm maps\map2_6c.asm \
@@ -105,32 +105,32 @@ maps\maplist2.asm maps\maplist3.asm
 
 ## Bank 6
 bank6.sob: BANK\bank6.asm \
-$(STDFILES) $(STRATFILES) ASM\STRAT\gstrats.asm ASM\STRAT\gcstrats.asm \
-ASM\STRAT\expstrat.asm MARIO\mmacs.mc MARIO\mhofs.mc 
+$(STDFILES) $(STRATFILES) STRAT\gstrats.asm STRAT\gcstrats.asm \
+STRAT\expstrat.asm MARIO\mmacs.mc MARIO\mhofs.mc 
 
 ## Bank 7
 bank7.sob: BANK\bank7.asm \
-$(STDFILES) $(STRATFILES) ASM\STRAT\gistrats.asm ASM\STRAT\gb3strats.asm \
+$(STDFILES) $(STRATFILES) STRAT\gistrats.asm STRAT\gb3strats.asm \
 
 ## Bank 8
 bank8.sob: BANK\bank8.asm \
-$(STDFILES) $(STRATFILES) ASM\STRAT\gbstrats.asm ASM\STRAT\gastrats.asm \
+$(STDFILES) $(STRATFILES) STRAT\gbstrats.asm STRAT\gastrats.asm \
 snd\sgbgmd.bin 
 
 ## Bank 9
 bank9.sob: BANK\bank9.asm \
-$(STDFILES) $(STRATFILES) ASM\STRAT\dstrats.asm ASM\STRAT\ga3strats.asm \
+$(STDFILES) $(STRATFILES) STRAT\dstrats.asm STRAT\ga3strats.asm \
 snd\sgbgm11.bin 
 
 ## Bank 10
 bank10.sob: BANK\bank10.asm \
-$(STDFILES) $(STRATFILES) ASM\STRAT\kstrats.asm ASM\STRAT\ga2strats.asm \
+$(STDFILES) $(STRATFILES) STRAT\kstrats.asm STRAT\ga2strats.asm \
 ASM\mem.asm snd\sgbgml.bin 
 
 ## Bank 11
 bank11.sob: BANK\bank11.asm \
-$(STDFILES) $(STRATFILES) ASM\STRAT\pistrats.asm ASM\STRAT\pcstrats.asm \
-ASM\STRAT\pstrats.asm ASM\STRAT\gb2strats.asm 
+$(STDFILES) $(STRATFILES) STRAT\pistrats.asm STRAT\pcstrats.asm \
+STRAT\pstrats.asm STRAT\gb2strats.asm 
 
 ## Banks 12, 13, 14, 15, 16, 17
 shbanks.sob: BANK\shbanks.asm INC\shmacs.inc INC\stratequ.inc \

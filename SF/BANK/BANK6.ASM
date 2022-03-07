@@ -21,8 +21,8 @@
 ;------------------------------------------------------------------
 	bank	6
 	incfile	ASM\blink.asm
-	incfile	ASM\STRAT\gcstrats.asm
-	incfile	ASM\STRAT\expstrat.asm
+	incfile	STRAT\gcstrats.asm
+	incfile	STRAT\expstrat.asm
 
 cacheon	=	1
      	incfile	MARIO\mmacs.mc
@@ -34,7 +34,7 @@ cacheon	=	1
 	bankend	6
 
 	bank	33
-	incfile	ASM\STRAT\gstrats.asm
+	incfile	STRAT\gstrats.asm
 	bankend	33
 
 	include	INC\tail.inc

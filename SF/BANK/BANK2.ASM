@@ -110,7 +110,7 @@ planetdmapos2	dw	100
 	minfo	<debug>
 	incfile	ASM\bootnmi.asm
 	minfo	bootnmi
-	incfile	ASM\STRAT\stratrou.asm
+	incfile	STRAT\stratrou.asm
 	minfo	<stratrou>
 	incfile	ASM\nmi.asm
 	minfo	nmi

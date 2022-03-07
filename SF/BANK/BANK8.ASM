@@ -12,8 +12,8 @@
 	include	EXT\bootnmi.ext
 
 	bank	8
-	incfile	ASM\STRAT\gbstrats.asm
-	incfile	ASM\STRAT\gastrats.asm
+	incfile	STRAT\gbstrats.asm
+	incfile	STRAT\gastrats.asm
 
 	public	bgmd
 	public	bgmdlen

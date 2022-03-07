@@ -57,7 +57,6 @@ ultrastarfox
 ├── optionalstuff: optional graphics files
 ├── SF: Main source code is located here
 │   ├── ASM: Main game code located here (65816)
-│   │   └── STRAT: Code for Strategies (Object behaviors)
 │   ├── BANK: Bank data\ASM files
 │   ├── DATA: GFX files
 │   │   └── GFX: Palette files and Palette Packer
@@ -69,7 +68,8 @@ ultrastarfox
 │   ├── MSPRITES: contains 4 DAT files (interleaved textures)
 │   ├── PATH: contains all PATH language code
 │   ├── SHAPES: contains all shape files
-│   └── SND: sound/music data
+│   ├── SND: sound/music data
+│   └── STRAT: Code for Strategies (Object behaviors)
 └──  tools: tools such as packer and ShapeEd
 ```
     

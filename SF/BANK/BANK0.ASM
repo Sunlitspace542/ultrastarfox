@@ -87,8 +87,8 @@ abort_vn
 	ELSEIF
 bgandpcr
 	ENDC
-	incfile	ASM\STRAT\istrats.asm
-	incfile	ASM\STRAT\d3strats.asm
+	incfile	STRAT\istrats.asm
+	incfile	STRAT\d3strats.asm
 	bankend	32
 
 
