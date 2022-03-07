@@ -398,3 +398,13 @@
 
 # Undocumented Strat Macros
 ```s_set_path x,(path strat name)``` Calls a PATH script (no parentheses)
+
+# Running a PATH script from a strat
+
+Let's say ou want to call and run a PATH script from a strat.
+first in your strat, add a line with
+```s_set_strat   X,path_istrat```
+then add another line directly after with
+```s_set_path x,(path strat name)``` replacing (path strat name) with the name of the PATH script you wish to run.
+What these 2 lines do is stop running the strat, then run the desired PATH script. from your PATH script, you can then return to your strat.
+
