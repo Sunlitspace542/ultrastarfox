@@ -401,7 +401,7 @@
 
 # Running a PATH script from a strat
 
-Let's say ou want to call and run a PATH script from a strat.  
+Let's say you want to call and run a PATH script from a strat.  
 first in your strat, add a line with  
 ```s_set_strat   X,path_istrat```  
 then add another line directly after with  
