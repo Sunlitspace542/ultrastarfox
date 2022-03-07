@@ -53,13 +53,13 @@ After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 ## Project Structure
 ```
 ultrastarfox
-├── BIN: exe files needed to compile game
+├── BIN: exe files needed to assemble game code
 ├── optionalstuff: optional graphics files
 ├── SF: Main source code is located here
 │   ├── ASM: Main game code located here (65816)
 │   ├── BANK: Bank data\ASM files
 │   ├── DATA: GFX files
-│   │   └── GFX: Palette files and Palette Packer
+│   │   └── COL: Palette files and Palette Packer
 │   ├── EXT: .ext files needed by several .asm files
 │   ├── INC: .inc files, arc tangent table
 │   ├── MAPS: level scripts

@@ -3838,7 +3838,7 @@ rgbscale	=	rgbscale-(100/15)
 
 	ENDC
 
-	inccolfile	data\gfx\map_c.col,0,15
+	inccolfile	data\col\map_c.col,0,15
 
 
 	inccolfile	data\map-obj.col,0,1

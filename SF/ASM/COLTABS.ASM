@@ -1463,9 +1463,9 @@ gs	=	gs+4
 	rgbw	0,0,0
 	ENDC
 
-	defgamepal	norm,gfx\night.col
-	defgamepal	red,gfx\red.col
-	defgamepal	blue,gfx\blue.col
+	defgamepal	norm,col\night.col
+	defgamepal	red,col\red.col
+	defgamepal	blue,col\blue.col
 
 
 paladdrend

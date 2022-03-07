@@ -219,7 +219,7 @@ bg24ccr	=	bgticcr
 	ENDC
 
 facedata	inccolfile	data\face.cgx,0,360
-	inccru	allcolscru,data\gfx\allcols.pac
+	inccru	allcolscru,data\col\allcols.pac
 
 	bankend	23
 
@@ -318,28 +318,28 @@ musicsize	=	0
 	endc
 
 
-	fileslog	data\gfx\bg2-a.col
-	fileslog	data\gfx\bg2-b.col
-	fileslog	data\gfx\bg2-c.col
-	fileslog	data\gfx\bg2-d.col
-	fileslog	data\gfx\bg2-e.col
-	fileslog	data\gfx\bg2-f.col
-	fileslog	data\gfx\bg2-g.col
-	fileslog	data\gfx\t-m.col
-	fileslog	data\gfx\t-m-2.col
-	fileslog	data\gfx\t-m-3.col
-	fileslog	data\gfx\t-m-4.col
-	fileslog	data\gfx\b-m.col
-	fileslog	data\gfx\light.col
-	fileslog	data\gfx\space.col
-	fileslog	data\gfx\stars.col
-	fileslog	data\gfx\cp.col
-	fileslog	data\gfx\cp-us.col
-	fileslog	data\gfx\hole.col
-	fileslog	data\gfx\l.col
-	fileslog	data\gfx\e-test0.col
-	fileslog	data\gfx\e-test.col
-	fileslog	data\gfx\obj-1.col
+	fileslog	data\col\bg2-a.col
+	fileslog	data\col\bg2-b.col
+	fileslog	data\col\bg2-c.col
+	fileslog	data\col\bg2-d.col
+	fileslog	data\col\bg2-e.col
+	fileslog	data\col\bg2-f.col
+	fileslog	data\col\bg2-g.col
+	fileslog	data\col\t-m.col
+	fileslog	data\col\t-m-2.col
+	fileslog	data\col\t-m-3.col
+	fileslog	data\col\t-m-4.col
+	fileslog	data\col\b-m.col
+	fileslog	data\col\light.col
+	fileslog	data\col\space.col
+	fileslog	data\col\stars.col
+	fileslog	data\col\cp.col
+	fileslog	data\col\cp-us.col
+	fileslog	data\col\hole.col
+	fileslog	data\col\l.col
+	fileslog	data\col\e-test0.col
+	fileslog	data\col\e-test.col
+	fileslog	data\col\obj-1.col
 
 
 
