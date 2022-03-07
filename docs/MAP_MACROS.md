@@ -10,6 +10,6 @@ Levels (maps) in Star Fox essentially consist of a timed sequence of objects tha
 ``mapqnobj  (frame,x,y,z,shape,strategy)`` Same syntax as ``mapdobj``  
 ``mapqobj (frame,x,y,z,shape,strategy)`` Same syntax as ``mapdobj``  
 ``pathobj (wait,x,y,z,shape,path,hp,ap)`` Spawn a PATH & shape combo after a specified amount of time at a specified position, with defined health and attack points.  
-``textpath  (wait,x,y,z,text,path,colour[,size])`` what does this do? 
+``textpath  (wait,x,y,z,text,path,colour[,size])`` what does this do?  
 ``mapgotoiflevel  level(1-3),label``  
 ``mapgotoifnotlevel level(1-3),label``  
