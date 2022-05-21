@@ -38,8 +38,7 @@ After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 [SuperFX ASM Tutorial/Reference](https://en.m.wikibooks.org/wiki/Super_NES_Programming/Super_FX_tutorial)
 
 ## Discord Server
-[Star Fox: ES + SF Modding](https://discord.gg/fE5Xx99kWb) (MAIN)  
-[Star Fox Hacking Project](https://discord.gg/GgyP84e)
+[StarFox Exploratorium](https://discord.gg/fE5Xx99kWb)
 
 
 ## TODO
