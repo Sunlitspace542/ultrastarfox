@@ -31,11 +31,11 @@ to rebuild color palettes, run ``build palette.cmd``
 
 After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 
-## Building on Linux
+## Building on Linux (Ubuntu)
 
 **NOTE: this was tested on WSL with Ubuntu installed. there is a chance stuff doesn't work.**  
 
-Requirements: DOSBox, Python 3
+Requirements: Ubuntu (might work with Debian) DOSBox, Python 3
 
 Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox`` 
 
@@ -88,4 +88,3 @@ ultrastarfox
 │   └── STRAT: Code for Strategies (Object behaviors)
 └──  tools: tools such as packer and ShapeEd
 ```
-    
