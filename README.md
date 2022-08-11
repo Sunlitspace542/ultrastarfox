@@ -33,7 +33,7 @@ After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 
 ## Building on Linux
 
-``NOTE: this was tested on WSL with Ubuntu installed. there is a chance stuff doesn't work.``  
+**NOTE: this was tested on WSL with Ubuntu installed. there is a chance stuff doesn't work.**  
 
 Requirements: DOSBox, Python 3
 
