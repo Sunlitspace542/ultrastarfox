@@ -17,7 +17,7 @@ Star Fox / StarWing (SNES, 1993), with modifications for easier creation of ROM 
 - SNES Mouse support
 - Kando was involved so you know it's good
 
-## Building
+## Building on Windows
 
 Requirements: Microsoft Windows, Python 3
 
@@ -28,6 +28,22 @@ to build ROM, run ``build.cmd``
 to build ROM with Logging, run ``build to log.cmd``
 
 to rebuild color palettes, run ``build palette.cmd``  
+
+After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
+
+## Building on Linux
+
+``NOTE: this was tested on WSL with Ubuntu installed. there is a chance stuff doesn't work.``  
+
+Requirements: DOSBox, Python 3
+
+Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox`` 
+
+to build ROM, run ``build.sh``  
+
+to build ROM with Logging, run ``buildtolog.sh``
+
+to rebuild color palettes, run ``build palette.sh`` (as of right now, it does not appear to be working.)  
 
 After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 
