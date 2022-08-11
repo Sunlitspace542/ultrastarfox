@@ -43,7 +43,7 @@ to build ROM, run ``build.sh``
 
 to build ROM with Logging, run ``buildtolog.sh``
 
-to rebuild color palettes, run ``build palette.sh`` (as of right now, it does not appear to be working.)  
+to rebuild color palettes, run ``buildpalette.sh`` (as of right now, it does not appear to be working.)  
 
 After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 
