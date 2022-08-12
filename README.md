@@ -35,7 +35,9 @@ After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 
 **NOTE: this was tested on WSL with Ubuntu installed. there is a chance stuff doesn't work.**  
 
-Requirements: Ubuntu (might work with Debian) DOSBox, Python 3
+Requirements: Ubuntu (might work with Debian) DOSBox-x, Python 3, git
+
+DOSBox-X deb package: https://cdn.discordapp.com/attachments/928458781266960415/1007476106485583872/dosbox-x_0.83.4-0.83.4_amd64-SDL2-deb.zip
 
 Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox`` 
 
