@@ -144,7 +144,7 @@ snd\sgbgm7.bin snd\sgbgm3.bin
 
 ## Banks 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
 incbins.sob: BANK\incbins.asm \
-$(STDFILES) msprites\sprites3.dat msprites\sprites4.dat msprites\spritesg.dat \
+$(STDFILES) msprites\spt_01.bin msprites\spt_23.bin msprites\spt_23_g.bin \
 data\moji_2.fon MARIO\mdata.mc data\demo.ccr data\demo.pcr \
 data\hole-a.ccr data\b.ccr data\b.pcr data\obj-1.ccr \
 data\obj-1-g.ccr data\e-test.ccr data\e-test.pcr data\e-test2.ccr \
