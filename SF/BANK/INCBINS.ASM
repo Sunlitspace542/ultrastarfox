@@ -11,11 +11,11 @@ mworldspr	equ	msprites1
 
 	bank	19
 	IFEQ	GERMAN
-msprites2	incbinfile	msprites\tex_23.bin
-	fileslog	msprites\tex_23_a.bin
+msprites2	incbinfile	msprites\tex_32.bin
+	fileslog	msprites\tex_32_a.bin
 	ELSEIF
-msprites2	incbinfile	msprites\tex_23_a.bin
-	fileslog	msprites\tex_23.bin
+msprites2	incbinfile	msprites\tex_32_a.bin
+	fileslog	msprites\tex_32.bin
 	ENDC
 	bankend	19
 
