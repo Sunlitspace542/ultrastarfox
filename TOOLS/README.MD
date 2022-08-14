@@ -10,7 +10,7 @@ To use:
 ``merge.exe [infile1] [infile2] [outfile] /cgx``  
 
 ## unmerge
-Texture deinterleaving tool. Based on fx.cpp from [Star Fox 2 Font Tools(https://www.romhacking.net/utilities/346/), modified by Sega Mega Drive.  
+Texture deinterleaving tool. Based on fx.cpp from [Star Fox 2 Font Tools](https://www.romhacking.net/utilities/346/), modified by Sega Mega Drive.  
 To use:  
 ``unmerge extract [bin/dat file] [file1] [file2]`` (no brackets, obviously)  
 
