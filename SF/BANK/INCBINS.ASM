@@ -5,17 +5,17 @@
 
 
 	bank	18
-msprites1	incbinfile	msprites\spt_01.bin
+msprites1	incbinfile	msprites\tex_01.bin
 mworldspr	equ	msprites1
 	bankend	18
 
 	bank	19
 	IFEQ	GERMAN
-msprites2	incbinfile	msprites\spt_23.bin
-	fileslog	msprites\spt_23_g.bin
+msprites2	incbinfile	msprites\tex_23.bin
+	fileslog	msprites\tex_23_a.bin
 	ELSEIF
-msprites2	incbinfile	msprites\spt_23_g.bin
-	fileslog	msprites\spt_23.bin
+msprites2	incbinfile	msprites\tex_23_a.bin
+	fileslog	msprites\tex_23.bin
 	ENDC
 	bankend	19
 
