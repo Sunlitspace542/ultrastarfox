@@ -7,6 +7,11 @@ Star Fox Palette packer. A copy of this EXE is run from SF/DATA/GFX when you run
 ## MERGE
 Texture interleaving tool.
 
+## unmerge
+Texture deinterleaving tool. Based on fx.cpp from [Star Fox 2 Font Tools(https://www.romhacking.net/utilities/346/), modified by Sega Mega Drive.  
+To use:  
+``unmerge extract [bin/dat file] [file1] [file2]`` (no brackets, obviously)  
+
 ## SHAPED
 Tool that can convert Videoscape 3DG1 models to Star Fox ASM BSP format.
 
