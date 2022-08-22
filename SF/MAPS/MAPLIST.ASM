@@ -50,7 +50,7 @@ course1	mapdef	level1_1
 
 armsstart
 	INCMAP	armsmap
-	IFEQ	prntrouln_on
+	IFNE	prntrouln_on
 	printroulen	armsstart,<armsmap>
 	ENDC
 
