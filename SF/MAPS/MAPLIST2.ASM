@@ -54,10 +54,14 @@
 
 mexitstart
 	INCMAP	mexitmap
+	IFNE	prntrouln_on
 	printroulen	mexitstart,<mexitmap>
+	ENDC
 lexitstart
+	IFNE	prntrouln_on
 	INCMAP	lexitmap
 	printroulen	lexitstart,<lexitmap>
+	ENDC
 
 	INCMAP	cl_gnd
 

@@ -183,7 +183,8 @@ spacepilonP_strat
 	s_end_strat
 
 
-
+	IFNE	prntrouln_on
 	printroulen	spacepilon_Istrat,<ga3strats>
+	ENDC
 
 

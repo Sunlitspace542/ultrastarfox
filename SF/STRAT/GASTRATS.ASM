@@ -868,8 +868,9 @@ fzaco_cont2
 	s_add_playerZ		x
 	s_end_strat
 
-
+	IFNE	prntrouln_on
 	printroulen		fzaco_Istrat,<Friend Zaco>
+	ENDC
 			
 
 ;*****************************************************************************
@@ -920,8 +921,9 @@ friend0_cont
 	s_add_vecs2pos		x
 	s_end_strat
 
-
+	IFNE	prntrouln_on
 	printroulen		friend0_Istrat,<Friend 0>
+	ENDC
 			
 
 

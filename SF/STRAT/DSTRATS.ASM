@@ -3680,8 +3680,9 @@ deadflingboss_istrat
 	s_kill_obj		x
 	s_bra			.end
 ;-------------------------------------------------------------
-
-;	printroulen	ars,<Fling boss>
+	IFNE	prntrouln_on
+	printroulen	ars,<Fling boss>
+	ENDC
 
 
 ;-------------------------------------------------------------
@@ -4511,9 +4512,10 @@ chick
 	s_set_expstrat	x,bossexplode_istrat
 	s_end_Strat
 
+	IFNE	prntrouln_on
+	printroulen	chick,<dump chicken>
+	ENDC
 
-;	printroulen	chick,<dump chicken>
-;
 
 ;--------------------------------------------------------------------
 
@@ -4613,7 +4615,9 @@ shell_istrat
 	s_bcs		nothing_istrat
 	s_end_strat
 
-;	printroulen	eggy,<egg strategy>
+	IFNE	prntrouln_on
+	printroulen	eggy,<egg strategy>
+	ENDC
 
 ;--------------------------------------------------------------------
 firebreathe_istrat
@@ -4691,7 +4695,9 @@ firebreathe2_istrat
 
 ;--------------------------------------------------------------------
 
-;	printroulen	firebreathe_istrat,<fire breath>
+	IFNE	prntrouln_on
+	printroulen	firebreathe_istrat,<fire breath>
+	ENDC
 
 ;--------------------------------------------------------------------
 ; mode change code
@@ -8519,10 +8525,11 @@ damyscr_shapeslist
 ;
 ;- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-
-;	printroulen	here12,<dstrats>
+	IFNE	prntrouln_on
+	printroulen	here12,<dstrats>
 dstratlen	=	*-here12
-;	?dstratlen
+	?dstratlen
+	ENDC
 
 	strats_end
 

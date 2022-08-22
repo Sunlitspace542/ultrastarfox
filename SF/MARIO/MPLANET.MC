@@ -713,8 +713,10 @@ mdrawuvlistx
 .4
 	lms	pc,[m_r11tmp2]
 	nop
-;	printroulen	mdrawtspherestart,<cache bound>
-;	?*-mdrawtspherestart
+	IFNE	prntrouln_on
+	printroulen	mdrawtspherestart,<cache bound>
+		?*-mdrawtspherestart
+	ENDC
 m_uvtab
 	DW	256
 	DW	256

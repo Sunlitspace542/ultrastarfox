@@ -462,7 +462,9 @@ boss1covdie_strat
 .nrem	s_add_alvar		W,x,al_worldz,#-20
 	s_end_strat
 
+	IFNE	prntrouln_on
 	printroulen	boss1_Istrat,<Spinning barricader>
+	ENDC
 
 
 
@@ -1039,7 +1041,9 @@ boss2spark_srou
 .badobj
 	s_rts
 
+	IFNE	prntrouln_on
 	printroulen	boss2_Istrat,<Spinning top>
+	ENDC
 
 	ifeq	1
 ;*****************************************************************************
@@ -1233,7 +1237,9 @@ boss5barS_strat
 	s_end_strat
 
 
+	IFNE	prntrouln_on
 	printroulen	boss5_Istrat,<Bar launcher>
+	ENDC
 
 	strats_end
 

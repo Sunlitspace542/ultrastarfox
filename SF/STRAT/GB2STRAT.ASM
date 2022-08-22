@@ -625,7 +625,9 @@ bossFB_strat
 	s_add_playerZ	x
       	s_end_strat
 
+	IFNE	prntrouln_on
 	printroulen	bossF_Istrat,<Boss F strategy>
+	ENDC
 
 ;**********************************************************************************************************************
 shrapfall_Istrat

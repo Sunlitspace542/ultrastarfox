@@ -505,8 +505,9 @@ boss8shrap_strat
 
 	s_end_strat
 
-
+	IFNE	prntrouln_on
 	printroulen	boss8_Istrat,<Washing machine room>
+	ENDC
 
 
 
@@ -1237,8 +1238,9 @@ bossAturretexp_Istrat
 
 	s_end_strat
 
-
+	IFNE	prntrouln_on
 	printroulen	bossa_Istrat,<Tank>
+	ENDC
 
 
 
@@ -1827,8 +1829,9 @@ bossBrange_srou
 
 ;-------------------------------------------------------------
 
-
+	IFNE	prntrouln_on
 	printroulen	bossB_Istrat,<Entity boss>
+	ENDC
 
 
 
@@ -3138,7 +3141,9 @@ bossBrobnextstate
 
 ;--------------------------------------------------------------------------
 
+	IFNE	prntrouln_on
 	printroulen	bossBrob_Istrat,<Entity boss II - The Revenge>
+	ENDC
 
 
 
@@ -3810,8 +3815,9 @@ boss7fall_strat
 	s_end_strat
 
 
-
+	IFNE	prntrouln_on
 	printroulen	boss7_Istrat,<2 launchers and hatch>
+	ENDC
 
 	strats_end
 
