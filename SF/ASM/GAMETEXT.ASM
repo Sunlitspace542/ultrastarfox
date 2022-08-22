@@ -1,3 +1,6 @@
+; format is:
+; textname	newtext color(1-15), <text>
+
 	IFNE	GERMAN
 pausetxt	newtext	14,<PAUSE>		;german pause
 scoretxt	newtext	14,<PUNKTE>
