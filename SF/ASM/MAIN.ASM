@@ -1484,20 +1484,20 @@ dopause	php
 printpause	ai16
 
 	IFEQ	GERMAN
-	lda	#90
+	lda	#90 ; x value (in pixels)
 	ELSEIF
-	lda	#90+4
+	lda	#90+4 ; x value (in pixels)
 	ENDC
 
 	sta.l	m_x1
-	lda	#90
+	lda	#90 ; y value (in pixels)
 	sta.l	m_y1
-	lda	#pausetxt&WM
+	lda	#pausetxt&WM ; loads predefined pausetxt 
 	sta.l	m_txtdata
 	a8
-	lda	#mprintstr>>16
-	ldx	#mprintstr&WM
-	jsl	runmario_l
+	lda	#mprintstr>>16	; }
+	ldx	#mprintstr&WM	; } all this prints the text to the screen
+	jsl	runmario_l		; }
 	rts
 
 halfbg23	php
