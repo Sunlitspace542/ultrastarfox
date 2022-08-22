@@ -1,5 +1,5 @@
 ; format is:
-; textname	newtext color(1-15), <text>
+; textname	newtext color(1-15), <TEXT>
 
 	IFNE	GERMAN
 pausetxt	newtext	14,<PAUSE>		;german pause
@@ -123,6 +123,7 @@ message	MACRO	[person,english,japanese,sound]
 	DB	{sound}snd
 	ENDC
 
+	; the 14 value also corresponds to color here (1-15)
 	TXT	14,<{english}>,<{japanese}>
 msgnum	=	msgnum+1
 	ENDM
