@@ -53,7 +53,8 @@ After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 
 [Star Fox - Source Code Mods](https://docs.google.com/document/d/1kdgPCBeQFYsAepSDNpmwO8ZysRJjdnwK_5gWT2FFQEk/edit?usp=sharing)  
 [65c816 reference](https://en.wikibooks.org/wiki/Super_NES_Programming/65c816_reference)  
-[SuperFX ASM Tutorial/Reference](https://en.m.wikibooks.org/wiki/Super_NES_Programming/Super_FX_tutorial)
+[SuperFX ASM Tutorial/Reference](https://en.m.wikibooks.org/wiki/Super_NES_Programming/Super_FX_tutorial)  
+[EarthBound Music Editor (But for StarFox)](https://github.com/phonymike/ebmused4sf/)
 
 ## Discord Server
 [StarFox Exploratorium](https://discord.gg/fE5Xx99kWb)
