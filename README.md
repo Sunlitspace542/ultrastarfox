@@ -49,7 +49,7 @@ to rebuild color palettes, run ``buildpalette.sh``
 
 After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 
-## Helpful Links
+## Helpful Links/tools
 
 [Star Fox - Source Code Mods](https://docs.google.com/document/d/1kdgPCBeQFYsAepSDNpmwO8ZysRJjdnwK_5gWT2FFQEk/edit?usp=sharing)  
 [65c816 reference](https://en.wikibooks.org/wiki/Super_NES_Programming/65c816_reference)  
