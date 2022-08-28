@@ -1,1 +1,1 @@
-python3 romExtender_linux.py SFBUILT.SFC && superfamicheck_linux -f SFBUILT.SFC
+python3 romExtender_linux.py SF2.SFC && superfamicheck_linux -f SF2.SFC
