@@ -33,7 +33,7 @@ shieldboostcolorbox	equ	0	; enable weird color box thing on shield and boost met
 							; (set to 0 if moving meter positions)	(also disables hud hide on boss win/level end)	#
 mouseon				equ	0	; Enable SNES mouse (connect to port 2)													#
 							; (if using this, setting "crosshairalwayson" to 1 is recommended)						#
-prntrouln_on		equ 0	; print "printroulen" lines during assembly (0 = on, 1 = off)							#
+prntrouln_on		equ 1	; print "printroulen" lines during assembly (needs to be on)							#
 ;####################################################################################################################
 
 ; ###############

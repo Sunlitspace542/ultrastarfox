@@ -3,7 +3,7 @@
 	include	INC\stratmac.inc
 	include	INC\stratlib.inc
 	include	INC\bgmacs.inc
-	include	EXT\blink.ext
+	;include	EXT\blink.ext
 
 	include	INC\mapstructs.inc
 	include	INC\mapmacs.inc
@@ -112,6 +112,7 @@ planetdmapos2	dw	100
 	minfo	bootnmi
 	incfile	STRAT\stratrou.asm
 	minfo	<stratrou>
+	incfile	ASM\blink.asm
 	incfile	ASM\nmi.asm
 	minfo	nmi
 	incfile	ASM\draw.asm

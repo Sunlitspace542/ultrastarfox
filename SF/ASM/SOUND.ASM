@@ -276,6 +276,7 @@ sboot_wait4	cmp	apu_port0
 
 	stz	bgmcnt
 	enable
+	;blink	4 ; crash handler test
 	rts
 
 

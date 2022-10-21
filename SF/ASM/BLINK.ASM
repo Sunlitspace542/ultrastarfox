@@ -19,8 +19,7 @@
 ;*                                                                         *
 ;*                                                                         *
 ;***************************************************************************
-; Appears to be a crash handler, as seen in the September 23rd, 1992 prototype.
-; The "Opps, I think I just blinked" text appears to have been removed.
+; The crash handler, as seen in the September 23rd, 1992 prototype.
 
 	INCPUBLICS	EXT\blink.ext
 
@@ -29,28 +28,26 @@ doblink	ai16
 	sta	blinkcol
 	ldx	#256-86
 	bra	stopall
+	
 doblink1	ai16
-	lda	#$1f+($1f<<10)		; pink
+	lda	#$1f+($1f<<10)	; pink
 	sta	blinkcol
-	ldx	#256-70
+	ldx	#256-85
 	bra	stopall
 doblink2	ai16
-	lda	#$1f+($1f<<5)		; yellow
+	lda	#$1f+($1f<<5)	; yellow
 	sta	blinkcol
 	ldx	#256-70
 	bra	stopall
-doblink3	ai16			; cyan
-	lda	#($1f<<5)+($1f<<10)
+doblink3	ai16			
+	lda	#($1f<<5)+($1f<<10)	; cyan
 	sta	blinkcol
 	ldx	#256-55
 	bra	stopall
-doblink4	ai16			; green (sound loop crashed)
-	lda	#($1f<<5)
+doblink4	ai16			
+	lda	#($1f<<5) ; green (sound loop crashed)
 	sta	blinkcol
 	ldx	#256-30
-	bra	stopall
-crashed	i16
-	ldx	#256-39
 	bra	stopall
 
 stopall	stx	blinkval
