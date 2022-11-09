@@ -3903,11 +3903,7 @@ dmabitmap macro
 ;------------------------------------------------------------------------
 
 blink	macro
-	IFNE	debuginfo2 ; if debug is on, run crash handler
 	jsl	doblink\1
-	ELSEIF
-	jml	restart ; otherwise, restart game
-	ENDC
 	endm
 
 ;------------------------------------------------------------------------
