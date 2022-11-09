@@ -111,9 +111,15 @@ velvecs_l
 
 	i8
 
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 
 	lda	sintab,x
 	sta	siny
@@ -164,9 +170,15 @@ nvecs_l
 
 	i8
 	phb
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 
 	inx
 	iny
@@ -223,9 +235,15 @@ vel3vecs_l
 
 	i8
 	phb
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 
 	lda	sintab,y
 	sta	siny
@@ -285,9 +303,15 @@ n3dvecs_l
 	sty	tmpy
 	
 	phb
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 	
 	lda	troty
 	nega
@@ -356,9 +380,15 @@ sidevecs_l
 
 	i8
 	phb
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 
 	inx
 	lda	sintab,x
@@ -403,9 +433,15 @@ frontvecs_l
 	i8
 
 	phb
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 
 	inx
 	lda	sintab,x
@@ -957,9 +993,15 @@ rotate_8xz_l
 
 	nega
 	tax
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 	lda	costab,x
 	sta	cy
 	lda	sintab,x
@@ -1021,9 +1063,15 @@ rotate_8yz_l
 	i8
 
 	tax
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 	lda	costab,x
 	sta	cy
 	lda	sintab,x
@@ -1086,9 +1134,15 @@ rotate_8yx_l
 	i8
 
 	tax
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 	lda	costab,x
 	sta	cy
 	lda	sintab,x
@@ -1150,9 +1204,15 @@ rotate_16xz_l
 	i8
 
 	tax
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 	lda sintab,x
 	sta sinvy
 	lda costab,x
@@ -1223,9 +1283,15 @@ rotate_16yz_l
 
 	nega
 	tax
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 	lda sintab,x
 	sta sinvy
 	lda costab,x

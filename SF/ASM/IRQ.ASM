@@ -1798,9 +1798,15 @@ window_buffer	php
 
 mouse_read2
 	PHB
-	LDA	#$80
-	PHA
-	PLB
+	IFNE	FASTROM
+	lda	#$80
+	pha
+	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 
 	php
 	;sep	#$30		

@@ -14,9 +14,15 @@ runmario_l
 	sta.l	mcodebank	;code bank
 
 	phb
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 
 	lda	mario_draw_mode
 	ora	#%00011000	;nasty

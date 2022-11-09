@@ -57,9 +57,15 @@ stopall	stx	blinkval
 	disable
 	stz	tm
 	stz	ts
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 	a8i16
 	lda	#$80
 	sta	inidisp

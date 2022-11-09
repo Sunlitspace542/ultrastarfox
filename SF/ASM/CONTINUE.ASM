@@ -43,9 +43,15 @@ foxy_continue_l
 	php
 	phb
 	a8i16
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 	lda	credits
 	lbeq	.end2
 	stz	trans_flag

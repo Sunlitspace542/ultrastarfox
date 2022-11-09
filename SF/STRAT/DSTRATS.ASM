@@ -1846,9 +1846,15 @@ restart_l
 	php
 	phb
 	a8
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 
 	disable
 

@@ -52,9 +52,15 @@ initgame_l
 	php
 	phb
 	a8
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 
 	disable
 
@@ -1837,9 +1843,15 @@ setcharmapfrommap_l
 SetCharMapgame_l
 	a8
 	phb
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 	lda	#128
 	sta	vmainc
 	ai16
@@ -2922,9 +2934,15 @@ fadered_l	php
 	phb
 
 	a8
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 
 	
 	ai16

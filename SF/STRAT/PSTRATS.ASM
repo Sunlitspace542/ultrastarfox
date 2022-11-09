@@ -3436,9 +3436,15 @@ dupplayer
 ;*****************************************************************************
 framescalevecs
 	phb
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 
 	lda	al_vx,x
 	sta	x1+1

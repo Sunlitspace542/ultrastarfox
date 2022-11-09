@@ -74,9 +74,15 @@ printt_l
 	phy
 
 	a8i16
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 
 	ldy	#0
 
@@ -146,9 +152,15 @@ printbd_l
 
 	a8i16
 	sta	printbtemp
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 
 	lda	printbtemp
 	jsr	printbd
@@ -169,9 +181,15 @@ printbsd_l
 
 	a8i16
 	sta	printbtemp
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 
 	lda	printbtemp
 	jsr	printbsd
@@ -193,9 +211,15 @@ printb_l
 
 	a8i16
 	sta	printbtemp
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 	lda	printbtemp
 	jsr	printb
 

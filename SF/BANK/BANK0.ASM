@@ -115,7 +115,13 @@ bgandpcr
 	ENDC
 
 	; hardware info
+	IFNE	FASTROM 
+	; would set correct rom map flag but a lot of people still use older versions of snes9x,
+	; so i'll leave this be for compatibility - SL
 	db	$20					; Map Mode (20 = SlowROM, 30 = FastROM) LoROM
+	ELSEIF
+	db	$20					; Map Mode (20 = SlowROM, 30 = FastROM) LoROM
+	ENDC
 	db	$14					; Cartridge Type
 							 ; (13) Super FX 1 (StarFox 1)
 							 ; (14) Super FX 2 (DOOM)

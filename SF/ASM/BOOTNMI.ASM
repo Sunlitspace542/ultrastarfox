@@ -177,9 +177,15 @@ initialise_ram
 	bpl	.ooop2
 
 	a8
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 	a16
 
 	ldx	#$2000-$300-8	;clr Work RAM

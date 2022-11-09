@@ -226,9 +226,15 @@ map65816	tyx
 	adc	#mapbase&WM
 	tax
 	a8
+	IFNE	FASTROM
 	lda	#$80
 	pha
-	plb	; dbr=0
+	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC	; dbr=0
 	lda	#newobjex>>16
 	pha
 	ldy	#(newobjex-1)&WM
@@ -253,9 +259,15 @@ mapcodejsl	tyx
 	ldy	mapbase&WM+1,x
 	phy
 	ldx	lastmapobj
+	IFNE	FASTROM
 	lda	#$80
 	pha
-	plb	; dbr=0
+	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC	; dbr=0
 	rtl
 
 .ret	ai16
@@ -1036,9 +1048,15 @@ mapifdo
 	pha
 
 	a8
+	IFNE	FASTROM
 	lda	#$80
 	pha
-	plb	; dbr=0
+	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC	; dbr=0
 
 	rtl
 

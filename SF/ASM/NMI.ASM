@@ -38,9 +38,15 @@ nmihan
 	phx
 	phy
 	ai8
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 
 	nastyon
 	jsl	irqcode_l
@@ -59,9 +65,15 @@ nmihan
 	phx
 	phy
 	a8
+	IFNE	FASTROM
 	lda	#$80
 	pha
 	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 
 	nastyoff
 	jsl	fnmi_l
