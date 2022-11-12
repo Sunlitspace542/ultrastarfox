@@ -6,8 +6,8 @@ Honestly, you're better off looking at the existing level scripts and editing th
 ## Macros
 
 ``mapwait (number)`` stop level script for specified amount divided by 16(?)  
-``mapobj (frame,x,y,z,shape,strategy)`` spawns a specified shape & strat combo on a specified frame and position
-``mapdobj (frame,x,y,z,shape,strategy)`` (appears to be) Same as ``mapobj``, but with an extra parameter for the Z position.  
+``mapobj (frame,x,y,z,shape,strategy)`` spawns a specified shape & strat combo on a specified frame and position  
+``mapdobj (frame,x,y,z,shape,strategy)`` (appears to be) Same as ``mapobj``  
 ``mapqnobj  (frame,x,y,z,shape,strategy)`` Same syntax as ``mapdobj``  
 ``mapqobj (frame,x,y,z,shape,strategy)`` Same syntax as ``mapdobj``  
 ``pathobj (wait,x,y,z,shape,path,hp,ap)`` Spawn a PATH & shape combo after a specified amount of time at a specified position, with defined health and attack points.  
