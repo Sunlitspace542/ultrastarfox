@@ -123,8 +123,53 @@ message	MACRO	[person,english,japanese,sound]
 	DB	{sound}snd
 	ENDC
 
-	; the 14 value also corresponds to color here (1-15)
+	; 14 = white
 	TXT	14,<{english}>,<{japanese}>
+msgnum	=	msgnum+1
+	ENDM
+
+messagered	MACRO	[person,english,japanese,sound]
+	printf	"%tDW%t",*&WM,"%t; (",msgnum,") {english} ** {japanese}%n"
+	DB	friend_{person}
+
+	IFEQ	NARG-3
+	db	othersnd
+	ELSEIF
+	DB	{sound}snd
+	ENDC
+
+	; 3 = red
+	TXT	3,<{english}>,<{japanese}>
+msgnum	=	msgnum+1
+	ENDM
+
+messageyellow	MACRO	[person,english,japanese,sound]
+	printf	"%tDW%t",*&WM,"%t; (",msgnum,") {english} ** {japanese}%n"
+	DB	friend_{person}
+
+	IFEQ	NARG-3
+	db	othersnd
+	ELSEIF
+	DB	{sound}snd
+	ENDC
+
+	; 4 = yellow
+	TXT	4,<{english}>,<{japanese}>
+msgnum	=	msgnum+1
+	ENDM
+
+messageblue	MACRO	[person,english,japanese,sound]
+	printf	"%tDW%t",*&WM,"%t; (",msgnum,") {english} ** {japanese}%n"
+	DB	friend_{person}
+
+	IFEQ	NARG-3
+	db	othersnd
+	ELSEIF
+	DB	{sound}snd
+	ENDC
+
+	; 8 = blue
+	TXT	8,<{english}>,<{japanese}>
 msgnum	=	msgnum+1
 	ENDM
 

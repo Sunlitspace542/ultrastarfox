@@ -1,11 +1,12 @@
 # Map Macros (WORK IN PROGRESS)
 ## Short blurb about maps
-Levels (maps) in Star Fox essentially consist of a timed sequence of objects that spawn at certain points as the player gets further into the level.
+Levels (maps) in Star Fox essentially consist of a timed sequence of objects that spawn at certain points as the player gets further into the level.  
+Honestly, you're better off looking at the existing level scripts and editing those to get your desired result, rather than writing a new level script from scratch. There's dozens of map macros, and it's unknown what a lot of them really do.
 
 ## Macros
 
 ``mapwait (number)`` stop level script for specified amount divided by 16(?)  
-``mapobj (frame,x,y,shape,strategy)`` spawns a specified shape & strat combo on a specified frame and position (X and Y only)  
+``mapobj (frame,x,y,z,shape,strategy)`` spawns a specified shape & strat combo on a specified frame and position
 ``mapdobj (frame,x,y,z,shape,strategy)`` (appears to be) Same as ``mapobj``, but with an extra parameter for the Z position.  
 ``mapqnobj  (frame,x,y,z,shape,strategy)`` Same syntax as ``mapdobj``  
 ``mapqobj (frame,x,y,z,shape,strategy)`` Same syntax as ``mapdobj``  
