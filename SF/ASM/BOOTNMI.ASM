@@ -318,11 +318,16 @@ startsfx_l
 	sta	$420a
 	sta	$420b
 	sta	$420c
+
+	IFNE	fastrom
 	pha
 	a8
 	lda	#1
 	sta	$420d
 	pla
+	ELSEIF
+	sta	$420d
+	ENDC
 
 	rtl
 

@@ -54,10 +54,16 @@ scr_offset	equ	(vchr_logback-vchr_physback)/16
 
 ;-------------------------------------------------------
 	bank	2
+	IFNE	FASTROM
 	ifne	*-$828000
 	error	<X Routines bank must be start of bank 2>
 	endc
-
+	ELSEIF
+	ifne	*-$28000
+	error	<X Routines bank must be start of bank 2>
+	endc
+	ENDC
+	
 	org	xroutines,$8000*2
 ramstart	incfile	ASM\ramstuff.asm
 xoffset	equ	*-ramstart
@@ -67,7 +73,12 @@ xoffset	equ	*-ramstart
 	fail
 	endc
 
+	IFNE	FASTROM
 	org	$828000+xoffset,$8000*2+xoffset
+	ELSEIF
+	org	$28000+xoffset,$8000*2+xoffset
+	ENDC
+	
 	minfo
 	incfile	ASM\trans.asm
 	minfo	trans
@@ -104,7 +115,14 @@ planetdmapos2	dw	100
 	minfo	world
 	bankend	3
 
+
+
+	IFNE	FASTROM
 	org	$9f8000+$3db0,$8000*$1f+$3db0
+	ELSEIF
+	org	$1f8000+$3db0,$8000*$1f+$3db0
+	ENDC
+	
 	minfo
 	incfile	ASM\debug.asm
 	minfo	<debug>

@@ -12,7 +12,12 @@ copy_to_0101_l
 	bpl	.codeloop2
 
 	ldx	#xlen-1
-.codeloop4	lda.l	$28000,x
+.codeloop4	
+	IFNE	fastrom
+	lda.l	$828000,x
+	elseif
+	lda.l	$28000,x
+	endc
 	sta.l	xroutines,x
 	dex
 	bpl	.codeloop4
