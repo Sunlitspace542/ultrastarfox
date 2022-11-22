@@ -3987,10 +3987,10 @@ path_2	equ	2
 path_3	equ	4
 path_4	equ	6
 
-stagepaths
-	dw	.path1-stagepaths	; level 1
-	dw	.path6-stagepaths	; level 2
-	dw	.path11-stagepaths	; level 3
+stagepaths ; definitions for the 3 map routes and other stages on the map screen
+	dw	.path1-stagepaths	; route 2
+	dw	.path6-stagepaths	; route 1
+	dw	.path11-stagepaths	; route 3
 
 .path1	local
 	PATHSTART	4,20,0,2_1,88,1
