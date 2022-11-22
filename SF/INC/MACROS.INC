@@ -4365,11 +4365,19 @@ bankend	macro
 	ENDC
 
 
+	IFNE	FASTROM
 ;	IFEQ	\1
 ;bank\1left	=	65536-*
 ;	ELSEIF
 bank\1left	=	32768-(*-((\1*$10000)+$808000))
 ;	ENDC
+	ELSEIF
+	IFEQ	\1
+bank\1left	=	65536-*
+	ELSEIF
+bank\1left	=	32768-(*-((\1*$10000)+$8000))
+	ENDC
+	ENDC
 
 	IFND	totalromspaceleft
 totalromspaceleft	=	0
