@@ -3036,12 +3036,12 @@ lc	=	lc+1
 
 currentch	=	0
 
-fuzzzcuntplanet	MACRO
+planetscrnpos	MACRO
 	dw	((\2)*32)+(\1)+p_bg1_scr1
 	db	(\1)*8,(\2)*8
 	ENDM
 
-fuzzzcuntplan2	MACRO
+planetpathpos	MACRO
 	db	(\1)*8,(\2)*8
 	ENDM
 
@@ -3620,31 +3620,31 @@ dpspr	macro
 
 rotationselect	=	0
 
-dpsphere	macro
+dpsphere	macro ; planet sphere macro
 	db	\1_spr!128
 	db	rotationselect
 rotationselect	=	rotationselect+2
 	endm
 
 
-planetsprs
-	dpsphere	playerplanet
-	dpspr		space2 asteroidfield
-	dpspr		space2 asteroidfield
-	dpspr		space1
-	dpsphere	planetb
-	dpsphere	planeta
-	dpspr		bigships
-	dpspr		cluster
-	dpspr		bigmeteo
-	dpspr		space4
-	dpspr		blackhole
-	dpsphere	planetc
-	dpspr		space3
-	dpspr		space4
-	dpspr		starwars3
-	dpsphere	enemyplanet
-	dpspr		space3
+planetsprs ; Stage icon definitions
+	dpsphere	playerplanet ; Corneria
+	dpspr		space2 asteroidfield ; 1-2 Asteroid Belt
+	dpspr		space2 asteroidfield ; 3-2 Asteroid Belt
+	dpspr		space1 ; 2-2 Sector X
+	dpsphere	planetb ; 3-3 Fortuna
+	dpsphere	planeta	; 2-3 Titania
+	dpspr		bigships ; 1-3 Space Armada
+	dpspr		cluster ; 3-4 Sector Z
+	dpspr		bigmeteo ; 1-4 Meteor
+	dpspr		space4 ; 2-4 Sector Y
+	dpspr		blackhole ; Black Hole
+	dpsphere	planetc ; 3-5 Macbeth
+	dpspr		space3 ; Unused
+	dpspr		space4 ; Unused
+	dpspr		starwars3 ; Out Of this Dimension
+	dpsphere	enemyplanet ; Venom
+	dpspr		space3 ; Unused
 
 
 
@@ -3673,61 +3673,61 @@ planetnames
 
 
 planetpos
-	fuzzzcuntplanet	$02,$16	; 0
-	fuzzzcuntplanet	$08,$16	; 1
-	fuzzzcuntplanet	$07,$11	; 2
-	fuzzzcuntplanet	$02,$10	; 3
-	fuzzzcuntplanet	$0e,$12	; 4
-	fuzzzcuntplanet	$05,$08	; 5
-	fuzzzcuntplanet	$10,$0c	; 6
-	fuzzzcuntplanet	$17,$12	; 7
-	fuzzzcuntplanet	$15,$0c	; 8
-	fuzzzcuntplanet	$0e,$04	; 9
-	fuzzzcuntplanet	$0a,$0a	; 10
-	fuzzzcuntplanet	$1a,$0c	; 11
-	fuzzzcuntplanet	$18,$05	; 12
-	fuzzzcuntplanet	$18,$05	; 13
-	fuzzzcuntplanet	$11,$16	; 14
-	fuzzzcuntplanet	$18,$05	; 15
-	fuzzzcuntplanet	$02,$16	; <16> (origami)
+	planetscrnpos	$02,$16	; 0
+	planetscrnpos	$08,$16	; 1
+	planetscrnpos	$07,$11	; 2
+	planetscrnpos	$02,$10	; 3
+	planetscrnpos	$0e,$12	; 4
+	planetscrnpos	$05,$08	; 5
+	planetscrnpos	$10,$0c	; 6
+	planetscrnpos	$17,$12	; 7
+	planetscrnpos	$15,$0c	; 8
+	planetscrnpos	$0e,$04	; 9
+	planetscrnpos	$0a,$0a	; 10
+	planetscrnpos	$1a,$0c	; 11
+	planetscrnpos	$18,$05	; 12
+	planetscrnpos	$18,$05	; 13
+	planetscrnpos	$11,$16	; 14
+	planetscrnpos	$18,$05	; 15
+	planetscrnpos	$02,$16	; <16> (origami)
 
 startplanetpos
-	fuzzzcuntplan2	$02,$16	; 0
-	fuzzzcuntplan2	$08,$16	; 1
-	fuzzzcuntplan2	$08,$11	; 2
-	fuzzzcuntplan2	$02,$10	; 3
-	fuzzzcuntplan2	$0e,$12	; 4
-	fuzzzcuntplan2	$06,$08	; 5
-	fuzzzcuntplan2	$10,$0d	; 6
-	fuzzzcuntplan2	$17,$12	; 7
-	fuzzzcuntplan2	$16,$0c	; 8
-	fuzzzcuntplan2	$0e,$04	; 9
-	fuzzzcuntplan2	$0a,$0a	; 10
-	fuzzzcuntplan2	$1a,$0c	; 11
-	fuzzzcuntplan2	$18,$05	; 12
-	fuzzzcuntplan2	$18,$05	; 13
-	fuzzzcuntplan2	$11,$16	; 14
-	fuzzzcuntplan2	$18,$05	; 15
-	fuzzzcuntplan2	$12,$16	; <16> (origami)
+	planetpathpos	$02,$16	; 0
+	planetpathpos	$08,$16	; 1
+	planetpathpos	$08,$11	; 2
+	planetpathpos	$02,$10	; 3
+	planetpathpos	$0e,$12	; 4
+	planetpathpos	$06,$08	; 5
+	planetpathpos	$10,$0d	; 6
+	planetpathpos	$17,$12	; 7
+	planetpathpos	$16,$0c	; 8
+	planetpathpos	$0e,$04	; 9
+	planetpathpos	$0a,$0a	; 10
+	planetpathpos	$1a,$0c	; 11
+	planetpathpos	$18,$05	; 12
+	planetpathpos	$18,$05	; 13
+	planetpathpos	$11,$16	; 14
+	planetpathpos	$18,$05	; 15
+	planetpathpos	$12,$16	; <16> (origami)
 
 endplanetpos
-	fuzzzcuntplan2	$02,$16	; 0
-	fuzzzcuntplan2	$08,$16	; 1
-	fuzzzcuntplan2	$07,$11	; 2
-	fuzzzcuntplan2	$02,$10	; 3
-	fuzzzcuntplan2	$0e,$12	; 4
-	fuzzzcuntplan2	$05,$08	; 5
-	fuzzzcuntplan2	$10,$0d	; 6
-	fuzzzcuntplan2	$17,$12	; 7
-	fuzzzcuntplan2	$15,$0d	; 8
-	fuzzzcuntplan2	$0e,$04	; 9
-	fuzzzcuntplan2	$0a,$0a	; 10
-	fuzzzcuntplan2	$1a,$0c	; 11
-	fuzzzcuntplan2	$18,$05	; 12
-	fuzzzcuntplan2	$18,$05	; 13
-	fuzzzcuntplan2	$11,$16	; 14
-	fuzzzcuntplan2	$18,$05	; 15
-	fuzzzcuntplan2	$12,$16	; <16> (origami)
+	planetpathpos	$02,$16	; 0
+	planetpathpos	$08,$16	; 1
+	planetpathpos	$07,$11	; 2
+	planetpathpos	$02,$10	; 3
+	planetpathpos	$0e,$12	; 4
+	planetpathpos	$05,$08	; 5
+	planetpathpos	$10,$0d	; 6
+	planetpathpos	$17,$12	; 7
+	planetpathpos	$15,$0d	; 8
+	planetpathpos	$0e,$04	; 9
+	planetpathpos	$0a,$0a	; 10
+	planetpathpos	$1a,$0c	; 11
+	planetpathpos	$18,$05	; 12
+	planetpathpos	$18,$05	; 13
+	planetpathpos	$11,$16	; 14
+	planetpathpos	$18,$05	; 15
+	planetpathpos	$12,$16	; <16> (origami)
 
 
 	IFEQ	1

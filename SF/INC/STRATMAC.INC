@@ -4202,9 +4202,9 @@ MYNARG	=	NARG
 	stratmac_end
 	ENDM
 
-	ifeq	0
+	ifeq	1
 ;-----------------------------------------------------------------------------
-fuzzthecunt	macro
+fiftyeightnops	macro
 	nop
 	nop
 	nop
@@ -5201,7 +5201,7 @@ MYNARG	=	NARG
 	CHK_NARG	1
 	CHK_OBJ	\1
 
-	ERROR <DONT DO THIS MACRO CUNT FACE.>
+	ERROR <DONT DO THIS MACRO.>
 	stratmac_end
 	ENDM
 

@@ -61,7 +61,7 @@ getview_l
 
 
 ;***************************************************************
-; According to Giles Goddard's comments, the following is very hacky, as he didn't want to break Pete Warnes' code.
+; "hacks"
 
 ;* JUST X ROTATE VIEW POS.
 	a16
