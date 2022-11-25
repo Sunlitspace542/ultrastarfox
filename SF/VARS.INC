@@ -60,7 +60,7 @@ infbombs		equ 0		; Infinite Bombs [0 = off 1 = on]
 ; !! Everything else is more advanced stuff, be careful! !!
 ; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-; for player health values, see INC\STRATEQU.INC
+; for player health values and other object equates, see INC\STRATEQU.INC.
 
 ; Sprite position stuff
 

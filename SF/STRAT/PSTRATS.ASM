@@ -1723,7 +1723,7 @@ playermove_init
 
 playerstart_init_l
 	a8
-	s_set_var	W,specwepcnt,#3
+	s_set_var	W,specwepcnt,#defaultNukeCount ; Number of Nova Bombs to start with
 	s_set_var	B,pshipflags,#0
 	s_set_var	B,pshipflags2,#0
 	s_set_var	B,pshipflags3,#0
@@ -1746,7 +1746,7 @@ makeallmedpspeed
 playermove_srou
 
 ;-------------------------------------------------------------------
-; wire ship num hits check.
+; wire ship (Shield Power-up) num hits check.
 	s_jmpNOT_varAND		B,pshipflags2,#psf2_wireship,.notwire
 	s_jmp_varlesseq		B,pnumhits,#3-1,.iswire
 	

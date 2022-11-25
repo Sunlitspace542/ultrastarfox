@@ -70,7 +70,7 @@ core1HP	equ	6
 
 
 ;-----------------------------------------------------------------------------
-; WEAPONS.
+; WEAPON HP/AP
 
 missile1AP	equ	8		
 kamihmissile1HP	equ	2		
@@ -85,10 +85,14 @@ phazerAP	equ	1
 enemylaserAP	equ	2		
 plasmaAP	equ	10		
 HplasmaAP	equ	10		
+;; Nova Bomb (Nuke) Parameters
 nukeAP	equ	8		; on each object.
 nukeRATE	equ	200		;
 nukeMAXRADIUS	equ	7000		;
+defaultNukeCount	equ	3
+;;
 
+;; ELASER
 	IFEQ	cesdemo-1
 elaserAP	equ	4	
 playerbeamAP	equ	5

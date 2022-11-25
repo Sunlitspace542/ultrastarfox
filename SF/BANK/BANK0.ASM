@@ -91,12 +91,7 @@ bgandpcr
 	incfile	STRAT\d3strats.asm
 	bankend	32
 
-
-
-; TODO:
-; (done) make this cleaner by adding IF's for dest code
-; and map mode if we decide to make fastrom disable-able, that is, if snes9x 1.61 is ever released)
-; (done) also check to make sure each dest code is correct
+	;; ROM HEADER
 
 	org $00ffb0,$7fb0
 	db	"01"				; Maker Code
@@ -116,8 +111,8 @@ bgandpcr
 
 	; hardware info
 	IFNE	FASTROM 
-	; would set correct rom map flag but a lot of people still use older versions of snes9x,
-	; so i'll leave this be for compatibility - SL
+	; I would set the FastROM map flag but a lot of people still use older versions of SNES9x,
+	; so I'll leave this be for compatibility - SL
 	db	$20					; Map Mode (20 = SlowROM, 30 = FastROM) LoROM
 	ELSEIF
 	db	$20					; Map Mode (20 = SlowROM, 30 = FastROM) LoROM
