@@ -218,7 +218,7 @@ bg24ccr	=	bgticcr
 	fileslog	data\e.ccr
 	ENDC
 
-facedata	inccolfile	data\face.cgx,0,360
+facedata	inccolfile	data\face.cgx,0,360 ; size (in bytes) divided by 32
 	inccru	allcolscru,data\col\allcols.pac
 
 	bankend	23
