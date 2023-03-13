@@ -3,6 +3,12 @@
 
 
 ;Colour tables ----------------------------------------------------
+; Defines a list of materials for each "palette"
+; COLLITE is a "diffuse" material according to coolk's text file
+; COLDEPTH is an "emission" material
+; COLTEXT is a texture
+; COLANIM is an animated (flashing color) material
+
 
 HYPER_C
 	COLNORM	14,14
@@ -191,116 +197,117 @@ ID_0_FC
 	COLTEXT	asteroid1_spr
 	endc
 
-ID_0_C
-	COLLITE	$0,0
-	COLLITE	$1,1
-	COLLITE	$2,2
-	COLLITE	$3,3
-	COLLITE	$4,4
-	COLLITE	$5,5
-	COLLITE	$6,6
-	COLLITE	$7,7
-	COLLITE	$8,8
-	COLLITE	$9,9
-	COLDEPTH	$0	; 10
-	COLDEPTH	$1
-	COLDEPTH	$2
-	COLDEPTH	$3
-	COLDEPTH	$4
-	COLDEPTH	$5
-	COLDEPTH	$6
-	COLDEPTH	$7
-	COLDEPTH	$8
-	COLDEPTH	$9
-	COLDEPTH	$a	; 20
-	COLDEPTH	$b
-	COLDEPTH	$c
-	COLDEPTH	$d
-	COLDEPTH	$e
-	COLDEPTH	$f
-	COLDEPTH	$10
-	COLDEPTH	$11
-	COLDEPTH	$12
-	COLDEPTH	$13
-	COLDEPTH	$14	; 30
-	COLDEPTH	$15
-	COLDEPTH	$16
-	COLDEPTH	$17
-	COLDEPTH	$18
-	COLDEPTH	$19
-	COLDEPTH	$1a
-	COLDEPTH	$1b
-	COLDEPTH	$1c
-	COLDEPTH	$1d
-	COLDEPTH	$1e	; 40
-	COLDEPTH	$1f
-	COLANIM	CA_0
-	COLANIM	CA_1		; 43
-	COLANIM	CA_2		; 44
-	COLANIM	CA_3		; 45
-	COLANIM	CA_4		; 46
-	COLANIM	CA_5		; 47
-	COLTEXT	asteroid1_spr	; 48
-	COLTEXT	panel3_spr
-	COLTEXT	panel3_spr	; 50
-	COLTEXT	panel3_spr
-	COLANIM	gateflash_a1
-	COLANIM	bosshitcol1_a1	; 53
-	COLANIM	bosshitcol2_a1	; 54
-	COLANIM	pwireframe_a1	; 55
-	COLANIM	bosshitcol3_a1	; 56
-	COLTEXT	face1_spr	; 57
-	COLANIM	roadflash_a1	; 58
-	COLTEXT	biker1_spr	; 59
-	COLTEXT	biker1_spr,8	; 60
-	COLANIM	ring_a1		; 61
-	COLANIM	ring_a2		; 62
-	COLANIM	ring_a3		; 63
-	COLANIM	ring_a4		; 64
-	COLANIM	ring_a5		; 65
-	COLANIM	ca_1d		; 66
-	COLTEXT	scrapmetal_spr	; 67
-	COLTEXT	cockpit1_spr	; 68
-	COLTEXT	cockpit2_spr	; 69
-	COLTEXT	monkey1_spr	; 70
-	COLNORM	$9,$9		; 71
-	COLNORM	$9,$a		; 72
-	COLNORM	$a,$a		; 73
-	COLNORM	$a,$b		; 74
-	COLNORM	$b,$b		; 75
-	COLNORM	$b,$c		; 76
-	COLNORM	$c,$c		; 77
-	COLNORM	$c,$d		; 78
-	COLNORM	$d,$d		; 79
-	COLNORM	$d,$e		; 80
-	COLNORM	$e,$e		; 81
-	COLNORM	$1,$1		; 82
-	COLNORM	$1,$2		; 83
-	COLNORM	$2,$2		; 84
-	COLNORM	$2,$3		; 85
-	COLNORM	$3,$3		; 86
-	COLNORM	$3,$4		; 87
-	COLNORM	$4,$4		; 88
-	COLNORM	$5,$5		; 89
-	COLNORM	$5,$6		; 90
-	COLNORM	$6,$6		; 91
-	COLNORM	$6,$7		; 92
-	COLNORM	$7,$7		; 93
-	COLNORM	$7,$8		; 94
-	COLNORM	$8,$8		; 95
-	COLTEXT	byebye_spr,7	; 96
-	COLANIM	spacemistWhite_a1	; 97
-	COLANIM	spacemistRed_a1	; 98
-	COLANIM	spacemistLgrey_a1	; 99
-	COLTEXT	chicken_spr	; 100
-	COLANIM	brakelight_a1	; 101
-	COLTEXT	chicken_spr		; 102
-	COLTEXT	face1_spr	; 103
-	COLANIM	playerbeam_a1	; 104
-	COLTEXT	largeexpl4_spr,6	; 105
-	COLTEXT	starwars1_spr	; 106
-	COLTEXT	starwars2_spr	; 107
-	COLTEXT	tunnelwall_spr	; 108
+ID_0_C 
+; labeled according to CoolK's doc and their Model to FX color IDs
+	COLLITE	$0,0 ; FX0 - Solid Dark Grey  
+	COLLITE	$1,1 ; FX1 - Solid Darker Grey
+	COLLITE	$2,2 ; FX2 - Shaded Bright Red/Dark Red
+	COLLITE	$3,3 ; FX3 - Shaded Blue/Bright Blue
+	COLLITE	$4,4 ; FX4 - Shaded Bright Orange/Black
+	COLLITE	$5,5 ; FX5 - Shaded Turquoise/Black
+	COLLITE	$6,6 ; FX6 - Solid Dark Red
+	COLLITE	$7,7 ; FX7 - Solid Blue
+	COLLITE	$8,8 ; FX8 - Shaded Red/blue (Purple)
+	COLLITE	$9,9 ; FX9 - Shaded Green/Dark Green
+	COLDEPTH	$0	; FX10 - Solid Black
+	COLDEPTH	$1	; FX11 - Shaded Black/Dark Grey
+	COLDEPTH	$2	; FX12 - Solid Dark Grey
+	COLDEPTH	$3	; FX13 - Shaded Dark Grey/Darker Grey
+	COLDEPTH	$4	; FX14 - Solid Darker Grey
+	COLDEPTH	$5	; FX15 - Shaded Darker Grey/Brighter Grey
+	COLDEPTH	$6	; FX16 - Solid Brighter Grey
+	COLDEPTH	$7	; FX17 - Shaded Brighter Grey/Bright Grey
+	COLDEPTH	$8	; FX18 - Solid Bright Grey
+	COLDEPTH	$9	; FX19 - Shaded Bright Grey/White
+	COLDEPTH	$a	; FX20 - Solid White
+	COLDEPTH	$b	; FX21 - Solid Dark Red (identical to 6)
+	COLDEPTH	$c	; FX22 - Shaded Bright Red/Dark Red (identical to 2)
+	COLDEPTH	$d	; FX23 - Solid Bright Red
+	COLDEPTH	$e	; FX24 - Shaded Bright Red/Orange
+	COLDEPTH	$f	; FX25 - Solid Orange
+	COLDEPTH	$10	; FX26 - Shaded Bright Orange/Orange
+	COLDEPTH	$11	; FX27 - Solid Bright Orange
+	COLDEPTH	$12	; FX28 - Solid Blue
+	COLDEPTH	$13	; FX29 - Shaded Blue/Dark Turquoise
+	COLDEPTH	$14	; FX30 - Solid Dark Turquoise
+	COLDEPTH	$15	; FX31 - Shaded Bright Blue/Dark Turquoise
+	COLDEPTH	$16	; FX32 - Solid Bright Blue
+	COLDEPTH	$17	; FX33 - Shaded Turquoise/Dark Turquoise
+	COLDEPTH	$18	; FX34 - Solid Turquoise
+	COLDEPTH	$19	; FX35 - Shaded Dark Red/Bright Blue
+	COLDEPTH	$1a	; FX36 - Shaded Bright Red/Bright Blue
+	COLDEPTH	$1b	; FX37 - Shaded Bright Orange/Bright Blue
+	COLDEPTH	$1c	; FX38 - Shaded Orange/Bright Blue
+	COLDEPTH	$1d	; FX39 - Shaded Dark Green/Dark Grey
+	COLDEPTH	$1e	; FX40 - Solid Dark Green
+	COLDEPTH	$1f	; FX41 - Shaded Dark Green/Bright Turquoise
+	COLANIM	CA_0	; FX42 - Flashing (White/Turquoise/Bright Red/Green)
+	COLANIM	CA_1		; FX43 - Jet Fire (Bright Orange/Orange/Bright Red/Red)
+	COLANIM	CA_2		; FX44 - Blaster  (Bright Turquoise/Turquoise/Bright Blue/Blue)
+	COLANIM	CA_3		; FX45 - Flashing (White/Light Grey/Grey/Dark Grey)
+	COLANIM	CA_4		; FX46 - Flashing (Orange/Yellow/Turquoise/White)
+	COLANIM	CA_5		; FX47 - Invisible
+	COLTEXT	asteroid1_spr	; FX48 - Rock Texture
+	COLTEXT	panel3_spr	; FX49 - Wire Texture
+	COLTEXT	panel3_spr	; FX50
+	COLTEXT	panel3_spr	; FX51
+	COLANIM	gateflash_a1	; FX52
+	COLANIM	bosshitcol1_a1	; FX53
+	COLANIM	bosshitcol2_a1	; FX54
+	COLANIM	pwireframe_a1	; FX55
+	COLANIM	bosshitcol3_a1	; FX56
+	COLTEXT	face1_spr	; FX57
+	COLANIM	roadflash_a1	; FX58
+	COLTEXT	biker1_spr	; FX59
+	COLTEXT	biker1_spr,8	; FX60
+	COLANIM	ring_a1		; FX61
+	COLANIM	ring_a2		; FX62
+	COLANIM	ring_a3		; FX63
+	COLANIM	ring_a4		; FX64
+	COLANIM	ring_a5		; FX65
+	COLANIM	ca_1d		; FX66
+	COLTEXT	scrapmetal_spr	; FX67
+	COLTEXT	cockpit1_spr	; FX68
+	COLTEXT	cockpit2_spr	; FX69
+	COLTEXT	monkey1_spr	; FX70
+	COLNORM	$9,$9		; FX71
+	COLNORM	$9,$a		; FX72
+	COLNORM	$a,$a		; FX73
+	COLNORM	$a,$b		; FX74
+	COLNORM	$b,$b		; FX75
+	COLNORM	$b,$c		; FX76
+	COLNORM	$c,$c		; FX77
+	COLNORM	$c,$d		; FX78
+	COLNORM	$d,$d		; FX79
+	COLNORM	$d,$e		; FX80
+	COLNORM	$e,$e		; FX81
+	COLNORM	$1,$1		; FX82
+	COLNORM	$1,$2		; FX83
+	COLNORM	$2,$2		; FX84
+	COLNORM	$2,$3		; FX85
+	COLNORM	$3,$3		; FX86
+	COLNORM	$3,$4		; FX87
+	COLNORM	$4,$4		; FX88
+	COLNORM	$5,$5		; FX89
+	COLNORM	$5,$6		; FX90
+	COLNORM	$6,$6		; FX91
+	COLNORM	$6,$7		; FX92
+	COLNORM	$7,$7		; FX93
+	COLNORM	$7,$8		; FX94
+	COLNORM	$8,$8		; FX95
+	COLTEXT	byebye_spr,7	; FX96
+	COLANIM	spacemistWhite_a1	; FX97
+	COLANIM	spacemistRed_a1	; FX98
+	COLANIM	spacemistLgrey_a1	; FX99
+	COLTEXT	chicken_spr	; FX100
+	COLANIM	brakelight_a1	; FX101
+	COLTEXT	chicken_spr		; FX102
+	COLTEXT	face1_spr	; FX103
+	COLANIM	playerbeam_a1	; FX104
+	COLTEXT	largeexpl4_spr,6	; FX105
+	COLTEXT	starwars1_spr	; FX106
+	COLTEXT	starwars2_spr	; FX107
+	COLTEXT	tunnelwall_spr	; FX108
 
 ID_1_C
 	COLLITE	$0,0
