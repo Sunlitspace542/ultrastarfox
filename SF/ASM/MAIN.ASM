@@ -4,11 +4,11 @@ safeinidisptop	equ	1
 
 initialise_l
 
-	php
-	a8
+	php ; Push Processor status to stack
+	a8 ; set A to 8-bit
 
-	lda	#40
-	sta	fox			; hack to allow check for fox's hp
+	lda	#40	; store 40 in all these variables:
+	sta	fox	; hack to allow check for fox's hp
 	sta	frog
 	sta	bunny
 	sta	cock
@@ -23,7 +23,7 @@ initialise_l
 	stz	specptr
 	stz	specialobjtotal
 
-	lda	#allcolscru&WM		;uncrunch colours and copy up
+	lda	#allcolscru&WM	; uncrunch colours and copy up
 	sta.l	m_enddata
 	lda	#$1000
 	sta.l	m_decaddr

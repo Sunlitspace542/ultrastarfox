@@ -1,230 +1,247 @@
-; #############################
-; ## Star Fox Boot Routines. ##
-; #############################
+;***************************************************************************
+;*                                                                         *
+;*                               Star Fox                                  *
+;*                              -----------                                *
+;*                                                                         *
+;*                           SuperNES version.                             *
+;*                                                                         *
+;*                                                                         *
+;*                           Argonaut Software.      		               *
+;*                                                                         *
+;*_________________________________________________________________________*
+;*                                                                         *
+;*   File: BOOTNMI.ASM                                                     *
+;*_________________________________________________________________________*
+;*                                                                         *
+;*  Descr: Boot routines.                                                  *
+;*                                                                         *
+;***************************************************************************
 
 	incpublics	EXT\bootnmi.ext
 
 	shorti
-startboot	disable
-	clc
-	xce
+startboot	disable ; Disable Interrupts
+	clc	; Clear Carry Flag
+	xce ; Exchange Carry Flag with Emulation Flag (Exit 65c02 mode)
 	ai16
-	lda	#0
-	tcd
-	ldx	#$02ff
-	txs
+	lda	#0 ; load 0 i
+	tcd ; Transfer 16 bit A (C) to Direct Page
+	ldx	#$02ff ; load $02FF into X
+	txs ; transfer X to SP (set stack at $02FF)
 	ai8
-	pha
-	plb
+	pha ; Push A to stack
+	plb ; Pull data bank from stack
 
 	ai8
-	jsl	startsfx_l
+	jsl	startsfx_l ; Initialize the SNES
 
-	jsr	initialise_ram
+	jsr	initialise_ram ; Clear RAM
 
 	i16
-	ldx	#$2ff
-	txs			; reset the stack
+	ldx	#$2ff ; Load $2FF into X
+	txs ; Transfer X to SP (set stack to $2FF, resets the stack)
 	ai8
 
-	jsl	initialise_l
+	jsl	initialise_l ; initialize game
 
-	IFNE	TWENTYONEMHZ
-	fast
-	ENDC
+	IFNE	TWENTYONEMHZ ; start conditional: if TWENTYONEMHZ !=0 (=1)
+	fast ; Tell MARIO chip to run @ 21.4mhz (no clock divider)
+	ENDC ; end conditional
 
-	IFNE	mouseon
-	lda	#1
-	sta	mousemode
-	sta	mousemodetemp
-	ENDC
+	IFNE	mouseon ; start conditional: If SNES mouse enabled
+	lda	#1 ; Load 1 into A
+	sta	mousemode		; store at these variables
+	sta	mousemodetemp	; (enable mouse)
+	ENDC ; End conditional
 
-	IFEQ	contest
-	jsl	intro_l
-	ENDC
+	IFEQ	contest ; start conditional: if CONTEST = 0 (Not SSFW)
+	jsl	intro_l ; Jump to Intro Sequence
+	ENDC ; End conditional
 
-	jsl	titleseq_l
+	jsl	titleseq_l ; Jump to Title Sequence
 
 
-	a8
-	lda	#0
-	sta.l	contexit
-	lda	#0
-	sta	defaulttrain
-	bra	firsttimeuse
+	a8 ; set A to 8 bit
+	lda	#0 ; Load 0 into A
+	sta.l	contexit ; Store A @ contexit (variable allocated in Extended RAM)
+	lda	#0 ; load 0 into A
+	sta	defaulttrain ; Store A @ defaulttrain (variable allocated in RAM)
+	bra	firsttimeuse ; Branch to firsttimeuse
 
-restart	ai16
-	clc
-	xce
-	lda	#0
-	tcd
-	ldx	#$2ff
-	txs			; reset the stack
+restart	ai16 ; Restarts the game (Used in retail when the game crashes instead of calling BLINK)
+	clc ; Clear Carry flag
+	xce ; Exchange Carry with Emulation Flag (Enter 65816 mode?)
+	lda	#0 ; load 0 into A
+	tcd ; Transfer A to DP
+	ldx	#$2ff ; load $2FF into X
+	txs ; Set the stack to $2FF
 	ai8
 
-	disable
+	disable ; disable interrupts (sei)
 
-	jsl	startsfx_l
+	jsl	startsfx_l ; Initialize the SNES
 
-	lda.l	whichroute
-	pha			; preserve level number
-	lda	defaulttrain
-	pha
-	lda.l	contexit
-	pha
-	lda	c_type
-	pha
+	lda.l	whichroute ; Load Route # into A
+	pha	; Push A to stack, preserving route number
+	lda	defaulttrain ; Load defaulttrain into A
+	pha ; push A to stack
+	lda.l	contexit ; load contexit into A
+	pha ; push A to stack
+	lda	c_type ; Load controller type into A
+	pha ; push A to stack
 
-	IFNE	mouseon
-	lda	mousemode
-	pha
-	lda	mousemodetemp
-	pha
-	ENDC
+	IFNE	mouseon ; start conditional: If SNES mouse enabled
+	lda	mousemode ; load value in mousemode var to A
+	pha ; Push A to stack
+	lda	mousemodetemp ; load value in mousemode temp var to A
+	pha ; Push A to stack
+	ENDC ; End conditional
 
-	jsr	initialise_ram
+	jsr	initialise_ram ; Clear RAM
 
-	IFNE	mouseon
-	pla
-	sta	mousemodetemp
-	pla
-	sta	mousemode
-	ENDC
+	IFNE	mouseon ; start conditional: If SNES mouse enabled
+	pla ; Pull A from stack
+	sta	mousemodetemp ; store A at mousemodetemp var
+	pla ; Pull A from stack
+	sta	mousemode ; store A at mousemode var
+	ENDC ; End conditional
 
-	pla
-	sta	c_type
-	pla
-	sta.l	contexit
-	pla
-	sta	defaulttrain
-	pla
-	sta.l	whichroute
-	lda	#1
-	sta	firstdnld
-	sta.l	oncewipe
+	pla ; pull A from stack
+	sta	c_type ; Store A to controller type variable
+	pla ; pull A from stack
+	sta.l	contexit ; store A at contexit variable
+	pla ; Pull A from stack
+	sta	defaulttrain ; Store A at defaulttrain variable
+	pla ; Pull A from stack
+	sta.l	whichroute ; Store A to Route selection variable
+	lda	#1 ; load 1 into A
+	sta	firstdnld ; store @ firstdnld variable (this has to do with initializing the SPC700)
+	sta.l	oncewipe ; Store A at oncewipe variable
 
-	IFNE	CONTEST
-	jsl	initialise_l
-	jsl	titleseq_l
-	ENDC
-	jsl	initialise_l
+	IFNE	CONTEST ; start conditional: If CONTEST !=0 (=1) (SSFW)
+	jsl	initialise_l ; Initialize game
+	jsl	titleseq_l ; Go to Title Sequence
+	ENDC ; End conditional
+	jsl	initialise_l ; Initialize game
 firsttimeuse
 
-	IFNE	TWENTYONEMHZ
-	fast
-	ENDC
+	IFNE	TWENTYONEMHZ ; start conditional : if TWENTYONEMHZ !=0 (=1)
+	fast	; set MARIO chip to 21.4mhz (no clock divider)
+	ENDC ; end conditional
 
-	jsl	briefing_l
-	jsl	initialise_l
-	jml	planetseq_l
+	jsl	briefing_l ; jump to briefing screen subroutine
+	jsl	initialise_l ; Initialize game
+	jml	planetseq_l ; Jump to planet routine
 
 
 ;-----------------------------------------------------------------------
-; clear all ram
+; Clear all RAM (because RAM is randomized on power on and retained after resets, and we don't want that)
 initialise_ram
-	php
+	php ; Push processor status to stack
 
-	a8
-	lda	#$7e
-	pha
-	plb
+	a8 ; set A to 8 bit
+	lda	#$7e ; load $7E into A
+	pha	; push A to stack
+	plb	; Pull data bank from stack
+
+	ai16 ; ?
+	ldx	#$2000	; load $2000 into X to use for the following operations:
+.7epage	stz.w	0,x ; Store 0 in addr defined by X
+	stz.w	2,x ; Store 0 @ addr in X + 2
+	stz.w	4,x ; Store 0 @ addr in X + 4
+	stz.w	6,x ; Store 0 @ addr in X + 6
+	txa	; Transfer X to A
+	clc	; Clear carry flag
+	adc	#8	; Add 8 to A
+	tax	; Transfer A to X
+	bne	.7epage ; repeat until X = 0
+
+	a8 ; set A to 8 bit
+	lda	#$7f ; load $7F into A
+	pha ; Push A to stack
+	plb ; Pull data bank from stack
+	a16 ; set A to 16 bit (?)
+
+.7fpage	stz.w	0,x ; Store 0 @ $????
+	stz.w	2,x ; Store 0 @ addr in X + 2
+	stz.w	4,x ; Store 0 @ addr in X + 4
+	stz.w	6,x ; Store 0 @ addr in X + 6
+	txa ; Transfer X to A
+	clc ; Clear carry flag
+	adc	#8 ; Add 8 to A
+	tax ; Transfer A to X
+	bne	.7fpage ; repeat until X = 0
+
+	a8 ; set A to 8 bit
+	lda	#$70 ; load $70 into A
+	pha ; Push A to stack
+	plb ; Pull data bank from stack
 
 	ai16
-	ldx	#$2000	;clr ext. RAM
-.7epage	stz.w	0,x
-	stz.w	2,x
-	stz.w	4,x
-	stz.w	6,x
-	txa
-	clc
-	adc	#8
-	tax
-	bne	.7epage
 
-	a8
-	lda	#$7f
-	pha
-	plb
-	a16
-
-.7fpage	stz.w	0,x
-	stz.w	2,x
-	stz.w	4,x
-	stz.w	6,x
-	txa
-	clc
-	adc	#8
-	tax
-	bne	.7fpage
-
-	a8
-	lda	#$70
-	pha
-	plb
-
-	ai16
-
-	ldx	#32768-8	; clear mario ram
+	ldx	#32768-8	; (load #32760 into X) Clear MARIO chip RAM
 .ooop2
-	stz.w	0,x
-	stz.w	2,x
-	stz.w	4,x
-	stz.w	6,x
-	txa
-	sec
-	sbc	#8
-	tax
-	bpl	.ooop2
+	stz.w	0,x ; Store 0 @ addr in X
+	stz.w	2,x ; Store 0 @ addr in X + 2
+	stz.w	4,x ; Store 0 @ addr in X + 4
+	stz.w	6,x ; Store 0 @ addr in X + 6
+	txa ; Transfer X to A
+	sec ; Set carry flag
+	sbc	#8 ; Subtract 8 from A
+	tax ; Transfer A to X
+	BPL	.ooop2 ; repeat until x = 0
 
-	a8
-	IFNE	FASTROM
-	lda	#$80
-	pha
-	plb
-	ELSEIF
-	lda	#0
-	pha
-	plb
-	ENDC
-	a16
+	a8 ; set A to 8 bit
+	IFNE	FASTROM ; start conditional: if FASTROM !=0 (=1)
+	lda	#$80 ; load $80 into A (Bank 80 for FastROM)
+	pha ; Push A to stack
+	plb ; Pull data bank from stack
+	ELSEIF ; if FASTROM = 0
+	lda	#0 ; load #0 into A
+	pha ; Push A to stack
+	plb ; Pull data bank from stack
+	ENDC ; end conditional
+	a16 ; set A to 16 bit (?)
 
-	ldx	#$2000-$300-8	;clr Work RAM
-.sssp	stz	$300,x
-	stz	$302,x
-	stz	$304,x
-	stz	$306,x
-	txa
-	sec
-	sbc	#8
-	tax
-	bpl	.sssp
+	ldx	#$2000-$300-8	; (1CF8) Clear WRAM
+.sssp	stz	$300,x ; store 0 @ addr in X + $300
+	stz	$302,x ; store 0 @ addr in X + $302
+	stz	$304,x ; store 0 @ addr in X + $304
+	stz	$306,x ; store 0 @ addr in X + $306
+	txa ; transfer X to A
+	sec ; set carry flag
+	sbc	#8 ; Subtract 8 from A
+	tax ; transfer A to X
+	bpl	.sssp ; repeat until x = 0
 
-	ldx	#$fe
-.zpage	stz	0,x
-	dex
-	dex
-	bpl	.zpage
+	ldx	#$fe ; load $FE into X
+.zpage	stz	0,x ; store 0 at addr in X
+	dex ; decrement X
+	dex ; decrement X
+	bpl	.zpage ; repeat until x = 0
 
-	jsl	copy_to_0101_l
+	jsl	copy_to_0101_l ;Copy NMI handler to RAM at $0101
 
-	a8
-	lda	stat78r		; ntsc/pal
-	and	#1<<4
-	sta	ntscpal
+; NTSC/PAL
+	a8 ; set A to 8 bit
+	lda	stat78r ; load stat78r ($213F) into A
+	and	#1<<4 ; AND #1 Shifted left by 4 (?)
+	sta	ntscpal ; Store A at ntscpal variable
 
 
-	plp
-	rts
+	plp ; Pull Processor Status from Stack
+	rts ; Return to Subroutine
 
 
 	shorta
 	shorti
 ;------ reset SFX regs ------------------------------
-startsfx_l
-	disable
+startsfx_l ; Initialize the SNES 
+; TODO: properly label all regs here, say what they do
+	disable ; Disable interrupts (sei)
 
-	waitdma	1
-	waitdma	0
+	waitdma	1 ; wait for raster line 1 (?)
+	waitdma	0 ; wait for raster line 0 (?)
 
 	lda	#$8f
 	sta	$2100
@@ -319,22 +336,22 @@ startsfx_l
 	sta	$420b
 	sta	$420c
 
-	IFNE	fastrom
-	pha
-	a8
-	lda	#1
-	sta	$420d
-	pla
-	ELSEIF
-	sta	$420d
-	ENDC
+	IFNE	fastrom ; start conditional: if FASTROM != 0 (=1)
+	pha ; Push A to stack
+	a8 ; set A to 8 bit
+	lda	#1 ; load 1 into A
+	sta	$420d ; Store @ $420D (memsel) (Enable FastROM)
+	pla ; Pull A from stack
+	ELSEIF ; if FASTROM = 0
+	sta	$420d ; Store 0 @ 420D (memsel) (Disable FastROM)
+	ENDC ; end conditional
 
-	rtl
+	rtl ; Return from Subroutine Long
 
 	shorta
 	longi
 fnmi_l
-	rtl
+	rtl ; Return from Subroutine Long
 
 
 

@@ -2811,10 +2811,10 @@ stupt	=	stupt+\2
 
 
 ;------------------------------------------------------------------------
-
+; TODO: figure out what these do exactly
 a8	macro
 	shorta
-	sep	#p_a
+	sep	#p_a ; set A to 8 bit
 	endm
 
 ;------------------------------------------------------------------------
@@ -2828,7 +2828,7 @@ i8	macro
 
 a16	macro
 	longa
-	rep	#p_a
+	rep	#p_a ; set A to 16 bit?
 	endm
 
 ;------------------------------------------------------------------------
@@ -6242,12 +6242,9 @@ WEAPON_\1	equ	cweapon
 cweapon	=	cweapon+2
 	ENDM
 ;---------------------------------------------------
-disable	MACRO
-
-	sei
-
+disable	MACRO ; why bother with this macro? literally just one instruction.
+	sei ; disable interrupts
 	ENDM
-
 ;---------------------------------------------------
 
 enable	MACRO
