@@ -3902,11 +3902,10 @@ dmabitmap macro
 	endm
 
 ;------------------------------------------------------------------------
-
-blink	macro
-	jsl	doblink\1
+; Syntax: blink (value)
+blink	macro ; run crash handler
+	jsl	doblink\1 ; Jump to BLINK routine
 	endm
-
 ;------------------------------------------------------------------------
 
 blinkcount	macro
