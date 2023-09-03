@@ -244,98 +244,98 @@ startsfx_l ; Initialize the SNES
 	waitdma	1 ; wait for raster line 1 (?)
 	waitdma	0 ; wait for raster line 0 (?)
 
-	lda	#$8f
-	sta	$2100
-	lda	#0
-	sta	$2101
-	sta	$2102
-	sta	$2103
+	lda	#$8f ; Load $8F into A
+	sta	$2100 ; INIDISP
+	lda	#0 ; Load 0 into A
+	sta	$2101 ; OBJSEL
+	sta	$2102 ; OAMADDL
+	sta	$2103 ; OAMADDH
 
-	sta	$2105
-	sta	$2106
-	sta	$2107
-	sta	$2108
-	sta	$2109
-	sta	$210a
-	sta	$210b
-	sta	$210c
+	sta	$2105 ; BGMODE
+	sta	$2106 ; MOSAIC
+	sta	$2107 ; BG1SC
+	sta	$2108 ; BG2SC
+	sta	$2109 ; BG3SC
+	sta	$210a ; BG4SC
+	sta	$210b ; BG12NBA
+	sta	$210c ; BG34NBA
 
-	sta	$210d
-	sta	$210d
-	sta	$210e
-	sta	$210e
-	sta	$210f
-	sta	$210f
-	sta	$2110
-	sta	$2110
-	sta	$2111
-	sta	$2112
-	sta	$2112
-	sta	$2113
-	sta	$2113
-	sta	$2114
-	sta	$2114
+	sta	$210d ; BG1HOFS
+	sta	$210d ; BG1HOFS
+	sta	$210e ; BG1VOFS
+	sta	$210e ; BG1VOFS
+	sta	$210f ; BG2HOFS
+	sta	$210f ; BG2HOFS
+	sta	$2110 ; BG2VOFS
+	sta	$2110 ; BG2VOFS
+	sta	$2111 ; BG3HOFS
+	sta	$2112 ; BG3VOFS
+	sta	$2112 ; BG3VOFS
+	sta	$2113 ; BG4HOFS
+	sta	$2113 ; BG4HOFS
+	sta	$2114 ; BG4VOFS
+	sta	$2114 ; BG4VOFS
 
-	ldx	#$80
-	stx	$2115
+	ldx	#$80 ; Load 80 into X
+	stx	$2115 ; Store X at VMAINC
 	
-	sta	$2116
-	sta	$2117
+	sta	$2116 ; VMADDL
+	sta	$2117 ; VMADDH
 
-	sta	$211a
+	sta	$211a ; M7SEL
 
-	ldx	#1
-	sta	$211b
-	stx	$211b
-	sta	$211c
-	sta	$211c
-	sta	$211d
-	sta	$211d
-	sta	$211e
-	stx	$211e
-	sta	$211f
-	sta	$211f
-	sta	$2120
-	sta	$2120
+	ldx	#1 ; Load 1 into X
+	sta	$211b ; M7A
+	stx	$211b ; M7A
+	sta	$211c ; M7B
+	sta	$211c ; M7B
+	sta	$211d ; M7C
+	sta	$211d ; M7C
+	sta	$211e ; M7D
+	stx	$211e ; M7D
+	sta	$211f ; M7X
+	sta	$211f ; M7X
+	sta	$2120 ; M7Y
+	sta	$2120 ; M7Y
 
-	sta	$2121
+	sta	$2121 ; CGADD
 
-	sta	$2122
-	sta	$2123
-	sta	$2124
-	sta	$2125
-	sta	$2126
-	sta	$2127
-	sta	$2128
-	sta	$2129
-	sta	$212a
-	sta	$212b
-	sta	$212c
-	sta	$212d
-	sta	$212e
+	sta	$2122 ; CGDATA
+	sta	$2123 ; W12SEL
+	sta	$2124 ; W34SEL
+	sta	$2125 ; WOBJSEL
+	sta	$2126 ; WH0
+	sta	$2127 ; WH1
+	sta	$2128 ; WH2
+	sta	$2129 ; WH3
+	sta	$212a ; WBGLOG
+	sta	$212b ; WOBJLOG
+	sta	$212c ; TM
+	sta	$212d ; TS
+	sta	$212e ; TMW
 
-	ldy	#$30
-	sty	$2130
+	ldy	#$30 ; Load 30 into Y
+	sty	$2130 ; CGSWSEL
 
-	sta	$2131
-	ldx	#$e0
-	stx	$2132
-	sta	$2133
+	sta	$2131 ; CGADSUB
+	ldx	#$e0 ; Load $E0 into X
+	stx	$2132 ; COLDATA
+	sta	$2133 ; SETINI
 
-	sta	$4200
-	ldx	#$ff
-	stx	$4201
-	sta	$4202
-	sta	$4203
-	sta	$4204
-	sta	$4205
-	sta	$4206
-	sta	$4207
-	sta	$4208
-	sta	$4209
-	sta	$420a
-	sta	$420b
-	sta	$420c
+	sta	$4200 ; NMITIMEN
+	ldx	#$ff ; Load $FF into X
+	stx	$4201 ; WRIO
+	sta	$4202 ; WRMPYA
+	sta	$4203 ; WRMPYB
+	sta	$4204 ; WRDIVL
+	sta	$4205 ; WRDIVH
+	sta	$4206 ; WRDIVB
+	sta	$4207 ; HTIMEL
+	sta	$4208 ; HTIMEH
+	sta	$4209 ; VTIMEL
+	sta	$420a ; VTIMEH
+	sta	$420b ; MDMAEN
+	sta	$420c ; HDMAEN
 
 	IFNE	fastrom ; start conditional: if FASTROM != 0 (=1)
 	pha ; Push A to stack
