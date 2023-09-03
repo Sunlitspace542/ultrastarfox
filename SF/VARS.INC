@@ -296,6 +296,9 @@ tm_planets2	equ	34
 
 dec_base	equ	2800h
 
+; Date and Time
+day	equ	_DAY
+month	equ	_MONTH
 
 
 

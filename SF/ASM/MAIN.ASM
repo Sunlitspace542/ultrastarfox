@@ -166,9 +166,7 @@ gamestart
 	jsl	initgame_l ; Initialize game
 gameloop2
 
-; @!: A was set to 8 bit twice.
-; The macro may have been missed when the "foxyfoxy" stuff was being commented out.
-;	a8 ; set A to 8 bit
+	a8 ; set A to 8 bit
 ;	lda	foxyfoxy
 ;	beq	.nofox
 ;	stz	foxyfoxy
@@ -217,7 +215,7 @@ cestimeron	=	1 ; Set timer flag to 1
 
 	a16 ; Set A to 16 bit
 	lda	levelfinished ; Load level finished flag into A
-	lbeq	gameloop2 ; Long branch to gameloop2 if levelfinished equal to 1?
+	lbeq	gameloop2 ; Long branch to gameloop2 if levelfinished = 1?
 
 	cmp	#le_gameover ; Compare A with #le_gameover (10)
 	lbeq	gameover_l ; Long branch to gameover_l if A = 10
