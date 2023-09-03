@@ -65,7 +65,7 @@ Do_HDR	=	1
 	incfile	SHAPES\kshapes.asm
 Do_HDR	=	0
 
-start	jmp.l	startboot
+start	jmp.l	startboot ; Entrypoint
 
 
 cop_ve

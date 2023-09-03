@@ -48,7 +48,7 @@ irqcode_l	ldx	trans_flag ; Load transfer flag into X
 
 	shorta
 	shorti
-irqsetmode1	i16
+irqsetmode1	i16 ; enable interrupts
 	lda	#hdmaf_inidisp+hdmaf_win
 	sta	hdmaen_gc
 	sta	hdmaen

@@ -2820,7 +2820,7 @@ a8	macro ; set A to 8 bit
 
 ;------------------------------------------------------------------------
 
-i8	macro ; ???
+i8	macro ; Disable interrupts
 	shorti
 	sep	#p_x
 	endm
@@ -2834,7 +2834,7 @@ a16	macro ; set A to 16 bit
 
 ;------------------------------------------------------------------------
 
-i16	macro ; ???
+i16	macro ; Enable interrupts
 	longi
 	rep	#p_x
 	endm
