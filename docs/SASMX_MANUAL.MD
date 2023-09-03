@@ -21,7 +21,7 @@
 1  SASM assembler directives
 ----------------------------------------------------------------------
 <label>   =   <expression>          Sets <label> to be <expression>,
-									cannot be redefined
+                                    cannot be redefined
                                     see EQU, EQUR
           CHECKMAC ON/OFF           Will turn on and off duplicate
                                     macro name checking.
