@@ -2869,7 +2869,7 @@ i16clc	macro ; clears interrupt disable flag and carry flag
 
 ;------------------------------------------------------------------------
 
-ai16	macro ; sets A to 16 bit and clears interrupt disable flag
+ai16	macro ; sets A to 16 bit
 	longa
 	longi
 	rep	#p_a+p_x
@@ -2877,7 +2877,7 @@ ai16	macro ; sets A to 16 bit and clears interrupt disable flag
 
 ;------------------------------------------------------------------------
 
-ai8	macro ; sets A to 16 bit and sets interrupt disable flag
+ai8	macro ; sets A to 8 bit
 	shorta
 	shorti
 	sep	#p_a+p_x
@@ -2893,7 +2893,7 @@ ai16clc	macro ; sets A to 16 bit, clears interrupt disable and carry flags
 
 ;------------------------------------------------------------------------
 
-ai8sec	macro ; sets A to 16 bit, sets interrupt disable, and sets carry flag
+ai8sec	macro ; sets A to 8 bit, sets interrupt disable, and sets carry flag
 	shorta
 	shorti
 	sep	#p_a+p_x+p_c
