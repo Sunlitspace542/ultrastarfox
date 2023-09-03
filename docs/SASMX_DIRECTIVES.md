@@ -21,12 +21,12 @@
 ## Input/Output
 ``fopen	(file)`` - write to new file  
 ``fclose	!`` - save file  
-``printf "string"`` - print string to command line at assembly
+``printf "string"`` - print string to command line at assembly  
 ## Variables
 _SASM - Defined if SASM
-``NARG`` - Number of arguments in a macro
-``LONGA`` - Non-zero if in long accumulator mode
-``LONGI`` - Non-zero if in long index mode
+``NARG`` - Number of arguments in a macro  
+``LONGA`` - Non-zero if in long accumulator mode  
+``LONGI`` - Non-zero if in long index mode  
 ``_DAY`` - Day 1-31
 ``_MONTH`` - Month 1-12
 ``_YEAR`` - 1992-????
