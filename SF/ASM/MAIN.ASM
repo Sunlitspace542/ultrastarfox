@@ -166,9 +166,9 @@ gamestart
 	jsl	initgame_l ; Initialize game
 gameloop2
 
-; @!: A ends up being set to 8 bit twice. This is probably unnecessary and uses up more CPU cycles.
+; @!: A was set to 8 bit twice.
 ; The macro may have been missed when the "foxyfoxy" stuff was being commented out.
-	a8 ; set A to 8 bit
+;	a8 ; set A to 8 bit
 ;	lda	foxyfoxy
 ;	beq	.nofox
 ;	stz	foxyfoxy
@@ -177,57 +177,57 @@ gameloop2
 ;.nofox
 
 	a8 ; set A to 8 bit
-	lda	singlestep
-	bne	.nopause
-	lda	pshipflags
-	bit	#psf_noctrl
-	bne	.nopause
-	lda	bossflags
-	and	#bf_dying
-	bne	.nopause
-	lda	pstratflags
-	and	#pstf_notdie
-	bne	.nopause
+	lda	singlestep ; Load singlestep var into A
+	bne	.nopause ; Branch to .nopause sublabel if ??? != ???
+	lda	pshipflags ; Load pshipflags into A
+	bit	#psf_noctrl ; AND #psf_noctrl (32) to A w/o storing result to A
+	bne	.nopause ; branch to .nopause sublabel if ??? != ???
+	lda	bossflags ; Load boss flags into A
+	and	#bf_dying ; AND A with #bf_dying (16)
+	bne	.nopause ; branch to .nopause if result != 1
+	lda	pstratflags ; load PSTRAT flags into A
+	and	#pstf_notdie ; AND A with #pstf_notdie (32)
+	bne	.nopause ; branch to .nopause sublabel if result != 1
 
-	lda	cont0l
-	bit	#key_start
-	beq	.nopause
+	lda	cont0l ; Load Controller 1 status into A
+	bit	#key_start ; AND A with #key_start ($10)
+	beq	.nopause ; branch to .nopause if equal
 
-	IFEQ	CONTEST
-	jsr	dopause
-	ENDC
+	IFEQ	CONTEST ; Start conditional: if CONTEST != 0 (=1) (SSFW)
+	jsr	dopause ; go to dopause subroutine
+	ENDC ; End conditional
 .nopause
-	jsl	setblack_l
-	jsl	stratdebug_l
-	jsl	transfer_l		;transfer bitmap, do strats etc.
-	jsl	friends_messages_l
+	jsl	setblack_l ; Set screen to black
+	jsl	stratdebug_l ; Go to Strat Debug subroutine
+	jsl	transfer_l	; Go to transfer loop subroutine ;transfer bitmap, do strats etc.
+	jsl	friends_messages_l ; Go to Friends Messages subroutine
 
-cestimeron	=	0
-	IFEQ	cesdemo-1
-cestimeron	=	1
-	ENDC
+cestimeron	=	0 ; Timer flag
+	IFEQ	cesdemo-1 ; Start conditional: if CESDEMO-1 !=0 (=1)
+cestimeron	=	1 ; Set timer flag to 1
+	ENDC ; End conditional
 
-	IFNE	contest
-cestimeron	=	1
-	ENDC
+	IFNE	contest ; Start conditional: if CONTEST !=0 (=1) (SSFW)
+cestimeron	=	1 ; Set timer flag to 1
+	ENDC ; End conditional
 
-	IFNE	cestimeron
-	jsl	cestimer_l
-	ENDC
+	IFNE	cestimeron ; Start conditional: if CESTIMERON !=0
+	jsl	cestimer_l ; Go to Timer subroutine
+	ENDC ; End conditional
 
-	a16
-	lda	levelfinished
-	lbeq	gameloop2
+	a16 ; Set A to 16 bit
+	lda	levelfinished ; Load level finished flag into A
+	lbeq	gameloop2 ; Long branch to gameloop2 if levelfinished equal to 1?
 
-	cmp	#le_gameover
-	lbeq	gameover_l
+	cmp	#le_gameover ; Compare A with #le_gameover (10)
+	lbeq	gameover_l ; Long branch to gameover_l if A = 10
 
-	inc	stage
+	inc	stage ; Increment stage counter
 
-	a8
-	lda	#1
-	sta	doingend
-	stz	crosshairon
+	a8 ; Set A to 8-bit
+	lda	#1 ; Load 1 ito A
+	sta	doingend ; Store A at doingend flag
+	stz	crosshairon ; store 0 at crosshairon flag
 
 ;---------------------------------------------------------------------
 	lda	levelfinished
