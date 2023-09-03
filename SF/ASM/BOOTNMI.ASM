@@ -23,7 +23,7 @@
 startboot	disable ; Disable Interrupts
 	clc	; Clear Carry Flag
 	xce ; Exchange Carry Flag with Emulation Flag (Exit 65c02 mode)
-	ai16 ; set A to 16 bit and clear interrupt disable flag
+	ai16 ; set A to 16 bit
 	lda	#0 ; load 0 into A
 	tcd ; Transfer 16 bit A (C) to Direct Page
 	ldx	#$02ff ; load $02FF into X
@@ -40,7 +40,7 @@ startboot	disable ; Disable Interrupts
 	i16 ; clears interrupt disable flag
 	ldx	#$2ff ; Load $2FF into X
 	txs ; Transfer X to SP (set stack to $2FF, resets the stack)
-	ai8 ; Set A to 8 bit, clear interrupt disable flag
+	ai8 ; Set A to 8 bit
 
 	jsl	initialise_l ; initialize game
 
@@ -50,7 +50,7 @@ startboot	disable ; Disable Interrupts
 
 	IFNE	mouseon ; start conditional: If SNES mouse enabled
 	lda	#1 ; Load 1 into A
-	sta	mousemode		; store at these variables
+	sta	mousemode		; store A at these variables
 	sta	mousemodetemp	; (enable mouse)
 	ENDC ; End conditional
 
@@ -69,7 +69,7 @@ startboot	disable ; Disable Interrupts
 	bra	firsttimeuse ; Branch to firsttimeuse
 
 restart	ai16 ; Restarts the game (Used in retail when the game crashes instead of calling BLINK)
-	; set A to 16 bit and clear interrupt disable flag
+	; set A to 16 bit
 	clc ; Clear Carry flag
 	xce ; Exchange Carry with Emulation Flag (Enter 65816 mode?)
 	lda	#0 ; load 0 into A
@@ -145,7 +145,7 @@ initialise_ram
 	pha	; push A to stack
 	plb	; Pull data bank from stack
 
-	ai16 ; set A to 16 bit, clear interrupt disable flag
+	ai16 ; set A to 16 bit
 	ldx	#$2000	; load $2000 into X to use for the following operations:
 .7epage	stz.w	0,x ; Store 0 in addr defined by X
 	stz.w	2,x ; Store 0 @ addr in X + 2
@@ -198,7 +198,7 @@ initialise_ram
 	pha ; Push A to stack
 	plb ; Pull data bank from stack
 	ELSEIF ; if FASTROM = 0
-	lda	#0 ; load #0 into A
+	lda	#0 ; load #0 into A (Bank 0 for SlowROM)
 	pha ; Push A to stack
 	plb ; Pull data bank from stack
 	ENDC ; end conditional
@@ -234,8 +234,8 @@ initialise_ram
 	rts ; Return to Subroutine
 
 
-	shorta ; set A to 8 bit
-	shorti ; set interrupt disable flag
+	shorta
+	shorti
 ;------ reset SFX regs ------------------------------
 startsfx_l ; Initialize the SNES 
 ; TODO: properly label all regs here, say what they do

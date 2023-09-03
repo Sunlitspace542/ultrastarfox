@@ -16,99 +16,99 @@
 ;*  Descr: NMI handler.                                                    *
 ;*                                                                         *
 ;***************************************************************************
-;Copy NMI handler to RAM at $0101
+
+; Copies NMI handler to RAM at addr $0101
 copy_to_0101_l
-	php
-	a8i16
+	php ; Push Processor status to stack
+	a8i16 ; set A to 8 bit
 
-	ldx	#nmihanend-nmihan-1
-.codeloop2	lda.l	nmihan,x
-	sta.l	$0101,x
-	dex
-	bpl	.codeloop2
+	ldx	#nmihanend-nmihan-1 ; Load size of NMI handler routine into X(?)
+.codeloop2	lda.l	nmihan,x ; Load (Long) NMIHAN + size of NMIHAN into A(?)
+	sta.l	$0101,x ; Store A (Long) at $0101 + size of NMIHAN(?)
+	dex ; Decrement X
+	bpl	.codeloop2 ; repeat until x = 0
 
-	ldx	#xlen-1
+	; xlen = 22*1024+450
+	ldx	#xlen-1 ; Load xlen-1 (22977) into X
 .codeloop4	
-	IFNE	fastrom
-	lda.l	$828000,x
-	elseif
-	lda.l	$28000,x
-	endc
-	sta.l	xroutines,x
-	dex
-	bpl	.codeloop4
+	IFNE	fastrom ; Start conditional: if FASTROM !=0 (=1)
+	lda.l	$828000,x ; Load contents of addr $828000 + 22977 into A (Long)
+	elseif ; else if FASTROM =0
+	lda.l	$28000,x ; Load contents of addr $28000 + 22977 into A (Long)
+	endc ; End conditional
+	sta.l	xroutines,x ; Store (Long) contents of A into xroutines variable + 22977
+	dex ; decrement X
+	bpl	.codeloop4 ; repeat until x = 0
 
-	plp
-	rtl
+	plp ; Pull Processor status from stack
+	rtl ; Return from subroutine (Long)
 
+;---------------------------------------------------------------------------
 
-
-
-
-nmihan
-	blink	2
-	blink	2
-	brl	.nmi	;$0108	NMI
-	nop		;$010b
+nmihan ; Start of NMI handler
+	blink	2 ; Yellow BLINK
+	blink	2 ; Yellow BLINK
+	brl	.nmi	;$0108	NMI ; Branch to .NMI sublabel
+	nop		;$010b ; No Operation
 .irq	ai16		;$010c	irq
-	pha
-	lda.l	mflags
-	bmi	.qexit
-	phb
-	disable
-	phx
-	phy
-	ai8
-	IFNE	FASTROM
-	lda	#$80
-	pha
-	plb
-	ELSEIF
-	lda	#0
-	pha
-	plb
-	ENDC
+	pha	; Push A to stack
+	lda.l	mflags ; Load mflags into A (MARIO chip flags?)
+	bmi	.qexit ; branch if a = 1
+	phb ; Push data bank to stack
+	disable ; disable interrupts
+	phx ; Push X to stack
+	phy ; Push Y to stack
+	ai8 ; set A to 8 bit
+	IFNE	FASTROM ; Start conditional: if FASTROM !=0 (=1)
+	lda	#$80 ; load $80 into A (Bank 80 for FastROM)
+	pha ; Push A to stack
+	plb ; Pull data bank from stack
+	ELSEIF ; if FASTROM =0
+	lda	#0 ; Load #0 into stack (Bank 0 for SlowROM)
+	pha ; Push A to stack
+	plb ; Pull data bank from stack
+	ENDC ; End conditional
 
-	nastyon
-	jsl	irqcode_l
-	a8
-	inc	framec
-	lda	timeupr
-	bra	.exit
+	nastyon ; Turn MARIO nasty mode on
+	jsl	irqcode_l ; Jump to irqcode_l
+	a8 ; Set A to 8 bit
+	inc	framec ; increment frame count?
+	lda	timeupr ; Load TIMEUPR register into A
+	bra	.exit ; branch to .exit sublabel
 	longa
-.qexit	pla
-	rti
+.qexit	pla ; Pull A from stack
+	rti ; Return from interrupt
 .brk
 .nmi
-	ai16
-	pha
-	phb
-	phx
-	phy
-	a8
-	IFNE	FASTROM
-	lda	#$80
-	pha
-	plb
-	ELSEIF
-	lda	#0
-	pha
-	plb
-	ENDC
+	ai16 ; Set A to 16 bit
+	pha ; Push A to stack
+	phb ; Push data bank to stack
+	phx ; Push X to stack
+	phy ; Push Y to stack
+	a8 ; Set A to 8 bit
+	IFNE	FASTROM ; Start conditional: if FASTROM !=0 (=1)
+	lda	#$80 ; load $80 into A (Bank 80 for FastROM)
+	pha ; Push A to stack
+	plb ; Pull data bank from stack
+	ELSEIF ; if FASTROM =0
+	lda	#0 ; Load #0 into stack (Bank 0 for SlowROM)
+	pha ; Push A to stack
+	plb ; Pull data bank from stack
+	ENDC ; End conditional
 
-	nastyoff
-	jsl	fnmi_l
-	nastyon
-	a8
-	lda	rdnmir
+	nastyoff ; Turn MARIO chip nasty mode off
+	jsl	fnmi_l ; Jump to fnmi_l (Long)
+	nastyon ; Turn MARIO chip nasty mode on
+	a8 ; Set A to 8 bit
+	lda	rdnmir ; Load RDNMIR register into A
 
 .exit	ai16
-	ply
-	plx
-	plb
-	pla	
-	rti
+	ply ; Pull Y from stack
+	plx ; Pull X from stack
+	plb ; Pull data bank from stack
+	pla	; Pull A from stack
+	rti ; Return from interrupt
 
-nmihanend
+nmihanend ; End of NMI Handler
 
 

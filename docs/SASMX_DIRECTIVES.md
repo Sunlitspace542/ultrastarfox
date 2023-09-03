@@ -1,4 +1,4 @@
-# SASMX Directives (WIP)
+# SASMX Directives
 
 ## Conditionals
 ``IFEQ`` - If equal to 0  
