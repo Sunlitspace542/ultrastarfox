@@ -6081,11 +6081,9 @@ TESTKEYDOWN2	MACRO
 	bit	#padl_\1
 	ENDM
 ;-------------------------------------------------------------------
-
-irv	macro
-	dw	(\1)&WM
+irv	macro ; something to do with IRQ (IRQ Variable?)
+	dw	(\1)&WM ; Direct Write value in arg 1 & $FFFF ?
 	endm
-
 ;-------------------------------------------------------------------
 
 
@@ -6282,7 +6280,7 @@ clrmes	MACRO
 
 
 ;---------------------------------------------------
-fast	MACRO
+fast	MACRO ; Run MARIO chip @ 21.4mhz (no clock divider)
 	IFEQ	LONGA
 	lda	#1
 	sta	$3039
@@ -6295,7 +6293,7 @@ fast	MACRO
 	ENDM
 
 ;---------------------------------------------------
-slow	MACRO
+slow	MACRO ; Run MARIO chip @ 10.7mhz (enable clock divider)
 	IFEQ	LONGA
 	lda	#0
 	sta	$3039

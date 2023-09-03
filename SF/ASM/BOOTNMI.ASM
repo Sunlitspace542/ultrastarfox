@@ -6,7 +6,7 @@
 ;*                           SuperNES version.                             *
 ;*                                                                         *
 ;*                                                                         *
-;*                           Argonaut Software.      		               *
+;*                           Argonaut Software.                            *
 ;*                                                                         *
 ;*_________________________________________________________________________*
 ;*                                                                         *
@@ -24,7 +24,7 @@ startboot	disable ; Disable Interrupts
 	clc	; Clear Carry Flag
 	xce ; Exchange Carry Flag with Emulation Flag (Exit 65c02 mode)
 	ai16
-	lda	#0 ; load 0 i
+	lda	#0 ; load 0 into A
 	tcd ; Transfer 16 bit A (C) to Direct Page
 	ldx	#$02ff ; load $02FF into X
 	txs ; transfer X to SP (set stack at $02FF)

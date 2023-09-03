@@ -109,6 +109,7 @@ deg288	equ	(deg360*4)/5
 wallhgt	equ	120
 walldist	equ	60+10
 
+; processor flags
 p_n		equ	10000000b
 p_v		equ	01000000b
 p_a		equ	00100000b

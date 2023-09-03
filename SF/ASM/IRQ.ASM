@@ -1,15 +1,30 @@
-
+;***************************************************************************
+;*                                                                         *
+;*                               Star Fox                                  *
+;*                              -----------                                *
+;*                                                                         *
+;*                           SuperNES version.                             *
+;*                                                                         *
+;*                                                                         *
+;*                           Argonaut Software.      		               *
+;*                                                                         *
+;*_________________________________________________________________________*
+;*                                                                         *
+;*   File: IRQ.ASM                                                         *
+;*_________________________________________________________________________*
+;*                                                                         *
+;*  Descr: IRQ routines.                                                   *
+;*                                                                         *
+;***************************************************************************
 	incpublics	EXT\irq.ext
 
-
-
-NOBGTRANS	=	0
+NOBGTRANS	=	0 ; something to do with the transfer loop? (BG = background?)
 
 	shorta
 	shorti
-irqcode_l	ldx	trans_flag
-	jmp	(.tab&WM,x)
-.tab	irv	irqblank
+irqcode_l	ldx	trans_flag ; Load transfer flag into X
+	jmp	(.tab&WM,x) ; Jump to LUT &$FFFF?
+.tab	irv	irqblank ; declare IRQ variables?
 	irv	irqbit1		;2
 	irv	irqbit2		;4
 	irv	irqbit3		;6
