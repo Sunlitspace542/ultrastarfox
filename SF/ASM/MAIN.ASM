@@ -83,89 +83,92 @@ initgame_l ; Initialize game
 	stz	lastzchange ; store 0 at lastzchange variable
 	stz	viewposz	; reset map position (Reset camera Z position?)
 	lda	#1 ; Load 1 into A
-	sta.l	m_meters ;
-	stz	levelfinished
-	stz	cont0l
-	stz	sdgpt3
-	stz	sdspt3
-	stz	sdpck3
+	sta.l	m_meters ; Store 1 at m_meters var (show meters)
+	stz	levelfinished ; Store 0 at level finished var
+	stz	cont0l ; store 0 at controller 0 status var
+	stz	sdgpt3 ; store 0 at sdgpt3 var
+	stz	sdspt3 ; store 0 at sdspt3 var
+	stz	sdpck3 ; store 0 at sdpck3 var
 
-	a8
-	lda	#1
-	sta	shieldon
-	stz	showtype
-	stz	msg_count1
-	stz	msg_count2
-	stz	restartcol
-	stz	onecredspr
-	stz	doneacircle
-	stz	windowmode
-	stz	nosetport3
-	stz	pausesnd
-	stz	sdpck3
-	stz	prttraining
+	a8 ; set A to 8 bit
+	lda	#1 ; Load 1 into A
+	sta	shieldon ; Store A into shieldon var (shield on)
+	stz	showtype ; store 0 at showtype var
+	stz	msg_count1 ; store 0 at msg_count1 var
+	stz	msg_count2 ; store 0 at msg_count2 var
+	stz	restartcol ; store 0 at restartcol var
+	stz	onecredspr ; store 0 at onecredspr var
+	stz	doneacircle ; store 0 at doneacircle var
+	stz	windowmode ; store 0 at windowmode var
+	stz	nosetport3 ; store 0 at nosetport3 var
+	stz	pausesnd ; store 0 at pausesnd variable
+	stz	sdpck3 ; store 0 at sdpck3 var
+	stz	prttraining ; store 0 at prttraining var
 
 	jsl	kill_list_l	; format alien list
-	jsl	initmem_l
+	jsl	initmem_l ; Initialize RAM
 
 	lda	mapbank
 	pha
 
-	lda.l	mapbase+2	; set up player's objects
-	sta	mapbank
-	ai16
-	lda	mapptr
-	pha
-	lda.l	mapbase
-	tax
-	jsl	newobjs_l		;add player
+; set up player's objects
+	lda.l	mapbase+2 ; Load mapbase+2 into A
+	sta	mapbank ; Store A at mapbank
+	ai16 ; Set A to 16 bit
+	lda	mapptr ; Load Map Pointer into A
+	pha ; Push A to stack
+	lda.l	mapbase ; Load mapbase into A
+	tax ; transfer A to X
+	jsl	newobjs_l	;add player obj
 
-	a8
-	jsl	initgame_strats_l	;initialise game
+	a8 ; set A to 8 bit
+	jsl	initgame_strats_l	;initialize game strats
 
-	i16
-	plx
-	pla
-	sta	mapbank
-	a16
-	stz	levelfinished
-	stx	mapptr
+	i16 ; enable interrupts?
+	plx ; Pull X from stack
+	pla ; Pull A from stack
+	sta	mapbank ; Store A in mapbank var
+	a16 ; Set A to 16 bit
+	stz	levelfinished ; Store 0 in levelfinished flag
+	stx	mapptr ; Store X to map pointer
 	jsl	newobjs_l		; set new map going
 
-	jsl	initgame3d_l
+	jsl	initgame3d_l ; MARIO chip witchcraft
 
-	jsl	find_window_pri_l
+	jsl	find_window_pri_l ; Find window priority?
 
-	plb
-	plp
-	rtl
+	plb ; Pull data bank from stack
+	plp ; Pull processor status from stack
+	rtl ; Return from subroutine
 
-initgame3d_l
-	php
-	a16
-	lda	#$1234
-	sta.l	m_particlerand	
-	lda	#1
-	sta.l	m_clrbitmaps
-	jsl	initscreen_l
-	a8
-	lda	#deg180
-	sta	roty
-	lda	#-1
-	sta	mariocode
-	stz	trans_flag
-	ai8
-	jsr	gameclipwindow
-	jml	init3d1
+initgame3d_l ; MARIO chip witchcraft
+	php ; Push processor status to stack
+	a16 ; Set A to 16 bit
+	lda	#$1234 ; Load $1234 into A
+	sta.l	m_particlerand ; store A at m_particlerand MARIO chip var
+	lda	#1 ; Load 1 into A
+	sta.l	m_clrbitmaps ; store A at m_clrbitmaps MARIO chip var
+	jsl	initscreen_l ; Initialize Screen
+	a8 ; Set A to 8 bit
+	lda	#deg180 ; Load 180 degrees const into A
+	sta	roty ; Store A to Y rotation var
+	lda	#-1 ; load -1 into A
+	sta	mariocode ; store mariocode var into a
+	stz	trans_flag ; store 0 at transfer flag
+	ai8 ; Set A to 8 bit
+	jsr	gameclipwindow ; Go to game clip window subroutine
+	jml	init3d1 ; Jump to init3d1 subroutine
 
 
 
 gamestart
-	ai8
-	jsl	initgame_l
+	ai8 ; Set A to 8 bit
+	jsl	initgame_l ; Initialize game
 gameloop2
 
-	a8
+; @!: A ends up being set to 8 bit twice. This is probably unnecessary and uses up more CPU cycles.
+; The macro may have been missed when the "foxyfoxy" stuff was being commented out.
+	a8 ; set A to 8 bit
 ;	lda	foxyfoxy
 ;	beq	.nofox
 ;	stz	foxyfoxy
@@ -173,7 +176,7 @@ gameloop2
 ;	jml	planetseq_l
 ;.nofox
 
-	a8
+	a8 ; set A to 8 bit
 	lda	singlestep
 	bne	.nopause
 	lda	pshipflags
@@ -1891,6 +1894,7 @@ SetCharMapgame_l
 
 	IFNE	shieldboostcolorbox
 	; why was this done in the first place? added a flag for vanilla game purposes
+	; witchcraft
 	lda.l	m_meters
 	and	#255
 	beq	.nometers
