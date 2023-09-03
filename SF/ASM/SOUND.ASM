@@ -125,11 +125,11 @@ sndtbl
 
 
 ;--------------------------------------------------------------------
-sbootapu	a8
-	disable
+sbootapu	a8 ; Start the SPC700, set A to 8-bit
+	disable ; Disable interrupts (sei)
 	lda.l	sndtbl,x
 	sta	bgm_music
-	inx
+	inx ; increment X
 	stx	snd_ptr
 
 	lda	firstdnld

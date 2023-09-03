@@ -110,14 +110,15 @@ wallhgt	equ	120
 walldist	equ	60+10
 
 ; processor flags
-p_n		equ	10000000b
-p_v		equ	01000000b
-p_a		equ	00100000b
-p_x		equ	00010000b
-p_d		equ	00001000b
-p_int	equ	00000100b
-p_z		equ	00000010b
-p_c		equ	00000001b
+           ;nvmxdizc
+p_n		equ	10000000b ; $80/#128
+p_v		equ	01000000b ; $40/#64
+p_a		equ	00100000b ; $20/#32
+p_x		equ	00010000b ; $10/#16
+p_d		equ	00001000b ; $8/#8
+p_int	equ	00000100b ; $4/#4
+p_z		equ	00000010b ; $2/#2
+p_c		equ	00000001b ; $1/#1
 
 ;Key pad Codes		(ends in l = in contl0)
 Key_al		equ	$80

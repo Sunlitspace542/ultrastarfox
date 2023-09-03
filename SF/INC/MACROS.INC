@@ -2812,63 +2812,64 @@ stupt	=	stupt+\2
 
 ;------------------------------------------------------------------------
 ; TODO: figure out what these do exactly
-a8	macro
+; (current comments are probably not totally correct)
+a8	macro ; set A to 8 bit
 	shorta
-	sep	#p_a ; set A to 8 bit
+	sep	#p_a
 	endm
 
 ;------------------------------------------------------------------------
 
-i8	macro
+i8	macro ; sets interrupt disable flag
 	shorti
 	sep	#p_x
 	endm
 
 ;------------------------------------------------------------------------
 
-a16	macro
+a16	macro ; set A to 16 bit
 	longa
-	rep	#p_a ; set A to 16 bit?
+	rep	#p_a
 	endm
 
 ;------------------------------------------------------------------------
 
-i16	macro
+i16	macro ; clears interrupt disable flag
 	longi
 	rep	#p_x
 	endm
 
 ;------------------------------------------------------------------------
 
-a8sec	macro
+a8sec	macro ; set A to 8 bit and carry flag
 	shorta
 	sep	#p_a+p_c
 	endm
 
 ;------------------------------------------------------------------------
 
-i8sec	macro
+i8sec	macro ; sets interrupt disable flag and carry flag
 	shorti
 	sep	#p_x+p_c
 	endm
 
 ;------------------------------------------------------------------------
 
-a16clc	macro
+a16clc	macro ; sets A to 16 bit and clears carry flag
 	longa
 	rep	#p_a+p_c
 	endm
 
 ;------------------------------------------------------------------------
 
-i16clc	macro
+i16clc	macro ; clears interrupt disable flag and carry flag
 	longi
 	rep	#p_x+p_c
 	endm
 
 ;------------------------------------------------------------------------
 
-ai16	macro
+ai16	macro ; sets A to 16 bit and clears interrupt disable flag
 	longa
 	longi
 	rep	#p_a+p_x
@@ -2876,7 +2877,7 @@ ai16	macro
 
 ;------------------------------------------------------------------------
 
-ai8	macro
+ai8	macro ; sets A to 16 bit and sets interrupt disable flag
 	shorta
 	shorti
 	sep	#p_a+p_x
@@ -2884,7 +2885,7 @@ ai8	macro
 
 ;------------------------------------------------------------------------
 
-ai16clc	macro
+ai16clc	macro ; sets A to 16 bit, clears interrupt disable and carry flags
 	longa
 	longi
 	rep	#p_a+p_x+p_c
@@ -2892,7 +2893,7 @@ ai16clc	macro
 
 ;------------------------------------------------------------------------
 
-ai8sec	macro
+ai8sec	macro ; sets A to 16 bit, sets interrupt disable, and sets carry flag
 	shorta
 	shorti
 	sep	#p_a+p_x+p_c
@@ -2900,7 +2901,7 @@ ai8sec	macro
 
 ;------------------------------------------------------------------------
 
-a8i16	macro
+a8i16	macro ; sets A to 8 bit, clears interrupt disable flag
 	shorta
 	longi
 	sep	#p_a
@@ -2909,7 +2910,7 @@ a8i16	macro
 
 ;------------------------------------------------------------------------
 
-a16i8	macro
+a16i8	macro ; sets A to 16 bit, sets interrupt disable flag
 	shorti
 	longa
 	sep	#p_x
@@ -2918,7 +2919,7 @@ a16i8	macro
 
 ;------------------------------------------------------------------------
 
-a8i16clc	macro
+a8i16clc	macro ; sets A to 8 bit, clears interrupt disable flag, and clears carry flag
 	shorta
 	longi
 	sep	#p_a
@@ -2927,7 +2928,7 @@ a8i16clc	macro
 
 ;------------------------------------------------------------------------
 
-a16i8clc	macro
+a16i8clc	macro ; sets A to 16 bit, sets interrupt disable flag, and clears carry flag
 	shorti
 	longa
 	sep	#p_x
@@ -2936,7 +2937,7 @@ a16i8clc	macro
 
 ;------------------------------------------------------------------------
 
-a8i16sec	macro
+a8i16sec	macro ; sets A to 8 bit, clears interrupt disable flag, and sets carry flag
 	shorta
 	longi
 	sep	#p_a+p_c
@@ -2945,7 +2946,7 @@ a8i16sec	macro
 
 ;------------------------------------------------------------------------
 
-a16i8sec	macro
+a16i8sec	macro ; set A to 16 bit, set interrupt disable flag, and sets carry flag
 	shorti
 	longa
 	sep	#p_x+p_c
