@@ -1,1 +1,1 @@
-dosbox-x BUILD.BAT && ./superfamicheck_linux -f SFBUILT.SFC
+dosbox-x BUILD.BAT
