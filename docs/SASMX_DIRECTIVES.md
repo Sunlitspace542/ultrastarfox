@@ -44,7 +44,7 @@
 ``INCDIR (dir)`` - Include directory name to be added to the start of INCLUDE, INCBIN, INCCOL.  
 ``INCLUDE (name)`` - Includes source file.  
 ## Variables
-_SASM - Defined if SASM  
+``_SASM`` - Defined if SASM  
 ``NARG`` - Number of arguments in a macro  
 ``LONGA`` - Non-zero if in long accumulator mode  
 ``LONGI`` - Non-zero if in long index mode  
