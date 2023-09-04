@@ -10,7 +10,7 @@
 ``IFNE`` - If not equal to 0  
 ``IFGT`` - If greater than  
 ``IFLT`` - If less than  
-``IFGE`` - If greater than or equal to 
+``IFGE`` - If greater than or equal to  
 ``IFLE`` - IF less than or equal to  
 ``IFD`` - If label defined  
 ``IFND`` - If label not defined  
