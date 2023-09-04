@@ -36,7 +36,7 @@
 ## Input/Output
 ``fopen	(file)`` - write to new file  
 ``fclose	!`` - save file  
-``printf "string"`` - print string to command line at assembly (or into a file if used with fopen/fclose  
+``printf "string"`` - print string to command line at assembly (or into a file if used with fopen/fclose)  
 ``LIST (on/off/macros)`` - Turns on or off listing of the source. If macros is specified then macro expansions will be listed also. The OFF option will turn off macro expansion listing.  
 ## Including Files
 ``INCBIN (name)`` - Includes binary file  
