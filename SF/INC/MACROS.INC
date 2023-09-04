@@ -6341,7 +6341,7 @@ screen_off	macro
 ;    jb	hello		;will branch to hello because 100 is below 200
 ;
 ; je   - equal
-; js   - sign
+; js   - sign (negative)
 ; jc   - carry
 ; ja   - above (unsigned)
 ; jae  - above or equal (unsigned)
@@ -6352,7 +6352,7 @@ screen_off	macro
 ; jl   - less (signed)
 ; jle  - less or equal (signed)
 ; jne  - not equal
-; jns  - not sign
+; jns  - not sign (jump if + or 0)
 ; jnc  - not carry
 ; jna  - not above (unsigned)
 ; jnae - not above or equal (unsigned)
@@ -6466,7 +6466,7 @@ jns	macro
 	bpl	\1
 	endm
 
-jne	macro ; Jump if not equal
+jne	macro
 	bne	\1
 	endm
 

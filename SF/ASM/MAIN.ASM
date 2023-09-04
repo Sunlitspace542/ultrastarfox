@@ -194,10 +194,10 @@ gameloop2 ; Game loop
 
 	a8 ; set A to 8 bit
 	lda	singlestep ; Load singlestep var into A
-	bne	.nopause ; Branch to .nopause sublabel if ??? != ???
+	bne	.nopause ; Branch to .nopause sublabel if A != 0
 	lda	pshipflags ; Load pshipflags into A
 	bit	#psf_noctrl ; AND #psf_noctrl (32) to A w/o storing result to A
-	bne	.nopause ; branch to .nopause sublabel if ??? != ???
+	bne	.nopause ; branch to .nopause sublabel if A != 0
 	lda	bossflags ; Load boss flags into A
 	and	#bf_dying ; AND A with #bf_dying (16)
 	bne	.nopause ; branch to .nopause if result != 1
@@ -662,7 +662,7 @@ maketotalscore
 	sta.l	m_x1 ; Store A into MARIO chip X var ;divisor
 	lda	specptr ; Load special pointer into A
 	sec ; Set carry flag
-	sbc.l	hadabumhole ; Subtract var from A
+	sbc.l	maintempalc ; Subtract var from A
 	sta.l	m_y1 ; Store A into MARIO chip Y var ;dividend
 	call_mario	mkrisdivu3115 ; Tell MARIO chip to do division
 	lda.l	m_x1 ; Load MARIO chip Y var containing quotient into A
@@ -703,7 +703,7 @@ maketotalscore
 .sub100	inx ; Increment X
 	sec ; Set carry flag
 	sbc	#100 ; Subtract 100 from A
-	jns	.sub100 ; jump if ???
+	jns	.sub100 ; jump if A is + or 0
 	clc ; Clear carry flag
 	adc	#100 ; add 100 to A
 	sta	cla2 ; Store A at target % var
@@ -719,7 +719,7 @@ maketotalscore
 .sub10	inx ; Increment X
 	sec ; Set carry flag
 	sbc	#10 ; Subtract 10 from A
-	jns	.sub10 ; Jump to .sub10 if ???
+	jns	.sub10 ; Jump to .sub10 if A is + or 0
 	clc ; Clear carry flag
 	adc	#10 ; Add 10 to A
 	sta	cla2 ; Store target % var into A
@@ -794,241 +794,242 @@ calctotalscore_l ; Calculate total score
 	rtl ; Return from subroutine (Long)
 
 calctotalscore	stz	tpa		;add all special perc and print it *100
-	lda	#0
-	sta.l	hadabumhole
-	ldx	#0
-.addlp	cpx	specptr
-	beq	.addx
-	lda.l	specbuf,x
-	and	#$ff
-	cmp	#101
-	bne	.ok
-	lda.l	hadabumhole
-	inc	a
-	sta.l	hadabumhole
-	lda	#0
-.ok	clc
-	adc	tpa
-	sta	tpa
-	inx
-	bra	.addlp
-.addx	rts
+	lda	#0 ; Load 0 into A
+	sta.l	maintempalc ; Store A to var
+	ldx	#0 ; Load 0 into X
+.addlp	cpx	specptr ; Compare X with special pointer
+	beq	.addx ; Branch if X = 0
+	lda.l	specbuf,x ; Load special buffer + X into A
+	and	#$ff ; AND A with $FF
+	cmp	#101 ; Compare A with 101
+	bne	.ok ; Branch to OK if A !=0
+	lda.l	maintempalc ; Load var into A
+	inc	a ; Increment A
+	sta.l	maintempalc ; Store A to var
+	lda	#0 ; Load 0 into A
+.ok	clc ; Clear carry flag
+	adc	tpa ; Add tpa to A
+	sta	tpa ; Store A to tpa
+	inx ; Increment X
+	bra	.addlp ; Branch to .addlp sublabel
+.addx	rts ; Return from subroutine
 
+; Position for "TOTAL SCORE" text
 totalxpos	equ	500
 totalypos	equ	750
 totalzpos	equ	3600
 
 maketotalscore2
-	ai16
-	jsr	calctotalscore
-	lda	tpa
-	sta.l	m_x1		;divisor
-	lda	specptr
-	sec
-	sbc.l	hadabumhole
-	sta.l	m_y1		;dividend
-	call_mario	mkrisdivu3115
-	lda.l	m_x1		;quotient
-	sta	kval1
-	asl	a
-	asl	a
-	clc
-	adc	kval1
-	clc
-	adc	#msg_00&WM
-	pha
+	ai16 ; Set A/X/Y to 16 bit
+	jsr	calctotalscore ; get total score
+	lda	tpa ; Load A into tpa
+	sta.l	m_x1 ; Store A into MARIO chip X var ;divisor
+	lda	specptr ; Load special pointer var
+	sec ; Set carry flag
+	sbc.l	maintempalc ; Subtract var from A
+	sta.l	m_y1 ; Store A into MARIO chip Y var ;dividend
+	call_mario	mkrisdivu3115 ; Tell MARIO chip to do division
+	lda.l	m_x1 ; Load MARIO chip Y var containing quotient into A
+	sta	kval1 ; Store A to kval1 var
+	asl	a ; Arithmetic shift left A
+	asl	a ; Arithmetic shift left A
+	clc ; Clear carry flag
+	adc	kval1 ; Add kval1 var to A
+	clc ; Clear carry flag
+	adc	#msg_00&WM ; add MARIO text display data for "00" &FFFF to A
+	pha ; Push A to stack
 
 
-	lda	#msg_total&WM
-	ldx	#totalxpos
-	ldy	#totalypos
-	jsr	makeendobj2
-	a16
-	lda	#10
-.wait	pha
-	jsl	transfer_l
-	a16
-	pla
-	dec	a
-	bne	.wait
+	lda	#msg_total&WM ; Load MARIO text display data for "TOTAL SCORE" &FFFF to A
+	ldx	#totalxpos ; Load X pos into X
+	ldy	#totalypos ; Load Y pos into Y
+	jsr	makeendobj2 ; Go to makeendobj subroutine to create text on screen
+	a16 ; Set A to 16 bit
+	lda	#10 ; Load 10 into A
+.wait	pha ; Push A to stack
+	jsl	transfer_l ; Go to transfer loop subroutine
+	a16 ; Set A to 16 bit
+	pla ; Pull A from stack
+	dec	a ; Decrement A
+	bne	.wait ; Repeat until A = 0
 
-	a16
-	jsr	calctotalscore
-	lda	tpa
-	sta	cla2
-	lda	#-200
-	sta	cla1
-	lda	cla2
-	ldx	#-1
-.sub100	inx
-	sec
-	sbc	#100
-	jns	.sub100
-	clc
-	adc	#100
-	sta	cla2
-	txa
-	ora	#0
-	je	.sub10do
-	ldx	#totalxpos-300
-	ldy	#totalypos+150
-	jsr	makeendobjn2
-.sub10do	lda	cla2
-	ldx	#-1
-.sub10	inx
-	sec
-	sbc	#10
-	jns	.sub10
-	clc
-	adc	#10
-	sta	cla2
-	txa
-	ora	#0
-	ldx	#totalxpos-150
-	ldy	#totalypos+150
-	jsr	makeendobjn2
-.sub1do	lda	cla2
-	ldx	#totalxpos+0
-	ldy	#totalypos+150
-	jsr	makeendobjn2
-	lda	#0
-	ldx	#totalxpos+150
-	ldy	#totalypos+150
-	jsr	makeendobjn2
-	lda	#0
-	ldx	#totalxpos+300
-	ldy	#totalypos+150
-	jsr	makeendobjn2
-	a16
-	lda	#10
-.wait2	pha
-	jsl	transfer_l
-	a16
-	pla
-	dec	a
-	bne	.wait2
+	a16 ; Set A to 16 bit
+	jsr	calctotalscore ; Get total score
+	lda	tpa ; Load A into tpa
+	sta	cla2 ; Store A at target % var
+	lda	#-200 ; Load -200 into A
+	sta	cla1 ; Store A at current % var
+	lda	cla2 ; Load current % var into A
+	ldx	#-1 ; Load -1 into X
+.sub100	inx ; Increment X
+	sec ; set carry flag
+	sbc	#100 ; Subtract 100 from A
+	jns	.sub100 ; Jump to .sub100 sublabel if not negative?
+	clc ; clear carry flag
+	adc	#100 ; Add 100 to A
+	sta	cla2 ; Store A at target % var
+	txa ; Transfer x to A
+	ora	#0 ; OR A with 0
+	je	.sub10do ; Jump to .sub10do sublabel if equal to 0
+	ldx	#totalxpos-300 ; Load result of Total X pos - 300 into X
+	ldy	#totalypos+150 ; Load result of Total Y pos - 150 into Y
+	jsr	makeendobjn2 ; Go to makeendobjn2 to create text on screen
+.sub10do	lda	cla2 ; Load current % var into A
+	ldx	#-1 ; Load -1 into X
+.sub10	inx ; Increment X
+	sec ; Set carry flag
+	sbc	#10 ; Subtract 10 from A
+	jns	.sub10 ; Jump to .sub10 sublabel if A is + or 0
+	clc ; Clear carry flag
+	adc	#10 ; Add 10 to A
+	sta	cla2 ; Store A at target % var
+	txa ; transfer X to A
+	ora	#0 ; OR A with 0
+	ldx	#totalxpos-150 ; Load result of Total X pos - 150 into X
+	ldy	#totalypos+150 ; Load result of Total Y pos + 150 into Y
+	jsr	makeendobjn2 ; Go to makeendobjn2 to create text on screen
+.sub1do	lda	cla2 ; Load current % var into A
+	ldx	#totalxpos+0 ; Load totalxpos+0 into A
+	ldy	#totalypos+150 ; Load result of Total Y pos + 150 into Y
+	jsr	makeendobjn2 ; Go to makeendobjn2 to create text on screen
+	lda	#0 ; Load 0 into A
+	ldx	#totalxpos+150 ; Load result of Total X pos + 150 into X
+	ldy	#totalypos+150 ; Load result of Total Y pos + 150 into Y
+	jsr	makeendobjn2 ; Go to makeendobjn2 to create text on screen
+	lda	#0 ; Load 0 into A
+	ldx	#totalxpos+300 ; Load result of Total X pos + 300 into X
+	ldy	#totalypos+150 ; Load result of Total Y pos + 150 into Y
+	jsr	makeendobjn2 ; Go to makeendobjn2 to create text on screen
+	a16 ; Set A to 16 bit
+	lda	#10 ; Load 10 into A
+.wait2	pha ; Push A to stack
+	jsl	transfer_l ; go to transfer loop subroutine
+	a16 ; Set A to 16 bit
+	pla ; Pull A from stack
+	dec	a ; Decrement A
+	bne	.wait2 ; Repeat until A = 0
 
 
-	lda	#msg_ave&WM
-	ldx	#totalxpos
-	ldy	#totalypos+300
-	jsr	makeendobj2
+	lda	#msg_ave&WM ; Load MARIO text data for "AVERAGE SCORE" into A
+	ldx	#totalxpos ; Load total X pos into X
+	ldy	#totalypos+300 ; Load total Y pos + 300 into Y
+	jsr	makeendobj2 ; Go to makeendobj2 to create text on screen
 
-	a16
-	lda	#10
-.wait3	pha
-	jsl	transfer_l
-	a16
-	pla
-	dec	a
-	bne	.wait3
+	a16 ; Set A to 16 bit
+	lda	#10 ; Load 10 into A
+.wait3	pha ; Push A to stack
+	jsl	transfer_l ; Go to transfer loop subroutine
+	a16 ; Set A to 16 bit
+	pla ; Pull A from stack
+	dec	a ; Decrement A
+	bne	.wait3 ; Repeat until A = 0
 
-	pla
-	ldx	#totalxpos+0
-	ldy	#totalypos+450
-	jsr	makeendobj2
+	pla ; Pull A from stack
+	ldx	#totalxpos+0 ; Load result of Total X pos + 0 into X
+	ldy	#totalypos+450 ; Load result of Total Y pos + 450 into Y
+	jsr	makeendobj2 ; Go to makeendobj2 to create text on screen
 .fail
-	rts
+	rts ; Return from subroutine
 
 
-	longa
-	longi
-makenumt	asl	a		;*2
-	clc
-	adc	#msg_0&WM
-makenump	sta	kval1
-	a8
-	phb
-	lda	#$7e
-	pha
-	plb
-	ldx	allst
-	s_make_obj	#zaco_4,.fail
-	tyx
-	s_set_strat	x,patht_istrat
-	s_text_obj	x,kval1,#14
-	s_set_alvar	B,x,al_ty,#7
-	s_set_path	x,total
-	ldy		viewpt
-	s_copy_pos	x,y
-	a16
-	lda	al_worldx,x
-	clc
-	adc	cla1
-	sta	al_worldx,x
-	a8
-	s_add_alvar W,x,al_worldy,#1100
-	s_add_alvar W,x,al_worldz,#4000
-.fail	plb
-	a16
-	lda	cla1
-	clc
-	adc	#150
-	sta	cla1
-	rts
+	longa ; Tell SASM this uses 16 bit A
+	longi ; Tell SASM this uses 16 bit X/Y
+makenumt	asl	a ; Arithmetic shift left A, multiplying A by 2
+	clc ; Clear carry
+	adc	#msg_0&WM ; add MARIO text display data for "0" &FFFF to A
+makenump	sta	kval1 ; Store A at kval1 var
+	a8 ; Set A to 8 bit
+	phb ; Push data bank to stack
+	lda	#$7e ; Load $7E into A
+	pha ; Push A to stack
+	plb ; Pull B from stack
+	ldx	allst ; Load all strats var into X
+	s_make_obj	#zaco_4,.fail ; Make object with zaco_4 model that calls .fail sublabel
+	tyx ; Transfer Y to X
+	s_set_strat	x,patht_istrat ; Set strat (of zaco_4 obj?) to text path strat/path thing
+	s_text_obj	x,kval1,#14 ; Create text object containing text in kval1 with color 14 (White)
+	s_set_alvar	B,x,al_ty,#7 ; Set alvar: Size B,text obj,al type 7(?)
+	s_set_path	x,total ; Set path of text object to "TOTAL SCORE" path
+	ldy		viewpt ; ???
+	s_copy_pos	x,y ; Copy position of text object to Y (what's Y?)
+	a16 ; Set A to 16 bit
+	lda	al_worldx,x ; Load World X pos into A
+	clc ; Clear carry flag
+	adc	cla1 ; Add current % to A
+	sta	al_worldx,x ; Store A at world X pos
+	a8 ; Set A to 8 bit
+	s_add_alvar W,x,al_worldy,#1100 ; Add alvar: Size W,text obj,World Y pos,#1100 (Add 1100 to Y pos of text obj)
+	s_add_alvar W,x,al_worldz,#4000 ; Add alvar: Size W,text obj,World Z pos,#4000 (Add 4000 to Z pos of text obj)
+.fail	plb ; Pull data bank from stack
+	a16 ; Set A to 16
+	lda	cla1 ; Load current % into A
+	clc ; Clear carry flag
+	adc	#150 ; Add 150 to A
+	sta	cla1 ; Store A to current %
+	rts ; Return from subroutine
 
 
-	longa
-	longi
-makeendobjn	asl	a		;*2
-	clc
-	adc	#msg_0&WM
-makeendobj	sta	kval1
-	stx	ktpx
-	sty	ktpy
-	php
-	a8
-	phb
-	lda	#$7e
-	pha
-	plb
-	ldx		allst
-	s_make_obj	#zaco_4,.fail
-	tyx
-	s_set_strat	x,patht_istrat
-	s_text_obj	x,kval1,#3
-	s_set_alvar	B,x,al_ty,#3
-	s_set_path	x,total
-	ldy	viewtoobj	playpt
-	s_copy_pos	x,y
-	s_add_alvar W,x,al_worldx,ktpx
-	s_add_alvar W,x,al_worldy,ktpy
-	s_add_alvar W,x,al_worldz,#4000
-	a8
-.fail	plb
-	plp
-	rts
+	longa ; Tell SASM this uses 16 bit A
+	longi ; Tell SASM this uses 16 bit X/Y
+makeendobjn	asl	a ; Arithmetic shift left A, multiplying A by 2
+	clc ; Clear carry flag
+	adc	#msg_0&WM ; add MARIO text display data for "0" &FFFF to A
+makeendobj	sta	kval1 ; Store A at kval1
+	stx	ktpx ; Store X at ktpx var
+	sty	ktpy ; Store Y at ktpy var
+	php ; Push processor status to stack
+	a8 ; Set A to 8 bit
+	phb ; Push data bank to stack
+	lda	#$7e ; Load $7E into A
+	pha ; Push A to stack
+	plb ; Pull data bank from stack
+	ldx		allst ; Load all strats var into X
+	s_make_obj	#zaco_4,.fail ; Make object with zaco_4 model that calls .fail sublabel
+	tyx ; Transfer Y to X
+	s_set_strat	x,patht_istrat ; Set strat (of zaco_4 obj?) to text path strat/path thing
+	s_text_obj	x,kval1,#3 ; Create text object containing text in kval1 with color 3 (Dark Yellow)
+	s_set_alvar	B,x,al_ty,#3 ; Set alvar: Size B,text obj,al type 3(?)
+	s_set_path	x,total ; Set path of text object to "TOTAL SCORE" path
+	ldy	viewtoobj	playpt ; ???
+	s_copy_pos	x,y ; Copy position of text object to Y (what's Y?)
+	s_add_alvar W,x,al_worldx,ktpx ; Add alvar: Size W,text obj,World X pos,ktpx (Add ktpx to X pos of text obj)
+	s_add_alvar W,x,al_worldy,ktpy ; Add alvar: Size W,text obj,World Y pos,ktpy (Add ktpy to Y pos of text obj)
+	s_add_alvar W,x,al_worldz,#4000 ; Add alvar: Size W,text obj,World Z pos,#4000 (Add #4000 to Z pos of text obj)
+	a8 ; Set A to 8 bit
+.fail	plb ; Pull data bank from stack
+	plp ; Pull processor status from stack
+	rts ; Return from subroutine
 
-	longa
-	longi
-makeendobjn2	asl	a		;*2
-	clc
+	longa ; Tell SASM this uses 16 bit A
+	longi ; Tell SASM this uses 16 bit X/Y
+makeendobjn2	asl	a ; Arithmetic shift left A, multiplying A by 2
+	clc ; clear carry flag
 	adc	#msg_0&WM
 makeendobj2	sta	kval1
 	stx	ktpx
 	sty	ktpy
-	php
-	a8
-	phb
-	lda	#$7e
-	pha
-	plb
-	ldx		allst
-	s_make_obj	#zaco_4,.fail
-	tyx
-	s_set_strat	x,patht_istrat
-	s_text_obj	x,kval1,#5
-	s_set_alvar	B,x,al_ty,#3
-	s_set_path	x,fadeintotal
-	ldy	playpt
-	s_copy_pos	x,y
-	s_add_alvar W,x,al_worldx,ktpx
-	s_add_alvar W,x,al_worldy,ktpy
-	s_add_alvar W,x,al_worldz,#totalzpos
-.fail	a8
-	plb
-	plp
-	rts
+	php ; Push processor status to stack
+	a8 ; Set A to 8 bit
+	phb ; Push data bank to stack
+	lda	#$7e ; Load $7E into A
+	pha ; Push A to stack
+	plb ; Pull data bank from stack
+	ldx		allst ; Load all strats var into X
+	s_make_obj	#zaco_4,.fail ; Make object with zaco_4 model that calls .fail sublabel
+	tyx ; Transfer Y to X
+	s_set_strat	x,patht_istrat ; Set strat (of zaco_4 obj?) to text path strat/path thing
+	s_text_obj	x,kval1,#5 ; Create text object containing text in kval1 with color 5 (Dark Blue)
+	s_set_alvar	B,x,al_ty,#3 ; Set alvar: Size B,text obj,al type 3(?)
+	s_set_path	x,fadeintotal ; Set path of text object to fadeintotal path
+	ldy	playpt ; ???
+	s_copy_pos	x,y ; Copy position of text object to Y (what's Y?)
+	s_add_alvar W,x,al_worldx,ktpx ; Add alvar: Size W,text obj,World X pos,ktpx (Add ktpx to X pos of text obj)
+	s_add_alvar W,x,al_worldy,ktpy ; Add alvar: Size W,text obj,World Y pos,ktpy (Add ktpy to Y pos of text obj)
+	s_add_alvar W,x,al_worldz,#totalzpos ; Add alvar: Size W,text obj,World Z pos,#totalzpos (Add #totalzpos to Z pos of text obj)
+.fail	a8 ; Set A to 8 bit
+	plb ; Pull data bank from stack
+	plp ; Pull processor status from stack
+	rts ; Return from subroutine
 
 
 ;----------------------------------------------------------------------------------------------

@@ -111,7 +111,7 @@ le_enterspec	equ	16
 	alc	contsmart,1
 	alc	nmitemp2,2
 	alc	bg2vofsoverride,1
-	xalc	hadabumhole,2
+	xalc	maintempalc,2
 	xalc	contexit,2
 	alc	prttraining,1
 	alc	defaulttrain,1
