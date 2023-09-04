@@ -142,7 +142,7 @@ initgame_l ; Initialize game
 	a8 ; set A to 8 bit
 	jsl	initgame_strats_l	;initialize game strats
 
-	i16 ; enable interrupts?
+	i16 ; Set X/Y to 16 bit
 	plx ; Pull X from stack
 	pla ; Pull A from stack
 	sta	mapbank ; Store A in mapbank var
