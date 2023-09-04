@@ -23,16 +23,16 @@
 startboot	disable ; Disable Interrupts
 	clc	; Clear Carry Flag
 	xce ; Exchange Carry Flag with Emulation Flag (Exit 65c02 mode)
-	ai16 ; set A to 16 bit
+	ai16 ; set A/X/Y to 16 bit
 	lda	#0 ; load 0 into A
 	tcd ; Transfer 16 bit A (C) to Direct Page
 	ldx	#$02ff ; load $02FF into X
 	txs ; transfer X to SP (set stack at $02FF)
-	ai8 ; set A to 8 bit and set interrupt disable flag
+	ai8 ; set A/X/Y to 8 bit
 	pha ; Push A to stack
 	plb ; Pull data bank from stack
 
-	ai8 ; set A to 8 bit, set interrupt disable flag
+	ai8 ; set A/X/Y to 8 bit
 	jsl	startsfx_l ; Initialize the SNES
 
 	jsr	initialise_ram ; Clear RAM
@@ -40,7 +40,7 @@ startboot	disable ; Disable Interrupts
 	i16 ; clears interrupt disable flag
 	ldx	#$2ff ; Load $2FF into X
 	txs ; Transfer X to SP (set stack to $2FF, resets the stack)
-	ai8 ; Set A to 8 bit
+	ai8 ; Set A/X/Y to 8 bit
 
 	jsl	initialise_l ; initialize game
 
@@ -68,16 +68,15 @@ startboot	disable ; Disable Interrupts
 	sta	defaulttrain ; Store A @ defaulttrain (variable allocated in RAM)
 	bra	firsttimeuse ; Branch to firsttimeuse
 
-restart	ai16 ; Restarts the game (Used in retail when the game crashes instead of calling BLINK)
-	; set A to 16 bit
+; Restarts the game (Used in retail when the game crashes instead of calling BLINK)
+restart	ai16 ; set A/X/Y to 16 bit
 	clc ; Clear Carry flag
 	xce ; Exchange Carry with Emulation Flag (Enter 65816 mode?)
 	lda	#0 ; load 0 into A
 	tcd ; Transfer A to DP
 	ldx	#$2ff ; load $2FF into X
 	txs ; Set the stack to $2FF
-	ai8 ; set A to 8 bit, set interrupt disable flag
-
+	ai8 ; set A/X/Y to 8 bit
 	disable ; disable interrupts (sei)
 
 	jsl	startsfx_l ; Initialize the SNES
@@ -145,7 +144,7 @@ initialise_ram
 	pha	; push A to stack
 	plb	; Pull data bank from stack
 
-	ai16 ; set A to 16 bit
+	ai16 ; set A/X/Y to 16 bit
 	ldx	#$2000	; load $2000 into X to use for the following operations:
 .7epage	stz.w	0,x ; Store 0 in addr defined by X
 	stz.w	2,x ; Store 0 @ addr in X + 2
@@ -178,7 +177,7 @@ initialise_ram
 	pha ; Push A to stack
 	plb ; Pull data bank from stack
 
-	ai16
+	ai16 ; Set A/X/Y to 16 bit
 
 	ldx	#32768-8	; (load #32760 into X) Clear MARIO chip RAM
 .ooop2

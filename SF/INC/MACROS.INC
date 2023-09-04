@@ -2811,8 +2811,7 @@ stupt	=	stupt+\2
 
 
 ;------------------------------------------------------------------------
-; TODO: figure out what these do exactly
-; (current comments are probably not totally correct)
+; TODO: make sure the comments are correct
 a8	macro ; set A to 8 bit
 	shorta
 	sep	#p_a
@@ -2820,7 +2819,7 @@ a8	macro ; set A to 8 bit
 
 ;------------------------------------------------------------------------
 
-i8	macro ; Disable interrupts
+i8	macro ; Set X/Y to 8 bit
 	shorti
 	sep	#p_x
 	endm
@@ -2834,7 +2833,7 @@ a16	macro ; set A to 16 bit
 
 ;------------------------------------------------------------------------
 
-i16	macro ; Enable interrupts
+i16	macro ; Set X/Y to 16 bit
 	longi
 	rep	#p_x
 	endm
@@ -2848,7 +2847,7 @@ a8sec	macro ; set A to 8 bit and carry flag
 
 ;------------------------------------------------------------------------
 
-i8sec	macro ; sets carry flag
+i8sec	macro ; Sets X/Y to 16 bit and sets carry flag
 	shorti
 	sep	#p_x+p_c
 	endm
@@ -2862,14 +2861,14 @@ a16clc	macro ; sets A to 16 bit and clears carry flag
 
 ;------------------------------------------------------------------------
 
-i16clc	macro ; clears carry flag
+i16clc	macro ; Sets X/Y to 16 bit and clears carry flag
 	longi
 	rep	#p_x+p_c
 	endm
 
 ;------------------------------------------------------------------------
 
-ai16	macro ; sets A to 16 bit
+ai16	macro ;  sets A/X/Y to 16 bit
 	longa
 	longi
 	rep	#p_a+p_x
@@ -2877,7 +2876,7 @@ ai16	macro ; sets A to 16 bit
 
 ;------------------------------------------------------------------------
 
-ai8	macro ; sets A to 8 bit
+ai8	macro ;  sets A/X/Y to 8 bit
 	shorta
 	shorti
 	sep	#p_a+p_x
@@ -2885,7 +2884,7 @@ ai8	macro ; sets A to 8 bit
 
 ;------------------------------------------------------------------------
 
-ai16clc	macro ; sets A to 16 bit, and carry flags
+ai16clc	macro ; sets A/X/Y to 16 bit, and carry flags
 	longa
 	longi
 	rep	#p_a+p_x+p_c
@@ -2893,7 +2892,7 @@ ai16clc	macro ; sets A to 16 bit, and carry flags
 
 ;------------------------------------------------------------------------
 
-ai8sec	macro ; sets A to 8 bit, and sets carry flag
+ai8sec	macro ; sets A/X/Y to 8 bit, and sets carry flag
 	shorta
 	shorti
 	sep	#p_a+p_x+p_c
@@ -2901,7 +2900,7 @@ ai8sec	macro ; sets A to 8 bit, and sets carry flag
 
 ;------------------------------------------------------------------------
 
-a8i16	macro ; sets A to 8 bit
+a8i16	macro ; sets A to 8 bit and X/Y to 16 bit
 	shorta
 	longi
 	sep	#p_a
@@ -2910,7 +2909,7 @@ a8i16	macro ; sets A to 8 bit
 
 ;------------------------------------------------------------------------
 
-a16i8	macro ; sets A to 16 bit
+a16i8	macro ; sets A to 16 bit and X/Y to 8 bit
 	shorti
 	longa
 	sep	#p_x

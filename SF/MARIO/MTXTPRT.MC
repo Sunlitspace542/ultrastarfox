@@ -479,15 +479,15 @@ mprtdec
 	nop
 
 
-mprt2zeros
-	sub	r0
-	call	mprtnum
-	nop
-	sub	r0
-	call	mprtnum
-	nop
-	stop
-	nop
+mprt2zeros ; Print 2 0s
+	sub	r0 ; Subtract from r0
+	call	mprtnum ; Print digit
+	nop ; No operation
+	sub	r0 ; Subtract from r0
+	call	mprtnum ; Print digit
+	nop ; Subtract from r0
+	stop ; Stop MARIO chip
+	nop ; No operation
 
 ;print one digit in r0
 mprtnum

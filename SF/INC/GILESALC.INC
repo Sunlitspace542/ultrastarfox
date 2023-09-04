@@ -14,7 +14,7 @@
 ;---------------------------------------------------------------------------
 	alc	slowstars,1
 	alc	hudrot,2
-	alc	tpa,2
+	alc	tpa,2 ; Used as a temporary location for the accumulator (A)
 	alc	pweptemp,2
 	alc	strat_valid,1
 	alc	fobj,2

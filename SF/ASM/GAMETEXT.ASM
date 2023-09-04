@@ -11,9 +11,9 @@ bonustxt	newtext	14,<BONUS 1 VERSUCH>
 teamtxt	newtext	14,<TEAM POWER>
 percenttxt2	newtext	14,<%>
 perfecttxt	newtext	14,<PERFECT//>
-frogtxt	newtext	14,<SLIPPY>
-bunnytxt	newtext	14,<PEPPY>
-cocktxt	newtext	14,<FALCO>
+slippytxt	newtext	14,<SLIPPY>
+peppytxt	newtext	14,<PEPPY>
+falcotxt	newtext	14,<FALCO>
 deadtxt	newtext	14,<. . . . . .>
 stagetxt	newtext	14,<STAGE>
 cesmintxt	newtext	2,<m>
@@ -31,9 +31,9 @@ bonustxt	newtext	14,<BONUS 1 CREDIT>
 teamtxt	newtext	14,<BOUCLIER DE TEAMATE>
 percenttxt2	newtext	14,<%>
 perfecttxt	newtext	14,<PARFAIT//>
-frogtxt	newtext	14,<SLIPPY>
-bunnytxt	newtext	14,<PEPPY>
-cocktxt	newtext	14,<FALCO>
+slippytxt	newtext	14,<SLIPPY>
+peppytxt	newtext	14,<PEPPY>
+falcotxt	newtext	14,<FALCO>
 deadtxt		newtext	14,<ES MORT>
 stagetxt	newtext	14,<STAGE>
 cesmintxt	newtext	2,<m>
@@ -51,9 +51,9 @@ bonustxt	newtext	14,<BONUS 1 CREDIT>
 teamtxt	newtext	14,<SHIELD OF TEAMMATES>
 percenttxt2	newtext	14,<%>
 perfecttxt	newtext	14,<PERFECT//>
-frogtxt	newtext	14,<SLIPPY>
-bunnytxt	newtext	14,<PEPPY>
-cocktxt	newtext	14,<FALCO>
+slippytxt	newtext	14,<SLIPPY>
+peppytxt	newtext	14,<PEPPY>
+falcotxt	newtext	14,<FALCO>
 deadtxt	newtext	14,<IS DOWN>
 stagetxt	newtext	14,<STAGE>
 cesmintxt	newtext	2,<m>
@@ -71,9 +71,9 @@ bonustxt	newtext	14,<BONUS 1 CREDIT>
 teamtxt	newtext	14,<SHIELD OF TEAMMATES>
 percenttxt2	newtext	14,<%>
 perfecttxt	newtext	14,<PERFECT//>
-frogtxt	newtext	14,<SLIPPY>
-bunnytxt	newtext	14,<PEPPY>
-cocktxt	newtext	14,<FALCO>
+slippytxt	newtext	14,<SLIPPY>
+peppytxt	newtext	14,<PEPPY>
+falcotxt	newtext	14,<FALCO>
 deadtxt	newtext	14,<IS DOWN>
 stagetxt	newtext	14,<STAGE>
 cesmintxt	newtext	2,<m>
@@ -94,9 +94,9 @@ bonustxt	newtext	14,<BONUS 1 CREDIT>
 teamtxt	newtext	14,<SHIELD OF TEAMMATES>
 percenttxt2	newtext	14,<%>
 perfecttxt	newtext	14,<PERFECT//>
-frogtxt	newtext	14,<SLIPPY>
-bunnytxt	newtext	14,<PEPPY>
-cocktxt	newtext	14,<FALCO>
+slippytxt	newtext	14,<SLIPPY>
+peppytxt	newtext	14,<PEPPY>
+falcotxt	newtext	14,<FALCO>
 deadtxt	newtext	14,<IS DOWN>
 stagetxt	newtext	14,<STAGE>
 cesmintxt	newtext	2,<m>

@@ -58,7 +58,7 @@ nmihan ; Start of NMI handler
 	disable ; disable interrupts
 	phx ; Push X to stack
 	phy ; Push Y to stack
-	ai8 ; set A to 8 bit
+	ai8 ; set A/X/Y to 8 bit
 	IFNE	FASTROM ; Start conditional: if FASTROM !=0 (=1)
 	lda	#$80 ; load $80 into A (Bank 80 for FastROM)
 	pha ; Push A to stack
@@ -80,7 +80,7 @@ nmihan ; Start of NMI handler
 	rti ; Return from interrupt
 .brk
 .nmi
-	ai16 ; Set A to 16 bit
+	ai16 ; Set A/X/Y to 16 bit
 	pha ; Push A to stack
 	phb ; Push data bank to stack
 	phx ; Push X to stack

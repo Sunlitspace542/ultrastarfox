@@ -1,3 +1,21 @@
+;***************************************************************************
+;*                                                                         *
+;*                               Star Fox                                  *
+;*                              -----------                                *
+;*                                                                         *
+;*                           SuperNES version.                             *
+;*                                                                         *
+;*                                                                         *
+;*                           Argonaut Software.                            *
+;*                                                                         *
+;*_________________________________________________________________________*
+;*                                                                         *
+;*   File: MAIN.ASM                                                        *
+;*_________________________________________________________________________*
+;*                                                                         *
+;*  Descr: Game initialization, misc. game routines.                       *
+;*                                                                         *
+;***************************************************************************
 safeinidisptop	equ	1
 
 	incpublics	EXT\main.ext
@@ -18,7 +36,7 @@ initialise_l ; Initialize game
 	jsl	playerstart_init_l ; Initialize player variables
 	jsl	initplanets_l ; Initialize the planet selection
 
-	ai16 ; Set A to 16-bit
+	ai16 ; Set A/X/Y to 16-bit
 	stz	boss_ptr ; store 0 at boss pointer variable
 	stz	specptr ; store 0 at special pointer variable (score?)
 	stz	specialobjtotal ; store 0 at special object total variable (score?)
@@ -75,7 +93,7 @@ initgame_l ; Initialize game
 	waitdma	110 ; wait for line 110
 	waitdma	100	; wait for line 100 ; turn off screen and wait for sync
 
-	ai16 ; set A to 16 bit
+	ai16 ; Set A/X/Y to 16-bit
 	stz	levelfinished ; store 0 at levelfinished variable
 	stz	circleanim ; store 0 at circleanim variable
 	stz	mapcnt ; store 0 at mapcnt variable
@@ -114,7 +132,7 @@ initgame_l ; Initialize game
 ; set up player's objects
 	lda.l	mapbase+2 ; Load mapbase+2 into A
 	sta	mapbank ; Store A at mapbank
-	ai16 ; Set A to 16 bit
+	ai16 ; Set A/X/Y to 16-bit
 	lda	mapptr ; Load Map Pointer into A
 	pha ; Push A to stack
 	lda.l	mapbase ; Load mapbase into A
@@ -155,14 +173,14 @@ initgame3d_l ; MARIO chip witchcraft
 	lda	#-1 ; load -1 into A
 	sta	mariocode ; store mariocode var into a
 	stz	trans_flag ; store 0 at transfer flag
-	ai8 ; Set A to 8 bit
+	ai8 ; Set A/X/Y to 8 bit
 	jsr	gameclipwindow ; Go to game clip window subroutine
 	jml	init3d1 ; Jump to init3d1 subroutine
 
 
 
 gamestart
-	ai8 ; Set A to 8 bit
+	ai8 ; Set A/X/Y to 8 bit
 	jsl	initgame_l ; Initialize game
 gameloop2
 
@@ -228,23 +246,23 @@ cestimeron	=	1 ; Set timer flag to 1
 	stz	crosshairon ; store 0 at crosshairon flag
 
 ;---------------------------------------------------------------------
-	lda	levelfinished
-	cmp	#le_fadedown
-	beq	exitspec.dofadedown
-	cmp	#le_bhole1
-	beq	exittobhole1
-	cmp	#le_bhole2
-	beq	exittobhole2
-	cmp	#le_bhole3
-	beq	exittobhole3
-	cmp	#le_special
-	beq	exittospecial
-	cmp	#le_enterbhole
-	beq	enterbhole
-	cmp	#le_enterspec
-	beq	exitspec.white
+	lda	levelfinished ; Load level finished flag into A
+	cmp	#le_fadedown ; Compare with fade down var
+	beq	exitspec.dofadedown ; Branch to fade down special exit if equal
+	cmp	#le_bhole1 ; Compare with black hole level exit var
+	beq	exittobhole1 ; Branch to black hole exit type if equal
+	cmp	#le_bhole2 ; Compare with black hole 2 level exit var
+	beq	exittobhole2 ; Branch to black hole 2 exit type if equal
+	cmp	#le_bhole3 ; Compare with black hole 3 level exit var
+	beq	exittobhole3 ; Branch to black hole 3 exit type if equal
+	cmp	#le_special ; Compare with special level var
+	beq	exittospecial ; Branch to special level exit type if equal
+	cmp	#le_enterbhole ; Compare with black hole enter var
+	beq	enterbhole ; Branch to black hole enter if equal
+	cmp	#le_enterspec ; Compare with Special level enter var
+	beq	exitspec.white ; Branch to Special Level exit if equal
 
-	jsr	end_level_seq
+	jsr	end_level_seq ; Go to Level end sequence subroutine
 
 	a8
 	lda	levelfinished
@@ -418,7 +436,7 @@ end_game_seq ; Stuff to do with Game End Demo?
 	endc ; End Conditional
 
 
-	ai16 ; set A to 16 bit
+	ai16 ; set A/X/Y to 16 bit
 	lda	#-550 ; Load -550 into A
 	sta	vram1addr ; Store A at VRAM transfer addr variable
 	lda	#msg_1 ; Load MARIO text display data for the number 1
@@ -1011,131 +1029,134 @@ makeendobj2	sta	kval1
 
 
 ;----------------------------------------------------------------------------------------------
-nametxt	dw	bunnytxt&WM,cocktxt&WM,frogtxt&WM
-namepos	dw	15,96,173
-deadnamepos	dw	11,91,170
-namegfxpos	db	2,11*8
-	db	12,11*8
-	db	22,11*8
+nametxt	dw	peppytxt&WM,falcotxt&WM,slippytxt&WM ; Name text for Peppy, Falco, and Slippy
+namepos	dw	15,96,173 ; Screen positions for names
+deadnamepos	dw	11,91,170 ; Screen positions for "IS DOWN" text if teammate(s) are down
+namegfxpos	db	2,11*8 ; Position for Peppy name gfx
+	db	12,11*8 ; Position for Falco name gfx
+	db	22,11*8 ; Position for Slippy name gfx
 
-calcstageperc	php
-	IFEQ	CONTEST
-	ai8				;take 7% of total killed for every friend alive and add to total killed
-	lda	#0
-	ldx	bunny
-	beq	.deadb
-	clc
-	adc	#5
-.deadb	ldx	frog
-	beq	.deadf
-	clc
-	adc	#5
-.deadf	ldx	cock
-	beq	.deadcock
-	clc
-	adc	#5
-.deadcock	ai16
-	and	#$ff
-	sta	tpa
+calcstageperc	php ; Push processor status to stack
+	IFEQ	CONTEST ; Start Conditional: if CONTEST = 0 (not SSFW)
+	; take 7% of total killed for every teammate alive and add to total killed
+	; Check if any teammates are down
+	ai8 ; Set A/X/Y to 8 bit
+	lda	#0 ; Load 0 into A
+	ldx	bunny ; Load Peppy's HP into X
+	beq	.deadpeppy ; Branch to .deadpeppy sublabel if Peppy's HP is 0
+	clc ; Clear carry flag
+	adc	#5 ; Add 5 to A
+.deadpeppy	ldx	frog ; Load Slippy's HP into X
+	beq	.deadslippy ; Branch to .deadslippy if Slippy's HP is 0 ; Slippy's dead
+	clc ; Clear carry flag
+	adc	#5 ; Add 5 to A
+.deadslippy	ldx	cock ; Load Falco's HP into X
+	beq	.deadfalco ; Branch to .deadfalco sublabel if Falco's HP is 0
+	clc ; Clear carry flag
+	adc	#5 ; add 5 to A
+.deadfalco	ai16 ; set A/X/Y to 16 bit ; NICE
+	and	#$ff ; AND A with $FF
+	sta	tpa ; store A to tpa var
 
-	ELSEIF
-	a16
-	stz	tpa
-	ENDC
+	ELSEIF ; Else if CONTEST = 1 (is SSFW)
+	a16 ;  Set A to 16 bit
+	stz	tpa ; Store 0 at tpa var
+	ENDC ; End conditional
 
-	a8
-	stz	stageclear
+	a8 ; Set A to 8 bit
+	stz	stageclear ; Store 0 at stage clear var
 
 ;--------------------------------------
-	a16
-	lda	specialobjtotal
-	and	#$ff
-	beq	.zero
-	sta.l	m_y1
-	lda	specials_dead
-	and	#$ff
-	sta.l	m_x1
-	call_mario	mcalcperc
-	lda.l	m_x1
-.zero	clc
-	adc	tpa
-	cmp	#100
-	bcc	.n100
-	lda	#100
-.n100	sta	cla2
-	plp
-	rts
+	a16 ; Set A to 16 bit
+	lda	specialobjtotal ; Load special obj total into A
+	and	#$ff ; AND A with $FF
+	beq	.zero ; Branch to .zero sublabel 
+	sta.l	m_y1 ; Store A to MARIO chip Y value
+	lda	specials_dead ; Load dead specials count into A
+	and	#$ff ; AND A with $FF
+	sta.l	m_x1 ; Store A to MARIO chip X value
+	call_mario	mcalcperc ; Tell MARIO chip to calculate percentage
+	lda.l	m_x1 ; Load MARIO chip X value to A
+.zero	clc ; Clear carry flag
+	adc	tpa ; Add tpa var to A
+	cmp	#100 ; Compare A with #100
+	bcc	.n100 ; Branch to .n100 sublabel if A < 100
+	lda	#100 ; Load 100 into A
+.n100	sta	cla2 ; Store A at target % variable
+	plp ; Pull processor status from stack
+	rts ; Return from subroutine
 
 
-end_level_seq	ai16
-	jsr	calcstageperc
+end_level_seq	ai16 ; Set A/X/Y to 16 bit
+	jsr	calcstageperc ; Get stage score
 
-	lda	levelfinished
-	cmp	#le_endofgame
-	lbeq	finis1
+	lda	levelfinished ; Load level finished flag into A
+	cmp	#le_endofgame ; Compare with end of game var
+	lbeq	finis1 ; Long branch to finis1 if comparison is equal
 
 
-; what ALCS used are...
+;  what ALCS used are...
 ;  cla1 - current percentage
 ;  cla2 - target percentage
 ;  clb1 - 0 = prt graph, 1=print bonus, 2=graph and credit sound and dec clb1,  3=graph and dec clb1
 ;  clb2 - 1 = exit printing loop, 1 =  exit to planets, 2 = exit printing loop but display screen
 ;  clam - 0 = increment cla1 to cla2 1=nothing 2=add value <>0 <>1 <>2 = decrement
 ;  clbm - old total score
-;plotx1 - counter to display fox sprite and inc credit.
+;  plotx1 - counter to display fox sprite and inc credit.
 
-	ai16
-	jsr	calctotalscore
-	lda	tpa
-	sta	clbm
+	ai16 ; Set A/X/Y to 16 bit
+	jsr	calctotalscore ; Get total score
+	lda	tpa ; Load tpa var into A
+	sta	clbm ; Store A at old total score var
   
-	stz	cla1
-	stz	clb1
-	stz	clam
-	stz	plotx1
+	stz	cla1 ; Store 0 at current % variable
+	stz	clb1 ; Store 0, print graph
+	stz	clam ; Store 0, incrementing cla1 to cla2
+	stz	plotx1 ; store zero to credit counter
 printspeclp
-	jsl	transfer_l
+	jsl	transfer_l ; Go to transfer loop subroutine
 
-	ai16
-	IFEQ	CONTEST
+	ai16 ; Set A/X/Y to 16 bit
+	IFEQ	CONTEST ; Start conditional, IF CONTEST =0 (not SSFW)
 	clrmes	totalscoretxt,16,44	;total score
-	ELSEIF
+	ELSEIF ; Else if CONTEST=1 (is SSFW)
 	clrmes	totalscoretxt,16,100	;total score
-	ENDC
+	ENDC ; End conditional
 
-	IFEQ	CONTEST
-	a16
-	jsr	calctotalscore
-	lda	tpa
-	sta.l	m_z1
+	IFEQ	CONTEST ; Start conditional: if CONTEST = 0 (not SSFW)
+	a16 ; set A to 16 bit
+	jsr	calctotalscore ; Get total score
+	lda	tpa ; Load tpa var into A
+	sta.l	m_z1 ; Store A at MARIO chip Z pos var
 
-	lda	#176
-	sta.l	m_x1
-	lda	#39
-	sta.l	m_y1
-	call_mario mprtperc		;this subtracts 8 from x1 if >=100 and adds 8 if <10
+	lda	#176 ; Load 176 into A
+	sta.l	m_x1 ; Store A (Long) at MARIO chip X pos var
+	lda	#39 ; Load 39 into A
+	sta.l	m_y1 ; Store A (Long) at MARIO chip Y pos var
+	;this subtracts 8 from x1 if >=100 and adds 8 if <10
+	call_mario mprtperc	; MARIO chip witchcraft
 
-	call_mario mprt2zeros
-	ELSEIF
+	call_mario mprt2zeros ; Tell MARIO chip to print 2 zeroes
+	ELSEIF ; Else if CONTEST = 1 (is SSFW)
 
-	lda	#176-16
-	sta	x1
-	lda	#100
-	sta	y1
-	jsl	printpscore_l
-	ENDC
+	lda	#176-16 ; Load result of 176-16 into A
+	sta	x1 ; Store A at X pos var
+	lda	#100 ; Load 100 into A
+	sta	y1 ; Store A at Y pos var
+	jsl	printpscore_l ; Print score
+	ENDC ; End conditional
 
 
-	lda	clb1
+	lda	clb1 ; Load screen print status into A
 	beq	.graph
-	dec	a
+	dec	a ; Decrement A
 	bne	.graph
 
-	IFEQ	CONTEST
+	IFEQ	CONTEST ; Start conditional: if CONTEST = 0 (not SSFW)
 	clrmes	bonustxt,16,24		;print 'bonus...'
-	ELSEIF
+	ELSEIF ; Else if CONTEST=1 (is SSFW)
 	clrmes	bonustxt,16,68		;print 'bonus...'
-	ENDC
+	ENDC ; End conditional
 
 	lda	plotx1
 	lbeq	.doneg
