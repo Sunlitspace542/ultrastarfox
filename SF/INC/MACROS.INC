@@ -6255,10 +6255,8 @@ enable	MACRO
 	ENDM
 ;---------------------------------------------------
 
-routechange	MACRO
-
+routechange	MACRO ; Change route on planet selection screen
 	jsl	routechange\1_l
-
 	ENDM
 
 ;---------------------------------------------------
@@ -6468,7 +6466,7 @@ jns	macro
 	bpl	\1
 	endm
 
-jne	macro
+jne	macro ; Jump if not equal
 	bne	\1
 	endm
 

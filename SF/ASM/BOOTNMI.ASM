@@ -233,8 +233,8 @@ initialise_ram
 	rts ; Return to Subroutine
 
 
-	shorta
-	shorti
+	shorta ; Tell SASM that this code uses 8 bit A
+	shorti ; Tell SASM that this code uses 8 bit X and Y
 ;------ reset SFX regs ------------------------------
 startsfx_l ; Initialize the SNES 
 ; TODO: properly label all regs here, say what they do
@@ -348,8 +348,8 @@ startsfx_l ; Initialize the SNES
 
 	rtl ; Return from Subroutine Long
 
-	shorta
-	longi
+	shorta ; Tell SASM that this code uses 8 bit A
+	longi ; Tell SASM that this code uses 16 bit X/Y
 fnmi_l
 	rtl ; Return from Subroutine Long
 

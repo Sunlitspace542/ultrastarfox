@@ -179,10 +179,10 @@ initgame3d_l ; MARIO chip witchcraft
 
 
 
-gamestart
+gamestart ; Start the game
 	ai8 ; Set A/X/Y to 8 bit
 	jsl	initgame_l ; Initialize game
-gameloop2
+gameloop2 ; Game loop
 
 	a8 ; set A to 8 bit
 ;	lda	foxyfoxy
@@ -264,80 +264,82 @@ cestimeron	=	1 ; Set timer flag to 1
 
 	jsr	end_level_seq ; Go to Level end sequence subroutine
 
-	a8
-	lda	levelfinished
-	cmp	#le_startgame
-	bne	.noplanets
-	stz	doingend
-	jml	gamestart
+	a8 ; set A to 8 bit
+	lda	levelfinished ; Load level finished flag into A
+	cmp	#le_startgame ; Compare with start game var
+	bne	.noplanets ; Branch to .noplanets if result is not equal
+	stz	doingend ; store 0 at doingend var
+	jml	gamestart ; Start game
 .noplanets
-	shorta
-	lda	levelfinished
-	cmp	#le_endofgame
-	lbeq	end_game_seq
-exitspec
+	shorta ; Tell SASM that this code uses 8 bit A
+	lda	levelfinished ; Load level finished flag into A
+	cmp	#le_endofgame ; Compare A with end of game var
+	lbeq	end_game_seq ; Long branch if result is equal to game end sequence
+exitspec ; Special exits
 
 .wait
 .dofadedown	local
-	a8
+	a8 ; set A to 8 bit
 
-	lda	doneacircle
-	bne	.exit
+	lda	doneacircle ; Load doneacircle var into A
+	bne	.exit ; branch to .exit if A = 1?
 
-	lda	levelfinished
-	cmp	#le_fadetowhite
-	bne	.black
+	lda	levelfinished ; Level finished flag into A
+	cmp	#le_fadetowhite ; Compare with fade to white var
+	bne	.black ; branch to .black sublabel if compare result is not equal
 
 .white	local
-	a8
-	lda	#40
-.lp1	pha
-	jsl	fadewhite_l	
-	jsl	transfer_l
-	a8
-	pla
-	dec	a
-	bne	.lp1
+	a8 ; set A to 8 bit
+	lda	#40 ; Load 40 into A
+.lp1	pha ; Push A to stack
+	jsl	fadewhite_l ; Go to fade to white subroutine
+	jsl	transfer_l ; Go to transfer loop subroutine
+	a8 ; Set A to 8 bit
+	pla ; Pull A from stack
+	dec	a ; Decrement A
+	bne	.lp1 ; Repeat until A = 0
 
-.black	fadedown
-.lp	jsl	transfer_l
-	a8
-	lda	fadedir
-	bne	.lp
+.black	fadedown ; Fade down 
+.lp	jsl	transfer_l ; Go to transfer loop subroutine
+	a8 ; set A to 8 bit
+	lda	fadedir ; Load fade dir into A
+	bne	.lp ; Repeat until A = 0
 
-.exit	a8
-	stz	doingend
-	jml	planetseq_l
+.exit	a8 ; set A to 8 bit
+	stz	doingend ; Store 0 at doingend var
+	jml	planetseq_l ; Jump to planet sequence
 
 
 
 ;--------------------------------------------------------------------
-	shorta
-	longi
-exittobhole1	routechange	bhole1
-	bra	gotobholeplanets
-exittobhole2	routechange	bhole2
-	bra	gotobholeplanets
-exittobhole3	routechange	bhole3
-	bra	gotobholeplanets
-exittospecial	routechange	1
-gotobholeplanets
+	shorta ; Tell SASM this uses 8 bit A
+	longi ; Tell SASM this uses 16 bit X/Y
+; This most likely has to do with going to the black hole on the planet map
+exittobhole1	routechange	bhole1 ; Change route to go to black hole
+	bra	gotobholeplanets ; Branch 
+exittobhole2	routechange	bhole2 ; Change route to go to black hole 2
+	bra	gotobholeplanets ; Branch 
+exittobhole3	routechange	bhole3 ; Change route to go to black hole 3
+	bra	gotobholeplanets ; Branch 
+exittospecial	routechange	1 ; Change route to go to black hole?
+gotobholeplanets ; Go to black hole
 enterbhole
-	a8i16
-	ldx	specptr
-	lda	#101
-	sta	specbuf,x
-	inx
-	stx	specptr
-	stz	doingend
-	jml	planetseq_l
+	a8i16 ; Set A to 8 bit and X/Y to 16 bit
+	ldx	specptr ; Load special pointer into X
+	lda	#101 ; Load 101 into A
+	sta	specbuf,x ; Store A into special buffer + X
+	inx ; Increment X
+	stx	specptr ; Store X at special pointer
+	stz	doingend ; Store 0 at doingend var
+	jml	planetseq_l ; Jump to planet sequence
 
 
 
 ;--------------------------------------------------------------------
-setpath	macro
-	jsr	setthepath
-	endm
+; Behold! a random macro in the middle of MAIN!
+setpath	macro ; Set PATH
+	jsr	setthepath ; go to set PATH subroutine (also in this file)
+	endm ; End Macro
 
 
 gameover_l	; Game over screen
@@ -498,8 +500,8 @@ stagescore	a16 ; Set A to 16 bit
 	adc	#200 ; Add 200 to A
 	sta	vram1addr ; store A to VRAM transfer addr 1 variable
 
-	inc	vram3addr ; Increment VRAM transfer addr 3 variable
-	inc	vram3addr ; Increment VRAM transfer addr 3 variable
+	inc	vram3addr ; Increment Palette address variable
+	inc	vram3addr ; Increment Palette address variable
 
 .skip
 	a8 ; Set A to 8 bit
@@ -570,14 +572,15 @@ stagescore	a16 ; Set A to 16 bit
 
 
 
-	shorta
-	longi
-setthepath	php
-	a8
-	phx
-	ldx	vram3addr
+	shorta ; Tell SASM this uses 8 bit A
+	longi ; Tell SASM this uses 16 bit X/Y
+; Sets PATH for text objs during Game End Demo
+setthepath	php ; Push processor status to stack
+	a8 ; Set A to 8 bit
+	phx ; Push X to stack
+	ldx	vram3addr ; Load palette addr into X
 	jmp	(.tab,x)
-.tab	dw	.1&WM
+.tab	dw	.1&WM ;  Jump table
 	dw	.2&WM
 	dw	.3&WM
 	dw	.4&WM
@@ -588,207 +591,207 @@ setthepath	php
 	dw	.9&WM
 	dw	.10&WM
 	dw	.11&WM
-.1	plx
-	s_set_path	x,stage1
-	lda	#1
-	jmp	checkifiamend
-.2	plx
-	s_set_path	x,stage2
-	lda	#2
-	jmp	checkifiamend
-.3	plx
-	s_set_path	x,stage3
-	lda	#3
-	jmp	checkifiamend
-.4	plx
-	s_set_path	x,stage4
-	lda	#4
-	jmp	checkifiamend
-.5	plx
-	s_set_path	x,stage5
-	lda	#5
-	jmp	checkifiamend
-.6	plx
-	s_set_path	x,stage6
-	lda	#6
-	jmp	checkifiamend
-.7	plx
-	s_set_path	x,stage7
-	lda	#7
-	jmp	checkifiamend
+.1	plx ; Pull X from stack
+	s_set_path	x,stage1 ; Set PATH to stage 1 PATH
+	lda	#1 ; Load 1 into A
+	jmp	checkifiamend ; Check if at end
+.2	plx ; Pull X from stack
+	s_set_path	x,stage2 ; Set PATH to stage 1 PATH
+	lda	#2 ; Load 2 into A
+	jmp	checkifiamend ; Check if at end
+.3	plx ; Pull X from stack
+	s_set_path	x,stage3 ; Set PATH to stage 1 PATH
+	lda	#3 ; Load 3 into A
+	jmp	checkifiamend ; Check if at end
+.4	plx ; Pull X from stack
+	s_set_path	x,stage4 ; Set PATH to stage 1 PATH
+	lda	#4 ; Load 4 into A
+	jmp	checkifiamend ; Check if at end
+.5	plx ; Pull X from stack
+	s_set_path	x,stage5 ; Set PATH to stage 1 PATH
+	lda	#5 ; Load 5 into A
+	jmp	checkifiamend ; Check if at end
+.6	plx ; Pull X from stack
+	s_set_path	x,stage6 ; Set PATH to stage 1 PATH
+	lda	#6 ; Load 6 into A
+	jmp	checkifiamend ; Check if at end
+.7	plx ; Pull X from stack
+	s_set_path	x,stage7 ; Set PATH to stage 1 PATH
+	lda	#7 ; Load 7 into A
+	jmp	checkifiamend ; Check if at end
 
-.8	plx
-	s_set_path	x,total
-	plp
-	rts
-.9	plx
-	s_set_path	x,totaln
-	plp
-	rts
-.10	plx
-	s_set_path	x,ave
-	plp
-	rts
-.11	plx
-	s_set_path	x,aven
-	plp
-	rts
+.8	plx ; Pull X from stack
+	s_set_path	x,total ; Set PATH to total ; Total Score
+	plp ; Pull processor status from stack
+	rts ; Return from subroutine
+.9	plx ; Pull X from stack
+	s_set_path	x,totaln ; Set PATH to totaln ; Total Score Number
+	plp ; Pull processor status from stack
+	rts ; Return from subroutine
+.10	plx ; Pull X from stack
+	s_set_path	x,ave ; Set PATH to ave ; Average Score
+	plp ; Pull processor status from stack
+	rts ; Return from subroutine
+.11	plx ; Pull X from stack
+	s_set_path	x,aven ; Set PATH to aven ; Average Score Number
+	plp ; Pull processor status from stack
+	rts ; Return from subroutine
 
-	shorta
-	longi
-checkifiamend
-	cmp	specptr
-	jne	.ok
-	lda	#30
-	sta	c_type
-.ok	plp
-	rts
+	shorta ; Tell SASM this uses 8 bit A
+	longi ; Tell SASM this uses 16 bit X/Y
+checkifiamend ; check if at end
+	cmp	specptr ; Compare special pointer with whatever's in A
+	jne	.ok ; Jump if not equal to .ok sublabel
+	lda	#30 ; Load 30 into A
+	sta	c_type ; Store A at controller type var
+.ok	plp ; Pull processor status from stack
+	rts ; return from subroutine
 
 ;------------------------
 maketotalscore
-	a8
-	lda	#1
-	sta	c_type
+	a8 ; Set A to 8 bit
+	lda	#1 ; load 1 into A
+	sta	c_type ; Store A at controller type var
 
-	ai16
-	lda	#14
-	sta	vram3addr
+	ai16 ; Set A/X/Y to 16 bit
+	lda	#14 ; Load 14 into A
+	sta	vram3addr ; Store A at palette addr var
 
-	jsr	calctotalscore
-	lda	tpa
-	sta.l	m_x1		;divisor
-	lda	specptr
-	sec
-	sbc.l	hadabumhole
-	sta.l	m_y1		;dividend
-	call_mario	mkrisdivu3115
-	lda.l	m_x1		;quotient
-	sta	kval1
-	asl	a
-	asl	a
-	clc
-	adc	kval1
-	clc
-	adc	#msg_00&WM
-	pha
-
-
-	lda	#msg_total&WM
-	ldx	#0
-	ldy	#-1600
-	jsr	makeendobj
-	setpath
-	a16
-	inc	vram3addr
-	inc	vram3addr
-	lda	#25
-.wait	pha
-	jsl	transfer_l
-	a16
-	pla
-	dec	a
-	bne	.wait
-
-	a16
-	jsr	calctotalscore
-	lda	tpa
-	sta	cla2
-	lda	#-200
-	sta	cla1
-	lda	cla2
-	ldx	#-1
-.sub100	inx
-	sec
-	sbc	#100
-	jns	.sub100
-	clc
-	adc	#100
-	sta	cla2
-	txa
-	ora	#0
-	je	.sub10do
-	ldx	#-300
-	ldy	#-1400
-	jsr	makeendobjn
-	setpath
-.sub10do	lda	cla2
-	ldx	#-1
-.sub10	inx
-	sec
-	sbc	#10
-	jns	.sub10
-	clc
-	adc	#10
-	sta	cla2
-	txa
-	ora	#0
-	ldx	#-150
-	ldy	#-1400
-	jsr	makeendobjn
-	setpath
-.sub1do	lda	cla2
-	ldx	#000
-	ldy	#-1400
-	jsr	makeendobjn
-	setpath
-	lda	#0
-	ldx	#150
-	ldy	#-1400
-	jsr	makeendobjn
-	setpath
-	lda	#0
-	ldx	#300
-	ldy	#-1400
-	jsr	makeendobjn
-	setpath
-
-	a16
-	inc	vram3addr
-	inc	vram3addr
-	lda	#25
-.wait2	pha
-	jsl	transfer_l
-	a16
-	pla
-	dec	a
-	bne	.wait2
+	jsr	calctotalscore ; Calculate total score
+	lda	tpa ; Load tpa into A
+	sta.l	m_x1 ; Store A into MARIO chip X var ;divisor
+	lda	specptr ; Load special pointer into A
+	sec ; Set carry flag
+	sbc.l	hadabumhole ; Subtract var from A
+	sta.l	m_y1 ; Store A into MARIO chip Y var ;dividend
+	call_mario	mkrisdivu3115 ; Tell MARIO chip to do division
+	lda.l	m_x1 ; Load MARIO chip Y var containing quotient into A
+	sta	kval1 ; Store A at kval1 var
+	asl	a ; Arithmetic shift left A
+	asl	a ; Arithmetic shift left A
+	clc ; Clear carry flag
+	adc	kval1 ; Add kval1 var to A
+	clc ; Clear carry flag
+	adc	#msg_00&WM ; add MARIO text display data for "00" &FFFF to A
+	pha ; Push A to stack
 
 
-	lda	#msg_ave&WM
-	ldx	#0
-	ldy	#-850
-	jsr	makeendobj
-	setpath
-	inc	vram3addr
-	inc	vram3addr
+	lda	#msg_total&WM ; Load MARIO text data for "TOTAL SCORE" into A
+	ldx	#0 ; Load 0 into X
+	ldy	#-1600 ; Load -1600 into Y
+	jsr	makeendobj ; Go to makeendobj subroutine to create text on screen
+	setpath ; Set PATH
+	a16 ; Set A to 16 bit
+	inc	vram3addr ; increment palette addr var
+	inc	vram3addr ; increment palette addr var
+	lda	#25 ; Load 25 into A
+.wait	pha ; Push A to stack
+	jsl	transfer_l ; Go to transfer loop subroutine
+	a16 ; Set A to 16 bit
+	pla ; Pull A from stack
+	dec	a ; Decrement A
+	bne	.wait ; Repeat until A = 0
 
-	lda	#25
-.wait3	pha
-	jsl	transfer_l
-	a16
-	pla
-	dec	a
-	bne	.wait3
+	a16 ; Set A to 16 bit
+	jsr	calctotalscore ; Get total score
+	lda	tpa ; Load tpa into A
+	sta	cla2 ; Store A at target % var
+	lda	#-200 ; Load -200 into A
+	sta	cla1 ; Store A at current % var
+	lda	cla2 ; Load target % var
+	ldx	#-1 ; Load -1 into X
+.sub100	inx ; Increment X
+	sec ; Set carry flag
+	sbc	#100 ; Subtract 100 from A
+	jns	.sub100 ; jump if ???
+	clc ; Clear carry flag
+	adc	#100 ; add 100 to A
+	sta	cla2 ; Store A at target % var
+	txa ; Transfer X to A
+	ora	#0 ; OR A with 0
+	je	.sub10do ; Jump tp sub10do if equal?
+	ldx	#-300 ; Load -300 into X
+	ldy	#-1400 ; Load -1400 into Y
+	jsr	makeendobjn ; Go to makeendobjn subroutine to create text on screen
+	setpath ; Set PATH
+.sub10do	lda	cla2 ; Load target % var into A
+	ldx	#-1 ; Load -1 into X
+.sub10	inx ; Increment X
+	sec ; Set carry flag
+	sbc	#10 ; Subtract 10 from A
+	jns	.sub10 ; Jump to .sub10 if ???
+	clc ; Clear carry flag
+	adc	#10 ; Add 10 to A
+	sta	cla2 ; Store target % var into A
+	txa ; Transfer X to A
+	ora	#0 ; OR A with 0
+	ldx	#-150 ; Load -150 into X
+	ldy	#-1400 ; Load -1400 into Y
+	jsr	makeendobjn ; Go to makeendobjn subroutine to create text on screen
+	setpath ; Set PATH
+.sub1do	lda	cla2 ; Load target % var into A
+	ldx	#000 ; Load 000 into X
+	ldy	#-1400 ; Load -1400 into Y
+	jsr	makeendobjn ; Go to makeendobjn subroutine to create text on screen
+	setpath ; Set PATH
+	lda	#0 ; Load 0 into A
+	ldx	#150 ; Load 150 into X
+	ldy	#-1400 ; Load -1400 into Y
+	jsr	makeendobjn ; Go to makeendobjn subroutine to create text on screen
+	setpath ; Set PATH
+	lda	#0 ; Load 0 into A
+	ldx	#300 ; Load 300 into X
+	ldy	#-1400 ; Load -1400 into Y
+	jsr	makeendobjn ; Go to makeendobjn subroutine to create text on screen
+	setpath ; Set PATH
 
-	pla
-	ldx	#0
-	ldy	#-650
-	jsr	makeendobj
-	setpath
-	inc	vram3addr
-	inc	vram3addr
+	a16 ; set A to 16 bit
+	inc	vram3addr ; increment palette addr var
+	inc	vram3addr ; increment palette addr var
+	lda	#25 ; Load 25 into A
+.wait2	pha ; Push A to stack
+	jsl	transfer_l ; Go to transfer loop subroutine
+	a16 ; Set A to 16 bit
+	pla ; Pull A from stack
+	dec	a ; Decrement A
+	bne	.wait2 ; repeat until A = 0
 
-	a8
-	stz	c_type
-	a16
+
+	lda	#msg_ave&WM ; Load MARIO text data for "AVERAGE SCORE" into A
+	ldx	#0 ; Load 0 into X
+	ldy	#-850 ; Load -850 into Y
+	jsr	makeendobj ; Go to makeendobj subroutine to create text on screen
+	setpath ; Set PATH
+	inc	vram3addr ; increment palette addr var
+	inc	vram3addr ; increment palette addr var
+
+	lda	#25 ; Load 25 into A
+.wait3	pha ; Push A to stack
+	jsl	transfer_l ; Go to transfer loop subroutine
+	a16 ; Set A to 16 bit
+	pla ; Pull A from stack
+	dec	a ; Decrement A
+	bne	.wait3 ; Repeat until A = 0
+
+	pla ; Pull A from stack
+	ldx	#0 ; Load 0 into X
+	ldy	#-650 ; Load -650 into Y
+	jsr	makeendobj ; Go to makeendobj subroutine to create text on screen
+	setpath ; Set PATH
+	inc	vram3addr ; increment palette addr var
+	inc	vram3addr ; increment palette addr var
+
+	a8 ; Set A to 8 bit
+	stz	c_type ; Store 0 at controller type var
+	a16 ; Set A to 16 bit
 .fail
-	rts
+	rts ; Return from subroutine
 
-	longa
-	longi
-calctotalscore_l
-	jsr	calctotalscore
-	rtl
+	longa ; Tell SASM this uses 16 bit A
+	longi ; Tell SASM this uses 16 bit X/Y
+calctotalscore_l ; Calculate total score
+	jsr	calctotalscore ; Calculate total score
+	rtl ; Return from subroutine (Long)
 
 calctotalscore	stz	tpa		;add all special perc and print it *100
 	lda	#0
@@ -1091,7 +1094,7 @@ end_level_seq	ai16 ; Set A/X/Y to 16 bit
 	jsr	calcstageperc ; Get stage score
 
 	lda	levelfinished ; Load level finished flag into A
-	cmp	#le_endofgame ; Compare with end of game var
+	cmp	#le_endofgame ; Compare A with end of game var
 	lbeq	finis1 ; Long branch to finis1 if comparison is equal
 
 
@@ -1127,22 +1130,22 @@ printspeclp
 	a16 ; set A to 16 bit
 	jsr	calctotalscore ; Get total score
 	lda	tpa ; Load tpa var into A
-	sta.l	m_z1 ; Store A at MARIO chip Z pos var
+	sta.l	m_z1 ; Store A at MARIO chip Z var
 
 	lda	#176 ; Load 176 into A
-	sta.l	m_x1 ; Store A (Long) at MARIO chip X pos var
+	sta.l	m_x1 ; Store A (Long) at MARIO chip X var
 	lda	#39 ; Load 39 into A
-	sta.l	m_y1 ; Store A (Long) at MARIO chip Y pos var
+	sta.l	m_y1 ; Store A (Long) at MARIO chip Y var
 	;this subtracts 8 from x1 if >=100 and adds 8 if <10
-	call_mario mprtperc	; MARIO chip witchcraft
+	call_mario mprtperc	; Tell MARIO chip to print percentage?
 
 	call_mario mprt2zeros ; Tell MARIO chip to print 2 zeroes
 	ELSEIF ; Else if CONTEST = 1 (is SSFW)
 
 	lda	#176-16 ; Load result of 176-16 into A
-	sta	x1 ; Store A at X pos var
+	sta	x1 ; Store A at X1 var
 	lda	#100 ; Load 100 into A
-	sta	y1 ; Store A at Y pos var
+	sta	y1 ; Store A at Y1 var
 	jsl	printpscore_l ; Print score
 	ENDC ; End conditional
 
