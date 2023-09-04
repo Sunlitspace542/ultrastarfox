@@ -25,8 +25,8 @@
 ``ENDC`` - End conditional  
 ``END`` - Stops assembly of the current source file  
 ## Loops
-``REPT`` - Starts a repeat loop (can be nested)
-``ENDR`` - Ends a repeat loop
+``REPT`` - Starts a repeat loop (can be nested)  
+``ENDR`` - Ends a repeat loop  
 ``IRP (symbol,value)`` - Iterate Rept Parameter, puts the value into the symbol using the rept count  
 ``IRS (string, ascii)`` - Same as IRP but uses strings instead  
 ## Macros
