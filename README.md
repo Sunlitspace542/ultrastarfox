@@ -19,7 +19,7 @@ Star Fox / StarWing (SNES, 1993), with modifications for easier creation of ROM 
 
 ## Building on Windows
 
-Requirements: Microsoft Windows, Python 3
+Requirements: Microsoft Windows
 
 Download repo as ZIP and extract somewhere, or clone the repo with git via the command line.  
 
