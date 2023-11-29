@@ -323,8 +323,8 @@ setothmus	macro
 	endm
 
 setbgm	macro
-	db	ctrlsetbgm
-	db	\1
+;	db	ctrlsetbgm
+;	db	\1
 	endm
 
 vofson	macro

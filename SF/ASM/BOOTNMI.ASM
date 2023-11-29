@@ -35,11 +35,9 @@ startboot	disable ; Disable Interrupts
 	ai8 ; set A/X/Y to 8 bit
 	jsl	startsfx_l ; Initialize the SNES
 
-	IFNE msu
-	jsr CheckForMSU ; check for the MSU-1
-	ENDC
-
 	jsr	initialise_ram ; Clear RAM
+
+	jsr CheckForMSU ; check for the MSU-1
 
 	i16 ; clears interrupt disable flag
 	ldx	#$2ff ; Load $2FF into X
@@ -85,6 +83,9 @@ restart	ai16 ; set A/X/Y to 16 bit
 
 	jsl	startsfx_l ; Initialize the SNES
 
+
+	jsr CheckForMSU ; check for the MSU-1
+
 	lda.l	whichroute ; Load Route # into A
 	pha	; Push A to stack, preserving route number
 	lda	defaulttrain ; Load defaulttrain into A
@@ -100,8 +101,17 @@ restart	ai16 ; set A/X/Y to 16 bit
 	lda	mousemodetemp ; load value in mousemode temp var to A
 	pha ; Push A to stack
 	ENDC ; End conditional
+	IFNE	MSU
+	lda	msupresent
+	pha
+	ENDC
 
 	jsr	initialise_ram ; Clear RAM
+
+	IFNE	MSU
+	pla
+	sta	msupresent
+	ENDC
 
 	IFNE	mouseon ; start conditional: If SNES mouse enabled
 	pla ; Pull A from stack
@@ -142,24 +152,13 @@ CheckForMSU
 	lda	MSU_ID
 	cmp	#$53	; 'S'
 	bne	NoMSU	; Stop checking if it's wrong
-	lda	MSU_ID+1
-	cmp	#$2D	; '-'
-	bne	NoMSU
-	lda	MSU_ID+2
-	cmp	#$4D	; 'M'
-	bne	NoMSU
-	lda	MSU_ID+3
-	cmp	#$53	; 'S'
-	bne	NoMSU
-	lda	MSU_ID+4
-	cmp	#$55	; 'U'
-	bne	NoMSU
-	lda	MSU_ID+5
-	cmp	#$31	; '1'
-	beq	NoMSU
 MSUFound
+	lda	#1
+	sta.l	msupresent
 	rts
 NoMSU
+	lda #0
+	sta.l	msupresent
 	rts
 
 ;-----------------------------------------------------------------------

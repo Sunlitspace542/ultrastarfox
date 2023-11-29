@@ -1782,12 +1782,18 @@ titleredo	a8i16
 intro_l
 	a8i16
 	IFNE msu
+	lda	msupresent
+	beq	.regbgm
     lda	#$FF
     sta	MSU_VOLUME
     ldx	#$0001    ; Writing a 16-bit value will automatically
     stx	MSU_TRACK    ; set $2005 as well, so this is easy.
-    lda	#$01   ; Set audio state to play, no repeat.
+    lda	#$03   ; Set audio state to play, no repeat.
     sta	MSU_CONTROL
+	bra	.donemsu
+.regbgm
+	bgm	init
+.donemsu
 	ELSEIF
 	bgm	init
 	ENDC

@@ -750,6 +750,7 @@ mio_mode	equ	$303a
 	alc	boostorbrake,2
 	ENDC
 	alc	open_text,2
+	alc	msupresent,2
 
 
 
