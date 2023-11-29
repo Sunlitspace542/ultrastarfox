@@ -49,7 +49,7 @@ totaltime	=	0
 	include	vars.inc
 
 	include	INC\sfxregs.inc
-	IFNE	msu1
+	IFNE	msu
 	include	INC\msuregs.inc
 	ENDC
 	include	INC\soundequ.inc

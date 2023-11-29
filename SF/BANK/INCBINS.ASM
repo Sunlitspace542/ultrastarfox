@@ -232,7 +232,11 @@ facedata	inccolfile	data\face.cgx,0,360 ; size (in bytes) divided by 32
 
 firstsndbnk	=	24
 musicsize	=	0
+	IFNE	msu
+	incsnd	sound0,snd\msusnd0.bin ; patched sound driver for msu
+	ELSEIF
 	incsnd	sound0,snd\sgsound0.bin
+	ENDC
 	incsnd	sound1,snd\sgsound1.bin
 
 	IFEQ	PAL
