@@ -8,6 +8,9 @@
 *.SFC
 *.SMC
 *.srm
+#MSU stuff
+*.msu
+*.pcm
 
 # build logs
 *.LOG

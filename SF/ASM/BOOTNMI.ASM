@@ -35,6 +35,10 @@ startboot	disable ; Disable Interrupts
 	ai8 ; set A/X/Y to 8 bit
 	jsl	startsfx_l ; Initialize the SNES
 
+	IFNE msu
+	jsr CheckForMSU ; check for the MSU-1
+	ENDC
+
 	jsr	initialise_ram ; Clear RAM
 
 	i16 ; clears interrupt disable flag
@@ -133,6 +137,30 @@ firsttimeuse
 	jsl	initialise_l ; Initialize game
 	jml	planetseq_l ; Jump to planet routine
 
+;-----------------------------------------------------------------------
+CheckForMSU
+	lda	MSU_ID
+	cmp	#$53	; 'S'
+	bne	NoMSU	; Stop checking if it's wrong
+	lda	MSU_ID+1
+	cmp	#$2D	; '-'
+	bne	NoMSU
+	lda	MSU_ID+2
+	cmp	#$4D	; 'M'
+	bne	NoMSU
+	lda	MSU_ID+3
+	cmp	#$53	; 'S'
+	bne	NoMSU
+	lda	MSU_ID+4
+	cmp	#$55	; 'U'
+	bne	NoMSU
+	lda	MSU_ID+5
+	cmp	#$31	; '1'
+	beq	NoMSU
+MSUFound
+	rts
+NoMSU
+	rts
 
 ;-----------------------------------------------------------------------
 ; Clear all RAM (because RAM is randomized on power on and retained after resets, and we don't want that)
