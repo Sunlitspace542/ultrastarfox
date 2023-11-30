@@ -14,8 +14,8 @@ msu_control	equ	$2007
 ; # MSU CONSTANTS #
 ; #################
 ; MSU_CONTROL register ($2007)
-audiostate_none		equ	$00
-audiostate_norepeat	equ	$01
-audiostate_repeat	equ	$03
+audiostate_none		equ	#$00
+audiostate_norepeat	equ	#$01
+audiostate_repeat	equ	#$03
 
 ; EOF

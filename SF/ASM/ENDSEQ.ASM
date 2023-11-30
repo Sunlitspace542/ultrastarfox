@@ -1789,11 +1789,9 @@ intro_l
 .regbgm
 	bgm	init
 .donemsu
+	jsl	do_bgm_init ;; msu sfx
 	ELSEIF
 	bgm	init
-	ENDC
-	IFNE	msu
-	jsl	do_bgm_init ;; msu sfx
 	ENDC
 	a8i16
 	ldx	#0

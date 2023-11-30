@@ -6011,12 +6011,17 @@ startbgmi	MACRO			;SET PORT 0 IF IRQ'S DISABLED
 ;-------------------------------------------------------------------
 ;; Plays an MSU track
 ; syntax example: msuplay $FF,$0001,audiostate_repeat
-msuplay	MACRO ; volume, number, audiostate
+msuplay	MACRO ; $volume, $number, audiostate
 	lda	#\1
 	sta	MSU_VOLUME
 	ldx	#\2
 	stx	MSU_TRACK
-	lda	#\3
+	lda	\3
+	sta	MSU_CONTROL
+	ENDM
+; stops an MSU track... probably
+msustop	MACRO
+	lda	audiostate_none
 	sta	MSU_CONTROL
 	ENDM
 ;-------------------------------------------------------------------

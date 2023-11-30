@@ -37,7 +37,9 @@ startboot	disable ; Disable Interrupts
 
 	jsr	initialise_ram ; Clear RAM
 
+	IFNE	msu
 	jsr CheckForMSU ; check for the MSU-1
+	ENDC
 
 	i16 ; clears interrupt disable flag
 	ldx	#$2ff ; Load $2FF into X
@@ -83,8 +85,9 @@ restart	ai16 ; set A/X/Y to 16 bit
 
 	jsl	startsfx_l ; Initialize the SNES
 
-
+	IFNE	msu
 	jsr CheckForMSU ; check for the MSU-1
+	ENDC
 
 	lda.l	whichroute ; Load Route # into A
 	pha	; Push A to stack, preserving route number
@@ -148,6 +151,7 @@ firsttimeuse
 	jml	planetseq_l ; Jump to planet routine
 
 ;-----------------------------------------------------------------------
+	IFNE	msu
 CheckForMSU
 	lda	MSU_ID
 	cmp	#$53	; 'S'
@@ -160,6 +164,7 @@ NoMSU
 	lda #0
 	sta.l	msupresent
 	rts
+	ENDC
 
 ;-----------------------------------------------------------------------
 ; Clear all RAM (because RAM is randomized on power on and retained after resets, and we don't want that)
