@@ -1,3 +1,4 @@
+	global	do_bgm_reset
 	global	do_bgm_map,do_bgm_intro,do_bgm_endseq,do_bgm_title
 	global	do_bgm_10,do_bgm_20,do_bgm_30,do_bgm_ops,do_bgm_init
 	global	do_bgm_11,do_bgm_21,do_bgm_31

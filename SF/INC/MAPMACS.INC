@@ -323,8 +323,16 @@ setothmus	macro
 	endm
 
 setbgm	macro
-;	db	ctrlsetbgm
-;	db	\1
+	start_65816
+	a8
+	lda	msupresent
+	bne	.no\@
+	end_65816
+	db	ctrlsetbgm
+	db	\1
+	start_65816
+.no\@
+	end_65816
 	endm
 
 vofson	macro

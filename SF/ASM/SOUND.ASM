@@ -54,6 +54,7 @@ do_bgm_11	bootapu	#snd_11
 do_bgm_12	bootapu	#snd_12
 do_bgm_13	bootapu	#snd_13
 do_bgm_13b	bootapu	#snd_13b
+do_bgm_reset	bootapu	#snd_reset
 do_bgm_14	bootapu	#snd_14
 do_bgm_15	bootapu	#snd_15
 do_bgm_16	bootapu	#snd_16
@@ -84,6 +85,7 @@ sndtbl
 	snd_data	init,0h,sound0
 	snd_data	intro,012h,sound1,sound2,bgmm
 	snd_data	title,012h,sound7
+	snd_data	reset,1,sound2	
 	snd_data	ops,012h,sound1,bgmn
 	snd_data	training,03h,sound3,bgmo
 	snd_data	map,01,sound2,sound6

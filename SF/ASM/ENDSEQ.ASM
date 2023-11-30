@@ -1687,7 +1687,7 @@ titleseq_l	php
 
 	IFNE	contest
 	a8i16
-	bgm	init
+	jsl	do_bgm_init
 	a8i16
 	ldx	#0
 .ll	dex
@@ -1697,7 +1697,7 @@ titleseq_l	php
 
 titleredo	a8i16
 	disable
-
+;	startbgm	$f0
 ;	jml	timeupin
 
 	lda	#1
@@ -1781,23 +1781,29 @@ titleredo	a8i16
 
 intro_l
 	a8i16
-	IFNE msu
-	lda	msupresent
-	beq	.regbgm
-	msuplay	$FF,$0001,audiostate_repeat
-	bra	.donemsu
-.regbgm
-	bgm	init
-.donemsu
-	jsl	do_bgm_init ;; msu sfx
-	ELSEIF
-	bgm	init
-	ENDC
+
+	jsl	do_bgm_init
 	a8i16
 	ldx	#0
 .ll	dex
 	bne	.ll
+
+	
 	bgm	intro
+
+	IFNE	msu
+	jsl CheckForMSU ; check for the MSU-1
+	lda	msupresent
+	beq	.bgm
+	startbgm $F0
+    lda	#$FF
+    sta	MSU_VOLUME
+    ldx	#$0001    ; Writing a 16-bit value will automatically
+    stx	MSU_TRACK    ; set $2005 as well, so this is easy.
+    lda	#$01   ; Set audio state to play, no repeat.
+    sta	MSU_CONTROL
+.bgm
+	ENDC
 	disable
 
 	lda	#intromap>>16

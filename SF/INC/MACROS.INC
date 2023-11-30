@@ -5970,25 +5970,24 @@ bgm	MACRO			;DNLDS THE BGM AND SET
 	IFNE	LONGA
 	printf	"%m requires SHORTA%n"
 	ENDC
-	pha
-	lda.l msupresent
-	bne	.no\@
-	jsl	do_bgm_\1		;PORT 0
-.no\@
-	pla
+	jsl	do_bgm_reset
+	i16
+	ldy	#2000		;wait about 1 frame
+.wait\@	dey
+	bne	.wait\@
+	jsl	do_bgm_\1
 	ENDM
-
 ;-------------------------------------------------------------------
 startbgm	MACRO			;SET PORT 0 IF IRQ'S ENABLED
 	ifne	longa
 	error	"wrong mode"
 	endc
-	lda msupresent
-	bne	.no\@
+;	lda	msupresent
+;	bne	.no\@
 	lda	#\1
 	sta	bgm_music
 	stz	bgmcnt
-.no\@
+;.no\@
 	ENDM
 
 startbgmi	MACRO			;SET PORT 0 IF IRQ'S DISABLED
@@ -6008,28 +6007,17 @@ startbgmi	MACRO			;SET PORT 0 IF IRQ'S DISABLED
 	stz	apu_port0
 .no\@
 	ENDM
-;-------------------------------------------------------------------
-;; Plays an MSU track
-; syntax example: msuplay $FF,$0001,audiostate_repeat
-msuplay	MACRO ; $volume, $number, audiostate
-	lda	#\1
-	sta	MSU_VOLUME
-	ldx	#\2
-	stx	MSU_TRACK
-	lda	\3
-	sta	MSU_CONTROL
-	ENDM
-; stops an MSU track... probably
-msustop	MACRO
-	lda	audiostate_none
-	sta	MSU_CONTROL
-	ENDM
+
+
 ;-------------------------------------------------------------------
 bootapu	MACRO
 	php
 	i16
 	ldx	\1
+	lda	msupresent
+	bne	.nobgm\@
 	jsr	sbootapu
+.nobgm\@
 	plp
 	rtl
 	endm
