@@ -70,6 +70,9 @@ bg_1_1i_1	init_bg	mode2
 	hofmode	tunnel3
 	set_zdepthtable	tunnel
 	bgm	10
+	IFNE	msu
+	msuplay $FF,_134_emergency,audiostate_norepeat
+	ENDC
 	lda	#0
 	sta.l	m_meters
 	shadowheight 0
