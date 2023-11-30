@@ -6008,8 +6008,17 @@ startbgmi	MACRO			;SET PORT 0 IF IRQ'S DISABLED
 	stz	apu_port0
 .no\@
 	ENDM
-
-
+;-------------------------------------------------------------------
+;; Plays an MSU track
+; syntax example: msuplay $FF,$0001,audiostate_repeat
+msuplay	MACRO ; volume, number, audiostate
+	lda	#\1
+	sta	MSU_VOLUME
+	ldx	#\2
+	stx	MSU_TRACK
+	lda	#\3
+	sta	MSU_CONTROL
+	ENDM
 ;-------------------------------------------------------------------
 bootapu	MACRO
 	php

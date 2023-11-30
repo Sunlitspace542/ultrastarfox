@@ -1784,18 +1784,16 @@ intro_l
 	IFNE msu
 	lda	msupresent
 	beq	.regbgm
-    lda	#$FF
-    sta	MSU_VOLUME
-    ldx	#$0001    ; Writing a 16-bit value will automatically
-    stx	MSU_TRACK    ; set $2005 as well, so this is easy.
-    lda	#$03   ; Set audio state to play, no repeat.
-    sta	MSU_CONTROL
+	msuplay	$FF,$0001,audiostate_repeat
 	bra	.donemsu
 .regbgm
 	bgm	init
 .donemsu
 	ELSEIF
 	bgm	init
+	ENDC
+	IFNE	msu
+	jsl	do_bgm_init ;; msu sfx
 	ENDC
 	a8i16
 	ldx	#0
