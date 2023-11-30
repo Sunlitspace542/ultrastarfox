@@ -1746,8 +1746,12 @@ titleredo	a8i16
 	pla
 	a8
 
+	; press start, go to controls
 	trigse		$10
 	startbgm	$f1
+	IFNE	msu
+	msuplay $FF,_071_controls,audiostate_repeat
+	ENDC
 
 	lda	#-3
 	sta	fadedir
@@ -1796,7 +1800,7 @@ intro_l
 	lda	msupresent
 	beq	.bgm
 	startbgm $F0
-	msuplay	$FF,$0001,audiostate_norepeat
+	msuplay	$FF,_048_titledemo,audiostate_norepeat
 .bgm
 	ENDC
 	disable
