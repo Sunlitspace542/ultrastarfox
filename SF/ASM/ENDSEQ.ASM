@@ -1796,12 +1796,7 @@ intro_l
 	lda	msupresent
 	beq	.bgm
 	startbgm $F0
-    lda	#$FF
-    sta	MSU_VOLUME
-    ldx	#$0001    ; Writing a 16-bit value will automatically
-    stx	MSU_TRACK    ; set $2005 as well, so this is easy.
-    lda	#$01   ; Set audio state to play, no repeat.
-    sta	MSU_CONTROL
+	msuplay	$FF,$0001,audiostate_norepeat
 .bgm
 	ENDC
 	disable
