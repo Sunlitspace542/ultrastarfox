@@ -377,6 +377,9 @@ planetseq_l
 	pha
 	enable
 	bgm	map
+	IFNE	msu
+	msuplay $FF,_082_mapscr,audiostate_repeat
+	ENDC
 	pla
 	cmp	#14
 	beq	.blackholebgm
@@ -1215,6 +1218,9 @@ planetseq_l
 ; contest mode
 	a8
 	bgm	map
+	IFNE	msu
+	msuplay $FF,_082_mapscr,audiostate_repeat
+	ENDC
 	lda	stage
 	beq	.1
 	cmp	#2

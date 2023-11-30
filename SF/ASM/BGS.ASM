@@ -117,7 +117,7 @@ bg_1_1c_1	init_bg	mode2		;what I see from the tunnel
 	shadowheight 0
 	bg2Yscroll	232
 	bgm	11
-		IFNE	msu
+	IFNE	msu
 	msuplay	$FF,_145_corneria,audiostate_repeat
 	ENDC
 	lda	#1
@@ -136,6 +136,9 @@ bg_3_1c_1	init_bg	mode2		;what I see from the tunnel
 	shadowheight 0
 	bg2Yscroll	232
 	bgm	11
+	IFNE	msu
+	msuplay	$FF,_145_corneria,audiostate_repeat
+	ENDC
 	lda	#1
 	sta.l	m_meters
 	planet	red
