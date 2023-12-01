@@ -1797,7 +1797,6 @@ intro_l
 	lda	msupresent
 	beq	.bgm
 	startbgm $F0
-	msuplay	$FF,_048_titledemo,audiostate_norepeat
 .bgm
 	ENDC
 	disable
