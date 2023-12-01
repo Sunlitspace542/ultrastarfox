@@ -1897,6 +1897,7 @@ map_farships2	MACRO
 
 fadeoutbgm	MACRO
 	setbgm	$f1
+	; jump to DetermineTrack
 	mapwait	medpspeed*30
 	ENDM
 ;-------------------------------------------------------------------------------------

@@ -70,9 +70,6 @@ bg_1_1i_1	init_bg	mode2
 	hofmode	tunnel3
 	set_zdepthtable	tunnel
 	bgm	10
-	IFNE	msu
-	msuplay $FF,_134_emergency,audiostate_norepeat
-	ENDC
 	lda	#0
 	sta.l	m_meters
 	shadowheight 0
@@ -120,9 +117,6 @@ bg_1_1c_1	init_bg	mode2		;what I see from the tunnel
 	shadowheight 0
 	bg2Yscroll	232
 	bgm	11
-	IFNE	msu
-	msuplay	$FF,_145_corneria,audiostate_repeat
-	ENDC
 	lda	#1
 	sta.l	m_meters
 	planet	night
@@ -139,9 +133,6 @@ bg_3_1c_1	init_bg	mode2		;what I see from the tunnel
 	shadowheight 0
 	bg2Yscroll	232
 	bgm	11
-	IFNE	msu
-	msuplay	$FF,_145_corneria,audiostate_repeat
-	ENDC
 	lda	#1
 	sta.l	m_meters
 	planet	red
@@ -159,9 +150,6 @@ bg_training_1	init_bg	mode2
 	shadowheight 0
 	bg2Yscroll	232
 	bgm	training
-	IFNE	msu
-	msuplay	$FF,_070_training,audiostate_repeat
-	ENDC
 	planet	night
 
 bg_1_2_1	init_bg	mode2
@@ -781,9 +769,6 @@ bg_title_1
 	hofmode	rotate
 	bg2Yscroll	257
 	bgm	title
-	IFNE	msu
-	msuplay	$FF,_057_titlescr,audiostate_norepeat
-	ENDC
 	IFEQ	CONTEST
 	lda	#1+2+4
 	ELSEIF

@@ -1749,9 +1749,6 @@ titleredo	a8i16
 	; press start, go to controls
 	trigse		$10
 	startbgm	$f1
-	IFNE	msu
-	msuplay $FF,_071_controls,audiostate_repeat
-	ENDC
 
 	lda	#-3
 	sta	fadedir
@@ -1766,9 +1763,6 @@ titleredo	a8i16
 
 .endtitle	a8
 	startbgm	$f1
-	;IFNE	msu
-	;msuplay $FF,_071_controls,audiostate_repeat
-	;ENDC
 	lda	#-3
 	sta	fadedir
 .lp3	jsl	setblack_l

@@ -110,6 +110,8 @@ _225_asteroid_vo	equ	$00E1 ; Asteroid/Venom Orbital
 _226_bossplanet		equ $00E2 ; Boss Battle Planet (Corneria Boss)
 _227_venombase		equ	$00E3 ; Venom Base
 
+_230_lastclear		equ	$00E6 ; Last Boss Clear? track id found in v12_msu.asm as "venom destroyed"
+
 _243_venom1			equ	$00F3 ; Venom 1
 _244_venom3			equ	$00F4 ; Venom 3
 
