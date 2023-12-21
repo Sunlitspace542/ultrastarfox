@@ -87,10 +87,13 @@ ultrastarfox
 │   ├── MAPS: level scripts
 │   ├── MARIO: .MC MARIO (SuperFX) ASM code
 │   ├── MSG: Message files for English, Japanese, German, and French
-│   ├── MSPRITES: contains 4 DAT files (interleaved textures)
+│   ├── MSPRITES: contains interleaved FXGfx format textures
 │   ├── PATH: contains all PATH language code
 │   ├── SHAPES: contains all shape files
 │   ├── SND: sound/music data
 │   └── STRAT: Code for Strategies (Object behaviors)
-└──  tools: tools such as PACKER and SHAPED
+├── TOOLS: tools such as PACKER and SHAPED
+├── DOCS: .md format text files covering various aspects of Star Fox 2
+├── OPTIONALSTUFF: optional graphics files
+└── OTHER: Files for building MSPRITES .bin files
 ```
