@@ -9,6 +9,7 @@
 	include	EXT\expstrat.ext
 	include	EXT\windows.ext
 	include	EXT\bootnmi.ext
+	include	EXT\msu.ext
 
 	bank	9
 	incfile	STRAT\dstrats.asm

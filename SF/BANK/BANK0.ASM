@@ -89,6 +89,7 @@ bgandpcr
 	ENDC
 	incfile	STRAT\istrats.asm
 	incfile	STRAT\d3strats.asm
+	incfile	ASM\msu.asm
 	bankend	32
 
 	;; ROM HEADER

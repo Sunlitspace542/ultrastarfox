@@ -18,7 +18,7 @@
 ;*                                                                         *
 ;***************************************************************************
 
-; NOTE: this file is included in STRAT\D3STRATS.ASM
+	INCPUBLICS	ext\msu.ext
 
 ; loop table
 msulooptab
