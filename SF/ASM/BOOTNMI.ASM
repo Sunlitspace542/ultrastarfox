@@ -81,6 +81,7 @@ restart	ai16 ; set A/X/Y to 16 bit
 
 	jsl	startsfx_l ; Initialize the SNES
 
+
 	lda.l	whichroute ; Load Route # into A
 	pha	; Push A to stack, preserving route number
 	lda	defaulttrain ; Load defaulttrain into A
@@ -96,8 +97,17 @@ restart	ai16 ; set A/X/Y to 16 bit
 	lda	mousemodetemp ; load value in mousemode temp var to A
 	pha ; Push A to stack
 	ENDC ; End conditional
+	IFNE	MSU
+	lda	msupresent
+	pha
+	ENDC
 
 	jsr	initialise_ram ; Clear RAM
+
+	IFNE	MSU
+	pla
+	sta	msupresent
+	ENDC
 
 	IFNE	mouseon ; start conditional: If SNES mouse enabled
 	pla ; Pull A from stack
@@ -133,7 +143,19 @@ firsttimeuse
 	jsl	initialise_l ; Initialize game
 	jml	planetseq_l ; Jump to planet routine
 
-
+;-----------------------------------------------------------------------
+	IFNE	msu
+CheckForMSU
+	lda	MSU_ID
+	cmp	#$53	; 'S'
+	bne	NoMSU	; Stop checking if it's wrong
+MSUFound
+	lda	#1
+	sta	msupresent
+;	startbgm $F0
+NoMSU
+	rtl
+	ENDC
 ;-----------------------------------------------------------------------
 ; Clear all RAM (because RAM is randomized on power on and retained after resets, and we don't want that)
 initialise_ram
@@ -220,7 +242,11 @@ initialise_ram
 	dex ; decrement X
 	bpl	.zpage ; repeat until x = 0
 
-	jsl	copy_to_0101_l ;Copy NMI handler to RAM at $0101
+	IFNE	msu
+	jsl	transfermsu ; Copy MSU1 handler to RAM
+	ELSEIF ; when MSU is on, this is called in D3STRATS instead
+	jsl	copy_to_0101_l ; Copy NMI handler to RAM at $0101
+	ENDC
 
 ; NTSC/PAL
 	a8 ; set A to 8 bit

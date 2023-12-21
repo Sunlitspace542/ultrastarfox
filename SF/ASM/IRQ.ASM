@@ -1567,7 +1567,11 @@ startmus	php
 	beq	.check
 	bra	.trig3
 .start	lda	bgm_music
+	IFNE	msu
+	jsr 	$7ED000 ; MSU-1 handler location in RAM
+	ELSEIF
 	sta	apu_port0
+	ENDC
 	inc	bgmcnt
 	bra	.trig3
 .check	lda	apu_port0

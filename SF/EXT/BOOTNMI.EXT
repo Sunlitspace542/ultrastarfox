@@ -1,2 +1,1 @@
-	global	startboot,restart
-
+	global	startboot,restart,copy_to_0101_l

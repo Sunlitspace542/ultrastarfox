@@ -24,14 +24,13 @@ ALLFILES= BANK\bank0.sob BANK\bank1.sob BANK\bank2.sob \
 
 all: finished.sg
 
-
 finished.sg: $(ALLFILES)
 	@$(LINK) $(LOPTS) -d @flist
 
 sg.rom: $(ALLFILES)
 	@$(LINK) $(LOPTS) -osg.rom @flist
     @$(EXTEND) sg.rom
-	@$(CHECK) $(COPTS) sg.rom
+ 	@$(CHECK) $(COPTS) sg.rom
 
 info: $(ALLFILES)
 	@$(LINK) $(LOPTS) -l1024 @flist

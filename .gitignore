@@ -9,6 +9,15 @@
 *.SMC
 *.srm
 
+#MSU stuff
+*.msu
+*.pcm
+
+#ZIPs
+*.7z
+*.zip
+*.rar
+
 # build logs
 *.LOG
 *.log

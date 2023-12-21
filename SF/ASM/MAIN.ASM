@@ -1475,8 +1475,22 @@ checkbonus	jsr	calctotalscore
 bonertab	dw	2100,1900,1700,1500,1300,1100,900,700,500,300,100,0
 
 
+    IFNE    msu
+pauseStart
+	a8
+	STZ msu_control
+	LDA #$64
+	RTS
 
-
+pauseEnd
+; the original patch NOP'd instructions
+; to make room and moved those 2 here
+;	STZ $1202 ; cont0
+;	STZ $1204 ; contl0
+	LDA #$03
+	STA msu_control
+	RTS
+    ENDC
 
 ;--------------------------------------------------------------------
 dopause	php
@@ -1491,6 +1505,9 @@ dopause	php
 	jsl	transfer_l		;transfer bitmap, do strats etc.
 	jsr	printpause
 	jsl	transfer_l		;transfer bitmap, do strats etc.
+    IFNE    msu
+    jsr pauseStart
+    ENDC
 	a8
 .wait	waitdma	100
 	lda	joy1h
@@ -1504,6 +1521,9 @@ dopause	php
 	lda	joy1h
 	bit	#key_start
 	bne	.wait3
+    IFNE    msu
+    jsr pauseEnd
+    endc
 	stz	cont0
 	stz	contl0
 	stz	cont0l

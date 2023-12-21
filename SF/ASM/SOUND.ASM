@@ -132,6 +132,12 @@ sbootapu	a8 ; Start the SPC700, set A to 8-bit
 	inx ; increment X
 	stx	snd_ptr
 
+;	lda	msupresent
+;	beq	.noexit
+;	stz	bgmcnt	
+;	rts
+;.noexit
+
 	lda	firstdnld
 	beq	.first
 	lda	#$ff
@@ -297,7 +303,17 @@ boot_repeat
 	lda	#0
 	bra	boot_entry2
 boot_loop	xba
+
+	cpx	#$235C
+	bne	.reg
+
+	lda	msupresent
+	beq	.reg
+	lda #$2F
+	bra	.don
+.reg	
 	lda	[address],y
+.don
 	iny
 	xba
 boot_wait1	cmp	apu_port0

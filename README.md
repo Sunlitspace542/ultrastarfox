@@ -15,6 +15,7 @@ Star Fox / StarWing (SNES, 1993), with modifications for easier creation of ROM 
 - Matching text data
 - Working StarWing title screen and German/PAL StarWing assets
 - SNES Mouse support
+- MSU-1 support (Original ASM patch by Kurrono, ported by Kando and Sunlit)
 - Kando was involved so you know it's good
 
 ## Building on Windows

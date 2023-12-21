@@ -42,10 +42,6 @@ course1	mapdef	level1_1
 	INCMAP	map2_3c
 	INCMAP	map2_4
 	INCMAP	map2_5
-	INCMAP	map2_6a
-	INCMAP	map2_6b
-	INCMAP	map2_6c
-	INCMAP	map2_6d
 
 
 armsstart

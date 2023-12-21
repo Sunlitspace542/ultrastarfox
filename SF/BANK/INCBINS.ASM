@@ -232,6 +232,7 @@ facedata	inccolfile	data\face.cgx,0,360 ; size (in bytes) divided by 32
 
 firstsndbnk	=	24
 musicsize	=	0
+
 	incsnd	sound0,snd\sgsound0.bin
 	incsnd	sound1,snd\sgsound1.bin
 
