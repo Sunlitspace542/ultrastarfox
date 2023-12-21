@@ -34,22 +34,22 @@ msu_control	equ	$2007 ; stop/play/repeat track
 ; #################
 
 ; ## MSU_STATUS register ($2000) ##
-status_databusy         equ 10000000b
-status_audiobusy        equ 01000000b
-status_audiorepeat      equ 00100000b
-status_audioplaying     equ 00010000b
-status_trackmissing     equ 00001000b
+status_databusy         equ 10000000b ; 128
+status_audiobusy        equ 01000000b ; 64
+status_audiorepeat      equ 00100000b ; 32
+status_audioplaying     equ 00010000b ; 16
+status_trackmissing     equ 00001000b ; 8
 ; Chip revision, will always be 1
-status_revision1        equ 00000100b
-status_revision2        equ 00000010b
-status_revision3        equ 00000001b
+status_revision1        equ 00000100b ; 4
+status_revision2        equ 00000010b ; 2
+status_revision3        equ 00000001b ; 1
 
 ; ## MSU_CONTROL register ($2007) ##
 ; Bit 0: Play track flag
 ; Bit 1: Repeat track flag
 ; Bits 2 - 7: unused
-audiostate_none		equ	00000000b
-audiostate_norepeat	equ	00000001b
-audiostate_repeat	equ	00000011b
+audiostate_none		equ	00000000b ; 0
+audiostate_norepeat	equ	00000001b ; 1
+audiostate_repeat	equ	00000011b ; 3
 
 ; EOF

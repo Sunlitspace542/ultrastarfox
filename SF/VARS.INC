@@ -4,7 +4,7 @@
 ; ####################################
 
 ;####################################################################################################################
-msu					equ 1   ; MSU1 support [0 = off 1 = on]
+msu					equ 0   ; MSU1 support [0 = off 1 = on]
 cesdemo				equ	0	; 0 = off, 1 = CES Demo (timed) 2 = Untimed CES Demo w/ planet cheat
 contest				equ	0	; Super Star Fox Weekend (DO NOT USE) [0 = off 1 = on]
 cestime				equ	5	; CES/SSFW timer countdown (in minutes)
@@ -51,7 +51,7 @@ randverts2		equ	0		; randomize the vertices a lot
 							; Both will not activate at once
 allrange		equ	0		; "All-Range Mode", Press P1 L and R to rotate player. Press select to unload objects.
 							; [0 = off 1 = on]
-godmode			equ	1		; No collision for the player [0 = off 1 = on]
+godmode			equ	0		; No collision for the player [0 = off 1 = on]
 infbrake		equ	0		; Infinite Braking	[0 = off 1 = on]
 infboost		equ	0		; Infinite Boosting	[0 = off 1 = on]
 infbombs		equ 0		; Infinite Bombs [0 = off 1 = on]

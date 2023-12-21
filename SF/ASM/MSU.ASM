@@ -40,9 +40,10 @@ msulooptab
 	db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; E0-EF
 	db $03,$03,$03,$03,$03,$03,$03,$03,$01,$03,$03,$03,$03,$03,$03,$03 ; F0-FF
 
+; Determines the MSU1 track to play by performing a lot of comparisons
 determine_msu_track
 	a8i16
-	STA $2140
+	STA apu_port0
 	CMP #$11
 	BNE .a1 
 	brl .sector
@@ -51,7 +52,7 @@ determine_msu_track
 	brl .sector2
 .a2	CMP #$13
 	BNE .a3
-	LDA #$04
+	LDA #_004_lastboss
 	BRL .playtrack
 .a3	CMP #$F0
 	BNE .noF0
@@ -78,7 +79,7 @@ determine_msu_track
 	lda snd_ptr
 	cmp #$8e
 	BNE .c2
-	LDA #$91
+	LDA #_145_corneria ; Corneria
 	BRA .no91
 .c2	LDA #$92
 .no91
@@ -89,14 +90,14 @@ determine_msu_track
 	BNE .d1
 	LDA #$e6 ; load venom destroyed
 	BRA .noe1
-.d1	LDA #$e1 ; load
+.d1	LDA #_225_asteroid_vo ; load
 .noe1
 	cmp #$b1
 	bne .nob1
 	lda snd_ptr
 	cmp #$5f
 	BNE .e1
-	LDA #$b1
+	LDA #_177_unknown ; unknown track $B1
 	BRA .nob1
 .e1	LDA #$b2
 .nob1
@@ -105,16 +106,16 @@ determine_msu_track
 	lda snd_ptr
 	cmp #$ae
 	BEQ .f1
-	LDA #$b3 ;  load getting out speed of light
+	LDA #_179_exitlightspeed ;  load getting out speed of light
 	BRA .nob3
 .f1	LDA #$b4	;load fortuna boss
 .nob3
 	CMP #$03
 	BNE .g1
-	LDA #$02
+	LDA #_002_dangerous
 .g1	CMP #$e0
 	BNE .playtrack
-	LDA #$e1
+	LDA #_225_asteroid_vo ; Asteroid/Venom Orbital
 
 .playtrack
 	CMP.l msu_017f
@@ -134,17 +135,17 @@ determine_msu_track
 	BRA .continue
 .h3	LDA #$0b
 .continue
-	STZ $2006
-	STA $2004
+	STZ msu_volume
+	STA msu_track
 	STA.L msu_017f
-	STZ $2005
+	STZ msu_track2
 .loopTitle
-	BIT $2000
+	BIT msu_status
 	BVS .loopTitle 
 	PHA
-	lda $2000
-	AND #$08
-	BNE .error ; error bit set?
+	lda msu_status
+	AND #status_trackmissing
+	BNE .error ; Track missing (error) bit set?
 	LDA #$00
 	XBA
 	PHP
@@ -155,9 +156,9 @@ determine_msu_track
 	PHX
 	TAX
 	LDA.l msulooptab,x
-	STA $2007
+	STA msu_control
 	LDA #$FF
-	STA $2006
+	STA msu_volume
 	STA.l msu_017e
 	PLX
 	RTL
@@ -165,54 +166,54 @@ determine_msu_track
 	PLA
 	RTL
 
-.sector ;crash
+.sector ; Player Down BGM
 	LDA snd_ptr
 	cmp #$20
 	BNE .i1
-	LDA #$58 ; sector X
+	LDA #_088_downorch ; sector X
 	BRA .playtrack
 .i1	cmp #$46
 	BNE .i2
-	LDA #$31 ; Sector Y
+	LDA #_049_downorch ; Sector Y
 	BRA .playtrack
 .i2	cmp #$BC
 	BNE .i3
-	LDA #$ce ; Sector Z
+	LDA #_206_downorch ; Sector Z
 	BRA .playtrack
 .i3	LDA #$11
 	BRA .playtrack
 
-.sector2 ;stageclear
+.sector2 ; Stage Clear BGM
 	LDA snd_ptr
 	cmp #$f0
 	BNE .j1
-	LDA #$f8 ; stage6 clear, hard
+	LDA #_248_lastclear ; stage6 clear, hard
 	BRL .playtrack
 .j1	cmp #$67
 	BNE .j2
-	LDA #$f8 ; stage6 clear, medium
+	LDA #_248_lastclear ; stage6 clear, medium
 	BRL .playtrack
 .j2	cmp #$f1
 	BNE .j3
-	LDA #$f8 ; stage6 clear, easy
+	LDA #_248_lastclear ; stage6 clear, easy
 	BRL .playtrack
 .j3	cmp #$20
 	BNE .j4
-	LDA #$08 ; sector X
+	LDA #_008_clearorch ; sector X
 	BRL .playtrack
 .j4	cmp #$46
 	BNE .j5
-	LDA #$09 ; Sector Y
+	LDA #_009_clearorch ; Sector Y
 	BRL .playtrack
 .j5	cmp #$BC
 	BNE .j6
-	LDA #$0a ; Sector Z
+	LDA #_010_clearorch ; Sector Z
 	BRL .playtrack
 .j6	cmp #$19
 	BNE .j7
-	LDA #$20 ; Slot machine outer dimension defeated
+	LDA #_031_clearootd ; OOTD Slot Machine Clear
 	BRL .playtrack
-.j7	LDA #$07
+.j7	LDA #_007_clearband ; Stage Clear (Band)
 	BRL .playtrack
 
 ; Copies MSU1 handler to RAM at $FD00

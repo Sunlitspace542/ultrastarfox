@@ -12,7 +12,7 @@ _007_clearband		equ	$07 ; Clear Band
 _008_clearorch		equ	$08 ; Clear Orch
 _009_clearorch		equ	$09
 _010_clearorch		equ	$0A
-_011_bossroll		equ	$0B ; Ending (Bosses)
+_011_bossroll		equ	$0B ; Ending (Bosses) (continue?)
 
 _017_downband		equ	$11 ; Down Band
 
@@ -90,8 +90,9 @@ _174_spacearm		equ	$AE ; Space Armada
 _175_dangerarm		equ	$AF ; Dangerous Territory (Armada)
 _176_armboss		equ	$B0 ; Armada Boss Core Type
 
+_177_unknown		equ	$B1 ; unknown
 _178_fortuna		equ $B2 ; Fortuna
-_179_exitwarpenter	equ	$B3 ; Exiting Warp - Entering Stage
+_179_exitlightspeed	equ	$B3 ; Exiting Warp - Entering Stage
 _180_fortboss		equ $B4 ; Fortuna Boss
 
 _191_sectorxz		equ $BF ; Sector X/Z
