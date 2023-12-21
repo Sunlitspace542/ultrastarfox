@@ -69,9 +69,6 @@ After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 3. Annotate and document code  
 4. Disassemble all BIN files in SND directory, add documentation on custom music and the like  
 
-## Maybe?
-- MSU-1 support (big maybe, probably won't happen)
-
 ## Project Structure
 ```
 ultrastarfox
