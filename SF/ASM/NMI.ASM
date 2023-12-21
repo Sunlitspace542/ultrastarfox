@@ -52,7 +52,11 @@ nmihan ; Start of NMI handler
 	nop		;$010b ; No Operation
 .irq	ai16		;$010c	irq
 	pha	; Push A to stack
+	IFNE	msu
+	jsl	$7ED1C0 ; MSU-1 handler location in RAM
+	ELSEIF
 	lda.l	mflags ; Load mflags into A (MARIO chip flags?)
+	ENDC
 	bmi	.qexit ; branch if a = 1
 	phb ; Push data bank to stack
 	disable ; disable interrupts

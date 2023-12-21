@@ -152,11 +152,8 @@ CheckForMSU
 MSUFound
 	lda	#1
 	sta	msupresent
-	startbgm $F0
-	rtl
+;	startbgm $F0
 NoMSU
-	lda #0
-	sta	msupresent
 	rtl
 	ENDC
 ;-----------------------------------------------------------------------
@@ -245,7 +242,11 @@ initialise_ram
 	dex ; decrement X
 	bpl	.zpage ; repeat until x = 0
 
-	jsl	copy_to_0101_l ;Copy NMI handler to RAM at $0101
+	IFNE	msu
+	jsl	transfermsu ; Copy MSU1 handler to RAM
+	ELSEIF ; when MSU is on, this is called in D3STRATS instead
+	jsl	copy_to_0101_l ; Copy NMI handler to RAM at $0101
+	ENDC
 
 ; NTSC/PAL
 	a8 ; set A to 8 bit

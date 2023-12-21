@@ -1687,7 +1687,7 @@ titleseq_l	php
 
 	IFNE	contest
 	a8i16
-	jsl	do_bgm_init
+	bgm	init
 	a8i16
 	ldx	#0
 .ll	dex
@@ -1783,22 +1783,21 @@ titleredo	a8i16
 intro_l
 	a8i16
 
-	jsl	do_bgm_init
-	a8i16
+	IFNE	msu
+	jsl CheckForMSU ; check for the MSU-1
+	ENDC
+
+	bgm	init
+	
 	ldx	#0
 .ll	dex
 	bne	.ll
 
-	
 	bgm	intro
+	
+	
+	
 
-	IFNE	msu
-	jsl CheckForMSU ; check for the MSU-1
-	lda	msupresent
-	beq	.bgm
-	startbgm $F0
-.bgm
-	ENDC
 	disable
 
 	lda	#intromap>>16

@@ -1161,3 +1161,6 @@ flyingfish_istrat
 
 	strats_end
 
+	IFNE	msu
+	include	ASM\MSU.ASM ; include all MSU playback logic	
+	ENDC

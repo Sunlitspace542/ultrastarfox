@@ -5970,11 +5970,6 @@ bgm	MACRO			;DNLDS THE BGM AND SET
 	IFNE	LONGA
 	printf	"%m requires SHORTA%n"
 	ENDC
-	jsl	do_bgm_reset
-	i16
-	ldy	#2000		;wait about 1 frame
-.wait\@	dey
-	bne	.wait\@
 	jsl	do_bgm_\1
 	ENDM
 ;-------------------------------------------------------------------
@@ -5991,21 +5986,7 @@ startbgm	MACRO			;SET PORT 0 IF IRQ'S ENABLED
 	ENDM
 
 startbgmi	MACRO			;SET PORT 0 IF IRQ'S DISABLED
-	ifne	longa
-	error	"wrong mode"
-	endc
-	lda msupresent
-	bne	.no\@
-.re\@	lda	#\1
-	sta	apu_port0
-	ldx	#0
-.lp\@	dex
-	bne	.lp\@
-	lda	apu_port0
-	cmp	#\1
-	bne	.re\@
-	stz	apu_port0
-.no\@
+	blink 2
 	ENDM
 
 
@@ -6014,12 +5995,18 @@ bootapu	MACRO
 	php
 	i16
 	ldx	\1
-	lda	msupresent
-	bne	.nobgm\@
+;	lda	msupresent
+;	bne	.nobgm\@
 	jsr	sbootapu
-.nobgm\@
 	plp
 	rtl
+;.nobgm\@
+;	lda.l	sndtbl,x
+;	sta	bgm_music
+;	inx ; increment X
+;	stx	snd_ptr
+;	plp
+;	rtl
 	endm
 ;-------------------------------------------------------------------
 ;; Plays an MSU track
