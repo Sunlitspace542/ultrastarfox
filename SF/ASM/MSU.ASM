@@ -97,7 +97,7 @@ determine_msu_track
 	lda snd_ptr
 	cmp #$5f
 	BNE .e1
-	LDA #_177_unknown ; unknown track $B1
+	LDA #$b1
 	BRA .nob1
 .e1	LDA #$b2
 .nob1

@@ -90,7 +90,6 @@ _174_spacearm		equ	$AE ; Space Armada
 _175_dangerarm		equ	$AF ; Dangerous Territory (Armada)
 _176_armboss		equ	$B0 ; Armada Boss Core Type
 
-_177_unknown		equ	$B1 ; unknown
 _178_fortuna		equ $B2 ; Fortuna
 _179_exitlightspeed	equ	$B3 ; Exiting Warp - Entering Stage
 _180_fortboss		equ $B4 ; Fortuna Boss
