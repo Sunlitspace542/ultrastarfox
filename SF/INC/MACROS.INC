@@ -6523,8 +6523,15 @@ xxmempt	=	xxmempt+\2
 	endm
 ;---------------------------------------------------------------
 ; replicates MVN instruction for SASM
-sasm_mvn	MACRO ; addr_bytehi,addr_bytelo
+sasm_mvn	MACRO ; src,dest
 ; example: sasm_mvn	$32,$7E
+; raw opcodes are little endian so we reverse the arguments
+	db $54,\2,\1
+	ENDM
+;---------------------------------------------------------------
+; replicates MVP instruction for SASM
+sasm_mvp	MACRO ; src,dest
+; example: sasm_mvp	$32,$7E
 ; raw opcodes are little endian so we reverse the arguments
 	db $54,\2,\1
 	ENDM
