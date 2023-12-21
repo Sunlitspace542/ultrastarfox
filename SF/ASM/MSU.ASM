@@ -211,6 +211,7 @@ determine_msu_track
 	BRL .playtrack
 .j6	cmp #$19
 	BNE .j7
+; BUG Original game eventually loops from stage clear band to OOTD band, but the MSU audio does not do this
 	LDA #_032_clearband ; OOTD Slot Machine Clear
 	BRL .playtrack
 .j7	LDA #_007_clearband ; Stage Clear (Band)

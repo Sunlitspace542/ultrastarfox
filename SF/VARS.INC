@@ -4,7 +4,7 @@
 ; ####################################
 
 ;####################################################################################################################
-msu					equ 0   ; MSU1 support [0 = off 1 = on]
+msu					equ 1   ; MSU1 support [0 = off 1 = on]
 cesdemo				equ	0	; 0 = off, 1 = CES Demo (timed) 2 = Untimed CES Demo w/ planet cheat
 contest				equ	0	; Super Star Fox Weekend (DO NOT USE) [0 = off 1 = on]
 cestime				equ	5	; CES/SSFW timer countdown (in minutes)
