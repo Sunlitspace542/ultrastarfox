@@ -6521,5 +6521,11 @@ xxalc	macro
 \1	equ	xxmempt
 xxmempt	=	xxmempt+\2
 	endm
-
-
+;---------------------------------------------------------------
+; replicates MVN instruction for SASM
+sasm_mvn	MACRO ; addr_bytehi,addr_bytelo
+; example: sasm_mvn	$32,$7E
+; raw opcodes are little endian so we reverse the arguments
+	db $54,\2,\1
+	ENDM
+;---------------------------------------------------------------
