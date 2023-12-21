@@ -1568,7 +1568,7 @@ startmus	php
 	bra	.trig3
 .start	lda	bgm_music
 	IFNE	msu
-	jsr 	$7ED000 ; MSU-1 handler location in RAM
+	jsl 	determine_msu_track ; MSU-1 handler location in RAM
 	ELSEIF
 	sta	apu_port0
 	ENDC

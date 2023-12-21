@@ -243,7 +243,7 @@ initialise_ram
 	bpl	.zpage ; repeat until x = 0
 
 	IFNE	msu
-	jsl	transfermsu ; Copy MSU1 handler to RAM
+	jsl	transfermsu ; Copy MSU1 handler to RAM at $FD00
 	ELSEIF ; when MSU is on, this is called in D3STRATS instead
 	jsl	copy_to_0101_l ; Copy NMI handler to RAM at $0101
 	ENDC

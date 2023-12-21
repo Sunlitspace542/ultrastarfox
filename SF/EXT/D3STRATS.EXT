@@ -1,5 +1,5 @@
 	IFNE	msu
-	global	transfermsu ;,pauseStart,pauseEnd
+	global	transfermsu,msufade,determine_msu_track
 	ENDC
 	global	bossh_istrat,base_1_istrat,iris_1_istrat
 	global	break_meteort_istrat
