@@ -5984,12 +5984,6 @@ startbgm	MACRO			;SET PORT 0 IF IRQ'S ENABLED
 	stz	bgmcnt
 ;.no\@
 	ENDM
-
-startbgmi	MACRO			;SET PORT 0 IF IRQ'S DISABLED
-	blink 2
-	ENDM
-
-
 ;-------------------------------------------------------------------
 bootapu	MACRO
 	php
@@ -6008,21 +6002,6 @@ bootapu	MACRO
 ;	plp
 ;	rtl
 	endm
-;-------------------------------------------------------------------
-;; Plays an MSU track
-; syntax example: msuplay $FF,$0001,audiostate_repeat
-msuplay	MACRO ; volume, number, audiostate
-	lda	#\1
-	sta	MSU_VOLUME
-	ldx	#\2
-	stx	MSU_TRACK
-	lda	#\3
-	sta	MSU_CONTROL
-	ENDM
-; stops an MSU track... probably
-msustop	MACRO
-	stz	MSU_CONTROL
-	ENDM
 ;-------------------------------------------------------------------
 snd_data	macro
 snd_\1	equ	*-sndtbl
