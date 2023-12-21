@@ -211,7 +211,7 @@ determine_msu_track
 	BRL .playtrack
 .j6	cmp #$19
 	BNE .j7
-	LDA #_031_clearootd ; OOTD Slot Machine Clear
+	LDA #_032_clearband ; OOTD Slot Machine Clear
 	BRL .playtrack
 .j7	LDA #_007_clearband ; Stage Clear (Band)
 	BRL .playtrack
