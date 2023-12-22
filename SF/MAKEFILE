@@ -2,14 +2,25 @@
 # Star Fox Makefile #
 #####################
 
+# Assembler
 ASM=SASMX
 ASMFLAGS=-efilelist=0 -xsymbols.txt
+
+# Linker
 LINK=ARGLINK
 LOPTS=-b30 -h1024 -t7d
+
+# ROM Extender
 EXTEND=EXTEND
 EXTOPS= 16 ff
+
+# Checksum Fixer
 CHECK=SFCHECK
 COPTS=-s -f
+
+# FXGfx Interleaver
+MERGE=MERGE
+MOPTS= /cgx
 
 ALLFILES= BANK\bank0.sob BANK\bank1.sob BANK\bank2.sob \
  BANK\bank4.sob BANK\bank5.sob BANK\bank6.sob BANK\bank7.sob \
@@ -19,7 +30,26 @@ ALLFILES= BANK\bank0.sob BANK\bank1.sob BANK\bank2.sob \
 .asm.sob:
 	@$(ASM) -m30 $(ASMFLAGS) $< -v$*.SOB
 
-all: sg.rom
+all: msprites allcols crunch sg.rom
+
+# Interleave FXGfx
+msprites:
+    MSPRITES\msprites.bat
+    @$(MERGE) MSPRITES\tex_0.CGX MSPRITES\tex_1.CGX MSPRITES\tex_01.bin $(MOPTS)
+    @$(MERGE) MSPRITES\tex_2.CGX MSPRITES\tex_3.CGX MSPRITES\tex_23.bin $(MOPTS)
+    @$(MERGE) MSPRITES\tex_2.CGX MSPRITES\tex_3_a.CGX MSPRITES\tex_23_a.bin $(MOPTS)
+
+# Pack Palettes
+allcols:
+    cd data
+    cd col
+    pc.bat
+	cd ..\..
+
+crunch:
+    cd data
+	CRUNCH.BAT
+	cd ..
 
 sg.rom: $(ALLFILES)
 	@$(LINK) $(LOPTS) -osg.rom @flist

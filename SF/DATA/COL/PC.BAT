@@ -1,3 +1,5 @@
+@echo off
+echo Building palettes...
 @del col.tmp
 @del col2.tmp
 @del allcols.col
@@ -29,6 +31,4 @@
 @call mc contest 0 7
 @call mc 2ep 0 9
 @packer /4000 allcols.col allcols.pac
-echo Palette Building Complete. You can now close DOSBox.
-pause
-exit
+echo Palette Building Complete.

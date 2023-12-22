@@ -7,16 +7,8 @@ del .\BANK\*.sob
 del lastasm.*
 del *.bak /s
 @echo on
-make sg.rom
+make
 cd ..
-copy sf\sg.rom SFBuilt.SFC
-del sf\sg.rom
-del sf\BANK\*.sob
-del sf\status.doc
-del sf\lastasm.tmp
-del sf\msgs.txt
-del sf\alvars.txt
-copy sf\symbols.txt symbols.txt
-del sf\symbols.txt
+@call DONEBLD
 pause
 exit
