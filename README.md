@@ -1,6 +1,6 @@
 
 # UltraStarFox
-Star Fox / Starwing (SNES 1993), Modified for ease-of-use and ROMHacking.
+Star Fox / Starwing (SNES 1993) source code, Modified for ease-of-use and ROMHacking.
 
 ## Features
 
