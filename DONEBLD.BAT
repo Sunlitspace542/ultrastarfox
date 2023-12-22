@@ -1,6 +1,6 @@
 @echo off
-copy sf\sg.rom SFBuilt.SFC
-del sf\sg.rom
+copy sf\sf.rom SF.SFC
+del sf\sf.rom
 del sf\BANK\*.sob
 del sf\status.doc
 del sf\lastasm.tmp

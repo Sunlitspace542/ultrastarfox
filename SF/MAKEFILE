@@ -30,7 +30,7 @@ ALLFILES= BANK\bank0.sob BANK\bank1.sob BANK\bank2.sob \
 .asm.sob:
 	@$(ASM) -m30 $(ASMFLAGS) $< -v$*.SOB
 
-all: msprites allcols crunch sg.rom
+all: msprites allcols crunch sf.rom
 
 # Interleave FXGfx
 msprites:
@@ -51,10 +51,10 @@ crunch:
 	CRUNCH.BAT
 	cd ..
 
-sg.rom: $(ALLFILES)
-	@$(LINK) $(LOPTS) -osg.rom @flist
-    @$(EXTEND) sg.rom $(EXTOPS)
-	@$(CHECK) $(COPTS) sg.rom
+sf.rom: $(ALLFILES)
+	@$(LINK) $(LOPTS) -osf.rom @flist
+    @$(EXTEND) sf.rom $(EXTOPS)
+	@$(CHECK) $(COPTS) sf.rom
 
 ## Files to assemble
 bank0.sob: BANK\bank0.asm

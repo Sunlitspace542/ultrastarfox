@@ -26,9 +26,7 @@ Download repo as ZIP and extract somewhere, or clone the repo with git via the c
 
 To build ROM, run ``build.cmd``  
 
-To build ROM with Logging, run ``build to log.cmd``
-
-To rebuild color palettes, run ``build palette.cmd``  
+To build ROM with Logging, run ``build to log.cmd`` 
 
 After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 
@@ -47,8 +45,6 @@ Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``
 To build ROM, run ``build.sh``  
 
 To build ROM with logging, run ``buildtolog.sh``  
-
-To rebuild color palettes, run ``buildpalette.sh``  
 
 After building, a debug symbol map will be created at ``SYMBOLS.TXT``.  
 
