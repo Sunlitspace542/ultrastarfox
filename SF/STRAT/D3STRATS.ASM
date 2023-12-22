@@ -1157,3 +1157,7 @@ flyingfish_istrat
 
 ;---------------------------------------------------------------
 	strats_end
+
+	IFNE	msu
+	include	ASM\MSU.ASM
+	ENDC

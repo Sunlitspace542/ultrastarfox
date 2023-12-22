@@ -1,3 +1,4 @@
+	include	EXT\msu.ext
 	global	bossh_istrat,base_1_istrat,iris_1_istrat
 	global	break_meteort_istrat
 	global	break_meteor_istrat

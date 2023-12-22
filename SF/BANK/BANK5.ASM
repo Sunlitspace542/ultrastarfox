@@ -37,7 +37,7 @@
 	include	EXT\expstrat.ext
 	include	EXT\continue.ext
 	include	EXT\trans.ext
-	include	EXT\msu.ext
+;	include	EXT\msu.ext
 	include	INC\bgmacs.inc
 
 
