@@ -1,19 +1,19 @@
+
 # UltraStarFox
-Star Fox / StarWing (SNES, 1993), with modifications for easier creation of ROM hacks and general ease-of-use.
+Star Fox / Starwing (SNES 1993), Modified for ease-of-use and ROMHacking.
 
 ## Features
 
-- SuperFX Fast mode (21Mhz) support and various optimizations
-- FastROM (A bug with the SD2SNES (FXPak Pro) causes freezes and crashes on SHVC revisions of the SNES)
+- SuperFX 21Mhz support and various optimizations
+- FastROM (A bug with the SD2SNES/FXPak Pro causes freezes and crashes on SHVC revisions of the SNES)
 - Lots of free bank space for new models, assets and code
 - 256 texture slots
 - 250 Faces/Vertices limit
 - Bugfixes and improvements
 - Uses ARGLINK from Star Fox 2 as linker instead of SL
-- rebuild color palette data using the palette packer (bldpal.bat)
+- Color palette data, MSPRITES, and crunched (compressed) graphics rebuilt at assembly
 - Easier creation of wireframe models
-- Matching text data
-- Working StarWing title screen and German/PAL StarWing assets
+- All Starwing PAL and Germany text/GFX for PAL builds
 - SNES Mouse support
 - MSU-1 support (Original ASM patch by Kurrono, ported by Kando and Sunlit)
 - Kando was involved so you know it's good
@@ -32,13 +32,15 @@ To rebuild color palettes, run ``build palette.cmd``
 
 After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 
-## Building on Linux (Ubuntu)
+## Building on Linux
 
-**NOTE: this was tested on WSL with Ubuntu installed. there is a chance stuff doesn't work.**  
+**NOTE: this was tested on WSL with Ubuntu installed. Your mileage may vary.**  
 
-Requirements: Ubuntu (might work with Debian) DOSBox-X, git  
+Requirements: Ubuntu (might work with other distros) snap, DOSBox-X, git  
 
-[DOSBox-X deb package](https://cdn.discordapp.com/attachments/928458781266960415/1007476106485583872/dosbox-x_0.83.4-0.83.4_amd64-SDL2-deb.zip)  
+Install snapstore: ``sudo apt install snapd``  
+
+Install DOSBOX-X from snap: ``sudo snap install dosbox-x``  
 
 Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``  
 
@@ -59,15 +61,11 @@ After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 [EarthBound Music Editor (But for Star Fox)](https://github.com/phonymike/ebmused4sf/)  
 [Star Fox Music Programming Starter Kit (by livvy94)](https://www.dropbox.com/sh/m3sk75dmsyx5tey/AACLDXVcQEJk3ezQCDBitEs7a?dl=0)
 
-## Discord Server
-[Exploratorium](https://discord.gg/VqvsTSmy)
-
-
 ## TODO
 1. OPTIMIZE  
 2. Strip out all Super Star Fox weekend-related code  
 3. Annotate and document code  
-4. Disassemble all BIN files in SND directory, add documentation on custom music and the like  
+4. MAYBE: Disassemble all BIN files in SND directory, add documentation on custom music and the like  
 
 ## Project Structure
 ```
@@ -79,7 +77,9 @@ ultrastarfox
 │   ├── BANK: Bank data\ASM files
 │   ├── CONFIG: Various game aspects can be configured here
 │   ├── DATA: GFX files
-│   │   └── COL: Palette files and Palette Packer
+│   │   ├── COL: Palette files and Palette Packer
+│   │   ├── CGX: .CGX graphics files that are crunched
+│   │   └── SCR: .SCR tilemap files that are crunched
 │   ├── EXT: .ext files needed by several .asm files
 │   ├── INC: .inc files, arc tangent table
 │   ├── MAPS: level scripts
