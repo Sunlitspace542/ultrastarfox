@@ -1,83 +1,13 @@
 
-; ####################################
-; ## UltraStarFox Assembler Options ##
-; ####################################
 
-;####################################################################################################################
-msu					equ 0   ; MSU1 support [0 = off 1 = on]
-cesdemo				equ	0	; 0 = off, 1 = CES Demo (timed) 2 = Untimed CES Demo w/ planet cheat
-contest				equ	0	; Super Star Fox Weekend (DO NOT USE) [0 = off 1 = on]
-cestime				equ	5	; CES/SSFW timer countdown (in minutes)
-debuginfo			equ	0	; full strategy debugging - Press P2 R Button in-game to activate [0 = off 1 = on]
-debuginfo2			equ	0	; speed up mode? [0 = off 1 = on]
-mario_stats3d		equ	0	; 3D Stats (FPS, shapes drawn, etc.)
-japan				equ 0	; Japanese ROM Header [0 = off, 1 = on]	(DO NOT USE IF PAL = 1)
-pal					equ	0	; PAL/NTSC [0 = NTSC, 1 = PAL] (DO NOT USE IF JAPAN = 1)
-JAPANESE			equ	0	; Language [0 = English, 1 = Japanese]
-german				equ	0	; German language version [0 = off 1 = on]
-french				equ	0	; French language version [0 = off 1 = on] (TEXT ONLY, NO DIACRITICS OR GFX)
-spanish				equ	0	; Spanish language version [0 = off 1 = on] (TEXT ONLY, NO DIACRITICS OR GFX)
-twentyonemhz		equ 1	; SuperFX 21MHZ Fast mode [0 = off 1 = on]
-FASTROM				equ 1	; enable/disable FastROM [1 = on, 0=off]
-planetcheaton 		equ 0   ; Allows you to enable planet select cheat on the map before you have selected
-							; a level. Press X+Y on the same frame to activate.
-messagetest			equ	0	; Run message test in training level
-crosshairalwayson	equ	0	; Crosshair in third person view [0 = off 1 = on]
-hipolyarwing		equ	0	; high poly arwing [0 = low poly (default) 1 = hi poly]
-wnglzrman_helpball	equ	0 	; Restore Laser Upgrade enemy code to spawn helperball items
-							; instead of laser upgrades	[0 = off 1 = on]
-internalname		equ	0	; internal rom name, [0 = STAR FOX, 1 = STAR WING]
-titlelogo			equ 1	; Title screen logo to use, [0 = Star Fox JP, 1 = Star Fox US Rev 0,
-							; 2 = Star Fox US Rev 1/2, 3 = StarWing]
-							; (also affects which game name is shown in credits, 0/1 = STAR FOX, 2 = STARWING)
-controlsscreenpal	equ	0	; Controls screen palette to use, 0 = NTSC, 1 = PAL	(DOES NOT AFFECT JP)
-shieldboostcolorbox	equ	0	; enable weird color box thing on shield and boost meters
-							; (set to 0 if moving meter positions)	(also disables hud hide on boss win/level end)
-mouseon				equ	0	; Enable SNES mouse (connect to port 2)
-							; (if using this, setting "crosshairalwayson" to 1 is recommended)
-prntrouln_on		equ 1	; print "printroulen" lines during assembly (needs to be on)
-;####################################################################################################################
+; Include master configuration file
+	include	CONFIG\CONFIG.INC
 
-; ###############
-; ## Fun Stuff ##
-; ###############
+; This file contains various constants used in Star Fox.
 
-;########################################################################################################################
-randverts1		equ	0		; randomize the vertices slightly
-randvertandbit	equ	15		; decimal value of the binary AND value of the max number you want to add to each point
-							; Recommended values: 1, 3, 7, 15, 31, 63
-							; (representing 00000001,00000011,00000111,00001111,00011111,00111111)
-randverts2		equ	0		; randomize the vertices a lot
-							; Both will not activate at once
-allrange		equ	0		; "All-Range Mode", Press P1 L and R to rotate player. Press select to unload objects.
-							; [0 = off 1 = on]
-godmode			equ	0		; No collision for the player [0 = off 1 = on]
-infbrake		equ	0		; Infinite Braking	[0 = off 1 = on]
-infboost		equ	0		; Infinite Boosting	[0 = off 1 = on]
-infbombs		equ 0		; Infinite Bombs [0 = off 1 = on]
-;########################################################################################################################
-
-; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-; !! Everything else is more advanced stuff, be careful! !!
-; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-; for player health values and other object equates, see INC\STRATEQU.INC.
-
-; Sprite position stuff
-
-; Original Lives position ($YYXX)
-livesPos1 equ $1110
-livesPos2 equ $1118
-livesPos3 equ $1120
-
-; Original Shield text position ($YYXX)
-ShieldTextPos1 equ $b718
-ShieldTextPos2 equ $b720
-ShieldTextPos3 equ $b728
-ShieldTextPos4 equ $b730
-
-; Original Nova Bomb Icon Position ($YYXX)
-BombIconPos equ $b6e1
+; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+; !! This is advanced stuff, be careful! !!
+; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ; ## other variables ##
 realchip		equ	1
@@ -250,6 +180,7 @@ HF7	equ	1<<6
 HF8	equ	1<<7
 
 ; continue.asm
+; Character mugshot list
 
 friend_fox		equ	0
 friend_rabbit 	equ	1

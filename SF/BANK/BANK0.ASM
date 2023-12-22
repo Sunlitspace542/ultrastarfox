@@ -108,8 +108,14 @@ bgandpcr
 
 	IFEQ	internalname	; if internalname = 0
 	db	"STAR FOX             "  
-	ELSEIF					; if internalname = 1
+	ENDC				; if internalname = 1
+	
+	IFEQ	internalname-1
 	db	"STAR WING            "  
+	ENDC
+
+	IFEQ	internalname-2
+	docustomname ; invoke macro to do custom name
 	ENDC
 
 	; hardware info

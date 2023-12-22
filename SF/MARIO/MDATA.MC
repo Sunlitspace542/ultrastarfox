@@ -993,12 +993,18 @@ mariomsg	macro
 mariomsgs
 msg_starfox
 ;	db	41,42,43,44,45,46,47,48,0
-	IFEQ	titlelogo-3				;if titlelogo = 3
-	mariomsg	<STARWING>
-	endc
-	IFNE	titlelogo-3				;if titlelogo != 3
+
+	IFEQ	credzname				;if credzname == 0
 	mariomsg	<STAR FOX>
 	ENDC
+
+	IFEQ	credzname-1				;if credzname == 1
+	mariomsg	<STARWING>
+	endc
+
+	IFEQ	credzname-2				;if credzname == 2
+	docredzname ; run macro to do credits name
+	endc
 
 msg_nintendo
 	mariomsg	<NINTENDO>

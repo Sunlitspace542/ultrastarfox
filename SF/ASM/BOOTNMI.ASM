@@ -44,7 +44,7 @@ startboot	disable ; Disable Interrupts
 
 	jsl	initialise_l ; initialize game
 
-	IFNE	TWENTYONEMHZ ; start conditional: if TWENTYONEMHZ !=0 (=1)
+	IFNE	fast ; start conditional: if fast !=0 (=1)
 	fast ; Tell MARIO chip to run @ 21.4mhz (no clock divider)
 	ENDC ; end conditional
 
@@ -135,7 +135,7 @@ restart	ai16 ; set A/X/Y to 16 bit
 	jsl	initialise_l ; Initialize game
 firsttimeuse
 
-	IFNE	TWENTYONEMHZ ; start conditional : if TWENTYONEMHZ !=0 (=1)
+	IFNE	fast ; start conditional : if fast !=0 (=1)
 	fast	; set MARIO chip to 21.4mhz (no clock divider)
 	ENDC ; end conditional
 

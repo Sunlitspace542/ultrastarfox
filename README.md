@@ -77,6 +77,7 @@ ultrastarfox
 ├── SF: Main source code is located here
 │   ├── ASM: Main game code located here (65816)
 │   ├── BANK: Bank data\ASM files
+│   ├── CONFIG: Various game aspects can be configured here
 │   ├── DATA: GFX files
 │   │   └── COL: Palette files and Palette Packer
 │   ├── EXT: .ext files needed by several .asm files
