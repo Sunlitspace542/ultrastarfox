@@ -16,6 +16,10 @@ wnglzrman_helpball	equ	0
 ; Crosshair in third person view [0 = off 1 = on]
 crosshairalwayson	equ	0
 
+; Number of lives the player starts with (stock = 3)
+; Note that the game displays the number of lives as 1 less than it actually is.
+numlives	equ	3
+
 ;###################
 ;# Random Vertices #
 ;###################

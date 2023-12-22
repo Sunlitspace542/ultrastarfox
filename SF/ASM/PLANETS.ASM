@@ -218,7 +218,8 @@ cestimeron	=	1
 
 	ENDC
 
-	lda	#3
+; Set player's lives
+	lda	#numlives
 	sta	lives
 	IFEQ	debuginfo2
 	stz	credits
