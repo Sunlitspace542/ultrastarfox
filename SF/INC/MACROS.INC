@@ -6533,6 +6533,6 @@ sasm_mvn	MACRO ; src,dest
 sasm_mvp	MACRO ; src,dest
 ; example: sasm_mvp	$32,$7E
 ; raw opcodes are little endian so we reverse the arguments
-	db $54,\2,\1
+	db $44,\2,\1
 	ENDM
 ;---------------------------------------------------------------
