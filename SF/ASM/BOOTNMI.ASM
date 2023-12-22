@@ -244,7 +244,7 @@ initialise_ram
 
 	IFNE	msu
 	jsl	transfermsu ; Copy MSU1 handler to RAM at $FD00
-	ELSEIF ; when MSU is on, this is called in D3STRATS instead
+	ELSEIF ; when MSU is on, this is called in MSU.ASM instead
 	jsl	copy_to_0101_l ; Copy NMI handler to RAM at $0101
 	ENDC
 
