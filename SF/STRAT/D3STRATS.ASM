@@ -1157,7 +1157,3 @@ flyingfish_istrat
 
 ;---------------------------------------------------------------
 	strats_end
-
-	IFNE	msu
-	include	ASM\MSU.ASM ; Include MSU playback logic (I hate hardcoded ROM locations)
-	ENDC

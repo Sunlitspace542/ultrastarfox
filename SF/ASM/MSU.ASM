@@ -18,7 +18,7 @@
 ;*                                                                         *
 ;***************************************************************************
 
-; NOTE: this file is included in STRAT\D3STRATS.ASM
+	INCPUBLICS	ext\msu.ext
 
 	IFNE	fastrom
 	org	$B2FD00,$8000*$32+$7D00			;B2 = bank number			empty space needed at end of bank

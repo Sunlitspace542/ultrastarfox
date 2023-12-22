@@ -9,7 +9,7 @@
 ; MSU-1 support [0 = off 1 = on]
 ; The game looks for the MSU-1 on startup.
 ; If the MSU-1 is not present, the game falls back to SPC700 audio.
-msu		equ 0
+msu		equ 1
 
 ; enable/disable FastROM [1 = on, 0=off]
 FASTROM	equ 1

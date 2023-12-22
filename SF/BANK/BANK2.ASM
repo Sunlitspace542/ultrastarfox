@@ -36,6 +36,7 @@
 	include	EXT\expstrat.ext
 	include	EXT\shbanks.ext
 	include	EXT\mem.ext
+	include	EXT\msu.ext
 	include	INC\istrats.inc
 
 	include	EXT\mhofs.ext

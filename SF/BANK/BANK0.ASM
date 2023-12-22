@@ -89,6 +89,9 @@ bgandpcr
 	ENDC
 	incfile	STRAT\istrats.asm
 	incfile	STRAT\d3strats.asm
+	IFNE	msu
+	include	ASM\MSU.ASM ; Include MSU playback logic (I hate hardcoded ROM locations)
+	ENDC
 	; must be space at end of bank 32 for MSU
 	bankend	32
 
