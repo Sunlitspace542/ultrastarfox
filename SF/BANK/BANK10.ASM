@@ -11,7 +11,6 @@
 	include	EXT\expstrat.ext
 	include	EXT\paths.ext
 	include	EXT\bootnmi.ext
-;	include	EXT\msu.ext
 
 	bank	10
 	incfile	STRAT\kstrats.asm

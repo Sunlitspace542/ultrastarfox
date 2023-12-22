@@ -42,22 +42,22 @@
 	BRL .playtrack
 .a3	CMP #$F0
 	BNE .noF0
-	CMP.l $7e017f
+	CMP.l msu_017f
 	BNE .a4
 	RTS
-.a4	STA.l $7e017f
+.a4	STA.l msu_017f
 	RTS
 .noF0
 	CMP #$F1
 	BNE .noF1
-	CMP.l $7e017f
+	CMP.l msu_017f
 	BNE .b1
 	RTS
-.b1	STA.l $7e017f
+.b1	STA.l msu_017f
 	RTS
 .noF1
 	ADC snd_ptr
-	CMP.l $7e017f
+	CMP.l msu_017f
 	BNE .c1
 	RTS
 .c1	cmp #$91
@@ -76,7 +76,7 @@
 	BNE .d1
 	LDA #_230_lastclear ; load venom destroyed
 	BRA .noe1
-.d1	LDA #$e1 ; load
+.d1	LDA #_225_asteroid_vo ; load Venom Orbital
 .noe1
 	cmp #$b1
 	bne .nob1
@@ -104,7 +104,7 @@
 	LDA #_225_asteroid_vo
 
 .playtrack
-	CMP.l $7e017f
+	CMP.l msu_017f
 	BNE .h1
 	RTS
 .h1	cmp #$0b
@@ -114,7 +114,7 @@
 	BNE .h2
 	LDA #$0b
 	BRA .continue
-.h2	LDA.l $7e017f
+.h2	LDA.l msu_017f
 	cmp #$39
 	BEQ .h3
 	LDA #$30
@@ -123,7 +123,7 @@
 .continue
 	STZ msu_volume
 	STA msu_track
-	STA.L $7e017f
+	STA.L msu_017f
 	STZ msu_track2
 .loopTitle
 	BIT msu_status
@@ -145,7 +145,7 @@
 	STA msu_control
 	LDA #$FF
 	STA msu_volume
-	STA.l $7e017e
+	STA.l msu_017e
 	PLX
 	RTS
 .error
@@ -226,7 +226,7 @@ transfermsu
 	org $32FEC0,$8000*$32+$7EC0			;32 = bank number	
 	ENDC
 	
-	LDA.l $7e017f
+	LDA.l msu_017f
 	AND #$00ff
 	CMP #$00f1
 	BEQ .k1
@@ -234,7 +234,7 @@ transfermsu
 	RTL
 .k1	PHP
 	a8
-	lda.l $7e017e
+	lda.l msu_017e
 	CMP #$00
 	BEQ .endslow
 	dec a
@@ -243,9 +243,9 @@ transfermsu
 	bcs .k2
 .endslow
 	lda #$00
-	sta.l $7e017f ;erase fade flag
+	sta.l msu_017f ;erase fade flag
 .k2	sta.l $002006
-	sta.l $7e017e
+	sta.l msu_017e
 	PLP
 	LDA.l $003030
 	RTL	
