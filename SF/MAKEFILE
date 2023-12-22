@@ -46,17 +46,19 @@ allcols:
     pc.bat
 	cd ..\..
 
+# Crunch all compressible GFX
 crunch:
     cd data
 	CRUNCH.BAT
 	cd ..
 
+# The ROM Itself
 sf.rom: $(ALLFILES)
 	@$(LINK) $(LOPTS) -osf.rom @flist
     @$(EXTEND) sf.rom $(EXTOPS)
 	@$(CHECK) $(COPTS) sf.rom
 
-## Files to assemble
+## Banks to assemble
 bank0.sob: BANK\bank0.asm
 
 bank1.sob: BANK\bank1.asm

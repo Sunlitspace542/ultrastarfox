@@ -6,22 +6,24 @@
 
 ; Cartridge Configuration
 
-; MSU1 support [0 = off 1 = on]
-msu					equ 0
+; MSU-1 support [0 = off 1 = on]
+; The game looks for the MSU-1 on startup.
+; If the MSU-1 is not present, the game falls back to SPC700 audio.
+msu		equ 0
 
 ; enable/disable FastROM [1 = on, 0=off]
-FASTROM				equ 1
+FASTROM	equ 1
 
 ; SuperFX 21MHZ Fast mode [0 = off 1 = on]
-fast		equ 1
+fast	equ 1
 
 ; Region
 
 ; Japanese ROM Header [0 = off, 1 = on]	(DO NOT USE IF PAL = 1)
-japan				equ 0
+japan	equ 0
 
 ; PAL/NTSC [0 = NTSC, 1 = PAL] (DO NOT USE IF JAPAN = 1)
-pal					equ	0
+pal	equ	0
 
 
 ; Language Options
@@ -48,7 +50,7 @@ internalname	equ	0
 
 ; field for a custom name. the internal ROM name must be 20 CHARACTERS long. No more, no less.
 docustomname	MACRO
-;       "                     "  line name up with these quotes
+;		"                     "  line name up with these quotes
 	db	"ULTRASTARFOX         "
 	ENDM
 
