@@ -5,7 +5,7 @@
 ;*                                                                         *
 ;*                           SuperNES version.                             *
 ;*                                                                         *
-;*                           Argonaut Software.      		      *	   
+;*                           Argonaut Software.                            *
 ;*                                                                         *
 ;*_________________________________________________________________________*
 ;*                                                                         *
@@ -18,7 +18,7 @@
 ;*   Date: 1/12/92                                                         *
 ;*_________________________________________________________________________*
 ;*                                                                         *
-;* Author: Dylan Cuthbert.                                                 *	
+;* Author: Dylan Cuthbert.                                                 *
 ;*                                                                         *
 ;***************************************************************************
 
@@ -1159,5 +1159,5 @@ flyingfish_istrat
 	strats_end
 
 	IFNE	msu
-	include	ASM\MSU.ASM
+	include	ASM\MSU.ASM ; Include MSU playback logic (I hate hardcoded ROM locations)
 	ENDC

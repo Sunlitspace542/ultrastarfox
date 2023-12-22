@@ -89,6 +89,7 @@ bgandpcr
 	ENDC
 	incfile	STRAT\istrats.asm
 	incfile	STRAT\d3strats.asm
+	; must be space at end of bank 32 for MSU
 	bankend	32
 
 	;; ROM HEADER

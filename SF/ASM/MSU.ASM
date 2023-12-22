@@ -14,14 +14,14 @@
 ;*_________________________________________________________________________*
 ;*                                                                         *
 ;*   Author(s):                                                            *
-;*	 Kurrono, Kando, Sunlit                                                *
+;*   Kurrono, Kando, Sunlit                                                *
 ;*                                                                         *
 ;***************************************************************************
 
 ; NOTE: this file is included in STRAT\D3STRATS.ASM
 
 	IFNE	fastrom
-	org	$B2FD00,$8000*$32+$7D00			;32 = bank number			empty space needed at end of bank
+	org	$B2FD00,$8000*$32+$7D00			;B2 = bank number			empty space needed at end of bank
 	ELSEIF
 	org	$32FD00,$8000*$32+$7D00			;32 = bank number			empty space needed at end of bank
 	ENDC
@@ -76,7 +76,7 @@
 	BNE .d1
 	LDA #_230_lastclear ; load venom destroyed
 	BRA .noe1
-.d1	LDA #_225_asteroid_vo ; load Venom Orbital
+.d1	LDA #_225_asteroid_vo ; load Asteroid/Venom Orbital
 .noe1
 	cmp #$b1
 	bne .nob1
