@@ -3,16 +3,17 @@
 ;###################
 ; based on track order from
 ; https://docs.google.com/spreadsheets/d/1_pgX2OIBm2DT4jNIeigdekD9OpZ5tVtaE5Fw2oGWPUc/edit#gid=0
+; errors corrected by Sunlit
 _001_introvideo		equ	$01 ; Intro FMV audio
 _002_dangerous		equ	$02 ; Entering Dangerous Territory
 
 _004_lastboss		equ	$04 ; Last Boss Andross
 
-_007_clearband		equ	$07 ; Clear Band
-_008_clearorch		equ	$08 ; Clear Orch
+_007_clearband		equ	$07 ; Clear Band (Space armada also uses this ID, should be clear orch for armada)
+_008_clearorch		equ	$08
 _009_clearorch		equ	$09
 _010_clearorch		equ	$0A
-_011_bossroll		equ	$0B ; Ending (Bosses) (continue?)
+_011_bossroll		equ	$0B ; Ending (Bosses)
 
 _017_downband		equ	$11 ; Down Band
 
@@ -63,7 +64,7 @@ _102_bhole			equ	$66 ; Black Hole
 
 _106_venom2			equ	$6A ; Venom Highway
 
-_108_venom1			equ	$6C ; Venom 1
+_108_bossvenomshort	equ	$6C ; Boss Venom Base (Short)
 
 _121_dangerous		equ	$79 ; Entering Dangerous Territory
 
@@ -96,7 +97,7 @@ _180_fortboss		equ $B4 ; Fortuna Boss
 
 _191_sectorxz		equ $BF ; Sector X/Z
 
-_193_seczapproach	equ	$C1 ; Approaching Boss - Sector Z
+_193_dangeroussz	equ	$C1 ; Dangerous Territory (Sector Z)
 _194_sectorzboss	equ	$C2 ; Sector Z Boss
 
 _206_downorch		equ	$CE ; Down Orch
@@ -107,16 +108,14 @@ _212_macboss		equ	$D4 ; Macbeth Boss
 _213_meteboss		equ	$D5 ; Meteor Boss
 
 _225_asteroid_vo	equ	$E1 ; Asteroid/Venom Orbital
-_226_bossplanet		equ $E2 ; Boss Battle Planet (Corneria Boss)
-_227_venombase		equ	$E3 ; Venom Base
-
-_230_lastclear		equ	$E6 ; Last Boss Clear? track id found in v12_msu.asm as "venom destroyed"
+_226_bossvenomextd	equ $E2 ; Boss (Venom Base Extended)/Great Commander I
+_227_bossvenomshort	equ	$E3 ; Boss Venom Base (Short)
 
 _243_venom1			equ	$F3 ; Venom 1
 _244_venom3			equ	$F4 ; Venom 3
 
 _246_bossvenom1		equ	$F6 ; Venom 1 Boss
-_247_lastboss		equ	$F7 ; Last Boss Andross
+_247_bossvenom2		equ	$F7 ; Boss Venom Base 2
 _248_lastclear		equ $F8 ; Last Boss Clear
 
 _252_cleardemo		equ	$FC ; Game Clear Demonstration

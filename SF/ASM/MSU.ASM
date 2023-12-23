@@ -74,7 +74,7 @@
 	lda snd_ptr
 	cmp #$f1
 	BNE .d1
-	LDA #_230_lastclear ; load venom destroyed
+	LDA #$E6 ; load venom destroyed
 	BRA .noe1
 .d1	LDA #_225_asteroid_vo ; load Asteroid/Venom Orbital
 .noe1
@@ -256,7 +256,7 @@ transfermsu
 	ELSEIF
 	org $32FF00,$8000*$32+$7F00			;32 = bank number
 	ENDC
-msulooptab
+;msulooptab
 	;   0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
 	db $03,$01,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; 03-0F
 	db $03,$01,$03,$03,$03,$03,$03,$01,$03,$03,$03,$03,$03,$03,$03,$03 ; 10-1F
