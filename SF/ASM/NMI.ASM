@@ -20,7 +20,7 @@
 ; Copies NMI handler to RAM at addr $0101
 copy_to_0101_l
 	php ; Push Processor status to stack
-	a8i16 ; set A to 8 bit
+	a8i16 ; set A to 8 bit and X/Y to 16 bit
 
 	ldx	#nmihanend-nmihan-1 ; Load size of NMI handler routine into X(?)
 .codeloop2	lda.l	nmihan,x ; Load (Long) NMIHAN + size of NMIHAN into A(?)

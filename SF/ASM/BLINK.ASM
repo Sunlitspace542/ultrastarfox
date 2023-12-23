@@ -67,7 +67,7 @@ stopall	stx	blinkval ; Store X to blinkval variable
 	pha ; Push A to stack
 	plb ; Pull data bank from stack
 	ENDC ; End conditional
-	a8i16 ; Set A to 8 bit
+	a8i16 ; Set A to 8 bit and X/Y to 16 bit
 	lda	#$80 ; Load $80 into A
 	sta	inidisp ; Store A at INIDISP register
 

@@ -346,7 +346,7 @@ gameover_l	; Game over screen
 
 	jsl	gameoverinit_l ; Go to Game Over Initialization subroutine
 
-	a8i16 ; set A to 8 bit
+	a8i16 ; Set A to 8 bit and X/Y to 16 bit
 
 	bgm	gameover ; Set BGM to gameover
 	stz	defaulttrain ; stz to defaulttrain var
@@ -382,7 +382,7 @@ gameover_l	; Game over screen
 .lp	jsr	fadehalf2norm ; go to fadehalftonorm subroutine
 	jsl	setblack_l ; Set screen to black (fade?)
 	jsl	transfer_l ; go to transfer loop subroutine
-	a8i16 ; Set A to 8 bit
+	a8i16 ; Set A to 8 bit and X/Y to 16 bit
 	window_addr	halffade ; Set window to half fade
 	lda	wm_val,x ; Load wm_val + x into a
 	bne	.lp ; Repeat until A = 0
@@ -416,7 +416,7 @@ gameover_l	; Game over screen
 
 
 end_game_seq ; Stuff to do with Game End Demo?
-	a8i16 ; Set A to 8 bit
+	a8i16 ; Set A to 8 bit and X/Y to 16 bit
 	lda	#0 ; Load 0 into A
 	sta.l	m_meters ; Store A at m_meters variable (hide meters)
 
@@ -550,7 +550,7 @@ stagescore	a16 ; Set A to 16 bit
 
 	jsl	endseq_l ; Jump to End Sequence
 
-	a8i16 ; Set A to 8 bit
+	a8i16 ; Set A to 8 bit and X/Y to 16 bit
 	bgm	staff ; Set BGM to Staff Roll (Main Theme)
 	lda	#creditsmap>>16 ; Load credits map shifted right by 16 into A
 	ldx	#creditsmap&$7fff ; Load credits map &7fff into X

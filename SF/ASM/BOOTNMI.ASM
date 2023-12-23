@@ -19,7 +19,7 @@
 
 	incpublics	EXT\bootnmi.ext
 
-	shorti ; set interrupt disable flag
+	shorti ; Tell SASM this uses 8 bit X/Y
 startboot	disable ; Disable Interrupts
 	clc	; Clear Carry Flag
 	xce ; Exchange Carry Flag with Emulation Flag (Exit 65c02 mode)
@@ -37,7 +37,7 @@ startboot	disable ; Disable Interrupts
 
 	jsr	initialise_ram ; Clear RAM
 
-	i16 ; clears interrupt disable flag
+	i16 ; set X/Y to 16 bit
 	ldx	#$2ff ; Load $2FF into X
 	txs ; Transfer X to SP (set stack to $2FF, resets the stack)
 	ai8 ; Set A/X/Y to 8 bit
