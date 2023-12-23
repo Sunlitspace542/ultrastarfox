@@ -11,6 +11,10 @@
 ; If the MSU-1 is not present, the game falls back to SPC700 audio.
 msu		equ 0
 
+; MSU-1 video player (not yet implemented)
+; requires that MSU-1 support be enabled
+msuvideo	equ	0
+
 ; enable/disable FastROM [1 = on, 0=off]
 FASTROM	equ 1
 
@@ -48,9 +52,9 @@ spanish		equ	0
 ; internal rom name, [0 = STAR FOX, 1 = STAR WING, 2 = Custom Name]
 internalname	equ	0
 
-; field for a custom name. the internal ROM name must be 20 CHARACTERS long. No more, no less.
+; field for a custom name. the internal ROM name must be 21 CHARACTERS long. No more, no less.
 docustomname	MACRO
-;		"                     "  line name up with these quotes
+;		"---------------------"  line name up with these quotes
 	db	"ULTRASTARFOX         "
 	ENDM
 
@@ -67,3 +71,12 @@ docredzname	MACRO
 	ENDM
 
 ;####################################################################################################################
+
+; Sanity checks (do not touch)
+
+	IFEQ	msu
+	IFNE	msuvideo
+	printf	"msu must be enabled in CONFIG\ROM.INC!"
+	fail
+	ENDC
+	ENDC
