@@ -30,5 +30,5 @@ echo Building palettes...
 @call mc obj-1 8 13
 @call mc contest 0 7
 @call mc 2ep 0 9
-@packer /4000 allcols.col allcols.pac
+packer /4000 allcols.col allcols.pac
 echo Palette Building Complete.

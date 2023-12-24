@@ -936,7 +936,7 @@ face12	macro
 shnumfaces	=	shnumfaces+1
 	endm
 
-
+; Wireframe tri
 aface3	macro
 	db	2,-1,44,0,0,0,\7,\8
 shnumfaces	=	shnumfaces+1
@@ -945,6 +945,7 @@ shnumfaces	=	shnumfaces+1
 	db	2,-1,44,0,0,0,\6,\8
 shnumfaces	=	shnumfaces+1
 	endm
+; Wireframe quad
 aface4	macro
 	db	2,-1,44,0,0,0,\6,\7
 shnumfaces	=	shnumfaces+1
