@@ -1,3 +1,4 @@
+	IFNE	hipolyarwing
 	extern	mydemo_4
 	extern	mydemo_l
 	extern	mydemo_r
@@ -10,6 +11,7 @@
 	extern	wiremydemo_l
 	extern	wiremydemo_r
 	extern	wiremydemo_b
+	ENDC
 
 	extern	NULLSHAPE
 	extern	FOLARGESHAPE

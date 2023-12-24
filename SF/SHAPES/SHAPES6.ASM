@@ -1,5 +1,6 @@
 	start_shapes
 	
+	IFNE	hipolyarwing
 ;--Shape file ----- C:\3DG1\HIPOL\MYDEMO_4.TXT ----
 	ifne	DO_HDR
 
@@ -1246,6 +1247,8 @@ wiremydemo_b_EBSP
 	EndShape
 
 	endc
+
+	ENDC ; hipolyarwing
 
 ;--Shape file ----- C:\SHED\NSHAPES\ITEM_3.TXT ----
 	ifne	DO_HDR

@@ -12,7 +12,7 @@ Star Fox / Starwing (SNES 1993) source code, modified for ease-of-use and ROMHac
 - Bugfixes and improvements
 - Uses ARGLINK from Star Fox 2 as linker instead of SL
 - Color palette data, MSPRITES, and crunched (compressed) graphics rebuilt at assembly
-- Easier creation of wireframe models (replace face3 and face4 macros with aface3 and aface4 macros in the shape file)
+- Easier creation of wireframe models (replace face3 and face4 with aface3 and aface4 in the shape file)
 - All Starwing PAL and Germany text/GFX for PAL builds
 - SNES Mouse support
 - MSU-1 support (Original ASM patch by Kurrono, ported by Kando and Sunlit)
