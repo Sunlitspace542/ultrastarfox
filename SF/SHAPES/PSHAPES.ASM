@@ -110,12 +110,12 @@ gndLcube_P
 nullplayer
 	ShapeHdr	0,0,0,0,0,0,0,0,playerB_col,36,14,80,80,id_0_c,0,0,0,0,<myship_4>
 Bmyship_4	ShapeHdr	myship_4_P,0,myship_4_F,0,0,0,0,0,playerB_col,36,14,80,80,black_c,0,0,0,0,<myship_4>
+	IFEQ	hipolyarwing ; SCRAMBLE sequence ship model
 Imyship_4	ShapeHdr	myship_4_P,0,myship_4_F,0,500,0,0,0,playerB_col,36,14,80,80,id_0_c,0,0,0,0,<myship_4>
+	ENDC
 myship_4	ShapeHdr	myship_4_P,0,myship_4_F,0,0,0,0,0,playerB_col,36,14,80,80,id_0_c,0,0,0,0,<myship_4>
-	IFEQ	hipolyarwing
+	IFEQ	hipolyarwing ; Teammate ship model
 friendship_4	ShapeHdr	myship_4_P,0,myship_4_F,0,0,0,0,0,0,36,14,80,80,id_0_c,0,0,0,0,<myship_4>
-	elseif
-friendship_4	ShapeHdr	mydemo_4_P,0,mydemo_4_F,0,0,0,0,0,playerB_col,35,14,60,60,id_0_c,0,0,0,0,<mydemo_4>
 	ENDC
 	elseif
 myship_4_P

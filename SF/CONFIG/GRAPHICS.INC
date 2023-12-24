@@ -4,7 +4,9 @@
 
 ;####################################################################################################################
 
-; high poly arwing [0 = low poly (default) 1 = hi poly]
+; High poly arwing [0 = low poly (default) 1 = hi poly]
+; replaces the player's ship, teammates' ships, and the scramble sequence
+; ship models with a custom high poly model based on my_demo.
 hipolyarwing	equ	0
 
 ; Title screen logo to use

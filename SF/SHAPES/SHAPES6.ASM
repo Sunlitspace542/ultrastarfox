@@ -8,6 +8,8 @@ mydemo_4
 	ShapeHdr	mydemo_4_P,0,mydemo_4_F,0,0,0,0,0,playerB_col,35,14,60,60,id_0_c,0,0,0,0,<mydemo_4>
 mydemoLG_4
 	ShapeHdr	mydemo_4_P,0,mydemo_4_F,0,0,0,0,3,playerB_col,35,14,60,60,id_0_c,0,0,0,0,<mydemo_4>
+Imyship_4	ShapeHdr	mydemo_4_P,0,mydemo_4_F,0,500,0,0,0,playerB_col,36,14,80,80,id_0_c,0,0,0,0,<mydemo_4> ; SCRAMBLE sequence ship model
+friendship_4	ShapeHdr	mydemo_4_P,0,mydemo_4_F,0,0,0,0,0,playerB_col,35,14,60,60,id_0_c,0,0,0,0,<mydemo_4> ; Teammate ship model
 	elseif
 mydemo_4_P
 	Pointsb	37

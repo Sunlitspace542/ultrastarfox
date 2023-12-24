@@ -1,4 +1,4 @@
-map1_1a
+map1_1a ; Scramble Map
 fudge	=	250
 
 	mapobjnomem	0000,0000,0000,fudge,op_0,gnd_Istrat
