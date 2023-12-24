@@ -141,7 +141,7 @@
 	PLA 
 	PHX
 	TAX
-	LDA.l $7ED200,x
+	LDA.l $7ED200,x ; MSU-1 loop table
 	STA msu_control
 	LDA #$FF
 	STA msu_volume
