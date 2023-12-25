@@ -21,7 +21,7 @@ uses BLUE.COL as its palette. a blue.col.png file is provided to use while editi
 Converts a BMP image to a matching .fon file.  
 To use:  
 Drag the BMP file onto foxfont.exe, or:  
-``foxfont.exe [filename]``  (no brackets)
+``foxfont.exe [filename]``  (no brackets)  
 Outputs ``[filename].fon``.  
 
 ## unmerge
