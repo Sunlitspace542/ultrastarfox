@@ -16,6 +16,7 @@ Star Fox / Starwing (SNES 1993) source code, modified for ease-of-use and ROMHac
 - All Starwing PAL and Germany text/GFX for PAL builds
 - SNES Mouse support
 - MSU-1 support (Original ASM patch by Kurrono, ported by Kando and Sunlit)
+- 60FPS mode by Kando
 - Very configurable, see SF\CONFIG\CONFIG.INC for more info
 - Kando was involved so you know it's good
 

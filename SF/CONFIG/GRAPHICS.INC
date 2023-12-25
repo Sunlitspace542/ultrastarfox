@@ -4,6 +4,12 @@
 
 ;####################################################################################################################
 
+; 60FPS mode with pacing in an attempt to make it more playable.
+; [0 = 20fps 1 = 60fps]
+; Pacing will still be a bit faster than vanilla.
+; Make sure to overclock your emulator.
+_60fps	equ	0
+
 ; High poly arwing [0 = low poly (default) 1 = hi poly]
 ; replaces the player's ship, teammates' ships, and the scramble sequence
 ; ship models with a custom high poly model based on my_demo.

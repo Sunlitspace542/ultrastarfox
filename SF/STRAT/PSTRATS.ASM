@@ -2527,7 +2527,11 @@ playermove_srou
 .isright
 .lragain
 	s_jmp_anyLRkeyup	.nroll
+	IFNE	_60fps
+	s_set_var		B,player_rolldelay,#10 ; increase input window for barrel rolling in 60fps
+	ELSEIF
 	s_set_var		B,player_rolldelay,#3 ; change #3 to another number to change how responsive barrel rolls are (ex. #5)
+	ENDC
 .nroll
 
 

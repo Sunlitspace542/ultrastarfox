@@ -11,6 +11,7 @@ debuginfo			equ	0
 debuginfo2			equ	0
 
 ; 3D Stats (FPS, shapes drawn, etc.)
+; Requires that the previous 2 options be enabled.
 mario_stats3d		equ	0
 
 ; Run message test in training level
