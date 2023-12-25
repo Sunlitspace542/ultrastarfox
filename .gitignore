@@ -14,10 +14,6 @@
 *.msu
 *.pcm
 
-# allow zips in tools
-!*/TOOLS/mugconv/*.zip
-!*/TOOLS/fontconv/*.zip
-
 #ZIPs
 *.7z
 *.zip
