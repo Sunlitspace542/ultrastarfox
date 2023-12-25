@@ -917,9 +917,7 @@ endseqbit1	i16
 	IFNE	_60fps
 	lda	trans_flag
 	cmp	#4
-	beq ._60continue ; fixes "jump too long" error
-._60continue
-	brl	irqbit2
+	beql irqbit2 ; fixes "jump too long" error
 	ENDC
 
 	jsr	startmus
