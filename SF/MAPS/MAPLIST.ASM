@@ -1,5 +1,5 @@
 
-	INCPUBLICS	maps\maplist.ext
+	INCPUBLICS	EXT\maplist.ext
 
 incmap	MACRO
 	incfile	maps\\\1.asm

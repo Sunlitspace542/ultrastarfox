@@ -18,7 +18,7 @@
 
 	bank	40
 	incfile	STRAT\gb2strats.asm
-	bankend 40
+	bankend	40
 
 	include	INC\tail.inc
 

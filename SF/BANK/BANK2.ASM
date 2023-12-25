@@ -30,7 +30,7 @@
 	include	EXT\shapes.ext
 	include	EXT\sgtabs.ext
 	include	EXT\gastrats.ext
-	include	maps\maplist.ext
+	include	EXT\maplist.ext
 	include	EXT\fontdata.ext
 	include	EXT\paths.ext
 	include	EXT\expstrat.ext

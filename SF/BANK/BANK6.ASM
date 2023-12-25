@@ -11,7 +11,7 @@
 	include	INC\shmacs.inc
 	include	EXT\windows.ext
 	include	INC\bgmacs.inc
-	include	maps\maplist.ext
+	include	EXT\maplist.ext
 	include	INC\marioi.inc
 	include	EXT\bootnmi.ext
 	

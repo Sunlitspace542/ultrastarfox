@@ -49,7 +49,7 @@
 	incfile	ASM\sgtabs.asm
 	incfile	ASM\sgdata.asm
 
-	incfile	INC\arctan.asm
+	incfile	INC\arctan.inc
 
 
 Do_HDR	=	1
