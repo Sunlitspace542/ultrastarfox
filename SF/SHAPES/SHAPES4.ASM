@@ -4343,7 +4343,9 @@ cockpit_EBSP
 
 
 	ifne	DO_HDR
+	IFEQ	hipolyarwing
 my_up	ShapeHdr	myship_4_P,0,myship_4_F,0,100,0,0,5,0,0,0,100,0,id_0_c,0,0,0,0,<myship_4>
+	ENDC
 	endc
 
 	IFEQ	1
