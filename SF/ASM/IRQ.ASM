@@ -913,19 +913,8 @@ endseqbit1	i16
 	jsr	setinidisp
 	lda	#1
 	sta	transbmp1
-
-	IFNE	_60fps
-	lda	trans_flag
-	cmp	#4
-	beql irqbit2 ; fixes "jump too long" error
-	ENDC
-
 	jsr	startmus
 	rtl
-
-	IFNE	_60fps
-	rtl
-	ENDC
 
 	shorta
 	shorti
@@ -1077,7 +1066,7 @@ irqbit2	i16
 	lsr	a
 	lsr	a
 	sta	mscrbase
-	IFEQ	PAL+_60fps ; if both PAL and 60fps are off
+	IFEQ	PAL
 	jsr	startmus
 	rtl
 	ELSEIF

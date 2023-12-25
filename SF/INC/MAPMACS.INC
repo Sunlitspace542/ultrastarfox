@@ -119,11 +119,7 @@ coursedef	macro
 mapdobj	macro	frame,x,y,z,shape,strategy
 
 	db	ctrlmapdobj		; control.
-	IFNE	_60fps
-	dw	((\1*2)*(11/8))		; frame relative to last.
-	ELSEIF
 	dw	\1		; frame relative to last.
-	ENDC
 	dw	\2,\3,\4		; x,y,z position.
 	db	is_\6
 	endm
@@ -161,11 +157,7 @@ qqmapnormobj	=	0
 	ENDC
 
 	db	ctrlmapobj		; control.
-	IFNE	_60fps
-	dw	((\1*2)*(11/8))		; frame relative to last.
-	ELSEIF
 	dw	\1		; frame relative to last.
-	ENDC
 	dw	\2,\3,\4		; x,y,z position.
 	db	is_\5		; shape.
 	db	is_\6
@@ -204,11 +196,7 @@ mapnobj	macro
 
 mnobjnum	=	mnobjnum+1
 	db	ctrlnobj
-	IFNE	_60fps
-	dw	(((\1*2)*(11/8)))
-	ELSEIF
 	dw	(\1)
-	ENDC
 	dw	(\2),(\3),(\4)
 	dw	(\5)
 	dw	(\6)&WM
@@ -221,11 +209,7 @@ mnobjnum	=	mnobjnum+1
 
 mapqnobj	macro	frame,x,y,z,shape,strategy
 	db	ctrlmqnobj			; control.
-	IFNE	_60fps
-	db	((((\1*2)*(11/8)))>>4)&$ff		; frame relative to last.
-	ELSEIF
 	db	((\1)>>4)&$ff		; frame relative to last.
-	ENDC
 	db	((\2)>>2)&$ff		; x position.
 	db	((\3)>>2)&$ff
 	db	((\4)>>4)&$ff		; z pos
@@ -250,11 +234,7 @@ mqom	=	ctrlmapqobj2
 
 
 	db	mqom			; control.
-	IFNE	_60fps
-	db	((((\1*2)*(11/8)))>>4)&$ff		; frame relative to last.
-	ELSEIF
 	db	((\1)>>4)&$ff		; frame relative to last.
-	ENDC
 	db	((\2)>>2)&$ff		; x position.
 	db	((\3)>>2)&$ff
 	db	((\4)>>4)&$ff		; z pos
@@ -269,11 +249,7 @@ mapozrotnum	=	0
 mapobjzrot	macro	x,y,strategy,zrot
 mapozrotnum	=	mapozrotnum+1
 	db	ctrlmapobjzrot	; control.
-	IFNE	_60fps
-	dw	((\1*2)*(11/8))
-	ELSEIF
 	dw	\1
-	ENDC
 	dw	\2,\3,\4		; x,y,z position.
 	db	is_\5		; shape 
 	db	is_\6
@@ -591,19 +567,6 @@ mapmother	macro	frame,x,y,z,shape,strategy,map
 	dw	(\7)&$7fff	; map
 	endm
 
-	IFNE	_60fps
-mapwait	macro	; map wait function (60fps paced)
-	IFNE	\1
-	IFLT	((((\1*2)*(11/8)))>>4)-256
-	db	ctrlmapwait2
-	db	(((\1*2)*(11/8)))>>4
-	ELSEIF
-	db	ctrlmapwait
-	dw	((\1*2)*(11/8))
-	ENDC
-	ENDC
-	endm
-	ELSEIF ; != _60fps
 mapwait	macro	; map wait function
 	IFNE	\1
 	IFLT	((\1)>>4)-256
@@ -615,7 +578,6 @@ mapwait	macro	; map wait function
 	ENDC
 	ENDC
 	endm
-	ENDC ; != _60fps
 
 
 
@@ -632,11 +594,7 @@ maprem	macro	frame,shape to remove
 
 motherobj	macro	frame,x,y,z,shape,strat
 	db	ctrlmotherobj		; control.
-	IFNE	_60fps
-	dw	((\1*2)*(11/8))		; frame relative to last.
-	ELSEIF
 	dw	\1		; frame relative to last.
-	ENDC
 	dw	\2,\3,\4		; x,y,z position.
 	dw	\5&wm		; shape.
 	dw	(\6)&wm		; strategy.
@@ -647,11 +605,7 @@ motherloop	macro	frame,addr,count or addr,count
 	db	ctrlmotherloop
 	ifeq	narg-2
 	dw	0
-	IFNE	_60fps
-	dw	(((\1*2)*(11/8)))&$7fff
-	ELSEIF
 	dw	(\1)&$7fff
-	ENDC
 	db	\2
 	elseif
 	dw	\1
@@ -664,11 +618,7 @@ mothergoto	macro	frame,addr or just addr only
 	db	ctrlmothergoto
 	ifeq	narg-1
 	dw	0
-	IFNE	_60fps
-	dw	(((\1*2)*(11/8)))&$7fff
-	ELSEIF
 	dw	(\1)&$7fff
-	ENDC
 	elseif
 	dw	\1
 	dw	(\2)&$7fff
@@ -681,11 +631,7 @@ motherend	macro	(deletes the current alien mother)
 
 motherrnd	macro	frame,x,y,z,shape,strat
 	db	ctrlmotherrnd		; control.
-	IFNE	_60fps
-	dw	((\1*2)*(11/8))		; frame relative to last.
-	ELSEIF
 	dw	\1		; frame relative to last.
-	ENDC
 	dw	\2,\3,\4		; x,y,z random mask.
 	dw	\5&wm		; shape.
 	dw	(\6)&wm		; strategy.
@@ -694,21 +640,13 @@ motherrnd	macro	frame,x,y,z,shape,strat
 
 motherwait	macro	frame
 	db	ctrlmotherwait
-	IFNE	_60fps
-	dw	((\1*2)*(11/8))
-	ELSEIF
 	dw	\1
-	ENDC
 	endm
 
 motherset	macro	frame,b|w,alvar|var,alvar,value or b|w,type,alvar,value
 	db	ctrlmotherset
 	ifeq	narg-5
-	IFNE	_60fps
-	dw	((\1*2)*(11/8))
-	ELSEIF
 	dw	\1
-	ENDC
 type	=	0
 
 	ifc	'\2','w'
@@ -741,11 +679,7 @@ mothercnt	macro	frame,shape or just shape to count
 	db	ctrlmothercount
 	ifeq	narg-1
 	dw	0
-	IFNE	_60fps
-	dw	((\1*2)*(11/8))
-	ELSEIF
 	dw	\1
-	ENDC
 	elseif
 	dw	\1
 	dw	\2
@@ -771,11 +705,7 @@ motherjump	macro	frame,cmp value,condition,address
 
 	ifeq	narg-3
 	dw	0
-	IFNE	_60fps
-	dw	((\1*2)*(11/8))
-	ELSEIF
 	dw	\1
-	ENDC
 	dw	(\3)&$7fff
 
 	ifc	'\2','EQ'
@@ -796,11 +726,7 @@ motherjump	macro	frame,cmp value,condition,address
 
 	elseif
 
-	IFNE	_60fps
-	dw	((\1*2)*(11/8))
-	ELSEIF
 	dw	\1
-	ENDC
 	dw	\2
 	dw	(\4)&$7fff
 
