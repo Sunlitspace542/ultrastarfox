@@ -24,7 +24,6 @@
 	incfile	STRAT\gcstrats.asm
 	incfile	STRAT\expstrat.asm
 
-cacheon	=	1
      	incfile	MARIO\mmacs.mc
 	mario	on
 	incfile	MARIO\mhofs.mc		;Kristers .mc files

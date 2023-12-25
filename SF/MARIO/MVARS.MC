@@ -1,7 +1,3 @@
-CacheOn	equ	1
-
-
-
 ; Mario register defs
 
 rsp	equr	10

@@ -8,6 +8,7 @@
 *.SFC
 *.SMC
 *.srm
+*.ram
 
 #MSU stuff
 *.msu

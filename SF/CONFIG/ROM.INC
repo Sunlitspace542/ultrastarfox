@@ -13,13 +13,20 @@ msu			equ 0
 
 ; MSU-1 video player (not yet implemented)
 ; requires that MSU-1 support be enabled
+; [0 = off 1 = on]
 msuvideo	equ	0
 
 ; enable/disable FastROM [1 = on, 0=off]
 FASTROM	equ 1
 
-; SuperFX 21MHZ Fast mode [0 = off 1 = on]
+; Disables the SuperFX clock divider, 
+; doubling the clock speed from 10.7mhz to 21.4mhz.
+; [0 = off 1 = on]
 fast	equ 1
+
+; Enable/disable SuperFX instruction cache [0 = off 1 = on]
+; you should have no good reason to ever switch this off, as it makes performance much, much worse.
+cacheon	equ	1
 
 ; Region
 

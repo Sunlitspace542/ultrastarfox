@@ -11,7 +11,7 @@ debuginfo			equ	0
 debuginfo2			equ	0
 
 ; 3D Stats (FPS, shapes drawn, etc.)
-; Requires that the previous 2 options be enabled.
+; Requires that debuginfo be enabled.
 mario_stats3d		equ	0
 
 ; Run message test in training level
@@ -42,3 +42,12 @@ infbombs		equ 0
 allrange		equ	0
 
 ;####################################################################################################################
+
+; Sanity checks (do not touch)
+
+	IFEQ	debuginfo
+	IFNE	mario_stats3d
+	printf	"debuginfo must be enabled to use mario_stats3d!"
+	fail
+	ENDC
+	ENDC
