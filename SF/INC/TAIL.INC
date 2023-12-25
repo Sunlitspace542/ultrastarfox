@@ -51,8 +51,3 @@ ZMario_RAM_free	=	$700200-zmmempt
 	gettime	endtime
 totaltime	=	endtime-starttime
 
-	FOPEN	lastasm.tmp
-	time	currenttime
-	printf	(currenttime>>24)&255,":",(currenttime>>16&255),"%n"
-	FCLOSE	!
-

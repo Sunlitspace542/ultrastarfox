@@ -61,9 +61,7 @@ totaltime	=	0
 
 ;---------------------------------------------------------
 ; sarcastic set up
-;	send	$7d
 
-;	fabcard	$290
 	suppress expr
 
 	ANSI_ON
@@ -73,12 +71,6 @@ totaltime	=	0
 
 	defend	"%00      %ie Error(s), %iw Warning(s). (%36",totaltime/100,".",totaltime-((totaltime/100)*100),"s%00)%n"
 	deferror	"%00%31%01** %q%f%q (%l) %d: %e %u**%00 %n%s"
-;	deferror	"%d%e%q%f%q%n	extern	%u%n"
-
-;	fopen	status.doc
-;	printf	"-------------------------------- STARGLIDER -----------------------------------%n"
-;	fclose
-;	printf	"%01-------------------------------- STARGLIDER -----------------------------------%00%n"
 
 
 ;---------------------------------------------------------

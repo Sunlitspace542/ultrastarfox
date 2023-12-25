@@ -4,7 +4,7 @@
 
 # Assembler
 ASM=SASMX
-ASMFLAGS=-efilelist=0 -xsymbols.txt
+ASMFLAGS=-efilelist=0 -x..\symbols.txt
 
 # Linker
 LINK=ARGLINK
@@ -89,6 +89,7 @@ sf.rom: $(ALLFILES)
 	@$(LINK) $(LOPTS) -osf.rom @flist
 	@$(EXTEND) sf.rom $(EXTOPS)
 	@$(CHECK) $(COPTS) sf.rom
+	@del msgs.txt
 
 # clean everything up
 clean:
