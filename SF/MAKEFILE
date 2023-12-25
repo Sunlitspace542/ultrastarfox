@@ -4,7 +4,7 @@
 
 # Assembler
 ASM=SASMX
-ASMFLAGS=-efilelist=0 -x..\symbols.txt
+ASMFLAGS=-efilelist=0 -xsymbols.txt
 
 # Linker
 LINK=ARGLINK
@@ -67,9 +67,10 @@ COLFILES= DATA\COL\2EP.COL DATA\COL\B-M.COL DATA\COL\BG2-C.COL DATA\COL\BG2-F.CO
 	@$(CRU) $< $*.PCR
 
 #all: msprites allcols crunch sf.rom
-all: allcols msprites crunch sf.rom
+all: allcols msprites crunch sf.rom donebld
 
 # Pack Palettes
+# change detection does not work for this yet
 allcols: $(COLFILES)
 	@cd DATA
 	@cd COL
@@ -99,9 +100,22 @@ sf.rom: $(ALLFILES)
 	@$(CHECK) $(COPTS) sf.rom
 	@del msgs.txt
 
+donebld:
+	@copy sf.rom ..\SF.SFC
+	@del sf.rom
+	@copy symbols.txt ..\symbols.txt
+	@del symbols.txt
+
 # clean everything up
 clean:
-	del BANK\*.SOB
+	@del BANK\*.SOB
+	@del MSPRITES\*.BIN
+	@del DATA\COL\*.PAC
+	@del DATA\*.CCR
+	@del DATA\*.PCR
+	@del msgs.txt
+	@del sf.rom
+	@del symbols.txt
 
 # Included files
 INCFILES= INC\ALCS.INC INC\ARCTAN.INC INC\BGMACS.INC INC\BGMACS2.INC INC\DALCS.INC INC\EALCS.INC INC\GILESAL.INC \
