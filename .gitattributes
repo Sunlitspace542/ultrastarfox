@@ -1,6 +1,0 @@
-*.asm linguist-language=Assembly
-*.inc linguist-detectable=false
-*.ext linguist-detectable=false
-*.mc linguist-language=Assembly
-*.c linguist-detectable=false
-*.h linguist-detectable=false
