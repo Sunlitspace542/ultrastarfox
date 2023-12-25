@@ -1,13 +1,17 @@
 level1_1
+	IFEQ	noscrambleseq ; if noscrambleseq is off
+
 	meters_off
 	initlevel	1_1i,nofadenostage,mstarwipe_circle
 	mapwait	100
 	setvar.b	scramble,50
 
-	mapjsr	map1_1a
+	mapjsr	map1_1a ; Jump to SCRAMBLE map
 
 	setfadedown
 	waitfadefin
+
+	ENDC
 
 	mapcode_jsl	initblack_l
 	mapwait	1

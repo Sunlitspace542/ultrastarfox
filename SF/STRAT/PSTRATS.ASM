@@ -2527,7 +2527,7 @@ playermove_srou
 .isright
 .lragain
 	s_jmp_anyLRkeyup	.nroll
-	s_set_var		B,player_rolldelay,#3 ; change #3 to another number to change how responsive barrel rolls are (ex. #5)
+	s_set_var		B,player_rolldelay,#barrelrolldelay ; see CONFIG\GAME.INC to change this
 .nroll
 
 

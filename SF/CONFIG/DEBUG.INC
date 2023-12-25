@@ -17,8 +17,9 @@ mario_stats3d		equ	0
 ; Run message test in training level
 messagetest			equ	0
 
-; Allows you to enable planet select cheat on the map before you have selected a level. Press X+Y on the same frame to activate.
-planetcheaton 		equ 0   
+; Allows you to enable planet select cheat on the map
+; before you have selected a level. Press X+Y on the same frame to activate.
+planetcheaton 		equ 0
 
 
 ;; Cheats
@@ -36,7 +37,8 @@ infboost		equ	0
 ; Infinite Bombs [0 = off 1 = on]
 infbombs		equ 0
 
-; "All-Range Mode", Press P1 L and R to rotate player. Press select to unload objects. [0 = off 1 = on]
+; "All-Range Mode" [0 = off 1 = on]
+; Press P1 L and R to rotate player. Press select to unload objects.
 allrange		equ	0
 
 ;####################################################################################################################
