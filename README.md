@@ -25,9 +25,11 @@ Requirements: Microsoft Windows
 
 Download repo as ZIP and extract somewhere, or clone the repo with git via the command line.  
 
-To build ROM, run ``build.cmd``  
+To build ROM, run ``build.cmd``.  
 
-To build ROM with Logging, run ``build to log.cmd`` 
+To build ROM with Logging, run ``build to log.cmd``.  
+
+To clean, run ``clean.cmd``.  
 
 After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 
@@ -43,9 +45,11 @@ Install DOSBOX-X from snap: ``sudo snap install dosbox-x``
 
 Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``  
 
-To build ROM, run ``build.sh``  
+To build ROM, run ``make``.  
 
-To build ROM with logging, run ``buildtolog.sh``  
+To build ROM with logging, run ``make log``.  
+
+To clean, run ``make clean``.  
 
 After building, a debug symbol map will be created at ``SYMBOLS.TXT``.  
 
