@@ -1,4 +1,6 @@
 * linguist-vendored
-*.asm linguist-language=Assembly linguist-vendored=false
-*.mc linguist-language=Assembly linguist-vendored=false
-*.c linguist-language=C linguist-vendored=false
+*.asm linguist-language=Assembly
+*.inc linguist-language=Assembly
+*.ext linguist-language=Assembly
+*.mc linguist-language=Assembly
+*.c linguist-language=C
