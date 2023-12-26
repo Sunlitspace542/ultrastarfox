@@ -32,7 +32,6 @@
 # Files generated during assembly
 *.CCR
 *.PCR
-SF/DATA/MSPRITES/*.BIN
 SF/DATA/COL/*.PAC
 SF/DATA/COL/ALLCOLS.COL
 
