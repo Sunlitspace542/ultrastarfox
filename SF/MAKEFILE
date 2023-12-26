@@ -65,7 +65,7 @@ ALLFILES= BANK\bank0.sob BANK\bank1.sob BANK\bank2.sob \
 # Everything that should be done when make is executed
 all: allcols msprites crunch sf.sfc donebld
 
-# Recipe to pack palettes
+# Recipe to crunch palettes
 allcols:
 	@cd DATA\COL
 	@pc.bat

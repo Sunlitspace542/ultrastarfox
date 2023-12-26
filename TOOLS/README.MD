@@ -2,7 +2,8 @@
 All these tools are DOS executables and are intended to be run through DOSBox, unless otherwise noted.
 
 ## PACKER
-Star Fox Palette packer. A copy of this EXE is run from BIN\ when you run ``build.cmd`` or ``build to log.cmd``.  
+Star Fox Palette packer/graphics cruncher. No longer used in this repo.  
+sf_crunch is faster and saves more bytes compared to PACKER.  
 
 ## MERGE
 Texture interleaving tool.

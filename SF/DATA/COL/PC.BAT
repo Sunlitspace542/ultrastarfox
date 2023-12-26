@@ -1,5 +1,5 @@
 @echo off
-echo Building palettes...
+echo Crunching palettes...
 @del col.tmp
 @del col2.tmp
 @del allcols.col
@@ -31,4 +31,4 @@ echo Building palettes...
 @call mc contest 0 7
 @call mc 2ep 0 9
 cru allcols.col allcols.pac
-echo Palette Building Complete.
+echo Palette crunching Complete.
