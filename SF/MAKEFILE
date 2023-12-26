@@ -12,13 +12,14 @@ LOPTS=-b30 -h1024 -t7d
 
 # ROM Extender
 EXTEND=EXTEND
+# Extended size in Mbits, byte to pad with
 EXTOPS= 16 ff
 
 # Checksum Fixer
 CHECK=SFCHECK
 COPTS=-s -f
 
-# FXGfx Interleaver
+# FXGFX Interleaver
 MERGE=MERGE
 MOPTS= /cgx
 
@@ -44,33 +45,36 @@ SCRFILES= DATA\1-3-B.PCR DATA\2-3.PCR DATA\3-2.PCR DATA\B-HOLE.PCR DATA\CONT.PCR
  DATA\CONT-2.PCR DATA\DEMO.PCR DATA\E.PCR DATA\HOLE-A.PCR DATA\MAP.PCR DATA\T-F-S.PCR \
  DATA\TI-3-G.PCR
 
+# Banks that should be assembled
 ALLFILES= BANK\bank0.sob BANK\bank1.sob BANK\bank2.sob \
  BANK\bank4.sob BANK\bank5.sob BANK\bank6.sob BANK\bank7.sob \
  BANK\bank8.sob BANK\bank9.sob BANK\bank10.sob \
  BANK\bank11.sob BANK\shbanks.sob BANK\incbins.sob
 
+# Recipe to assemble a .ASM file and create a linkable .SOB file
 .asm.sob:
 	@$(ASM) -m30 $(ASMFLAGS) $< -v$*.SOB
 
+# Recipes to crunch/compress graphics
 .cgx.ccr:
 	@$(CRU) $< $*.CCR
 
 .scr.pcr:
 	@$(CRU) $< $*.PCR
 
-#all: msprites allcols crunch sf.sfc
+# Everything that should be done when make is executed
 all: allcols msprites crunch sf.sfc donebld
 
-# Pack Palettes
+# Recipe to pack palettes
 allcols:
 	@cd DATA\COL
 	@pc.bat
 	@cd ..\..
 
-# Interleave FXGfx
+# FXGFX files to be interleaved
 msprites: tex_01.bin tex_23.bin tex_23_a.bin
 
-# MSPRITES BIN Recipes
+# MSPRITES .BIN recipes
 tex_01.bin:
 	@$(MERGE) MSPRITES\tex_0.CGX MSPRITES\tex_1.CGX MSPRITES\tex_01.bin $(MOPTS)
 
@@ -109,6 +113,8 @@ clean:
 	@del msgs.txt
 	@del sf.sfc
 	@del symbols.txt
+
+## Banks to assemble
 
 ## Banks 0, 32
 bank0.sob: \
