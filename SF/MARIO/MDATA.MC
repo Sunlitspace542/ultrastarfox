@@ -593,7 +593,7 @@ mchar	macro
 
 mscalechars
 	IFEQ	0
-	INCBINFILE	data\moji_2.fon
+	INCBINFILE	data\font\moji_2.fon
 	ELSEIF
 ;A
 	mchar	%0000000000000000
