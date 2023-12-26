@@ -1,8 +1,13 @@
 ;***************************************************************************
 ;*                                                                         *
+;*                               Star Fox                                  *
+;*                              -----------                                *
+;*                                                                         *
 ;*                           SuperNES version.                             *
 ;*                                                                         *
-;*                           Argonaut Software.                            *	   
+;*                                                                         *
+;*                           Argonaut Software.      		               *
+;*                                                                         *
 ;*_________________________________________________________________________*
 ;*                                                                         *
 ;*   File: BGS.ASM                                                         *
@@ -15,7 +20,7 @@
 ;*_________________________________________________________________________*
 ;*                                                                         *
 ;* Author:                                                                 *
-;*	 Krister Wombell, Dylan Cuthbert                            *
+;*   Krister Wombell, Dylan Cuthbert                                       *
 ;*                                                                         *
 ;***************************************************************************
 
@@ -76,34 +81,8 @@ bg_1_1i_1	init_bg	mode2
 	tunnel	night
 
 bg_1_1a_1	blink
-;	init_bg	mode1
-;	bg2chr	tst
-;	bg2scr	tst
-;	palette	tm3
-;	set_bg
-;	info	hon,voff,zoff,nodots
-;;	pstrat	playertakeoff,a,ab			   
-;	hofmode	tunnel3
-;	set_zdepthtable	tunnel
-;	bgm	10
-;	flashtunnel
-;	shadowheight 0
-;	tunnel	night
 
-bg_1_1b_1	
-	blink
-;	init_bg	mode2		;what I see from the tunnel
-;	bg2chr	stp
-;	bg2scr	stp
-;	palette	2d
-;	gamepal	blue
-;	set_zdepthtable	stage1
-;	set_bg
-;	info	hon,von,zon,nodots
-;	bg2Yscroll	140
-;	shadowheight 39<<mybase_scale
-;	hofmode	rotate
-;	planet	night
+bg_1_1b_1	blink
 
 bg_1_1c_1	init_bg	mode2		;what I see from the tunnel
 	bg2chr	stp

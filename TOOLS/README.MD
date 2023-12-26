@@ -55,3 +55,14 @@ The prebuilt versions included here are command line utilities for Windows, the 
 CRU.EXE and DECRU.EXE are versions prebuilt for MS-DOS.  
 
 [sf_crunch + decrunch RHDN page](https://www.romhacking.net/utilities/1543/)
+
+## INCCOL.EXE
+A custom tool written for the palette packing process.  
+Takes a col file and a start and end offset parameter.  
+The start and end offsets are multiplied by 32.  
+To use:  
+``inccol [.col file] [start offset] [end offset]``  
+Output is written to ``col.tmp``.  
+
+
+

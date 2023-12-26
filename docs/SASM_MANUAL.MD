@@ -1,4 +1,4 @@
-## SASMX Manual (From ARGSFX.DOC)
+## SASM Manual (From ARGSFX.DOC)
 ```
 ######################################################################
 #              SASM (c)1992 Argonaut Software Ltd                    #
@@ -206,7 +206,7 @@
                                     the label.
                                     see DEFS,PRINTF,ROLS
 
-          SURPRESS <option>         Stops printing the option specified
+          SUPPRESS <option>         Stops printing the option specified
                                     again.
                                      Options are :
                                       EXPR - Expressions

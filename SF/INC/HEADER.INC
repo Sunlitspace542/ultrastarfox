@@ -33,7 +33,7 @@ totaltime	=	0
 	gettime	starttime
 
 
-	include	vars.inc
+	include	INC\vars.inc
 
 	include	INC\sfxregs.inc
 	IFNE	msu
