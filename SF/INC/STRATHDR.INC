@@ -16,7 +16,3 @@
 	include	EXT\trans.ext
 	include	EXT\sprites.ext
 
-	IFD	makefile
-	fileslog <$(STRATFILES)>
-	ENDC
-

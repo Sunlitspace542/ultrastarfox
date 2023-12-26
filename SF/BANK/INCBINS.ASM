@@ -12,10 +12,8 @@ mworldspr	equ	msprites1
 	bank	19
 	IFEQ	GERMAN
 msprites2	incbinfile	msprites\tex_23.bin
-	fileslog	msprites\tex_23_a.bin
 	ELSEIF
 msprites2	incbinfile	msprites\tex_23_a.bin
-	fileslog	msprites\tex_23.bin
 	ENDC
 	bankend	19
 
@@ -30,10 +28,8 @@ msprites3
 
 	IFEQ	german
 	inccru	sprites,data\obj-1.ccr
-	fileslog	data\obj-1-g.ccr
 	ELSEIF
 	inccru	sprites,data\obj-1-g.ccr
-	fileslog	data\obj-1.ccr
 	ENDC
 
 	inccru	bgetestccr,data\e-test.ccr
@@ -43,10 +39,8 @@ msprites3
 
 	IFEQ	german
 	inccru	bgfoxccr,data\fox.ccr
-	fileslog	data\fox-g.ccr
 	ELSEIF
 	inccru	bgfoxccr,data\fox-g.ccr
-	fileslog	data\fox.ccr
 	ENDC
 
 	inccru	bgfoxpcr,data\fox.pcr
@@ -71,27 +65,15 @@ msprites3
 	IFEQ	contest
 	inccru	mapccr,data\map.ccr
 	inccru	bg33ccr,data\3-3.ccr
-
-	fileslog	data\map-g.ccr
-	fileslog	data\sc.ccr
-	fileslog	data\sc.pcr
 	ELSEIF
 	inccru	bgscccr,data\sc.ccr
 	inccru	bgscpcr,data\sc.pcr
 mapccr
 bg33ccr
-;	inccru	mapccr,data\map.ccr
-	fileslog	data\3-3.ccr
-	fileslog	data\map.ccr
-	fileslog	data\map-g.ccr
 	ENDC
 	ELSEIF
 	inccru	mapccr,data\map-g.ccr
 	inccru	bg33ccr,data\3-3.ccr
-
-	fileslog	data\map.ccr
-	fileslog	data\sc.ccr
-	fileslog	data\sc.pcr
 	ENDC
 
 	inccru	bgfsnipcr,data\fs-ni.pcr
@@ -130,17 +112,11 @@ bg33ccr
 	IFEQ	german
 	IFEQ	contest
 	inccru	bgcppcr,data\cp.pcr
-	fileslog	data\cp-g.pcr
-	fileslog	data\e.pcr
 	ELSEIF
 	inccru	bgcppcr,data\e.pcr
-	fileslog	data\cp-g.pcr
-	fileslog	data\cp.pcr
 	ENDC
 	ELSEIF
 	inccru	bgcppcr,data\cp-g.pcr
-	fileslog	data\e.pcr
-	fileslog	data\cp.pcr
 	ENDC
 
 	inccru	bgtstccr,data\t-st.ccr
@@ -150,26 +126,14 @@ bg33ccr
 	IFNE	JAPANESE
 	inccru	bgcontccr,data\cont.ccr
 	inccru	bgcontpcr,data\cont.pcr
-
-
-	fileslog	data\cont-2.ccr
-	fileslog	data\cont-2.pcr
-	fileslog	data\ti-3-us.pcr
-	fileslog	data\ti-3-us.ccr
-	fileslog	data\cont-2-g.ccr
-	fileslog	data\cont-2-g.pcr
 	elseif
 
 	IFEQ	german
 	inccru	bgcontccr,data\cont-2.ccr
 	inccru	bgcontpcr,data\cont-2.pcr
-	fileslog	data\cont-2-g.ccr
-	fileslog	data\cont-2-g.pcr
 	ELSEIF
 	inccru	bgcontccr,data\cont-2-g.ccr
 	inccru	bgcontpcr,data\cont-2-g.pcr
-	fileslog	data\cont-2.ccr
-	fileslog	data\cont-2.pcr
 	ENDC
 	endc
 
@@ -205,17 +169,11 @@ bg24ccr	=	bgticcr
 	IFEQ	GERMAN					
 	IFEQ	CONTEST
 	inccru	bgcpccr,data\cp.ccr
-	fileslog	data\cp-g.ccr
-	fileslog	data\e.ccr
 	ELSEIF
 	inccru	bgcpccr,data\e.ccr
-	fileslog	data\cp.ccr
-	fileslog	data\cp-g.ccr
 	ENDC
 	ELSEIF
 	inccru	bgcpccr,data\cp-g.ccr
-	fileslog	data\cp.ccr
-	fileslog	data\e.ccr
 	ENDC
 
 facedata	inccolfile	data\face.cgx,0,360 ; size (in bytes) divided by 32
@@ -238,10 +196,8 @@ musicsize	=	0
 
 	IFEQ	PAL
 	incsnd	sound2,snd\sgsound2.bin
-	fileslog	snd\psgsnd2.bin
 	ELSEIF
 	incsnd	sound2,snd\psgsnd2.bin
-	fileslog	snd\sgsound2.bin
 	ENDC
 
 	incsnd	sound3,snd\sgsound3.bin
@@ -249,10 +205,8 @@ musicsize	=	0
 
 	IFEQ	PAL
 	incsnd	sound5,snd\sgsound5.bin
-	fileslog	snd\psgsnd5.bin
 	ELSEIF
 	incsnd	sound5,snd\psgsnd5.bin
-	fileslog	snd\sgsound5.bin
 	ENDC
 
 	incsnd	sound6,snd\sgsound6.bin
@@ -263,17 +217,11 @@ musicsize	=	0
 	IFEQ	GERMAN
 	IFEQ	PAL
 	incsnd	sounda,snd\sgsounda.bin
-	fileslog	snd\gsgsnda.bin
-	fileslog	snd\psgsnda.bin
 	ELSEIF
 	incsnd	sounda,snd\psgsnda.bin
-	fileslog	snd\gsgsnda.bin
-	fileslog	snd\sgsounda.bin
 	ENDC
 	ELSEIF
 	incsnd	sounda,snd\gsgsnda.bin
-	fileslog	snd\sgsounda.bin
-	fileslog	snd\psgsnda.bin
 	ENDC
 
 	incsnd	bgma,snd\sgbgma.bin
@@ -297,7 +245,6 @@ musicsize	=	0
 
 	ifne	JAPANESE ; if JAPANESE = 1
 	inccru	obj2ccr,data\obj-2.ccr ; training/game text (JP)
-	fileslog data\obj-3.ccr
 	elseif
 	ifne	german ; if german = 1
 	inccru	obj2ccr,data\obj-4.ccr ; training/game text (GER)
@@ -306,7 +253,6 @@ musicsize	=	0
 	inccru	obj2ccr,data\obj-3.ccr ; training/game text (US/EU)
 	elseif
 	inccru	obj2ccr,data\obj-3.ccr ; training/game text (US/EU)
-	fileslog data\obj-2.ccr
 	endc
 	endc
 	endc
@@ -317,32 +263,6 @@ musicsize	=	0
 	PRINTF	"%N%N  MORE THAN 16 MEGA-BITS OF ROM USED!! %N%N"
 	FAIL
 	endc
-
-
-	fileslog	data\col\bg2-a.col
-	fileslog	data\col\bg2-b.col
-	fileslog	data\col\bg2-c.col
-	fileslog	data\col\bg2-d.col
-	fileslog	data\col\bg2-e.col
-	fileslog	data\col\bg2-f.col
-	fileslog	data\col\bg2-g.col
-	fileslog	data\col\t-m.col
-	fileslog	data\col\t-m-2.col
-	fileslog	data\col\t-m-3.col
-	fileslog	data\col\t-m-4.col
-	fileslog	data\col\b-m.col
-	fileslog	data\col\light.col
-	fileslog	data\col\space.col
-	fileslog	data\col\stars.col
-	fileslog	data\col\cp.col
-	fileslog	data\col\cp-us.col
-	fileslog	data\col\hole.col
-	fileslog	data\col\l.col
-	fileslog	data\col\e-test0.col
-	fileslog	data\col\e-test.col
-	fileslog	data\col\obj-1.col
-
-
 
 	include	INC\tail.inc
 

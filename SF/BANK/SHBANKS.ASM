@@ -17,10 +17,8 @@ do_hdr	=	0
 
 	IFEQ	PAL
 bgmm	incbinfile	snd\sgbgmm.bin
-	fileslog	snd\psgbgmm.bin
 	ELSEIF
 bgmm	incbinfile	snd\psgbgmm.bin
-	fileslog	snd\sgbgmm.bin
 	ENDC
 
 bgmmlen	equ	*-bgmm

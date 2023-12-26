@@ -4256,7 +4256,6 @@ deccgram	macro
 	endm
 
 ;------------------------------------------------------------------------
-
 inccru	macro
 	incbin	\2
 \1
@@ -4264,36 +4263,7 @@ inccru	macro
 \3
 	endc
 
-	fileslog	\2
-
 	endm
-
-fileslog	MACRO
-	IFNE	filelist
-	IFND	makefile
-	fopen	+files.log
-	printf	"\1%n"
-	fclose
-	ELSEIF
-	IFND	fileslogcount
-fileslogcount =	0
-	ENDC
-
-	fopen	+files.log
-	printf	"\1 "
-
-fileslogcount	=	fileslogcount+1
-
-	IFEQ	fileslogcount-4
-	printf	"\\%n"
-fileslogcount	=	0
-	ENDC
-	fclose
-
-	ENDC
-	ENDC
-	ENDM
-
 ;------------------------------------------------------------------------
 
 decclear	macro
@@ -5160,7 +5130,6 @@ totalfiles	=	totalfiles+1
 	progress	totalfiles,oldtotalfiles,<\1>
 	ENDC
 	include	\1
-	fileslog	\1
 	ENDM
 
 ;------------------------------------------------------------------------
@@ -5594,8 +5563,6 @@ sndoffset	=	rompos-(sndbank*$8000)
 
 musicsize	=	musicsize+\1len
 
-	fileslog	\2
-
 	ENDM
 
 ;-------------------------------------------------------------------
@@ -5837,14 +5804,12 @@ Do_Hdr	=	0
 
 incbinfile	MACRO
 	incbin	\1
-	fileslog	\1
 	ENDM
 
 ;-------------------------------------------------------------------
 
 inccolfile	MACRO
 	inccol	\1,\2,\3
-	fileslog	\1
 	ENDM
 
 ;-------------------------------------------------------------------

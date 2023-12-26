@@ -2943,9 +2943,7 @@ trail_istrat
 paths
 	IFEQ	CONTEST
 	incfile	PATH\pathdata.asm
-	fileslog	PATH\epathdat.asm
 	ELSEIF
-	fileslog	PATH\pathdata.asm
 	incfile	PATH\epathdat.asm
 	ENDC
 dpaths

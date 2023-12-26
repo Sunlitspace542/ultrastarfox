@@ -54,7 +54,7 @@ startboot	disable ; Disable Interrupts
 	sta	mousemodetemp	; (enable mouse)
 	ENDC ; End conditional
 
-	IFEQ	contest ; start conditional: if CONTEST = 0 (Not SSFW)
+	IFEQ	nointroseq ; start conditional: if nointroseq = 0
 	jsl	intro_l ; Jump to Intro Sequence
 	ENDC ; End conditional
 
@@ -128,7 +128,7 @@ restart	ai16 ; set A/X/Y to 16 bit
 	sta	firstdnld ; store @ firstdnld variable (this has to do with initializing the SPC700)
 	sta.l	oncewipe ; Store A at oncewipe variable
 
-	IFNE	CONTEST ; start conditional: If CONTEST !=0 (=1) (SSFW)
+	IFNE	nointroseq ; start conditional: If nointroseq !=0 (=1)
 	jsl	initialise_l ; Initialize game
 	jsl	titleseq_l ; Go to Title Sequence
 	ENDC ; End conditional

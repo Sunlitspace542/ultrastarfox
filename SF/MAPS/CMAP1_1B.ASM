@@ -2,7 +2,6 @@ map1_1b
 
 
 	INCMAP	<c1-1>
-	fileslog	maps\1-1.asm
 	IFEQ	1
 	mapgoto	.boss
 

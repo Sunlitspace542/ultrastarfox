@@ -75,9 +75,5 @@ totaltime	=	0
 
 ;---------------------------------------------------------
 
-	IFD	makefile
-	fileslog	<$(STDFILES)>
-	ENDC
-
 
 

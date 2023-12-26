@@ -2,12 +2,8 @@ map1_1b
 
 	IFEQ	CONTEST
 	INCMAP	<1-1>
-	fileslog	maps\c1-1.asm
-	fileslog	maps\e1-1.asm
 	ELSEIF
 	INCMAP	<e1-1>
-	fileslog	maps\c1-1.asm
-	fileslog	maps\1-1.asm
 	ENDC
 
 	IFEQ	1

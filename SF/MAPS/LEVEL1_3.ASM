@@ -8,7 +8,6 @@ level1_3
 	INCMAP		event
 
 	ELSEIF
-	fileslog	maps\event.asm
 	ENDC
 	
 

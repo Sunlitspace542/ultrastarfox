@@ -4,9 +4,7 @@
 
 ;####################################################################################################################
 
-; ####################
-; # Gameplay Options #
-; ####################
+; Gameplay Options
 
 ; for player health values and other object equates, see INC\STRATEQU.INC.
 
@@ -16,7 +14,12 @@ wnglzrman_helpball	equ	0
 ; Crosshair in third person view [0 = off 1 = on]
 crosshairalwayson	equ	0
 
+; Skip intro cutscene
+; [0 = off 1 = on]
+nointroseq	equ	0
+
 ; disable SCRAMBLE sequence in 1-1/2-1/3-1
+; [0 = off 1 = on]
 noscrambleseq	equ	0
 
 ; Number of lives the player starts with (stock = 3)
@@ -26,9 +29,8 @@ numlives	equ	3
 ; Input window for barrel rolls (in frames). (stock = 3)
 barrelrolldelay	equ	3
 
-;###################
-;# Random Vertices #
-;###################
+
+; Random Vertices
 
 ; randomize the vertices slightly
 randverts1	equ	0

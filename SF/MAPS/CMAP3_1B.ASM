@@ -1,8 +1,6 @@
 map3_1b
 	incmap	c3-1
 
-	fileslog	maps\3-1.asm
-
 	fadeoutbgm
 	setbgm	bgm_boss1
 ;----------------------------------------

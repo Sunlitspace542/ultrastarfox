@@ -16,13 +16,9 @@ font0fon	equ	font0wid+\2
 
 	IFEQ	german
 	incfont	0,140
-	fileslog	data\font\moji_d.fon
-	fileslog	data\font\moji_d.trn
 	ELSEIF
 
 	incfont	d,140
-	fileslog	data\font\moji_0.fon
-	fileslog	data\font\moji_0.trn
 	ENDC
 
 	incfile	ASM\gametext.asm

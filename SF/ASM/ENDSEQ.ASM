@@ -1685,20 +1685,24 @@ prot	=	prot+1
 ;-------------------------------------------------------------------------
 titleseq_l	php
 
-	IFNE	contest
+	IFNE	nointroseq ; If intro sequence disabled
 	a8i16
+
+	IFNE	msu
+	jsl CheckForMSU ; check for the MSU-1
+	ENDC
+
 	bgm	init
-	a8i16
+	
 	ldx	#0
 .ll	dex
 	bne	.ll
+
 	bgm	intro
 	ENDC
 
 titleredo	a8i16
 	disable
-;	startbgm	$f0
-;	jml	timeupin
 
 	lda	#1
 	sta.l	oncewipe

@@ -79,13 +79,9 @@ armsstart
 	IFEQ	cesdemo-1
 	INCMAP	cmap3_1b
 	INCMAP	cmap3_2
-	fileslog	maps\map3_1b.asm
-	fileslog	maps\map3_2.asm
 	ELSEIF
 	INCMAP	map3_1b
 	INCMAP	map3_2
-	fileslog	maps\cmap3_1b.asm
-	fileslog	maps\cmap3_2.asm
 	ENDC
 
 
