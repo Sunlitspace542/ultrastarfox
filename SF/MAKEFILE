@@ -76,13 +76,13 @@ msprites: tex_01.bin tex_23.bin tex_23_a.bin
 
 # MSPRITES .BIN recipes
 tex_01.bin:
-	@$(MERGE) MSPRITES\tex_0.CGX MSPRITES\tex_1.CGX MSPRITES\tex_01.bin $(MOPTS)
+	@$(MERGE) MSPRITES\tex_0.CGX MSPRITES\tex_1.CGX MSPRITES\$@ $(MOPTS)
 
 tex_23.bin:
-	@$(MERGE) MSPRITES\tex_2.CGX MSPRITES\tex_3.CGX MSPRITES\tex_23.bin $(MOPTS)
+	@$(MERGE) MSPRITES\tex_2.CGX MSPRITES\tex_3.CGX MSPRITES\$@ $(MOPTS)
 
 tex_23_a.bin:
-	@$(MERGE) MSPRITES\tex_2.CGX MSPRITES\tex_3_a.CGX MSPRITES\tex_23_a.bin $(MOPTS)
+	@$(MERGE) MSPRITES\tex_2.CGX MSPRITES\tex_3_a.CGX MSPRITES\$@ $(MOPTS)
 
 # Crunch all compressible GFX
 crunch: $(CGXFILES) $(SCRFILES)
