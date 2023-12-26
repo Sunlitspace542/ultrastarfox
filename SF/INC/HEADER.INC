@@ -24,19 +24,6 @@ RAMLEFT		=	1	; displays information on ram space
 TITLE_BAR	=	0
 	ENDC
 
-
-	IFND	filelist
-	IFD	makefile
-filelist	=	1
-	fopen	+files.log
-	printf	"%n--------------------------------------------%n"
-	fclose
-	ELSEIF
-filelist	=	0
-	ENDC
-	ENDC
-
-
 	INCLUDE	ASM\ifcold.asm
 
 	include	INC\macros.inc
