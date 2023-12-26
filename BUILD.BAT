@@ -4,5 +4,6 @@ set sasmheap=14400
 cd sf
 make
 cd ..
+del SF\BANK\*.SOB
 pause
 exit
