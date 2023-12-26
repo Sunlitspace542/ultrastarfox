@@ -17,7 +17,7 @@ wnglzrman_helpball	equ	0
 crosshairalwayson	equ	0
 
 ; disable SCRAMBLE sequence in 1-1/2-1/3-1
-noscrambleseq	equ	1
+noscrambleseq	equ	0
 
 ; Number of lives the player starts with (stock = 3)
 ; Note that the game displays the number of lives as 1 less than it actually is.

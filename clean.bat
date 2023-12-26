@@ -8,5 +8,4 @@ make clean
 cd ..
 del sf.SFC
 del symbols.txt
-pause
 exit
