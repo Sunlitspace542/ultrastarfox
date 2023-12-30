@@ -3042,10 +3042,8 @@ makeBG2black_l
     	rtl
 
 
-seapal	dw $0000,$34c0,$38e0,$3d00,$4120,$4540,$4960,$4d80
-	dw $51a0,$55c0,$59e0,$5e00,$6220,$6640,$6a60,$6e80
-groundpal	dw $0000,$0088,$00c9,$04ea,$090b,$0d2c,$114d,$156e
-	dw $198f,$1db0,$21d1,$25f2,$2a13,$2e34,$3255,$3676
+seapal	inccolfile	DATA\COL\SEA.COL,0,1
+groundpal	inccolfile	DATA\COL\GROUND.COL,0,1
 mist2col	inccolfile	data\col\mist.col,6,8
 daycol	inccolfile	data\col\bg2-c.col,1,2
 	inccolfile	data\col\bg2-c.col,5,6

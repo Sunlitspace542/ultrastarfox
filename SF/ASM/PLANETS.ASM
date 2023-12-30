@@ -3651,23 +3651,24 @@ planetsprs ; Stage icon definitions
 
 
 planetnames
-	db	93	;0
-	db	94	;1
-	db	94	;2
-	db	95	;3
-	db	96	;4
-	db	98	;5
-	db	97	;6
-	db	102	;7
-	db	101	;8
-	db	100	;9
-	db	99	;10
-	db	103	;11
-	db	104	;12
-	db	104	;13
-	db	105	;14
-	db	104	;15
-	db	105	;16
+; The numbers in this table point to message IDs in the message file.
+	db	93	;00 ; Corneria ; 1-1, 2-1, 3-1
+	db	94	;01 ; Asteroid Belt 1 ; 1-2
+	db	94	;02 ; Asteroid Belt 2 ; 3-2
+	db	95	;03 ; Sector X ; 2-2
+	db	96	;04 ; Fortuna ; 3-3
+	db	98	;05 ; Titania ; 3-5
+	db	97	;06 ; Space Armada ; 1-3
+	db	102	;07 ; Sector Z ; 3-4
+	db	101	;08 ; Meteor ; 1-4
+	db	100	;09 ; Sector Y ; 2-4
+	db	99	;10 ; Black Hole ; BHOLE
+	db	103	;11 ; Macbeth ; 3-5
+	db	104	;12 ; Venom 1 ; 1-5
+	db	104	;13 ; Venom 2 ; 2-5
+	db	105	;14 ; OOTD ; SPECIAL
+	db	104	;15 ; Venom 3 ; 2-6
+	db	105	;16 ; OOTD ; SPECIAL
 
 
 
@@ -3786,64 +3787,8 @@ rgbscale	=	rgbscale-(100/16)
 	
 
 planselpal
-	IFEQ	1
-
-;	progress_off
-;	fopen	planet.col
-rgbscale	=	100
-	REPT	15
-
-	IFEQ	rgbscale-100
-	rgbws	$0a,$09,$09,rgbscale
-	ELSEIF
-	rgbws	0,0,0,rgbscale
-	ENDC
-
-	rgbws	$0c,$02,$00,rgbscale
-	rgbws	$1a,$09,$05,rgbscale
-	rgbws	$1d,$15,$08,rgbscale
-	rgbws	$1f,$1b,$0d,rgbscale
-	rgbws	$04,$01,$13,rgbscale
-	rgbws	$0b,$09,$1b,rgbscale
-	rgbws	$0f,$14,$1f,rgbscale
-	rgbws	$16,$1d,$1f,rgbscale
-	rgbws	$00,$00,$00,rgbscale
-	rgbws	$08,$0a,$09,rgbscale
-	rgbws	$10,$14,$13,rgbscale
-	rgbws	$17,$1a,$19,rgbscale
-	rgbws	$1d,$1f,$1e,rgbscale
-	rgbws	$08,$1c,$11,rgbscale
-	rgbws	$01,$15,$0a,rgbscale
-
-;	rgbws	$0f,$02,$08,rgbscale
-;	rgbws	$15,$08,$08,rgbscale
-;	rgbws	$1f,$0f,$08,rgbscale
-;	rgbws	$1f,$1b,$0b,rgbscale
-;	rgbws	$00,$07,$13,rgbscale
-;	rgbws	$05,$0d,$1b,rgbscale
-;	rgbws	$0d,$17,$1f,rgbscale
-;	rgbws	$15,$1f,$1f,rgbscale
-;	rgbws	$00,$00,$00,rgbscale
-;	rgbws	$0c,$0e,$0c,rgbscale
-;	rgbws	$12,$14,$12,rgbscale
-;	rgbws	$18,$1a,$18,rgbscale
-;	rgbws	$1d,$1f,$1d,rgbscale
-;	rgbws	$12,$1f,$12,rgbscale
-;	rgbws	$00,$0d,$00,rgbscale
-
-rgbscale	=	rgbscale-(100/15)
-	ENDR
-
-;	fclose	!
-;	progress_on
-
-	ENDC
-
 	inccolfile	data\col\map_c.col,0,15
-
-
 	inccolfile	data\map-obj.col,0,1
-
 	rgbw	$1f,$1f,0
 	rgbw	$1f,$1f,0
 	rgbw	$1f,$1f,0
@@ -3895,7 +3840,7 @@ rightchar	=	3!pal15		;4
 highrightchar =	3!xflip!pal15	;4+1<<15
 
 
-
+; Start of planet macros
 NOMOREPATHS	MACRO
 	db	0
 	ENDM
@@ -3912,7 +3857,7 @@ PATHCHOICE	MACRO
 	dw	path_\1
 	ENDM
 	
-PATHSTART	MACRO
+PATHSTART	MACRO ; ?,?,?,map,msg,route
 	db	3
 	db	\1,\2	;32*(\2)+(\1)+p_bg1_scr1
 	db	\3
@@ -3982,6 +3927,7 @@ PATHHIGHRIGHT	MACRO
 PATHEND	MACRO
 	dw	-1
 	ENDM
+; End of planet macros
 
 path_1	equ	0
 path_2	equ	2
@@ -3989,16 +3935,18 @@ path_3	equ	4
 path_4	equ	6
 
 stagepaths ; definitions for the 3 map routes and other stages on the map screen
-	dw	.path1-stagepaths	; route 2
-	dw	.path6-stagepaths	; route 1
-	dw	.path11-stagepaths	; route 3
+	dw	.path1-stagepaths	; route 1/2
+	dw	.path6-stagepaths	; route 0/1
+	dw	.path11-stagepaths	; route 2/3
 
 .path1	local
+; Corneria 2
 	PATHSTART	4,20,0,2_1,88,1
 	PATHUP
 	PATHCHOICE	3
 
 .path2	local
+; Sector X
 	PATHSTART	4,14,3,2_2,89,1
 	PATHUP
 	PATHUP
@@ -4006,6 +3954,7 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHNEXT	.path3
 
 .path3	local
+; Titania
 	PATHSTART	9,8,5,2_3,106,1
 	PATHUPRIGHT
 	PATHUPRIGHT
@@ -4015,6 +3964,7 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHNEXT	.path4
 
 .path4	local
+; Sector Y
 	PATHSTART	18,5,9,2_4,107,1
 	PATHRIGHT
 	PATHRIGHT
@@ -4023,14 +3973,17 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHNEXT	.path5
 
 .path5	local
+; Venom 2 Orbital
 	PATHSTART	0,0,15,2_5,114,1
 	PATHNEXT	.end2
 
+; Corneria 1
 .path6	local
 	PATHSTART	6,21,0,1_1,88,0
 	PATHUPRIGHT
 	PATHCHOICE	2
 
+; Asteroid Field 1
 .path7	local
 	PATHSTART	11,17,2,1_2,89,0
 	PATHUPRIGHT
@@ -4040,33 +3993,39 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHRIGHT
 	PATHNEXT	.path8
 
+; Space Armada
 .path8	local
 	PATHSTART	20,14,6,1_3,90,0
 	PATHRIGHT
 	PATHNEXT	.path9
 
 .path9	local
+; Meteor
 	PATHSTART	24,11,8,1_4,91,0
 	PATHUP
 	PATHNEXT	.path10
 
+; Venom 1 Orbital
 .path10	local
 	PATHSTART	0,0,15,1_5,92,0
 	PATHNEXT	.end
 
 .path11	local
+; Venom 3
 	PATHSTART	6,23,0,3_1,108,2
 	PATHRIGHT
 	PATHRIGHT
 	PATHCHOICE	1
 
 .path12	local
+; Asteroid Field 2
 	PATHSTART	12,21,1,3_2,109,2
 	PATHUPRIGHT
 	PATHUPRIGHT
 	PATHNEXT	.path13
 
 .path13	local
+; Fortuna
 	PATHSTART	18,19,4,3_3,110,2
 	PATHRIGHT
 	PATHRIGHT
@@ -4076,27 +4035,32 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHNEXT	.path14
 
 .path14	local
+; Sector Z
 	PATHSTART	27,19,7,3_4,111,2
 	PATHUPRIGHT
 	PATHUP
 	PATHNEXT	.path15
 
 .path15	local
+; Macbeth
 	PATHSTART	28,11,11,3_5,112,2
 	PATHUP
 	PATHNEXT	.path16
 
 .path16	local
+; Venom 3 Orbital
 	PATHSTART	0,0,15,3_6,116,2
 	PATHNEXT	.end3
 
 .path17	local
+; Corneria 2
 	PATHSTART	6,15,3,2_2,89,1
 	PATHUPRIGHT_H
 	PATHUPRIGHT_H
 	PATHUPRIGHT_H
 	PATHCHOICE	4
 
+; Black Hole
 .path18	local
 	PATHSTART	12,9,10,_blackhole,113,0
 	PATHUPRIGHT_H
@@ -4133,6 +4097,7 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHNEXT	.path14
 
 .path21	local
+; Asteroid Field 1
 	PATHSTART	9,16,2,1_2,89,0
 	PATHUP_H
 	PATHUP_H
@@ -4140,6 +4105,7 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHCHOICE	4
 
 .path22	local
+; Asteroid Field 2
 	PATHSTART	12,25,1,3_2,109,2
 	PATHRIGHT_H
 	PATHRIGHT_H
@@ -4150,21 +4116,25 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHNEXT	.otherend
 
 .end3	local
+; Venom 3
 	PATHSTART	0,0,15,3_7,116,2
 	PATHEND
 	NOMOREPATHS
 
 .end2	local
+; Venom 2 (Venom Highway)
 	PATHSTART	0,0,15,2_6,114,1
 	PATHEND
 	NOMOREPATHS
 
+; Venom 1
 .end	local
 	PATHSTART	0,0,15,1_6,92,0
 	PATHEND
 	NOMOREPATHS
 
 .otherend	local
+; Out of This Dimension
 	PATHSTART	0,0,14,_special,115,0
 	PATHEND
 	NOMOREPATHS
