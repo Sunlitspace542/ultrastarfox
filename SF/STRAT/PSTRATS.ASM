@@ -2344,6 +2344,11 @@ playermove_srou
 	lda	mousemode
 	lbeq	.nomouse5
 	lda	mouse_x1
+	IFNE	analogstick
+	lbeq	.zerocheck
+	cmp #128
+	lbeq	.zerocheck
+	ENDC
 	lbeq	.nomouse5
 	and	#%10000000
 	lbeq	.rightmouse
@@ -2360,6 +2365,9 @@ playermove_srou
 	cmp				#(deg11*(2))
 	lbpl	.nomouse5
 	lda	mouse_x1
+	IFNE	analogstick
+	lbeq	.nomouse5
+	ENDC
 	cmp	#$84
 	bmi	.slower3
 	cmp	#$88
@@ -2393,17 +2401,40 @@ playermove_srou
 
 .slower4
 	s_sub_var		W,plroty,#(Zrotspeed/4)*3
+	IFNE	analogstick
+	jmp	.nomouse5
+	ELSEIF
 	bra	.nomouse5
+	ENDC
 
 .norm4
 	s_sub_var		W,plroty,#Zrotspeed
+	IFNE	analogstick
+	jmp	.nomouse5
+	ELSEIF
 	bra	.nomouse5
+	ENDC
 
 .faster4
 	s_sub_var		W,plroty,#(Zrotspeed*3)/2
+	IFNE	analogstick
+	jmp	.nomouse5
+	ELSEIF
 	bra	.nomouse5
+	ENDC
 
+	IFNE	analogstick
+.zerocheck
+	lda mouse_y1
+	lbeq	.zerofinal
+	cmp #128
+	lbne	.nomouse5
 
+.zerofinal	
+	s_Achase_var		W,plroty,#0,3
+	s_Achase_var		W,plrotx,#0,4
+	jmp .no_yctrl
+	ENDC
 .nomouse5
 	ENDC
 
@@ -2445,6 +2476,10 @@ playermove_srou
 	lda	mousemode
 	lbeq	.no_yctrl
 	lda	mouse_y1		;loading mouse_y1
+	IFNE	analogstick
+	lbeq	.no_yctrl
+	cmp #128
+	ENDC
 	lbeq	.no_yctrl
 	and	#%10000000
 	beq	.ypos			;if its less than 0, its going down?
