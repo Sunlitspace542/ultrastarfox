@@ -1749,6 +1749,42 @@ window_buffer	php
 ;		RAM Definition    
 ;================================================================
 
+;reg0
+;reg0l		ds	1	; Work registers
+;reg0h		ds	1
+
+;mouse_con	ds	1	;
+;mouse_con0	ds	1	; Mouse connection port D0=4016
+;mouse_con1	ds	1	; Mouse connection port D0=4017
+
+;mouse_sp_set
+;mouse_sp_set0	ds	1	; Mouse Speed Setting (joy1)
+;mouse_sp_set1	ds	1	; Mouse Speed Setting (joy2)
+
+;mouse_sp
+;mouse_sp0	ds	1	; Mouse Speed (joy1)
+;mouse_sp1	ds	1	; Mouse Speed (joy2)
+
+;mouse_y0	ds	1	; Mouse Y-direction  (joy1)
+;mouse_y1	ds	1	; Mouse Y-direction  (joy2)
+;mouse_x0	ds	1	; Mouse X-direction  (joy1)
+;mouse_x1	ds	1	; Mouse X-direction  (joy2)
+
+;mouse_sw
+;mouse_sw0	ds	1	; Mouse button turbo
+;mouse_sw1	ds	1	; Mouse button turbo
+
+;mouse_swt
+;mouse_swt0	ds	1	; Mouse button trigger
+;mouse_swt1	ds	1	; Mouse button trigger
+
+;mouse_sb			; Previous Switch status
+;mouse_sb0	ds	1
+;mouse_sb1	ds	1
+
+;cursol_x	ds	1	; Cursor X position    
+;cursol_y	ds	1	; Cursor Y position
+
 ;*******************************************************************
 ;*  ============================================================== *
 ;*        Mouse_read                                               *
