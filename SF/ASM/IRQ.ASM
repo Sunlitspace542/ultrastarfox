@@ -1724,7 +1724,7 @@ window_buffer	php
 	plp
 	rts
 
-
+	IFNE	mouseon
 ;****************************************************************
 ;*																*
 ;*		Super NES Mouse BIOS									*
@@ -2002,5 +2002,6 @@ speed_change
 ;
 	db	'END OF SNES MOUSE BIOS'	    			;do not delete
 ;	original: 'END OF MOUSE BIOS'
+	ENDC ;mouseon
 
 
