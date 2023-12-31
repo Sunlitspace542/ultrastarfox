@@ -29,6 +29,9 @@
 */SF/*.txt
 *.TXT
 
+# VSCode stuff
+*/.vscode/*
+
 # Files generated during assembly
 *.CCR
 *.PCR
