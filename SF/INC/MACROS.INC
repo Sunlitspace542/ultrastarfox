@@ -4335,7 +4335,11 @@ bankend	macro
 
 
 	IFNE	FASTROM
+;	IFEQ	\1
+;bank\1left	=	65536-*
+;	ELSEIF
 bank\1left	=	32768-(*-((\1*$10000)+$808000))
+;	ENDC
 	ELSEIF
 	IFEQ	\1
 bank\1left	=	65536-*
@@ -4394,6 +4398,8 @@ banknum	=	\1
 Assembling_bank	=	\1
 	IFND	_SASM
 	?Assembling_bank
+	ELSEIF
+;	progress	\1,11
 	ENDC
 
 	endm
