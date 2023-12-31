@@ -7,7 +7,7 @@
 ; Enable SNES mouse (connect to port 2) (if using this, setting "crosshairalwayson" to 1 is recommended)
 mouseon	equ	0
 
-; Enable Analog controls via the SNES mouse.
+; Enable analog controls via the SNES mouse.
 ; mouseon must be set to 1.
 ; Make sure to unbind D-Pad U/D/L/R in your emulator.
 ; Up and down on the mouse may need to be manually inverted dependent on preference.
