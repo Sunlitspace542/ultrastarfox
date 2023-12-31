@@ -1,3 +1,4 @@
+
 ## SASM Manual (From ARGSFX.DOC)
 ```
 ######################################################################
@@ -425,3 +426,31 @@ rom listing and note which bank goes wrong(not rom pos.), go into the
 source code and put a few extra bytes at the start of the bank!
 (Fixed now I think)
 ```
+
+## SASM help text
+```
+SASMX v2.02  Copyright (c) Argonaut Software Ltd 1992
+Usage: SASMX [options] sourcefile
+ Options are:
+   -d<value>,"<str>" - Defines a string.
+   -e<label>(=value) - Equate label with the optional value.
+   -f<Name>          - Show file listing on screen or write to file.
+   -h                - This text.
+   -i<Name>          - Specifies an incdir name.
+   -l                - Turns on listing.
+   -m<value>         - Specifies maximum errors before stopping.
+   -o<Name>          - Write object code to <Name>.
+   -r                - Display rom listing on screen.
+   -s<label>(=value) - Set the label with the optional value.
+   -v<filename.SOB>  - Write linkable file <filename.SOB>.
+   -x<Name>          - Turns on symbol listing to optional file.
+
+ Valid enironment variables : 
+   sasmdir           - Default directory for the source code.
+   sasmsrc           - Default source code file.
+   sasmheap          - Default heap size.
+```
+
+## Other notes
+- SASM does not support the ``MVN`` / ``MVP`` instructions. Macros are provided in this repository (``sasm_mvn`` / ``sasm_mvp``) that get around this.  
+- SASM is only capable of assembling in LoROM.  
