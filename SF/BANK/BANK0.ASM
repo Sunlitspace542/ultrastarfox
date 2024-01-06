@@ -42,6 +42,12 @@
 	include	EXT\endseq.ext
 
 ;------------------------------------
+; Write BANKS.CSV header
+	fopen	+BANKS.CSV
+	printf	"Bank number,Bytes free%n"
+	fclose	BANKS.CSV
+;------------------------------------
+
 	bank	0		;Bank 0
 
 	db	0,0,0,0,0,0
