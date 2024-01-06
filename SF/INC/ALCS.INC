@@ -448,11 +448,8 @@ xlen	=	22*1024+450
 ;Zero page variables
 	zalc	mariopc,2
 	zalc	marioBank,1
-;	zalc	nextins,1
-
 
 ;RAM variables
-
 	alc	sreg,2	;*2
 	alc	dreg,2	;*2
 	alc	oreg,2	;*2
@@ -483,12 +480,12 @@ m_un32		equ	$3032 ; Unused
 m_bramr		equ	$3033 ; Backup RAM register (W)
 m_pbr		equ	$3034 ; Program Bank Register (R/W)
 m_un35		equ	$3035 ; Unused
-m_rombr		equ	$3036 ; ROM bank register (R)
+m_rombr		equ	$3036 ; ROM Bank Register (R)
 m_cfgr		equ	$3037 ; Control Flags Register (W)
 m_scbr		equ	$3038 ; Screen Base Register (W)
 m_clsr		equ	$3039 ; Clock Speed Register (W)
 m_scmr		equ	$303A ; Screen Mode Register (W)
-m_vcr		equ	$303B ; Version code register (R)
+m_vcr		equ	$303B ; Version Code Register (R)
 m_rambr		equ	$303C ; RAM Bank Register (R)
 m_un3d		equ	$303D ; Unused
 m_cbr		equ	$303E ; Cache Base Register (R)
