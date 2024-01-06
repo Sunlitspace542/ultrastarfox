@@ -241,7 +241,7 @@
 ----------------------------------------------------------------------
           $<str> -          print string x.
           %      -          prints a real percent mark
-          <xx>   -          prints [xxm (ANSI command) where xx is a 2
+          <xx>   -          prints ESC[xxm (ANSI command) where xx is a 2
                             digit ANSI code.
           b      -          prints a backspace
           c      -          prints the second nested macro name
