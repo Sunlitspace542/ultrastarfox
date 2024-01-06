@@ -28,6 +28,10 @@
 */SF/*.tmp
 */SF/*.txt
 *.TXT
+*.CSV
+*.csv
+*.CSV#
+*.csv#
 
 # VSCode stuff
 */.vscode/*
