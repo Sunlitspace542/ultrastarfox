@@ -24,7 +24,7 @@ RAMLEFT		=	1	; displays information on ram space
 TITLE_BAR	=	0
 	ENDC
 
-	INCLUDE	ASM\ifcold.asm
+	include	INC\ifcold.inc
 
 	include	INC\macros.inc
 
