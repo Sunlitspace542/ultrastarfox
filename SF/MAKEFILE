@@ -29,7 +29,7 @@ CRU=CRU
 # Font Converter
 FONT=FON
 
-#!! If you add/remove a cgx in these two lists, make sure to add/remove the corresponding file.
+#!! If you add/remove a cgx/scr in these two lists, make sure to add/remove the corresponding file.
 
 # Crunched tilesets
 CGXFILES= DATA\1-3-B.CCR DATA\2-3B.CCR DATA\3-4.CCR DATA\B.CCR DATA\CONT.CCR DATA\DOG.CCR \
