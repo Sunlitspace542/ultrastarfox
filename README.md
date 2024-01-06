@@ -1,23 +1,24 @@
 
 # UltraStarFox
-Star Fox / Starwing (SNES 1993) source code, modified for ease-of-use and ROMHacking.
+Star Fox / Starwing source code, modified for ease-of-use and ROMHacking.
 
 ## Features
 
-- SuperFX 21Mhz support
-- FastROM (A bug with the SD2SNES/FXPak Pro causes freezes and crashes on SHVC revisions of the SNES)
-- Lots of free bank space for new models, assets and code
-- 256 texture slots
-- 250 Faces/Vertices limit
-- Bugfixes and improvements
-- Uses ARGLINK from Star Fox 2 as linker instead of SL
-- Color palette data, MSPRITES, and crunched (compressed) graphics rebuilt at assembly
-- Easier creation of wireframe models (replace face3 and face4 with aface3 and aface4 in the shape file)
-- All Starwing PAL and Germany text/GFX for PAL builds
-- SNES Mouse support and analog stick support via the SNES mouse
+- Uses GSU-2/Super FX 2 @21.4Mhz instead of MC1 @10.7Mhz
+- FastROM support (An SD2SNES/FXPak Pro bug causes instability on 2CHIP SNES revisions)
 - MSU-1 support (Original ASM patch by Kurrono, ported by Kando and Sunlit)
+- SNES Mouse support and analog stick support via the SNES mouse
 - Very configurable, see SF\CONFIG\CONFIG.INC for more info
-- Kando was involved so you know it's good
+- Lots of free ROM space
+- Bugfixes and improvements
+- 256 texture slots
+- 250 faces/vertices limit for models
+- Build process optimized for speed
+- Palettes and graphics crunched, textures interleaved, and fonts built at assembly
+- Uses ARGLINK from Star Fox 2 as linker instead of SL
+- Easier creation of wireframe models (replace face3 and face4 with aface3 and aface4 in your shape file)
+- All Starwing PAL and Germany text/GFX for PAL builds
+- **Kando was involved so you know it's good**
 
 ## Building on Windows
 
@@ -63,9 +64,9 @@ After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 [Star Fox Music Programming Starter Kit (by livvy94)](https://www.dropbox.com/sh/m3sk75dmsyx5tey/AACLDXVcQEJk3ezQCDBitEs7a?dl=0)
 
 ## TODO
-1. OPTIMIZE  
-2. Strip out all Super Star Fox weekend-related code  
-3. Annotate and document code  
+1. Optimize game where possible (We already have FastROM and 21Mhz SuperFX 2, can we go any further?)  
+2. Strip out all Super Star Fox weekend(contest)-related code (may not happen, contest is IFEQ/IFNE hell)  
+3. Annotate and document code (in progress)  
 4. MAYBE: Disassemble all BIN files in SND directory, add documentation on custom music and the like  
 
 ## Project Structure

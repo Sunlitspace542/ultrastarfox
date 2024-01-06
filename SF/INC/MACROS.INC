@@ -2811,7 +2811,6 @@ stupt	=	stupt+\2
 
 
 ;------------------------------------------------------------------------
-; TODO: make sure the comments are correct
 a8	macro ; set A to 8 bit
 	shorta
 	sep	#p_a
@@ -4411,7 +4410,7 @@ Assembling_bank	=	\1
 nastyon	macro
 	lda	mario_draw_mode ; Load the current MARIO chip draw mode into A
 	ora	#mm_ramn+mm_romn ; OR A With RAM nasty flag + ROM nasty flag (8+16)
- 	sta	mio_mode ; store A to MARIO chip I/O mode var
+ 	sta	m_scmr ; store A to MARIO chip I/O mode var
 	endm
 
 ;------------------------------------------------------------------------
@@ -4419,7 +4418,7 @@ nastyon	macro
 ramnastyon	macro
 	lda	mario_draw_mode ; Load the current MARIO chip draw mode into A
 	ora	#mm_ramn ; OR A with RAM nasty flag (8)
- 	sta	mio_mode ; store A to MARIO chip I/O mode var
+ 	sta	m_scmr ; store A to MARIO chip I/O mode var
 	endm
 
 ;------------------------------------------------------------------------
@@ -4427,14 +4426,14 @@ ramnastyon	macro
 romnastyon	macro
 	lda	mario_draw_mode ; Load the current MARIO chip draw mode into A
 	ora	#mm_romn ; OR A with ROM nasty flag (16)
- 	sta	mio_mode ; store A to MARIO chip I/O mode var
+ 	sta	m_scmr ; store A to MARIO chip I/O mode var
 	endm
 
 ;------------------------------------------------------------------------
 
 nastyoff	macro
 	lda	mario_draw_mode ; Load the current MARIO chip draw mode into A
- 	sta	mio_mode ; store A to MARIO chip I/O mode var
+ 	sta	m_scmr ; store A to MARIO chip I/O mode var
 	endm
 
 ;------------------------------------------------------------------------
@@ -4442,7 +4441,7 @@ nastyoff	macro
 ramnastyoff	macro
 	lda	mario_draw_mode ; Load the current MARIO chip draw mode into A
 	and	#~mm_ramn ; AND A with RAM nasty flag (8)
- 	sta	mio_mode ; store A to MARIO chip I/O mode var
+ 	sta	m_scmr ; store A to MARIO chip I/O mode var
 	endm
 
 ;------------------------------------------------------------------------
@@ -4450,7 +4449,7 @@ ramnastyoff	macro
 romnastyoff	macro
 	lda	mario_draw_mode ; Load the current MARIO chip draw mode into A
 	and	#mm_romn ; AND A with ROM nasty flag (16)
- 	sta	mio_mode ; store A to MARIO chip I/O mode var
+ 	sta	m_scmr ; store A to MARIO chip I/O mode var
 	endm
 
 ;------------------------------------------------------------------------
@@ -5867,11 +5866,11 @@ clrmes	MACRO
 fast	MACRO ; Run MARIO chip @ 21.4mhz (no clock divider)
 	IFEQ	LONGA
 	lda	#1
-	sta	$3039
+	sta	m_clsr
 	ELSEIF
 	a8
 	lda	#1
-	sta	$3039
+	sta	m_clsr
 	a16
 	ENDC
 	ENDM
@@ -5880,11 +5879,11 @@ fast	MACRO ; Run MARIO chip @ 21.4mhz (no clock divider)
 slow	MACRO ; Run MARIO chip @ 10.7mhz (enable clock divider)
 	IFEQ	LONGA
 	lda	#0
-	sta	$3039
+	sta	m_clsr
 	ELSEIF
 	a8
 	lda	#0
-	sta	$3039
+	sta	m_clsr
 	a16
 	ENDC
 	ENDM

@@ -11,7 +11,7 @@
 	shorta
 	longi
 runmario_l
-	sta.l	mcodebank	;code bank
+	sta.l	m_pbr	;code bank
 
 	phb
 	IFNE	FASTROM
@@ -26,15 +26,15 @@ runmario_l
 
 	lda	mario_draw_mode
 	ora	#%00011000	;nasty
-	sta	mio_mode
+	sta	m_scmr
 
 	stx	mr15
-.dowait	lda	mflags
+.dowait	lda	m_sfr
 	and	#$20
 	bne	.dowait
 
 	lda	mario_draw_mode
-	sta	mio_mode
+	sta	m_scmr
 	plb
 	rtl
 
@@ -52,20 +52,20 @@ do_3d_display_l
 	a8
 	lda	#mdo_3d_display>>16
 	ldx	#mdo_3d_display&WM
-	sta	mcodebank	;code bank
+	sta	m_pbr	;code bank
 	lda	mario_draw_mode
 	ora	#%00011000	;nasty
-	sta	mio_mode
+	sta	m_scmr
 	stx	mr15
 
 	jsr	parallel_stuff
 
 	a8
-.dowait	lda	mflags
+.dowait	lda	m_sfr
 	and	#$20
 	bne	.dowait
 	lda	mario_draw_mode
-	sta	mio_mode
+	sta	m_scmr
 
 	jsl	alienflags_l
 

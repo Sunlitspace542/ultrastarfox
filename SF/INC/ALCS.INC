@@ -445,12 +445,6 @@ xlen	=	22*1024+450
 	alc	gridz,1
 	alc	gridcol,1
 
-
-; emuvars
-
-
-
-
 ;Zero page variables
 	zalc	mariopc,2
 	zalc	marioBank,1
@@ -463,51 +457,42 @@ xlen	=	22*1024+450
 	alc	dreg,2	;*2
 	alc	oreg,2	;*2
 	alc	imbuf,2
-	
-	ifeq	realchip
-	alc	regs,0
-	alc	mr0,2
-	alc	mr1,2
-	alc	mr2,2
-	alc	mr3,2
-	alc	mr4,2
-	alc	mr5,2
-	alc	mr6,2
-	alc	mr7,2
-	alc	mr8,2
-	alc	mr9,2
-	alc	mr10,2
-	alc	mr11,2
-	alc	mr12,2
-	alc	mr13,2
-	alc	mr14,2
-	alc	mr15,2
-	alc	mflags,2
-	endif
 
-	ifne	realchip
-regs	equ	$3000
-mr0	equ	$3000
-mr1	equ	$3002	
-mr2	equ	$3004	
-mr3	equ	$3006	
-mr4	equ	$3008	
-mr5	equ	$300a	
-mr6	equ	$300c	
-mr7	equ	$300e	
-mr8	equ	$3010	
-mr9	equ	$3012	
-mr10	equ	$3014	
-mr11	equ	$3016	
-mr12	equ	$3018	
-mr13	equ	$301a	
-mr14	equ	$301c	
-mr15	equ	$301e	
-mflags	equ	$3030
-mcodebank	equ	$3034
-mscrbase	equ	$3038
-mio_mode	equ	$303a
-	endc
+; MARIO chip registers 0-15
+regs		equ	$3000
+mr0			equ	$3000
+mr1			equ	$3002
+mr2			equ	$3004
+mr3			equ	$3006
+mr4			equ	$3008
+mr5			equ	$300a
+mr6			equ	$300c
+mr7			equ	$300e
+mr8			equ	$3010
+mr9			equ	$3012
+mr10		equ	$3014
+mr11		equ	$3016
+mr12		equ	$3018
+mr13		equ	$301a
+mr14		equ	$301c
+mr15		equ	$301e
+
+; MARIO chip control registers
+m_sfr		equ	$3030 ; Status Flag Register (R/W)
+m_un32		equ	$3032 ; Unused
+m_bramr		equ	$3033 ; Backup RAM register (W)
+m_pbr		equ	$3034 ; Program Bank Register (R/W)
+m_un35		equ	$3035 ; Unused
+m_rombr		equ	$3036 ; ROM bank register (R)
+m_cfgr		equ	$3037 ; Control Flags Register (W)
+m_scbr		equ	$3038 ; Screen Base Register (W)
+m_clsr		equ	$3039 ; Clock Speed Register (W)
+m_scmr		equ	$303A ; Screen Mode Register (W)
+m_vcr		equ	$303B ; Version code register (R)
+m_rambr		equ	$303C ; RAM Bank Register (R)
+m_un3d		equ	$303D ; Unused
+m_cbr		equ	$303E ; Cache Base Register (R)
+
 
 	alc	mr14old,2
 	alc	getbuf,2

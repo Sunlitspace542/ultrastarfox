@@ -10,8 +10,6 @@
 ; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ; ## other variables ##
-realchip		equ	1
-easytext		equ	0
 
 ; angles
 deg360	equ	256

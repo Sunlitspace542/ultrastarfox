@@ -938,7 +938,7 @@ endseqbit2	i16
 	list	off
 	lsr	a
 	lsr	a
-	sta	mscrbase
+	sta	m_scbr
 	jsr	startmus
 	rtl
 
@@ -1065,7 +1065,7 @@ irqbit2	i16
 	lda	drawmap+1
 	lsr	a
 	lsr	a
-	sta	mscrbase
+	sta	m_scbr
 	IFEQ	PAL+_30fps
 	jsr	startmus
 	rtl

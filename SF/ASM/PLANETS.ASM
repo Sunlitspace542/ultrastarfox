@@ -297,7 +297,7 @@ planetseq_l
 	lda	drawmap+1		; set mario draw base
 	lsr	a
 	lsr	a
-	sta	mscrbase
+	sta	m_scbr
 
 	lda	#-1
 	sta	currentplanet
@@ -1201,7 +1201,7 @@ planetseq_l
 	lda	drawmap+1		;set mario draw base
 	lsr	a
 	lsr	a
-	sta	mscrbase
+	sta	m_scbr
 	stz	trans_flag
 
 	a16				;set text prt parameters
@@ -2845,7 +2845,7 @@ setup_planets_l
 	lda	drawmap+1		;set mario draw base
 	lsr	a
 	lsr	a
-	sta	mscrbase
+	sta	m_scbr
 
 ;Set hardware pointers to screen
 	lda	vmap1+1

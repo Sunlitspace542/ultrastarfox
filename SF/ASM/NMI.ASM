@@ -55,7 +55,7 @@ nmihan ; Start of NMI handler
 	IFNE	msu
 	jsl	$7ED1C0 ; MSU-1 fade routine
 	ELSEIF
-	lda.l	mflags ; Load mflags into A (MARIO chip flags?)
+	lda.l	m_sfr ; Load m_sfr into A (MARIO chip flags?)
 	ENDC
 	bmi	.qexit ; branch if a = 1
 	phb ; Push data bank to stack

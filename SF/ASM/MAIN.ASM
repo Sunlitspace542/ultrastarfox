@@ -126,7 +126,7 @@ initgame_l ; Initialize game
 	jsl	kill_list_l	; format alien list
 	jsl	initmem_l ; Initialize RAM
 
-	lda	mapbank
+	lda	mapbank	; Load mapbank into A
 	pha
 
 ; set up player's objects
@@ -1673,7 +1673,7 @@ initscreen_l
 
 	lda	timeupr		;clear IRQ's
 	a16
-	lda.l	mflags
+	lda.l	m_sfr
 
 
 ;Set Mario Chip for 16 colours 192 pixel high
@@ -1729,7 +1729,7 @@ initscreen_l
 	lda	drawmap+1		;set mario draw base
 	lsr	a
 	lsr	a
-	sta	mscrbase
+	sta	m_scbr
 
 ;Set hardware pointers to screen
 	lda	vmap1+1
