@@ -165,7 +165,11 @@ debugspace
 	chardw	%00000000
 
 debugchars
-	incbin	DATA\FONT\DEBUGFON.CGX
+	IFNE	debugfont
+	incbin	DATA\FONT\DBGFONEX.CGX ; SFEX font
+	ELSEIF
+	incbin	DATA\FONT\DEBUGFON.CGX ; vanilla font
+	ENDC
 
 reciptab16s
 	dw	0

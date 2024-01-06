@@ -5,7 +5,7 @@
 ;####################################################################################################################
 
 ; full strategy debugging - Press P2 R Button in-game to activate [0 = off 1 = on]
-debuginfo			equ	0
+debuginfo			equ	1
 
 ; speed up mode? [0 = off 1 = on]
 debuginfo2			equ	0
@@ -21,6 +21,9 @@ messagetest			equ	0
 ; before you have selected a level. Press X+Y on the same frame to activate.
 planetcheaton 		equ 0
 
+; Debug mode font to use
+; [0 = vanilla, 1 = SFEX]
+debugfont	equ	1
 
 ;; Cheats
 
