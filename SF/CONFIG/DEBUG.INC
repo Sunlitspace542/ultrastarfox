@@ -5,7 +5,7 @@
 ;####################################################################################################################
 
 ; full strategy debugging - Press P2 R Button in-game to activate [0 = off 1 = on]
-debuginfo			equ	1
+debuginfo			equ	0
 
 ; speed up mode? [0 = off 1 = on]
 debuginfo2			equ	0

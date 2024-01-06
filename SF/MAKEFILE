@@ -119,6 +119,8 @@ donebld:
 	@del sf.sfc
 	@copy symbols.txt ..\symbols.txt
 	@del symbols.txt
+	@copy banks.log ..\banks.log
+	@del banks.log
 
 # Clean everything up
 clean:
@@ -130,8 +132,13 @@ clean:
 	@del DATA\*.CCR
 	@del DATA\*.PCR
 	@del msgs.txt
-	@del sf.sfc
+	@del ..\sf.sfc
+	@del sf.SFC
+	@del ..\symbols.txt
 	@del symbols.txt
+	@del ..\build.log
+	@del ..\banks.log
+	@del banks.log
 
 ## Banks to assemble
 

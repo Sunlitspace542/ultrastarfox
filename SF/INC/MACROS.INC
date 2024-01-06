@@ -4287,38 +4287,6 @@ setlevel	macro
 	lda	newmap+2
 	sta	mapbank
 	a16
-
-
-;;	IFEQ	NARG
-;;	pha
-;;	ENDC
-;;
-;;	lda	whichroute
-;;	and	#255
-;;	asl	a
-;;	tax
-;;	lda.l	courses,x
-;;	sta	x1
-;;
-;;	IFEQ	NARG
-;;	pla
-;;	ENDC
-;;
-;;	IFNE	NARG
-;;	lda	#\1
-;;	ENDC
-;;	sta	x2
-;;	asl	a
-;;	clc
-;;	adc	x2
-;;	adc	x1
-;;	tax
-;;	lda.l	mapbase,x
-;;	sta	mapptr
-;;	a8
-;;	lda.l	mapbase+2,x
-;;	sta	mapbank
-;;	a16
 	endm
 
 ;------------------------------------------------------------------------
@@ -4334,11 +4302,7 @@ bankend	macro
 
 
 	IFNE	FASTROM
-;	IFEQ	\1
-;bank\1left	=	65536-*
-;	ELSEIF
 bank\1left	=	32768-(*-((\1*$10000)+$808000))
-;	ENDC
 	ELSEIF
 	IFEQ	\1
 bank\1left	=	65536-*
@@ -4363,6 +4327,10 @@ Bank_over_flow_in_Bank	=	\1
 		?Bank_over_flow_in_Bank
 		ENDC
 	ENDC
+
+	fopen	+BANKS.LOG
+	printf	"BANK \1: %xbank\1left bytes free.%n"
+	fclose	BANKS.LOG
 
 	printf	"%01-- %xbank\1left bytes free.%00%n"
 
@@ -4397,8 +4365,6 @@ banknum	=	\1
 Assembling_bank	=	\1
 	IFND	_SASM
 	?Assembling_bank
-	ELSEIF
-;	progress	\1,11
 	ENDC
 
 	endm
