@@ -23,7 +23,7 @@ planetcheaton 		equ 0
 
 ; Debug mode font to use
 ; [0 = vanilla, 1 = SFEX]
-debugfont	equ	1
+debugfont			equ	0
 
 ;; Cheats
 
