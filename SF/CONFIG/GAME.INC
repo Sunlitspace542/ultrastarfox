@@ -29,6 +29,11 @@ numlives	equ	3
 ; Input window for barrel rolls (in frames). (stock = 3)
 barrelrolldelay	equ	3
 
+; Enables a timer. when the defined time runs out, the game returns to the controls screen.
+cestimeron			equ	0
+
+; Timer countdown (in minutes)
+cestime				equ	5
 
 ; Random Vertices
 

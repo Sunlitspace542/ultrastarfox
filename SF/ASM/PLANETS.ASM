@@ -27,10 +27,6 @@ planetcheat	=	0
 planetcheat	=	1
 	ENDC
 
-	IFEQ	cesdemo-2
-planetcheat	=	1
-	ENDC
-
 	incpublics	EXT\planets.ext
 
 p_bg1_cgx1	=	0
@@ -198,11 +194,6 @@ initplanets_l
 ;	stz	whichroute 	; (not to be cleared unless reset pressed)
 
 ; set number of lives
-cestimeron	=	0
-
-	IFEQ	cesdemo-1
-cestimeron	=	1
-	ENDC
 
 	IFNE	cestimeron
 
@@ -473,10 +464,8 @@ planetseq_l
 
 .nopress
 	IFNE	planetcheat ; planetcheat
-	IFNE	cesdemo-2
 	TESTJOYPAD	X		; cheat mode select?
 	beq	.nocheat
-	ENDC ; planetcheat
 	jsr	waitdma224
 	jsl	undrawplanetlines_l	; clear the appropiate bitz
 	lda	#10
@@ -489,7 +478,7 @@ planetseq_l
 	jsl	drawplanetlines_l
 	jmp	.cheatmode		; hit that funky cheat
 .nocheat
-	ENDC ; cesdemo -2
+	ENDC ; planetcheat
 
 	lda	trig0
 	bit	#pad_START!pad_A!pad_B

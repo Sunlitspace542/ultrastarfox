@@ -93,13 +93,8 @@ defaultNukeCount	equ	3
 ;;
 
 ;; ELASER
-	IFEQ	cesdemo-1
-elaserAP	equ	4	
-playerbeamAP	equ	5
-	ELSEIF		
 elaserAP	equ	2
 playerbeamAP	equ	3
-	ENDC	
 
 ;-----------------------------------------------------------------------------
 ; MOVING ENEMY.

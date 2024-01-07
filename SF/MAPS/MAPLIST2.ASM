@@ -1,16 +1,9 @@
 	INCMAP	MAPP
 
-	IFEQ	cesdemo-1
-	INCMAP	cmap1_1b
-	INCMAP	cmap2_1b
-	INCMAP	cmap1_2
-	INCMAP	cmap2_2
-	ELSEIF
 	INCMAP	map2_1b
 	INCMAP	map1_1b
 	INCMAP	map2_2
 	INCMAP	map1_2
-	ENDC
 
 
 	INCMAP	map1_3a
@@ -49,11 +42,7 @@ lexitstart
 
 	INCMAP	cl_gnd
 
-	IFEQ	cesdemo-1
-	INCMAP	clevel1_1
-	ELSEIF
 	INCMAP	level1_1
-	ENDC
 
 
 	INCMAP	level1_2

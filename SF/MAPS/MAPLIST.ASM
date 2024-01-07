@@ -75,14 +75,8 @@ armsstart
 
 	INCMAP	map1_5
 
-
-	IFEQ	cesdemo-1
-	INCMAP	cmap3_1b
-	INCMAP	cmap3_2
-	ELSEIF
 	INCMAP	map3_1b
 	INCMAP	map3_2
-	ENDC
 
 
 

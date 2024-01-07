@@ -18,7 +18,7 @@ mario_stats3d		equ	0
 messagetest			equ	0
 
 ; Allows you to enable planet select cheat on the map
-; before you have selected a level. Press X+Y on the same frame to activate.
+; before you have selected a level. Press X to activate.
 planetcheaton 		equ 0
 
 ; Debug mode font to use

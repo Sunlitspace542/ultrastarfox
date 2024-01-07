@@ -1160,11 +1160,6 @@ msg_rick
 msg_jondean
 	mariomsg	<JON DEAN>
 
-msg_ces
-	mariomsg	<CES DEMO>
-msg_demo
-	mariomsg	<VERSION>
-
 msg_deutscher
 	mariomsg	<GERMAN TEXT>
 

@@ -216,11 +216,6 @@ gameloop2 ; Game loop
 	jsl	transfer_l	; Go to transfer loop subroutine ;transfer bitmap, do strats etc.
 	jsl	friends_messages_l ; Go to Friends Messages subroutine
 
-cestimeron	=	0 ; Timer flag
-	IFEQ	cesdemo-1 ; Start conditional: if CESDEMO-1 !=0 (=1)
-cestimeron	=	1 ; Set timer flag to 1
-	ENDC ; End conditional
-
 	IFNE	cestimeron ; Start conditional: if CESTIMERON !=0
 	jsl	cestimer_l ; Go to Timer subroutine
 	ENDC ; End conditional

@@ -142,7 +142,6 @@
 	global	msg_jondean,msg_rick
  	global	partfadetab
 
-	global	msg_ces,msg_demo
 	global	msg_deutscher,msg_claude
 
 	global	msg_score1000,msg_score500,msg_score100
