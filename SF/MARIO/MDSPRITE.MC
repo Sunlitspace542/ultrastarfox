@@ -1092,11 +1092,6 @@ mfontwidth	equ	mfontheight
 
 
 msprint
-
-	printf	mlargesspr-mssprite,"%n"
-	printf	msprint-mssprite,"%n"
-
-
 	mpush	r11
 	colour		; r0 = colour
 	sub	r0

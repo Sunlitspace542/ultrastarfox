@@ -653,9 +653,6 @@ hard180YRNZR_Istrat
 	s_jmp			hard180YR_Istrat
 ;*****************************************************************************
 hard180YR_Istrat
-	printf	"albkls=",:$alblks,"%n"
-	printf	"Addr=",:$*,"%n"
-	printf	"dummyobj=",:$dummyobj,"%n"
 	s_start_strat
 	s_set_colltype	x,enemy1
 	s_set_alvar		B,x,al_roty,#deg180

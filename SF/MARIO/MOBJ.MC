@@ -5368,10 +5368,6 @@ mprojectpntlist
 	mpop	pc
 	nop
 
-
-;	printf	*-mdo_outcode," mprojectpnt cache %n"
-
-
 ;************************************************
 
 	ifne	0

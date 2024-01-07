@@ -79,16 +79,11 @@ xoffset	equ	*-ramstart
 	ELSEIF
 	org	$28000+xoffset,$8000*2+xoffset
 	ENDC
-	
-	minfo
+
 	incfile	ASM\trans.asm
-	minfo	trans
 	incfile	ASM\main.asm
-	minfo	main
 	incfile	ASM\game.asm
-	minfo	game
 	incfile	ASM\windows.asm
-	minfo	windows
 	bankend	2
 
 
@@ -97,21 +92,13 @@ xoffset	equ	*-ramstart
 	bank	3
 planetdmapos1	dw	228
 planetdmapos2	dw	100
-	minfo
 	incfile	ASM\coltabs.asm
-	minfo	coltabs
 	incfile	ASM\bgs.asm
-	minfo	bgs
 	incfile	ASM\obj.asm
-	minfo	obj
 	incfile	ASM\planets.asm
-	minfo	planets
 	incfile	ASM\sprites.asm
-	minfo	sprites
 	incfile	ASM\continue.asm
-	minfo	<continue>
 	incfile	ASM\world.asm
-	minfo	world
 	bankend	3
 
 
@@ -121,28 +108,20 @@ planetdmapos2	dw	100
 	ELSEIF
 	org	$1f8000+$3db0,$8000*$1f+$3db0
 	ENDC
-	
-	minfo
+
 	incfile	ASM\debug.asm
-	minfo	<debug>
 	incfile	ASM\bootnmi.asm
-	minfo	bootnmi
 	incfile	STRAT\stratrou.asm
-	minfo	<stratrou>
 	incfile	ASM\blink.asm
 	incfile	ASM\nmi.asm
-	minfo	nmi
 	incfile	ASM\draw.asm
-	minfo	draw
 	incfile	ASM\endseq.asm
 	bankend	31
 
 	bank	36
 	inccru	bgf1pcr,data\f-1.pcr
 	incfile	ASM\cont.asm
-	minfo	cont
 	incfile	ASM\sound.asm
-	minfo	sound
 
 	bankend	36
 ;------------------------------------------------------------------

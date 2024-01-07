@@ -1147,8 +1147,6 @@ mdrawhorzline
 
 planBMPSZ	equ	16*16*64
 
-	printf	"sharp test = ",:$*,"%n"
-
 mclrmapscreen
 	sub	r0
 	miwt	r1,bitmap1+bitmapbase
@@ -1164,8 +1162,6 @@ mclrmapscreen
 	nop
 
 pepperscreensize	=	16*24*32
-
-	printf	"sharp test = ",:$*,"%n"
 
 mclrpepperscreen
 	sub	r0
@@ -1201,7 +1197,6 @@ mclrbitmaps2	; clear the first half of the bitmap, called from trans
 	lob
 	beq	.noclr
 	nop
-	printf	"sharp test = ",:$*,"%n"
 	sub	r0
 	miwt	r1,bitmap1
 	miwt	r12,gametranlen1/2
@@ -1221,7 +1216,6 @@ mclrbitmaps3	; clear the second half of the bitmap
 	lob
 	beq	.noclr
 	nop
-	printf	"sharp test = ",:$*,"%n"
 	sub	r0
 	miwt	r1,bitmap1+gametranlen1
 	miwt	r12,gametranlen2/2

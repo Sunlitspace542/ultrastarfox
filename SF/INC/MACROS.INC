@@ -5877,14 +5877,6 @@ waithtime	macro	[start,end]
 	a8
 
 	endm
-
-;---------------------------------------------------
-minfo	macro	[name]
-	IFNE	NARG
-	printf	"{name}: ",*-minfos,"%n"
-	ENDC
-minfos	=	*
-	endm
 ;---------------------------------------------------
 screen_off	macro
 	jsl	screenoff_l
