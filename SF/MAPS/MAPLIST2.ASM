@@ -46,8 +46,8 @@ mexitstart
 	printroulen	mexitstart,<mexitmap>
 	ENDC
 lexitstart
-	IFNE	prntrouln_on
 	INCMAP	lexitmap
+	IFNE	prntrouln_on
 	printroulen	lexitstart,<lexitmap>
 	ENDC
 

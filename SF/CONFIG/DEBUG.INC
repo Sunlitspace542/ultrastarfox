@@ -25,6 +25,9 @@ planetcheaton 		equ 0
 ; [0 = vanilla, 1 = SFEX]
 debugfont			equ	0
 
+; print "printroulen" lines during assembly
+prntrouln_on		equ 0
+
 ;; Cheats
 
 
