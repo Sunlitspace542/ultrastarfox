@@ -209,9 +209,7 @@ gameloop2 ; Game loop
 	bit	#key_start ; AND A with #key_start ($10)
 	beq	.nopause ; branch to .nopause if equal
 
-	IFEQ	CONTEST ; Start conditional: if CONTEST != 0 (=1) (SSFW)
 	jsr	dopause ; go to dopause subroutine
-	ENDC ; End conditional
 .nopause
 	jsl	setblack_l ; Set screen to black
 	jsl	stratdebug_l ; Go to Strat Debug subroutine
@@ -220,10 +218,6 @@ gameloop2 ; Game loop
 
 cestimeron	=	0 ; Timer flag
 	IFEQ	cesdemo-1 ; Start conditional: if CESDEMO-1 !=0 (=1)
-cestimeron	=	1 ; Set timer flag to 1
-	ENDC ; End conditional
-
-	IFNE	contest ; Start conditional: if CONTEST !=0 (=1) (SSFW)
 cestimeron	=	1 ; Set timer flag to 1
 	ENDC ; End conditional
 
@@ -1041,7 +1035,6 @@ namegfxpos	db	2,11*8 ; Position for Peppy name gfx
 	db	22,11*8 ; Position for Slippy name gfx
 
 calcstageperc	php ; Push processor status to stack
-	IFEQ	CONTEST ; Start Conditional: if CONTEST = 0 (not SSFW)
 	; take 7% of total killed for every teammate alive and add to total killed
 	; Check if any teammates are down
 	ai8 ; Set A/X/Y to 8 bit
@@ -1061,11 +1054,6 @@ calcstageperc	php ; Push processor status to stack
 .deadfalco	ai16 ; set A/X/Y to 16 bit ; NICE
 	and	#$ff ; AND A with $FF
 	sta	tpa ; store A to tpa var
-
-	ELSEIF ; Else if CONTEST = 1 (is SSFW)
-	a16 ;  Set A to 16 bit
-	stz	tpa ; Store 0 at tpa var
-	ENDC ; End conditional
 
 	a8 ; Set A to 8 bit
 	stz	stageclear ; Store 0 at stage clear var
@@ -1121,13 +1109,8 @@ printspeclp
 	jsl	transfer_l ; Go to transfer loop subroutine
 
 	ai16 ; Set A/X/Y to 16 bit
-	IFEQ	CONTEST ; Start conditional, IF CONTEST =0 (not SSFW)
 	clrmes	totalscoretxt,16,44	;total score
-	ELSEIF ; Else if CONTEST=1 (is SSFW)
-	clrmes	totalscoretxt,16,100	;total score
-	ENDC ; End conditional
 
-	IFEQ	CONTEST ; Start conditional: if CONTEST = 0 (not SSFW)
 	a16 ; set A to 16 bit
 	jsr	calctotalscore ; Get total score
 	lda	tpa ; Load tpa var into A
@@ -1141,14 +1124,6 @@ printspeclp
 	call_mario mprtperc	; Tell MARIO chip to print percentage?
 
 	call_mario mprt2zeros ; Tell MARIO chip to print 2 zeroes
-	ELSEIF ; Else if CONTEST = 1 (is SSFW)
-
-	lda	#176-16 ; Load result of 176-16 into A
-	sta	x1 ; Store A at X1 var
-	lda	#100 ; Load 100 into A
-	sta	y1 ; Store A at Y1 var
-	jsl	printpscore_l ; Print score
-	ENDC ; End conditional
 
 
 	lda	clb1 ; Load screen print status into A
@@ -1156,11 +1131,7 @@ printspeclp
 	dec	a ; Decrement A
 	bne	.graph
 
-	IFEQ	CONTEST ; Start conditional: if CONTEST = 0 (not SSFW)
 	clrmes	bonustxt,16,24		;print 'bonus...'
-	ELSEIF ; Else if CONTEST=1 (is SSFW)
-	clrmes	bonustxt,16,68		;print 'bonus...'
-	ENDC ; End conditional
 
 	lda	plotx1
 	lbeq	.doneg
@@ -1170,17 +1141,9 @@ printspeclp
 	lbne	.doneg
 	a8
 
-	IFEQ	CONTEST
 	inc	credits
 	lda	#1
 	sta	onecredspr
-	ELSEIF
-	a16
-	lda.l	playerscore
-	clc
-	adc	#10000
-	sta.l	playerscore
-	ENDC
 
 	a16
 	jmp	.doneg
@@ -1194,20 +1157,12 @@ printspeclp
 	lda	#10
 	sta	plotx1
 .nc
-	IFEQ	CONTEST
 	clrmes	scoretxt,16,24
-	ELSEIF
-	clrmes	scoretxt,16,68
-	ENDC
 
 	lda	#60
 	sta.l	m_x1
 
-	IFEQ	CONTEST
 	lda	#24
-	ELSEIF
-	lda	#68
-	ENDC
 
 	sta.l	m_y1
 	lda	cla1
@@ -1217,11 +1172,7 @@ printspeclp
 	lda	#176
 	sta.l	m_x1
 
-	IFEQ	CONTEST
 	lda	#24
-	ELSEIF
-	lda	#68
-	ENDC
 
 	sta.l	m_y1
 	lda	cla1
@@ -1243,13 +1194,6 @@ printspeclp
 	trigse	$12
 	a16
 
-	IFNE	CONTEST
-	lda.l	playerscore
-	clc
-	adc	#30
-	sta.l	playerscore
-	ENDC
-
 	lda	cla1
 	clc
 	adc	#3
@@ -1257,22 +1201,6 @@ printspeclp
 
 	cmp	cla2
 	jl	.doneadd
-
-	IFNE	CONTEST
-	lda	cla2
-	sec
-	sbc	cla1
-	asl	a
-	sta	cla1
-	asl	a
-	asl	a
-	clc
-	adc	cla1
-	clc
-	adc.l	playerscore
-	sta.l	playerscore
-
-	ENDC
 
 	lda	cla2
 	sta	cla1
@@ -1298,11 +1226,10 @@ printspeclp
 .doneadd
 
 ;----------------
-	IFEQ	CONTEST
 	a16
 	IFEQ	GERMAN
 	clrmes	teamtxt,48,69		;print "shield of team mate"
-	ELSEIF
+	ELSEIF ; german = 1
 	clrmes	teamtxt,16,69		;print "shield of team mate"
 	ENDC
 
@@ -1417,8 +1344,6 @@ printspeclp
 	cpy	#3
 	lbne	.lp
 
-	ENDC
-
 
 	a8
 	lda	clb2
@@ -1446,8 +1371,6 @@ finis1
 	longa
 	longi
 checkbonus	jsr	calctotalscore
-
-	IFEQ	CONTEST
 	ldx	#0
 .cklp	lda.l	bonertab,x
 	cmp	tpa
@@ -1459,15 +1382,6 @@ checkbonus	jsr	calctotalscore
 	cmp	clbm
 	jg	.set
 	rts
-	ELSEIF
-
-
-	lda	cla1
-	cmp	#100
-	beq	.set
-	rts
-
-	ENDC
 .set	lda	#20			;wait 20 frames before bonus
 	sta	clb1
 	rts
@@ -1536,9 +1450,9 @@ dopause	php
 
 printpause	ai16
 
-	IFEQ	GERMAN
+	IFEQ	GERMAN ; german = 0
 	lda	#90 ; x value (in pixels)
-	ELSEIF
+	ELSEIF ; german = 1
 	lda	#90+4 ; x value (in pixels)
 	ENDC
 
@@ -2161,8 +2075,7 @@ alienflags_l
 	IFNE ALLRANGE
 	testjoypad	select
     beq	.dontkill
-	ENDC
-	IFEQ ALLRANGE
+	ELSEIF ; allrange = 0
 	s_test_var	B,gameflags,#gf_nozremove
 	bne	.dontkill
 	ENDC

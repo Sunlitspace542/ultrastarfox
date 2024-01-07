@@ -3208,7 +3208,6 @@ pexplode_Istrat
 	s_or_var		B,gameflags2,#gf2_ingame
 	s_or_var		B,gameflags,#GF_PLAYERDEAD
 
-	IFEQ	CONTEST
 	s_dec_var		B,lives
 	bne			.settime
 	lda	#1
@@ -3216,7 +3215,6 @@ pexplode_Istrat
 	s_set_var		B,timeuntilfade,#20
 	s_bra			.end
 .settime
-	ENDC
 
 	s_set_var	B,timeuntilfade,#20
 .end

@@ -2194,14 +2194,6 @@ MYNARG	=	NARG
 ;--------------------------------------------------------------------
 P_SCORE	MACRO	[score]
 	pathmac_start
-	IFNE	contest
-MYNARG	=	NARG
-	PNARG	1
-
-	db	p_score
-	dw	{score}
-
-	ENDC
 	pathmac_end
 	ENDM
 ;--------------------------------------------------------------------

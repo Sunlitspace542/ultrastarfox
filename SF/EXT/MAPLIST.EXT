@@ -5,7 +5,4 @@
 	global	level_blackhole,level_special,creditsmap
 	global	intromap,titlemap,contmap,waitmap,trainingmap
 
-	IFNE	CONTEST
-	global	timeovermap,timeupmap
-	ENDC
 

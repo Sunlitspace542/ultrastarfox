@@ -65,9 +65,8 @@ After building, a debug symbol map will be created at ``SYMBOLS.TXT``, and a ban
 
 ## TODO
 1. Optimize game where possible (We already have FastROM and 21Mhz SuperFX 2, can we go any further?)  
-2. Strip out all Super Star Fox weekend(contest)-related code (may not happen, contest is IFEQ/IFNE hell)  
-3. Annotate and document code (in progress)  
-4. MAYBE: Disassemble all BIN files in SND directory, add documentation on custom music and the like  
+2. Annotate and document code (in progress)  
+3. MAYBE: Disassemble all BIN files in SND directory, add documentation on custom music and the like  
 
 ## Project Structure
 ```

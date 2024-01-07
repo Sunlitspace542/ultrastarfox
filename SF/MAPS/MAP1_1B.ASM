@@ -1,10 +1,6 @@
 map1_1b
 
-	IFEQ	CONTEST
 	INCMAP	<1-1>
-	ELSEIF
-	INCMAP	<e1-1>
-	ENDC
 
 	IFEQ	1
 	mapgoto	.boss

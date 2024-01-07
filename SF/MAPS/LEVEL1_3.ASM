@@ -2,13 +2,6 @@
 level1_3
 	initlevel	1_3i,whitefadeout,0
 	mapjsr		cl_warpout
-
-	IFNE		CONTEST
-
-	INCMAP		event
-
-	ELSEIF
-	ENDC
 	
 
 ;-----------------------------------------------------------------------------

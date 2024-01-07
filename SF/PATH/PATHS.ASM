@@ -2941,11 +2941,7 @@ trail_istrat
 ;---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---
 
 paths
-	IFEQ	CONTEST
 	incfile	PATH\pathdata.asm
-	ELSEIF
-	incfile	PATH\epathdat.asm
-	ENDC
 dpaths
 	incfile	PATH\dpathdat.asm
 kpaths

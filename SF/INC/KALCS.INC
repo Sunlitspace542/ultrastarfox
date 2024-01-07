@@ -156,7 +156,6 @@ __totpallen	=	0
 	defpac	bgetest0pac,7
 	defpac	bgetestpac,7
 	defpac	spritepal,5
-	defpac	bgcontestpac,7
 	defpac	bg2eppac,9
 bgfoxpac	equ	bg2bpac
 	IFEQ	CONTROLSSCREENPAL

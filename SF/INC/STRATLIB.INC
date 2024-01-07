@@ -1160,14 +1160,6 @@ MYNARG	=	NARG
 s_score	MACRO	[score]
 MYNARG	=	NARG
 	CHK_NARG	1
-	IFNE	CONTEST
-	a16
-	lda.l	playerscore
-	clc
-	adc	{score}
-	sta.l	playerscore
-	a8
-	ENDC
 	ENDM
 ;-----------------------------------------------------------------------------
 

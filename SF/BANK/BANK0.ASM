@@ -88,11 +88,7 @@ abort_vn
 
 	bank	32
 	public	bgandpcr
-	IFEQ	CONTEST
 	inccru	bgandpcr,data\and.pcr
-	ELSEIF
-bgandpcr
-	ENDC
 	incfile	STRAT\istrats.asm
 	incfile	STRAT\d3strats.asm
 	IFNE	msu

@@ -7,9 +7,7 @@ cl_turn
 	setbgm	bgm_fanfare
 	mapwait	1800
 
-	IFEQ	CONTEST
 	mapjsr		clfish
-	ENDC
 
 	mapCLplayermode	clearturn
 	mapwait	1000		
@@ -33,9 +31,7 @@ friendwait	=	medpspeed*30
 	clfriendmsg	cock
 .nc
 	mapwait	4000
-	IFEQ	CONTEST
 	mapjsr		clfish
-	ENDC
 	mapwait	4000
 
 	setvar.b	clb2,0

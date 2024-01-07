@@ -9,11 +9,7 @@
 	INCMAP	map2_1b
 	INCMAP	map1_1b
 	INCMAP	map2_2
-	IFEQ	CONTEST
 	INCMAP	map1_2
-	ELSEIF
-	INCMAP	emap1_2
-	ENDC
 	ENDC
 
 
@@ -56,11 +52,7 @@ lexitstart
 	IFEQ	cesdemo-1
 	INCMAP	clevel1_1
 	ELSEIF
-	IFEQ	CONTEST
 	INCMAP	level1_1
-	ELSEIF
-	INCMAP	eleve1_1
-	ENDC
 	ENDC
 
 

@@ -48,7 +48,3 @@
 	global	dec_chr_l,dec_l
 	global	bg_special
 
-	IFNE	CONTEST
-	global	bg_timeover,bg_timeup
-	ENDC
-

@@ -62,15 +62,8 @@ msprites3
 	inccru	bgfsbg3ccr,data\fs-bg3.ccr
 
 	IFEQ	german
-	IFEQ	contest
 	inccru	mapccr,data\map.ccr
 	inccru	bg33ccr,data\3-3.ccr
-	ELSEIF
-	inccru	bgscccr,data\sc.ccr
-	inccru	bgscpcr,data\sc.pcr
-mapccr
-bg33ccr
-	ENDC
 	ELSEIF
 	inccru	mapccr,data\map-g.ccr
 	inccru	bg33ccr,data\3-3.ccr
@@ -110,11 +103,7 @@ bg33ccr
 	bank	23
 
 	IFEQ	german
-	IFEQ	contest
 	inccru	bgcppcr,data\cp.pcr
-	ELSEIF
-	inccru	bgcppcr,data\e.pcr
-	ENDC
 	ELSEIF
 	inccru	bgcppcr,data\cp-g.pcr
 	ENDC
@@ -157,21 +146,10 @@ bg33ccr
 	inccru	bgti3pcr,data\ti-3-g.pcr
 	ENDC
 
-	IFEQ	CONTEST					;if contest = 0
 	inccru	bg24ccr,data\2-4.ccr
-	ELSEIF							;if contest = 1
-	inccru	bgticcr,data\ti.ccr
-	inccru	bgtipcr,data\ti.pcr
-
-bg24ccr	=	bgticcr
-	ENDC
 
 	IFEQ	GERMAN					
-	IFEQ	CONTEST
 	inccru	bgcpccr,data\cp.ccr
-	ELSEIF
-	inccru	bgcpccr,data\e.ccr
-	ENDC
 	ELSEIF
 	inccru	bgcpccr,data\cp-g.ccr
 	ENDC

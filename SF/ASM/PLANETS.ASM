@@ -204,10 +204,6 @@ cestimeron	=	0
 cestimeron	=	1
 	ENDC
 
-	IFNE	contest
-cestimeron	=	1
-	ENDC
-
 	IFNE	cestimeron
 
 	lda	#cestime
@@ -239,10 +235,6 @@ cestimeron	=	1
 	lda	#stagepaths.path19-stagepaths
 	sta	routes+6
 
-;	routechange	1
-;	routechange	2
-;	routechange	bhole3
-
 ; clear stage, map mode and screen transfer latch
 	stz	stage
 	stz	mapmode
@@ -252,7 +244,6 @@ cestimeron	=	1
 	rtl
 
 planetseq_l
-	IFEQ	contest
 
 	a8i16
 	jsr	convertroute
@@ -264,14 +255,6 @@ planetseq_l
 	stz	nosetport3
 
 	disable
-
-
-
-
-;	lda	#1
-;	sta	stage
-;	lda	#1
-;	sta	whichroute
 
 	a16
 	lda	#0000
@@ -399,16 +382,6 @@ planetseq_l
 	sta.l	xinidisp7
 	cmp	#$f
 	bne	.nxtfad		; fade the screen in quickly
-
-; fast planet screen check:
-;	jsl	read_joypadt_l
-;	TESTKEYDOWN	SELECT
-;	beq	.nostart
-;	TESTKEYDOWN	B
-;	beq	.nostart
-;	TESTKEYDOWN	A
-;	beq	.nostart
-;	fast
 .nostart
 
 	a8i16
@@ -447,7 +420,6 @@ planetseq_l
 	sec
 	sbc	#4
 	sta.l	mspr_pal
-;	jsr	fadelines
 .full
 	jsr	switchbuffer_fast	; switch in new screen
 	lda	gameframe
@@ -464,23 +436,14 @@ planetseq_l
 	bit	#pad_SELECT!pad_LEFT!pad_RIGHT!pad_UP!pad_DOWN
 	beq	.nopress
 .fadeoot
-;	lda.l	mspr_pal
-;	inc	a
-;	inc	a			; fade out the lines
-;	cmp	#16
-;	beq	.nomorefadeout
-;	sta.l	mspr_pal
-;	jsr	fadelines2
 	lda	#16
 	sta.l	mspr_pal
-;	bra	.fadeoot
 .nomorefadeout
 	jsr	waitdma224
 	jsl	undrawplanetlines_l	; clear the course line entirely
 	lda	trig0
 	bit	#pad_LEFT!pad_SELECT!pad_UP
 	a8
-;	TESTJOYPAD	LEFT		; if left was pressed
 	bne	.doleft			; go to doleft
 
 	lda	whichroute
@@ -499,15 +462,6 @@ planetseq_l
 .carryon2
 	trigse	se_cursor
 .nxtfad123
-;	jsr	fadelines2		; transfer the cgx
-;	jsr	waitdma224
-;	jsl	drawplanetlines_l	; draw complete course (stage=max)
-;	lda.l	mspr_pal			; fade register
-;	beq	.okey
-;	dec	a
-;	dec	a
-;	sta.l	mspr_pal		; fade it up, palette 15 is dark
-;	bra	.nxtfad123
 .okey
 
 .carryon
@@ -518,11 +472,11 @@ planetseq_l
 ; NOTE: The following bit is best removed if the final game is released
 
 .nopress
-	IFNE	planetcheat
+	IFNE	planetcheat ; planetcheat
 	IFNE	cesdemo-2
 	TESTJOYPAD	X		; cheat mode select?
 	beq	.nocheat
-	ENDC
+	ENDC ; planetcheat
 	jsr	waitdma224
 	jsl	undrawplanetlines_l	; clear the appropiate bitz
 	lda	#10
@@ -535,7 +489,7 @@ planetseq_l
 	jsl	drawplanetlines_l
 	jmp	.cheatmode		; hit that funky cheat
 .nocheat
-	ENDC
+	ENDC ; cesdemo -2
 
 	lda	trig0
 	bit	#pad_START!pad_A!pad_B
@@ -551,13 +505,12 @@ planetseq_l
 	a16
 	lbra	.continuewithgame	; and get on with it
 
-	IFNE	planetcheat
+	IFNE	planetcheat ; planetcheat
 
 .cheatmode
 	jsr	drawroutename		; easy, normal or hard
 	a8i16
 .cheatloop
-	IFEQ	0
 	jsl	read_joypadt_l		; cheat
 	TESTJOYPAD	DOWN
 	bne		.newroute
@@ -605,15 +558,6 @@ planetseq_l
 	beq	.nocheatleft		; cheat
 	lda	stage			; cheat
 	beq	.nocheatleft		; cheat
-;	lda	#16			; cheat
-;	sta	fadecount		; cheat
-;	stz	togglebit		; cheat
-;	inc	stage			; cheat
-;	jsr	waitdma224		; cheat
-;	jsl	undrawplanetlines_l	; cheat
-;	dec	stage			; cheat
-;	jsr	waitdma224		; cheat
-;	jsl	drawplanetlines_l	; cheat
 	dec	stage			; cheat
 	jsr	setshippos
 	bra	.waitoncemore		; cheat
@@ -632,10 +576,7 @@ planetseq_l
 .nocheatright				; cheat
 	jsr	waitdma224		; cheat
 	jsl	drawplanetlines_l	; cheat
-;	jsr	switchbuffer_fast	; cheat
-;	jsr	fadecharsin		; cheat
-;	lbcc	.cheatloop		; cheat
-	ENDC
+
 .waitoncemore				; cheat
 	jsl	read_joypadt_l		; cheat
 	TESTJOYPAD	START		; cheat
@@ -654,27 +595,17 @@ planetseq_l
 	bra	.continue
 .noright	TESTJOYPAD	LEFT		; cheat
 	beq	.noleft			; cheat
-;	inc	stage			; cheat
-;	jsr	waitdma224		; cheat
-;	jsl	undrawplanetlines_l	; cheat
-;	dec	stage			; cheat
-;	beq	.continue		; cheat
 	lda	stage
 	beq	.continue
 	dec	stage			; cheat
 	jsr	setshippos
-;	jsr	waitdma224		; cheat
-;	jsl	drawplanetlines_l	; cheat
 	trigse	se_cursor
 .noleft					; cheat
 	bra	.waitoncemore		; cheat
 .continue					; cheat
-;	jsr	waitdma224		; cheat
-;	jsl	drawplanetlines_l	; cheat
 	brl	.waitoncemore
 	brl	.cheatloop		; cheat
 .cheatfinished				; cheat
-;	jsr	waitdma224		; cheat
 	jsl	drawplanetlines_l	; cheat
 	jmp	.continuewithgame	; cheat
 
@@ -685,9 +616,7 @@ planetseq_l
 .shownext
 	a8
 	jsr	drawroutename		; tell the player how easy it is
-;	lda	#2
 .switchonloop
-;;	pha
 	ldx	x1
 	phx
 	lda	#-1
@@ -701,27 +630,10 @@ planetseq_l
 	stx	x1
 	jsr	moveshipalongpath
 	bcc	.switchonloop
-;;	pla
-;;	dec	a
-;;	bne	.switchonloop
-
-;	dec	stage
-;	jsl	drawplanetlines_l	; draw lines between completed stages
-;	inc	stage
-;; join the dots to the next stage
-;;	stz	trans_flag
-;	dec	stage
 .loopyd
-;	jsr	waitdma224
-;;	jsr	switchbuffer_fast
-
-;	jsr	fadecharsin	; plinkety plink
-;	bcc	.loopyd		; I am going dotty
-;	inc	stage
 
 	jsr	waitdma224
 	jsl	drawplanetlines_l	; just to make sure, draw it again
-;	lbcc	.loopyd
 
 	lda	#tm_planets
 	sta	trans_flag
@@ -778,7 +690,6 @@ planetseq_l
 .nxtwait	pha
 	txa
 	jsr	fadecol0		; fade colour 0 and timed wait
-;	jsr	waitdma224
 	pla
 	dec	a
 	bne	.nxtwait		; slow down the fade a bit
@@ -868,8 +779,6 @@ planetseq_l
 
 
 	jsr	copyfox
-;	jsr	clearpepperscreen
-;	jsr	dmapepperscreen
 
 
 	waitdma	planvw_pos2
@@ -912,7 +821,6 @@ planetseq_l
 
 	jsr	drawplanetincentre	; reposition planet in bitmap
 	jsr	dma256screen_fast	; dma it
-;	jsr	switchbuffer		; switch it in, then..
 
 	a8
 	lda	#-40
@@ -1211,48 +1119,6 @@ planetseq_l
 
 	ai16
 	setlevel			; set starting level
-
-	ELSEIF
-; contest mode
-	a8
-	bgm	map
-	lda	stage
-	beq	.1
-	cmp	#2
-	beq	.3
-	cmp	#1
-	beq	.2
-.4	ai16
-	lda	#level1_4&$7fff
-	sta	mapptr
-	a8
-	lda	#level1_4>>16
-	bra	.owari
-
-.2	ai16
-	lda	#level1_2&$7fff
-	sta	mapptr
-	a8
-	lda	#level1_2>>16
-	bra	.owari
-.3
-	ai16
-	lda	#level1_3&$7fff
-	sta	mapptr
-	a8
-	lda	#level1_3>>16
-	bra	.owari
-.1
-	ai16
-	lda	#level1_1&$7fff
-	sta	mapptr
-	a8
-	lda	#level1_1>>16
-.owari
-	sta	mapbank
-	a16
-
-	ENDC
 
 ;	slow
 	jml	gamestart
@@ -3482,12 +3348,8 @@ cestimer_l
 	lda.l	cesminute
 	bne	.notfinished
 
-	IFEQ	contest
 	jsl	screenoff_l
 	jml	restart
-	ELSEIF
-	jml	timeup_l
-	ENDC
 .notfinished
 	dec	a
 	sta.l	cesminute
@@ -3500,108 +3362,9 @@ cestimer_l
 	lda.l	cestimer
 .daijobu3	sta.l	cestimer
 .end
-	IFNE	contest
-
-	ai16
-	lda	#1
-	sta.l	m_x1
-	sta.l	m_y1
-	lda	#scoretxt2&WM
-	sta.l	m_txtdata
-
-	call_mario	mprintstr
-
-	ai16
-	lda	#1
-	sta	x1
-	lda	#10
-	sta	y1
-	jsl	printpscore_l
-
-	a8
-
-	ENDC
 
 	plp
 	rtl
-
-	IFNE	CONTEST
-printpscore_l
-	php
-	ai16
-	ldx	#0
-
-	lda.l	playerscore
-
-	ldy	#10000
-	jsr	.dividedown
-
-	ldy	#1000
-	jsr	.dividedown
-
-	ldy	#100
-	jsr	.dividedown
-
-	ldy	#10
-	jsr	.dividedown
-
-	ldy	#1
-	jsr	.dividedown
-
-
-	a8
-	ldx	#0
-.again
-	a16
-	lda	x1
-	sta.l	m_x1
-	clc
-	adc	#8
-	sta	x1
-
-	lda	y1
-	sta.l	m_y1
-
-	lda.l	numbuff,x
-	and	#255
-	sta.l	m_z1
-
-	a8
-
-	phx
-	call_mario	mprtdecstop
-	plx
-	inx
-	cpx	#6
-	bne	.again
-
-	plp
-	rtl
-
-	longa
-
-
-	longa
-.dividedown
-	sty	z1
-	ldy	#-1
-.div	iny
-	sec
-	sbc	z1
-	bcs	.div
-	clc
-	adc	z1
-	pha
-
-	tya
-	a8
-	sta.l	numbuff,x
-	inx
-	a16
-	pla
-	rts
-	ENDC
-
 
 	shorta
 ;------------------------------------

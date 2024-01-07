@@ -65,9 +65,7 @@ do_sprites_l
 	jsr	do_spec_weap
 	jsr	do_crosshair
 
-	IFEQ	CONTEST
 	jsr	do_lives
-	ENDC
 
 	jsr	do_shield
 	jsr	do_enemy

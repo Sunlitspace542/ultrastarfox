@@ -158,33 +158,4 @@
 	global	path_paper_3
 	global	path_paper_1b
 
-
-	IFNE	CONTEST
-
-	global	path_mato_0_100
-      	global	path_mato_0_500
-	global	path_mato_2
-	global	path_mato_3
-	global	path_bell_0
-
-	global	path_BringS
-	global	path_BringR
-	global	path_BringL
-	global	path_BringU
-	global	path_BringD
-		       
-	global	path_RringS
-	global	path_RringR
-	global	path_RringL
-	global	path_RringU
-	global	path_RringD
-
-	global	path_kzaco_0
-	global	path_kzaco_1
-	global	path_kzaco_2
-	global	path_kzaco_3
-	global	path_kzaco_4
-
-	ENDC
-
 

@@ -20,7 +20,4 @@
 	global	boss37
 	global	bossfinal
 
-	IFNE	CONTEST
-	global	timeover_l,timeup_l
-	ENDC
 

@@ -28,7 +28,6 @@ echo Crunching palettes...
 @call mc e-test0 0 7
 @call mc e-test 0 7
 @call mc obj-1 8 13
-@call mc contest 0 7
 @call mc 2ep 0 9
 cru allcols.col allcols.pac
 echo Palette crunching Complete.

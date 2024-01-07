@@ -613,7 +613,6 @@ big_circle_exp	MACRO
 	a8
 	ENDM
 ;-----------------------------------------------------------------------------
-	IFEQ	contest
 
 s_test_special	MACRO
 	lda_sflags	\1,special
@@ -625,34 +624,6 @@ s_test_special	MACRO
 .iss\@	inc		specials_dead
 .ns\@
 	ENDM
-
-
-	ELSEIF
-
-s_test_special	MACRO
-	lda_sflags	\1,special
-	bit		#asf_special
-	beq		.ns2\@
-	a16
-	lda		#50
-	bra		.iss\@
-.ns2\@	shorta
-	lda_sflags	\1,Cspecial
-	bit		#asf_Cspecial
-	beq		.ns\@
-	a16
-	lda	#25
-.iss\@
-	longa
-	clc
-	adc.l	playerscore
-	sta.l	playerscore
-	a8
-	inc	specials_dead
-.ns\@
-	ENDM
-
-	ENDC
 
 ;-----------------------------------------------------------------------------
 set_sound2		MACRO	obj,sound number

@@ -118,8 +118,4 @@
 	global	bgbpcr,bgbccr
 	global	obj2ccr
 
-	IFNE	CONTEST
-	global	bgscpcr,bgscccr
-	global	bgtipcr,bgticcr
-	ENDC
 
