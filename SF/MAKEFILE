@@ -4,7 +4,7 @@
 
 # Assembler
 ASM=SASMX
-ASMFLAGS= -e__heap=64000 -xsymbols.txt
+ASMFLAGS= -e__heap=14400 -xsymbols.txt
 
 # Linker
 LINK=ARGLINK
