@@ -4,7 +4,7 @@
 
 # Assembler
 ASM=SASMX
-ASMFLAGS=-xsymbols.txt
+ASMFLAGS= -e__heap=64000 -xsymbols.txt
 
 # Linker
 LINK=ARGLINK
@@ -75,7 +75,7 @@ ALLFILES= BANK\BANK0.SOB BANK\BANK1.SOB BANK\BANK2.SOB \
 
 # Recipe to convert BMP to FON
 .bmp.fon:
-    @$(FONT) $<
+	@$(FONT) $<
 
 # Everything that should be done when make is executed
 all: allcols msprites crunch fonts sf.sfc donebld
