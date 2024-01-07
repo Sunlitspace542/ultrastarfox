@@ -584,8 +584,10 @@
 	extern	paper_1
 	extern	paper_3
 	extern	bou_1b
+	IFNE	0 ; Contest mode shapes
 	extern	target_0
 	extern	target_1
 	extern	target_2
 	extern	target_3
 	extern	pilon_1
+	ENDC
