@@ -2,6 +2,7 @@
 	include	INC\strathdr.inc
 	include	EXT\gastrats.ext
 	include	EXT\pstrats.ext
+	include	EXT\strings.ext
 	include	EXT\paths.ext
 	include	EXT\pistrats.ext
 	include	EXT\pcstrats.ext

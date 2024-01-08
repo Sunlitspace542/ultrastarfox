@@ -30,10 +30,11 @@ numlives	equ	3
 barrelrolldelay	equ	3
 
 ; Enables a timer. when the defined time runs out, the game returns to the controls screen.
-cestimeron			equ	0
+cestimeron			equ	1
 
 ; Timer countdown (in minutes)
-cestime				equ	5
+; highest possible is 99
+cestime				equ	15
 
 ; Random Vertices
 

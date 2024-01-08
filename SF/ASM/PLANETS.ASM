@@ -3245,6 +3245,7 @@ showplanetname
 	rts
 
 cesx	=	224-40
+cesx2	=	224-48 ; for double digit minute counts
 ;---------------------------------------------------------------------------
 	IFNE	cestimeron
 cestimer_l
@@ -3252,72 +3253,31 @@ cestimer_l
 	a8
 	s_jmp_varAND	B,pshipflags,#psf_noctrl,.end
 
-
-	ai16
-
-	lda	#cesx
-	sta.l	m_x1
-	lda	#10
-	sta.l	m_y1
-
+	; Rewritten CES timer print
+	a8
+	; if the game has not handed control over to the player yet, don't print
+	s_jmp_varAND	B,pshipflags,#psf_noctrl,.notimer
+	; print minutes
+	bra	.twodig ; IFGE
+.twodig
 	lda.l	cesminute
-	and	#255
-	sta.l	m_z1
-	beq	.nodo
-	call_mario	mprtdecstop
-
-	lda	#cesx+8
-	sta.l	m_x1
-	lda	#10
-	sta.l	m_y1
-	lda	#cesmintxt&WM
-	sta.l	m_txtdata
-
-	call_mario	mprintstr
-
-	bra		.alwaysshow
-
-.nodo
-	lda.l	cestimer
-	cmp	#44
-	bcs	.nodo2
-
-.alwaysshow
-	lda	#cesx+16
-	sta.l	m_x1
-	lda	#10
-	sta.l	m_y1
-
-	lda.l	cessecond10
-	and	#255
-	sta.l	m_z1
-	call_mario	mprtdecstop
-
-	lda	#cesx+24
-	sta.l	m_x1
-	lda	#10
-	sta.l	m_y1
-
-	lda.l	cessecond
-	and	#255
-	sta.l	m_z1
-	call_mario	mprtdecstop
-
-.nodo2
-
-
-	lda	#cesx+32
-	sta.l	m_x1
-	lda	#10
-	sta.l	m_y1
-	lda	#cessectxt&WM
-	sta.l	m_txtdata
-
-	call_mario	mprintstr
-
+	cmp	#10
+	bcc	.onedig ; IFLE
+	printl	21,2,cesminute
+	bra	.seconds
+.onedig
+	kandoprint	21,2,ceszerotxt
+	printl	22,2,cesminute
+	bra	.seconds
+.seconds
+	kandoprint	23,2,cesmintext
+	; print seconds
+	printl	24,2,cessecond10
+	printl	25,2,cessecond
+	kandoprint	26,2,cessectext
+.notimer
 
 	a8
-
 	lda.l	cestimer
 	clc
 	adc	framer

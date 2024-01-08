@@ -1,0 +1,3 @@
+	IFNE	cestimeron
+	global	cesmintext,cessectext,ceszerotxt
+	ENDC

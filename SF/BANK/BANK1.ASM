@@ -8,6 +8,7 @@
 	include	INC\gridvars.inc
 
 	include	INC\stratequ.inc
+	include	EXT\strings.ext
 
 	extern	arctantab
 

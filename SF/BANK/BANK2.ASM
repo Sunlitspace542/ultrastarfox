@@ -8,7 +8,7 @@
 	include	INC\mapstructs.inc
 	include	INC\mapmacs.inc
 	include	INC\shmacs.inc
-
+	include	EXT\strings.ext
 	include	EXT\mario.ext
 	include	EXT\incbins.ext
 	include	EXT\mdata.ext

@@ -4,6 +4,7 @@
 	include	EXT\gastrats.ext
 	include	EXT\ga2strats.ext
 	include	EXT\gb2strats.ext
+	include	EXT\strings.ext
 	include	EXT\gcstrats.ext
 	include	EXT\pistrats.ext
 	include	EXT\pstrats.ext

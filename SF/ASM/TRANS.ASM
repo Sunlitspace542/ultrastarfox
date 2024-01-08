@@ -219,7 +219,7 @@ stratsfrozen
 	sec
 	sbc	#60
 	sta	framecount
-.noreset	
+.noreset
 
 	ifne	mario_stats3d
 

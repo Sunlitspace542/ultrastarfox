@@ -234,10 +234,10 @@ printb_l
 
 	shorta
 printbsd
-	IFEQ	debuginfo
-printchar
-	rts
-	ELSEIF
+;	IFEQ	debuginfo
+;printchar
+;	rts
+;	ELSEIF
 
 	pha
 
@@ -255,19 +255,19 @@ printchar
 	pla
 	jmp	printbd
 
-	ENDC
+;	ENDC
 
 	shorta
 printbd
-	IFEQ	debuginfo
-	rts
+;	IFEQ	debuginfo
+;	rts
 ;printb_l
 ;printbsd_l
 ;printbd_l
 ;printw_l
 ;printt_l
-	rtl
-	ELSEIF
+;	rtl
+;	ELSEIF
 
 	cmp	#200
 	bcc	.not200
@@ -385,12 +385,12 @@ printchar
 	rts
 
 
-	ENDC
+;	ENDC
 
 printb
-	IFEQ	debuginfo
-	rts
-	ELSEIF
+;	IFEQ	debuginfo
+;	rts
+;	ELSEIF
 
 	php
 	ai16
@@ -483,7 +483,7 @@ printbb_l
 	plp
 	rtl
 
-	ENDC
+;	ENDC
 
 
 

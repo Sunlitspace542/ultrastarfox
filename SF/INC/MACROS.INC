@@ -51,6 +51,24 @@ showtxt	macro	[table]				;Shows the full text in a single table
 	pla								;pull accumulator
 	endm
 
+; combines settxt and showtxt together to print a string at the defined row and column
+kandoprint	macro	[column,row,table]
+	settxt	\1,\2
+	showtxt	\3
+	ENDM
+
+; Print number (Short address)
+prints	macro	[column,row,variable]
+	lda	\3
+	printd	\1,\2
+	ENDM
+
+; Print number (Long address)
+printl	macro	[column,row,variable]
+	lda.l	\3
+	printd	\1,\2
+	ENDM
+
 ;--------------------------------------------------------------
 
 onofftxtspcl	macro	[var]				;Displays ON or OFF depending on the value of [var]
