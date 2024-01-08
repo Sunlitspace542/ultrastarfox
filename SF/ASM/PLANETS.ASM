@@ -3246,6 +3246,7 @@ showplanetname
 
 cesx	=	224-40
 ;---------------------------------------------------------------------------
+	IFNE	cestimeron
 cestimer_l
 	php
 	a8
@@ -3356,6 +3357,7 @@ cestimer_l
 	rtl
 
 	shorta
+	ENDC ; cestimeron
 ;------------------------------------
 
 
