@@ -3244,8 +3244,6 @@ showplanetname
 	plp
 	rts
 
-cesx	=	224-40
-cesx2	=	224-48 ; for double digit minute counts
 ;---------------------------------------------------------------------------
 	IFNE	cestimeron
 cestimer_l
@@ -3258,22 +3256,22 @@ cestimer_l
 	; if the game has not handed control over to the player yet, don't print
 	s_jmp_varAND	B,pshipflags,#psf_noctrl,.notimer
 	; print minutes
-	bra	.twodig ; IFGE
+	bra	.twodig
 .twodig
 	lda.l	cesminute
 	cmp	#10
 	bcc	.onedig ; IFLE
-	printl	21,2,cesminute
+	printnuml	21,2,cesminute
 	bra	.seconds
 .onedig
 	kandoprint	21,2,ceszerotxt
-	printl	22,2,cesminute
+	printnuml	22,2,cesminute
 	bra	.seconds
 .seconds
 	kandoprint	23,2,cesmintext
 	; print seconds
-	printl	24,2,cessecond10
-	printl	25,2,cessecond
+	printnuml	24,2,cessecond10
+	printnuml	25,2,cessecond
 	kandoprint	26,2,cessectext
 .notimer
 

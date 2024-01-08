@@ -58,13 +58,13 @@ kandoprint	macro	[column,row,table]
 	ENDM
 
 ; Print number (Short address)
-prints	macro	[column,row,variable]
+printnum	macro	[column,row,variable]
 	lda	\3
 	printd	\1,\2
 	ENDM
 
 ; Print number (Long address)
-printl	macro	[column,row,variable]
+printnuml	macro	[column,row,variable]
 	lda.l	\3
 	printd	\1,\2
 	ENDM

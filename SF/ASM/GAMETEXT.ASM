@@ -16,11 +16,6 @@ peppytxt	newtext	14,<PEPPY>
 falcotxt	newtext	14,<FALCO>
 deadtxt	newtext	14,<. . . . . .>
 stagetxt	newtext	14,<STAGE>
-	IFNE	cestimeron
-cesmintxt	newtext	2,<m>
-cessectxt	newtext	2,<s>
-	ENDC ; cestimeron
-scoretxt2	newtext	2,<score>
 	ENDC
 
 	IFNE	FRENCH
@@ -38,11 +33,6 @@ peppytxt	newtext	14,<PEPPY>
 falcotxt	newtext	14,<FALCO>
 deadtxt		newtext	14,<ES MORT>
 stagetxt	newtext	14,<STAGE>
-	IFNE	cestimeron
-cesmintxt	newtext	2,<m>
-cessectxt	newtext	2,<s>
-	ENDC ; cestimeron
-scoretxt2	newtext	2,<score>
 	ENDC
 
 	IFNE	JAPANESE
@@ -60,11 +50,6 @@ peppytxt	newtext	14,<PEPPY>
 falcotxt	newtext	14,<FALCO>
 deadtxt	newtext	14,<IS DOWN>
 stagetxt	newtext	14,<STAGE>
-	IFNE	cestimeron
-cesmintxt	newtext	2,<m>
-cessectxt	newtext	2,<s>
-	ENDC ; cestimeron
-scoretxt2	newtext	2,<score>
 	ENDC
 	
 	IFNE	SPANISH			
@@ -82,11 +67,6 @@ peppytxt	newtext	14,<PEPPY>
 falcotxt	newtext	14,<FALCO>
 deadtxt	newtext	14,<IS DOWN>
 stagetxt	newtext	14,<STAGE>
-	IFNE	cestimeron
-cesmintxt	newtext	2,<m>
-cessectxt	newtext	2,<s>
-	ENDC ; cestimeron
-scoretxt2	newtext	2,<score>
 	ENDC
 
 	IFEQ	SPANISH
@@ -107,11 +87,6 @@ peppytxt	newtext	14,<PEPPY>
 falcotxt	newtext	14,<FALCO>
 deadtxt	newtext	14,<IS DOWN>
 stagetxt	newtext	14,<STAGE>
-	IFNE	cestimeron
-cesmintxt	newtext	2,<m>
-cessectxt	newtext	2,<s>
-	ENDC ; cestimeron
-scoretxt2	newtext	2,<score>
 	ENDC
 	ENDC
 	ENDC

@@ -2,9 +2,6 @@
 	global	fontdata
 	global	perfecttxt,teamtxt,deadtxt,slippytxt,peppytxt,falcotxt
 	global	pausetxt,messages,totalscoretxt,scoretxt,slashtxt,percenttxt,percenttxt2,stagetxt
-	global	bonustxt,scoretxt2
-	IFNE	cestimeron
-	global	cessectxt,cesmintxt
-	ENDC
+	global	bonustxt
 
 
