@@ -3264,17 +3264,18 @@ cestimer_l
 	cmp	#10	; Compare with 10
 	bcc	.onedig ; if minutes < 10, print only 1 digit
 	printnuml	timerx+1,timery,cesminute	; Print minutes
-	bra	.seconds	; Print 'M' and the current seconds
+	bra	.seconds	; Print 'M', 'TIME', and the current seconds
 .onedig
 	kandoprint	(timerx+1),timery,ceszerotxt	; Print fake 0 in 10s place
 	printnuml	timerx+2,timery,cesminute	; Print single-digit minutes in 1s place
-	bra	.seconds	; Print 'M' and the current seconds
+	bra	.seconds	; Print 'M', 'TIME', and the current seconds
 .seconds
 	kandoprint	(timerx+3),timery,cesmintext	; "M"
 	; print seconds
 	printnuml	timerx+4,timery,cessecond10	; Print current seconds 10s place value
 	printnuml	timerx+5,timery,cessecond	; Print current seconds 1s place value
 	kandoprint	(timerx+6),timery,cessectext	; "S"
+	kandoprint	(timerx+1),(timery-1),cestimetext	; "TIME"
 .notimer
 
 	a8

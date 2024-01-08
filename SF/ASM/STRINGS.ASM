@@ -21,9 +21,14 @@ strats_start
 	INCPUBLICS	EXT\strings.ext
 
 ; Define your strings to be printed with the kandoprint macro here.
-;! Make sure to make them global labels in STRINGS.EXT
+;! Make sure to define them as global labels in STRINGS.EXT.
 
 	IFNE	cestimeron
+
+cestimetext
+	db	" TIME "
+	dw	0
+
 cesmintext
 	db	"M"
 	dw	0

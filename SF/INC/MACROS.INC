@@ -38,13 +38,13 @@ showtext	macro	[table]			;Shows the full text in a single table
 .start\@
 	sta	open_text					;store this letter into open_text
 
-	lda	#open_text					;Load weapon text back into accumulator
+	lda	#open_text					;Load text back into accumulator
 	sta	textpt						;store this into textpt (which gets printed with printt_l)
 	
 	jsl	printt_l					;Run routine to display the letter
 	bra	.stringloop\@				;Go back and continue looking for letters (until it hits a 0)
 
-.stringdone\@						;Done displaying the string "versiontext", continue
+.stringdone\@						;Done displaying the string, continue
 	pla								;pull accumulator
 	endm
 
