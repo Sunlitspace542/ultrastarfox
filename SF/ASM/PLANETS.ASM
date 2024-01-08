@@ -3246,33 +3246,35 @@ showplanetname
 
 ;---------------------------------------------------------------------------
 	IFNE	cestimeron
+
 cestimer_l
-	php
-	a8
+	php	; Push current processor status to stack
+	a8	; Set A to 8 bit
+	; if the game has not handed control over to the player yet, do nothing
 	s_jmp_varAND	B,pshipflags,#psf_noctrl,.end
 
 	; Rewritten CES timer print
 	a8
-	; if the game has not handed control over to the player yet, don't print
+	; if the game has not handed control over to the player yet, don't print anything
 	s_jmp_varAND	B,pshipflags,#psf_noctrl,.notimer
 	; print minutes
-	bra	.twodig
+	bra	.twodig	; Assume we're printing a 2 digit number of minutes
 .twodig
-	lda.l	cesminute
-	cmp	#10
-	bcc	.onedig ; IFLE
-	printnuml	21,2,cesminute
-	bra	.seconds
+	lda.l	cesminute	; Load (long) current minutes into A
+	cmp	#10	; Compare with 10
+	bcc	.onedig ; if minutes < 10, print only 1 digit
+	printnuml	timerx+1,timery,cesminute	; Print minutes
+	bra	.seconds	; Print 'M' and the current seconds
 .onedig
-	kandoprint	21,2,ceszerotxt
-	printnuml	22,2,cesminute
-	bra	.seconds
+	kandoprint	(timerx+1),timery,ceszerotxt	; Print fake 0 in 10s place
+	printnuml	timerx+2,timery,cesminute	; Print single-digit minutes in 1s place
+	bra	.seconds	; Print 'M' and the current seconds
 .seconds
-	kandoprint	23,2,cesmintext
+	kandoprint	(timerx+3),timery,cesmintext	; "M"
 	; print seconds
-	printnuml	24,2,cessecond10
-	printnuml	25,2,cessecond
-	kandoprint	26,2,cessectext
+	printnuml	timerx+4,timery,cessecond10	; Print current seconds 10s place value
+	printnuml	timerx+5,timery,cessecond	; Print current seconds 1s place value
+	kandoprint	(timerx+6),timery,cessectext	; "S"
 .notimer
 
 	a8
@@ -3280,39 +3282,48 @@ cestimer_l
 	clc
 	adc	framer
 	cmp	#60
-	bcc	.daijobu3
+	bcc	.daijobu3	; If framerate < 60? branch to .daijobu3
 	sec
 	sbc	#60
 	sta.l	cestimer
 
-	lda.l	cessecond
-	dec	a
-	bpl	.daijobu
+	; This part makes the timer tick
+	lda.l	cessecond	; Load current seconds (1s place) into A
+	dec	a				; Decrement A by one
+	bpl	.daijobu		; branch to .daijobu if A is positive (store time)
 
-	lda.l	cessecond10
-	dec	a
-	bpl	.daijobu2
+	lda.l	cessecond10	; Load current seconds (10s place) into A
+	dec	a				; Decrement A by one
+	bpl	.daijobu2		; branch to .daijobu2 if A is positive (store time)
 
-	lda.l	cesminute
-	bne	.notfinished
+	lda.l	cesminute	; Load current minutes into A
+	bne	.notfinished	; Branch to .notfinished if cesminute != 0
 
-	jsl	screenoff_l
-	jml	restart
-.notfinished
-	dec	a
-	sta.l	cesminute
+	; Else if cesminute	== 0
+	; Time's up!
+	jsl	screenoff_l ; Fade the screen to black
+	jml	restart 	; Reboot (go to control select)
+.notfinished	; if time hasn't run out yet:
+	dec	a	; Decrement A (current minutes) by 1
+	sta.l	cesminute ; Store A in cesminute
 
 	lda	#5
 
-.daijobu2	sta.l	cessecond10
+	; Store the remaining time
+.daijobu2
+	sta.l	cessecond10
 	lda	#9
-.daijobu	sta.l	cessecond
+.daijobu
+	sta.l	cessecond
 	lda.l	cestimer
-.daijobu3	sta.l	cestimer
-.end
+.daijobu3
+	sta.l	cestimer
 
-	plp
-	rtl
+.end	; do nothing
+
+	; End routine
+	plp	; Retrieve process status from the stack
+	rtl	; Return from subroutine (long)
 
 	shorta
 	ENDC ; cestimeron

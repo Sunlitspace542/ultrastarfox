@@ -1,3 +1,5 @@
+;------------------------------------------------------------------------
+
 turnonoff	macro	[var]		;turns a variable on or off, whichever is the opposite of its current state
 	pha							;push anything in the accumulator out into the stack to retrieve later
 	lda	{var}					;load the variable into the accumulator
@@ -7,7 +9,8 @@ turnonoff	macro	[var]		;turns a variable on or off, whichever is the opposite of
 	pla							;pull accumulator back out that we pushed earlier
 	endm
 
-;--------------------------------------------------------------
+;------------------------------------------------------------------------
+
 settext	macro	[column,row]					;Sets the column + row for upcoming text
 	a16											;16 bit accumulator
 	pha
@@ -17,16 +20,10 @@ settext	macro	[column,row]					;Sets the column + row for upcoming text
 	sta	printpt+1								;Store to upper 2 bytes of printpt
 	pla
 	endm
-;--------------------------------------------------------------
-settxt	macro	[column,row]
-	settext	{column},{row}
-	endm
-;----------------------------------------------------------------
-showtext	macro	[table]
-	showtxt	{table}
-	endm
-	
-showtxt	macro	[table]				;Shows the full text in a single table
+
+;------------------------------------------------------------------------
+
+showtext	macro	[table]			;Shows the full text in a single table
 	stz	textpt
 	pha								;Push accumulator
 	a16
@@ -51,103 +48,45 @@ showtxt	macro	[table]				;Shows the full text in a single table
 	pla								;pull accumulator
 	endm
 
-; combines settxt and showtxt together to print a string at the defined row and column
+;------------------------------------------------------------------------
+
+settxt	macro	[column,row]
+	settext	{column},{row}
+	endm
+
+;------------------------------------------------------------------------
+
+showtxt	macro	[table]
+	showtext	{table}
+	endm
+
+;------------------------------------------------------------------------
+
+; Combines settxt and showtxt together to print a string
+; at the defined column and row.
 kandoprint	macro	[column,row,table]
-	settxt	\1,\2
-	showtxt	\3
+	settxt	\1,\2				; Set position for upcoming text
+	showtxt	\3					; Show specified string on screen at specified row and column
 	ENDM
 
-; Print number (Short address)
+; Print variable on screen at defined column and row (Short address)
 printnum	macro	[column,row,variable]
-	lda	\3
-	printd	\1,\2
+	lda	{variable}						; Long load variable into A
+	printd	{column},{row}				; Display decimal value of A on screen at specified row and column
 	ENDM
 
-; Print number (Long address)
+; Print variable on screen at defined column and row (Long address)
 printnuml	macro	[column,row,variable]
-	lda.l	\3
-	printd	\1,\2
+	lda.l	{variable}					; Long load variable into A
+	printd	{column},{row} 				; Display decimal value of A on screen at specified row and column
 	ENDM
 
-;--------------------------------------------------------------
-
-onofftxtspcl	macro	[var]				;Displays ON or OFF depending on the value of [var]
-	pha									;push accumulator
-	lda	{var}							;Check if variable is 1 or 0
-	and	#7
-	beq	\@off							;If its 0, jump to off
-	cmp	#2
-	beq	\@onplus
-	cmp	#3
-	bpl	\@onplusplus
-	showtxt	p2text						;otherwise, display ON
-	bra	\@done						;jump to end
-\@onplus
-	showtxt	p2plustext						;display ON+
-	bra	\@done
-\@onplusplus
-	showtxt	p4text						;display ON+
-	bra	\@done
-\@off
-	showtxt	offtext						;display OFF
-	bra	\@done
-\@done
-	pla									;pull accumulator
-	endm
-
-;--------------------------------------------------------------
-
-
-onofftxt	macro	[var]				;Displays ON or OFF depending on the value of [var]
-	pha									;push accumulator
-	lda	{var}							;Check if variable is 1 or 0
-	and	#7
-	beq	\@off							;If its 0, jump to off
-	cmp	#2
-	beq	\@onplus
-	cmp	#3
-	bpl	\@onplusplus
-	showtxt	ontext						;otherwise, display ON
-	bra	\@done						;jump to end
-\@onplus
-	showtxt	onplustext						;display ON+
-	bra	\@done
-\@onplusplus
-	showtxt	onplusplustext						;display ON+
-	bra	\@done
-\@off
-	showtxt	offtext						;display OFF
-	bra	\@done
-\@done
-	pla									;pull accumulator
-	endm
-;--------------------------------------------------------------
-onofftext	macro	[var]
-	onofftxt	{var}
-	endm
-
-;--------------------------------------------------------------
-offontxt	macro	[var]				;Displays ON or OFF depending on the value of [var] (Opposite of value)
-	pha									;push accumulator
-	lda	{var}							;Check if variable is 1 or 0
-	and	#1
-	beq	.off\@							;If its 0, jump to off
-	showtxt	offtext						;otherwise, display ON
-	bra	.done\@							;jump to end
-.off\@
-	showtxt	ontext						;display OFF
-.done\@
-	pla									;pull accumulator
-	endm
-;--------------------------------------------------------------
-
+;------------------------------------------------------------------------
 
 printvar	macro	[var]				;displays value of a variable to set text point
 	lda	{var}							;load variable to accumulator
 	printd								;display decimal value of accumulator to screen
 	endm
-;--------------------------------------------------------------
-
 ;------------------------------------------------------------------------
 
 wait	macro

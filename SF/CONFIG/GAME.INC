@@ -36,6 +36,10 @@ cestimeron			equ	0
 ; highest possible is 99
 cestime				equ	15
 
+; On-screen location of timer
+timerx = 20 ; Column (from left of screen) 0 - 28
+timery = 2 ; Row (from top of screen) 0 - 24
+
 ; Random Vertices
 
 ; randomize the vertices slightly

@@ -44,10 +44,12 @@
                                     see PRINTF,ROLS,STRLEN
 
           ELSEIF                    Swaps the condtional level
-                                    see IF, ENDC
+                                    see IF, ENDC, ENDIF
 
           END                       Stops assembly of the current
                                     source file
+
+          ENDC,ENDIF                Ends a conditional check.
 
           ENDM                      Ends a macro definition
                                     see MACRO, MEXIT
@@ -59,7 +61,7 @@
                                     cannot be redefined
                                     see =, EQUR
 
-<reg>     EQUR <expression>        Sets the <register> to be <expression>,
+<reg>     EQUR <expression>         Sets the <register> to be <expression>,
                                     can be used in MARIO code only
                                     see =, EQU
 
@@ -94,7 +96,7 @@
                                     C  - strings eq.   NC - strings not eq.
                                     V  - env. exist    NV - env. not exist
                                     S  - string char   NS - not string char
-                                    see. ELSEIF, ENDC
+                                    see. ELSEIF, ENDC, ENDIF
 
           INCBIN <name>             Copies the contents of file <name> into
                                     the object buffer.

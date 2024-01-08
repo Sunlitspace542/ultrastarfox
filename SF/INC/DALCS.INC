@@ -89,11 +89,14 @@ pifnot	=	xpifnot&WM
 	xalc	becomelastobj,2
 	xalc	nebula_on,2
 	xalc	lastselected,1
+; Timer alcs
+	IFNE	cestimeron
 	xalc	cesminute,1
 	xalc	cessecond,1
 	xalc	cessecond10,1
 	xalc	cestimer,1
 	xalc	cestimer2,1
+	ENDC	;cestimeron
 
 
 
