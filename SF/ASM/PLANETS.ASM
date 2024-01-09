@@ -193,8 +193,7 @@ initplanets_l
 	a8
 ;	stz	whichroute 	; (not to be cleared unless reset pressed)
 
-; set number of lives
-
+; set starting time
 	IFNE	cestimeron
 
 	lda	#cestime
@@ -203,7 +202,7 @@ initplanets_l
 	sta.l	cessecond
 	sta.l	cessecond10
 
-	ENDC
+	ENDC	;cestimeron
 
 ; Set player's lives
 	lda	#numlives
