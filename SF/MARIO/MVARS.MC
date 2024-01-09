@@ -332,23 +332,6 @@ mmaxvistab	=	250
 	malc	m_particlesON,2
 	malc	m_defaultID,2
 
-;	malc	m_debugchars,8*16	; always last!
-
-; 0000 vars	    512		4
-; 0200 stack	    256		2
-; 0280 rotpnts	    768		6
-; 0280 projpnts    768		6
-; 0280 vistab	    128		1
-; 0280 zbuf	    128		1
-; 0280 bsplist	    128		1
-; 0280 polybuf	    128		1
-; 0280 clippolybuf 128		1
-; 0280 cpolybuf    128		1
-; 0280 drawlist    512		4
-; 0280 dustpnts    256		2
-; 0280 free	    256		2
-; 
-
 
 
 

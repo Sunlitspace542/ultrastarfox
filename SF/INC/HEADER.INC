@@ -36,16 +36,22 @@ TITLE_BAR	=	0
 totaltime	=	0
 	gettime	starttime
 
-
+; Constants
 	include	INC\vars.inc
 
-	include	INC\sfxregs.inc
+; System defines
+	include	INC\sfcregs.inc	; SNES registers
+	include INC\mregs.inc	; MARIO chip registers
 	IFNE	msu
-	include	INC\msuregs.inc
-	include	INC\msutrks.inc
+	include	INC\msuregs.inc	; MSU-1 registers
+	include	INC\msutrks.inc	; MSU-1 tracklist
 	ENDC
+;----------------
+
 	include	INC\soundequ.inc
 	include	INC\structs.inc
+
+; Memory allocations
 	include	INC\alcs.inc
 
 
