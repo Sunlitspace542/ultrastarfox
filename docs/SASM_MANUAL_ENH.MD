@@ -139,17 +139,16 @@ When expanded, produces:
 
 ## Version 1.10
 ```diff  
-- These changes are now null and void, and should be avoided.
--   
--         ``DEFSEND <printf string>``  
--           Defines the send message.  
--  
--         Two new assembler symbols defined when sending...  
--           ``TOTALBYTES`` : total number of bytes assembled  
--           ``TOTALSENT`` : total number of bytes sent  
--  
--   
-- These changes are now null and void, and should be avoided.
+- !! These changes are now null and void, and should be avoided.
+-
+-         DEFSEND <printf string>
+-           Defines the send message.
+-
+-         Two new assembler symbols defined when sending...
+-           TOTALBYTES : total number of bytes assembled
+-           TOTALSENT : total number of bytes sent
+-
+- !! These changes are now null and void, and should be avoided.
  ```
 
 
