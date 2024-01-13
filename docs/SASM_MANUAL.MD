@@ -96,7 +96,7 @@ would print
 would print  
 `` kris......wobble``
 
-``printf "[3]krister"``  
+``PRINTF "[3]krister"``  
 would print  
 ``kri``  
 
@@ -107,11 +107,11 @@ If a '``+``' is added before the name then the file will be opened in append mod
 
 NOTE: ``FCLOSE`` does not close the file, but redirects output to the screen, when a new ``FOPEN`` is executed then SASM will determine if the name is the same, if it is the same then the file will be appended, if the name is not the same then SASM will close the old file and create a new one, saving lots of time by not closing and then opening the same file. However the following code will not work because of this feature...
 ```
-fopen kris                          ;Open file kris.. OK
-printf "wobble equ ",oranges        ;OK
-fclose                              ;Redirects to
+FOPEN kris                          ;Open file kris.. OK
+PRINTF "wobble equ ",oranges        ;OK
+FCLOSE                              ;Redirects to
                                     ;screen, file NOT closed
-include kris                        ;File not closed, so
+INCLUDE kris                        ;File not closed, so
                                     ;garbage is read.
 ```
 To fix the bug insert a line like  '``FOPEN garbage``' which will close KRIS and open garbage.  
@@ -191,10 +191,10 @@ Local labels now store a pointer to the parent label rather than storing the tex
 Local labels now delete their texts when a new parent label is defined. To declare a local label to be used by another parent section use the directive  LOCAL  which will add the local symbol to the parent symbol table as parent.local
  Example:
 ```parent1
-.local    local
+.local	local
 
 parent2
-          jmp       parent1.local
+	jmp	parent1.local
 ```
 Something decided to delete the entire directory, had to use NDD to recover, some bits may be wrong.
 
@@ -213,11 +213,11 @@ Example if you want to write this bit of code...
 ```
 then do this..
 ```
-	write	on
+	WRITE	ON
 	org	*,@
 	lda #65
 	sta message,x
-	write	off
+	WRITE	OFF
 	org	*,@
 ```
 The blocks created inside the ``write	on/off`` section will be flagged as to be written out. The assembler will always SEND ALL THE CODE but only WRITE the selected blocks to disk. DEFAULT IS ON so all code is written to disk.
@@ -394,7 +394,7 @@ within a string.  ``IFS`` to check if they are the same and
  IFNS if they are not the same.  Usage....
 ```
 	IFS	2,4,"K" ;This will compare character 4 in string 2
-                ;with character "K"
+				;with character "K"
 ```
 
 You can know implicitly close a ``PRINTF`` file by putting a ``!`` as a parameter for the ``FCLOSE`` command.
@@ -487,7 +487,7 @@ The directives are ``PUBLIC`` and ``EXTERN``.  ``PUBLIC`` makes a symbol usable 
 The only restriction is that a relative branch will not work with an ``EXTERN``.
 As the linker is fully integrated it is possible to do expressions such as:  
 ```
-	extern	kris,dyl,giles  
+	EXTERN	kris,dyl,giles  
 	lda	#kris/dyl+giles
 ```
 because the assembler will store an expression which is evaluated at link time.
