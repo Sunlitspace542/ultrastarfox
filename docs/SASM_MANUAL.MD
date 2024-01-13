@@ -397,7 +397,7 @@ within a string.  ``IFS`` to check if they are the same and
 				;with character "K"
 ```
 
-You can know implicitly close a ``PRINTF`` file by putting a ``!`` as a parameter for the ``FCLOSE`` command.
+You can now implicitly close a ``PRINTF`` file by putting a ``!`` as a parameter for the ``FCLOSE`` command.
 
 Line number fixing.
 
@@ -555,14 +555,14 @@ One error per macro is now the limit, so that all the strategy macros don't chur
                                     see PRINTF,ROLS,STRLEN
 
           ELSEIF                    Swaps the condtional level.
-                                    see IF, ENDC, ENDIF
+                                    see IF, ENDC
 
           ERROR+                    Increments the number of errors.
 
           END                       Stops assembly of the current
                                     source file.
 
-          ENDC,ENDIF                Ends a conditional check.
+          ENDC                      Ends a conditional check.
                                     see IF
 
           ENDM                      Ends a macro definition.
@@ -614,7 +614,7 @@ One error per macro is now the limit, so that all the strategy macros don't chur
                                     C  - strings eq.   NC - strings not eq.
                                     V  - env. exist    NV - env. not exist
                                     S  - string char   NS - not string char
-                                    see. ELSEIF, ENDC, ENDIF
+                                    see. ELSEIF, ENDC
 
           INCBIN <name>             Copies the contents of file <name> into
                                     the object buffer.
