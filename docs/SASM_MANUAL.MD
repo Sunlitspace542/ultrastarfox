@@ -478,9 +478,9 @@ SASMX works on the 286|DOS EXTENDER specification. Therefore a 286 machine or ab
 
 ``SL.EXE`` - The integrated linker for SASMX v2.01+, look at ``SL.DOC`` for more information on ``SL.EXE``.
 
-SASMX has two new opcodes and one command line option to support the linker.  The command line option is ``-V<filename.SOB>`` which will output a SASMX OBject file, the file does not have to be ``.SOB`` but SL reads only ``.SOB`` extensions.  
+SASMX has two new directives and one command line option to support the linker.  The command line option is ``-V<filename.SOB>`` which will output a SASMX OBject file, the file does not have to be ``.SOB`` but SL reads only ``.SOB`` extensions.  
 
-The opcodes are ``PUBLIC`` and ``EXTERN``.  ``PUBLIC`` makes a symbol usable by another file and ``EXTERN`` uses a symbol created by another file. ``PUBLIC`` must come before the symbol is defined and ``EXTERN`` must come before the symbol is used for the first time.  
+The directives are ``PUBLIC`` and ``EXTERN``.  ``PUBLIC`` makes a symbol usable by another file and ``EXTERN`` uses a symbol created by another file. ``PUBLIC`` must come before the symbol is defined and ``EXTERN`` must come before the symbol is used for the first time.  
 
 The only restriction is that a relative branch will not work with an ``EXTERN``.
 As the linker is fully integrated it is possible to do expressions such as:  
@@ -490,7 +490,7 @@ As the linker is fully integrated it is possible to do expressions such as:
 ```
 because the assembler will store an expression which is evaluated at link time.
 
- The ``IRS`` opcode has been modified, so that is the ``REPT`` count is greater than the number of ``IRS`` parameters then it will 'wrap' round.
+ The ``IRS`` directive has been modified, so that is the ``REPT`` count is greater than the number of ``IRS`` parameters then it will 'wrap' round.
 
 Numbers can be expressed as ``1234h`` or ``01000b`` instead of ``$`` and ``%`` before the number.
 
