@@ -882,7 +882,7 @@ Do not define string 5 on the command line if you have a ``SASMHEAP`` environmen
 The assembler supports ASCII codes, that is characters from 0 to 127, if a character higher than 127 is used in a macro,symbol etc. things may go very wrong!
 
 It is possible to use INCCOL as a CGX and SCR file includer too!
-To include a CGX file you will have to know how many chars are in it, and to include a SCR file you will have to know how many screens are used.  Below are some macros to include them!
+To include a CGX file you will have to know how many chars are in it, and to include a SCR file you will have to know how many screens are used. Below are some macros to include them!
 ```
 ; Incbin an 8 bit CGX file
 inccgx8	MACRO
@@ -910,4 +910,26 @@ Downloading to SFC can sometimes go wrong, if it does switch on ROM listing and 
 If you appear to run out of EMS memory then try using ``EMM386.EXE`` instead of whatever EMM handler you are using, use this line..  
 ``device=c:\dos\emm386.exe 1392 h=255 ram``  
 Or look at the documentation for whatever EMM handler you are using and increase the number of handles available.  
--- NB.  --  As SASM is only DOS-Extender compatible now, this is now void. --
+-- NB.  --  As SASM is only DOS-Extender compatible now, this is now void. --  
+
+Limitations --  
+There is no HiROM support.  
+SASM does not normally support the ``MVN``/``MVP`` opcodes, and will throw a ``No MVN/MVP command!`` error if you attempt to use them.  
+Below are some macros to get around this (included in this repository in INC\MACROS.INC):  
+```
+;---------------------------------------------------------------
+; replicates MVN instruction for SASM
+sasm_mvn	MACRO	[src,dest]
+; example: sasm_mvn	$32,$7E
+; raw opcodes are little endian so we reverse the arguments
+	db $54,{dest},{src}
+	ENDM
+;---------------------------------------------------------------
+; replicates MVP instruction for SASM
+sasm_mvp	MACRO	[src,dest]
+; example: sasm_mvp	$32,$7E
+; raw opcodes are little endian so we reverse the arguments
+	db $44,{dest},{src}
+	ENDM
+;---------------------------------------------------------------
+```
