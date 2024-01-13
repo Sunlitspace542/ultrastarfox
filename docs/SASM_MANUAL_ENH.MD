@@ -1,29 +1,31 @@
 
+
 ```
 ╔════════════════════════════════════════════════════════════════════╗
-║              SASM (c)1992 Argonaut Software Ltd.                   ║
+║         SASMX Copyright (c) Argonaut Software Ltd. 1992            ║
 ╠════════════════════════════════════════════════════════════════════╣
 ║                                                                    ║
-║          ████   ████    █████   ██ ██   █    █                     ║
-║         █    █ █    █  █       █  █  █  █    █                     ║
-║         █      █    █  █       █  █  █   █  █                      ║
-║          ████  ██████   ████   █  █  █    ██                       ║
-║              █ █    █       █  █  █  █   █  █                      ║
-║         █    █ █    █       █  █     █  █    █                     ║
-║          ████  █    █  █████   █     █  █    █                     ║
+║              ████   ████    █████   ██ ██   █    █                 ║
+║             █    █ █    █  █       █  █  █  █    █                 ║
+║             █      █    █  █       █  █  █   █  █                  ║
+║              ████  ██████   ████   █  █  █    ██                   ║
+║                  █ █    █       █  █  █  █   █  █                  ║
+║             █    █ █    █       █  █     █  █    █                 ║
+║              ████  █    █  █████   █     █  █    █                 ║
 ║                                                                    ║
 ╚════════════════════════════════════════════════════════════════════╝
+Version 2.02
 ```
 # Contents                                                    
-[1 : Changelog](#changelog)
-[2 : SASM Assembler Directives](#sasm-assembler-directives)
-[3 : ``PRINTF`` Commands](#printf-commands)
-[4 : CLI Options](#cli-options)
-[5 : Environment Variables](#environment-variables)
-[6 : Assembler Variables](#assembler-variables)
-[7 : Assembler Strings](#assembler-strings)
-[8 : Expression Evaluation](#expression-evaluation)
-[9 : Special Notes](#special-notes)
+[1 : Changelog](#changelog)  
+[2 : SASM Assembler Directives](#sasm-assembler-directives)  
+[3 : ``PRINTF`` Commands](#printf-commands)  
+[4 : CLI Options](#cli-options)  
+[5 : Environment Variables](#environment-variables)  
+[6 : Assembler Variables](#assembler-variables)  
+[7 : Assembler Strings](#assembler-strings)  
+[8 : Expression Evaluation](#expression-evaluation)  
+[9 : Special Notes](#special-notes)  
 
 # Changelog
 
@@ -35,7 +37,7 @@ Assembler shell finished.
 
 ## Version 1.00
 
-Bugs fixed so that it assembles Starglider 2.
+Bugs fixed so that it assembles Starglider 2.  
 Some things put in EMS.
 
 
@@ -51,11 +53,12 @@ Some things put in EMS.
 
 ## Version 1.03
 
-Bugs fixed and lots of things changed so that it assembles Starglider 1
-Most notable changes are everything except symbols has been put in EMS.
-making it slower but using less base memory.
- Features added...
-``Suppress <parameter>`` Can be used to suppress errors,warnings or expression printouts. Parameter can be :    ``ERRORS``, ``WARN``,  ``EXPR``
+Bugs fixed and lots of things changed so that it assembles Starglider 1.  
+Most notable changes are everything except symbols has been put in EMS.  
+making it slower but using less base memory.  
+Features added...
+``Suppress <parameter>`` Can be used to suppress errors,warnings or expression printouts.  
+Parameter can be :    ``ERRORS``, ``WARN``,  ``EXPR``
 
 ``Release <parameter>`` Is used to reverse the effect of ``suppress``.
 
@@ -69,8 +72,8 @@ CTRL break handler added so it frees memory when CTRL+C is hit.
 
 ## Version 1.06
 
-``PRINTF`` command added
-This prints any combination of text,expressions and special assembler variables. See bottom for guide to ``%`` commands
+``PRINTF`` command added.  
+This prints any combination of text,expressions and special assembler variables. See bottom for guide to ``%`` commands.
 
 A field can be added on expressions and variables by specifying the field like   ``[field,fillchar]``  where ``field`` is a decimal number from 0-9 and ``fillchar`` is any character.
 
@@ -78,22 +81,21 @@ A field can be added on expressions and variables by specifying the field like  
 Example:
 Base memory left = 32 and label kris = 1234
 
-``	PRINTF	"Mem : %m"``    would print    ``Mem : 32``
-     but
-``	PRINTF	"Mem : %[5,.]m"``  would print    ``Mem : ...32``
+``	PRINTF	"Mem : %m"`` would print ``Mem : 32``  
+but  
+``	PRINTF	"Mem : %[5,.]m"`` would print ``Mem : ...32``
 
+``	PRINTF	"Kris has a value of : ",[5]kris,"	Memory = %[5]m	byebye"``  
+would print  
+``	Kris has a value of :  1234   Memory =	32	byebye``  
 
-``	PRINTF	"Kris has a value of : ",[5]kris,"	Memory = %[5]m	byebye"``
-     would print
-``	Kris has a value of :  1234   Memory =	32	byebye``
-
-
-``	PRINTF "[10,.]kris","wobble"`` would print
+``	PRINTF "[10,.]kris","wobble"`` would print  
 `` kris......wobble``
 
 ``printf "[3]krister"`` would print ``kri``
 
-``FOPEN          name`` Redirects printf's to file ``<name>``. If a '+' is added before the name then the file will be opened in append mode. (The file must exist)
+``FOPEN          name`` Redirects printf's to file ``<name>``.  
+If a '+' is added before the name then the file will be opened in append mode (the file must exist).
 
 ``FCLOSE`` Redirects printf's back to the screen.
 
@@ -106,8 +108,8 @@ fclose                              ;Redirects to
 include kris                        ;File not closed, so
                                     ;garbage is read.
 ```
-To fix the bug insert a line like  '``FOPEN garbage``' which will close KRIS and open garbage.
-    *** FIXED v1.26+, just specify a ``!`` as an ``fclose`` parameter, this will close the file completely. ***
+To fix the bug insert a line like  '``FOPEN garbage``' which will close KRIS and open garbage.  
+*** FIXED v1.26+, just specify a ``!`` as an ``fclose`` parameter, this will close the file completely. ***
     
 ``DEFERROR <"PRINTF STRING">`` Redefines the error message.
 
@@ -116,20 +118,19 @@ To fix the bug insert a line like  '``FOPEN garbage``' which will close KRIS and
 
 ## Version 1.09
 
-String definition is possible using the command
-``DEFS <1-5>,"PRINTF STRING"``
-which assigns a string from 1 to 5 with the "evaluated" ``printf`` string. There are 5 user definable strings and currently 1 assembler string.  The assembler string is number 6 and contains the current filename being assembled. String lengths are 150 chars max.
+String definition is possible using the command ``DEFS <1-5>,"PRINTF STRING"`` which assigns a string from 1 to 5 with the "evaluated" ``printf`` string.  
+There are 5 user definable strings and currently 1 assembler string.  The assembler string is number 6 and contains the current filename being assembled. String lengths are 150 chars max.
 
 
 The string can now be used in the ``printf`` command by using  ``%$<String number 1-6>``.
 
 Or inserted into a macro like this:
 ```
-          defs       1,"Hello"
+	defs       1,"Hello"
 
-kris      macro
+kris	MACRO
 \$1
-          endm
+	ENDM
 ```
 When expanded, produces:
 
@@ -139,16 +140,16 @@ When expanded, produces:
 
 ## Version 1.10
 
-{         ``DEFSEND <printf string>``
-{           Defines the send message.
-{
-{         Two new assembler symbols defined when sending...
-{           ``TOTALBYTES`` : total number of bytes assembled
-{           ``TOTALSENT`` : total number of bytes sent
-{
-{
-```diff
-{ - These changes are now null and void, and should be avoided. -
+{         ``DEFSEND <printf string>``  
+{           Defines the send message.  
+{  
+{         Two new assembler symbols defined when sending...  
+{           ``TOTALBYTES`` : total number of bytes assembled  
+{           ``TOTALSENT`` : total number of bytes sent  
+{  
+{  
+```diff  
+- { These changes are now null and void, and should be avoided.
  ```
 
 
@@ -163,8 +164,7 @@ Just some bug fixes.
 
 New command line option "-t" which will disable the title text. (changed 27-7-92, now equate a label called "``_NOTITLE``" on the command line.)
 
-New directive..
-``TIME <label>``   which will get the current time in MS-DOS format and put it into ``<label>``.
+New directive ``TIME <label>``   which will get the current time in MS-DOS format and put it into ``<label>``.
 
 
 ## Version 1.13
@@ -192,14 +192,15 @@ parent2
 ```
 Something decided to delete the entire directory, had to use NDD to recover, some bits may be wrong.
 
-Have a strange bug where a few bytes in one block are being written out incorrectly, but when I singled stepped the code the bytes were correct before and after the write, and during when the DOS routine was moving the bytes for later encoding! (FIXED, I think this was the send message corrupting ah when it called the DOS routine and therefore not calling the write routine, but maybe something completely different!)
+Have a strange bug where a few bytes in one block are being written out incorrectly, but when I singled stepped the code the bytes were correct before and after the write, and during when the DOS routine was moving the bytes for later encoding! (FIXED, I think this was the send message corrupting when it called the DOS routine and therefore not calling the write routine, but maybe something completely different!)
 
 
 ## Version 1.16
 
 Some bug fixes.
 
-WRITE command added. This allows the user to write only specific blocks of code. Object code is split into separate parts every so often, this forms one block. The assembler will create a block if an ``ORG`` is reached, an ``incbin``/``inccol`` is reached or if the block being generated goes above about 15/16K (One EMS page). If you want to write a certain bit of code then you must force an object split by doing an ``org`` or something. Example if you want to write this bit of code...
+WRITE command added. This allows the user to write only specific blocks of code. Object code is split into separate parts every so often, this forms one block. The assembler will create a block if an ``ORG`` is reached, an ``incbin``/``inccol`` is reached or if the block being generated goes above about 15/16K (One EMS page). If you want to write a certain bit of code then you must force an object split by doing an ``org`` or something.  
+Example if you want to write this bit of code...
 ```
 	lda	#65
 	sta	message,x
@@ -218,7 +219,7 @@ The blocks created inside the write on/off section will be flagged as to be writ
 
 ## Version 1.17
 
-Text files, can now be displayed on the screen using the TYPE command, so status reports created by PRINTF can be displayed on the screen.
+Text files, can now be displayed on the screen using the ``TYPE`` command, so status reports created by ``PRINTF`` can be displayed on the screen.
 
 
 ## Version 1.18
@@ -278,12 +279,12 @@ Tested linking 386 code generated by MASM in with 8086 code generated by OPTASM,
 
 Environment variable parser added. Only one environment variable tested at the moment, "``SASMSRC``"
 
-ex. (in ``AUTOEXEC.bat``)
-          ``set SASMSRC=8mbsg.asm``
+ex. (in ``AUTOEXEC.bat``)  
+``set SASMSRC=8mbsg.asm``  
 
-The priority for file names is now(lowest to highest),
-Environment variables
-Command line
+The priority for file names is now(lowest to highest),  
+Environment variables  
+Command line  
 
 ``GETENV`` directive added, this gets an environment variable and puts it in string number 1-5.
 
@@ -297,7 +298,7 @@ month	=	date>>8&$ff
 day		=	date&$ff
           PRINTF	"The date is ",day,"/",month,"/",year,"%n"
 ```
-Fixed cute bug, if you defined a variable on the command line such as NARG or LONGA etc. then every thing goes horribly wrong.
+Fixed cute bug, if you defined a variable on the command line such as ``NARG`` or ``LONGA`` etc. then every thing goes horribly wrong.
 
 
 
@@ -322,9 +323,8 @@ Only one error per line now.
 
 Outputs symbols now in the format ``symbol	EQU	value``.
 
-Use the directive:
-``SYMBOLS  [on/off]``
-Symbols will be output to the screen by default or to the file name specified.   The filename can be specified on the command line by the ``-x`` option, this also turns on symbol listing.
+Use the directive ``SYMBOLS  [on/off]``  
+Symbols will be output to the screen by default or to the file name specified. The filename can be specified on the command line by the ``-x`` option, this also turns on symbol listing.
 
 Added the ``-e__heap=xxxx`` option on the command line which defines the size of the heap in bytes.
 
@@ -333,18 +333,16 @@ Fixed a small bug with ``IFD`` and ``IFND``, these commands used to create an FR
 New ``SUPPRESS``/``RELEASE`` option - ``PRTF`` which will switch off/on all ``PRINTF`` writes except errors.
 
 
-
 ## Version 1.24
 
 Fixed bug, if a condition is not true and an EOF occurred, SASM used to keep reading the last two bytes, it now gives a premature end of file error.
 
 Now gives a missing expression error.
 
-Environment variable ``SASMHEAP`` which defines the default heap
-size. Priority for heap is
-1 : Default of 2048
-2 : Environment variable
-3 : Symbol ``__heap=size`` defined from command line
+Environment variable ``SASMHEAP`` which defines the default heap size. Priority for heap is:  
+1 : Default of 2048  
+2 : Environment variable  
+3 : Symbol ``__heap=size`` defined from command line  
 
 
 
@@ -367,9 +365,9 @@ New printf feature %x which will print the following expression, a white space i
 
 But the assembler can go very wrong if you give it strange hex numbers in the ``PRINTF`` string, you have been warned!
 
-New operator in expression evaluator, |, which does a MOD. It has a priority equal to divide.
-Mod calculates the remainder of a divide function.
-``7|45 = 3``
+New operator in expression evaluator, ``|``, which performs a MOD. It has a priority equal to divide.
+MOD calculates the remainder of a divide function.  
+ex. ``7|45 = 3``
 
 ``ROLS`` command added. This rotates a string left by the amount specified hence ``ROLS 1,1`` would turn "KRIS" into "RIS".
 
@@ -381,26 +379,27 @@ If conditionals unbalanced, it now says if too many ``IF``s or ``ENDC``s.
 
 Errors limited to one per line now.
 
-``UPPER`` and ``LOWER`` commands added, these uppercase and lowercase a string.  Usage....
-``UPPER 1       ;1 is the string number``
+``UPPER`` and ``LOWER`` commands added, these uppercase and lowercase a string.  
+Usage....  
+``	UPPER 1       ;1 is the string number``
 
 ``IFS`` and ``IFNS`` commands added, these test a certain character
 within a string.  ``IFS`` to check if they are the same and
  IFNS if they are not the same.  Usage....
 ```
-	IFS	2,4,"K"	;This will compare character 4 in string 2
-				;with character "K"
+	IFS	2,4,"K" ;This will compare character 4 in string 2
+                ;with character "K"
 ```
 
 You can know implicitly close a ``PRINTF`` file by putting a ``!`` as a parameter for the ``FCLOSE`` command.
 
 Line number fixing.
 
-Doesn't need 32k for an incbin buffer when sending
+Doesn't need 32k for an ``INCBIN`` buffer when sending.
 
 OOPS! MARIO move instruction now inserts forward references!!
 
-Symbol outputting fixed
+Symbol outputting fixed.
 
 Number of other small bugs fixed.
 
@@ -408,7 +407,7 @@ Number of other small bugs fixed.
 
 ## Version 1.26
 
-For relative branches to backward references out of range -1 to -128 the assembler will now automatically encode a jump around either a ``JMP`` or a ``JMPL`` to the label you want to jump to.
+For relative branches to backward references out of range -1 to -128 the assembler will now automatically encode a jump around either a ``JMP`` or a ``JMPL`` to the label you want to jump to.  
 Example......
 ```
 	org	$8000,0
@@ -438,7 +437,7 @@ label
 	bne	label		;Used to generate "out of range" error
 ```
 
-          will actually produce object that does this...
+will actually produce object that does this...
 
 ```
 	org	$008000,$8000*0
@@ -450,8 +449,8 @@ label
 
 
 
-New command ``IRP``.  This will replace the symbol specified with a value taken from a list using the current ``REPT`` count as an index.  Usage is..
-``IRP     [symbol,value,value,......]``
+New command ``IRP``.  This will replace the symbol specified with a value taken from a list using the current ``REPT`` count as an index.  Usage is..  
+``IRP     [symbol,value,value,......]``  
 Example...
 ```
 	REPT	10
@@ -463,10 +462,7 @@ which will produce a table of words with the powers of 3 in the range 0-9.
 
 The equivalent string command is called ``IRS`` and instead of symbols and values, a string is specified first and then a list of ASCII text.
 
-
-
 MARIO code now checks for white spaces after the opcode so it is now possible to make macros with the first part of the name the same as a MARIO opcode i.e. ``plotbolox`` will execute the macro ``plotbolox`` and not the ``PLOT`` operation.
-
 
 ## Version 2.00
 
@@ -476,15 +472,18 @@ SASMX works on the 286|DOS EXTENDER specification. Therefore a 286 machine or ab
 
 ## Version 2.01
 
-``SL.EXE`` - The integrated linker for SASMX v2.01+, look at
-``SL.DOC`` for more information on ``SL.EXE``.
+``SL.EXE`` - The integrated linker for SASMX v2.01+, look at ``SL.DOC`` for more information on ``SL.EXE``.
 
-SASMX has two new opcodes and one command line option to support the linker.  The command line option is ``-V<filename.SOB>`` which will output a SASMX OBject file, the file does not have to be ``.SOB`` but SL reads only ``.SOB`` extensions.
-The opcodes are ``PUBLIC`` and ``EXTERN``.  ``PUBLIC`` makes a symbol usable by another file and ``EXTERN`` uses a symbol created by another file. ``PUBLIC`` must come before the symbol is defined and ``EXTERN`` must come before the symbol is used for the first time.
+SASMX has two new opcodes and one command line option to support the linker.  The command line option is ``-V<filename.SOB>`` which will output a SASMX OBject file, the file does not have to be ``.SOB`` but SL reads only ``.SOB`` extensions.  
+
+The opcodes are ``PUBLIC`` and ``EXTERN``.  ``PUBLIC`` makes a symbol usable by another file and ``EXTERN`` uses a symbol created by another file. ``PUBLIC`` must come before the symbol is defined and ``EXTERN`` must come before the symbol is used for the first time.  
+
 The only restriction is that a relative branch will not work with an ``EXTERN``.
-As the linker is fully integrated it is possible to do expressions such as: 
-``extern kris,dyl,giles``
-``lda #kris/dyl+giles``
+As the linker is fully integrated it is possible to do expressions such as:  
+```
+	extern	kris,dyl,giles  
+	lda	#kris/dyl+giles
+```
 because the assembler will store an expression which is evaluated at link time.
 
  The ``IRS`` opcode has been modified, so that is the ``REPT`` count is greater than the number of ``IRS`` parameters then it will 'wrap' round.
@@ -506,9 +505,9 @@ Line number fixing has been fixed (honest) and improved. Line number format is n
 then all the macros that have been invoked to the current source
 level and then the line number within the last macro.
 
-New directive ``STRLEN`` which will put the length into a variable.
-Usage is:
-``	strlen	kris,1`` 
+New directive ``STRLEN`` which will put the length into a variable.  
+Usage is:  
+``	strlen	kris,1``   
 Where ``kris`` is the variable and ``1`` is the string number.
 
 New CLI option ``-m`` which specifies how many errors to print up before stopping assembly.
@@ -858,7 +857,7 @@ This table is a list of the operators available and their precedence (A high num
       +        Add          Adds two numbers                1
       -        Subtract     Subtracts two numbers           1
 ```
-Partially enclosing an expression in brackets will give that part of the expression a higher priority, hence ``1+2*3 = 7`` but ``(1+2)*3 = 9``.
+Partially enclosing an expression in brackets will give that part of the expression a higher priority, hence ``1+2*3 = 7``, but ``(1+2)*3 = 9``.
 
  All expressions are done with a 32 bit expression evaluator, if an overflow occurs while performing an operator, no overflow error will be given, however overflow errors will be given if a number is too big, i.e. a hex number has more than 8 digits, etc.
 
