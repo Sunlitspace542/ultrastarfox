@@ -25,21 +25,13 @@ strats_start
 
 	IFNE	cestimeron
 
-cestimetext
-	db	" TIME "
-	dw	0
+	definestring	cestimetext,< TIME >
 
-cesmintext
-	db	"M"
-	dw	0
+	definestring	cesmintext,<M>
 
-cessectext
-	db	"S"
-	dw	0
+	definestring	cessectext,<S>
 
-ceszerotxt
-	db	"0"
-	dw	0
+	definestring	ceszerotxt,<0>
 	ENDC
 
 	strats_end

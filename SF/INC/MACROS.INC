@@ -71,7 +71,7 @@ kandoprint	macro	[column,row,table]
 
 ; Print variable on screen at defined column and row (Short address)
 printnum	macro	[column,row,variable]
-	lda	{variable}						; Long load variable into A
+	lda	{variable}						; Load variable into A
 	printd	{column},{row}				; Display decimal value of A on screen at specified row and column
 	ENDM
 
@@ -87,6 +87,19 @@ printvar	macro	[var]				;displays value of a variable to set text point
 	lda	{var}							;load variable to accumulator
 	printd								;display decimal value of accumulator to screen
 	endm
+;------------------------------------------------------------------------
+
+; Defines a string to be printed with kandoprint
+; Usage...
+;	definestring	mycoolstring,<my cool string>
+definestring	MACRO	[label,text]
+{label}					; Write label
+	defs	2,"{text}"	; Define text param as a string
+	UPPER	2			; Uppercase it
+	run	' db "%$2"'		; Write the string
+	dw	0				; Terminate string
+	ENDM
+
 ;------------------------------------------------------------------------
 
 wait	macro
