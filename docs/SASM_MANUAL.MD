@@ -587,14 +587,14 @@ One error per macro is now the limit, so that all the strategy macros don't chur
 
           FAIL                      Causes a fatal error.
 
-          FOPEN <(+)name>           Redirects ``PRINTF``'s to file <name>
+          FOPEN <(+)name>           Redirects PRINTF's to file <name>
                                     if a "+" is added before the file name
                                     then the file will be opened in append
                                     mode. It is neccassary for a file to
                                     exist if append mode is chosen.
                                     see FCLOSE, PRINTF
 
-          FCLOSE                    Redirects the ``PRINTF``'s to the screen.
+          FCLOSE                    Redirects the PRINTF's to the screen.
                                     see FOPEN, PRINTF
 
           GETENV strnum,<ENV VAR>   Puts the contents of the enviroment
@@ -696,7 +696,7 @@ One error per macro is now the limit, so that all the strategy macros don't chur
                                       ERRO - Errors
                                       ANSI - Ansi codes in printfs
                                       WARN - Warnings
-                                      PRTF - ``PRINTF``'s
+                                      PRTF - PRINTF's
                                     see SUPPRESS
 
           REPT                      Starts a repeat loop. (nested is ok)
@@ -734,7 +734,7 @@ One error per macro is now the limit, so that all the strategy macros don't chur
                                       ERRO - Errors
                                       ANSI - Ansi codes in printfs
                                       WARN - Warnings
-                                      PRTF - ``PRINTF``'s
+                                      PRTF - PRINTF's
                                     see RELEASE
 
           TIME <Label>              Gets the time in MSDOS format and
