@@ -56,7 +56,7 @@ MARIO parser bugs fixed.
 Bugs fixed and lots of things changed so that it assembles Starglider 1.  
 Most notable changes are everything except symbols has been put in EMS, making it slower but using less base memory.  
 Features added...  
-``Suppress <parameter>`` Can be used to suppress errors,warnings or expression printouts.  
+``SUPPRESS <parameter>`` Can be used to suppress errors,warnings or expression printouts.  
 Parameter can be :    ``ERRORS``, ``WARN``,  ``EXPR``
 
 ``RELEASE <parameter>`` Is used to reverse the effect of ``SUPPRESS``.
