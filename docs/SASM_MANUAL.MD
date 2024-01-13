@@ -80,9 +80,11 @@ A field can be added on expressions and variables by specifying the field like  
 Example:
 Base memory left = 32 and label kris = 1234
 
-``	PRINTF	"Mem : %m"`` would print ``Mem : 32``  
+``	PRINTF	"Mem : %m"``  
+would print  
+``Mem : 32``  
 but  
-``	PRINTF	"Mem : %[5,.]m"`` would print ``Mem : ...32``
+``	PRINTF	"Mem : %[5,.]m"`` would print ``Mem : ...32``  
 
 ``	PRINTF	"Kris has a value of : ",[5]kris,"	Memory = %[5]m	byebye"``  
 would print  
