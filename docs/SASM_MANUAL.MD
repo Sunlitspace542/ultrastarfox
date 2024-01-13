@@ -100,10 +100,10 @@ would print
 would print  
 ``kri``  
 
-``FOPEN	name`` Redirects printf's to file ``<name>``.  
-If a '+' is added before the name then the file will be opened in append mode (the file must exist).
+``FOPEN	name`` Redirects ``PRINTF``'s to file ``<name>``.  
+If a '``+``' is added before the name then the file will be opened in append mode (the file must exist).
 
-``FCLOSE`` Redirects printf's back to the screen.
+``FCLOSE`` Redirects ``PRINTF``'s back to the screen.
 
 NOTE: ``FCLOSE`` does not close the file, but redirects output to the screen, when a new ``FOPEN`` is executed then SASM will determine if the name is the same, if it is the same then the file will be appended, if the name is not the same then SASM will close the old file and create a new one, saving lots of time by not closing and then opening the same file. However the following code will not work because of this feature...
 ```
@@ -587,14 +587,14 @@ One error per macro is now the limit, so that all the strategy macros don't chur
 
           FAIL                      Causes a fatal error.
 
-          FOPEN <(+)name>           Redirects printf's to file <name>
+          FOPEN <(+)name>           Redirects ``PRINTF``'s to file <name>
                                     if a "+" is added before the file name
                                     then the file will be opened in append
                                     mode. It is neccassary for a file to
                                     exist if append mode is chosen.
                                     see FCLOSE, PRINTF
 
-          FCLOSE                    Redirects the printf's to the screen.
+          FCLOSE                    Redirects the ``PRINTF``'s to the screen.
                                     see FOPEN, PRINTF
 
           GETENV strnum,<ENV VAR>   Puts the contents of the enviroment
@@ -696,7 +696,7 @@ One error per macro is now the limit, so that all the strategy macros don't chur
                                       ERRO - Errors
                                       ANSI - Ansi codes in printfs
                                       WARN - Warnings
-                                      PRTF - Printf's
+                                      PRTF - ``PRINTF``'s
                                     see SUPPRESS
 
           REPT                      Starts a repeat loop. (nested is ok)
@@ -734,7 +734,7 @@ One error per macro is now the limit, so that all the strategy macros don't chur
                                       ERRO - Errors
                                       ANSI - Ansi codes in printfs
                                       WARN - Warnings
-                                      PRTF - Printf's
+                                      PRTF - ``PRINTF``'s
                                     see RELEASE
 
           TIME <Label>              Gets the time in MSDOS format and
