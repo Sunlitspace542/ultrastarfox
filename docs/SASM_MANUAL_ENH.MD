@@ -140,16 +140,15 @@ When expanded, produces:
 ## Version 1.10
 ```diff  
 - These changes are now null and void, and should be avoided.
- ```
-{         ``DEFSEND <printf string>``  
-{           Defines the send message.  
-{  
-{         Two new assembler symbols defined when sending...  
-{           ``TOTALBYTES`` : total number of bytes assembled  
-{           ``TOTALSENT`` : total number of bytes sent  
-{  
-{  
-```diff  
+-   
+-         ``DEFSEND <printf string>``  
+-           Defines the send message.  
+-  
+-         Two new assembler symbols defined when sending...  
+-           ``TOTALBYTES`` : total number of bytes assembled  
+-           ``TOTALSENT`` : total number of bytes sent  
+-  
+-   
 - These changes are now null and void, and should be avoided.
  ```
 
@@ -161,9 +160,9 @@ Just some bug fixes.
 
 ## Version 1.12
 
- Optimised EMS macro swapping, so assembly is faster than ARGASM (not that it wasn't before anyway).
+Optimised EMS macro swapping, so assembly is faster than ARGASM (not that it wasn't before anyway).
 
-New command line option "-t" which will disable the title text. (changed 27-7-92, now equate a label called "``_NOTITLE``" on the command line.)
+New command line option "``-t``" which will disable the title text. (changed 27-7-92, now equate a label called "``_NOTITLE``" on the command line.)
 
 New directive ``TIME <label>``   which will get the current time in MS-DOS format and put it into ``<label>``.
 
