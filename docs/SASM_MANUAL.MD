@@ -548,14 +548,14 @@ One error per macro is now the limit, so that all the strategy macros don't chur
                                     printf string.
                                     see PRINTF
                                     
-          ERROR+                    Increments the number of errors.
-                                    
           DEFS strnum,"<string>"    Defines string number 1-5 with
                                     the result of a printf string.
                                     see PRINTF,ROLS,STRLEN
 
           ELSEIF                    Swaps the condtional level.
                                     see IF, ENDC, ENDIF
+
+          ERROR+                    Increments the number of errors.
 
           END                       Stops assembly of the current
                                     source file.
