@@ -107,15 +107,15 @@ If a '``+``' is added before the name then the file will be opened in append mod
 
 NOTE: ``FCLOSE`` does not close the file, but redirects output to the screen, when a new ``FOPEN`` is executed then SASM will determine if the name is the same, if it is the same then the file will be appended, if the name is not the same then SASM will close the old file and create a new one, saving lots of time by not closing and then opening the same file. However the following code will not work because of this feature...
 ```
-FOPEN kris                          ;Open file kris.. OK
-PRINTF "wobble equ ",oranges        ;OK
+FOPEN kris                          ;Open file kris.. OK
+PRINTF	"wobble equ ",oranges       ;OK
 FCLOSE                              ;Redirects to
                                     ;screen, file NOT closed
 INCLUDE kris                        ;File not closed, so
                                     ;garbage is read.
 ```
 To fix the bug insert a line like  '``FOPEN garbage``' which will close KRIS and open garbage.  
-*** FIXED v1.26+, just specify a ``!`` as an ``fclose`` parameter, this will close the file completely. ***
+*** FIXED v1.26+, just specify a ``!`` as an ``FCLOSE`` parameter, this will close the file completely. ***
     
 ``DEFERROR <"PRINTF STRING">`` Redefines the error message.
 
@@ -124,11 +124,11 @@ To fix the bug insert a line like  '``FOPEN garbage``' which will close KRIS and
 
 ## Version 1.09
 
-String definition is possible using the command ``DEFS <1-5>,"PRINTF STRING"`` which assigns a string from 1 to 5 with the "evaluated" ``printf`` string.  
+String definition is possible using the directive ``DEFS <1-5>,"PRINTF STRING"`` which assigns a string from 1 to 5 with the "evaluated" ``PRINTF`` string.  
 There are 5 user definable strings and currently 1 assembler string.  The assembler string is number 6 and contains the current filename being assembled. String lengths are 150 chars max.
 
 
-The string can now be used in the ``printf`` command by using  ``%$<String number 1-6>``.
+The string can now be used in the ``PRINTF`` directive by using  ``%$<String number 1-6>``.
 
 Or inserted into a macro like this:
 ```
