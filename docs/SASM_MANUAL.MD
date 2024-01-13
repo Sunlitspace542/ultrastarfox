@@ -84,7 +84,9 @@ Base memory left = 32 and label kris = 1234
 would print  
 ``Mem : 32``  
 but  
-``	PRINTF	"Mem : %[5,.]m"`` would print ``Mem : ...32``  
+``	PRINTF	"Mem : %[5,.]m"``  
+would print  
+``Mem : ...32``  
 
 ``	PRINTF	"Kris has a value of : ",[5]kris,"	Memory = %[5]m	byebye"``  
 would print  
@@ -625,7 +627,7 @@ One error per macro is now the limit, so that all the strategy macros don't chur
           INCDIR <dir>              Sets the directory name to be added to
                                     The start of INCLUDE,INCBIN,INCCOL.
 
-          INCLUDE <name>            Includes source file of <name>
+          INCLUDE <name>            Includes source file of <name>.
 
           IRP <symbol>,[value]....  Iterate Rept Parameter, puts the
                                     value into the symbol using the rept count.
@@ -640,7 +642,7 @@ One error per macro is now the limit, so that all the strategy macros don't chur
                                     option will turn off macro expansion
                                     listing.
 
-          LOCAL                     Declares a local label as parent.local
+          LOCAL                     Declares a local label as parent.local.
 
           LONGA                     Tells the assembler the code is to be
                                     assembled with the accumulator as 16 bits.
@@ -650,19 +652,19 @@ One error per macro is now the limit, so that all the strategy macros don't chur
                                     assembled with the index regs. as 16 bits.
                                     see SHORTI,SHORTA,LONGA
 
-          LOWER <string>            Lowercases string <string>
+          LOWER <string>            Lowercases string <string>.
                                     see UPPER
 
-          MACRO                     Starts a macro definition
+          MACRO                     Starts a macro definition.
                                     see ENDM, MEXIT
 
           MARIO <on/off>            Set MARIO instruction set parsing to be
-                                    on or off
+                                    on or off.
 
           MEXIT                     Exits the current macro, ignores
                                     conditional levels.
 
-          ORG <pcorg>(,rompos)      Orgs the code. Rom position is
+          ORG <pcorg>(,rompos)      ORGs the code. ROM position is
                                     optional, if not present then code
                                     will be put at the following byte.
 
@@ -697,18 +699,18 @@ One error per macro is now the limit, so that all the strategy macros don't chur
                                       PRTF - Printf's
                                     see SUPPRESS
 
-          REPT                      Starts a repeat loop (nested is ok)
+          REPT                      Starts a repeat loop. (nested is ok)
                                     see ENDR
 
           ROLS str,offset           Rotates a string left by the
                                     amount specified.
 
           SEND (expression)         Send the object code to a RAMBOY
-                                    of type (expression) default=$3d
+                                    of type (expression). (default=$3d)
                                     see FABCARD
 
           SETDBR <bank>	            Tells the assembler what the current
-                                    DBR(data bank register) is.
+                                    DBR (data bank register) is.
 
           SHORTA                    Tells the assembler the code is to be
                                     assembled with the accumulator as 8 bits.
