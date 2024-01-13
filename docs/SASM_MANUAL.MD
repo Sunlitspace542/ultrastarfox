@@ -48,7 +48,7 @@ Some things put in EMS.
 
 ## Version 1.02
 
-   MARIO parser bugs fixed.
+MARIO parser bugs fixed.
 
 
 ## Version 1.03
@@ -88,12 +88,15 @@ but
 would print  
 ``	Kris has a value of :  1234   Memory =	32	byebye``  
 
-``	PRINTF "[10,.]kris","wobble"`` would print  
+``	PRINTF "[10,.]kris","wobble"``  
+would print  
 `` kris......wobble``
 
-``printf "[3]krister"`` would print ``kri``
+``printf "[3]krister"``  
+would print  
+``kri``  
 
-``FOPEN          name`` Redirects printf's to file ``<name>``.  
+``FOPEN	name`` Redirects printf's to file ``<name>``.  
 If a '+' is added before the name then the file will be opened in append mode (the file must exist).
 
 ``FCLOSE`` Redirects printf's back to the screen.
@@ -546,10 +549,10 @@ One error per macro is now the limit, so that all the strategy macros don't chur
           ERROR+                    Increments the number of errors.
                                     
           DEFS strnum,"<string>"    Defines string number 1-5 with
-                                    the result of a printf string
+                                    the result of a printf string.
                                     see PRINTF,ROLS,STRLEN
 
-          ELSEIF                    Swaps the condtional level
+          ELSEIF                    Swaps the condtional level.
                                     see IF, ENDC, ENDIF
 
           END                       Stops assembly of the current
@@ -558,18 +561,17 @@ One error per macro is now the limit, so that all the strategy macros don't chur
           ENDC,ENDIF                Ends a conditional check.
                                     see IF
 
-          ENDM                      Ends a macro definition
+          ENDM                      Ends a macro definition.
                                     see MACRO, MEXIT
 
-          ENDR                      Ends a repeat loop
+          ENDR                      Ends a repeat loop.
                                     see REPT
 
-<label>   EQU <expression>          Sets the <label> to be <expression>,
-                                    cannot be redefined
+<label>   EQU <expression>          Sets the <label> to be <expression>.
                                     see =, EQUR
 
 <reg>     EQUR <expression>         Sets the <register> to be <expression>,
-                                    can be used in MARIO code only
+                                    can be used in MARIO code only.
                                     see =, EQU
 
           EXTERN <symbol>           Marks all expressions using this
@@ -579,7 +581,7 @@ One error per macro is now the limit, so that all the strategy macros don't chur
           FABCARD <expression>      Sets the FABcard port address.
                                     see SEND
 
-          FAIL                      Causes a fatal error
+          FAIL                      Causes a fatal error.
 
           FOPEN <(+)name>           Redirects printf's to file <name>
                                     if a "+" is added before the file name
@@ -592,7 +594,7 @@ One error per macro is now the limit, so that all the strategy macros don't chur
                                     see FOPEN, PRINTF
 
           GETENV strnum,<ENV VAR>   Puts the contents of the enviroment
-                                    variable into string number 1-5
+                                    variable into string number 1-5.
           
           GETHEAP <heap>            Gets as much of the heap (in bytes)
                                     as specified. This is an internal
@@ -624,10 +626,10 @@ One error per macro is now the limit, so that all the strategy macros don't chur
           INCLUDE <name>            Includes source file of <name>
 
           IRP <symbol>,[value]....  Iterate Rept Parameter, puts the
-                                    value into the symbol using the rept count
+                                    value into the symbol using the rept count.
                                     see REPT,ENDR,IRS
 
-          IRS <string>,[ascii]....  Same as IRP but uses strings instead
+          IRS <string>,[ascii]....  Same as IRP but uses strings instead.
                                     see REPT,ENDR,IRP
 
           LIST <on/off/macros>      Turns on or off listing of the source.
@@ -662,7 +664,7 @@ One error per macro is now the limit, so that all the strategy macros don't chur
                                     optional, if not present then code
                                     will be put at the following byte.
 
-          OUTPUT <name>             Outputs the object code to file <name>
+          OUTPUT <name>             Outputs the object code to file <name>.
                                     see WRITE
 
           PRINTF "<string>"         Prints a printf string.
@@ -735,9 +737,9 @@ One error per macro is now the limit, so that all the strategy macros don't chur
                                     puts it in the specified label as a
                                     SET type variable.
 
-          TYPE <filename>           Prints <filename> to the screen
+          TYPE <filename>           Prints <filename> to the screen.
 
-          UPPER <string>            Uppercases string <string>
+          UPPER <string>            Uppercases string <string>.
                                     see LOWER
 
           WRITE <ON,OFF>            When object code is written out to
