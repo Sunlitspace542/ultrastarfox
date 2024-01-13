@@ -54,15 +54,14 @@ Some things put in EMS.
 ## Version 1.03
 
 Bugs fixed and lots of things changed so that it assembles Starglider 1.  
-Most notable changes are everything except symbols has been put in EMS.  
-making it slower but using less base memory.  
-Features added...
+Most notable changes are everything except symbols has been put in EMS, making it slower but using less base memory.  
+Features added...  
 ``Suppress <parameter>`` Can be used to suppress errors,warnings or expression printouts.  
 Parameter can be :    ``ERRORS``, ``WARN``,  ``EXPR``
 
-``Release <parameter>`` Is used to reverse the effect of ``suppress``.
+``RELEASE <parameter>`` Is used to reverse the effect of ``SUPPRESS``.
 
-``Checkmac <ON,OFF>`` Can be used to switch on or off double macro name checking. It is slightly slower to assemble.
+``CHECKMAC <ON,OFF>`` Can be used to switch on or off double macro name checking. It is slightly slower to assemble.
 
 
 ## Version 1.05
@@ -139,7 +138,9 @@ When expanded, produces:
 
 
 ## Version 1.10
-
+```diff  
+- These changes are now null and void, and should be avoided.
+ ```
 {         ``DEFSEND <printf string>``  
 {           Defines the send message.  
 {  
@@ -149,7 +150,7 @@ When expanded, produces:
 {  
 {  
 ```diff  
-- { These changes are now null and void, and should be avoided.
+- These changes are now null and void, and should be avoided.
  ```
 
 
