@@ -907,7 +907,7 @@ incscr	MACRO
 
 Downloading to SFC can sometimes go wrong, if it does switch on ROM listing and note which bank goes wrong (not ROM pos.), go into the source code and put a few extra bytes at the start of the bank! (Fixed now I think)
 
-If you appear to run out of EMS memory then try using ``EMM386.EXE`` instead of whatever EMM handler you are using, use this line..
-``device=c:\dos\emm386.exe 1392 h=255 ram``
-Or look at the documentation for whatever EMM handler you are using and increase the number of handles available.
+If you appear to run out of EMS memory then try using ``EMM386.EXE`` instead of whatever EMM handler you are using, use this line..  
+``device=c:\dos\emm386.exe 1392 h=255 ram``  
+Or look at the documentation for whatever EMM handler you are using and increase the number of handles available.  
 -- NB.  --  As SASM is only DOS-Extender compatible now, this is now void. --
