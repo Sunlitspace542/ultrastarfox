@@ -1,4 +1,27 @@
 ;------------------------------------------------------------------------
+	IFND	_SASM
+	IFD		_ARGSFX
+; Rotates a string left by offset
+rols	MACRO	[string,offset]
+	substr	{offset},,{string}
+
+	ENDC	;_ARGSFX
+	ENDC	;_SASM
+;------------------------------------------------------------------------
+
+rndbyte	macro
+rndval =	(rndval*91+$61d7)&$ffff
+	db	rndval&63
+	endm
+
+rndword	macro
+rndval =	(rndval*91+$61d7)&$ffff
+	dw	rndval&63
+	endm
+	
+rndval	=	$5a79
+
+;------------------------------------------------------------------------
 
 turnonoff	macro	[var]		;turns a variable on or off, whichever is the opposite of its current state
 	pha							;push anything in the accumulator out into the stack to retrieve later

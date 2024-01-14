@@ -1,22 +1,5 @@
 
 
-;---------------------------------------------------
-weapon	MACRO	; name,fire weapon strategy.
-
-	IFNE	weaphdr
-WEAPON_\1	equ	cweapon
-	ELSEIF
-	dw	((cweapon-2)/2)*wchrlen
-	dw	\2&WM		; ptr. to fire weapon strat
-	db	\2>>16,0
-	ENDC
-
-cweapon	=	cweapon+2
-	ENDM
-;---------------------------------------------------
-
-
-
 cweapon	=	0
 	IFEQ	weaphdr
 weapons_data

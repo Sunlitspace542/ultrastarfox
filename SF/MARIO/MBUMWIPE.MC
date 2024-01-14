@@ -7,11 +7,6 @@ m_wintabptr	equ	m_bigy
 m_winbuf	equ	m_circlebuf
 m_winbuf2	equ	m_circlebuf2
 
-call	macro
-	link	#4
-	miwt	pc,(\1)&$ffff
-	endm
-
 maddtowinbuf	macro
 	from	rbufbase
 	to	rbufptr

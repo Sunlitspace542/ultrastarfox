@@ -6,18 +6,6 @@ rotsize	=	deg45
 rotnum	=	deg360/rotsize
 prot	=	0
 
-
-map_b8beamT	MACRO
-	mapobj	0000,0000,(-75<<boss8_scale)+nucleusheight,boss8_circ,boss_8_5,nucleusbeamL_Istrat
-	setalvar	sbyte2,\1
-		ENDM
-
-map_b8beamB	MACRO
-	mapobj	0000,0000,(-35<<boss8_scale)+nucleusheight,boss8_circ,boss_8_5,nucleusbeamL_Istrat
-	setalvar	sbyte2,\1
-		ENDM
-	
-
 	setbgm	6
 	mapwait	300
 	mapobj	0000,0000,(-50<<boss8_scale)+nucleusheight,210<<boss8_scale,boss_8_0,boss8_Istrat

@@ -34,13 +34,6 @@ getprevd0	macro			;move.l -(a0),d0
 	getbh
 	endm
 
-call	macro
-	link	#4
-	iwt	r15,#(\1)&$ffff
-	endm
-
-
-
 m_enddata	equ	m_x1
 m_enddatabnk	equ	m_x2
 m_decaddr	equ	m_y1

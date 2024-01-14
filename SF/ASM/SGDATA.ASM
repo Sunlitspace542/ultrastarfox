@@ -126,13 +126,6 @@ pyoftab
 tbtv	=	0
 X_data_end
 
-rndbyte	macro
-rndval =	(rndval*91+$61d7)&$ffff
-	db	rndval&255
-	endm
-
-rndval	=	$5a79
-
 mrndtab
 	rept	256
 	rndbyte
