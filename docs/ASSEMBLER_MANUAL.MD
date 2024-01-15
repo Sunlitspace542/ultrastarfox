@@ -540,7 +540,7 @@ One error per macro is now the limit, so that all the strategy macros don't chur
 
 New directive ``ERROR+`` which increments the number of errors.
 
-## ARGSFXX 
+## ARGSFX 
 
 ## General Changes From SASM
 
