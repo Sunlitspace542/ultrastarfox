@@ -69,7 +69,12 @@ mbumwipe
 	iwt	rbufbase,#m_winbuf2&WM
 	bra	.doneb
 	nop
+	IFD	_SASM
 .buf0	dw	m_winbuf
+	ENDC
+	IFD	_ARGSFX
+.buf0	dw	m_winbuf&WM
+	ENDC
 .doneb
 	call	mwindrawline
 	nop

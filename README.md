@@ -15,7 +15,7 @@ Star Fox / Starwing source code, modified for ease-of-use and ROMHacking.
 - 250 faces/vertices limit for models
 - Build process optimized for speed
 - Palettes and graphics crunched, textures interleaved, and fonts built at assembly
-- Uses ARGLINK from Star Fox 2 as linker instead of SL
+- Uses ARGLINK and ARGSFX from Star Fox 2 as linker and assembler instead of SL and SASM
 - Easier creation of wireframe models (replace face3 and face4 with aface3 and aface4 in your shape file)
 - All Starwing PAL and Germany text/GFX for PAL builds
 - **Kando was involved so you know it's good**

@@ -19,7 +19,7 @@ messagetest			equ	0
 
 ; Allows you to enable planet select cheat on the map
 ; before you have selected a level. Press X to activate.
-planetcheaton 		equ 0
+planetcheaton 		equ 1
 
 ; Debug mode font to use
 ; [0 = vanilla, 1 = SFEX]

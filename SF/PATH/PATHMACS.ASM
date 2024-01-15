@@ -465,7 +465,12 @@ PALVAROFFSET	MACRO	[alvar]
 	IFEQ	al_{alvar}&$ffffff00
 	db	al_{alvar}
 	ELSEIF
+	IFD	_SASM
 	db	(al_{alvar}-alx_start)!128
+	ENDC
+	IFD	_ARGSFX
+	db	((al_{alvar}-alx_start)!128)&BM
+	ENDC
 	ENDC
 	ENDM
 ;--------------------------------------------------------------------

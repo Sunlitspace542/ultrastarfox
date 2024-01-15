@@ -3345,7 +3345,12 @@ dpspr	macro
 rotationselect	=	0
 
 dpsphere	macro ; planet sphere macro
+	IFD	_SASM
 	db	\1_spr!128
+	ENDC
+	IFD	_ARGSFX
+	db	(\1_spr&BM)!128
+	ENDC
 	db	rotationselect
 rotationselect	=	rotationselect+2
 	endm

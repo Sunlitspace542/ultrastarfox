@@ -594,11 +594,20 @@ mchar	macro
 mscalechars
 	INCBINFILE	data\font\moji_2.fon
 
+
 msgtmp	macro
 	defs	1,"[1]\1"
 
+	IFD	_SASM
 	IFS	1,1," "
 	defs	1,"h"
+	ENDC
+	ENDC
+
+	IFD	_ARGSFX
+	IFS	1,0," "
+	defs	1,"h"
+	ENDC
 	ENDC
 
 	REPT	12
@@ -614,6 +623,7 @@ mariomsg	macro
 	defs	2,"\1;"
 	UPPER	2
 
+	IFD	_SASM
 	REPT	30
 	IFNS	2,1,";"
 	run	" msgtmp <%$2>"
@@ -621,9 +631,20 @@ mariomsg	macro
 	rols	2,1
 	ENDC
 	ENDR
+	ENDC
+
+	IFD	_ARGSFX
+	REPT	30
+	IFNS	2,0,";"
+	run	" msgtmp <%$2>"
+	run	' db 1+"%$1"-"A"'
+	rols	2,1
+	ENDC
+	ENDR
+	ENDC
+
 	db	0
 		endm
-
 
 mariomsgs
 msg_starfox

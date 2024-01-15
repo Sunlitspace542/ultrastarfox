@@ -21,7 +21,6 @@
 
 ;------------------------------------------------------------------
 	bank	6
-	incfile	ASM\blink.asm
 	incfile	STRAT\gcstrats.asm
 	incfile	STRAT\expstrat.asm
 

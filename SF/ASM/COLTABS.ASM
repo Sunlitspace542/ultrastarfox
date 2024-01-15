@@ -1499,7 +1499,13 @@ depthtabs
 ;------------------------------------------------------
 def_depthz	macro	[name,1,2,3,4]
 
+	IFD	_SASM
 	db	-{1}>>8,-{2}>>8,-{3}>>8,0
+	ENDC
+	IFD	_ARGSFX
+	db	-{1}/256,-{2}/256,-{3}/256,0
+	ENDC
+
 depth_{name}	=	dn
 dn	=	dn+1
 	endm

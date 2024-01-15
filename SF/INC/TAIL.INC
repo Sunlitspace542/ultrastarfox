@@ -17,12 +17,40 @@ ZMario_RAM_free	=	$700200-zmmempt
 	report	<Mario RAM Free>,Mario_RAM_free,(bitmap1-$200)
 	ENDC
 	;! the current SASM heap size can differ from what is initially printed, this may help with diagnosing assembly issues
+	IFD	_SASM
 	printf	"      SASM RAM Free        = %kk"
+	ENDC
+
+	IFD	_ARGSFX
+	printf	"      ARGSFX RAM Free      = %kk"
+	ENDC
 
 	printf	"%n"
 	header	<-------------------------------------------------------------------------------%n>
 
 	ENDC
+
+	IFD	_ARGSFX
+; Restored SASMX birthdays
+
+	IFEQ	month-8
+	IFEQ	day-6
+	PRINTF	"Happy birthday Krister!%n"
+	ENDC
+	ENDC
+
+	IFEQ	month-3
+	IFEQ	day-30
+	PRINTF	"Happy birthday Giles!%n"
+	ENDC
+	ENDC
+
+	IFEQ	month-2
+	IFEQ	day-18
+	PRINTF	"Happy birthday Dylan!%n"
+	ENDC
+	ENDC
+	ENDC	;_ARGSFX
 
 ; Birthdays! (SASMX has them for the SF dev team, so why not for us?)
 

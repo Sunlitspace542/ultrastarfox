@@ -181,9 +181,16 @@ hdr_region	equ	$00			; Destination Code (JPN)
 	;Native
 	org	$00ffe0,$7fe0
 	dw	$00,$00				; 4 bytes unused
+	IFD	_SASM
 	dw	cop_vn				; COP
 	dw	break_vn			; BRK
 	dw	abort_vn			; ABORT
+	ENDC
+	IFD	_ARGSFX
+	dw	cop_vn&WM			; COP
+	dw	break_vn&WM			; BRK
+	dw	abort_vn&WM			; ABORT
+	ENDC
 	dw	$0108				; NMI
 	dw	$0000				; unused (would be RESET, but the SNES always boots in Emulation mode)
 	dw	$010c				; IRQ
@@ -191,13 +198,22 @@ hdr_region	equ	$00			; Destination Code (JPN)
 	;Emulation
 	org	$00fff0,$7ff0
 	dw	$00,$00				; unused
+	IFD	_SASM
 	dw	cop_ve				; COP
 	dw	$00					; unused (would be BRK, but BRK and IRQ share the same vector in Emulation mode)
 	dw	abort_ve			; ABORT
 	dw	nmi_ve				; NMI
 	dw	start				; RESET
 	dw	irq_ve				; IRQ/BRK
-	
+	ENDC
+	IFD	_ARGSFX
+	dw	cop_ve&WM			; COP
+	dw	$00					; unused (would be BRK, but BRK and IRQ share the same vector in Emulation mode)
+	dw	abort_ve&WM			; ABORT
+	dw	nmi_ve&WM			; NMI
+	dw	start&WM			; RESET
+	dw	irq_ve&WM			; IRQ/BRK
+	ENDC
 
 
 

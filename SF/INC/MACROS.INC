@@ -1,9 +1,17 @@
 ;------------------------------------------------------------------------
 	IFND	_SASM
 	IFD		_ARGSFX
-; Rotates a string left by offset
+; Rotates a string left by offset for ARGSFX
 rols	MACRO	[string,offset]
 	substr	{offset},,{string}
+
+	ENDM
+
+; Rotates a string right by offset ARGSFX
+rors	MACRO	[string,offset]
+	substr	0,((strlen {string})-{offset}),{string}
+
+	ENDM
 
 	ENDC	;_ARGSFX
 	ENDC	;_SASM
@@ -4287,7 +4295,7 @@ setlevel	macro
 
 bankend	macro
 	IFEQ	NARG
-		IFD	_SASM
+		IFD	_SASM!_ARGSFX
 		printf	"BANKEND: Which bank are we talking about here?"
 		MEXIT
 		ENDC
@@ -4311,7 +4319,7 @@ totalromspaceleft	=	0
 totalromspaceleft = totalromspaceleft+bank\1left
 
 	IFLT	bank\1left
-		IFD	_SASM
+		IFD	_SASM!_ARGSFX
 		progress_off
 		printf	"[0;5;31;1mError: Bank \1 is out of space by ",-bank\1left," bytes.[0m%n"
 		progress_on
@@ -4326,9 +4334,15 @@ Bank_over_flow_in_Bank	=	\1
 	printf	"\1,%xbank\1left %n"
 	fclose	BANKS.CSV
 
+	IFD	_SASM
 	printf	"%01-- %xbank\1left bytes free.%00%n"
+	ENDC
 
-	IFND	_SASM
+	IFD	_ARGSFX
+	printf	"%01-- %xbank\1left  bytes free.%00%n"
+	ENDC
+
+	IFND	_SASM!_ARGSFX
 	?bank\1left
 	ENDC
 
@@ -4339,7 +4353,7 @@ Bank_over_flow_in_Bank	=	\1
 bank	macro
 
 	IFEQ	NARG
-		IFD	_SASM
+		IFD	_SASM!_ARGSFX
 		progress_off
 		printf	"Chigau matey.. the bank macro needs um.. a thingy on the end."
 		progress_on
@@ -4357,7 +4371,7 @@ bank	macro
 
 banknum	=	\1
 Assembling_bank	=	\1
-	IFND	_SASM
+	IFND	_SASM!_ARGSFX
 	?Assembling_bank
 	ENDC
 
@@ -4820,7 +4834,7 @@ printr	MACRO	string,number of repeats
 
 ;------------------------------------------------------------------------
 
-	IFD	_SASM
+	IFD	_SASM!_ARGSFX
 	IFNE	PROGRESS_INDICATOR
 
 	IFEQ	progression_thingy&1
@@ -5063,7 +5077,7 @@ timings_report	MACRO
 	ENDM
 
 ;------------------------------------------------------------------------
-	IFND	_SASM
+	IFND	_SASM!_ARGSFX
 progress_on	MACRO
 	ENDM
 
@@ -5139,7 +5153,7 @@ release	macro
 ;------------------------------------------------------------------------
 
 
-	IFD	_SASM
+	IFD	_SASM!_ARGSFX
 
 bankinfo	MACRO
 
@@ -5725,16 +5739,15 @@ global	MACRO
 
 publics	=	0
 
-INCEXTERNS	MACRO
+INCEXTERNS	MACRO	[filename]
 	INCLUDE	\1
 	ENDM
 
-INCPUBLICS	MACRO
+INCPUBLICS	MACRO	[filename]
 publics	=	1
 	INCLUDE	\1
 publics	=	0
 	ENDM
-
 
 ;-------------------------------------------------------------------
 makeshade	macro

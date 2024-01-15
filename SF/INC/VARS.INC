@@ -107,8 +107,8 @@ mmempt	=	$700200
 bitmap1		equ	16384
 bitmapbase	equ	$700000
 
-WM	equ	$ffff
-BM	equ	$ff
+WM	equ	$ffff	; wordmask
+BM	equ	$ff		; bytemask
 K	equ	1024
 
 

@@ -22,7 +22,6 @@
 ; The crash handler, as seen in the September 23rd, 1992 prototype.
 
 	INCPUBLICS	EXT\blink.ext
-
 ; get text color for each crash level, then go to stopall routine
 doblink	ai16
 	lda	#$1f+($1f<<5)+($1f<<10) ; White
@@ -40,12 +39,12 @@ doblink2	ai16
 	sta	blinkcol
 	ldx	#256-70
 	bra	stopall
-doblink3	ai16			
+doblink3	ai16
 	lda	#($1f<<5)+($1f<<10)	; cyan
 	sta	blinkcol
 	ldx	#256-55
 	bra	stopall
-doblink4	ai16			
+doblink4	ai16
 	lda	#($1f<<5) ; green (sound loop crashed)
 	sta	blinkcol
 	ldx	#256-30

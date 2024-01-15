@@ -920,7 +920,12 @@ foxy	=	\2
 	endm
 
 foxspr	macro
+	IFD	_SASM
 	db	foxx+(\1)*8,foxy+(\2)*8
+	ENDC
+	IFD	_ARGSFX
+	db	(foxx+(\1)*8)&BM,(foxy+(\2)*8)&BM
+	ENDC
 	db	\3+spradd
 	endm
 

@@ -158,7 +158,12 @@ qqmapnormobj	=	0
 
 	db	ctrlmapobj		; control.
 	dw	\1		; frame relative to last.
+	IFD	_SASM
 	dw	\2,\3,\4		; x,y,z position.
+	ENDC
+	IFD	_ARGSFX
+	dw	(\2)&WM,(\3)&WM,(\4)&WM		; x,y,z position.
+	ENDC
 	db	is_\5		; shape.
 	db	is_\6
 
@@ -459,8 +464,14 @@ setvar	macro
 	dw	\2&wm
 	db	\2>>16
 	endc
+	IFD	_SASM
 	dw	\1
 	db	\1>>16
+	ENDC
+	IFD	_ARGSFX
+	dw	(\1)&WM
+	db	(\1)>>16
+	ENDC
 	endm
 
 
@@ -574,7 +585,15 @@ mapwait	macro	; map wait function
 	db	(\1)>>4
 	ELSEIF
 	db	ctrlmapwait
+
+	IFD	_SASM
 	dw	\1
+	ENDC
+
+	IFD	_ARGSFX
+	dw	(\1)&WM
+	ENDC
+
 	ENDC
 	ENDC
 	endm

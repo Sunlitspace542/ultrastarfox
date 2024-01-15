@@ -2,7 +2,7 @@
 
 ```
 ╔════════════════════════════════════════════════════════════════════╗
-║         SASMX Copyright (c) Argonaut Software Ltd. 1992            ║
+║      SASMX & ARGSFXX Copyright (c) Argonaut Software Ltd. 1992     ║
 ╠════════════════════════════════════════════════════════════════════╣
 ║                                                                    ║
 ║              ████   ████    █████   ██ ██   █    █                 ║
@@ -13,15 +13,26 @@
 ║             █    █ █    █       █  █     █  █    █                 ║
 ║              ████  █    █  █████   █     █  █    █                 ║
 ║                                                                    ║
+╠════════════════════════════════════════════════════════════════════╣
+║                                                                    ║
+║         ████   ████   ████   ████  █████ █    █ █    █             ║
+║        █    █ █    █ █      █    █ █     █    █ █    █             ║
+║        █    █ █    █ █      █      █      █  █   █  █              ║
+║        ██████ █████  █  ███  ████  █████   ██     ██               ║
+║        █    █ █    █ █    █      █ █      █  █   █  █              ║
+║        █    █ █    █ █    █ █    █ █     █    █ █    █             ║
+║        █    █ █    █  ████   ████  █     █    █ █    █             ║
+║                                                                    ║
 ╚════════════════════════════════════════════════════════════════════╝
-Version 2.02
 ```
-# Contents                                                    
+# SASM v2.02, ARGSFX Unofficial v1.53 User Manual
+
+## Contents                                                    
 [1 : Changelog](#changelog)  
-[2 : SASM Assembler Directives](#sasm-assembler-directives)  
+[2 : Assembler Directives](#assembler-directives)  
 [3 : ``PRINTF`` Commands](#printf-commands)  
 [4 : CLI Options](#cli-options)  
-[5 : Environment Variables](#environment-variables)  
+[5 : SASM Environment Variables](#sasm environment-variables)  
 [6 : Assembler Variables](#assembler-variables)  
 [7 : Assembler Strings](#assembler-strings)  
 [8 : Expression Evaluation](#expression-evaluation)  
@@ -29,6 +40,7 @@ Version 2.02
 
 # Changelog
 
+## SASM
 
 ## Version 0.99
 
@@ -492,11 +504,11 @@ As the linker is fully integrated it is possible to do expressions such as:
 ```
 because the assembler will store an expression which is evaluated at link time.
 
- The ``IRS`` directive has been modified, so that is the ``REPT`` count is greater than the number of ``IRS`` parameters then it will 'wrap' round.
+The ``IRS`` directive has been modified, so that is the ``REPT`` count is greater than the number of ``IRS`` parameters then it will 'wrap' round.
 
 Numbers can be expressed as ``1234h`` or ``01000b`` instead of ``$`` and ``%`` before the number.
 
- "Macro defined twice" prints the macro name defined twice.
+"Macro defined twice" prints the macro name defined twice.
 
 
 ## Version 2.02
@@ -526,15 +538,28 @@ NEW directive ``SETDBR``. It tells the assembler what the current DBR is, so tha
 
 One error per macro is now the limit, so that all the strategy macros don't churn out 10 errors because one parameter was wrong which was detected in the first error.
 
- New directive ``ERROR+`` which increments the number of errors.
+New directive ``ERROR+`` which increments the number of errors.
 
+## ARGSFXX 
 
-# SASM Assembler Directives
+## General Changes From SASM
+
+In ARGSFX, strings can be defined with names instead of numbers 1-5.  
+ARGSFX also replaces ``ROLS`` with ``SUBSTR``, and adds a new ``STRING`` directive, which allows for greater manipulation of strings.  
+ARGSFX's error checking is a bit stricter than SASM, watch out for "bad word/byte size" and "macro defined twice" errors.  
+In the event you run into a bad word or byte size, try tagging ``&$FFFF`` at the end of the value for DW directives and ``&FF`` for DB directives.  
+
+## Unofficial Version 1.53
+
+``_SASM`` label no longer defined on startup, fixes expressions that check for SASM specifically evaluating as true.  
+
+# Assembler Directives
 ```
 <label>   =   <expression>          Sets <label> to be <expression>.
                                     see EQU, EQUR
           CHECKMAC ON/OFF           Will turn on and off duplicate
-                                    macro name checking.
+                                    macro name checking. Enabled by
+									default in ARGSFX.
 
           DATE <label>              Puts the date into <label>.
 
@@ -703,7 +728,10 @@ One error per macro is now the limit, so that all the strategy macros don't chur
                                     see ENDR
 
           ROLS str,offset           Rotates a string left by the
-                                    amount specified.
+                                    amount specified. Not normally available
+									in ARGSFX, Can easily be replicated
+									with substr.
+									see DEFS,PRINTF,STRLEN,SUBSTR
 
           SEND (expression)         Send the object code to a RAMBOY
                                     of type (expression). (default=$3d)
@@ -723,9 +751,24 @@ One error per macro is now the limit, so that all the strategy macros don't chur
           SICE                      Does an invalid instruction (Invokes
                                     soft ice if present.)
 
-          STRLEN <label>,<string>   Puts the length of string in to
-                                    the label.
+        STRING <lbl>([len])(=<txt>) Defines a string of a specified length,
+	                                and optionally, its contents.
+									Length does not need to be specified
+									when reassigning contents.
+									Length is in hexadecimal(?). (no $)
+									Maximum length is $150 characters.
+									ARGSFX only.
+									see PRINTF,ROLS,STRLEN
+
+          STRLEN <string>           Puts the length of string into
+                                    an expression.
                                     see DEFS,PRINTF,ROLS
+
+          SUBSTR <start,end,string> Gets the portion of the specified
+		                            string between the specified start
+									and end. ARGSFX only. This replaces 
+									ROLS from SASM.
+									see DEFS,PRINTF,STRLEN,ROLS
 
           SUPPRESS <option>         Stops printing the option specified
                                     again.
@@ -767,7 +810,7 @@ One error per macro is now the limit, so that all the strategy macros don't chur
 - ``f`` - prints the current file name
 - ``h`` - converts a 2 digit ASCII hex number to a real hex number and inserts it.
 - ``i<N>`` - prints an extended command where ``N`` is the command(see below)
-- ``k`` - total memory free available to SASM
+- ``k`` - total memory free available to the assembler
 - ``l`` - prints the current line number
 - ``m`` - prints the current macro name
 - ``n`` - prints a carriage return
@@ -807,10 +850,10 @@ Remember that a ``:$`` before an expression will print the value in hex.
 The following are labels which if defined on the command line, do various things:
 - ``-e__notitle`` - Don't display a title message.
 - ``-e__mario`` - Default source code is MARIO code.
-- ``-e__heap=xxxx`` - Defines the heap size (in bytes).
+- ``-e__heap=xxxx`` - Defines the heap size (in bytes). SASM only.
 
 
-# Environment Variables
+# SASM Environment Variables
 
 - ``SASMSRC`` - Specifies the default source name.
 - ``SASMHEAP`` - Specifies the default heap size (in bytes).
@@ -821,6 +864,7 @@ The following are labels which if defined on the command line, do various things
 # Assembler Variables
 
 - ``_SASM`` - Defined if SASM
+- ``_ARGSFX`` - Defined if ARGSFX
 - ``NARG`` - Number of arguments in a macro
 - ``LONGA`` - Non-zero if in long accumulator mode
 - ``LONGI`` - Non-zero if in long index mode
@@ -872,10 +916,10 @@ Partially enclosing an expression in brackets will give that part of the express
 
 ## Special Notes
 
-Hidden symbols --
+## Hidden Symbols
 As the assembler runs it's own internal source file before including the source file specified, it is possible to attempt to define symbols in your source code which are the same as some defined in the internal source, if this happens you will have to redefine your symbol.
 
-There is a command hidden to the user called ``GETHEAP``, which will get as much heap as specified, this is used by the assembler on startup and shouldn't be used by the user. However ``GETHEAP`` cannot be defined as a macro, but unless ``GETHEAP`` is on this error will not be reported.
+In SASM, there is a command hidden to the user called ``GETHEAP``, which will get as much heap as specified, this is used by the assembler on startup and shouldn't be used by the user. However ``GETHEAP`` cannot be defined as a macro, but unless ``GETHEAP`` is on this error will not be reported.
 
 Do not define string 5 on the command line if you have a ``SASMHEAP`` environment variable defined as the assembler uses string 5 as a temporary storage for the heap size in its internal source code.
 
@@ -912,9 +956,9 @@ If you appear to run out of EMS memory then try using ``EMM386.EXE`` instead of 
 Or look at the documentation for whatever EMM handler you are using and increase the number of handles available.  
 -- NB.  --  As SASM is only DOS-Extender compatible now, this is now void. --  
 
-Limitations --  
+## Limitations
 There is no HiROM support.  
-SASM does not normally support the ``MVN``/``MVP`` opcodes, and will throw a ``No MVN/MVP command!`` error if you attempt to use them.  
+SASM/ARGSFX does not normally support the ``MVN``/``MVP`` opcodes, and will throw a ``No MVN/MVP command!`` error if you attempt to use them.  
 Below are some macros to get around this (included in this repository in INC\MACROS.INC):  
 ```
 ;---------------------------------------------------------------

@@ -19,8 +19,14 @@ checkifend	macro
 	P_RELTOPLAYER	ON
 	P_ALWAYSGENVECS	OFF
 	P_ZREMOVE	OFF
+	IFD	_SASM
 	P_SET	rotx,-192
 	P_SET	roty,-192
+	ENDC
+	IFD	_ARGSFX
+	P_SET	rotx,-192&BM
+	P_SET	roty,-192&BM
+	ENDC
 .lp	P_ADD	roty,4
 	P_ADD	rotx,6
 	P_ADD	worldz,-69

@@ -711,12 +711,23 @@ sscale	=	slot_scale-1
 chktablelen	=	*-.chktable
 
 .jumptable
+	IFD	_SASM
 	dw	.jackpot
 	dw	.threecherries
 	dw	.twocherries
 	dw	.onecherry
 	dw	.allsame
 	dw	.allbars
+	ENDC
+
+	IFD	_ARGSFX
+	dw	.jackpot&WM
+	dw	.threecherries&WM
+	dw	.twocherries&WM
+	dw	.onecherry&WM
+	dw	.allsame&WM
+	dw	.allbars&WM
+	ENDC
 
 
 resetholds
@@ -1350,7 +1361,7 @@ pcoinexplode
 	P_DIV2		pbyte1
 	P_DIV2		pbyte1
 	P_DIV2		pbyte1
-	P_ADD		pbyte1,-110>>2
+	P_ADD		pbyte1,-28
 	P_SET		childy,pbyte1
 
 	P_ADD		pbyte2,40

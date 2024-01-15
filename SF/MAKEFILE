@@ -3,7 +3,8 @@
 #########################
 
 # Assembler
-ASM=SASMX
+ASM=ARGSFXX
+# Setup heap for SASM and export symbols to symbols.txt
 ASMFLAGS= -e__heap=14400 -xsymbols.txt
 
 # Linker
