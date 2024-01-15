@@ -32,7 +32,7 @@
 [2 : Assembler Directives](#assembler-directives)  
 [3 : ``PRINTF`` Commands](#printf-commands)  
 [4 : CLI Options](#cli-options)  
-[5 : SASM Environment Variables](#sasm environment-variables)  
+[5 : SASM Environment Variables](#sasm-environment-variables)  
 [6 : Assembler Variables](#assembler-variables)  
 [7 : Assembler Strings](#assembler-strings)  
 [8 : Expression Evaluation](#expression-evaluation)  

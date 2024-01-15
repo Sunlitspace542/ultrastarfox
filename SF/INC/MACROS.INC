@@ -7,7 +7,7 @@ rols	MACRO	[string,offset]
 
 	ENDM
 
-; Rotates a string right by offset ARGSFX
+; Rotates a string right by offset (ARGSFX only)
 rors	MACRO	[string,offset]
 	substr	0,((strlen {string})-{offset}),{string}
 
