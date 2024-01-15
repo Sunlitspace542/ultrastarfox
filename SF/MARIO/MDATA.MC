@@ -598,6 +598,9 @@ mscalechars
 msgtmp	macro
 	defs	1,"[1]\1"
 
+	; ARGSFX appears to start strings at index 0,
+	; while SASM starts strings at index 1.
+
 	IFD	_SASM
 	IFS	1,1," "
 	defs	1,"h"

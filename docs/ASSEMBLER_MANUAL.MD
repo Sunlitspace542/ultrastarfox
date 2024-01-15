@@ -559,7 +559,7 @@ In the event you run into a bad word or byte size, try tagging ``&$FFFF`` at the
                                     see EQU, EQUR
           CHECKMAC ON/OFF           Will turn on and off duplicate
                                     macro name checking. Enabled by
-									default in ARGSFX.
+                                    default in ARGSFX.
 
           DATE <label>              Puts the date into <label>.
 
@@ -729,9 +729,9 @@ In the event you run into a bad word or byte size, try tagging ``&$FFFF`` at the
 
           ROLS str,offset           Rotates a string left by the
                                     amount specified. Not normally available
-									in ARGSFX, Can easily be replicated
-									with substr.
-									see DEFS,PRINTF,STRLEN,SUBSTR
+                                    in ARGSFX, Can easily be replicated
+                                    with substr.
+                                    see DEFS,PRINTF,STRLEN,SUBSTR
 
           SEND (expression)         Send the object code to a RAMBOY
                                     of type (expression). (default=$3d)
@@ -751,14 +751,14 @@ In the event you run into a bad word or byte size, try tagging ``&$FFFF`` at the
           SICE                      Does an invalid instruction (Invokes
                                     soft ice if present.)
 
-        STRING <lbl>([len])(=<txt>) Defines a string of a specified length,
-	                                and optionally, its contents.
-									Length does not need to be specified
-									when reassigning contents.
-									Length is in hexadecimal(?). (no $)
-									Maximum length is $150 characters.
-									ARGSFX only.
-									see PRINTF,ROLS,STRLEN
+         STRING <lbl>([len])(=<txt>) Defines a string of a specified length,
+                                     and optionally, its contents.
+                                     Length does not need to be specified
+                                     when reassigning contents.
+                                     Length is in hexadecimal(?). (no $)
+                                     Maximum length is $150 characters.
+                                     ARGSFX only.
+                                     see PRINTF,ROLS,STRLEN
 
           STRLEN <string>           Puts the length of string into
                                     an expression.
@@ -766,9 +766,9 @@ In the event you run into a bad word or byte size, try tagging ``&$FFFF`` at the
 
           SUBSTR <start,end,string> Gets the portion of the specified
 		                            string between the specified start
-									and end. ARGSFX only. This replaces 
-									ROLS from SASM.
-									see DEFS,PRINTF,STRLEN,ROLS
+                                    and end. ARGSFX only. This replaces 
+                                    ROLS from SASM.
+                                    see DEFS,PRINTF,STRLEN,ROLS
 
           SUPPRESS <option>         Stops printing the option specified
                                     again.
