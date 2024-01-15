@@ -610,6 +610,7 @@ msgtmp	macro
 	ENDC
 	ENDC
 
+	IFD	_SASM
 	REPT	12
 	irs	3,"0","1","2","3","4","5","6","7","8","9","#","-"
 	run	" IFS 1,1,'%$3'"
@@ -617,6 +618,20 @@ msgtmp	macro
 	defs	1,"%$3"
 	ENDC
 	ENDR
+
+	ENDC
+
+
+	IFD	_ARGSFX
+	REPT	12
+	irs	3,"0","1","2","3","4","5","6","7","8","9","#","-"
+	run	" IFS 1,0,'%$3'"
+	irs	3,"\\","]","^","_","`","a","b","c","d","e","","["
+	defs	1,"%$3"
+	ENDC
+	ENDR
+
+	ENDC
 	endm
 
 mariomsg	macro
@@ -637,7 +652,7 @@ mariomsg	macro
 	REPT	30
 	IFNS	2,0,";"
 	run	" msgtmp <%$2>"
-	run	' db 1+"%$1"-"A"'
+	run	' db (1+"%$1"-"A")&BM'
 	rols	2,1
 	ENDC
 	ENDR

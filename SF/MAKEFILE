@@ -79,7 +79,10 @@ ALLFILES= BANK\BANK0.SOB BANK\BANK1.SOB BANK\BANK2.SOB \
 	@$(FONT) $<
 
 # Everything that should be done when make is executed
-all: allcols msprites crunch fonts sf.sfc donebld
+all: setup allcols msprites crunch fonts sf.sfc donebld
+
+setup:
+	@del BANK\*.SOB
 
 # Recipe to crunch palettes
 allcols:
