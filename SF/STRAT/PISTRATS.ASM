@@ -636,12 +636,6 @@ set_playerExitBase_l
 	s_set_alsflag		x,invisible
 
 	s_set_var		B,nomaxbg2Yscroll,#1
-
-
-;	phb
-;	databank	0
-;	jsl	getview_l
-;	plb
 	
 	s_and_var		B,pshipflags3,#~psf3_enginesnd
 	rtl

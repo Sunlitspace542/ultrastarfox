@@ -545,7 +545,9 @@ New directive ``ERROR+`` which increments the number of errors.
 ## General Changes From SASM
 
 In ARGSFX, strings can be defined with names instead of numbers 1-5.  
-ARGSFX also replaces ``ROLS`` with ``SUBSTR``, and adds a new ``STRING`` directive, which allows for greater manipulation of strings.  
+ARGSFX replaces ``ROLS`` with ``SUBSTR``, and adds a new ``STRING`` directive, which allows for greater manipulation of strings.  
+The character index for strings now begins at 0 instead of 1.  
+Two new ``IF`` directives, ``IFFE`` and ``IFFNE``, have been added that check for the existence/nonexistence of a specified file.  
 ARGSFX's error checking is a bit stricter than SASM, watch out for "bad word/byte size" and "macro defined twice" errors.  
 In the event you run into a bad word or byte size, try tagging ``&$FFFF`` at the end of the value for DW directives and ``&FF`` for DB directives.  
 
@@ -624,11 +626,12 @@ In the event you run into a bad word or byte size, try tagging ``&$FFFF`` at the
 
           GETENV strnum,<ENV VAR>   Puts the contents of the enviroment
                                     variable into string number 1-5.
-          
+
           GETHEAP <heap>            Gets as much of the heap (in bytes)
                                     as specified. This is an internal
                                     directive and should never be invoked
                                     by the user. (See Special Notes)
+                                    SASM only.
 
           IFxx                      Starts a conditional check where
                                     xx is one of the following...
@@ -639,6 +642,8 @@ In the event you run into a bad word or byte size, try tagging ``&$FFFF`` at the
                                     C  - strings eq.   NC - strings not eq.
                                     V  - env. exist    NV - env. not exist
                                     S  - string char   NS - not string char
+                                    ARGSFX only:
+                                    FE - file exist    FNE - file not exist
                                     see. ELSEIF, ENDC
 
           INCBIN <name>             Copies the contents of file <name> into
@@ -730,7 +735,7 @@ In the event you run into a bad word or byte size, try tagging ``&$FFFF`` at the
           ROLS str,offset           Rotates a string left by the
                                     amount specified. Not normally available
                                     in ARGSFX, Can easily be replicated
-                                    with substr.
+                                    with SUBSTR.
                                     see DEFS,PRINTF,STRLEN,SUBSTR
 
           SEND (expression)         Send the object code to a RAMBOY
@@ -738,7 +743,8 @@ In the event you run into a bad word or byte size, try tagging ``&$FFFF`` at the
                                     see FABCARD
 
           SETDBR <bank>	            Tells the assembler what the current
-                                    DBR (data bank register) is.
+                                    DBR (data bank register) is. ARGSFX
+                                    only.
 
           SHORTA                    Tells the assembler the code is to be
                                     assembled with the accumulator as 8 bits.

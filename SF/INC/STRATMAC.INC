@@ -454,16 +454,26 @@ total_stratmac_len	=	0
 ;-----------------------------------------------------------------------------
 strats_start	MACRO
 total_stratfile_addr	=	*
-	databank $7e
+	IFD	_SASM
+	databank $7E
+	ENDC
 	shorta
 	longi
+	IFD	_ARGSFX
+	SETDBR	$7E
+	ENDC
 		ENDM	
 
 
 ;-----------------------------------------------------------------------------
 strats_end	MACRO
 total_stratfile_len	=	total_stratfile_len+(*-total_stratfile_addr)
+	IFD	_SASM
 	databank 0
+	ENDC
+	IFD	_ARGSFX
+	SETDBR	0
+	ENDC
 		ENDM	
 
 ;-----------------------------------------------------------------------------
