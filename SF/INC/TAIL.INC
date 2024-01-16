@@ -30,55 +30,6 @@ ZMario_RAM_free	=	$700200-zmmempt
 
 	ENDC
 
-	IFD	_ARGSFX
-; Restored SASMX birthdays
-
-	IFEQ	month-8
-	IFEQ	day-6
-	PRINTF	"Happy birthday Krister!%n"
-	ENDC
-	ENDC
-
-	IFEQ	month-3
-	IFEQ	day-30
-	PRINTF	"Happy birthday Giles!%n"
-	ENDC
-	ENDC
-
-	IFEQ	month-2
-	IFEQ	day-18
-	PRINTF	"Happy birthday Dylan!%n"
-	ENDC
-	ENDC
-	ENDC	;_ARGSFX
-
-; Birthdays! (SASMX has them for the SF dev team, so why not for us?)
-
-	IFEQ	day-7
-	IFEQ	month-12
-	printf	"%nHappy birthday UltraStarFox!%n"
-	ENDC
-	ENDC
-
-	IFEQ	day-26
-	IFEQ	month-8
-	printf	"%nHappy birthday Kando!%n"
-	ENDC
-	ENDC
-
-	IFEQ	day-5
-	IFEQ	month-4
-	printf	"%nHappy birthday Sunlit!%n"
-	ENDC
-	ENDC
-
-	IFEQ	day-22
-	IFEQ	month-9
-	printf	"%nHappy birthday Monika!%n"
-	ENDC
-	ENDC
-
-
 	gettime	endtime
 totaltime	=	endtime-starttime
 
