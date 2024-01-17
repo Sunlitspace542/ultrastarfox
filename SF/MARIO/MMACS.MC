@@ -523,12 +523,6 @@ mcall	macro
 	miwt	pc,(\1)&$ffff
 	endm
 
-call	macro
-	link	#4
-	miwt	pc,(\1)&$ffff
-	endm
-
-
 ; call subroutine with addr in reg (any one of r0,r8,r9,r10,r12,r13)
 ;
 ; mcallreg	reg

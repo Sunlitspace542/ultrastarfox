@@ -76,7 +76,7 @@ mbumwipe
 .buf0	dw	m_winbuf&WM
 	ENDC
 .doneb
-	call	mwindrawline
+	mcall	mwindrawline
 	nop
 
 	bra	.lp
@@ -94,7 +94,7 @@ mbumwipe
 	iwt	r0,#1
 	sm	[m_wintabptr],r0
 .note
-	call	mwinswplst
+	mcall	mwinswplst
 	nop
 
 	stop

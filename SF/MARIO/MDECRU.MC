@@ -86,7 +86,7 @@ mdecrunch
 	move	rdecloop,r15
 mdecloop
 	ibt	rd1,#3
-	call	mgetbits
+	mcall	mgetbits
 	with	rd2
 
 	ibt	r0,#-1
@@ -100,23 +100,23 @@ mdecloop
 	lsrd0s
 	bne	.ok
 	nop
-	call	mgetlong
+	mcall	mgetlong
 	dec	rsrc
 .ok	bcc	.ok2
 	nop
 	ibt	rd1,#10
-	call	mgetbits
+	mcall	mgetbits
 	with	rd2
 	moves	rd2,rd2
 	bne	.skip
 	nop
 	ibt	rd1,#18
-	call	mgetbits
+	mcall	mgetbits
 	with	rd2
 	bra	.skip
 	nop
 .ok2	ibt	rd1,#4
-	call	mgetbits
+	mcall	mgetbits
 	with	rd2
 	with	rd2
 	add	#7
@@ -191,7 +191,7 @@ mgetcom	with	rdeststrt
 	nop
 .ok
 	db	2
-	call	mgetbits
+	mcall	mgetbits
 	with	rd2
 
 	ibt	rd3l,#2
@@ -212,7 +212,7 @@ mgetcom	with	rdeststrt
 	beq	.com1xx
 	nop
 	ibt	rd1,#2
-	call	mgetbits
+	mcall	mgetbits
 	with	rd2
 
 	ibt	r0,#3
@@ -230,7 +230,7 @@ mgetcom	with	rdeststrt
 	nop
 
 .com11x	ibt	rd1,#2
-	call	mgetbits
+	mcall	mgetbits
 	with	rd2
 	with	rd2
 	add	#7
@@ -239,7 +239,7 @@ mgetcom	with	rdeststrt
 	nop
 
 .com111	ibt	rd1,#8
-	call	mgetbits
+	mcall	mgetbits
 	with	rd2
 	move	rd3l,rd2
 	bra	.fill
@@ -249,7 +249,7 @@ mgetcom	with	rdeststrt
 	lsrd0s
 	bne	.skip
 	nop
-	call	mgetlong
+	mcall	mgetlong
 	dec	rsrc
 	nop
 .skip	bcs	.comx10
@@ -262,7 +262,7 @@ mgetcom	with	rdeststrt
 	lsrd0s
 	bne	.fill2
 	nop
-	call	mgetlong
+	mcall	mgetlong
 	dec	rsrc
 .fill2	bcc	.comx10
 	nop
@@ -270,13 +270,13 @@ mgetcom	with	rdeststrt
 	lsrd0s
 	bne	.fill3
 	nop
-	call	mgetlong
+	mcall	mgetlong
 	dec	rsrc
 .fill3	bcs	.comx10
 	nop
 	ibt	rd1,#12
 
-.comx10	call	mgetbits
+.comx10	mcall	mgetbits
 	with	rd2
 
 	dec	rd3l
