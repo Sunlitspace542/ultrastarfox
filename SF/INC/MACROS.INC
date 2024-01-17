@@ -17,6 +17,13 @@ rors	MACRO	[string,offset]
 	ENDC	;_SASM
 ;------------------------------------------------------------------------
 
+; Used in SGDATA.ASM
+rndbyte255	macro
+rndval =	(rndval*91+$61d7)&$ffff
+	db	rndval&255
+	endm
+
+; Used for random verts
 rndbyte	macro
 rndval =	(rndval*91+$61d7)&$ffff
 	db	rndval&63

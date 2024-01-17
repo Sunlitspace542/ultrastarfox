@@ -128,7 +128,7 @@ X_data_end
 
 mrndtab
 	rept	256
-	rndbyte
+	rndbyte255
 	endr
 
 ;************************************************
