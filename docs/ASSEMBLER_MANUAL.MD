@@ -823,9 +823,19 @@ macroname	MACRO	[parm1,parm2,parm3]
 ```
 Up to 36 total macro parameters can be specified.  To reference a parameter name in a macro, type the parameter name within curly brackets, e.g. for a parameter named ``param1``, you would type ``{param1}``.  
   
-If your macro uses labels or sublabels and you wish to invoke it more than once, attaching ``\@`` to the start or end of a label or sublabel will give it a unique name each time the macro is invoked.  
+If your macro uses labels or sublabels and you wish to call it more than once, attaching ``\@`` to the start or end of a label or sublabel will give it a unique name each time the macro is called.  
   
 If you do not do this and your macro is used more than once, a "symbol defined twice" error will occur during assembly.  
+  
+Macros are called like so:  
+```
+	macroname	parm1,parm2,parm3
+```
+Strings can also be used in macro parameters. To insert a string as an argument in a macro call, the text of the string is enclosed in angle brackets, like so:  
+```
+	macroname	<my text>
+```
+From there, they can be used the same as any other parameter.  
 
 # ``PRINTF`` Commands
 
