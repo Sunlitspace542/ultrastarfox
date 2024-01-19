@@ -815,7 +815,7 @@ macroname	MACRO
 ```
 Parameters can be inserted into macros by typing a ``\`` followed by the number of the argument. Arguments can have numbers ``0 - 9`` and letters ``a - z``, in that order.  
   
-Parameters can also be specified within square brackets after the ``MACRO`` directive. Each parameter name is followed by a comma.  
+Parameters with names be specified in a comma separated list enclosed within square brackets after the ``MACRO`` directive.
 ```
 macroname	MACRO	[parm1,parm2,parm3]
 ; your code here
