@@ -30,6 +30,7 @@
 ## Contents                                                    
 [1 : Changelog](#changelog)  
 [2 : Assembler Directives](#assembler-directives)  
+[3 : Macros](#macros)
 [3 : ``PRINTF`` Commands](#printf-commands)  
 [4 : CLI Options](#cli-options)  
 [5 : SASM Environment Variables](#sasm-environment-variables)  
@@ -803,6 +804,24 @@ In the event you run into a bad word or byte size, try tagging ``&$FFFF`` at the
                                     see OUTPUT
 ```
 
+# Macros
+
+Macros allow the user to turn useful code into chunks that can be invoked anywhere after they've been defined, including other macros.    
+A macro definition looks like this:  
+```
+macroname	MACRO
+; code here
+	ENDM
+```
+Parameters can be inserted into macros by typing a ``\`` followed by the number of the argument. Arguments can have numbers ``0 - 9`` and letters ``a - z``, in that order.  
+Parameters can also be specified within square brackets after the ``MACRO`` directive. Each parameter name is followed by a comma.  
+```
+macroname	MACRO	[parm1,parm2,parm3]
+; your code here
+	ENDM
+```
+Up to 36 total macro parameters can be specified.  To reference a parameter name in a macro, type the parameter name within curly brackets, e.g. for a parameter named ``param1``, you would type ``{param1}``.  
+If your macro uses labels or sublabels and you wish to invoke it more than once, attaching ``\@`` to the start or end of a label or sublabel will give it a unique name each time the macro is invoked. If you do not do this and your macro is used more than once, a "symbol defined twice" error will occur during assembly.  
 
 # ``PRINTF`` Commands
 
@@ -983,3 +1002,4 @@ sasm_mvp	MACRO	[src,dest]
 	ENDM
 ;---------------------------------------------------------------
 ```
+
