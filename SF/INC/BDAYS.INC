@@ -20,7 +20,7 @@
 	ENDC
 	ENDC	;_ARGSFX
 
-; Birthdays! (SASM has them for the SF dev team, so why not for us?)
+; Extra birthdays for UltraStarFox devs + other notable SF hacking community members
 
 	IFEQ	_MONTH-12
 	IFEQ	_DAY-7
@@ -45,3 +45,9 @@
 	printf	"Happy birthday Monika!%n"
 	ENDC
 	ENDC
+
+	IFEQ	_MONTH-5
+	IFEQ	_DAY-18
+	PRINTF	"Happy birthday CoolK!%n"
+	ENDC
+	ENDC 
