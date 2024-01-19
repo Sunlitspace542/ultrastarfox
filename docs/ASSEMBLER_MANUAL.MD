@@ -580,7 +580,7 @@ In the event you run into a bad word or byte size, try tagging ``&$FFFF`` at the
                                     
           DEFS strnum,"<string>"    Defines string number 1-5 with
                                     the result of a printf string.
-                                    see PRINTF,ROLS,STRLEN
+                                    see PRINTF,ROLS,STRLEN,STRING
 
           ELSEIF                    Swaps the condtional level.
                                     see IF, ENDC
@@ -761,11 +761,10 @@ In the event you run into a bad word or byte size, try tagging ``&$FFFF`` at the
          STRING <lbl>([len])(=<txt>) Defines a string of a specified length,
                                      and optionally, its contents.
                                      Length does not need to be specified
-                                     when reassigning contents.
-                                     Length is in hexadecimal(?). (no $)
-                                     Maximum length is $150 characters.
+                                     when assigning contents.
+                                     Maximum length is 150 characters.
                                      ARGSFX only.
-                                     see PRINTF,ROLS,STRLEN
+                                     see PRINTF,ROLS,STRLEN,DEFS
 
           STRLEN <string>           Puts the length of string into
                                     an expression.
