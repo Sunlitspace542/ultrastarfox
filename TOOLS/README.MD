@@ -2,10 +2,12 @@
 All these tools are DOS executables and are intended to be run through DOSBox, unless otherwise noted.
 
 ## PACKER
+**Tool made by Argonaut Software**  
 Star Fox Palette packer/graphics cruncher. No longer used in this repo.  
 sf_crunch is faster and saves more bytes compared to PACKER.  
 
 ## MERGE
+**Tool made by Argonaut Software**  
 Texture interleaving tool.
 To use:  
 ``merge.exe [infile1] [infile2] [outfile] /cgx``  
@@ -33,9 +35,11 @@ To use:
 outputs 2 files in MSX 4bpp format.  
 
 ## SHAPED
+**Tool made by Argonaut Software**  
 Tool that can convert Videoscape 3DG1 models to Star Fox ASM BSP format.  
 
 ## EXTEND.EXE
+**Tool made by Sunlit**  
 romExtender.py rewritten in C and compiled for MS-DOS, with improvements.   
 Usage: ``EXTEND.EXE [rom] [padded size in mbits] [pad byte]``
 Pads/extends ROM image to the desired size in Mbits padded with the chosen pad byte.  
@@ -65,7 +69,7 @@ To use:
 ``inccol [.col file] [start offset] [end offset]``  
 Output is written to ``col.tmp``.  
 
-## PC.EXE/palconv_win64.exe
+## palconv.exe/palconv_win64.exe
 **Tool made by Sunlit**  
 **Windows/DOS executables**  
 Tool that can convert to/from PAL/COL/SCL palettes.
