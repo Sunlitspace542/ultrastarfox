@@ -28,16 +28,16 @@
 # SASM v2.02, ARGSFX Unofficial v1.54 User Manual
 
 ## Contents                                                    
-[1 : Changelog](#changelog)  
-[2 : Assembler Directives](#assembler-directives)  
-[3 : Macros](#macros)  
-[3 : ``PRINTF`` Commands](#printf-commands)  
-[4 : CLI Options](#cli-options)  
-[5 : SASM Environment Variables](#sasm-environment-variables)  
-[6 : Assembler Variables](#assembler-variables)  
-[7 : Assembler Strings](#assembler-strings)  
-[8 : Expression Evaluation](#expression-evaluation)  
-[9 : Special Notes](#special-notes)  
+[1  : Changelog](#changelog)  
+[2  : Assembler Directives](#assembler-directives)  
+[3  : Macros](#macros)  
+[4  : ``PRINTF`` Commands](#printf-commands)  
+[5  : CLI Options](#cli-options)  
+[6  : SASM Environment Variables](#sasm-environment-variables)  
+[7  : Assembler Variables](#assembler-variables)  
+[8  : Assembler Strings](#assembler-strings)  
+[9  : Expression Evaluation](#expression-evaluation)  
+[10 : Special Notes](#special-notes)  
 
 # Changelog
 
