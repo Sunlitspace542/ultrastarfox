@@ -1,4 +1,5 @@
-map1_1a ; Scramble Map
+; 1-1 Corneria 1 Part A: SCRAMBLE Sequence Map
+map1_1a
 fudge	=	250
 
 	mapobjnomem	0000,0000,0000,fudge,op_0,gnd_Istrat

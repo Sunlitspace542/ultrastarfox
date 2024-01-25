@@ -173,12 +173,12 @@ musicsize	=	0
 	incsnd	sound1,snd\sgsound1.bin
 
 	IFEQ	PAL
-	incsnd	sound2,snd\sgsound2.bin
+	incsnd	orchestra,snd\sgsound2.bin
 	ELSEIF
-	incsnd	sound2,snd\psgsnd2.bin
+	incsnd	orchestra,snd\psgsnd2.bin
 	ENDC
 
-	incsnd	sound3,snd\sgsound3.bin
+	incsnd	band,snd\sgsound3.bin
 	incsnd	sound4,snd\sgsound4.bin
 
 	IFEQ	PAL
@@ -188,38 +188,38 @@ musicsize	=	0
 	ENDC
 
 	incsnd	sound6,snd\sgsound6.bin
-	incsnd	sound7,snd\sgsound7.bin
-	incsnd	sound8,snd\sgsound8.bin
-	incsnd	sound9,snd\sgsound9.bin
+	incsnd	titlebgm,snd\sgsound7.bin
+	incsnd	bgmendseq,snd\sgsound8.bin
+	incsnd	bgmcontinue,snd\sgsound9.bin
 
 	IFEQ	GERMAN
 	IFEQ	PAL
-	incsnd	sounda,snd\sgsounda.bin
+	incsnd	bgmstaff,snd\sgsounda.bin
 	ELSEIF
-	incsnd	sounda,snd\psgsnda.bin
+	incsnd	bgmstaff,snd\psgsnda.bin
 	ENDC
 	ELSEIF
-	incsnd	sounda,snd\gsgsnda.bin
+	incsnd	bgmstaff,snd\gsgsnda.bin
 	ENDC
 
-	incsnd	bgma,snd\sgbgma.bin
-	incsnd	bgmb,snd\sgbgmb.bin
-	incsnd	bgmc,snd\sgbgmc.bin
-	incsnd	bgmo,snd\sgbgmo.bin
-	incsnd	bgme,snd\sgbgme.bin
-	incsnd	bgmf,snd\sgbgmf.bin
-	incsnd	bgmg,snd\sgbgmg.bin
-	incsnd	bgmh,snd\sgbgmh.bin
-	incsnd	bgmi,snd\sgbgmi.bin
-	incsnd	bgmk,snd\sgbgmk.bin
-	incsnd	bgmp,snd\sgbgmp.bin
-	incsnd	bgm1,snd\sgbgm1.bin
-	incsnd	bgm4,snd\sgbgm4.bin
-	incsnd	bgm5,snd\sgbgm5.bin
-	incsnd	bgm6,snd\sgbgm6.bin
-	incsnd	bgm8,snd\sgbgm8.bin
-	incsnd	bgm9,snd\sgbgm9.bin
-	incsnd	bgm10,snd\sgbgm10.bin
+	incsnd	corneria,snd\sgbgma.bin
+	incsnd	meteor_base,snd\sgbgmb.bin
+	incsnd	titania,snd\sgbgmc.bin
+	incsnd	bgmtraining,snd\sgbgmo.bin
+	incsnd	macbeth,snd\sgbgme.bin
+	incsnd	asteroid_field,snd\sgbgmf.bin
+	incsnd	space_armada,snd\sgbgmg.bin
+	incsnd	venom_base_2,snd\sgbgmh.bin
+	incsnd	sector_x_z,snd\sgbgmi.bin
+	incsnd	venom_base_1_3,snd\sgbgmk.bin
+	incsnd	out_of_this_dimension,snd\sgbgmp.bin
+	incsnd	boss_corneria,snd\sgbgm1.bin
+	incsnd	boss_titania,snd\sgbgm4.bin
+	incsnd	boss_meteor,snd\sgbgm5.bin
+	incsnd	boss_space_armada,snd\sgbgm6.bin
+	incsnd	boss_venom_base_2,snd\sgbgm8.bin
+	incsnd	boss_venom_base_1,snd\sgbgm9.bin
+	incsnd	venom_andross,snd\sgbgm10.bin
 
 	ifne	JAPANESE ; if JAPANESE = 1
 	inccru	obj2ccr,data\obj-2.ccr ; training/game text (JP)

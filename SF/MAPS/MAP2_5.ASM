@@ -1,3 +1,4 @@
+; 2-5 Venom 2 Orbital
 map2_5
 	mapwait		600
 	pathspecial	0000,2700,2000,1500,s_zaco_0,egu6,10,10

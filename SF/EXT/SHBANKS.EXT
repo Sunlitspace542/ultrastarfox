@@ -1,14 +1,14 @@
-	global	bgmm
-	global	bgmmlen
-	global	bgm2
-	global	bgm2len
-	global	bgm3
-	global	bgm3len
-	global	bgm7
-	global	bgm7len
-	global	bgmj
-	global	bgmjlen
-	global	bgmn
-	global	bgmnlen
+	global	bgmintro
+	global	bgmintrolen
+	global	boss_fortuna
+	global	boss_fortunalen
+	global	boss_macbeth
+	global	boss_macbethlen
+	global	boss_asteroid
+	global	boss_asteroidlen
+	global	sector_y
+	global	sector_ylen
+	global	ops_bgm
+	global	ops_bgmlen
 	global	bgmpcr
 

@@ -1,3 +1,4 @@
+; SPECIAL: Out Of This Dimension
 specialmap
 	mapwait	5000
 

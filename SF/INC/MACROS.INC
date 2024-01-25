@@ -1,5 +1,4 @@
 ;------------------------------------------------------------------------
-	IFND	_SASM
 	IFD		_ARGSFX
 ; Rotates a string left by offset for ARGSFX
 rols	MACRO	[string,offset]
@@ -14,7 +13,6 @@ rors	MACRO	[string,offset]
 	ENDM
 
 	ENDC	;_ARGSFX
-	ENDC	;_SASM
 ;------------------------------------------------------------------------
 
 ; Used in SGDATA.ASM

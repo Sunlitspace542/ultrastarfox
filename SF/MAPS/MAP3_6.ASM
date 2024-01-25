@@ -1,3 +1,4 @@
+; 3-6 Venom 3 Orbital
 map3_6
 	mapwait	2000
 

@@ -1,3 +1,4 @@
+; 3-3 Fortuna Part A
 map3_3a
 
 	mapwait	2500

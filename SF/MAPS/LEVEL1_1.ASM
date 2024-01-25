@@ -1,3 +1,4 @@
+; 1-1 Corneria 1
 level1_1
 	IFEQ	noscrambleseq ; if noscrambleseq is off
 
@@ -64,7 +65,7 @@ level1_1
 	mapobj	1000,-0800,0000,10000,BU_5,HARD180YR_ISTRAT
 	mapobj	1000,-1200,0000,12000,BU_4,HARD180YR_ISTRAT
 
-	mapjsr	cl_ground
+	mapjsr	cl_ground ; Clear type
 	mapend
 
 

@@ -17,10 +17,10 @@
 	incfile	STRAT\ga2strats.asm
 	incfile	ASM\mem.asm
 
-	public	bgml
-	public	bgmllen
-bgml	incbinfile	snd\sgbgml.bin
-bgmllen	equ	*-bgml
+	public	black_holebgm
+	public	black_holebgmlen
+black_holebgm	incbinfile	snd\sgbgml.bin
+black_holebgmlen	equ	*-black_holebgm
 	bankend	10
 
 	include	INC\tail.inc

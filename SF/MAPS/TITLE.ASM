@@ -1,3 +1,4 @@
+; TITLE: Title Screen
 ; disable player's movement and wobble:
 	setfadedown	quick
 	mapwaitfade

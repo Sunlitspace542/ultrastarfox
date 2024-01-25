@@ -1,4 +1,4 @@
-
+; Giant Washing Machine/Atomic Base II (Sector Z Boss)
 ; giant washing machine map test. (NOT recomended by Persil)
 
 

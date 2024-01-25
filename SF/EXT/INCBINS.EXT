@@ -57,60 +57,60 @@
 	global	sound0len
 	global	sound1
 	global	sound1len
-	global	sound2
-	global	sound2len
-	global	sound3
-	global	sound3len
+	global	orchestra
+	global	orchestralen
+	global	band
+	global	bandlen
 	global	sound4
 	global	sound4len
 	global	sound5
 	global	sound5len
 	global	sound6
 	global	sound6len
-	global	sound7
-	global	sound7len
-	global	sound8
-	global	sound8len
-	global	sound9
-	global	sound9len
-	global	sounda
-	global	soundalen
-	global	bgma
-	global	bgmalen
-	global	bgmb
-	global	bgmblen
-	global	bgmc
-	global	bgmclen
-	global	bgmo
-	global	bgmolen
-	global	bgme
-	global	bgmelen
-	global	bgmf
-	global	bgmflen
-	global	bgmg
-	global	bgmglen
-	global	bgmh
-	global	bgmhlen
-	global	bgmi
-	global	bgmilen
-	global	bgmk
-	global	bgmklen
-	global	bgmp
-	global	bgmplen
-	global	bgm1
-	global	bgm1len
-	global	bgm4
-	global	bgm4len
-	global	bgm5
-	global	bgm5len
-	global	bgm6
-	global	bgm6len
-	global	bgm8
-	global	bgm8len
-	global	bgm9
-	global	bgm9len
-	global	bgm10
-	global	bgm10len
+	global	titlebgm
+	global	titlebgmlen
+	global	bgmendseq
+	global	bgmendseqlen
+	global	bgmcontinue
+	global	bgmcontinuelen
+	global	bgmstaff
+	global	bgmstafflen
+	global	corneria
+	global	cornerialen
+	global	meteor_base
+	global	meteor_baselen
+	global	titania
+	global	titanialen
+	global	bgmtraining
+	global	bgmtraininglen
+	global	macbeth
+	global	macbethlen
+	global	asteroid_field
+	global	asteroid_fieldlen
+	global	space_armada
+	global	space_armadalen
+	global	venom_base_2
+	global	venom_base_2len
+	global	sector_x_z
+	global	sector_x_zlen
+	global	venom_base_1_3
+	global	venom_base_1_3len
+	global	out_of_this_dimension
+	global	out_of_this_dimensionlen
+	global	boss_corneria
+	global	boss_cornerialen
+	global	boss_titania
+	global	boss_titanialen
+	global	boss_meteor
+	global	boss_meteorlen
+	global	boss_space_armada
+	global	boss_space_armadalen
+	global	boss_venom_base_2
+	global	boss_venom_base_2len
+	global	boss_venom_base_1
+	global	boss_venom_base_1len
+	global	venom_andross
+	global	venom_androsslen
 	global	mworldspr,facedata
 	global	bgti3pcr,bgti3ccr
 	global	bgcppcr,bgcpccr

@@ -14,10 +14,10 @@
 	incfile	STRAT\dstrats.asm
 	incfile	STRAT\ga3strats.asm
 
-	public	bgm11
-	public	bgm11len
-bgm11	incbinfile	snd\sgbgm11.bin
-bgm11len	equ	*-bgm11
+	public	game_overbgm
+	public	game_overbgmlen
+game_overbgm	incbinfile	snd\sgbgm11.bin
+game_overbgmlen	equ	*-game_overbgm
 
 	bankend	9
 

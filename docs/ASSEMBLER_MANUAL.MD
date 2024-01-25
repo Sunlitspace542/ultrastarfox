@@ -2,7 +2,7 @@
 
 ```
 ╔════════════════════════════════════════════════════════════════════╗
-║      SASMX & ARGSFXX Copyright (c) Argonaut Software Ltd. 1992     ║
+║   SASMX & ARGSFXX Copyright (c) Argonaut Software Ltd. 1992,1994   ║
 ╠════════════════════════════════════════════════════════════════════╣
 ║                                                                    ║
 ║              ████   ████    █████   ██ ██   █    █                 ║
@@ -25,7 +25,7 @@
 ║                                                                    ║
 ╚════════════════════════════════════════════════════════════════════╝
 ```
-# SASM v2.02, ARGSFX Unofficial v1.53 User Manual
+# SASM v2.02, ARGSFX Unofficial v1.54 User Manual
 
 ## Contents                                                    
 [1 : Changelog](#changelog)  
@@ -545,7 +545,7 @@ New directive ``ERROR+`` which increments the number of errors.
 
 ## General Changes From SASM
 
-In ARGSFX, strings can be defined with names instead of numbers 1-5.  
+In ARGSFX, strings can be defined with names instead of numbers 1-5 using the ``STRING`` directive.  
 ARGSFX replaces ``ROLS`` with ``SUBSTR``, and adds a new ``STRING`` directive, which allows for greater manipulation of strings.  
 The character index for strings now begins at 0 instead of 1.  
 Two new ``IF`` directives, ``IFFE`` and ``IFFNE``, have been added that check for the existence/nonexistence of a specified file.  
@@ -556,13 +556,17 @@ In the event you run into a bad word or byte size, try tagging ``&$FFFF`` at the
 
 ``_SASM`` label no longer defined on startup, fixes expressions that check for SASM specifically evaluating as true.  
 
+## Unofficial Version 1.54
+
+``CHECKMAC`` disabled by default.    
+
 # Assembler Directives
 ```
 <label>   =   <expression>          Sets <label> to be <expression>.
                                     see EQU, EQUR
           CHECKMAC ON/OFF           Will turn on and off duplicate
                                     macro name checking. Enabled by
-                                    default in ARGSFX.
+                                    default in ARGSFX 1.52.
 
           DATE <label>              Puts the date into <label>.
 
@@ -758,11 +762,15 @@ In the event you run into a bad word or byte size, try tagging ``&$FFFF`` at the
           SICE                      Does an invalid instruction (Invokes
                                     soft ice if present.)
 
-         STRING <lbl>([len])(=<txt>) Defines a string of a specified length,
-                                     and optionally, its contents.
+         STRING <name>([len])("<text>" or <label>)
+
+                                     Defines a string of a specified length,
+                                     and optionally, its contents. If contents
+                                     are specified to be a label, the contents
+                                     of the label are inserted in the string.
                                      Length does not need to be specified
-                                     when assigning contents.
-                                     Maximum length is 150 characters.
+                                     when assigning contents. Maximum length
+                                     is 150 characters.
                                      ARGSFX only.
                                      see PRINTF,ROLS,STRLEN,DEFS
 

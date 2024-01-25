@@ -16,36 +16,36 @@ do_hdr	=	0
 	incshapes	SHAPES\kshapes.asm
 
 	IFEQ	PAL
-bgmm	incbinfile	snd\sgbgmm.bin
+bgmintro	incbinfile	snd\sgbgmm.bin
 	ELSEIF
-bgmm	incbinfile	snd\psgbgmm.bin
+bgmintro	incbinfile	snd\psgbgmm.bin
 	ENDC
 
-bgmmlen	equ	*-bgmm
+bgmintrolen	equ	*-bgmintro
 	bankend	12
 
 ;------------------------------------------------------------------
 	bank	14
 	incshapes	SHAPES\shapes2.asm
 	inccru	bgmpcr,data\m.pcr
-bgm2	incbinfile	snd\sgbgm2.bin
-bgm2len	equ	*-bgm2
+boss_fortuna	incbinfile	snd\sgbgm2.bin
+boss_fortunalen	equ	*-boss_fortuna
 	bankend	14
 
 ;------------------------------------------------------------------
 	bank	15
 	INCshapes	SHAPES\shapes3.asm
 
-bgmn	incbinfile	snd\sgbgmn.bin
-bgmnlen	equ	*-bgmn
+ops_bgm	incbinfile	snd\sgbgmn.bin
+ops_bgmlen	equ	*-ops_bgm
 	bankend	15
 
 ;------------------------------------------------------------------
 	bank	16
 	incshapes	SHAPES\shapes4.asm
 
-bgmj	incbinfile	snd\sgbgmj.bin
-bgmjlen	equ	*-bgmj
+sector_y	incbinfile	snd\sgbgmj.bin
+sector_ylen	equ	*-sector_y
 	bankend	16
 
 ;------------------------------------------------------------------
@@ -56,10 +56,10 @@ bgmjlen	equ	*-bgmj
 
 	public	dogccr
 	inccru	dogccr,data\dog.ccr
-bgm7	incbinfile	snd\sgbgm7.bin
-bgm7len	equ	*-bgm7
-bgm3	incbinfile	snd\sgbgm3.bin
-bgm3len	equ	*-bgm3
+boss_asteroid	incbinfile	snd\sgbgm7.bin
+boss_asteroidlen	equ	*-boss_asteroid
+boss_macbeth	incbinfile	snd\sgbgm3.bin
+boss_macbethlen	equ	*-boss_macbeth
 
 	bankend	17
 

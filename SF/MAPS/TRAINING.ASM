@@ -1,3 +1,4 @@
+; TRAINING: Training Mode
 trainingmap	initlevel	training,mstarwipe_circle
 	setvar.n	prttraining,1
 ;-------------------------------------------------------------------------------

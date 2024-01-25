@@ -3358,8 +3358,8 @@ rotationselect	=	rotationselect+2
 
 planetsprs ; Stage icon definitions
 	dpsphere	playerplanet ; Corneria
-	dpspr		space2 asteroidfield ; 1-2 Asteroid Belt
-	dpspr		space2 asteroidfield ; 3-2 Asteroid Belt
+	dpspr		space2 asteroidfield ; 1-2 Asteroid Belt 1
+	dpspr		space2 asteroidfield ; 3-2 Asteroid Belt 3
 	dpspr		space1 ; 2-2 Sector X
 	dpsphere	planetb ; 3-3 Fortuna
 	dpsphere	planeta	; 2-3 Titania
@@ -3382,7 +3382,7 @@ planetnames
 ; The numbers in this table point to message IDs in the message file.
 	db	93	;00 ; Corneria ; 1-1, 2-1, 3-1
 	db	94	;01 ; Asteroid Belt 1 ; 1-2
-	db	94	;02 ; Asteroid Belt 2 ; 3-2
+	db	94	;02 ; Asteroid Belt 3 ; 3-2
 	db	95	;03 ; Sector X ; 2-2
 	db	96	;04 ; Fortuna ; 3-3
 	db	98	;05 ; Titania ; 3-5
@@ -3711,7 +3711,7 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHUPRIGHT
 	PATHCHOICE	2
 
-; Asteroid Field 1
+; Asteroid Belt 1
 .path7	local
 	PATHSTART	11,17,2,1_2,89,0
 	PATHUPRIGHT
@@ -3746,7 +3746,7 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHCHOICE	1
 
 .path12	local
-; Asteroid Field 2
+; Asteroid Belt 3
 	PATHSTART	12,21,1,3_2,109,2
 	PATHUPRIGHT
 	PATHUPRIGHT
@@ -3825,7 +3825,7 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHNEXT	.path14
 
 .path21	local
-; Asteroid Field 1
+; Asteroid Belt 1
 	PATHSTART	9,16,2,1_2,89,0
 	PATHUP_H
 	PATHUP_H
@@ -3833,7 +3833,7 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHCHOICE	4
 
 .path22	local
-; Asteroid Field 2
+; Asteroid Belt 3
 	PATHSTART	12,25,1,3_2,109,2
 	PATHRIGHT_H
 	PATHRIGHT_H

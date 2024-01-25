@@ -1,3 +1,4 @@
+; 2-3 Titania Part C
 map2_3c
 	setrestart
 	mapobj	0000,0000,-060,3000,boss_g_0,bossg_istrat

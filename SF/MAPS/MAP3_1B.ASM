@@ -1,3 +1,4 @@
+; 3-1 Corneria 3 Part B (Boss Map)
 map3_1b
 	incmap	3-1
 

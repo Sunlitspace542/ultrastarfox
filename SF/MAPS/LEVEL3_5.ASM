@@ -1,3 +1,4 @@
+; 3-5 Macbeth
 level3_5
 	initlevel	3_5,mscramwipe_circle
 
@@ -10,7 +11,7 @@ level3_5
 	mapobj	0000,800,0,12000,ro_6,hard180yr_istrat
 	mapobj	0000,800,0,12150,ro_6,hard_istrat
 
-	mapjsr	cl_under
+	mapjsr	cl_under ; Clear type
 	mapend
 
 

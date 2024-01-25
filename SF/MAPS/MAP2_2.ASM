@@ -1,3 +1,4 @@
+; 2-2 Sector X
 map2_2
 
 	map_setbarshape	solid

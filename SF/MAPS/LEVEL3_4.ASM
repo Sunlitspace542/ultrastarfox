@@ -1,3 +1,4 @@
+; 3-4 Sector Z
 level3_4
 	initlevel	3_4b,mstarwipe_circle
 
@@ -8,7 +9,7 @@ level3_4
 	INCMAP	washmap
 	markboss	boss34
 
-	mapjsr	cl_ship3_4
+	mapjsr	cl_ship3_4 ; Clear type
 
 	mapend	1
 

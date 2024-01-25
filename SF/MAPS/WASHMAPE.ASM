@@ -1,6 +1,5 @@
-
+; Giant Washing Machine/Atomic Base I (1-3 Space Armada Boss)
 ; giant washing machine map test. (NOT recomended by Persil)
-
 
 rotsize	=	deg45
 rotnum	=	deg360/rotsize

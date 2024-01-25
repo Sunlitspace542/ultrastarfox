@@ -46,12 +46,12 @@ scr_offset	equ	(vchr_logback-vchr_physback)/16
 	extern	bgandpcr
 	extern	bgandccr
 	extern	dogccr
-	extern	bgml	
-	extern	bgmllen	
-	extern	bgmd	
-	extern	bgmdlen	
-	extern	bgm11	
-	extern	bgm11len
+	extern	black_holebgm	
+	extern	black_holebgmlen	
+	extern	fortuna	
+	extern	fortunalen	
+	extern	game_overbgm	
+	extern	game_overbgmlen
 
 ;-------------------------------------------------------
 	bank	2

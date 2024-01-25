@@ -1,3 +1,4 @@
+; 1-1 Corneria 1 Part B
 map1_1b
 
 	INCMAP	<1-1>

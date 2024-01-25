@@ -37,7 +37,7 @@
 
 ;*****************************************************************************
 ; WASHING MACHINE MAP BOSS.	
-; see washmap.
+; see washmap, washmape.
 
 boss8_Istrat
 

@@ -1,3 +1,4 @@
+; 1-6 Venom 1 Surface part A
 restart1_6
 	mapwait	2000
 	mapgoto	cont1_6
