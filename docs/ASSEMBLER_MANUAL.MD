@@ -203,7 +203,8 @@ Local labels now store a pointer to the parent label rather than storing the tex
 
 Local labels now delete their texts when a new parent label is defined. To declare a local label to be used by another parent section use the directive  LOCAL  which will add the local symbol to the parent symbol table as parent.local
  Example:
-```parent1
+```
+parent1
 .local	local
 
 parent2

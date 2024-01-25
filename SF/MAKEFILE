@@ -90,7 +90,7 @@ allcols:
 	@pc.bat
 	@cd ..\..
 
-#!! If you add/remove/modify a cgx/scr in these two lists, make sure the corresponding files are present here.
+#!! If you add/remove/modify a cgx/bin in these two lists, make sure the corresponding files are present here.
 
 # FXGFX files to be interleaved
 msprites: tex_01.bin tex_23.bin tex_23_a.bin
