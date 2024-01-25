@@ -907,12 +907,12 @@ Remember that a ``:$`` before an expression will print the value in hex.
 - ``-l`` - Turns on listing.
 - ``-m<value>`` - Specifies maximum errors before stopping.
 - ``-o<Name>`` - Write object code to ``<Name>``.
-- ``-p<name>``          - Write stdout to file <name>. (ARGSFX only)
+- ``-p<name>``          - Write stdout to file ``<name>``. (ARGSFX only)
 - ``-r`` - Display ROM listing on screen.
 - ``-s<label>(=value)`` - Set the label with the optional value.
 - ``-v<filename.SOB>``  - Writes a linkable file ``<filename.SOB>``.
 - ``-x[filename]`` - Turns on symbol listing.
-- ``-z``                - Generate a .MAP debug file. (Not to be confused with GNU .map) (ARGSFX only)  
+- ``-z``                - Generate a ``.MAP`` debug file. (Not to be confused with GNU ``.map``) (ARGSFX only)  
 
 The following are labels which if defined on the command line, do various things:
 - ``-e__notitle`` - Don't display a title message.
