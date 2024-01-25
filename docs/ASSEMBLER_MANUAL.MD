@@ -553,6 +553,24 @@ Two new ``IF`` directives, ``IFFE`` and ``IFFNE``, have been added that check fo
 ARGSFX's error checking is a bit stricter than SASM, watch out for "bad word/byte size" and "macro defined twice" errors.  
 In the event you run into a bad word or byte size, try tagging ``&$FFFF`` at the end of the value for DW directives and ``&FF`` for DB directives.  
 
+## Version 1.44
+
+``WAI`` 65816 opcode implemented.  
+
+## Version 1.49
+
+``IFFE``/``IFFNE`` directives added to check if a file does/doesn't exist at a specified path.  
+Example...  
+```
+	iffe "c:\autoexec.bat"
+	nop
+	endc
+
+	iffne "c:\rats.doc"
+	nop
+	endc
+```
+
 ## Unofficial Version 1.53
 
 ``_SASM`` label no longer defined on startup, fixes expressions that check for SASM specifically evaluating as true.  
