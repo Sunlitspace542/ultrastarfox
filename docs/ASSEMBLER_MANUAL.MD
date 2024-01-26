@@ -3,6 +3,7 @@
 ```
 ╔════════════════════════════════════════════════════════════════════╗
 ║   SASMX & ARGSFXX Copyright (c) Argonaut Software Ltd. 1992,1994   ║
+║ ArgLink SFX and SL Copyright (c) Argonaut Software Ltd. 1992,1994  ║
 ╠════════════════════════════════════════════════════════════════════╣
 ║                                                                    ║
 ║              ████   ████    █████   ██ ██   █    █                 ║
@@ -37,7 +38,8 @@
 [7  : Assembler Variables](#assembler-variables)  
 [8  : Assembler Strings](#assembler-strings)  
 [9  : Expression Evaluation](#expression-evaluation)  
-[10 : Special Notes](#special-notes)  
+[10 : SL and ARGLINK](#sl-and-arglink)  
+[11 : Special Notes](#special-notes)  
 
 # Changelog
 
@@ -546,6 +548,7 @@ New directive ``ERROR+`` which increments the number of errors.
 
 ## General Changes From SASM
 
+Around mid-1993, SASM and SL were heavily modified and renamed to ARGSFX and ARGLINK, used during the development of Star Fox 2.  
 In ARGSFX, strings can be defined with names instead of numbers 1-5 using the ``STRING`` directive.  
 ARGSFX replaces ``ROLS`` with ``SUBSTR``, and adds a new ``STRING`` directive, which allows for greater manipulation of strings.  
 The character index for strings now begins at 0 instead of 1.  
@@ -919,7 +922,6 @@ The following are labels which if defined on the command line, do various things
 - ``-e__mario`` - Default source code is MARIO code.
 - ``-e__heap=xxxx`` - Defines the heap size (in bytes). (SASM only)
 
-
 # SASM Environment Variables
 
 - ``SASMSRC`` - Specifies the default source name.
@@ -979,6 +981,33 @@ Partially enclosing an expression in brackets will give that part of the express
 
  All expressions are done with a 32 bit expression evaluator, if an overflow occurs while performing an operator, no overflow error will be given, however overflow errors will be given if a number is too big, i.e. a hex number has more than 8 digits, etc.
 
+# SL and ARGLINK
+SL and ArgLink SFX are the integrated linkers included with SASM and ARGSFX, respectively.  
+Below are the CLI options for both.  
+
+``SL`` / ``ARGLINK`` ``<[opts] obj1 [opts] obj2 [opts] obj3 [opts] obj4....>``  
+
+- ``-A1`` - Download to ADS SuperChild1 hardware. (ARGLINK only)
+- ``-A2`` - Download to ADS SuperChild2 hardware. (ARGLINK only)
+- ``-B`` - Set file input/output buffers (``0-31``), default = 10K.
+- ``-C`` - Duplicate public warnings on.
+- ``-D`` - Download to ramboy.
+- ``-E <ext>`` - Change default file extension, default = ``.SOB``.
+- ``-F[<addr>]`` - Set Fabcard port address (in hex), default = ``0x290``.
+- ``-H <size>`` - String hash size, default = ``256``.
+- ``-I`` - Display file information while loading.
+- ``-L <size>`` - Display used rom layout (size is in K).
+- ``-M <size>`` - Memory size, default = ``2`` (Megabytes).
+- ``-N`` - Download to Nintendo Emulation system.
+- ``-O <romfile>`` - Output a ROM file.
+- ``-P[<addr>]`` - Set Printer port address (in hex), default = ``0x378``.
+- ``-R`` - Display ROM block information.
+- ``-S`` - Display all public symbols.
+- ``-T[<type>]`` - Set rom type (in hex), default = ``0x7D``.
+- ``-W [prefix]`` - Set prefix (Work directory) for object files.
+- ``-Y`` - Use secondary ADS backplane CIC. (ARGLINK only)
+- ``-Z`` - Generate a debugger MAP file.  (Not to be confused with GNU ``.map``) (ARGLINK only)
+- ``@[<file>]`` - Include a list of object files to link.
 
 
 ## Special Notes
