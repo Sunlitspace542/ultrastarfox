@@ -847,11 +847,11 @@ Parameters can be inserted into macros by typing a ``\`` followed by the number 
 Note that ``\0`` is special in that it is an argument specified directly after the macro name with a ``.``, followed by the argument.  
 Example..
 ```
-	macroname.argzero
+	macroname.argzero	<your other args here...>
 ```
 This can be used to specify an addressing mode to append on an opcode, e.g. ``LDA.L`` or it can be used for other purposes.  
-\0 can also be checked as a string using ``IFC``/``IFNC``.  
-Note that unlike other cases of using strings in macros, it does not need to be enclosed in angle brackets.  
+``\0`` can also be checked as a string using ``IFC``/``IFNC``.  
+Note that unlike other cases of using strings in macros, it does not need to be enclosed in angle brackets. Spaces are not allowed.  
   
 Parameters with names be specified in a comma separated list enclosed within square brackets after the ``MACRO`` directive.
 ```
