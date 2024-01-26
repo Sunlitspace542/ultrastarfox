@@ -853,7 +853,7 @@ This can be used to specify an addressing mode to append on an opcode, e.g. ``LD
 ``\0`` can also be checked as a string using ``IFC``/``IFNC``.  
 Note that unlike other cases of using strings in macros, it does not need to be enclosed in angle brackets. Spaces are not allowed.  
   
-Parameters with names be specified in a comma separated list enclosed within square brackets after the ``MACRO`` directive.
+Parameters with names are specified in a comma separated list enclosed within square brackets after the ``MACRO`` directive.
 ```
 macroname	MACRO	[parm1,parm2,parm3]
 ; your code here
