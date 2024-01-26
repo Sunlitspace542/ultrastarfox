@@ -3,7 +3,7 @@
 ```
 ╔════════════════════════════════════════════════════════════════════╗
 ║   SASMX & ARGSFXX Copyright (c) Argonaut Software Ltd. 1992,1994   ║
-║ ArgLink SFX and SL Copyright (c) Argonaut Software Ltd. 1992,1994  ║
+║  SL & ArgLink SFX Copyright (c) Argonaut Software Ltd. 1992,1994   ║
 ╠════════════════════════════════════════════════════════════════════╣
 ║                                                                    ║
 ║              ████   ████    █████   ██ ██   █    █                 ║
