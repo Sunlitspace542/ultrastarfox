@@ -127,12 +127,12 @@ abort_vn
 	; The FastROM map mode is not set to ensure compatibility with older emulators.
 	; FastROM is not header dependent and this byte not being set to 30 will not affect performance.
 	db	$20					; Map Mode
-							; (20) SlowROM LoROM
-							; (30) FastROM LoROM
+							 ; (20) SlowROM LoROM
+							 ; (30) FastROM LoROM
 	ELSEIF
 	db	$20					; Map Mode
-							; (20) SlowROM LoROM
-							; (30) FastROM LoROM
+							 ; (20) SlowROM LoROM
+							 ; (30) FastROM LoROM
 	ENDC
 	db	$14					; Cartridge Type
 							 ; (13) Super FX 1 (StarFox 1)
