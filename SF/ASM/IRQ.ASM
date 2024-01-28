@@ -1114,9 +1114,19 @@ irqbit3	lda	noirqbit3
 	lda	#$7e
 	sta	cgdata
 	bra	.conti
-.nope	lda	#$1f
+.nope
+	IFNE	shieldboostcolorbox
+;!! Unnecessary color write to palette line 2.
+; This is the exact same as a color that is already
+; loaded into CGRAM in most level palettes,
+; and is used for the "colored boxes" that
+; are used in the shield/boost box translucency effect.
+; Removing this frees up line 2 of CGRAM for more background
+; color palettes, if shieldboostcolorbox is off.
+	lda	#$1f
 	sta	cgdata
 	stz	cgdata
+	ENDC
 .conti
 
 	lda	bg3scrollflag
