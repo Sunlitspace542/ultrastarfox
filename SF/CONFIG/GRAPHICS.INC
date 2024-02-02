@@ -44,4 +44,14 @@ ShieldTextPos4 equ $b730
 ; Nova Bomb Icon Position ($YYXX)
 BombIconPos equ $b6e1
 
+;; Palettes
+
+; Max number of palette lines allowed in ALLCOLS.PAC. (stock = 256)
+; Raise this number if you have more than about 36 palettes and the
+; latest in the list won't load.
+; For reference, a palette line is 32 bytes in size. 7 of those is 224 bytes.
+;!! If this number is too large, bad things might happen, so be careful!!
+; see also: gamepalettes xxalc in INC\KALCS.INC.
+maxcolscru	equ	256
+
 ;####################################################################################################################

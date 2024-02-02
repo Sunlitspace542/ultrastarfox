@@ -54,14 +54,15 @@ initialise_l ; Initialize game
 	ldx	#mdecrunch&WM
 	jsl	runmario_l ; Run the MARIO chip
 
+	; Copy decrunched palettes into memory
 	a16 ; set A to 16 bit
 	ldx	#0 ; load 0 into X
 .lp	lda.l	$701000,x ; Load contents of addr $701000 + X into A
 	sta.l	gamepalettes,x ; store A to gamepalettes variable + X
 	inx ; Increment X
 	inx ; Increment X
-	cpx	#8192 ; Compare 8192 with X
-	bne	.lp ; Branch to .lp if X != 8192
+	cpx	#(maxcolscru*32) ; Compare palette buffer length with X
+	bne	.lp ; Branch to .lp if X != palette buffer length
 
 	plp ; Pull processor status from stack
 	rtl ; Return from subroutine (Long)

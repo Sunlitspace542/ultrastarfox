@@ -4,6 +4,7 @@ echo Crunching palettes...
 @del col2.tmp
 @del allcols.col
 @copy NUL allcols.col
+rem syntax: @call mc (file prefix) (start) (end)
 @call mc bg2-a 0 7
 @call mc bg2-b 0 13
 @call mc bg2-c 0 7
@@ -29,5 +30,7 @@ echo Crunching palettes...
 @call mc e-test 0 7
 @call mc obj-1 8 13
 @call mc 2ep 0 9
+rem add new palettes before this line
+rem the order of this file must match INC\KALCS.INC!
 cru allcols.col allcols.pac
 echo Palette crunching Complete.
