@@ -71,7 +71,7 @@ stopall	stx	blinkval ; Store X to blinkval variable
 	sta	inidisp ; Store A at INIDISP register
 
 	; Decrunch palette, tiles, and tilemap for crash handler
-	dmacgram	0,0,oopspac,512
+	dmacgram	0,0,bgoopspac,512
 	decvramnotrans	0,0,oopsccr,16*1024
 	decvramnotrans	0,16*1024,oopspcr,2*1024
 

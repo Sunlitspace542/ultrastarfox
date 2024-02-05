@@ -133,7 +133,7 @@ bholescale_hof	equ	14
 	xxalc	gamepalettes,maxcolscru*32
 __totpallen	=	0
 ; Index of crunched palettes in ALLCOLS.PAC
-	defpac	oopspac,15
+	defpac	bgoopspac,15
 	defpac	bg2apac,7
 	defpac	bg2bpac,13
 	defpac	bg2cpac,7
