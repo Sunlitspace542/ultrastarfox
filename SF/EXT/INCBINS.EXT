@@ -115,6 +115,7 @@
 	global	bgti3pcr,bgti3ccr
 	global	bgcppcr,bgcpccr
 	global	dogpcr
+	global	oopsccr,oopspcr
 	global	bgbpcr,bgbccr
 	global	obj2ccr
 

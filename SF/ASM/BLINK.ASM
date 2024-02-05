@@ -70,10 +70,10 @@ stopall	stx	blinkval ; Store X to blinkval variable
 	lda	#$80 ; Load $80 into A
 	sta	inidisp ; Store A at INIDISP register
 
-	; Load palette, tiles, and tilemap for crash handler
-	dmacgram	0,0,oopspal,512
-	dmavram	0,0,oopschr,16*1024
-	dmavram	0,16*1024,oopspic,2*1024
+	; Decrunch palette, tiles, and tilemap for crash handler
+	dmacgram	0,0,oopspac,512
+	decvramnotrans	0,0,oopsccr,16*1024
+	decvramnotrans	0,16*1024,oopspcr,2*1024
 
 	stz	cgadd ; Store 0 at CGADD register
 	lda	blinkcol ; Load the BLINK text color into A

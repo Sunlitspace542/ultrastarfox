@@ -164,6 +164,12 @@ facedata	inccolfile	data\face.cgx,0,360 ; size (in bytes) divided by 32
 	inccru	bgmccr,data\m.ccr
 	bankend	35
 
+; Crash handler GFX (BLINK.ASM)
+	bank	41
+	inccru	oopsccr,data\oops.ccr
+	inccru	oopspcr,data\oops.pcr
+	bankend	41
+
 ;------------------------------------------------------------------
 
 firstsndbnk	=	24

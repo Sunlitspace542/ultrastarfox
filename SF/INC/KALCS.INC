@@ -132,6 +132,8 @@ bholescale_hof	equ	14
 ; Memory allocated for crunched palettes when decrunched. see CONFIG/ALLCOLS.INC.
 	xxalc	gamepalettes,maxcolscru*32
 __totpallen	=	0
+; Index of crunched palettes in ALLCOLS.PAC
+	defpac	oopspac,15
 	defpac	bg2apac,7
 	defpac	bg2bpac,13
 	defpac	bg2cpac,7
@@ -158,7 +160,7 @@ __totpallen	=	0
 	defpac	spritepal,5
 	defpac	bg2eppac,9
 ; add new palettes before this line
-; the order of this file must match DATA\COL\PC.BAT!
+; the order of this list must match DATA\COL\PC.BAT!
 bgfoxpac	equ	bg2bpac
 	IFEQ	CONTROLSSCREENPAL
 bgcontpac	equ	bg2epac ; ntsc
