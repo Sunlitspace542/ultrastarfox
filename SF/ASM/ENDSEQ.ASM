@@ -1790,16 +1790,11 @@ intro_l
 	ENDC
 
 	bgm	init
-	
 	ldx	#0
 .ll	dex
 	bne	.ll
 
 	bgm	intro
-	
-	
-	
-
 	disable
 
 	lda	#intromap>>16
