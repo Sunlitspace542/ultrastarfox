@@ -6,7 +6,7 @@ echo Crunching palettes...
 @copy NUL allcols.col
 rem syntax: 
 rem @call mc (file prefix) (start) (end)
-@call mc oops 0 8
+@call mc oops 0 2
 @call mc bg2-a 0 7
 @call mc bg2-b 0 13
 @call mc bg2-c 0 7
