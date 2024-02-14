@@ -78,9 +78,7 @@ ultrastarfox
 │   ├── BANK: Bank data\ASM files
 │   ├── CONFIG: Various game aspects can be configured here
 │   ├── DATA: GFX files
-│   │   ├── COL: Palette files and Palette Packer
-│   │   ├── CGX: .CGX graphics files that are crunched
-│   │   └── SCR: .SCR tilemap files that are crunched
+│   │   └── COL: Palette files and Palette Packer
 │   ├── EXT: .ext files needed by several .asm files
 │   ├── INC: .inc files, arc tangent table
 │   ├── MAPS: level scripts
@@ -92,7 +90,5 @@ ultrastarfox
 │   ├── SND: sound/music data
 │   └── STRAT: Code for Strategies (Object behaviors)
 ├── TOOLS: tools such as PACKER and SHAPED
-├── DOCS: .md format text files covering various aspects of Star Fox 2
-├── OPTIONALSTUFF: optional graphics files
-└── OTHER: Files for building MSPRITES .bin files
+└── DOCS: .md format text files covering various aspects of Star Fox
 ```

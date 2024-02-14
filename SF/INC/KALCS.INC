@@ -132,6 +132,7 @@ bholescale_hof	equ	14
 ; Memory allocated for crunched palettes when decrunched. see CONFIG/ALLCOLS.INC.
 	xxalc	gamepalettes,maxcolscru*32
 __totpallen	=	0
+__totpallines	=	0
 ; Index of crunched palettes in ALLCOLS.PAC
 	defpac	bgoopspac,2
 	defpac	bg2apac,7

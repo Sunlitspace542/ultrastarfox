@@ -241,10 +241,8 @@ musicsize	=	0
 	endc
 	endc
 
-	printf	:$*,"%n"
-
 	ifgt	@-$200000
-	PRINTF	"%N%N  MORE THAN 16 MEGA-BITS OF ROM USED!! %N%N"
+	PRINTF	"%01%31MORE THAN 16 MEGA-BITS OF ROM USED!!%n%00"
 	FAIL
 	endc
 

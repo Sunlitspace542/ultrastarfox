@@ -65,7 +65,8 @@ totaltime	=	0
 
 	ANSI_ON
 	
-	run	"initial_memory = %k"
+; get and define initial assembler ram
+	run	"initial_assembler_memory = %k"
 
 
 	defend	"%00      %ie Error(s), %iw Warning(s). (%36",totaltime/100,".",totaltime-((totaltime/100)*100),"s%00)%n"

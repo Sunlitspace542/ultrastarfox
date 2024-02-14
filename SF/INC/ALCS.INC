@@ -296,9 +296,9 @@ xlen	=	22*1024+450
 	zalc	tr2x,1
 	zalc	highx,1
 	zalc	numpnts2,1
-	zalc	pat0ptr,2
-	zalc	pattern0,1
-	zalc	pattern1,1
+;	zalc	pat0ptr,2
+;	zalc	pattern0,1
+;	zalc	pattern1,1
 ;--------MSU1---------
 	IFNE	msu
     zalc    msu_017e,1 ; MSU1 zeropage variable ($7E017E)

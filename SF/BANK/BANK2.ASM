@@ -69,10 +69,14 @@ scr_offset	equ	(vchr_logback-vchr_physback)/16
 ramstart	incfile	ASM\ramstuff.asm
 xoffset	equ	*-ramstart
 
-	ifle	xlen-xoffset
-	error	<Extended code more than xlen>
+	IFND	xroutinesreport
+xroutinesreport ; TAIL will report X routines free
+	ENDC
+
+	IFLE	xlen-xoffset
+	printf	"%01%31Error: X routines space exceeded!%n%00"
 	fail
-	endc
+	ENDC
 
 	IFNE	FASTROM
 	org	$828000+xoffset,$8000*2+xoffset
@@ -128,7 +132,10 @@ planetdmapos2	dw	100
 
 
 	include	INC\tail.inc
-
+; Do not report X Routines space in TAIL after this
+	IFND	noxroutinesreport
+noxroutinesreport
+	ENDC
 
 
 

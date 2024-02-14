@@ -4571,12 +4571,7 @@ fclose	MACRO
 	ENDM
 ;------------------------------------------------------------------------
 
-
-
-
-
-
-report	MACRO
+report	MACRO	[namestr,label,maxlabel]
 	IFND	rlbl
 rlbl	=	0
 	ENDC
@@ -4586,24 +4581,22 @@ rlbl	=	0
 	ELSEIF
 	printf	"      "
 	ENDC
-	IFLT	\2
+	IFLT	{label}
 	printf	"%01%31"
 	ENDC
-	printf	"[20]\1"," = "
+	printf	"[20]{namestr}"," = "
 
-	IFLT	(\2)-10000
-	printf	[4](\2)
+	IFLT	({label})-10000
+	printf	[4]({label})
 	ELSEIF
-	printf	[3](\2)/1024,"K"
+	printf	[3]({label})/1024,"K"
 	ENDC
-p5per	=	(\3)/200
-	printf	" (",[3,0](((\2)+p5per)*100)/(\3),"%%)"
+p5per	=	({maxlabel})/200
+	printf	" (",[3,0]((({label})+p5per)*100)/({maxlabel}),"%%)"
 rlbl	=	rlbl+1
 	printf	"%00"
 
 	ENDM
-
-
 
 ;------------------------------------------------------------------------
 
@@ -4644,8 +4637,6 @@ rlbl	=	0
 	printf	"%n"
 	ENDM
 
-
-
 ;------------------------------------------------------------------------
 
 report_status	MACRO
@@ -4662,9 +4653,9 @@ rlbl	=	0
 	report	<Total Rom Usage>,TotalRomUsed,1024*1024
 	report	<Total Rom Spare>,TotalRomSpaceLeft,1024*1024
 ;	run	"memfree = %k"
-;	report	<Memory Free>,memfree,initial_memory
-;	report	<Est. Symbols Free>,memfree/25,(initial_memory)/25
-;	report	<Total Mem Free>,initial_memory,640*1024
+;	report	<Memory Free>,memfree,initial_assembler_memory
+;	report	<Est. Symbols Free>,memfree/25,(initial_assembler_memory)/25
+;	report	<Total Mem Free>,initial_assembler_memory,640*1024
 	printf	"%n"
 	ENDM
 
@@ -6080,6 +6071,7 @@ sprtemp	=	0
 defpac	macro
 \1	equ	gamepalettes+__totpallen
 __totpallen	=	__totpallen+(\2*32)
+__totpallines	=	__totpallines+(\2)
 	endm
 
 ;---------------------------------------------------------------
