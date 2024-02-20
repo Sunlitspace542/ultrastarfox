@@ -1115,14 +1115,6 @@ irqbit3	lda	noirqbit3
 	sta	cgdata
 	bra	.conti
 .nope
-;	pha
-;	lda	#$6F
-;	sta	cgadd
-;	lda	#$00
-;	sta cgdata
-;	lda #$00
-;	sta cgdata
-;	pla
 	IFNE	shieldboostcolorbox
 ;!! Unnecessary color write to palette line 2.
 ; This is the exact same as a color that is already
