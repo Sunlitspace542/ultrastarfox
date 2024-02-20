@@ -26,7 +26,7 @@
 ║                                                                    ║
 ╚════════════════════════════════════════════════════════════════════╝
 ```
-# SASM v2.02, ARGSFX Unofficial v1.54 User Manual
+# SASM v2.02, ARGSFX Unofficial v1.55 User Manual
 
 ## Contents                                                    
 [1  : Changelog](#changelog)  
@@ -320,7 +320,7 @@ month	=	date>>8&$ff
 day		=	date&$ff
           PRINTF	"The date is ",day,"/",month,"/",year,"%n"
 ```
-Fixed cute bug, if you defined a variable on the command line such as ``NARG`` or ``LONGA`` etc. then every thing goes horribly wrong.
+Fixed cute bug, if you defined a variable on the command line such as ``NARG`` or ``LONGA`` etc. then everything goes horribly wrong.
 
 
 
@@ -580,7 +580,11 @@ Example...
 
 ## Unofficial Version 1.54
 
-``CHECKMAC`` disabled by default.    
+``CHECKMAC`` disabled by default.  
+
+## Unofficial Version 1.55
+
+An error message referring to ``sasm.doc`` (the original SASM manual file) was changed to "see the manual".  
 
 # Assembler Directives
 ```
@@ -784,17 +788,16 @@ Example...
           SICE                      Does an invalid instruction (Invokes
                                     soft ice if present.)
 
-         STRING <name>([len])("<text>" or <label>)
+          STRING <name>([len])("<text>" or <label>)
 
-                                     Defines a string of a specified length,
-                                     and optionally, its contents. If contents
-                                     are specified to be a label, the contents
-                                     of the label are inserted in the string.
-                                     Length does not need to be specified
-                                     when assigning contents. Maximum length
-                                     is 150 characters.
-                                     ARGSFX only.
-                                     see PRINTF,ROLS,STRLEN,DEFS
+                                    Defines a string of a specified length,
+                                    and optionally, its contents. If contents
+                                    are specified to be a label, the contents
+                                    of the label are inserted in the string.
+                                    Length does not need to be specified
+                                    when assigning contents. Maximum length
+                                    is 150 characters. ARGSFX only.
+                                    see PRINTF,ROLS,STRLEN,DEFS
 
           STRLEN <string>           Puts the length of string into
                                     an expression.
@@ -802,8 +805,8 @@ Example...
 
           SUBSTR <start,end,string> Gets the portion of the specified
 		                            string between the specified start
-                                    and end. ARGSFX only. This replaces 
-                                    ROLS from SASM.
+                                    and end. This replaces ROLS from
+                                    SASM. ARGSFX only.
                                     see DEFS,PRINTF,STRLEN,ROLS
 
           SUPPRESS <option>         Stops printing the option specified
@@ -874,6 +877,7 @@ Strings can also be used in macro parameters. To insert a string as an argument 
 	macroname	<my text>
 ```
 From there, they can be used the same as any other parameter.  
+To escape ``\``, ``{`` and ``}``, use ``\\``, ``{{`` and ``}}``.  
 
 # ``PRINTF`` Commands
 

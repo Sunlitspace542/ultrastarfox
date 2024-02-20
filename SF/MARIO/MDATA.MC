@@ -1,7 +1,7 @@
 ; mario data tables
 
 	incpublics	EXT\mdata.ext
-
+	include	INC\MOJI2.INC
 
 
 
@@ -666,7 +666,6 @@ mariomsg	macro
 
 mariomsgs
 msg_starfox
-;	db	41,42,43,44,45,46,47,48,0
 
 	IFEQ	credzname				;if credzname == 0
 	mariomsg	<STAR FOX>
@@ -682,6 +681,7 @@ msg_starfox
 
 msg_nintendo
 	mariomsg	<NINTENDO>
+
 msg_presented
 	mariomsg	<PRESENTED>
 
@@ -690,12 +690,16 @@ msg_presents
 
 msg_developed
 	mariomsg	<ASSISTED>
+
 msg_and
 	mariomsg	<AND>
+
 msg_programmed
 	mariomsg	<PROGRAMMED>
+
 msg_by
 	mariomsg	<BY>
+
 msg_argonaut
 	mariomsg	<ARGONAUT SOFTWARE>
 
@@ -724,10 +728,9 @@ msg_yamada
 	mariomsg	<YOICHI YAMADA>
 
 msg_dylan
-;	db	49,50,51,52,53,54,0
 	mariomsg	<DYLAN CUTHBERT>
+
 msg_giles
-;	db	55,56,57,58,59,60,61,0
 	mariomsg	<GILES GODDARD>
 
 msg_krister
@@ -738,6 +741,7 @@ msg_3dsystem
 
 msg_pete
 	mariomsg	<PETE WARNES>
+
 msg_carl
 	mariomsg	<CARL GRAHAM>
 

@@ -2,7 +2,7 @@
 ; Restored SASM birthdays for ARGSFX
 
 	IFEQ	_MONTH-8
-	IFEQ	_DAY-6
+	IFEQ	_DAY-18
 	PRINTF	"Happy birthday Krister!%n"
 	ENDC
 	ENDC
@@ -19,6 +19,18 @@
 	ENDC
 	ENDC
 	ENDC	;_ARGSFX
+
+	IFEQ	_MONTH-1
+	IFEQ	_DAY-19
+	PRINTF	"Happy birthday Pete!%n"
+	ENDC
+	ENDC
+
+	IFEQ	_MONTH-9
+	IFEQ	_DAY-22
+	printf	"Happy birthday Carl!%n"
+	ENDC
+	ENDC
 
 ; Extra birthdays for UltraStarFox devs + other notable SF hacking community members
 
