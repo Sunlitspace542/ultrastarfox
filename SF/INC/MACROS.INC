@@ -4389,7 +4389,7 @@ Assembling_bank	=	\1
 nastyon	macro
 	lda	mario_draw_mode ; Load the current MARIO chip draw mode into A
 	ora	#mm_ramn+mm_romn ; OR A With RAM nasty flag + ROM nasty flag (8+16)
- 	sta	m_scmr ; store A to MARIO chip I/O mode var
+	sta	m_scmr ; store A to MARIO chip I/O mode var
 	endm
 
 ;------------------------------------------------------------------------
@@ -4397,7 +4397,7 @@ nastyon	macro
 ramnastyon	macro
 	lda	mario_draw_mode ; Load the current MARIO chip draw mode into A
 	ora	#mm_ramn ; OR A with RAM nasty flag (8)
- 	sta	m_scmr ; store A to MARIO chip I/O mode var
+	sta	m_scmr ; store A to MARIO chip I/O mode var
 	endm
 
 ;------------------------------------------------------------------------
@@ -4405,14 +4405,14 @@ ramnastyon	macro
 romnastyon	macro
 	lda	mario_draw_mode ; Load the current MARIO chip draw mode into A
 	ora	#mm_romn ; OR A with ROM nasty flag (16)
- 	sta	m_scmr ; store A to MARIO chip I/O mode var
+	sta	m_scmr ; store A to MARIO chip I/O mode var
 	endm
 
 ;------------------------------------------------------------------------
 
 nastyoff	macro
 	lda	mario_draw_mode ; Load the current MARIO chip draw mode into A
- 	sta	m_scmr ; store A to MARIO chip I/O mode var
+	sta	m_scmr ; store A to MARIO chip I/O mode var
 	endm
 
 ;------------------------------------------------------------------------
@@ -4420,7 +4420,7 @@ nastyoff	macro
 ramnastyoff	macro
 	lda	mario_draw_mode ; Load the current MARIO chip draw mode into A
 	and	#~mm_ramn ; AND A with RAM nasty flag (8)
- 	sta	m_scmr ; store A to MARIO chip I/O mode var
+	sta	m_scmr ; store A to MARIO chip I/O mode var
 	endm
 
 ;------------------------------------------------------------------------
@@ -4428,7 +4428,7 @@ ramnastyoff	macro
 romnastyoff	macro
 	lda	mario_draw_mode ; Load the current MARIO chip draw mode into A
 	and	#mm_romn ; AND A with ROM nasty flag (16)
- 	sta	m_scmr ; store A to MARIO chip I/O mode var
+	sta	m_scmr ; store A to MARIO chip I/O mode var
 	endm
 
 ;------------------------------------------------------------------------

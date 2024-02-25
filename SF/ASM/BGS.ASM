@@ -701,7 +701,7 @@ bg_title_1
 	ENDC
 
 	IFEQ	titlelogo-3
-	palette	cpg ; PAL/Germany StarWing
+	palette	cpp ; PAL/Germany Starwing
 	ENDC
 
 ; -------------------------------

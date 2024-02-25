@@ -1123,11 +1123,11 @@ printspeclp
 
 
 	lda	clb1 ; Load screen print status into A
-	beq	.graph
+	beq	.graph ; branch to .graph if A != 0
 	dec	a ; Decrement A
-	bne	.graph
+	bne	.graph ; branch to .graph if A != 9
 
-	clrmes	bonustxt,16,24		;print 'bonus...'
+	clrmes	bonustxt,16,24 ;print 'bonus...'
 
 	lda	plotx1
 	lbeq	.doneg
@@ -1145,7 +1145,7 @@ printspeclp
 	jmp	.doneg
 .graph
 	sta	clb1
-	cmp	#2			;bonus sound
+	cmp	#2 ;bonus sound
 	bne	.nc
 	a8
 	trigse	01ah
@@ -1393,7 +1393,7 @@ pauseStart
 	RTS
 
 pauseEnd
-; the original patch NOP'd instructions
+; the original MSU-1 patch NOP'd instructions
 ; to make room and moved those 2 here
 ;	STZ $1202 ; cont0
 ;	STZ $1204 ; contl0
@@ -1565,10 +1565,10 @@ dogameframe	php
 
 
 
-*****************************************************************************
-*****************************************************************************
-*****************************************************************************
-*****************************************************************************
+;*****************************************************************************
+;*****************************************************************************
+;*****************************************************************************
+;*****************************************************************************
 
 
 
@@ -1687,16 +1687,6 @@ initscreen_l
 	sta	tm
 	lda	#7
 	sta	ts
-
-;Setup HDMA tables
-;	a16
-;	ldx	#0
-;.loop	lda.l	hdma_start,x
-;	sta.l	xhdma_start,x
-;	inx
-;	inx
-;	cpx	#hdma_end-hdma_start
-;	bcc	.loop
 
 	jsl	setnoclash_l
 
@@ -2050,7 +2040,6 @@ alienflags_l
 	a8
 	test_alsflag		y,invisible
 	bne			.nextal
-;	s_jmp_alsflag		y,invisible,.nextal
 
 	a16
 	lda.w	al_shape,y
@@ -2075,7 +2064,6 @@ alienflags_l
 	s_test_var	B,gameflags,#gf_nozremove
 	bne	.dontkill
 	ENDC
-;	s_jmp_varAND		B,gameflags,#gf_nozremove,.dontkill
 
 	test_alcollflags	y,acf_firstframe
 	bne	.dontkill
@@ -2533,12 +2521,12 @@ initdeferredlist
 
 
 
-***************************************************************
-*
-*   Binary tree Z sort
-*
-*   By Krister Wombell and Jon Wolff.
-*
+;***************************************************************
+;*
+;*   Binary tree Z sort
+;*
+;*   By Krister Wombell and Jon Wolff.
+;*
 zb_behind	equ	0
 zb_infront	equ	2
 
@@ -2953,10 +2941,11 @@ makeBG2black_l
 
 seapal	inccolfile	DATA\COL\SEA.COL,0,1
 groundpal	inccolfile	DATA\COL\GROUND.COL,0,1
-mist2col	inccolfile	data\col\mist.col,6,8
-daycol	inccolfile	data\col\bg2-c.col,1,2
-	inccolfile	data\col\bg2-c.col,5,6
-gameoverpal	inccolfile	data\col\over_d.col,7,8
+mist2col	inccolfile	DATA\COL\mist.col,6,8
+daycol
+	inccolfile	DATA\COL\bg2-c.col,1,2
+	inccolfile	DATA\COL\bg2-c.col,5,6
+gameoverpal	inccolfile	DATA\COL\over_d.col,7,8
 
 ;---------------------------------------------------------------------------
 

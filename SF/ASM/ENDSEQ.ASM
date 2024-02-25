@@ -5,7 +5,7 @@
 ;*                                                                         *
 ;*                           SuperNES version.                             *
 ;*                                                                         *
-;*                           Argonaut Software.      		               *
+;*                           Argonaut Software.                            *
 ;*_________________________________________________________________________*
 ;*                                                                         *
 ;*   File: ENDSEQ.ASM                                                      *
@@ -642,45 +642,6 @@ qsetit	decvram		0,0e000h/2,bgetestpcr,4*k,256
 	set_zdepthtable	normal
 	rts
 
-
-	ifeq		1
-
-#dmacgram (txt channel=chan0!!chan1!!chan2!!chan3!!chan4!!chan5!!chan6!!chan7, 
-    int addr>0<=255, txt source, int len) {
-
-	lda	#cgdata&$ff
-	sta	ch{channel}addrb
-	lda	#{addr}
-	sta	cgadd
-	ldx	#{source}&WM
-	stx	ch{channel}addra1tl
-	lda	#{source}>>16
-	sta	ch{channel}atbank
-	ldx	#{len}
-	stx	ch{channel}dataddrl
-	lda	#0
-	sta	ch{channel}params
-	lda	#{channel}<<1
-	sta	mdmaen
-
-}
-
-
-    dmacgram (chan0, addr=0, bgetestpac, len=512);
-    jmp qsetit
-    dmacgram (chan0, addr=0, bgetest0pac, len=512);
-qsetit
-    decvram (chan0, addr=0e000h/2, bgetestpcr, len=4*k, offset=256);
-    set_zdepthtable (normal);
-    set_col (0, 0);
-    set_3dpal (1);
-    set_depth (night);
-    set_zdepthtable (normal);
-    rts
-
-
-	endc
-
 ;-----------------------------------------------------------------------------
 prtdemotxt	php
 	a8i16
@@ -731,8 +692,6 @@ scrollinl	php
 	sta	bg1hofsreq
 	lda	#bg1yinit+bg1ymove
 	sta	bg1vofsreq
-;	lda	#bg2xinit+bg2xmove
-;	sta	bg2hofsreq
 	lda	#bg2yinit+bg2ymove
 	sta	bg2vofsreq
 	lda	#bg3xinit+bg3xmove
@@ -748,8 +707,6 @@ scrolloutr	php
 	sta	bg1hofsreq
 	lda	#bg1yinit
 	sta	bg1vofsreq
-;	lda	#bg2xinit
-;	sta	bg2hofsreq
 	lda	#bg2yinit
 	sta	bg2vofsreq
 	lda	#bg3xinit
@@ -765,8 +722,6 @@ scrollinr	php
 	sta	bg1hofsreq
 	lda	#bg1yinit+bg1ymove
 	sta	bg1vofsreq
-;	lda	#bg2xinit-bg2xmove
-;	sta	bg2hofsreq
 	lda	#bg2yinit+bg2ymove
 	sta	bg2vofsreq
 	lda	#bg3xinit-bg3xmove
@@ -999,18 +954,6 @@ boss31_ihan	q_start
 	q_set_text		boss31txt2
 	q_rept_strat		#230
 	q_end
-
-;boss31_ihan	q_start
-;	q_set_bg		a
-;	q_set_bg		a
-;	q_set_han		boss11_han
-;	q_set_cnt		#180
-;	q_set_viewdist		#1500
-;	q_set_viewhgt		#0
-;	q_init_text		boss31txt
-;	q_set_text		boss31txt2
-;	q_rept_strat		#200
-;	q_end
 
 boss32_ihan	q_start
 	q_set_bg		b

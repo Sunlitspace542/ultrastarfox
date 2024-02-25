@@ -105,7 +105,7 @@ msprites3
 	IFEQ	german
 	inccru	bgcppcr,data\cp.pcr
 	ELSEIF
-	inccru	bgcppcr,data\cp-g.pcr
+	inccru	bgcppcr,data\cp-p.pcr
 	ENDC
 
 	inccru	bgtstccr,data\t-st.ccr
@@ -151,7 +151,7 @@ msprites3
 	IFEQ	GERMAN					
 	inccru	bgcpccr,data\cp.ccr
 	ELSEIF
-	inccru	bgcpccr,data\cp-g.ccr
+	inccru	bgcpccr,data\cp-p.ccr
 	ENDC
 
 facedata	inccolfile	data\face.cgx,0,360 ; size (in bytes) divided by 32

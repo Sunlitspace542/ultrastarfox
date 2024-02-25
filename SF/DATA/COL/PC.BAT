@@ -25,13 +25,13 @@ rem @call mc (file prefix) (start) (end)
 @call mc cp 0 7
 @call mc cp-us 0 7
 @call mc cp-usp 0 7
-@call mc cp-g 0 7
+@call mc cp-p 0 7
 @call mc hole 0 7
 @call mc l 0 7
 @call mc e-test0 0 7
 @call mc e-test 0 7
 @call mc obj-1 8 13
-@call mc 2ep 0 9
+@call mc bg2-e-p 0 9
 rem add new palettes before this line
 rem the order of this file must match the list in INC\KALCS.INC!
 cru allcols.col allcols.pac

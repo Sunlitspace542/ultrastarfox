@@ -153,7 +153,7 @@ __totpallines	=	0
 	defpac	bgcppac,7
 	defpac	bgcpuspac,7
 	defpac	bgcpusppac,7
-	defpac	bgcpgpac,7
+	defpac	bgcpppac,7
 	defpac	bgholepac,7
 	defpac	bglpac,7
 	defpac	bgetest0pac,7

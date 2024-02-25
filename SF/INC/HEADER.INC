@@ -24,7 +24,6 @@ RAMLEFT		=	1	; displays information on ram space
 ANSI		=	0
 	ENDC
 
-
 	IFEQ	ANSI
 TITLE_BAR	=	0
 	ENDC
