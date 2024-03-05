@@ -8,7 +8,7 @@ all:
 	@$(DOSBOX) BUILD.BAT
 
 log: 
-	@$(DOSBOX) BLDtolog.BAT
+	@$(DOSBOX) BLDTOLOG.BAT
 
 clean:
-	@$(DOSBOX) clean.BAT
+	@$(DOSBOX) CLEAN.BAT
