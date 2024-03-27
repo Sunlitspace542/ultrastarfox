@@ -21,14 +21,30 @@ hipolyarwing	equ	0
 ; 3 = Starwing
 titlelogo	equ 1
 
-; Controls screen palette to use, 0 = NTSC, 1 = PAL	(DOES NOT AFFECT JP)	
+; Controls screen palette to use, 0 = NTSC, 1 = PAL	(DOES NOT AFFECT JP)
 controlsscreenpal	equ	0
 
 ; Enable colored window over shield and boost meters as in vanilla.
-; Set this to 0 if moving meter positions. Disables hud hide on boss clear/level end.
+; Set this to 0 if moving meter positions.
 shieldboostcolorbox	equ	0
 
+; Hides the HUD when a boss is defeated.
+hidehudonbossdeath	equ	1
+
 ;; HUD Sprite positions
+
+
+; X values start at the left of the screen
+; Y values start at the top of the screen
+
+; Shield and Boost meter positions/height
+shieldmeterx		equ	8
+shieldmetery		equ	22*8
+shieldmeterheight	equ	8
+
+boostmeterx			equ	22*8
+boostmetery			equ	22*8
+boostmeterheight	equ	8
 
 ; Lives position ($YYXX)
 livesPos1 equ $1110

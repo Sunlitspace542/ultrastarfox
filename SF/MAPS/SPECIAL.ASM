@@ -44,7 +44,7 @@ endofspecialmap
 
 	start_65816
 	a8
-	IFEQ	shieldboostcolorbox
+	IFNE	hidehudonbossdeath
 	sta.l m_meters
 	ENDC
 	lda	pshipflags

@@ -45,7 +45,7 @@ prot	=	prot+1
 	start_65816
 	lda	#0
 	sta.l	m_bossmaxHP
-	IFEQ	shieldboostcolorbox
+	IFNE	hidehudonbossdeath
 	sta.l	m_meters
 	ENDC
 	end_65816

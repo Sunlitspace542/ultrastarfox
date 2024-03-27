@@ -158,10 +158,17 @@ debugspace
 	chardw	%00000000
 
 debugchars
-	IFNE	debugfont
+
+	IFEQ	debugfont
+	incbin	DATA\FONT\DEBUGFON.CGX ; Vanilla font
+	ENDC
+
+	IFEQ	debugfont-1
 	incbin	DATA\FONT\DBGFONEX.CGX ; SFEX font
-	ELSEIF
-	incbin	DATA\FONT\DEBUGFON.CGX ; vanilla font
+	ENDC
+
+	IFEQ	debugfont-2
+	incbin DATA\FONT\DBGFONSG.CGX ; Star Glider Alpha/SNESGlider font
 	ENDC
 
 reciptab16s

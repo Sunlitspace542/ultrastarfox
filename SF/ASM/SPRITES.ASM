@@ -70,11 +70,11 @@ do_sprites_l
 	jsr	do_shield
 	jsr	do_enemy
 	jsr	do_arrows
-	IFNE	shieldboostcolorbox
+	IFEQ	hidehudonbossdeath
 	jsr	prt_stageclear
 	ENDC
 .nodo
-	IFEQ	shieldboostcolorbox
+	IFNE	hidehudonbossdeath
 	jsr	prt_stageclear
 	ENDC
 	jsr	do_1credit

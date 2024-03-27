@@ -293,7 +293,7 @@ boss1666
 	mapwaitboss
 	markboss	boss16
 	start_65816
-	IFEQ	shieldboostcolorbox
+	IFNE	hidehudonbossdeath
 	lda	#1
 	sta.l	m_meters
 	ENDC

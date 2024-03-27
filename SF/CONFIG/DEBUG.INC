@@ -22,7 +22,8 @@ messagetest			equ	0
 planetcheaton 		equ 0
 
 ; Debug mode font to use
-; [0 = vanilla, 1 = SFEX]
+; 2BPP 8x8 tiles (2BPP GB in YY-CHR)
+; [0 = vanilla, 1 = SFEX, 2 = Star Glider/SNESGlider]
 debugfont			equ	0
 
 ; print "printroulen" lines during assembly
