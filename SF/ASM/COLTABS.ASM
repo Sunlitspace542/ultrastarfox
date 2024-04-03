@@ -1402,78 +1402,17 @@ defshadestab	macro
 	dw	shades\1_9&WM
 	dw	shades\1_9&WM
 	dw	shades\1_9&WM
-;	dw	shades\1_a&WM
-;	dw	shades\1_b&WM
 	endm
 
 paladdr
 
-palwood
-	rgbw	0,0,0
-gs	=	1			; wood
-	rept	7
-	rgbw	gs,gs,0
-	rgbw	gs/2,gs/2,0
-gs	=	gs+4
-	endr
-	rgbw	31,31,0
-
-;
-;;3D light source dither palette
-;;(1)
-;	ifeq	0		; THE WINNER
-;
-;	rgbw	0,0,0
-;
-;	rgbw	26,3,0		; reds
-;	rgbw	16,2,0
-;	rgbw	8,1,0
-;
-;;	rgbw	8,8,0		; yellows
-;	rgbw	18,16,0
-;	rgbw	26,26,0
-;
-;	rgbw	6,20,0		; greens
-;	rgbw	2,12,0
-;;	rgbw	0,8,0
-;
-;	rgbw	0,10,26		; blues
-;	rgbw	0,4,16
-;	rgbw	0,0,8
-;
-;	rgbw	3,3,3		; greys
-;	rgbw	6,6,6
-;	rgbw	10,10,10
-;	rgbw	14,14,14
-;	rgbw	20,20,20
-;
-;	endc
-
-;Nintendo 3d pal  -----------------------------------------------
-
-	IFEQ	1
-	rgbw	0,0,0
-	rgbw	$14,0,0
-	rgbw	$1c,4,4
-	rgbw	$1f,$c,$c
-	rgbw	$3,$9,$19
-	rgbw	$8,$e,$1e
-	rgbw	$d,$13,$1f
-	rgbw	$00,$1f,$6
-	rgbw	$1f,$1f,$0a
-	rgbw	4,4,4
-	rgbw	9,9,9
-	rgbw	$e,$e,$e
-	rgbw	$14,$14,$14
-	rgbw	$19,$19,$19
-	rgbw	$1f,$1f,$1f
-	rgbw	0,0,0
-	ENDC
+; Game Palettes ----------------------------------------
 
 	defgamepal	norm,col\night.col
 	defgamepal	red,col\red.col
 	defgamepal	blue,col\blue.col
 
+; ------------------------------------------------------
 
 paladdrend
 
