@@ -30,7 +30,7 @@ Drag the BMP file onto foxfont.exe, or:
 Outputs ``[filename].fon``.  
 
 ## bgconv
-**Tool made by Sunlit** 
+**Tool made by Sunlit**  
 **Windows/Linux executables/batch/bash script**  
 Converts a 256x1024px PNG to a 512x512px background for use with the game.  
 (can also be used with 256x256px PNGs to make single-screen BGs.)  
