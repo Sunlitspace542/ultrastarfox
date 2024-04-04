@@ -14,9 +14,11 @@ To use:
 
 ## mugconv / foxchr
 **Tool made by Phonymike**  
-**Windows executable**  
+**Windows/Linux executable**  
 Converts the provided FACE.png image into a scrambled FACE.CGX file.  
 uses BLUE.COL as its palette. a blue.col.png file is provided to use while editing.  
+To use:  
+Run ``make_FACE.bat`` (Windows) or ``make_FACE.bat`` (Linux).  
 
 ## fontconv / foxfont
 **Tool made by Phonymike**  
@@ -29,10 +31,10 @@ Outputs ``[filename].fon``.
 
 ## bgconv
 **Tool made by Sunlit** 
-**Windows executables/batch script**
+**Windows/Linux executables/batch/bash script**  
 Converts a 256x1024px PNG to a 512x512px background for use with the game.  
 (can also be used with 256x256px PNGs to make single-screen BGs.)  
-Run ``convert.bat`` and follow the instructions on-screen.  
+Run ``convert.bat`` (Windows) or ``convert.sh`` (Linux) and follow the instructions on-screen.  
 Outputs a CGX tileset, SCR tilemap, and COL and PAL format palettes, and optionally, CCR and PCR compressed tiles and tilemap for versions of ultrastarfox below 2.0.  
 
 ## unmerge
@@ -80,7 +82,7 @@ Output is written to ``col.tmp``.
 ## palconv.exe/palconv_win64.exe
 **Tool made by Sunlit**  
 **Windows/DOS executables**  
-Tool that can convert to/from PAL/COL/SCL palettes.
-To use:
+Tool that can convert to/from PAL/COL/SCL palettes.  
+To use:  
 ``Usage: pc.exe [input_file] [output_file] [conversion type]``  
 Types: ``col2scl`` ``scl2col`` ``scl2pal`` ``pal2scl`` ``pal2col``  
