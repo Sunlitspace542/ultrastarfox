@@ -7,3 +7,5 @@ Line 2 - Macbeth palette (RED.COL)
 Line 3 - Corneria palette (BLUE.COL)
 
 Line 4 - Map palette (MAP_C.COL, the line used for it in the base game)
+
+Line 5 - Game over screen (OVER_D.COL)
