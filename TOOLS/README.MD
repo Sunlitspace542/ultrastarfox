@@ -51,7 +51,7 @@ Tool that can convert Videoscape 3DG1 models to Star Fox ASM BSP format.
 ## EXTEND.EXE
 **Tool made by Sunlit**  
 romExtender.py rewritten in C and compiled for MS-DOS, with improvements.   
-Usage: ``EXTEND.EXE [rom] [padded size in mbits] [pad byte]``
+Usage: ``EXTEND.EXE [rom] [padded size in mbits] [pad byte]``  
 Pads/extends ROM image to the desired size in Mbits padded with the chosen pad byte.  
 The original Python version can be found in the ``old/`` directory if you still need it.  
 
