@@ -6,14 +6,14 @@
 
 ; Cartridge Configuration
 
-; MSU-1 support [0 = off 1 = on]
+; MSU-1 support [0 = off, 1 = on]
 ; The game looks for the MSU-1 on startup.
 ; If the MSU-1 is not present, the game falls back to SPC700 audio.
 msu			equ 0
 
 ; MSU-1 video player (not yet implemented)
 ; requires that MSU-1 support be enabled
-; [0 = off 1 = on]
+; [0 = off, 1 = on]
 msuvideo	equ	0
 
 ; enable/disable FastROM [1 = on, 0=off]
@@ -21,10 +21,10 @@ FASTROM	equ 1
 
 ; Disables the SuperFX clock divider, 
 ; doubling the clock speed from 10.7mhz to 21.4mhz.
-; [0 = off 1 = on]
+; [0 = off, 1 = on]
 fast	equ 1
 
-; Enable/disable SuperFX instruction cache [0 = off 1 = on]
+; Enable/disable SuperFX instruction cache [0 = off, 1 = on]
 ; you should have no good reason to ever switch this off, as it makes performance much, much worse.
 cacheon	equ	1
 
@@ -44,13 +44,13 @@ pal	equ	0
 ; Japanese/English [0 = English, 1 = Japanese]
 JAPANESE	equ	0
 
-; German language version [0 = off 1 = on]
+; German language version [0 = off, 1 = on]
 german		equ	0
 
-; French language version [0 = off 1 = on] (TEXT ONLY, NO DIACRITICS OR GFX)
+; French language version [0 = off, 1 = on] (TEXT ONLY, NO DIACRITICS OR GFX)
 french		equ	0
 
-; Spanish language version [0 = off 1 = on] (TEXT ONLY, NO DIACRITICS OR GFX)
+; Spanish language version [0 = off, 1 = on] (TEXT ONLY, NO DIACRITICS OR GFX)
 spanish		equ	0
 
 

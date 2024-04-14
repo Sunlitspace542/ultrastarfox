@@ -1713,6 +1713,9 @@ titleredo	a8i16
 .lp3	jsl	setblack_l
 	jsl	transfer_l
 	a8
+	IFNE	friendmessagesinintro
+	jsl	friends_messages_l
+	ENDC
 	lda	#1+8
 	sta	bgmode
 	untilfaded .lp3
@@ -1783,7 +1786,7 @@ intro_l
 tit_istrat
 	s_start_strat
 	s_set_alvar	B,x,al_rotx,#-deg45+deg11+deg11+3-deg5
-	s_set_alvar	B,x,al_roty,#deg45+deg90	;+deg11
+	s_set_alvar	B,x,al_roty,#deg45+deg90
 	s_set_alvar	B,x,al_rotz,#0
 	s_set_strat	x,tit_strat
 tit_strat

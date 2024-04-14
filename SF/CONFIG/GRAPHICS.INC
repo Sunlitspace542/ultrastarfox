@@ -7,11 +7,13 @@
 ; Increases framerate cap to 30FPS, no pacing changes.
 ; Has no effect on PAL builds, as that version already
 ; does this to compensate for 50hz.
+; [0 = off, 1 = on]
 _30fps	equ	0
 
 ; High poly arwing [0 = low poly (default) 1 = hi poly]
 ; replaces the player's ship, teammates' ships, and the scramble sequence
 ; ship models with a custom high poly model based on my_demo.
+; [0 = off, 1 = on]
 hipolyarwing	equ	0
 
 ; Title screen logo to use
@@ -21,14 +23,17 @@ hipolyarwing	equ	0
 ; 3 = Starwing
 titlelogo	equ 1
 
-; Controls screen palette to use, 0 = NTSC, 1 = PAL	(DOES NOT AFFECT JP)
+; Controls screen palette to use. 
+; [0 = NTSC, 1 = PAL] (DOES NOT AFFECT JP)
 controlsscreenpal	equ	0
 
 ; Enable colored window over shield and boost meters as in vanilla.
 ; Set this to 0 if moving meter positions.
+; [0 = off, 1 = on]
 shieldboostcolorbox	equ	0
 
 ; Hides the HUD when a boss is defeated.
+; [0 = off, 1 = on]
 hidehudonbossdeath	equ	1
 
 ;; HUD Sprite positions

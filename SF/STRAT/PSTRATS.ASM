@@ -2760,10 +2760,6 @@ playermove_srou
 
 ; ## ALL-RANGE MODE ##
 	IFNE	ALLRANGE
-	; This was likely originally used to test rotating the player around,
-	; as seen in the Great Commander I boss.
-	; Here, we use it for funsies. :)
-	; -SunlitSpace542
 	s_jmp_keyup		left,.nleft
 	s_add_var		W,player_turnrot,#2*256
 .nleft
