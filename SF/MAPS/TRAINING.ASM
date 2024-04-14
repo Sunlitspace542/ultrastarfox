@@ -5,7 +5,7 @@ trainingmap	initlevel	training,mstarwipe_circle
 		mapwait	2000
 	
 	IFNE	messagetest
-*************************      MSG TEST   *****************************
+;*************************      MSG TEST   *****************************
 	mapwait	3000
 
 	start_65816
@@ -13,61 +13,23 @@ trainingmap	initlevel	training,mstarwipe_circle
 	sta	friends_meter
 	end_65816
 
+trnmapmsgcnt = 1
+
+.trnmsgtest
 
 	mapwait	1000
-	mapmsg	117
+
+; loops through every single message in the message file
+
+	REPT totalmsgs+1 ; number of total messages in the message file
 	mapwait	1000
-	mapmsg	118
-	mapwait	1000
-	mapmsg	119
-	mapwait	1000
-	mapmsg	120
-	mapwait	1000
-	mapmsg	121
-	mapwait	1000
-	mapmsg	122
-	mapwait	1000
-	mapmsg	123
-	mapwait	1000
-	mapmsg	124
-	mapwait	1000
-	mapmsg	125
-	mapwait	1000
-	mapmsg	126
-	mapwait	1000
-	mapmsg	127
-	mapwait	1000
-	mapmsg	128
-	mapwait	1000
-	mapmsg	129
-	mapwait	1000
-	mapmsg	130
-	mapwait	1000
-	mapmsg	131
-	mapwait	1000
-	mapmsg	132
-	mapwait	1000
-	mapmsg	133
-	mapwait	1000
-	mapmsg	134
-	mapwait	1000
-	mapmsg	135
-	mapwait	1000
-	mapmsg	136
-	mapwait	1000
-	mapmsg	137
-	mapwait	1000
-	mapmsg	138
-	mapwait	1000
-	mapmsg	139
-	mapwait	1000
-	mapmsg	140
-	mapwait	1000
-	mapmsg	141
-	mapwait	1000
-	mapmsg	142
-	mapwait	1000
-	ENDC
+	mapmsg	trnmapmsgcnt
+trnmapmsgcnt = trnmapmsgcnt+1
+	ENDR
+
+	mapgoto	.trnmsgtest
+
+	ELSEIF
 ;***********************************************************************
 	pathobj	0000,0000,0000,3000,zaco_5,trn_ck,10,10
 	mapobj	0000,1200,0000,5000,BU_8,HARD180YR_ISTRAT
@@ -152,6 +114,7 @@ trainingmap	initlevel	training,mstarwipe_circle
 	mapobj	8000,0000,-210,5000,pilon,groundpilon_ISTRAT
 
 	mapgoto	.et
+	ENDC
 
 
 

@@ -751,9 +751,9 @@ friends_messages_l
 
 	ldx	friends_msg
 	ai16
-	lda	#83 ;set message x pos
+	lda	#friendmsgxpos ;set message x pos
 	sta.l	m_x1 ;save value for later
-	lda	#177-7 ;set message y pos
+	lda	#friendmsgypos ;set message y pos
 	sta.l	m_y1 ;save value for later
 	txa
 	sta.l	m_txtdata
@@ -766,9 +766,9 @@ friends_messages_l
 ; real text
 	ldx	friends_msg
 	ai16
-	lda	#82 ;set message x pos
+	lda	#shadowmsgxpos ;set message x pos
 	sta.l	m_x1 ;save value for later
-	lda	#177-8 ;set message y pos
+	lda	#shadowmsgypos ;set message y pos
 	sta.l	m_y1 ;save value for later
 	txa
 	sta.l	m_txtdata
@@ -777,8 +777,6 @@ friends_messages_l
 	lda	#mfprintstr>>16
 	ldx	#mfprintstr&WM
 	jsl	runmario_l
-
-
 
 ; display the hp meter?
 	lda	friends_meter
@@ -802,9 +800,9 @@ friends_messages_l
 .same	a16
 	and	#127
 	sta.l	m_z1
-	lda	#82  ; friend hp x
+	lda	#friendhpx ; friend hp x
 	sta.l	m_x1
-	lda	#177 ; friend hp y
+	lda	#friendhpy ; friend hp y
 	sta.l	m_y1
 
 	call_mario	mshowteammate2
@@ -901,9 +899,9 @@ friends_messages_l
 	adc	x1
 	adc	#facedata&WM
 	sta.l	m_faceptr
-	lda	#6    ; Character Portrait/mugshot X pos
+	lda	#friendmugshotx    ; Character Portrait/mugshot X pos
 	sta.l	m_bigx
-	lda	#19*8 ; Character Portrait/mugshot Y pos
+	lda	#friendmugshoty ; Character Portrait/mugshot Y pos
 	sta.l	m_bigy
 	call_mario	mcopyface
 	plp

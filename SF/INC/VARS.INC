@@ -1,8 +1,4 @@
 
-
-; Include master configuration file
-	include	CONFIG\CONFIG.INC
-
 ; This file contains various constants used in Star Fox.
 
 ; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -225,6 +221,9 @@ tm_fox3		equ	14
 tm_planets2	equ	34
 
 dec_base	equ	2800h
+
+; Include master configuration file
+	include	CONFIG\CONFIG.INC
 
 
 

@@ -16,6 +16,8 @@ mario_stats3d		equ	0
 
 ; Run message test in training level
 messagetest			equ	0
+; total number of messages to run through (must match the number in the message file)
+totalmsgs			equ	142
 
 ; Allows you to enable planet select cheat on the map
 ; before you have selected a level. Press X to activate.

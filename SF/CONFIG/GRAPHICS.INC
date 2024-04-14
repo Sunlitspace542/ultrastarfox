@@ -33,7 +33,6 @@ hidehudonbossdeath	equ	1
 
 ;; HUD Sprite positions
 
-
 ; X values start at the left of the screen
 ; Y values start at the top of the screen
 
@@ -59,6 +58,30 @@ ShieldTextPos4 equ $b730
 
 ; Nova Bomb Icon Position ($YYXX)
 BombIconPos equ $b6e1
+
+; Teammate message positions
+
+; Change these to change the overall position of the message box on screen
+friendmsgxadd	equ	0
+friendmsgyadd	equ	0
+
+; relative positions of each part of the message box
+
+; real text
+friendmsgxpos	equ 83+friendmsgxadd
+friendmsgypos	equ	170-friendmsgyadd
+
+; text shadow
+shadowmsgxpos	equ	82+friendmsgxadd
+shadowmsgypos	equ	169-friendmsgyadd
+
+; friend hp meter
+friendhpx	equ	82+friendmsgxadd
+friendhpy	equ	177-friendmsgyadd
+
+; friend mugshot pos
+friendmugshotx	equ	6+(friendmsgxadd/8)
+friendmugshoty	equ	152-((friendmsgyadd/8)*8)
 
 ;; Palettes
 
