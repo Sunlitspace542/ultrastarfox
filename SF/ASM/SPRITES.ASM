@@ -663,7 +663,7 @@ dspr	dw	$38+3<<12+spradd,$48+3<<12+spradd
 
 ;set specflash with 50 to flash 1 smartbomb
 do_spec_weap	a16
-	lda	#BombIconPos
+	lda	#bombIconPos
 	sta	tpx
 	ldx	spritespos
 	ldy	specwepcnt
@@ -684,7 +684,11 @@ do_spec_weap	a16
 	sta	spriteblk+2,x
 	lda	tpx
 	sec
-	sbc	#9
+	IFNE	bombcounterdirection
+	adc	#bombIconSpacing
+	ELSEIF
+	sbc	#bombIconSpacing
+	ENDC
 	sta	tpx
 	inx
 	inx
@@ -707,7 +711,11 @@ do_spec_weap	a16
 	sta	spriteblk+2,x
 	lda	tpx
 	sec
-	sbc	#9
+	IFNE	bombcounterdirection
+	adc	#bombIconSpacing
+	ELSEIF
+	sbc	#bombIconSpacing
+	ENDC
 	sta	tpx
 	inx
 	inx

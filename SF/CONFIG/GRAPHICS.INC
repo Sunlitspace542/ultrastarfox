@@ -51,18 +51,25 @@ boostmetery			equ	22*8
 boostmeterheight	equ	8
 
 ; Lives position ($YYXX)
-livesPos1 equ $1110
-livesPos2 equ $1118
-livesPos3 equ $1120
+livesPos1 equ $1110			; arwing
+livesPos2 equ livesPos1+$8	; x
+livesPos3 equ livesPos2+$8	; #
 
 ; Shield text position ($YYXX)
 ShieldTextPos1 equ $b718
-ShieldTextPos2 equ $b720
-ShieldTextPos3 equ $b728
-ShieldTextPos4 equ $b730
+ShieldTextPos2 equ ShieldTextPos1+$8
+ShieldTextPos3 equ ShieldTextPos2+$8
+ShieldTextPos4 equ ShieldTextPos3+$8
 
-; Nova Bomb Icon Position ($YYXX)
-BombIconPos equ $b6e1
+; Initial nova bomb icon position ($YYXX)
+bombIconPos equ $b6e1
+
+; Spacing between each bomb icon in the HUD
+bombIconSpacing	equ	$9
+
+; Nova bomb counter direction
+; [0 = L -> R, 1 = R -> L]
+bombcounterdirection	equ	0
 
 ; Teammate message positions
 
