@@ -6095,3 +6095,8 @@ sasm_mvp	MACRO ; src,dest
 	db $44,\2,\1
 	ENDM
 ;---------------------------------------------------------------
+; Incbin a 2bpp CGX file
+inccgx2	MACRO	[filepath,NUMCHRS]
+	inccol	{filepath},0,{NUMCHRS}/2
+	ENDM
+;---------------------------------------------------------------

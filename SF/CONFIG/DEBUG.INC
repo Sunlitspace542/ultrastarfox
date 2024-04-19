@@ -62,12 +62,3 @@ infbombs		equ 0
 allrange		equ	0
 
 ;####################################################################################################################
-
-; Sanity checks (do not touch)
-
-	IFEQ	debuginfo
-	IFNE	mario_stats3d
-	printf	"debuginfo must be enabled to use mario_stats3d!"
-	fail
-	ENDC
-	ENDC

@@ -133,43 +133,29 @@ mrndtab
 
 ;************************************************
 
-
-
-
-ddbw	macro
-	db	\1,\1
-	endm
-
-chardw	macro
-	db	\1,\1
-	endm
-
 ; Debug mode font
 ; 8x8 2BPP GB format tiles
 
-debugspace
-	chardw	%00000000
-	chardw	%00000000
-	chardw	%00000000
-	chardw	%00000000
-	chardw	%00000000
-	chardw	%00000000
-	chardw	%00000000
-	chardw	%00000000
-
 debugchars
 
+; How many tiles are in the font file (should always be divisible by 2)
+numdebugchars	equ	44
+
 	IFEQ	debugfont
-	incbin	DATA\FONT\DEBUGFON.CGX ; Vanilla font
+	inccgx2	DATA\FONT\DEBUGFON.CGX,numdebugchars ; Vanilla font
 	ENDC
 
 	IFEQ	debugfont-1
-	incbin	DATA\FONT\DBGFONEX.CGX ; SFEX font
+	inccgx2	DATA\FONT\DBGFONEX.CGX,numdebugchars ; SFEX font
 	ENDC
 
 	IFEQ	debugfont-2
-	incbin DATA\FONT\DBGFONSG.CGX ; Star Glider Alpha/SNESGlider font
+	inccgx2 DATA\FONT\DBGFONSG.CGX,numdebugchars ; Star Glider Alpha/SNESGlider font
 	ENDC
+
+; Debug space char points back to the start of debugchars
+debugspace	equ	debugchars
+
 
 reciptab16s
 	dw	0
