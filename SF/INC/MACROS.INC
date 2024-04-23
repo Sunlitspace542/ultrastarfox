@@ -123,6 +123,7 @@ printvar	macro	[var]				;displays value of a variable to set text point
 	lda	{var}							;load variable to accumulator
 	printd								;display decimal value of accumulator to screen
 	endm
+
 ;------------------------------------------------------------------------
 
 ; Defines a string to be printed with kandoprint
@@ -134,6 +135,35 @@ definestring	MACRO	[label,text]
 	UPPER	2			; Uppercase it
 	run	' db "%$2"'		; Write the string
 	dw	0				; Terminate string
+	ENDM
+
+;------------------------------------------------------------------------
+
+; These macros print strings on screen using the MARIO chip rather than the SNES CPU.
+
+; Prints a string defined in GAMETEXT.ASM at specified X and Y.
+marioprint	MACRO	[xpos,ypos,string]
+	ai16
+	lda	#{xpos}
+	sta.l	m_x1
+	lda	#{ypos}
+	sta.l	m_y1
+	lda	#{string}&WM
+	sta.l	m_txtdata
+	call_mario	mprintstr
+	ENDM
+
+; Print variable as a decimal number on screen at specified X and Y.
+marioprintdec	MACRO	[xpos,ypos,var]
+	ai16
+	lda	#{xpos}
+	sta.l	m_x1
+	lda	#{ypos}
+	sta.l	m_y1
+	lda.l	{var}
+	and	#255
+	sta.l	m_z1
+	call_mario	mprtdecstop
 	ENDM
 
 ;------------------------------------------------------------------------
