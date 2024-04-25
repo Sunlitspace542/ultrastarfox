@@ -80,12 +80,12 @@ friendmsgyadd	equ	0
 ; relative positions of each part of the message box
 
 ; real text
-friendmsgxpos	equ 83+friendmsgxadd
-friendmsgypos	equ	170-friendmsgyadd
+friendmsgxpos	equ	82+friendmsgxadd
+friendmsgypos	equ	169-friendmsgyadd
 
 ; text shadow
-shadowmsgxpos	equ	82+friendmsgxadd
-shadowmsgypos	equ	169-friendmsgyadd
+shadowmsgxpos	equ 83+friendmsgxadd
+shadowmsgypos	equ	170-friendmsgyadd
 
 ; friend hp meter
 friendhpx	equ	82+friendmsgxadd

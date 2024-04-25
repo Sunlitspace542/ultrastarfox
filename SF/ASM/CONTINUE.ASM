@@ -751,9 +751,9 @@ friends_messages_l
 
 	ldx	friends_msg
 	ai16
-	lda	#friendmsgxpos ;set message x pos
+	lda	#shadowmsgxpos ;set message x pos
 	sta.l	m_x1 ;save value for later
-	lda	#friendmsgypos ;set message y pos
+	lda	#shadowmsgypos ;set message y pos
 	sta.l	m_y1 ;save value for later
 	txa
 	sta.l	m_txtdata
@@ -766,9 +766,9 @@ friends_messages_l
 ; real text
 	ldx	friends_msg
 	ai16
-	lda	#shadowmsgxpos ;set message x pos
+	lda	#friendmsgxpos ;set message x pos
 	sta.l	m_x1 ;save value for later
-	lda	#shadowmsgypos ;set message y pos
+	lda	#friendmsgypos ;set message y pos
 	sta.l	m_y1 ;save value for later
 	txa
 	sta.l	m_txtdata
