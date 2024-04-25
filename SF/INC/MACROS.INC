@@ -4166,38 +4166,6 @@ trigse_rge	macro
 
 txt	macro
 	db	\1
-
-	IFNE	JAPANESE		;JAPANESE = 1
-	db	"\3",0
-	ENDC
-	
-	IFNE	french			;french = 1
-	db	"\3",0
-	ENDC
-	
-	IFNE	german			;german = 1
-	db	"\3",0
-	ENDC
-	
-	IFNE	spanish			;german = 1
-	db	"\3",0
-	ENDC
-	
-	IFEQ	spanish
-	IFEQ	JAPANESE
-	IFEQ	french
-	IFEQ	german
-	db	"\2",0
-	ENDC
-	endc
-	endc
-	endc
-	
-	endm
-;------------------------------------------------------------------------
-
-newtext	macro
-	db	\1
 	db	"\2",0
 	endm
 
