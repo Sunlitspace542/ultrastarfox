@@ -124,27 +124,6 @@ msgnum	=	1
 
 	fopen	msgs.txt
 
-	IFNE	german			;if german = 1 and french = 1
-	IFNE	french
-	printf	"You cannot have german and french on at the same time"
-	fail
-	endc
-	endc
-	
-	IFNE	german			;if german = 1 and spanish = 1
-	IFNE	spanish
-	printf	"You cannot have german and spanish on at the same time"
-	fail
-	endc
-	endc
-	
-	IFNE	french			;if spanish = 1 and french = 1
-	IFNE	spanish
-	printf	"You cannot have spanish and french on at the same time"
-	fail
-	endc
-	endc
-	
 	IFNE	german			;if german = 1
 	include	MSG\german.inc		;use german message file
 	ENDC

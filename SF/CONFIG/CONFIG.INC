@@ -11,4 +11,5 @@
 	include CONFIG\ROM.INC		; ROM
 	include	CONFIG\DEBUG.INC	; Debugging
 	include CONFIG\XCESSORY.INC	; Accessories
+	include	CONFIG\LANGUAGE.INC	; Language
 ;#############################################

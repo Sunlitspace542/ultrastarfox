@@ -36,24 +36,6 @@ japan	equ 0
 ; PAL/NTSC [0 = NTSC, 1 = PAL] (DO NOT USE IF JAPAN = 1)
 pal	equ	0
 
-
-; Language Options
-
-;!! Only ONE may be on at a time.
-
-; Japanese/English [0 = English, 1 = Japanese]
-JAPANESE	equ	0
-
-; German language version [0 = off, 1 = on]
-german		equ	0
-
-; French language version [0 = off, 1 = on] (TEXT ONLY, NO DIACRITICS OR GFX)
-french		equ	0
-
-; Spanish language version [0 = off, 1 = on] (TEXT ONLY, NO DIACRITICS OR GFX)
-spanish		equ	0
-
-
 ;  ROM name
 
 ; internal rom name, [0 = STAR FOX, 1 = STAR WING, 2 = Custom Name]
