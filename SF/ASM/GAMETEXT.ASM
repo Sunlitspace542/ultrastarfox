@@ -1,5 +1,5 @@
 ; format is:
-; textname	txt color(1-15), <TEXT>
+; textname	txt colour(1-15), <TEXT>
 
 	IFNE	GERMAN
 pausetxt	txt	14,<PAUSE>		;german pause
@@ -98,23 +98,12 @@ helpsnd	=	0
 downsnd	=	1
 othersnd	=	2
 
+msgcolour_red = 3
+msgcolour_yellow = 4
+msgcolour_blue = 8
+msgcolour_white = 14
+
 message	MACRO	[colour,person,text,sound]
-
-	IFC	"{colour}","white"
-msgcolour = 14
-	ENDC
-
-	IFC	"{colour}","red"
-msgcolour = 3
-	ENDC
-
-	IFC	"{colour}","yellow"
-msgcolour = 4
-	ENDC
-
-	IFC	"{colour}","blue"
-msgcolour = 8
-	ENDC
 
 	printf	"%tDW%t",*&WM,"%t; (",msgnum,") {text} ** %n"
 	DB	friend_{person}
@@ -125,7 +114,7 @@ msgcolour = 8
 	DB	{sound}snd
 	ENDC
 
-	txt	msgcolour,<{text}>
+	txt	msgcolour_{colour},<{text}>
 msgnum	=	msgnum+1
 	ENDM
 
