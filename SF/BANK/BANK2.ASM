@@ -73,10 +73,7 @@ xoffset	equ	*-ramstart
 xroutinesreport ; TAIL will report X routines free
 	ENDC
 
-	IFLE	xlen-xoffset
-	printf	"%01%31Error: X routines space exceeded!%n%00"
-	fail
-	ENDC
+	chkmemoryexceeded	xlen-xoffset,<X routines>,<>
 
 	IFNE	FASTROM
 	org	$828000+xoffset,$8000*2+xoffset

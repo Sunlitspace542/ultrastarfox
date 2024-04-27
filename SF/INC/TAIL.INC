@@ -47,63 +47,23 @@ XRoutines_free	=	xlen-xoffset
 
 	; Memory full (warning)
 
-	IFEQ	Zero_Page_free
-	printf	"%01%31Warning: Zero Page full!%n%00"
-	ENDC
-
-	IFEQ	Work_RAM_free
-	printf	"%01%31Warning: Work RAM full!%n%00"
-	ENDC
-
-	IFEQ	Extended_RAM_free
-	printf	"%01%31Warning: Extended RAM full!%n%00"
-	ENDC
-
-	IFEQ	ZMario_RAM_free
-	printf	"%01%31Warning: ZMARIO RAM full!%n%00"
-	ENDC
-
-	IFEQ	Mario_RAM_free
-	printf	"%01%31Warning: MARIO RAM full!%n%00"
-	ENDC
-
-	IFEQ	Allcols_Lines_free
-	printf	"%01%31Warning: ALLCOLS full!%n%00"
-	ENDC
+	chkmemoryfull	Zero_Page_free,<Zero Page>,<>
+	chkmemoryfull	Work_RAM_free,<Work RAM>,<>
+	chkmemoryfull	Extended_RAM_free,<Extended RAM>,<>
+	chkmemoryfull	ZMario_RAM_free,<ZMARIO RAM>,<>
+	chkmemoryfull	Mario_RAM_free,<MARIO RAM>,<>
+	chkmemoryfull	Allcols_Lines_free,<ALLCOLS>,<Try increasing maxcolscru.>
 
 	; Memory exceeded (fail)
-	IFLT	Zero_Page_free
-	printf	"%01%31Error: Zero page space exceeded!%n%00"
-	fail
-	ENDC
 
-	IFLT	Work_RAM_free
-	printf	"%01%31Error: Work RAM space exceeded!%n%00"
-	fail
-	ENDC
+	chkmemoryexceeded	Zero_Page_free,<Zero Page>,<>
+	chkmemoryexceeded	Work_RAM_free,<Work RAM>,<>
+	chkmemoryexceeded	Extended_RAM_free,<Extended RAM>,<>
+	chkmemoryexceeded	ZMario_RAM_free,<ZMARIO RAM>,<>
+	chkmemoryexceeded	Mario_RAM_free,<MARIO RAM>,<>
+	chkmemoryexceeded	Allcols_Lines_free,<ALLCOLS>,<Try increasing maxcolscru.>
 
-	IFLT	Extended_RAM_free
-	printf	"%01%31Error: Extended RAM space exceeded!%n%00"
-	fail
-	ENDC
-
-	IFLT	ZMario_RAM_free
-	printf	"%01%31Error: ZMARIO RAM space exceeded!%n%00"
-	fail
-	ENDC
-
-	IFLT	Mario_RAM_free
-	printf	"%01%31Error: MARIO RAM space exceeded!%n%00"
-	fail
-	ENDC
-
-	IFLT	Allcols_Lines_free
-	printf	"%01%31Error: ALLCOLS space exceeded! Try increasing maxcolscru.%n%00"
-	fail
-	ENDC
-
-
-	ENDC
+	ENDC	;ramleft
 
 	gettime	endtime
 totaltime	=	endtime-starttime

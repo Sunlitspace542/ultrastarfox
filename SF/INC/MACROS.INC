@@ -168,6 +168,23 @@ marioprintdec	MACRO	[xpos,ypos,var]
 
 ;------------------------------------------------------------------------
 
+; Checks for space remaining
+
+chkmemoryfull	macro	[symbol,name,extramsg]
+	IFEQ	{symbol}
+	printf	"%01%31Warning: {name} full! {extramsg}%n%00"
+	ENDC
+	ENDM
+
+chkmemoryexceeded	macro	[symbol,name,extramsg]
+	IFLT	{symbol}
+	printf	"%01%31Error: {name} space exceeded! {extramsg}%n%00"
+	fail
+	ENDC
+	ENDM
+
+;------------------------------------------------------------------------
+
 wait	macro
 	a8
 	stz	gamevwpos
