@@ -97,19 +97,12 @@ contcancel	a8
 	lda	gameframe
 	cmp	#16
 	lbcc	.self
-	IFNE	CONTEST
-	cmp	#20*10
 	a8
-	bcs	.autoexit
-	ELSEIF
-	a8
-	ENDC
 	testjoypad	start
 	lbeq	.self
 .autoexit
 	trigse	$10
 conttraining
-	IFEQ	contest
 
 	a8
 	enable
@@ -156,12 +149,6 @@ conttraining
 	testjoypad start
 	lbeq	.lp
 .xit
-	ELSEIF
-	a8
-	lda	#1
-	sta.l	contexit
-	ENDC
-
 	a8
 
 	trigse	$10
@@ -171,9 +158,7 @@ conttraining
 	sta	fadedir
 .lp2	jsl	setblack_l
 
-	IFEQ	contest
 	jsr	contsprites
-	ENDC
 
 	jsr	conttrans
 	a8

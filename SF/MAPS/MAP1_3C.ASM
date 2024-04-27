@@ -1,5 +1,4 @@
-
-
+; 1-3 Space Armada part C
 map1_3c
 ;near_side
 	mapobj	0000,-1000,space_viewCY,0350,ship_4,cruiser1_Istrat

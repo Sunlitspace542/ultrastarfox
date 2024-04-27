@@ -1,32 +1,9 @@
 	INCMAP	MAPP
 
-	IFEQ	cesdemo-1
-	INCMAP	cmap1_1b
-	INCMAP	cmap2_1b
-	INCMAP	cmap1_2
-	INCMAP	cmap2_2
-	fileslog maps\emap1_2.asm
-	fileslog maps\e1-1.asm
-	fileslog maps\map1_1b.asm
-	fileslog maps\map2_1b.asm
-	fileslog maps\map1_2.asm
-	fileslog maps\map2_2.asm
-	ELSEIF
 	INCMAP	map2_1b
 	INCMAP	map1_1b
 	INCMAP	map2_2
-	IFEQ	CONTEST
 	INCMAP	map1_2
-	fileslog	maps\emap1_2.asm
-	ELSEIF
-	INCMAP	emap1_2
-	fileslog	maps\map1_2.asm
-	ENDC
-	fileslog maps\cmap1_1b.asm
-	fileslog maps\cmap2_1b.asm
-	fileslog maps\cmap1_2.asm
-	fileslog maps\cmap2_2.asm
-	ENDC
 
 
 	INCMAP	map1_3a
@@ -58,28 +35,14 @@ mexitstart
 	printroulen	mexitstart,<mexitmap>
 	ENDC
 lexitstart
-	IFNE	prntrouln_on
 	INCMAP	lexitmap
+	IFNE	prntrouln_on
 	printroulen	lexitstart,<lexitmap>
 	ENDC
 
 	INCMAP	cl_gnd
 
-	IFEQ	cesdemo-1
-	INCMAP	clevel1_1
-	fileslog	maps\eleve1_1.asm
-	fileslog	maps\level1_1.asm
-	ELSEIF
-	IFEQ	CONTEST
 	INCMAP	level1_1
-	fileslog	maps\eleve1_1.asm
-	fileslog	maps\clevel1_1.asm
-	ELSEIF
-	INCMAP	eleve1_1
-	fileslog	maps\level1_1.asm
-	fileslog	maps\clevel1_1.asm
-	ENDC
-	ENDC
 
 
 	INCMAP	level1_2

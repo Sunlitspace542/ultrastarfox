@@ -160,17 +160,10 @@ mother_2
 asterdist	=	100
 mother_3
 
-	IFEQ	CONTEST
 	motherrnd	asterdist,2048,2048,0000,asteroid1,slowmeteor_istrat
 	motherrnd	asterdist,1024,1024,0000,asteroid1,break_meteor_istrat
 	motherrnd	asterdist,2048,2048,0000,asteroid1,slowmeteor_istrat
 	motherrnd	asterdist,2048,2048,0000,asteroid1,slowmeteor_istrat
-	ELSEIF
-	motherrnd	asterdist,2048,2048,0000,asteroid1,slowmeteor_istrat
-	motherrnd	asterdist,1024,1024,0000,asteroid1,slowmeteor_istrat
-	motherrnd	asterdist,2048,2048,0000,asteroid1,slowmeteor_istrat
-	motherrnd	asterdist,2048,2048,0000,asteroid1,slowmeteor_istrat
-	ENDC
 	mothergoto	0,mother_3
 
 
@@ -209,7 +202,6 @@ map_uperm
 
 
 map_shou0
-	IFEQ		CONTEST
 	motherrnd	250,1024,2048,0000,asteroid1,meteor_istrat
 	motherrnd	250,1024,2048,0000,asteroid1,meteor_istrat
 	motherrnd	250,1024,1024,0000,r_hou_0,shou0a_istrat
@@ -219,14 +211,6 @@ map_shou0
 	motherrnd	250,1024,2048,0000,asteroid1,meteor_istrat
 	motherrnd	250,1024,2048,0000,asteroid1,meteor_istrat
 	motherrnd	250,1024,1024,0000,s_hou_0,shou0_istrat
-	ELSEIF
-	motherrnd	250,1024,2048,0000,asteroid1,meteor_istrat
-	motherrnd	250,1024,2048,0000,asteroid1,meteor_istrat
-	motherrnd	250,1024,2048,0000,asteroid1,meteor_istrat
-	motherrnd	250,1024,2048,0000,asteroid1,meteor_istrat
-	motherrnd	250,1024,2048,0000,asteroid1,meteor_istrat
-	motherrnd	250,1024,2048,0000,asteroid1,meteor_istrat
-	ENDC
 	mothergoto	map_shou0
 
 

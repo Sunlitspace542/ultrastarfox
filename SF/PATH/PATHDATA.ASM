@@ -2635,7 +2635,12 @@ dummyparent
 
 .mini0_0
 	P_ADD		rotz,16
+	IFD	_SASM
 	P_LOOP		400,.mini0_0
+	ENDC
+	IFD	_ARGSFX
+	P_LOOP		400&BM,.mini0_0
+	ENDC
 
 	P_END
 ;-------------------------------------------------------------------
@@ -2646,7 +2651,12 @@ dummyparent
 
 .mini1_0
 	P_ADD		rotz,16
+	IFD	_SASM
 	P_LOOP		400,.mini1_0
+	ENDC
+	IFD	_ARGSFX
+	P_LOOP		400&BM,.mini1_0
+	ENDC
 
 	P_END
 

@@ -575,18 +575,6 @@ frames	macro
 	db	\1
 	endm
 
-rndbyte	macro
-rndval =	(rndval*91+$61d7)&$ffff
-	db	rndval&63
-	endm
-
-rndword	macro
-rndval =	(rndval*91+$61d7)&$ffff
-	dw	rndval&63
-	endm
-	
-rndval	=	$5a79
-
 	IFEQ	randverts1
 	IFEQ	randverts2
 pb	macro
@@ -674,9 +662,9 @@ fend	macro
 	db	-2	; end of faces and continue
 	endm
 
-endshape	macro
-	db	0	;mval_endshape
-	endm
+;endshape	macro
+;	db	0	;mval_endshape
+;	endm
 
 quit	macro
 	db	72	;mval_quit
@@ -936,7 +924,7 @@ face12	macro
 shnumfaces	=	shnumfaces+1
 	endm
 
-
+; Wireframe tri
 aface3	macro
 	db	2,-1,44,0,0,0,\7,\8
 shnumfaces	=	shnumfaces+1
@@ -945,6 +933,7 @@ shnumfaces	=	shnumfaces+1
 	db	2,-1,44,0,0,0,\6,\8
 shnumfaces	=	shnumfaces+1
 	endm
+; Wireframe quad
 aface4	macro
 	db	2,-1,44,0,0,0,\6,\7
 shnumfaces	=	shnumfaces+1

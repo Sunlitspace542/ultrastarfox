@@ -8,7 +8,7 @@
 	include	INC\mapstructs.inc
 	include	INC\mapmacs.inc
 	include	INC\shmacs.inc
-
+	include	EXT\strings.ext
 	include	EXT\mario.ext
 	include	EXT\incbins.ext
 	include	EXT\mdata.ext
@@ -30,7 +30,7 @@
 	include	EXT\shapes.ext
 	include	EXT\sgtabs.ext
 	include	EXT\gastrats.ext
-	include	maps\maplist.ext
+	include	EXT\maplist.ext
 	include	EXT\fontdata.ext
 	include	EXT\paths.ext
 	include	EXT\expstrat.ext
@@ -46,12 +46,12 @@ scr_offset	equ	(vchr_logback-vchr_physback)/16
 	extern	bgandpcr
 	extern	bgandccr
 	extern	dogccr
-	extern	bgml	
-	extern	bgmllen	
-	extern	bgmd	
-	extern	bgmdlen	
-	extern	bgm11	
-	extern	bgm11len
+	extern	black_holebgm	
+	extern	black_holebgmlen	
+	extern	fortuna	
+	extern	fortunalen	
+	extern	game_overbgm	
+	extern	game_overbgmlen
 
 ;-------------------------------------------------------
 	bank	2
@@ -69,26 +69,22 @@ scr_offset	equ	(vchr_logback-vchr_physback)/16
 ramstart	incfile	ASM\ramstuff.asm
 xoffset	equ	*-ramstart
 
-	ifle	xlen-xoffset
-	error	<Extended code more than xlen>
-	fail
-	endc
+	IFND	xroutinesreport
+xroutinesreport ; TAIL will report X routines free
+	ENDC
+
+	chkmemoryexceeded	xlen-xoffset,<X routines>,<>
 
 	IFNE	FASTROM
 	org	$828000+xoffset,$8000*2+xoffset
 	ELSEIF
 	org	$28000+xoffset,$8000*2+xoffset
 	ENDC
-	
-	minfo
+
 	incfile	ASM\trans.asm
-	minfo	trans
 	incfile	ASM\main.asm
-	minfo	main
 	incfile	ASM\game.asm
-	minfo	game
 	incfile	ASM\windows.asm
-	minfo	windows
 	bankend	2
 
 
@@ -97,21 +93,13 @@ xoffset	equ	*-ramstart
 	bank	3
 planetdmapos1	dw	228
 planetdmapos2	dw	100
-	minfo
 	incfile	ASM\coltabs.asm
-	minfo	coltabs
 	incfile	ASM\bgs.asm
-	minfo	bgs
 	incfile	ASM\obj.asm
-	minfo	obj
 	incfile	ASM\planets.asm
-	minfo	planets
 	incfile	ASM\sprites.asm
-	minfo	sprites
 	incfile	ASM\continue.asm
-	minfo	<continue>
 	incfile	ASM\world.asm
-	minfo	world
 	bankend	3
 
 
@@ -121,35 +109,30 @@ planetdmapos2	dw	100
 	ELSEIF
 	org	$1f8000+$3db0,$8000*$1f+$3db0
 	ENDC
-	
-	minfo
+
 	incfile	ASM\debug.asm
-	minfo	<debug>
 	incfile	ASM\bootnmi.asm
-	minfo	bootnmi
 	incfile	STRAT\stratrou.asm
-	minfo	<stratrou>
 	incfile	ASM\blink.asm
 	incfile	ASM\nmi.asm
-	minfo	nmi
 	incfile	ASM\draw.asm
-	minfo	draw
 	incfile	ASM\endseq.asm
 	bankend	31
 
 	bank	36
 	inccru	bgf1pcr,data\f-1.pcr
 	incfile	ASM\cont.asm
-	minfo	cont
 	incfile	ASM\sound.asm
-	minfo	sound
 
 	bankend	36
 ;------------------------------------------------------------------
 
 
 	include	INC\tail.inc
-
+; Do not report X Routines space in TAIL after this
+	IFND	noxroutinesreport
+noxroutinesreport
+	ENDC
 
 
 

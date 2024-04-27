@@ -1,4 +1,4 @@
-
+; Mad Trucker/Galactic Rider (Venom 2 Highway)
 	mapobj	1000,-400,-60,1000,air_1,madbiker_istrat
 	mapobj	1000,-300,-60,0300,air_1,madbiker_istrat
 .mad	mapobj	1000,-050,-060,4000,WALL_4,HARD180yr_ISTRAT

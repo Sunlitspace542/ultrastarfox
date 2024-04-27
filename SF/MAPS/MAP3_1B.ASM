@@ -1,7 +1,6 @@
+; 3-1 Corneria 3 Part B (Boss Map)
 map3_1b
 	incmap	3-1
-
-	fileslog	maps\c3-1.asm
 
 	fadeoutbgm
 	setbgm	bgm_boss1

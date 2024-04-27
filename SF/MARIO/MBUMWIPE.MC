@@ -7,11 +7,6 @@ m_wintabptr	equ	m_bigy
 m_winbuf	equ	m_circlebuf
 m_winbuf2	equ	m_circlebuf2
 
-call	macro
-	link	#4
-	miwt	pc,(\1)&$ffff
-	endm
-
 maddtowinbuf	macro
 	from	rbufbase
 	to	rbufptr
@@ -74,9 +69,14 @@ mbumwipe
 	iwt	rbufbase,#m_winbuf2&WM
 	bra	.doneb
 	nop
+	IFD	_SASM
 .buf0	dw	m_winbuf
+	ENDC
+	IFD	_ARGSFX
+.buf0	dw	m_winbuf&WM
+	ENDC
 .doneb
-	call	mwindrawline
+	mcall	mwindrawline
 	nop
 
 	bra	.lp
@@ -94,7 +94,7 @@ mbumwipe
 	iwt	r0,#1
 	sm	[m_wintabptr],r0
 .note
-	call	mwinswplst
+	mcall	mwinswplst
 	nop
 
 	stop

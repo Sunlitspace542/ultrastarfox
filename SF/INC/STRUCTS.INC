@@ -1,10 +1,8 @@
 ;-------------------------------------------------------------
 ; STRUCTS.INC
-;
-
+; Data structures
 
 alcon	=	1
-	fopen	alvars.txt
 
 ;List structures---------------------------------------
 ;(first 4 bytes are _next & _prev)
@@ -61,7 +59,6 @@ alx_sizeof	=	alx_size-xalblks+alblks
 	printf	"%01%31Warning: extended alien blocks have exceeded their maximum size!%n%00"
 	progress_on
 	ENDC
-	fclose
 ;----------------------------------
 
 

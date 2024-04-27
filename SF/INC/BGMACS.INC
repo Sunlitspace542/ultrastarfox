@@ -1,27 +1,8 @@
 flashscr	macro
 	endm
-;	ldx	#0
-;	lda	#15
-;.lp\@	sta.l	inidisp
-;	dec	a
-;	dex
-;	bne	.lp\@
-;	endm
 
 flashscr2	macro
 	endm
-;	ldx	#0
-;	lda	#15
-;.lp\@	sta.l	inidisp
-;	dec	a
-;	stz	cgadd
-;	sta	cgdata
-;	sta	cgdata
-;	dex
-;	bne	.lp\@
-;	endm
-
-
 
 ;------------------------------------------------------------------------
 flashtunnel	macro
@@ -196,17 +177,13 @@ init_bg	macro	[mode]
 	endm
 
 set_bg	macro
-;	waittrans
 	lda	#16
 	sta	trans_flag
-;	waittrans
 	endm
 
 set_bg3	macro
-;	waittrans
 	lda	#22
 	sta	trans_flag
-;	waittrans
 	endm
 
 ;------------------------------------------------------------------------

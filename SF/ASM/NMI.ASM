@@ -20,7 +20,7 @@
 ; Copies NMI handler to RAM at addr $0101
 copy_to_0101_l
 	php ; Push Processor status to stack
-	a8i16 ; set A to 8 bit
+	a8i16 ; set A to 8 bit and X/Y to 16 bit
 
 	ldx	#nmihanend-nmihan-1 ; Load size of NMI handler routine into X(?)
 .codeloop2	lda.l	nmihan,x ; Load (Long) NMIHAN + size of NMIHAN into A(?)
@@ -53,9 +53,9 @@ nmihan ; Start of NMI handler
 .irq	ai16		;$010c	irq
 	pha	; Push A to stack
 	IFNE	msu
-	jsl	msufade ; MSU-1 fade routine
+	jsl	$7ED1C0 ; MSU-1 fade routine
 	ELSEIF
-	lda.l	mflags ; Load mflags into A (MARIO chip flags?)
+	lda.l	m_sfr ; Load m_sfr into A (MARIO chip flags?)
 	ENDC
 	bmi	.qexit ; branch if a = 1
 	phb ; Push data bank to stack

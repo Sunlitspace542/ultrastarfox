@@ -1,22 +1,9 @@
-
+; Giant Washing Machine/Atomic Base I (1-3 Space Armada Boss)
 ; giant washing machine map test. (NOT recomended by Persil)
-
 
 rotsize	=	deg45
 rotnum	=	deg360/rotsize
 prot	=	0
-
-
-map_b8beamT	MACRO
-	mapobj	0000,0000,(-75<<boss8_scale)+nucleusheight,boss8_circ,boss_8_5,nucleusbeamL_Istrat
-	setalvar	sbyte2,\1
-		ENDM
-
-map_b8beamB	MACRO
-	mapobj	0000,0000,(-35<<boss8_scale)+nucleusheight,boss8_circ,boss_8_5,nucleusbeamL_Istrat
-	setalvar	sbyte2,\1
-		ENDM
-	
 
 	setbgm	6
 	mapwait	300
@@ -48,7 +35,7 @@ prot	=	prot+1
 	start_65816
 	lda	#0
 	sta.l	m_bossmaxHP
-	IFEQ	shieldboostcolorbox
+	IFNE	hidehudonbossdeath
 	sta.l	m_meters
 	ENDC
 	end_65816

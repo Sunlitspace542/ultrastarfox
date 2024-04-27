@@ -1,3 +1,4 @@
+; 3-3 Fortuna Part B
 map3_3b
 .loop
 	mapobj	3000,-400,0000,1000,nullshape,torpedo_Istrat

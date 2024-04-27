@@ -82,45 +82,45 @@ do_bgm_special	bootapu	#snd_special
 
 sndtbl
 	snd_data	init,0h,sound0
-	snd_data	intro,012h,sound1,sound2,bgmm
-	snd_data	title,012h,sound7
-	snd_data	ops,012h,sound1,bgmn
-	snd_data	training,03h,sound3,bgmo
-	snd_data	map,01,sound2,sound6
-	snd_data	continue,0ah,sound9
+	snd_data	intro,012h,sound1,orchestra,bgmintro
+	snd_data	title,012h,titlebgm
+	snd_data	ops,012h,sound1,ops_bgm
+	snd_data	training,03h,band,bgmtraining
+	snd_data	map,01,orchestra,sound6
+	snd_data	continue,0ah,bgmcontinue
 
-	snd_data	bhole,3,bgml
+	snd_data	bhole,3,black_holebgm
 
-	snd_data	10,16,bgma,bgm1,sound5
-	snd_data	11,3,sound1,sound3,bgma,bgm1
-	snd_data	12,3,bgmf,bgm7
-	snd_data	13,9,bgmg,bgm6
-	snd_data	13b,3,bgmg,bgm6
-	snd_data	14,3,sound3,sound4,bgmb,bgm5
-	snd_data	15,3,bgmf,bgm8
-	snd_data	16,3,bgmk,bgm8,bgm10
+	snd_data	10,16,corneria,boss_corneria,sound5
+	snd_data	11,3,sound1,band,corneria,boss_corneria
+	snd_data	12,3,asteroid_field,boss_asteroid
+	snd_data	13,9,space_armada,boss_space_armada
+	snd_data	13b,3,space_armada,boss_space_armada
+	snd_data	14,3,band,sound4,meteor_base,boss_meteor
+	snd_data	15,3,asteroid_field,boss_venom_base_2
+	snd_data	16,3,venom_base_1_3,boss_venom_base_2,venom_andross
 	
-	snd_data	20,16,bgma,bgm1,sound5
-	snd_data	21,3,sound1,sound3
-	snd_data	22,3,bgmi,bgm7
-	snd_data	23,3,sound3,sound4,bgmc,bgm4
-	snd_data	24,3,bgmj,bgm7
-	snd_data	25,3,bgmf,bgm8
-	snd_data	26,3,bgmh,bgm8,bgm10
+	snd_data	20,16,corneria,boss_corneria,sound5
+	snd_data	21,3,sound1,band
+	snd_data	22,3,sector_x_z,boss_asteroid
+	snd_data	23,3,band,sound4,titania,boss_titania
+	snd_data	24,3,sector_y,boss_asteroid
+	snd_data	25,3,asteroid_field,boss_venom_base_2
+	snd_data	26,3,venom_base_2,boss_venom_base_2,venom_andross
 	
-	snd_data	30,16,bgma,bgm1,sound5
-	snd_data	31,3,sound1,sound3
-	snd_data	32,3,bgmf,bgm7
-	snd_data	33,3,sound3,sound4,bgmd,bgm2
-	snd_data	34,3,bgmi,bgm6
-	snd_data	35,3,sound3,bgme,bgm3
-	snd_data	36,3,bgmf,bgm9
-	snd_data	37,3,bgmk,bgm9,bgm10
+	snd_data	30,16,corneria,boss_corneria,sound5
+	snd_data	31,3,sound1,band
+	snd_data	32,3,asteroid_field,boss_asteroid
+	snd_data	33,3,band,sound4,fortuna,boss_fortuna
+	snd_data	34,3,sector_x_z,boss_space_armada
+	snd_data	35,3,band,macbeth,boss_macbeth
+	snd_data	36,3,asteroid_field,boss_venom_base_1
+	snd_data	37,3,venom_base_1_3,boss_venom_base_1,venom_andross
 
-	snd_data	endseq,3,sound8
-	snd_data	staff,012h,sounda
-	snd_data	gameover,0ch,bgm11
-	snd_data	special,03h,sound3,bgmp
+	snd_data	endseq,3,bgmendseq
+	snd_data	staff,012h,bgmstaff
+	snd_data	gameover,0ch,game_overbgm
+	snd_data	special,03h,band,out_of_this_dimension
 
 
 

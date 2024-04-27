@@ -1,4 +1,4 @@
-
+; 2-6 Venom 2 Highway
 level2_6
 	initlevel	2_6a,0
 

@@ -1,3 +1,4 @@
+; 1-3 Space Armada part A2
 map1_3a2
 	mapwait	2000
 	cspecial	0000,-250,300,4000,r_hou_0,shou0a_istrat

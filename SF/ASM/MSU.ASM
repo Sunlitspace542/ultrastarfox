@@ -20,30 +20,16 @@
 
 	INCPUBLICS	ext\msu.ext
 
-; loop table
-msulooptab
-	;   0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
-	db $03,$01,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; 03-0F
-	db $03,$01,$03,$03,$03,$03,$03,$01,$03,$03,$03,$03,$03,$03,$03,$03 ; 10-1F
-	db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; 20-2F
-	db $01,$01,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; 30-3F
-	db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; 40-4F
-	db $03,$03,$03,$03,$03,$03,$03,$03,$01,$01,$03,$03,$01,$03,$01,$03 ; 50-5F
-	db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; 60-6F
-	db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; 70-7F
-	db $03,$03,$03,$03,$03,$03,$01,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; 80-8F
-	db $03,$03,$03,$03,$03,$03,$03,$03,$01,$03,$03,$03,$03,$03,$03,$03 ; 90-9F
-	db $03,$03,$03,$03,$01,$03,$03,$03,$03,$03,$01,$03,$03,$03,$03,$03 ; A0-AF
-	db $03,$03,$03,$01,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; B0-BF
-	db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$01,$03 ; C0-CF
-	db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; D0-DF
-	db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; E0-EF
-	db $03,$03,$03,$03,$03,$03,$03,$03,$01,$03,$03,$03,$03,$03,$03,$03 ; F0-FF
+	IFNE	fastrom
+	org	$B2FD00,$8000*$32+$7D00			;B2 = bank number			empty space needed at end of bank
+	ELSEIF
+	org	$32FD00,$8000*$32+$7D00			;32 = bank number			empty space needed at end of bank
+	ENDC
 
 ; Determines the MSU1 track to play by performing a lot of comparisons
-determine_msu_track
+;determine_msu_track	
 	a8i16
-	STA apu_port0
+	STA $2140
 	CMP #$11
 	BNE .a1 
 	brl .sector
@@ -58,22 +44,22 @@ determine_msu_track
 	BNE .noF0
 	CMP.l msu_017f
 	BNE .a4
-	RTL
+	RTS
 .a4	STA.l msu_017f
-	RTL
+	RTS
 .noF0
 	CMP #$F1
 	BNE .noF1
 	CMP.l msu_017f
 	BNE .b1
-	RTL
+	RTS
 .b1	STA.l msu_017f
-	RTL
+	RTS
 .noF1
 	ADC snd_ptr
 	CMP.l msu_017f
 	BNE .c1
-	RTL
+	RTS
 .c1	cmp #$91
 	bne .no91
 	lda snd_ptr
@@ -88,9 +74,9 @@ determine_msu_track
 	lda snd_ptr
 	cmp #$f1
 	BNE .d1
-	LDA #$e6 ; load venom destroyed
+	LDA #$E6 ; load venom destroyed
 	BRA .noe1
-.d1	LDA #_225_asteroid_vo ; load
+.d1	LDA #_225_asteroid_vo ; load Asteroid/Venom Orbital
 .noe1
 	cmp #$b1
 	bne .nob1
@@ -115,12 +101,12 @@ determine_msu_track
 	LDA #_002_dangerous
 .g1	CMP #$e0
 	BNE .playtrack
-	LDA #_225_asteroid_vo ; Asteroid/Venom Orbital
+	LDA #_225_asteroid_vo
 
 .playtrack
 	CMP.l msu_017f
 	BNE .h1
-	RTL
+	RTS
 .h1	cmp #$0b
 	BNE .continue
 	lda snd_ptr
@@ -145,7 +131,7 @@ determine_msu_track
 	PHA
 	lda msu_status
 	AND #status_trackmissing
-	BNE .error ; Track missing (error) bit set?
+	BNE .error ; error bit set?
 	LDA #$00
 	XBA
 	PHP
@@ -155,16 +141,16 @@ determine_msu_track
 	PLA 
 	PHX
 	TAX
-	LDA.l msulooptab,x
+	LDA.l $7ED200,x ; MSU-1 loop table
 	STA msu_control
 	LDA #$FF
 	STA msu_volume
 	STA.l msu_017e
 	PLX
-	RTL
+	RTS
 .error
 	PLA
-	RTL
+	RTS
 
 .sector ; Player Down BGM
 	LDA snd_ptr
@@ -195,7 +181,7 @@ determine_msu_track
 	BRL .playtrack
 .j2	cmp #$f1
 	BNE .j3
-	LDA #_248_lastclear ; stage6 clear, easy
+	LDA #$f8 ; stage6 clear, easy
 	BRL .playtrack
 .j3	cmp #$20
 	BNE .j4
@@ -207,17 +193,15 @@ determine_msu_track
 	BRL .playtrack
 .j5	cmp #$BC
 	BNE .j6
-	LDA #_010_clearorch ; Sector Z
+	LDA #$0a ; Sector Z
 	BRL .playtrack
 .j6	cmp #$19
 	BNE .j7
-; BUG Original game eventually loops from stage clear band to OOTD band, but the MSU audio does not do this
-	LDA #_032_clearband ; OOTD Slot Machine Clear
+	LDA #_010_clearorch ; Slot machine outer dimension defeated
 	BRL .playtrack
-.j7	LDA #_007_clearband ; Stage Clear (Band)
+.j7	LDA #$07
 	BRL .playtrack
 
-; Copies MSU1 handler to RAM at $FD00
 transfermsu
 	JSL copy_to_0101_l			;bank 32
 	PHB
@@ -236,7 +220,12 @@ transfermsu
 	RTL
 
 ;fade
-msufade	
+	IFNE	fastrom
+	org $B2FEC0,$8000*$32+$7EC0			;32 = bank number
+	ELSEIF
+	org $32FEC0,$8000*$32+$7EC0			;32 = bank number	
+	ENDC
+	
 	LDA.l msu_017f
 	AND #$00ff
 	CMP #$00f1
@@ -260,3 +249,28 @@ msufade
 	PLP
 	LDA.l $003030
 	RTL	
+	
+; loop table
+	IFNE	fastrom
+	org $B2FF00,$8000*$32+$7F00			;32 = bank number
+	ELSEIF
+	org $32FF00,$8000*$32+$7F00			;32 = bank number
+	ENDC
+;msulooptab
+	;   0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
+	db $03,$01,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; 03-0F
+	db $03,$01,$03,$03,$03,$03,$03,$01,$03,$03,$03,$03,$03,$03,$03,$03 ; 10-1F
+	db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; 20-2F
+	db $01,$01,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; 30-3F
+	db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; 40-4F
+	db $03,$03,$03,$03,$03,$03,$03,$03,$01,$01,$03,$03,$01,$03,$01,$03 ; 50-5F
+	db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; 60-6F
+	db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; 70-7F
+	db $03,$03,$03,$03,$03,$03,$01,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; 80-8F
+	db $03,$03,$03,$03,$03,$03,$03,$03,$01,$03,$03,$03,$03,$03,$03,$03 ; 90-9F
+	db $03,$03,$03,$03,$01,$03,$03,$03,$03,$03,$01,$03,$03,$03,$03,$03 ; A0-AF
+	db $03,$03,$03,$01,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; B0-BF
+	db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$01,$03 ; C0-CF
+	db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; D0-DF
+	db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; E0-EF
+	db $03,$03,$03,$03,$03,$03,$03,$03,$01,$03,$03,$03,$03,$03,$03,$03 ; F0-FF

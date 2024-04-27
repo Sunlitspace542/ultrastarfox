@@ -938,7 +938,7 @@ endseqbit2	i16
 	list	off
 	lsr	a
 	lsr	a
-	sta	mscrbase
+	sta	m_scbr
 	jsr	startmus
 	rtl
 
@@ -1065,8 +1065,8 @@ irqbit2	i16
 	lda	drawmap+1
 	lsr	a
 	lsr	a
-	sta	mscrbase
-	IFEQ	PAL
+	sta	m_scbr
+	IFEQ	PAL+_30fps
 	jsr	startmus
 	rtl
 	ELSEIF
@@ -1114,9 +1114,19 @@ irqbit3	lda	noirqbit3
 	lda	#$7e
 	sta	cgdata
 	bra	.conti
-.nope	lda	#$1f
+.nope
+	IFNE	shieldboostcolorbox
+;!! Unnecessary color write to palette line 2.
+; This is the exact same as a color that is already
+; loaded into CGRAM in most level palettes,
+; and is used for the "colored boxes" that
+; are used in the shield/boost box translucency effect.
+; Removing this frees up line 2 of CGRAM for more background
+; color palettes, if shieldboostcolorbox is off.
+	lda	#$1f
 	sta	cgdata
 	stz	cgdata
+	ENDC
 .conti
 
 	lda	bg3scrollflag
@@ -1568,7 +1578,7 @@ startmus	php
 	bra	.trig3
 .start	lda	bgm_music
 	IFNE	msu
-	jsl 	determine_msu_track ; MSU-1 handler location in RAM
+	jsr 	$7ED000 ; MSU-1 routine to determine song to play
 	ELSEIF
 	sta	apu_port0
 	ENDC
@@ -1724,7 +1734,7 @@ window_buffer	php
 	plp
 	rts
 
-
+	IFNE	mouseon
 ;****************************************************************
 ;*																*
 ;*		Super NES Mouse BIOS									*
@@ -1783,7 +1793,7 @@ window_buffer	php
 ;mouse_sb1	ds	1
 
 ;cursol_x	ds	1	; Cursor X position    
-;cursol_y	ds	1	; Cursor Y position    
+;cursol_y	ds	1	; Cursor Y position
 
 ;*******************************************************************
 ;*  ============================================================== *
@@ -2002,5 +2012,6 @@ speed_change
 ;
 	db	'END OF SNES MOUSE BIOS'	    			;do not delete
 ;	original: 'END OF MOUSE BIOS'
+	ENDC ;mouseon
 
 

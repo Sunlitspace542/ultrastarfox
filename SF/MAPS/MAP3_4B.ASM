@@ -1,3 +1,4 @@
+; 3-4: Sector Z Part B
 map3_4b
 	mapwait	2000
 	szaco2_mapobj	0000,1800,0000,-0100,100

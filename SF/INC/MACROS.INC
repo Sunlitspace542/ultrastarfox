@@ -1,3 +1,41 @@
+;------------------------------------------------------------------------
+	IFD		_ARGSFX
+; Rotates a string left by offset for ARGSFX
+rols	MACRO	[string,offset]
+	substr	{offset},,{string}
+
+	ENDM
+
+; Rotates a string right by offset (ARGSFX only)
+rors	MACRO	[string,offset]
+	substr	0,((strlen {string})-{offset}),{string}
+
+	ENDM
+
+	ENDC	;_ARGSFX
+;------------------------------------------------------------------------
+
+; Used in SGDATA.ASM
+rndbyte255	macro
+rndval =	(rndval*91+$61d7)&$ffff
+	db	rndval&255
+	endm
+
+; Used for random verts
+rndbyte	macro
+rndval =	(rndval*91+$61d7)&$ffff
+	db	rndval&63
+	endm
+
+rndword	macro
+rndval =	(rndval*91+$61d7)&$ffff
+	dw	rndval&63
+	endm
+	
+rndval	=	$5a79
+
+;------------------------------------------------------------------------
+
 turnonoff	macro	[var]		;turns a variable on or off, whichever is the opposite of its current state
 	pha							;push anything in the accumulator out into the stack to retrieve later
 	lda	{var}					;load the variable into the accumulator
@@ -7,7 +45,8 @@ turnonoff	macro	[var]		;turns a variable on or off, whichever is the opposite of
 	pla							;pull accumulator back out that we pushed earlier
 	endm
 
-;--------------------------------------------------------------
+;------------------------------------------------------------------------
+
 settext	macro	[column,row]					;Sets the column + row for upcoming text
 	a16											;16 bit accumulator
 	pha
@@ -17,16 +56,10 @@ settext	macro	[column,row]					;Sets the column + row for upcoming text
 	sta	printpt+1								;Store to upper 2 bytes of printpt
 	pla
 	endm
-;--------------------------------------------------------------
-settxt	macro	[column,row]
-	settext	{column},{row}
-	endm
-;----------------------------------------------------------------
-showtext	macro	[table]
-	showtxt	{table}
-	endm
-	
-showtxt	macro	[table]				;Shows the full text in a single table
+
+;------------------------------------------------------------------------
+
+showtext	macro	[table]			;Shows the full text in a single table
 	stz	textpt
 	pha								;Push accumulator
 	a16
@@ -41,94 +74,114 @@ showtxt	macro	[table]				;Shows the full text in a single table
 .start\@
 	sta	open_text					;store this letter into open_text
 
-	lda	#open_text					;Load weapon text back into accumulator
+	lda	#open_text					;Load text back into accumulator
 	sta	textpt						;store this into textpt (which gets printed with printt_l)
 	
 	jsl	printt_l					;Run routine to display the letter
 	bra	.stringloop\@				;Go back and continue looking for letters (until it hits a 0)
 
-.stringdone\@						;Done displaying the string "versiontext", continue
+.stringdone\@						;Done displaying the string, continue
 	pla								;pull accumulator
 	endm
 
-;--------------------------------------------------------------
+;------------------------------------------------------------------------
 
-onofftxtspcl	macro	[var]				;Displays ON or OFF depending on the value of [var]
-	pha									;push accumulator
-	lda	{var}							;Check if variable is 1 or 0
-	and	#7
-	beq	\@off							;If its 0, jump to off
-	cmp	#2
-	beq	\@onplus
-	cmp	#3
-	bpl	\@onplusplus
-	showtxt	p2text						;otherwise, display ON
-	bra	\@done						;jump to end
-\@onplus
-	showtxt	p2plustext						;display ON+
-	bra	\@done
-\@onplusplus
-	showtxt	p4text						;display ON+
-	bra	\@done
-\@off
-	showtxt	offtext						;display OFF
-	bra	\@done
-\@done
-	pla									;pull accumulator
+settxt	macro	[column,row]
+	settext	{column},{row}
 	endm
 
-;--------------------------------------------------------------
+;------------------------------------------------------------------------
 
-
-onofftxt	macro	[var]				;Displays ON or OFF depending on the value of [var]
-	pha									;push accumulator
-	lda	{var}							;Check if variable is 1 or 0
-	and	#7
-	beq	\@off							;If its 0, jump to off
-	cmp	#2
-	beq	\@onplus
-	cmp	#3
-	bpl	\@onplusplus
-	showtxt	ontext						;otherwise, display ON
-	bra	\@done						;jump to end
-\@onplus
-	showtxt	onplustext						;display ON+
-	bra	\@done
-\@onplusplus
-	showtxt	onplusplustext						;display ON+
-	bra	\@done
-\@off
-	showtxt	offtext						;display OFF
-	bra	\@done
-\@done
-	pla									;pull accumulator
-	endm
-;--------------------------------------------------------------
-onofftext	macro	[var]
-	onofftxt	{var}
+showtxt	macro	[table]
+	showtext	{table}
 	endm
 
-;--------------------------------------------------------------
-offontxt	macro	[var]				;Displays ON or OFF depending on the value of [var] (Opposite of value)
-	pha									;push accumulator
-	lda	{var}							;Check if variable is 1 or 0
-	and	#1
-	beq	.off\@							;If its 0, jump to off
-	showtxt	offtext						;otherwise, display ON
-	bra	.done\@							;jump to end
-.off\@
-	showtxt	ontext						;display OFF
-.done\@
-	pla									;pull accumulator
-	endm
-;--------------------------------------------------------------
+;------------------------------------------------------------------------
 
+; Combines settxt and showtxt together to print a string
+; at the defined column and row.
+kandoprint	macro	[column,row,table]
+	settxt	\1,\2				; Set position for upcoming text
+	showtxt	\3					; Show specified string on screen at specified row and column
+	ENDM
+
+; Print variable on screen at defined column and row (Short address)
+printnum	macro	[column,row,variable]
+	lda	{variable}						; Load variable into A
+	printd	{column},{row}				; Display decimal value of A on screen at specified row and column
+	ENDM
+
+; Print variable on screen at defined column and row (Long address)
+printnuml	macro	[column,row,variable]
+	lda.l	{variable}					; Long load variable into A
+	printd	{column},{row} 				; Display decimal value of A on screen at specified row and column
+	ENDM
+
+;------------------------------------------------------------------------
 
 printvar	macro	[var]				;displays value of a variable to set text point
 	lda	{var}							;load variable to accumulator
 	printd								;display decimal value of accumulator to screen
 	endm
-;--------------------------------------------------------------
+
+;------------------------------------------------------------------------
+
+; Defines a string to be printed with kandoprint
+; Usage...
+;	definestring	mycoolstring,<my cool string>
+definestring	MACRO	[label,text]
+{label}					; Write label
+	defs	2,"{text}"	; Define text param as a string
+	UPPER	2			; Uppercase it
+	run	' db "%$2"'		; Write the string
+	dw	0				; Terminate string
+	ENDM
+
+;------------------------------------------------------------------------
+
+; These macros print strings on screen using the MARIO chip rather than the SNES CPU.
+
+; Prints a string defined in GAMETEXT.ASM at specified X and Y.
+marioprint	MACRO	[xpos,ypos,string]
+	ai16
+	lda	#{xpos}
+	sta.l	m_x1
+	lda	#{ypos}
+	sta.l	m_y1
+	lda	#{string}&WM
+	sta.l	m_txtdata
+	call_mario	mprintstr
+	ENDM
+
+; Print variable as a decimal number on screen at specified X and Y.
+marioprintdec	MACRO	[xpos,ypos,var]
+	ai16
+	lda	#{xpos}
+	sta.l	m_x1
+	lda	#{ypos}
+	sta.l	m_y1
+	lda.l	{var}
+	and	#255
+	sta.l	m_z1
+	call_mario	mprtdecstop
+	ENDM
+
+;------------------------------------------------------------------------
+
+; Checks for space remaining
+
+chkmemoryfull	macro	[symbol,name,extramsg]
+	IFEQ	{symbol}
+	printf	"%01%31Warning: {name} full! {extramsg}%n%00"
+	ENDC
+	ENDM
+
+chkmemoryexceeded	macro	[symbol,name,extramsg]
+	IFLT	{symbol}
+	printf	"%01%31Error: {name} space exceeded! {extramsg}%n%00"
+	fail
+	ENDC
+	ENDM
 
 ;------------------------------------------------------------------------
 
@@ -2811,7 +2864,6 @@ stupt	=	stupt+\2
 
 
 ;------------------------------------------------------------------------
-; TODO: make sure the comments are correct
 a8	macro ; set A to 8 bit
 	shorta
 	sep	#p_a
@@ -4131,38 +4183,6 @@ trigse_rge	macro
 
 txt	macro
 	db	\1
-
-	IFNE	JAPANESE		;JAPANESE = 1
-	db	"\3",0
-	ENDC
-	
-	IFNE	french			;french = 1
-	db	"\3",0
-	ENDC
-	
-	IFNE	german			;german = 1
-	db	"\3",0
-	ENDC
-	
-	IFNE	spanish			;german = 1
-	db	"\3",0
-	ENDC
-	
-	IFEQ	spanish
-	IFEQ	JAPANESE
-	IFEQ	french
-	IFEQ	german
-	db	"\2",0
-	ENDC
-	endc
-	endc
-	endc
-	
-	endm
-;------------------------------------------------------------------------
-
-newtext	macro
-	db	\1
 	db	"\2",0
 	endm
 
@@ -4256,7 +4276,6 @@ deccgram	macro
 	endm
 
 ;------------------------------------------------------------------------
-
 inccru	macro
 	incbin	\2
 \1
@@ -4264,36 +4283,7 @@ inccru	macro
 \3
 	endc
 
-	fileslog	\2
-
 	endm
-
-fileslog	MACRO
-	IFNE	filelist
-	IFND	makefile
-	fopen	+files.log
-	printf	"\1%n"
-	fclose
-	ELSEIF
-	IFND	fileslogcount
-fileslogcount =	0
-	ENDC
-
-	fopen	+files.log
-	printf	"\1 "
-
-fileslogcount	=	fileslogcount+1
-
-	IFEQ	fileslogcount-4
-	printf	"\\%n"
-fileslogcount	=	0
-	ENDC
-	fclose
-
-	ENDC
-	ENDC
-	ENDM
-
 ;------------------------------------------------------------------------
 
 decclear	macro
@@ -4318,38 +4308,6 @@ setlevel	macro
 	lda	newmap+2
 	sta	mapbank
 	a16
-
-
-;;	IFEQ	NARG
-;;	pha
-;;	ENDC
-;;
-;;	lda	whichroute
-;;	and	#255
-;;	asl	a
-;;	tax
-;;	lda.l	courses,x
-;;	sta	x1
-;;
-;;	IFEQ	NARG
-;;	pla
-;;	ENDC
-;;
-;;	IFNE	NARG
-;;	lda	#\1
-;;	ENDC
-;;	sta	x2
-;;	asl	a
-;;	clc
-;;	adc	x2
-;;	adc	x1
-;;	tax
-;;	lda.l	mapbase,x
-;;	sta	mapptr
-;;	a8
-;;	lda.l	mapbase+2,x
-;;	sta	mapbank
-;;	a16
 	endm
 
 ;------------------------------------------------------------------------
@@ -4357,7 +4315,7 @@ setlevel	macro
 
 bankend	macro
 	IFEQ	NARG
-		IFD	_SASM
+		IFD	_SASM!_ARGSFX
 		printf	"BANKEND: Which bank are we talking about here?"
 		MEXIT
 		ENDC
@@ -4365,11 +4323,7 @@ bankend	macro
 
 
 	IFNE	FASTROM
-;	IFEQ	\1
-;bank\1left	=	65536-*
-;	ELSEIF
 bank\1left	=	32768-(*-((\1*$10000)+$808000))
-;	ENDC
 	ELSEIF
 	IFEQ	\1
 bank\1left	=	65536-*
@@ -4385,7 +4339,7 @@ totalromspaceleft	=	0
 totalromspaceleft = totalromspaceleft+bank\1left
 
 	IFLT	bank\1left
-		IFD	_SASM
+		IFD	_SASM!_ARGSFX
 		progress_off
 		printf	"[0;5;31;1mError: Bank \1 is out of space by ",-bank\1left," bytes.[0m%n"
 		progress_on
@@ -4395,9 +4349,20 @@ Bank_over_flow_in_Bank	=	\1
 		ENDC
 	ENDC
 
-	printf	"%01-- %xbank\1left bytes free.%00%n"
+	; Write free space info to BANKS.CSV
+	fopen	+BANKS.CSV
+	printf	"\1,%xbank\1left %n"
+	fclose	BANKS.CSV
 
-	IFND	_SASM
+	IFD	_SASM
+	printf	"%01-- %xbank\1left bytes free.%00%n"
+	ENDC
+
+	IFD	_ARGSFX
+	printf	"%01-- %xbank\1left  bytes free.%00%n"
+	ENDC
+
+	IFND	_SASM!_ARGSFX
 	?bank\1left
 	ENDC
 
@@ -4408,7 +4373,7 @@ Bank_over_flow_in_Bank	=	\1
 bank	macro
 
 	IFEQ	NARG
-		IFD	_SASM
+		IFD	_SASM!_ARGSFX
 		progress_off
 		printf	"Chigau matey.. the bank macro needs um.. a thingy on the end."
 		progress_on
@@ -4426,10 +4391,8 @@ bank	macro
 
 banknum	=	\1
 Assembling_bank	=	\1
-	IFND	_SASM
+	IFND	_SASM!_ARGSFX
 	?Assembling_bank
-	ELSEIF
-;	progress	\1,11
 	ENDC
 
 	endm
@@ -4441,7 +4404,7 @@ Assembling_bank	=	\1
 nastyon	macro
 	lda	mario_draw_mode ; Load the current MARIO chip draw mode into A
 	ora	#mm_ramn+mm_romn ; OR A With RAM nasty flag + ROM nasty flag (8+16)
- 	sta	mio_mode ; store A to MARIO chip I/O mode var
+	sta	m_scmr ; store A to MARIO chip I/O mode var
 	endm
 
 ;------------------------------------------------------------------------
@@ -4449,7 +4412,7 @@ nastyon	macro
 ramnastyon	macro
 	lda	mario_draw_mode ; Load the current MARIO chip draw mode into A
 	ora	#mm_ramn ; OR A with RAM nasty flag (8)
- 	sta	mio_mode ; store A to MARIO chip I/O mode var
+	sta	m_scmr ; store A to MARIO chip I/O mode var
 	endm
 
 ;------------------------------------------------------------------------
@@ -4457,14 +4420,14 @@ ramnastyon	macro
 romnastyon	macro
 	lda	mario_draw_mode ; Load the current MARIO chip draw mode into A
 	ora	#mm_romn ; OR A with ROM nasty flag (16)
- 	sta	mio_mode ; store A to MARIO chip I/O mode var
+	sta	m_scmr ; store A to MARIO chip I/O mode var
 	endm
 
 ;------------------------------------------------------------------------
 
 nastyoff	macro
 	lda	mario_draw_mode ; Load the current MARIO chip draw mode into A
- 	sta	mio_mode ; store A to MARIO chip I/O mode var
+	sta	m_scmr ; store A to MARIO chip I/O mode var
 	endm
 
 ;------------------------------------------------------------------------
@@ -4472,7 +4435,7 @@ nastyoff	macro
 ramnastyoff	macro
 	lda	mario_draw_mode ; Load the current MARIO chip draw mode into A
 	and	#~mm_ramn ; AND A with RAM nasty flag (8)
- 	sta	mio_mode ; store A to MARIO chip I/O mode var
+	sta	m_scmr ; store A to MARIO chip I/O mode var
 	endm
 
 ;------------------------------------------------------------------------
@@ -4480,7 +4443,7 @@ ramnastyoff	macro
 romnastyoff	macro
 	lda	mario_draw_mode ; Load the current MARIO chip draw mode into A
 	and	#mm_romn ; AND A with ROM nasty flag (16)
- 	sta	mio_mode ; store A to MARIO chip I/O mode var
+	sta	m_scmr ; store A to MARIO chip I/O mode var
 	endm
 
 ;------------------------------------------------------------------------
@@ -4623,12 +4586,7 @@ fclose	MACRO
 	ENDM
 ;------------------------------------------------------------------------
 
-
-
-
-
-
-report	MACRO
+report	MACRO	[namestr,label,maxlabel]
 	IFND	rlbl
 rlbl	=	0
 	ENDC
@@ -4638,24 +4596,22 @@ rlbl	=	0
 	ELSEIF
 	printf	"      "
 	ENDC
-	IFLT	\2
+	IFLT	{label}
 	printf	"%01%31"
 	ENDC
-	printf	"[20]\1"," = "
+	printf	"[20]{namestr}"," = "
 
-	IFLT	(\2)-10000
-	printf	[4](\2)
+	IFLT	({label})-10000
+	printf	[4]({label})
 	ELSEIF
-	printf	[3](\2)/1024,"K"
+	printf	[3]({label})/1024,"K"
 	ENDC
-p5per	=	(\3)/200
-	printf	" (",[3,0](((\2)+p5per)*100)/(\3),"%%)"
+p5per	=	({maxlabel})/200
+	printf	" (",[3,0]((({label})+p5per)*100)/({maxlabel}),"%%)"
 rlbl	=	rlbl+1
 	printf	"%00"
 
 	ENDM
-
-
 
 ;------------------------------------------------------------------------
 
@@ -4696,8 +4652,6 @@ rlbl	=	0
 	printf	"%n"
 	ENDM
 
-
-
 ;------------------------------------------------------------------------
 
 report_status	MACRO
@@ -4714,9 +4668,9 @@ rlbl	=	0
 	report	<Total Rom Usage>,TotalRomUsed,1024*1024
 	report	<Total Rom Spare>,TotalRomSpaceLeft,1024*1024
 ;	run	"memfree = %k"
-;	report	<Memory Free>,memfree,initial_memory
-;	report	<Est. Symbols Free>,memfree/25,(initial_memory)/25
-;	report	<Total Mem Free>,initial_memory,640*1024
+;	report	<Memory Free>,memfree,initial_assembler_memory
+;	report	<Est. Symbols Free>,memfree/25,(initial_assembler_memory)/25
+;	report	<Total Mem Free>,initial_assembler_memory,640*1024
 	printf	"%n"
 	ENDM
 
@@ -4775,10 +4729,6 @@ printroulen	MACRO	label name,[comment]
 
 	progress_off
 	Sprintroulen	\1,<\2>
-
-	fopen	+status.doc
-	Sprintroulen	\1,<\2>
-	fclose
 
 	progress_on
 
@@ -4855,369 +4805,6 @@ nomore	=	0
 ;------------------------------------------------------------------------
 strats_report	MACRO
 
-	fclose
-	ansi_on
-	header	<--------------------------- MAKING STRATEGY REPORT ----------------------------%n>
-	ansi_off
-	fopen	+status.doc
-
-
-	printf	"------------------------------ STRATEGY REPORT --------------------------------"
-	printf	"%n%n%n"
-
-	printf	"| NAME                  |   Used   |   Size   %n"
-	printf	"-------------------------------------------------------------------------------%n"
-       	
-donomore	=	0
-donomore2	=	0
-passnum	=	0
-numpasses	=	400
-
-	REPT	numpasses
-currmax	=	0
-nomore	=	1
-	
-	fclose
-	ansi_on
-	progress	passnum,numpasses-1
-	ansi_off
-	fopen	+status.doc
-
-	IFEQ	donomore2
-	stratmacsort	s_make_obj		
-	stratmacsort	s_set_strat		
-	stratmacsort	s_set_collstrat	
-	stratmacsort	s_set_endcollstrat	
-	stratmacsort	s_set_expstrat		
-	stratmacsort	s_set_aldata		
-	stratmacsort	s_set_alptrs		
-	stratmacsort	s_set_nmistrat		
-	stratmacsort	s_goto_obj		
-	stratmacsort	s_goto_WP		
-	stratmacsort	s_set_WP		
-	stratmacsort	s_set_dist		
-	stratmacsort	s_kill_obj		
-	stratmacsort	s_setnoremove_behind	
-	stratmacsort	s_setremove_behind	
-	stratmacsort	s_remove_offscn	
-	stratmacsort	s_remove_obj		
-	stratmacsort	s_remove_fire		
-	stratmacsort	s_circle_obj		
-	stratmacsort	s_carry_obj		
-	stratmacsort	s_damagesmoke		
-	stratmacsort	s_damagefire		
-	stratmacsort	s_set_find		
-	stratmacsort	s_find_nearobj		
-	stratmacsort	s_find_radiusobj	
-	stratmacsort	s_find_obj		
-	stratmacsort	s_find_Mobj		
-	stratmacsort	s_rots_flat		
-	stratmacsort	s_chk_objptr		
-	stratmacsort	s_weapon_pos		
-	stratmacsort	s_weapon_rot		
-	stratmacsort	s_weapon_rots2obj 	
-	stratmacsort	s_weapon_Yrot2obj 	
-	stratmacsort	s_fire_weapon		
-	stratmacsort	s_fire_Yweapon		
-	stratmacsort	s_make_immune		
-	stratmacsort	s_Initface_player	
-	stratmacsort	s_face_player		
-	stratmacsort	s_exg_objs		
-	stratmacsort	s_start_strat
-	stratmacsort	s_start_collstrat
-	stratmacsort	s_start_nmistrat
-	stratmacsort	s_end_strat
-	stratmacsort	s_end_nmistrat
-	stratmacsort	s_end_collstrat	
-	stratmacsort	s_DIScolls		
-	stratmacsort	s_ENAcolls		
-	stratmacsort	s_docoll		
-	stratmacsort	s_docollAP		
-	stratmacsort	s_obj2collide		
-	stratmacsort	s_hardvars		
-	stratmacsort	s_playerctrl		
-
-	stratmacsort	s_set_alvartobeobj	
-	stratmacsort	s_set_vartobeobj	
-	stratmacsort	s_set_objtobealvar	
-	stratmacsort	s_set_objtobevar	
-	stratmacsort	s_set_objtobeplayer	
-
-	stratmacsort	s_copy_obj		
-	stratmacsort	s_copy_var2var		
-	stratmacsort	s_copy_var2alvar	
-	stratmacsort	s_copy_var2alxvar	
-	stratmacsort	s_copy_alvar2var	
-	stratmacsort	s_copy_alxvar2var	
-	stratmacsort	s_copy_alvar2alvar	
-	stratmacsort	s_copy_alvar2alxvar	
-	stratmacsort	s_Achase_alvar		
-	stratmacsort	s_Achase_2alvars	
-	stratmacsort	s_Achase_var2alvar	
-	stratmacsort	s_Achase_alvar2alvar	
-	stratmacsort	s_Achase_var		
-	stratmacsort	s_Fchase_alvar		
-	stratmacsort	s_Fchase_var2alvar	
-	stratmacsort	s_Fchase_alvar2alvar	
-	stratmacsort	s_Fchase_var		
-	stratmacsort	s_neg_alvar		
-	stratmacsort	s_set_alvar		
-	stratmacsort	s_set_alvar2rnd	
-	stratmacsort	s_add_rnd2alvar	
-	stratmacsort	s_add_rnd2var		
-	stratmacsort	s_add_alvar		
-	stratmacsort	s_varadd_alvar		
-	stratmacsort	s_sub_alvar		
-	stratmacsort	s_varsub_alvar		
-	stratmacsort	s_dec_alvar		
-	stratmacsort	s_inc_alvar		
-	stratmacsort	s_neg_alvar		
-	stratmacsort	s_set_var		
-	stratmacsort	s_set_var2rnd		
-	stratmacsort	s_add_var		
-	stratmacsort	s_sub_var		
-	stratmacsort	s_dec_var		
-	stratmacsort	s_inc_var		
-	stratmacsort	s_neg_var		
-	stratmacsort	s_add_alvars		
-	stratmacsort	s_sub_alvars		
-	stratmacsort	s_cmp_alvars		
-	stratmacsort	s_cmp_alvar		
-	stratmacsort	s_cmp_var		
-	stratmacsort	s_set_alvar2alvartab	
-	stratmacsort	s_set_alvar2vartab	
-	stratmacsort	s_set_var2alvartab	
-	stratmacsort	s_set_var2vartab	
-	stratmacsort	s_set_3vars		
-
-	stratmacsort	s_set_lifecnt		
-	stratmacsort	s_dec_lifecnt		
-	stratmacsort	s_decbpl_lifecnt	
-	stratmacsort	s_set_altype		
-	stratmacsort	s_set_alflag		
-	stratmacsort	s_set_alsflag		
-	stratmacsort	s_set_flag		
-	stratmacsort	s_clr_flag		
-	stratmacsort	s_test_flag		
-	stratmacsort	s_test_var		
-	stratmacsort	s_or_var		
-	stratmacsort	s_and_var		
-	stratmacsort	s_or_alvar		
-	stratmacsort	s_and_alvar		
-	stratmacsort	s_set_alcollflag	
-	stratmacsort	s_clr_atype		
-	stratmacsort	s_not_alflag		
-	stratmacsort	s_clr_alflag		
-	stratmacsort	s_clr_alsflag		
-	stratmacsort	s_clr_alcollflag	
-	stratmacsort	s_set_colltype		
-	stratmacsort	s_not_alsflag		
-	stratmacsort	s_limit_alvar		
-	stratmacsort	s_limit_var		
-	stratmacsort	s_set_state		
-	stratmacsort	s_next_state		
-
-	stratmacsort	s_push_obj		
-	stratmacsort	s_pull_obj		
-	stratmacsort	s_push_alvar		
-	stratmacsort	s_pull_alvar		
-
-	stratmacsort	s_set_speed		
-	stratmacsort	s_add_speed		
-	stratmacsort	s_sub_speed		
-	stratmacsort	s_speedto		
-	stratmacsort	s_zero_vecs		
-	stratmacsort	s_zero_2dvecs		
-	stratmacsort	s_zero_rots		
-	stratmacsort	s_zero_pos		
-	stratmacsort	s_scale_vecs		
-	stratmacsort	s_gen_vecs		
-	stratmacsort	s_gen_Zvec		
-	stratmacsort	s_gen_flatvecs		
-	stratmacsort	s_addgen_vecs		
-	stratmacsort	s_addgen_3Dvecs	
-	stratmacsort	s_gen_3Dvecs		
-	stratmacsort	s_scale_vec		
-	stratmacsort	s_add_2pos		
-	stratmacsort	s_add_vecs2pos		
-	stratmacsort	s_add_vecs2vecs	
-	stratmacsort	s_set_pos		
-	stratmacsort	s_set_vecs		
-	stratmacsort	s_set_vec		
-	stratmacsort	s_add_2Yvec		
-	stratmacsort	s_copy_pos		
-	stratmacsort	s_copy_pos2WP		
-	stratmacsort	s_copy_vecs		
-	stratmacsort	s_copy_rots		
-	stratmacsort	s_objrel_vecs		
-	stratmacsort	s_objrel_3vecs		
-	stratmacsort	s_obj2obj_angle	
-	stratmacsort	s_obj2obj_3Dangle 	
-	stratmacsort	s_obj2WP_angle		
-	stratmacsort	s_move_obj		
-	stratmacsort	s_move3D_obj		
-	stratmacsort	s_add_viewheight	
-	stratmacsort	s_sub_viewheight	
-	stratmacsort	s_add_cheight		
-	stratmacsort	s_sub_cheight		
-	stratmacsort	s_copy_vheight2var	
-	stratmacsort	s_falldown_Yvec	
-	stratmacsort	s_add_Roffs2pos	
-	stratmacsort	s_add_playerZ		
-
-	stratmacsort	s_inrng_strat		
-	stratmacsort	s_inview_strat		
-	stratmacsort	s_leftview_strat	
-	stratmacsort	s_rightview_strat	
-	stratmacsort	s_player_strat		
-
-	stratmacsort	s_jmp		
-	stratmacsort	s_jsr		
-	stratmacsort	s_jsl		
-	stratmacsort	s_ldajsl		
-	stratmacsort	s_rtl		
-	stratmacsort	s_jmp_onfire		
-	stratmacsort	s_jmpNOT_onfire	
-	stratmacsort	s_jmpto_strat		
-	stratmacsort	s_do_strat		
-	stratmacsort	s_jmpto_collstrat	
-	stratmacsort	s_jmpto_expstrat 	
-	stratmacsort	s_jmp_higher		
-	stratmacsort	s_jmp_objhigher	
-	stratmacsort	s_jmp_lower		
-	stratmacsort	s_jmp_objlower		
-	stratmacsort	s_jmp_Hdistmore	
-	stratmacsort	s_jmp_Hdistless	
-	stratmacsort	s_jmp_distmore		
-	stratmacsort	s_jmp_distless		
-	stratmacsort	s_jmp_XYdistmore	
-	stratmacsort	s_jmp_XYdistless	
-	stratmacsort	s_jmp_outXYdistrng	
-	stratmacsort	s_jmp_objinfront	
-	stratmacsort	s_jmp_Zdistmore	
-	stratmacsort	s_jmp_Zdistless	
-	stratmacsort	s_jmp_outXdistrng	
-	stratmacsort	s_jmp_outYdistrng	
-	stratmacsort	s_jmp_outZdistrng	
-	stratmacsort	s_jmp_Xdistmore	
-	stratmacsort	s_jmp_Xdistless	
-	stratmacsort	s_jmp_WPdistmore	
-	stratmacsort	s_jmp_WPdistless	
-	stratmacsort	s_jmp_lifemore		
-	stratmacsort	s_jmp_lifeless		
-	stratmacsort	s_jmp_ifdelay		
-	stratmacsort	s_jmp_notdelay		
-	stratmacsort	s_jmp_ANDframe		
-	stratmacsort	s_jmp_notANDframe	
-	stratmacsort	s_jmp_alvarAND		
-	stratmacsort	s_jmpNOT_alvarAND	
-	stratmacsort	s_jmp_varAND		
-	stratmacsort	s_jmpNOT_varAND	
-	stratmacsort	s_jmp_alvarmore	
-	stratmacsort	s_jmp_alvarmoreEQ	
-	stratmacsort	s_jmp_alvarless	
-	stratmacsort	s_jmp_alvarlesseq	
-	stratmacsort	s_jmp_alvarpl		
-	stratmacsort	s_jmp_alvarmi		
-	stratmacsort	s_jmp_alvareq		
-	stratmacsort	s_jmp_alvarzero	
-	stratmacsort	s_jmp_alvarNOTzero	
-	stratmacsort	s_jmp_varzero		
-	stratmacsort	s_jmp_varNOTzero	
-	stratmacsort	s_jmp_alvarne		
-	stratmacsort	s_jmp_varne		
-	stratmacsort	s_jmp_vareq		
-	stratmacsort	s_jmp_varmoreEQ	
-	stratmacsort	s_jmp_varmore		
-	stratmacsort	s_jmp_varless		
-	stratmacsort	s_jmp_alvarOUTLIMIT	
-	stratmacsort	s_jmp_alvarINLIMIT	
-	stratmacsort	s_beqdec_alvar		
-	stratmacsort	s_decbeq_alvar		
-	stratmacsort	s_decbne_alvar		
-	stratmacsort	s_decbpl_alvar		
-	stratmacsort	s_beqdec_var		
-	stratmacsort	s_jmp_altype		
-	stratmacsort	s_jmp_alflag		
-	stratmacsort	s_jmpNOT_alflag	
-	stratmacsort	s_jmp_alsflag		
-	stratmacsort	s_jmpNOT_alsflag	
-	stratmacsort	s_jmp_alcollflag	
-	stratmacsort	s_jmpNOT_alcollflag	
-	stratmacsort	s_jmp_colltype		
-	stratmacsort	s_jmpNOT_colltype	
-	stratmacsort	s_jmp_random		
-	stratmacsort	s_jmp_objplayer	
-	stratmacsort	s_jmp_objNOTplayer	
-	stratmacsort	s_jmp_keydown		
-	stratmacsort	s_jmp_keyup		
-	stratmacsort	s_jmp_anyJkeydown	
-	stratmacsort	s_jmp_anyJkeyup	
-	stratmacsort	s_jmp_IFstate		
-	stratmacsort	s_jmp_IFNOTstate 	
-	stratmacsort	s_jmp_leftofview	
-	stratmacsort	s_jmp_rightofview	
-	stratmacsort	s_jmp_objpointnegZ	
-	stratmacsort	s_jmp_objpointposZ	
-	stratmacsort	s_bra		
-	stratmacsort	s_beq		
-	stratmacsort	s_bne		
-	stratmacsort	s_bpl		
-	stratmacsort	s_bmi		
-	stratmacsort	s_bcc		
-	stratmacsort	s_bcs		
-	stratmacsort	s_bcs		
-
-	stratmacsort	s_make_mother		
-	stratmacsort	s_make_child		
-	stratmacsort	s_set_objtobechild	
-	stratmacsort	s_set_objtobemother	
-	stratmacsort	s_remove_child		
-	stratmacsort	s_make_childobjpos	
-	stratmacsort	s_make_childobj	
-	stratmacsort	s_count_childs		
-
-	stratmacsort	s_chkcoll		
-	stratmacsort	s_collpos_save		
-	stratmacsort	s_playerfly_mode	
-
-	stratmacsort	s_implode	
-	stratmacsort	s_bemother	
-	stratmacsort	s_initanim	
-	stratmacsort	s_initcolanim	
-	stratmacsort	s_add_colanim	
-	stratmacsort	s_add_anim	
-	stratmacsort	s_cmp_anim	
-	stratmacsort	s_cmp_colanim	
-	stratmacsort	s_test_hitflags
-	stratmacsort	s_clr_hitflags	
-
-
-
-
-	IFNE	donomore
-donomore2	=	1
-	ENDC
-
-	IFNE	nomore
-donomore	=	1
-	ELSEIF
-	Rprintstratmacdat	
-	ENDC
-
-	ENDC
-
-passnum	=	passnum+1
-	ENDR
-
-
-	printf	"%n"
-
-	fclose
-	del_line
-	fopen	+status.doc
-	
-
 	ENDM
 
 
@@ -5258,7 +4845,7 @@ printr	MACRO	string,number of repeats
 
 ;------------------------------------------------------------------------
 
-	IFD	_SASM
+	IFD	_SASM!_ARGSFX
 	IFNE	PROGRESS_INDICATOR
 
 	IFEQ	progression_thingy&1
@@ -5501,7 +5088,7 @@ timings_report	MACRO
 	ENDM
 
 ;------------------------------------------------------------------------
-	IFND	_SASM
+	IFND	_SASM!_ARGSFX
 progress_on	MACRO
 	ENDM
 
@@ -5527,7 +5114,6 @@ totalfiles	=	totalfiles+1
 	progress	totalfiles,oldtotalfiles,<\1>
 	ENDC
 	include	\1
-	fileslog	\1
 	ENDM
 
 ;------------------------------------------------------------------------
@@ -5578,7 +5164,7 @@ release	macro
 ;------------------------------------------------------------------------
 
 
-	IFD	_SASM
+	IFD	_SASM!_ARGSFX
 
 bankinfo	MACRO
 
@@ -5961,8 +5547,6 @@ sndoffset	=	rompos-(sndbank*$8000)
 
 musicsize	=	musicsize+\1len
 
-	fileslog	\2
-
 	ENDM
 
 ;-------------------------------------------------------------------
@@ -6020,14 +5604,14 @@ snd_\1	equ	*-sndtbl
 defal	MACRO
 	struct	al_\1,\2
 size_al_\1	=	\2
-	printf	"al_\1 = $",:$al_\1,"  ",al_\1,"%n"
+;	printf	"al_\1 = $",:$al_\1,"  ",al_\1,"%n"
 	ENDM
 ;-------------------------------------------------------------------
 defalx	MACRO
 	struct	alx_\1,\2
 al_\1	=	alx_\1&WM
 size_al_\1	=	\2
-	printf	"alx_\1 =$",:$alx_\1&WM,"  ",alx_\1&WM,"%n"
+;	printf	"alx_\1 =$",:$alx_\1&WM,"  ",alx_\1&WM,"%n"
 	ENDM
 ;-------------------------------------------------------------------
 
@@ -6166,16 +5750,15 @@ global	MACRO
 
 publics	=	0
 
-INCEXTERNS	MACRO
+INCEXTERNS	MACRO	[filename]
 	INCLUDE	\1
 	ENDM
 
-INCPUBLICS	MACRO
+INCPUBLICS	MACRO	[filename]
 publics	=	1
 	INCLUDE	\1
 publics	=	0
 	ENDM
-
 
 ;-------------------------------------------------------------------
 makeshade	macro
@@ -6204,14 +5787,12 @@ Do_Hdr	=	0
 
 incbinfile	MACRO
 	incbin	\1
-	fileslog	\1
 	ENDM
 
 ;-------------------------------------------------------------------
 
 inccolfile	MACRO
 	inccol	\1,\2,\3
-	fileslog	\1
 	ENDM
 
 ;-------------------------------------------------------------------
@@ -6269,11 +5850,11 @@ clrmes	MACRO
 fast	MACRO ; Run MARIO chip @ 21.4mhz (no clock divider)
 	IFEQ	LONGA
 	lda	#1
-	sta	$3039
+	sta	m_clsr
 	ELSEIF
 	a8
 	lda	#1
-	sta	$3039
+	sta	m_clsr
 	a16
 	ENDC
 	ENDM
@@ -6282,11 +5863,11 @@ fast	MACRO ; Run MARIO chip @ 21.4mhz (no clock divider)
 slow	MACRO ; Run MARIO chip @ 10.7mhz (enable clock divider)
 	IFEQ	LONGA
 	lda	#0
-	sta	$3039
+	sta	m_clsr
 	ELSEIF
 	a8
 	lda	#0
-	sta	$3039
+	sta	m_clsr
 	a16
 	ENDC
 	ENDM
@@ -6312,14 +5893,6 @@ waithtime	macro	[start,end]
 
 	a8
 
-	endm
-
-;---------------------------------------------------
-minfo	macro	[name]
-	IFNE	NARG
-	printf	"{name}: ",*-minfos,"%n"
-	ENDC
-minfos	=	*
 	endm
 ;---------------------------------------------------
 screen_off	macro
@@ -6513,6 +6086,7 @@ sprtemp	=	0
 defpac	macro
 \1	equ	gamepalettes+__totpallen
 __totpallen	=	__totpallen+(\2*32)
+__totpallines	=	__totpallines+(\2)
 	endm
 
 ;---------------------------------------------------------------
@@ -6533,6 +6107,11 @@ sasm_mvn	MACRO ; src,dest
 sasm_mvp	MACRO ; src,dest
 ; example: sasm_mvp	$32,$7E
 ; raw opcodes are little endian so we reverse the arguments
-	db $54,\2,\1
+	db $44,\2,\1
+	ENDM
+;---------------------------------------------------------------
+; Incbin a 2bpp CGX file
+inccgx2	MACRO	[filepath,NUMCHRS]
+	inccol	{filepath},0,{NUMCHRS}/2
 	ENDM
 ;---------------------------------------------------------------

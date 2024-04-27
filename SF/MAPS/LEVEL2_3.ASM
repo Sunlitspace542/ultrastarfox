@@ -1,3 +1,4 @@
+; 2-3 Titania
 level2_3
 	initlevel	2_3a,mscramwipe_circle
 
@@ -16,6 +17,6 @@ level2_3
 
 	mapwait	1000
 
-	mapjsr	cl_bridge
+	mapjsr	cl_bridge ; Clear type
 	mapend
 

@@ -11,17 +11,16 @@
 	include	EXT\expstrat.ext
 	include	EXT\paths.ext
 	include	EXT\bootnmi.ext
-	include	EXT\msu.ext
 
 	bank	10
 	incfile	STRAT\kstrats.asm
 	incfile	STRAT\ga2strats.asm
 	incfile	ASM\mem.asm
 
-	public	bgml
-	public	bgmllen
-bgml	incbinfile	snd\sgbgml.bin
-bgmllen	equ	*-bgml
+	public	black_holebgm
+	public	black_holebgmlen
+black_holebgm	incbinfile	snd\sgbgml.bin
+black_holebgmlen	equ	*-black_holebgm
 	bankend	10
 
 	include	INC\tail.inc

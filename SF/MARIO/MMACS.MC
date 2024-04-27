@@ -511,7 +511,6 @@ mcalls	macro
 	mbra	(\1)&$ffff
 	endm
 
-
 ; call subroutine with addr in same bank
 ;
 ; mcall	addr
@@ -523,7 +522,6 @@ mcall	macro
 	link	#4
 	miwt	pc,(\1)&$ffff
 	endm
-
 
 ; call subroutine with addr in reg (any one of r0,r8,r9,r10,r12,r13)
 ;
@@ -1248,6 +1246,7 @@ readflags	macro
 ;
 ; c flag corrupt
 
+	IFEQ	1
 ldflags	macro
 	readflags
 	ibt	r0,#0
@@ -1264,7 +1263,7 @@ ldflags	macro
 	lsr
 	rol
 	endm
-
+	ENDC
 
 ; UNTESTED
 ;

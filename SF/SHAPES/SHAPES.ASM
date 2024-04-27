@@ -1,9 +1,6 @@
 
 	start_shapes
 
-
-	IFEQ	CONTEST
-
 ;--Shape file ----- shapes\walker_l.txt ----
 	ifne	DO_HDR
 
@@ -185,19 +182,8 @@ walker_r_EBSP
 	endc
 
 
-	ENDC
-
-
 ;--Shape file ----- C:\SHED\SHAPES\WALKER_0.TXT ----
 	ifne	DO_HDR
-
-	IFNE	CONTEST
-	public	walker_l
-	public	walker_r
-walker_l
-walker_r
-
-	ENDC
 walker_0
 	ShapeHdr	walker_0_P,0,walker_0_F,0,0,0,0,2,walker_col1,32,98,34,40,id_0_c,0,0,0,0,<walker_0>
 	elseif
@@ -1159,12 +1145,6 @@ phazer_f1	Faces
 
 ;--Shape file ----- shapes\pillar2.txt ----
 	ifne	DO_HDR
-
-	IFNE	CONTEST
-beeanim
-	public	beeanim
-	ENDC
-
 pillar2
 	shapehdr	pillar2_P,0,pillar2_F,0,0,0,0,2,pillar2_col1,8,79,10,83,id_0_c,0,0,0,0,<pillar2>
 	elseif
@@ -1443,8 +1423,6 @@ motherf2_EBSP
 
 	ENDC
 
-	IFEQ	CONTEST
-
 
 ;--Shape file ----- shapes\beeanim.txt ----
 	ifne	DO_HDR
@@ -1547,9 +1525,6 @@ beeanim_EBSP
 	EndShape
 
 	endc
-
-
-	ENDC
 
 	IFEQ	1
 
@@ -10361,10 +10336,6 @@ boss_h_3_f1	Faces
 
 	endc
 
-
-
-	IFEQ	CONTEST
-
 ;--Shape file ----- C:\SHED\SHAPES6\SLOT_0.TXT ----
 	ifne	DO_HDR
 
@@ -10623,23 +10594,12 @@ slot_1_EBSP
 	endc
 
 
-	ENDC
-
-
 
 
 
 
 ;--Shape file ----- C:\SHED\SHAPES6\TRAINING.TXT ----
 	ifne	DO_HDR
-
-	IFNE	CONTEST
-	public	slot_1
-	public	slot_0
-slot_0
-slot_1
-	ENDC
-
 training
 	ShapeHdr	training_P,0,training_F,0,0,0,0,1,0,40,40,5,43,id_0_c,0,0,0,0,<training>
 	elseif
@@ -10890,10 +10850,7 @@ tow_1_EBSP
 
 ;------------------------------------------------------------------------------
 ; contest mode shapes
-
-
-
-	IFNE	CONTEST
+	IFNE	0
 
 ;--Shape file ----- C:\SHED\SHAPES\TARGET_0.TXT ----
 	ifne	DO_HDR

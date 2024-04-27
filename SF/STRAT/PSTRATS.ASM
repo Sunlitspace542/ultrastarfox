@@ -2344,6 +2344,11 @@ playermove_srou
 	lda	mousemode
 	lbeq	.nomouse5
 	lda	mouse_x1
+	IFNE	analogstick
+	lbeq	.zerocheck
+	cmp #128
+	lbeq	.zerocheck
+	ENDC
 	lbeq	.nomouse5
 	and	#%10000000
 	lbeq	.rightmouse
@@ -2360,6 +2365,9 @@ playermove_srou
 	cmp				#(deg11*(2))
 	lbpl	.nomouse5
 	lda	mouse_x1
+	IFNE	analogstick
+	lbeq	.nomouse5
+	ENDC
 	cmp	#$84
 	bmi	.slower3
 	cmp	#$88
@@ -2393,17 +2401,40 @@ playermove_srou
 
 .slower4
 	s_sub_var		W,plroty,#(Zrotspeed/4)*3
+	IFNE	analogstick
+	jmp	.nomouse5
+	ELSEIF
 	bra	.nomouse5
+	ENDC
 
 .norm4
 	s_sub_var		W,plroty,#Zrotspeed
+	IFNE	analogstick
+	jmp	.nomouse5
+	ELSEIF
 	bra	.nomouse5
+	ENDC
 
 .faster4
 	s_sub_var		W,plroty,#(Zrotspeed*3)/2
+	IFNE	analogstick
+	jmp	.nomouse5
+	ELSEIF
 	bra	.nomouse5
+	ENDC
 
+	IFNE	analogstick
+.zerocheck
+	lda mouse_y1
+	lbeq	.zerofinal
+	cmp #128
+	lbne	.nomouse5
 
+.zerofinal	
+	s_Achase_var		W,plroty,#0,3
+	s_Achase_var		W,plrotx,#0,4
+	jmp .no_yctrl
+	ENDC
 .nomouse5
 	ENDC
 
@@ -2445,6 +2476,10 @@ playermove_srou
 	lda	mousemode
 	lbeq	.no_yctrl
 	lda	mouse_y1		;loading mouse_y1
+	IFNE	analogstick
+	lbeq	.no_yctrl
+	cmp #128
+	ENDC
 	lbeq	.no_yctrl
 	and	#%10000000
 	beq	.ypos			;if its less than 0, its going down?
@@ -2527,7 +2562,7 @@ playermove_srou
 .isright
 .lragain
 	s_jmp_anyLRkeyup	.nroll
-	s_set_var		B,player_rolldelay,#3 ; change #3 to another number to change how responsive barrel rolls are (ex. #5)
+	s_set_var		B,player_rolldelay,#barrelrolldelay ; see CONFIG\GAME.INC to change this
 .nroll
 
 
@@ -2725,10 +2760,6 @@ playermove_srou
 
 ; ## ALL-RANGE MODE ##
 	IFNE	ALLRANGE
-	; This was likely originally used to test rotating the player around,
-	; as seen in the Great Commander I boss.
-	; Here, we use it for funsies. :)
-	; -SunlitSpace542
 	s_jmp_keyup		left,.nleft
 	s_add_var		W,player_turnrot,#2*256
 .nleft
@@ -3173,7 +3204,6 @@ pexplode_Istrat
 	s_or_var		B,gameflags2,#gf2_ingame
 	s_or_var		B,gameflags,#GF_PLAYERDEAD
 
-	IFEQ	CONTEST
 	s_dec_var		B,lives
 	bne			.settime
 	lda	#1
@@ -3181,7 +3211,6 @@ pexplode_Istrat
 	s_set_var		B,timeuntilfade,#20
 	s_bra			.end
 .settime
-	ENDC
 
 	s_set_var	B,timeuntilfade,#20
 .end

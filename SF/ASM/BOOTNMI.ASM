@@ -19,7 +19,7 @@
 
 	incpublics	EXT\bootnmi.ext
 
-	shorti ; set interrupt disable flag
+	shorti ; Tell SASM this uses 8 bit X/Y
 startboot	disable ; Disable Interrupts
 	clc	; Clear Carry Flag
 	xce ; Exchange Carry Flag with Emulation Flag (Exit 65c02 mode)
@@ -37,7 +37,7 @@ startboot	disable ; Disable Interrupts
 
 	jsr	initialise_ram ; Clear RAM
 
-	i16 ; clears interrupt disable flag
+	i16 ; set X/Y to 16 bit
 	ldx	#$2ff ; Load $2FF into X
 	txs ; Transfer X to SP (set stack to $2FF, resets the stack)
 	ai8 ; Set A/X/Y to 8 bit
@@ -54,7 +54,7 @@ startboot	disable ; Disable Interrupts
 	sta	mousemodetemp	; (enable mouse)
 	ENDC ; End conditional
 
-	IFEQ	contest ; start conditional: if CONTEST = 0 (Not SSFW)
+	IFEQ	nointroseq ; start conditional: if nointroseq = 0
 	jsl	intro_l ; Jump to Intro Sequence
 	ENDC ; End conditional
 
@@ -128,7 +128,7 @@ restart	ai16 ; set A/X/Y to 16 bit
 	sta	firstdnld ; store @ firstdnld variable (this has to do with initializing the SPC700)
 	sta.l	oncewipe ; Store A at oncewipe variable
 
-	IFNE	CONTEST ; start conditional: If CONTEST !=0 (=1) (SSFW)
+	IFNE	nointroseq ; start conditional: If nointroseq !=0 (=1)
 	jsl	initialise_l ; Initialize game
 	jsl	titleseq_l ; Go to Title Sequence
 	ENDC ; End conditional

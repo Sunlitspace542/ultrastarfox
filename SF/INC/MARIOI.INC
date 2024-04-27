@@ -1,23 +1,24 @@
 
 
-;Mario chip flags (mflags)
+;Mario chip Status Flag Register (m_sfr)
 mf_e	equ	1	;exec flag
 mf_z	equ	2	;zero flag
 mf_c	equ	4	;carry flag
 mf_s	equ	8	;sign 0/1 pos/neg
 mf_v	equ	16	;overflow
 mf_g	equ	32	;go (chip running)
+mf_r	equ	64	;R14 reading ROM
 ;mode set by prefixes
 mf_alt1	equ	256	;Set by ALT1 prefix
 mf_alt2	equ	512	;Set by ALT2 prefix
 mf_il	equ	1024	;immediate low byte (done before ih)
-mf_ih	equ	2048	;immediate hight byte
+mf_ih	equ	2048	;immediate high byte
 mf_b	equ	4096	;Set by WITH
 mf_irq	equ	32768	;mario interrupt flag
 
 
 
-;Mario chip input/output mode (mio_mode)
+;Mario chip input/output mode (m_scmr)
 mm_scm0	equ	1	;\Screen mode (0,1,2)(4,16,256 colours)
 mm_scm1	equ	2	;/
 mm_sch	equ	4	;Screen height (0,1)(128,160 pix high)

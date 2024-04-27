@@ -27,9 +27,6 @@
 
 	INCPUBLICS	EXT\trans.ext
 
-
-	printf	"aldead= ",:$aldead,"%n"
-
 ;-----------------------------------------------------------------------
 ;-----------------------------------------------------------------------
 ;-----------------------------------------------------------------------
@@ -222,7 +219,7 @@ stratsfrozen
 	sec
 	sbc	#60
 	sta	framecount
-.noreset	
+.noreset
 
 	ifne	mario_stats3d
 
@@ -247,6 +244,12 @@ stratsfrozen
 	;printd	1,6
 	lda.l	m_points_done
 	printd	1,6
+
+	; MSU track debugging
+	IFNE	msu
+	lda	msu_017f ; current MSU track
+	printd	1,2
+	ENDC
 
 	;lda.l	m_visis_done+1
 	;printd	1,7

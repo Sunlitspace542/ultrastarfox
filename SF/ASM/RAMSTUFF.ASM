@@ -11,7 +11,7 @@
 	shorta
 	longi
 runmario_l
-	sta.l	mcodebank	;code bank
+	sta.l	m_pbr	;code bank
 
 	phb
 	IFNE	FASTROM
@@ -26,15 +26,15 @@ runmario_l
 
 	lda	mario_draw_mode
 	ora	#%00011000	;nasty
-	sta	mio_mode
+	sta	m_scmr
 
 	stx	mr15
-.dowait	lda	mflags
+.dowait	lda	m_sfr
 	and	#$20
 	bne	.dowait
 
 	lda	mario_draw_mode
-	sta	mio_mode
+	sta	m_scmr
 	plb
 	rtl
 
@@ -52,20 +52,20 @@ do_3d_display_l
 	a8
 	lda	#mdo_3d_display>>16
 	ldx	#mdo_3d_display&WM
-	sta	mcodebank	;code bank
+	sta	m_pbr	;code bank
 	lda	mario_draw_mode
 	ora	#%00011000	;nasty
-	sta	mio_mode
+	sta	m_scmr
 	stx	mr15
 
 	jsr	parallel_stuff
 
 	a8
-.dowait	lda	mflags
+.dowait	lda	m_sfr
 	and	#$20
 	bne	.dowait
 	lda	mario_draw_mode
-	sta	mio_mode
+	sta	m_scmr
 
 	jsl	alienflags_l
 
@@ -80,20 +80,6 @@ parallel_stuff
 
 
 gamepalbuff	dw	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-
-	IFEQ	1
-
-tunnelgreen	dw	$25ab,$3620,$31e0,$2de0,$29a0,$25a0,$2160,$1d60,$1d40,$1520,$1500,$0ce0,$0cc0,$04a0,$0480,$0020
-	dw	$25ab,$31e0,$3620,$29a0,$2de0,$2160,$25a0,$1d40,$1d60,$1500,$1520,$0cc0,$0ce0,$0480,$04a0,$0040
-tunnelblue	dw	$25ab,$4dcf,$4def,$3d4b,$3d6b,$2cc7,$2ce7,$1c43,$1c63,$1000,$1020,$0000,$0020,$0000,$0020,$0402
-	dw	$25ab,$4def,$458d,$3d6b,$3509,$2ce7,$2485,$1c63,$1401,$1020,$0800,$0020,$0000,$0020,$0803,$0402
-tunnelpurple dw	$25ab,$354e,$354f,$2d0c,$2d0d,$24ca,$24cb,$1c88,$1c89,$1446,$1447,$0c04,$0c05,$0402,$0403,$0402
-	dw	$25ab,$354f,$312d,$2d0d,$28eb,$24cb,$20a9,$1c89,$1867,$1447,$1025,$0c05,$0803,$0403,$0803,$0402
-tunnelred	dw	$25ab,$017c,$019c,$00f8,$0118,$0074,$0094,$0010,$0030,$000c,$002c,$0008,$0028,$0004,$0024,$0000
-	dw	$25ab,$019c,$013a,$0118,$00b6,$0094,$0032,$0030,$000e,$002c,$000a,$0028,$0006,$0024,$0002,$0000
-tunnelcolony dw	$0000,$3dd2,$3dd4,$3590,$3592,$2d4e,$2d50,$250c,$250e,$1cca,$1ccc,$1488,$148a,$0c46,$0c48,$0404
-	dw	$0000,$3dd4,$39b1,$3592,$316f,$2d50,$292d,$250e,$20eb,$1ccc,$18a9,$148a,$1067,$0c46,$0825,$0404
-	ENDC
 ;	list	on macros
 
 
@@ -197,11 +183,7 @@ tmp	=	tmp+1
 
 
 ;--------------------------------------------------------------------------
-redtunnel	dw	0000h,00d1h,00b0h,008fh,006eh,004dh,002ch,000bh
-	dw	000ah,0009h,0008h,0007h,0006h,0005h,0004h,7fffh
-	dw	0000h,00d1h,00b0h,008fh,006eh,004dh,002ch,000bh
-	dw	000ah,0009h,0008h,0007h,0006h,0005h,0004h,0000h
-
+redtunnel	inccolfile	DATA\COL\TUNLRED.COL,0,2
 
 ;# = gamma  $ = beta  % = alpha
 etesttrans	db	0,01ch,0,02ch,02bh,02ah,0,0,0,0
@@ -212,8 +194,7 @@ etesttrans	db	0,01ch,0,02ch,02bh,02ah,0,0,0,0
 	db	19,20,21,22,23,24,25,26,27,28
 
 
-thundercol	dw $0000,$7fff,$36fe,$32bd,$2e7b,$2e79,$2677,$1e35
-	dw $15f3,$0db1,$016e,$77ee,$00c7,$00a6,$0085,$0043
+thundercol	inccolfile	DATA\COL\THUNDER.COL,0,1
 
 
 

@@ -939,12 +939,6 @@ mrotpartloop
 	lms	rcnt,[m_cnt]
 
 	mlbra	.mprojpartoff
-;	mlbra	.next
-
-
-
-	printf	*-mrotpartloop,"%n"
-			       
 
 ;*****************************************************************************
 

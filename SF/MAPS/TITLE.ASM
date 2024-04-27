@@ -1,3 +1,4 @@
+; TITLE: Title Screen
 ; disable player's movement and wobble:
 	setfadedown	quick
 	mapwaitfade
@@ -19,9 +20,7 @@ timeovercont
 
 	mapwait	800
 
-	IFEQ	CONTEST
 	mapobj	0,20,20,70,my_demo,tit_istrat
-	ENDC
 
 	setfadeup	quick
 
@@ -39,24 +38,6 @@ timeovercont
 
 .ll	mapwait	4000
 	mapgoto	.ll
-
-	IFNE	CONTEST
-timeovermap
-	setfadedown	quick
-	mapwaitfade
-	setbg	timeover
-	initbg
-	mapgoto	timeovercont
-
-timeupmap
-	setfadedown	quick
-	mapwaitfade
-	setbg	timeup
-	initbg
-	mapgoto	timeovercont
-
-	ENDC
-
 
 contmap	setfadedown	quick
 	mapwaitfade

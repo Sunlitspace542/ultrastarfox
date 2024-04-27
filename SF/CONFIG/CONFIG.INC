@@ -11,12 +11,5 @@
 	include CONFIG\ROM.INC		; ROM
 	include	CONFIG\DEBUG.INC	; Debugging
 	include CONFIG\XCESSORY.INC	; Accessories
+	include	CONFIG\LANGUAGE.INC	; Language
 ;#############################################
-
-; DO NOT touch these settings:
-;####################################################################################################################
-cesdemo				equ	0	; 0 = off, 1 = CES Demo (timed) 2 = Untimed CES Demo w/ planet cheat
-contest				equ	0	; Super Star Fox Weekend (DO NOT USE) [0 = off 1 = on]
-cestime				equ	5	; CES/SSFW timer countdown (in minutes)
-prntrouln_on		equ 1	; print "printroulen" lines during assembly (needs to be on)
-;####################################################################################################################

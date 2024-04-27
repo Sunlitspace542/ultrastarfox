@@ -1,3 +1,4 @@
+	IFNE	hipolyarwing
 	extern	mydemo_4
 	extern	mydemo_l
 	extern	mydemo_r
@@ -10,6 +11,7 @@
 	extern	wiremydemo_l
 	extern	wiremydemo_r
 	extern	wiremydemo_b
+	ENDC
 
 	extern	NULLSHAPE
 	extern	FOLARGESHAPE
@@ -582,8 +584,10 @@
 	extern	paper_1
 	extern	paper_3
 	extern	bou_1b
+	IFNE	0 ; Contest mode shapes
 	extern	target_0
 	extern	target_1
 	extern	target_2
 	extern	target_3
 	extern	pilon_1
+	ENDC

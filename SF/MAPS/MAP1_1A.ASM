@@ -1,3 +1,4 @@
+; 1-1 Corneria 1 Part A: SCRAMBLE Sequence Map
 map1_1a
 fudge	=	250
 

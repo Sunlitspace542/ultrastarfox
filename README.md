@@ -1,22 +1,24 @@
+
 # UltraStarFox
-Star Fox / StarWing (SNES, 1993), with modifications for easier creation of ROM hacks and general ease-of-use.
+Star Fox / Starwing source code, modified for ease-of-use and ROMHacking.
 
 ## Features
 
-- SuperFX Fast mode (21Mhz) support and various optimizations
-- FastROM (A bug with the SD2SNES (FXPak Pro) causes freezes and crashes on SHVC revisions of the SNES)
-- Lots of free bank space for new models, assets and code
-- 256 texture slots
-- 250 Faces/Vertices limit
-- Bugfixes and improvements
-- Uses ARGLINK from Star Fox 2 as linker instead of SL
-- rebuild color palette data using the palette packer (bldpal.bat)
-- Easier creation of wireframe models
-- Matching text data
-- Working StarWing title screen and German/PAL StarWing assets
-- SNES Mouse support
+- Uses GSU-2/Super FX 2 @21.4Mhz instead of MC1 @10.7Mhz
+- FastROM support (An SD2SNES/FXPak Pro bug causes instability on 2CHIP SNES revisions)
 - MSU-1 support (Original ASM patch by Kurrono, ported by Kando and Sunlit)
-- Kando was involved so you know it's good
+- SNES Mouse support and analog stick support via the SNES mouse
+- Very configurable, see SF\CONFIG\CONFIG.INC for more info
+- Lots of free ROM space
+- Bugfixes and improvements
+- 256 texture slots
+- 250 faces/vertices limit for models
+- Build process optimized for speed
+- Palettes and graphics crunched, textures interleaved, and fonts built at assembly
+- Uses ARGLINK and ARGSFX from Star Fox 2 as linker and assembler instead of SL and SASM
+- Easier creation of wireframe models (replace face3 and face4 with aface3 and aface4 in your shape file)
+- All Starwing PAL and Germany text/GFX for PAL builds
+- **Kando was involved so you know it's good**
 
 ## Building on Windows
 
@@ -24,31 +26,38 @@ Requirements: Microsoft Windows
 
 Download repo as ZIP and extract somewhere, or clone the repo with git via the command line.  
 
-To build ROM, run ``build.cmd``  
+To build ROM, run ``build.cmd``.  
 
-To build ROM with Logging, run ``build to log.cmd``
+To build ROM with Logging, run ``build to log.cmd``.  
 
-To rebuild color palettes, run ``build palette.cmd``  
+To clean, run ``clean.cmd``.  
 
-After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
+After building, a debug symbol map will be created at, and a bank space report at ``BANKS.CSV``.  
 
-## Building on Linux (Ubuntu)
+## Building on Linux
 
-**NOTE: this was tested on WSL with Ubuntu installed. there is a chance stuff doesn't work.**  
+**NOTE: this was tested on WSL with Ubuntu installed. Your mileage may vary.**  
 
-Requirements: Ubuntu (might work with Debian) DOSBox-X, git  
+Requirements: Ubuntu (might work with other distros) snap, DOSBox-X, git  
 
-[DOSBox-X deb package](https://cdn.discordapp.com/attachments/928458781266960415/1007476106485583872/dosbox-x_0.83.4-0.83.4_amd64-SDL2-deb.zip)  
+Install snapstore: ``sudo apt install snapd``  
+
+Install DOSBOX-X from snap: ``sudo snap install dosbox-x``  
 
 Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``  
 
-To build ROM, run ``build.sh``  
+To build ROM, run ``make``.  
 
-To build ROM with logging, run ``buildtolog.sh``  
+To build ROM with logging, run ``make log``.  
 
-To rebuild color palettes, run ``buildpalette.sh``  
+To clean, run ``make clean``.  
 
-After building, a debug symbol map will be created at ``SYMBOLS.TXT``.  
+After building, a debug symbol map will be created at ``SYMBOLS.TXT``, and a bank space report at ``BANKS.CSV``.  
+
+## Contributing
+
+PRs are welcome!  
+All changes to be submitted should be made to the [dev](https://github.com/Sunlitspace542/ultrastarfox/tree/dev) branch.  
 
 ## Helpful Links/tools
 
@@ -59,15 +68,10 @@ After building, a debug symbol map will be created at ``SYMBOLS.TXT``.
 [EarthBound Music Editor (But for Star Fox)](https://github.com/phonymike/ebmused4sf/)  
 [Star Fox Music Programming Starter Kit (by livvy94)](https://www.dropbox.com/sh/m3sk75dmsyx5tey/AACLDXVcQEJk3ezQCDBitEs7a?dl=0)
 
-## Discord Server
-[Exploratorium](https://discord.gg/VqvsTSmy)
-
-
 ## TODO
-1. OPTIMIZE  
-2. Strip out all Super Star Fox weekend-related code  
-3. Annotate and document code  
-4. Disassemble all BIN files in SND directory, add documentation on custom music and the like  
+1. Optimize game where possible (We already have FastROM and 21Mhz SuperFX 2, can we go any further?)  
+2. Annotate and document code (in progress)  
+3. MAYBE: Disassemble all BIN files in SND directory, add documentation on custom music and the like  
 
 ## Project Structure
 ```
@@ -91,7 +95,5 @@ ultrastarfox
 │   ├── SND: sound/music data
 │   └── STRAT: Code for Strategies (Object behaviors)
 ├── TOOLS: tools such as PACKER and SHAPED
-├── DOCS: .md format text files covering various aspects of Star Fox 2
-├── OPTIONALSTUFF: optional graphics files
-└── OTHER: Files for building MSPRITES .bin files
+└── DOCS: .md format text files covering various aspects of Star Fox
 ```

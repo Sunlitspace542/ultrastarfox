@@ -21,7 +21,6 @@
 	include	EXT\continue.ext
 	include	EXT\coltabs.ext
 	include	EXT\mem.ext
-	include	EXT\msu.ext
 	include	EXT\kstrats.ext
 
 ;------------------------------------------------------------------

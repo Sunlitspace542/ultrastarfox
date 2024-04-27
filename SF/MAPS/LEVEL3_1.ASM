@@ -1,13 +1,18 @@
+; 3-1 Corneria 3
 level3_1
+	IFEQ	noscrambleseq ; if noscrambleseq is off
+
 	meters_off
 	initlevel	1_1i,nofadenostage,mstarwipe_circle
 	mapwait	100
 	setvar.b	scramble,50
 
-	mapjsr	map1_1a
+	mapjsr	map1_1a ; Jump to SCRAMBLE map
 
 	setfadedown
 	waitfadefin
+
+	ENDC
 
 	mapcode_jsl	initblack_l
 	mapwait	1
@@ -66,7 +71,7 @@ level3_1
 	mapobj	1000,-800,0000,8000,bu_4,hard180yr_ISTRAT
 	mapobj	1500,1000,0000,10000,bu_2,hard180yr_ISTRAT
 
-	mapjsr	cl_ground
+	mapjsr	cl_ground ; Clear type
 	mapend
 
 

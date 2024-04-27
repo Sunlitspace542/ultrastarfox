@@ -1,3 +1,4 @@
+; 1-3 Boss Entry Cutscene
 pipescale	=	16
 
 

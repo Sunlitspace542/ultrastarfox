@@ -22,7 +22,6 @@
 ; The crash handler, as seen in the September 23rd, 1992 prototype.
 
 	INCPUBLICS	EXT\blink.ext
-
 ; get text color for each crash level, then go to stopall routine
 doblink	ai16
 	lda	#$1f+($1f<<5)+($1f<<10) ; White
@@ -40,12 +39,12 @@ doblink2	ai16
 	sta	blinkcol
 	ldx	#256-70
 	bra	stopall
-doblink3	ai16			
+doblink3	ai16
 	lda	#($1f<<5)+($1f<<10)	; cyan
 	sta	blinkcol
 	ldx	#256-55
 	bra	stopall
-doblink4	ai16			
+doblink4	ai16
 	lda	#($1f<<5) ; green (sound loop crashed)
 	sta	blinkcol
 	ldx	#256-30
@@ -67,14 +66,14 @@ stopall	stx	blinkval ; Store X to blinkval variable
 	pha ; Push A to stack
 	plb ; Pull data bank from stack
 	ENDC ; End conditional
-	a8i16 ; Set A to 8 bit
+	a8i16 ; Set A to 8 bit and X/Y to 16 bit
 	lda	#$80 ; Load $80 into A
 	sta	inidisp ; Store A at INIDISP register
 
-	; Load palette, tiles, and tilemap for crash handler
-	dmacgram	0,0,oopspal,512
-	dmavram	0,0,oopschr,16*1024
-	dmavram	0,16*1024,oopspic,2*1024
+	; Decrunch palette, tiles, and tilemap for crash handler
+	dmacgram	0,0,bgoopspac,512
+	decvramnotrans	0,0,oopsccr,16*1024
+	decvramnotrans	0,16*1024,oopspcr,2*1024
 
 	stz	cgadd ; Store 0 at CGADD register
 	lda	blinkcol ; Load the BLINK text color into A

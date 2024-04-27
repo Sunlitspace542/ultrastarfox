@@ -2448,9 +2448,9 @@ path_istrat
 	adc	pathx1
 	tay
 	lda.w	0,y
-	bpl	.normsh
+	bpl	.normsh2
 	inc	a
-.normsh	asra
+.normsh2	asra
 	sta.w	0,y
 	jmp	.add3
 	
@@ -2941,13 +2941,7 @@ trail_istrat
 ;---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---*---
 
 paths
-	IFEQ	CONTEST
 	incfile	PATH\pathdata.asm
-	fileslog	PATH\epathdat.asm
-	ELSEIF
-	fileslog	PATH\pathdata.asm
-	incfile	PATH\epathdat.asm
-	ENDC
 dpaths
 	incfile	PATH\dpathdat.asm
 kpaths

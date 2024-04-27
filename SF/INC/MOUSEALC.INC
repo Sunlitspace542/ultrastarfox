@@ -1,3 +1,4 @@
+	IFNE	mouseon
 ;****************************************************************
 ;*																*
 ;*		MOUSEALC.INC											*
@@ -6,7 +7,7 @@
 ;*		Modified by Kandowontu for ultrastarfox					*
 ;*		(c) 1992 Nintendo of America Inc.						*
 ;*		2022 Kandowontu											*
-;*																*
+;*	mouseon														*
 ;****************************************************************
 ;===================================================================
 ;               BG Space for character code
@@ -67,3 +68,4 @@ mouse_sb			; Previous switch status
 
 	alc	connect_st0,1	; Mouse connection change flag
 	alc	connect_st1,1	
+	ENDC	;mouseon

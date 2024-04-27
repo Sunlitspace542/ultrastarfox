@@ -1,7 +1,12 @@
+@echo off
+echo Crunching palettes...
 @del col.tmp
 @del col2.tmp
 @del allcols.col
 @copy NUL allcols.col
+rem syntax: 
+rem @call mc (file prefix) (start) (end)
+@call mc oops 0 2
 @call mc bg2-a 0 7
 @call mc bg2-b 0 13
 @call mc bg2-c 0 7
@@ -20,15 +25,14 @@
 @call mc cp 0 7
 @call mc cp-us 0 7
 @call mc cp-usp 0 7
-@call mc cp-g 0 7
+@call mc cp-p 0 7
 @call mc hole 0 7
 @call mc l 0 7
 @call mc e-test0 0 7
 @call mc e-test 0 7
 @call mc obj-1 8 13
-@call mc contest 0 7
-@call mc 2ep 0 9
-@packer /4000 allcols.col allcols.pac
-echo Palette Building Complete. You can now close DOSBox.
-pause
-exit
+@call mc bg2-e-p 0 9
+rem add new palettes before this line
+rem the order of this file must match the list in INC\KALCS.INC!
+cru allcols.col allcols.pac
+echo Palette crunching Complete.

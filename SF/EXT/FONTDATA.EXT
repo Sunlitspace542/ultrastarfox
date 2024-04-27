@@ -2,6 +2,6 @@
 	global	fontdata
 	global	perfecttxt,teamtxt,deadtxt,slippytxt,peppytxt,falcotxt
 	global	pausetxt,messages,totalscoretxt,scoretxt,slashtxt,percenttxt,percenttxt2,stagetxt
-	global	bonustxt,cessectxt,cesmintxt,scoretxt2
+	global	bonustxt
 
 

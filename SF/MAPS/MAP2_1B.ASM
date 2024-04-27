@@ -1,6 +1,6 @@
+; 1-2 Corneria 2 Part B
 map2_1b
 	incmap	2-1
-	fileslog	maps\c2-1.asm
 
 	fadeoutbgm
 	setbgm	bgm_boss1
@@ -11,38 +11,5 @@ map2_1b
 
 
 	maprts
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

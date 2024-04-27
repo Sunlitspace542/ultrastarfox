@@ -1,4 +1,4 @@
-
+; 2-6: Venom 2 Highway Part A
 map2_6a
 ;dash_car
 ;put on brake_car
@@ -154,7 +154,7 @@ map2_6a
 	setbgm	$12
 	markboss	boss26
 	start_65816
-	IFEQ	shieldboostcolorbox
+	IFNE	hidehudonbossdeath
 	lda	#1
 	sta.l	m_meters
 	ENDC

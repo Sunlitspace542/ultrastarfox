@@ -1,3 +1,4 @@
+; 1-6 Venom 1 Surface part A
 restart1_6
 	mapwait	2000
 	mapgoto	cont1_6
@@ -292,7 +293,7 @@ boss1666
 	mapwaitboss
 	markboss	boss16
 	start_65816
-	IFEQ	shieldboostcolorbox
+	IFNE	hidehudonbossdeath
 	lda	#1
 	sta.l	m_meters
 	ENDC

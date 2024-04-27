@@ -5,7 +5,7 @@
 
 	include	INC\stratequ.inc
 	include	INC\mapstructs.inc
-
+	include	EXT\strings.ext
 	include	EXT\mario.ext
 	include	EXT\dstrats.ext
 	include	EXT\d2strats.ext
@@ -37,7 +37,6 @@
 	include	EXT\expstrat.ext
 	include	EXT\continue.ext
 	include	EXT\trans.ext
-	include	EXT\msu.ext
 	include	INC\bgmacs.inc
 
 

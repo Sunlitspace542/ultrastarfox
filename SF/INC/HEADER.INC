@@ -1,13 +1,12 @@
 
+	include	INC\bdays.inc
+
 ;---------------------------------------------------------------------
 ; listing mode equates
 
 MAKE_SHAPE_REPORT	=	0	; generate shapes report (slow)
 MAKE_STRAT_REPORT	=	0	; generate strategy macro report (f. slow)
 TIMINGS		=	0	; generate timings report (fast)
-
-;---------------------------------------------------------------------
-; assemble equates
 
 ;---------------------------------------------------------------------
 ; display mode equates
@@ -20,72 +19,63 @@ RAMLEFT		=	1	; displays information on ram space
 
 ;-----------------------------------------------------------------------
 
+; Turn ANSI colour codes off if assembler output is being written to a log file
+	IFD	NOANSI
+ANSI		=	0
+	ENDC
+
 	IFEQ	ANSI
 TITLE_BAR	=	0
 	ENDC
 
+	include	INC\ifcold.inc
 
-	IFND	filelist
-	IFD	makefile
-filelist	=	1
-	fopen	+files.log
-	printf	"%n--------------------------------------------%n"
-	fclose
-	ELSEIF
-filelist	=	0
-	ENDC
-	ENDC
-
-
-	INCLUDE	ASM\ifcold.asm
-
+; Macros
 	include	INC\macros.inc
 
-
+; reset timer
 totaltime	=	0
 	gettime	starttime
 
+; Constants
+	include	INC\vars.inc
 
-	include	vars.inc
-
-	include	INC\sfxregs.inc
+; System defines
+	include	INC\sfcregs.inc	; SNES registers
+	include INC\mregs.inc	; MARIO chip registers
 	IFNE	msu
-	include	INC\msuregs.inc
-	include	INC\msutrks.inc
+	include	INC\msuregs.inc	; MSU-1 registers
+	include	INC\msutrks.inc	; MSU-1 tracklist
 	ENDC
+
+; Sound effect IDs
 	include	INC\soundequ.inc
+
+; Data structures
 	include	INC\structs.inc
+
+; Memory allocations
 	include	INC\alcs.inc
 
 
 
 ;---------------------------------------------------------
 ; sarcastic set up
-;	send	$7d
 
-;	fabcard	$290
 	suppress expr
 
 	ANSI_ON
 	
-	run	"initial_memory = %k"
+; get and define initial assembler ram
+	run	"initial_assembler_memory = %k"
 
-
+; define message to print when assembly of a file completes
 	defend	"%00      %ie Error(s), %iw Warning(s). (%36",totaltime/100,".",totaltime-((totaltime/100)*100),"s%00)%n"
+; define generic error message
 	deferror	"%00%31%01** %q%f%q (%l) %d: %e %u**%00 %n%s"
-;	deferror	"%d%e%q%f%q%n	extern	%u%n"
-
-;	fopen	status.doc
-;	printf	"-------------------------------- STARGLIDER -----------------------------------%n"
-;	fclose
-;	printf	"%01-------------------------------- STARGLIDER -----------------------------------%00%n"
 
 
 ;---------------------------------------------------------
-
-	IFD	makefile
-	fileslog	<$(STDFILES)>
-	ENDC
 
 
 

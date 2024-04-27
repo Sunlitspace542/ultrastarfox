@@ -54,14 +54,15 @@ initialise_l ; Initialize game
 	ldx	#mdecrunch&WM
 	jsl	runmario_l ; Run the MARIO chip
 
+	; Copy decrunched palettes into memory
 	a16 ; set A to 16 bit
 	ldx	#0 ; load 0 into X
 .lp	lda.l	$701000,x ; Load contents of addr $701000 + X into A
 	sta.l	gamepalettes,x ; store A to gamepalettes variable + X
 	inx ; Increment X
 	inx ; Increment X
-	cpx	#8192 ; Compare 8192 with X
-	bne	.lp ; Branch to .lp if X != 8192
+	cpx	#(maxcolscru*32) ; Compare palette buffer length with X
+	bne	.lp ; Branch to .lp if X != palette buffer length
 
 	plp ; Pull processor status from stack
 	rtl ; Return from subroutine (Long)
@@ -126,7 +127,7 @@ initgame_l ; Initialize game
 	jsl	kill_list_l	; format alien list
 	jsl	initmem_l ; Initialize RAM
 
-	lda	mapbank
+	lda	mapbank	; Load mapbank into A
 	pha
 
 ; set up player's objects
@@ -209,23 +210,12 @@ gameloop2 ; Game loop
 	bit	#key_start ; AND A with #key_start ($10)
 	beq	.nopause ; branch to .nopause if equal
 
-	IFEQ	CONTEST ; Start conditional: if CONTEST != 0 (=1) (SSFW)
 	jsr	dopause ; go to dopause subroutine
-	ENDC ; End conditional
 .nopause
 	jsl	setblack_l ; Set screen to black
 	jsl	stratdebug_l ; Go to Strat Debug subroutine
 	jsl	transfer_l	; Go to transfer loop subroutine ;transfer bitmap, do strats etc.
 	jsl	friends_messages_l ; Go to Friends Messages subroutine
-
-cestimeron	=	0 ; Timer flag
-	IFEQ	cesdemo-1 ; Start conditional: if CESDEMO-1 !=0 (=1)
-cestimeron	=	1 ; Set timer flag to 1
-	ENDC ; End conditional
-
-	IFNE	contest ; Start conditional: if CONTEST !=0 (=1) (SSFW)
-cestimeron	=	1 ; Set timer flag to 1
-	ENDC ; End conditional
 
 	IFNE	cestimeron ; Start conditional: if CESTIMERON !=0
 	jsl	cestimer_l ; Go to Timer subroutine
@@ -346,7 +336,7 @@ gameover_l	; Game over screen
 
 	jsl	gameoverinit_l ; Go to Game Over Initialization subroutine
 
-	a8i16 ; set A to 8 bit
+	a8i16 ; Set A to 8 bit and X/Y to 16 bit
 
 	bgm	gameover ; Set BGM to gameover
 	stz	defaulttrain ; stz to defaulttrain var
@@ -382,7 +372,7 @@ gameover_l	; Game over screen
 .lp	jsr	fadehalf2norm ; go to fadehalftonorm subroutine
 	jsl	setblack_l ; Set screen to black (fade?)
 	jsl	transfer_l ; go to transfer loop subroutine
-	a8i16 ; Set A to 8 bit
+	a8i16 ; Set A to 8 bit and X/Y to 16 bit
 	window_addr	halffade ; Set window to half fade
 	lda	wm_val,x ; Load wm_val + x into a
 	bne	.lp ; Repeat until A = 0
@@ -416,7 +406,7 @@ gameover_l	; Game over screen
 
 
 end_game_seq ; Stuff to do with Game End Demo?
-	a8i16 ; Set A to 8 bit
+	a8i16 ; Set A to 8 bit and X/Y to 16 bit
 	lda	#0 ; Load 0 into A
 	sta.l	m_meters ; Store A at m_meters variable (hide meters)
 
@@ -550,7 +540,7 @@ stagescore	a16 ; Set A to 16 bit
 
 	jsl	endseq_l ; Jump to End Sequence
 
-	a8i16 ; Set A to 8 bit
+	a8i16 ; Set A to 8 bit and X/Y to 16 bit
 	bgm	staff ; Set BGM to Staff Roll (Main Theme)
 	lda	#creditsmap>>16 ; Load credits map shifted right by 16 into A
 	ldx	#creditsmap&$7fff ; Load credits map &7fff into X
@@ -1041,7 +1031,6 @@ namegfxpos	db	2,11*8 ; Position for Peppy name gfx
 	db	22,11*8 ; Position for Slippy name gfx
 
 calcstageperc	php ; Push processor status to stack
-	IFEQ	CONTEST ; Start Conditional: if CONTEST = 0 (not SSFW)
 	; take 7% of total killed for every teammate alive and add to total killed
 	; Check if any teammates are down
 	ai8 ; Set A/X/Y to 8 bit
@@ -1061,11 +1050,6 @@ calcstageperc	php ; Push processor status to stack
 .deadfalco	ai16 ; set A/X/Y to 16 bit ; NICE
 	and	#$ff ; AND A with $FF
 	sta	tpa ; store A to tpa var
-
-	ELSEIF ; Else if CONTEST = 1 (is SSFW)
-	a16 ;  Set A to 16 bit
-	stz	tpa ; Store 0 at tpa var
-	ENDC ; End conditional
 
 	a8 ; Set A to 8 bit
 	stz	stageclear ; Store 0 at stage clear var
@@ -1121,13 +1105,8 @@ printspeclp
 	jsl	transfer_l ; Go to transfer loop subroutine
 
 	ai16 ; Set A/X/Y to 16 bit
-	IFEQ	CONTEST ; Start conditional, IF CONTEST =0 (not SSFW)
 	clrmes	totalscoretxt,16,44	;total score
-	ELSEIF ; Else if CONTEST=1 (is SSFW)
-	clrmes	totalscoretxt,16,100	;total score
-	ENDC ; End conditional
 
-	IFEQ	CONTEST ; Start conditional: if CONTEST = 0 (not SSFW)
 	a16 ; set A to 16 bit
 	jsr	calctotalscore ; Get total score
 	lda	tpa ; Load tpa var into A
@@ -1141,26 +1120,14 @@ printspeclp
 	call_mario mprtperc	; Tell MARIO chip to print percentage?
 
 	call_mario mprt2zeros ; Tell MARIO chip to print 2 zeroes
-	ELSEIF ; Else if CONTEST = 1 (is SSFW)
-
-	lda	#176-16 ; Load result of 176-16 into A
-	sta	x1 ; Store A at X1 var
-	lda	#100 ; Load 100 into A
-	sta	y1 ; Store A at Y1 var
-	jsl	printpscore_l ; Print score
-	ENDC ; End conditional
 
 
 	lda	clb1 ; Load screen print status into A
-	beq	.graph
+	beq	.graph ; branch to .graph if A != 0
 	dec	a ; Decrement A
-	bne	.graph
+	bne	.graph ; branch to .graph if A != 9
 
-	IFEQ	CONTEST ; Start conditional: if CONTEST = 0 (not SSFW)
-	clrmes	bonustxt,16,24		;print 'bonus...'
-	ELSEIF ; Else if CONTEST=1 (is SSFW)
-	clrmes	bonustxt,16,68		;print 'bonus...'
-	ENDC ; End conditional
+	clrmes	bonustxt,16,24 ;print 'bonus...'
 
 	lda	plotx1
 	lbeq	.doneg
@@ -1170,23 +1137,15 @@ printspeclp
 	lbne	.doneg
 	a8
 
-	IFEQ	CONTEST
 	inc	credits
 	lda	#1
 	sta	onecredspr
-	ELSEIF
-	a16
-	lda.l	playerscore
-	clc
-	adc	#10000
-	sta.l	playerscore
-	ENDC
 
 	a16
 	jmp	.doneg
 .graph
 	sta	clb1
-	cmp	#2			;bonus sound
+	cmp	#2 ;bonus sound
 	bne	.nc
 	a8
 	trigse	01ah
@@ -1194,20 +1153,12 @@ printspeclp
 	lda	#10
 	sta	plotx1
 .nc
-	IFEQ	CONTEST
 	clrmes	scoretxt,16,24
-	ELSEIF
-	clrmes	scoretxt,16,68
-	ENDC
 
 	lda	#60
 	sta.l	m_x1
 
-	IFEQ	CONTEST
 	lda	#24
-	ELSEIF
-	lda	#68
-	ENDC
 
 	sta.l	m_y1
 	lda	cla1
@@ -1217,11 +1168,7 @@ printspeclp
 	lda	#176
 	sta.l	m_x1
 
-	IFEQ	CONTEST
 	lda	#24
-	ELSEIF
-	lda	#68
-	ENDC
 
 	sta.l	m_y1
 	lda	cla1
@@ -1243,13 +1190,6 @@ printspeclp
 	trigse	$12
 	a16
 
-	IFNE	CONTEST
-	lda.l	playerscore
-	clc
-	adc	#30
-	sta.l	playerscore
-	ENDC
-
 	lda	cla1
 	clc
 	adc	#3
@@ -1257,22 +1197,6 @@ printspeclp
 
 	cmp	cla2
 	jl	.doneadd
-
-	IFNE	CONTEST
-	lda	cla2
-	sec
-	sbc	cla1
-	asl	a
-	sta	cla1
-	asl	a
-	asl	a
-	clc
-	adc	cla1
-	clc
-	adc.l	playerscore
-	sta.l	playerscore
-
-	ENDC
 
 	lda	cla2
 	sta	cla1
@@ -1298,11 +1222,10 @@ printspeclp
 .doneadd
 
 ;----------------
-	IFEQ	CONTEST
 	a16
 	IFEQ	GERMAN
 	clrmes	teamtxt,48,69		;print "shield of team mate"
-	ELSEIF
+	ELSEIF ; german = 1
 	clrmes	teamtxt,16,69		;print "shield of team mate"
 	ENDC
 
@@ -1417,8 +1340,6 @@ printspeclp
 	cpy	#3
 	lbne	.lp
 
-	ENDC
-
 
 	a8
 	lda	clb2
@@ -1446,8 +1367,6 @@ finis1
 	longa
 	longi
 checkbonus	jsr	calctotalscore
-
-	IFEQ	CONTEST
 	ldx	#0
 .cklp	lda.l	bonertab,x
 	cmp	tpa
@@ -1459,15 +1378,6 @@ checkbonus	jsr	calctotalscore
 	cmp	clbm
 	jg	.set
 	rts
-	ELSEIF
-
-
-	lda	cla1
-	cmp	#100
-	beq	.set
-	rts
-
-	ENDC
 .set	lda	#20			;wait 20 frames before bonus
 	sta	clb1
 	rts
@@ -1483,7 +1393,7 @@ pauseStart
 	RTS
 
 pauseEnd
-; the original patch NOP'd instructions
+; the original MSU-1 patch NOP'd instructions
 ; to make room and moved those 2 here
 ;	STZ $1202 ; cont0
 ;	STZ $1204 ; contl0
@@ -1536,9 +1446,9 @@ dopause	php
 
 printpause	ai16
 
-	IFEQ	GERMAN
+	IFEQ	GERMAN ; german = 0
 	lda	#90 ; x value (in pixels)
-	ELSEIF
+	ELSEIF ; german = 1
 	lda	#90+4 ; x value (in pixels)
 	ENDC
 
@@ -1655,10 +1565,10 @@ dogameframe	php
 
 
 
-*****************************************************************************
-*****************************************************************************
-*****************************************************************************
-*****************************************************************************
+;*****************************************************************************
+;*****************************************************************************
+;*****************************************************************************
+;*****************************************************************************
 
 
 
@@ -1673,7 +1583,7 @@ initscreen_l
 
 	lda	timeupr		;clear IRQ's
 	a16
-	lda.l	mflags
+	lda.l	m_sfr
 
 
 ;Set Mario Chip for 16 colours 192 pixel high
@@ -1729,7 +1639,7 @@ initscreen_l
 	lda	drawmap+1		;set mario draw base
 	lsr	a
 	lsr	a
-	sta	mscrbase
+	sta	m_scbr
 
 ;Set hardware pointers to screen
 	lda	vmap1+1
@@ -1777,16 +1687,6 @@ initscreen_l
 	sta	tm
 	lda	#7
 	sta	ts
-
-;Setup HDMA tables
-;	a16
-;	ldx	#0
-;.loop	lda.l	hdma_start,x
-;	sta.l	xhdma_start,x
-;	inx
-;	inx
-;	cpx	#hdma_end-hdma_start
-;	bcc	.loop
 
 	jsl	setnoclash_l
 
@@ -2140,7 +2040,6 @@ alienflags_l
 	a8
 	test_alsflag		y,invisible
 	bne			.nextal
-;	s_jmp_alsflag		y,invisible,.nextal
 
 	a16
 	lda.w	al_shape,y
@@ -2161,12 +2060,10 @@ alienflags_l
 	IFNE ALLRANGE
 	testjoypad	select
     beq	.dontkill
-	ENDC
-	IFEQ ALLRANGE
+	ELSEIF ; allrange = 0
 	s_test_var	B,gameflags,#gf_nozremove
 	bne	.dontkill
 	ENDC
-;	s_jmp_varAND		B,gameflags,#gf_nozremove,.dontkill
 
 	test_alcollflags	y,acf_firstframe
 	bne	.dontkill
@@ -2624,12 +2521,12 @@ initdeferredlist
 
 
 
-***************************************************************
-*
-*   Binary tree Z sort
-*
-*   By Krister Wombell and Jon Wolff.
-*
+;***************************************************************
+;*
+;*   Binary tree Z sort
+;*
+;*   By Krister Wombell and Jon Wolff.
+;*
 zb_behind	equ	0
 zb_infront	equ	2
 
@@ -3042,14 +2939,13 @@ makeBG2black_l
     	rtl
 
 
-seapal	dw $0000,$34c0,$38e0,$3d00,$4120,$4540,$4960,$4d80
-	dw $51a0,$55c0,$59e0,$5e00,$6220,$6640,$6a60,$6e80
-groundpal	dw $0000,$0088,$00c9,$04ea,$090b,$0d2c,$114d,$156e
-	dw $198f,$1db0,$21d1,$25f2,$2a13,$2e34,$3255,$3676
-mist2col	inccolfile	data\col\mist.col,6,8
-daycol	inccolfile	data\col\bg2-c.col,1,2
-	inccolfile	data\col\bg2-c.col,5,6
-gameoverpal	inccolfile	data\col\over_d.col,7,8
+seapal	inccolfile	DATA\COL\SEA.COL,0,1
+groundpal	inccolfile	DATA\COL\GROUND.COL,0,1
+mist2col	inccolfile	DATA\COL\mist.col,6,8
+daycol
+	inccolfile	DATA\COL\bg2-c.col,1,2
+	inccolfile	DATA\COL\bg2-c.col,5,6
+gameoverpal	inccolfile	DATA\COL\over_d.col,7,8
 
 ;---------------------------------------------------------------------------
 

@@ -8,6 +8,7 @@
 	include	INC\gridvars.inc
 
 	include	INC\stratequ.inc
+	include	EXT\strings.ext
 
 	extern	arctantab
 
@@ -50,13 +51,6 @@ yyy	mario	on
 mariocodelen	=	*-mariobegin
 
 	bankend	1
-
-	bank	41
-oopspal	incbin	data\oops.pal
-oopschr	incbin	data\oops.chr
-oopspic	incbin	data\oops.pic
-	bankend	41
-
 
 	include	INC\tail.inc
 

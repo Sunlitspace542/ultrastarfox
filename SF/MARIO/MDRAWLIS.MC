@@ -757,9 +757,9 @@ rzrad	equr	6
 	mnop		; return to caller
 
 
-boostx	=	22*8 ; Boost meter X pos
-boosty	=	22*8 ; Boost meter Y pos
-boostheight =	8
+boostx	=	boostmeterx ; Boost meter X pos
+boosty	=	boostmetery ; Boost meter Y pos
+boostheight =	boostmeterheight ; Boost meter height
 
 mboostmeter
 	mpush	r11
@@ -860,9 +860,9 @@ mboostmeter
 
 	ENDC
 
-damagex	=	8 ; Shield meter (Damage meter) X pos
-damagey	=	22*8 ; Shield meter (Damage meter) Y pos
-damageheight =	8
+damagex	=	shieldmeterx ; Shield meter (Damage meter) X pos
+damagey	=	shieldmetery ; Shield meter (Damage meter) Y pos
+damageheight =	shieldmeterheight ; Shield meter (Damage meter) height
 
 mdamagemeter
 	mpush	r11
@@ -1147,8 +1147,6 @@ mdrawhorzline
 
 planBMPSZ	equ	16*16*64
 
-	printf	"sharp test = ",:$*,"%n"
-
 mclrmapscreen
 	sub	r0
 	miwt	r1,bitmap1+bitmapbase
@@ -1164,8 +1162,6 @@ mclrmapscreen
 	nop
 
 pepperscreensize	=	16*24*32
-
-	printf	"sharp test = ",:$*,"%n"
 
 mclrpepperscreen
 	sub	r0
@@ -1201,7 +1197,6 @@ mclrbitmaps2	; clear the first half of the bitmap, called from trans
 	lob
 	beq	.noclr
 	nop
-	printf	"sharp test = ",:$*,"%n"
 	sub	r0
 	miwt	r1,bitmap1
 	miwt	r12,gametranlen1/2
@@ -1221,7 +1216,6 @@ mclrbitmaps3	; clear the second half of the bitmap
 	lob
 	beq	.noclr
 	nop
-	printf	"sharp test = ",:$*,"%n"
 	sub	r0
 	miwt	r1,bitmap1+gametranlen1
 	miwt	r12,gametranlen2/2

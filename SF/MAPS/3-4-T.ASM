@@ -1,4 +1,4 @@
-;3-4-T
+;3-4-T: 3-4 Sector Z Base Tunnel Map
 
 	mapwait		01000
 

@@ -1,0 +1,61 @@
+Version 2.0
+- All GFX and palettes crunched, all FXGFX interleaved when built
+- Added player lives equate
+- Hi-poly arwing replaces the low poly ship everywhere when hi-poly arwing enabled
+- Added fontconv/foxfont by Phonymike
+- Added option to disable SCRAMBLE sequence
+- Added option to disable MARIO chip instruction cache
+- Replaced PACKER with sf_crunch when packing palettes, sf_crunch has a higher compression ratio
+- MOJI_0 and MOJI_D now built by the makefile using foxfont
+- Fileslog removed
+- Replaced SASM in palette building process with INCCOL custom tool, saves some time when building
+- Move all palette fades to their own .COL files
+- Added 30FPS unlock option
+- SNES mouse BIOS not assembled unless mouse is enabled
+- Added analog controls via SNES mouse (by Kando)
+- Added assembler and MAKE.EXE documentation
+- Compiler optimizations applied to sf_crunch, saving 5 seconds when building
+- Remaining assembler heap printed in memory usage report for troubleshooting purposes
+- Debug font moved into its own CGX file, added options for which debug font to use: Vanilla, SFEX, or Star Glider Alpha/SNESGlider
+- Assembler now outputs BANKS.CSV, listing banks in the order they were processed and how much space (in bytes) remains
+- MARIO chip registers now use official names from the SNES developer manual, moved from ALCS.INC to MREGS.INC
+- SASM heap defined in makefile
+- printrouln_on option fixed
+- ANSI color codes disabled when assembler output is written to a LOG file
+- All Super Star Fox Weekend (contest) code removed
+- All CES demo code removed
+- Added new game timer option, replacing the CES demo timer
+- Added kandoprint macro for printing text using the debug font
+- Added STRINGS.ASM and definestring macro to define strings to be printed with kandoprint
+- The big one: codebase ported to ARGSFX (Star Fox 2's assembler)
+- Custom patches applied to ARGSFX to fix some annoyances:
+	- _SASM label undefined so the codebase can be made backwards compatible with SASM
+	- CHECKMAC duplicate macro checking disabled by default so macros can be redefined
+- Add ARGSFX, ARGLINK/SL and macro info to assembler manual
+- Sound BIN labels renamed to indicate what data they contain
+- Removed unnecessary write to CGRAM line 2
+- ALLCOLS limit cracked, maxcolscru equate added to change limit
+- Crash handler graphics and palette crunched to save ROM space
+- ALLCOLS lines free, Xroutines space free prints added to memory usage report, assembler now will warn/fail if any memory space is full/exceeded
+- Added character map defines for MOJI2.FON
+- Fix case of BAT files for Linux
+- Add bgconv background converter, add ports of bgconv and mugconv for Linux
+- HUD hide on boss death separated from boostshieldcolorbox equate
+- Texture folder updates by SegaRetro (PR #29,#30)
+- Message test now actually loops through every message
+- Option added to enable MAPMSG in the intro
+- GFX equates for nova bomb icons
+- Debug font is now properly trimmed down and included at assembly
+- Added marioprint/marioprintdec macros to allow printing strings using MOJI_0
+- Message box position equates added
+- Text color parameter added to message macro, remove redundant message macros for other colors
+- Simplified message macro to remove main/alt language text fields, all message files split into just their language, ENGLISH.INC split from JAPANESE.INC
+- Language configuration moved from ROM.INC to LANGUAGE.INC
+- Memory space checks simplified into macros
+
+Version 1.0
+- MSU-1 support added
+- Remove configuration equates from VARS.INC and move them into SF/CONFIG, sorted into categories
+
+Pre-1.0
+See commit logs

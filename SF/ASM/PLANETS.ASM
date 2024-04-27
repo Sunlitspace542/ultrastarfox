@@ -27,10 +27,6 @@ planetcheat	=	0
 planetcheat	=	1
 	ENDC
 
-	IFEQ	cesdemo-2
-planetcheat	=	1
-	ENDC
-
 	incpublics	EXT\planets.ext
 
 p_bg1_cgx1	=	0
@@ -197,17 +193,7 @@ initplanets_l
 	a8
 ;	stz	whichroute 	; (not to be cleared unless reset pressed)
 
-; set number of lives
-cestimeron	=	0
-
-	IFEQ	cesdemo-1
-cestimeron	=	1
-	ENDC
-
-	IFNE	contest
-cestimeron	=	1
-	ENDC
-
+; set starting time
 	IFNE	cestimeron
 
 	lda	#cestime
@@ -216,9 +202,10 @@ cestimeron	=	1
 	sta.l	cessecond
 	sta.l	cessecond10
 
-	ENDC
+	ENDC	;cestimeron
 
-	lda	#3
+; Set player's lives
+	lda	#numlives
 	sta	lives
 	IFEQ	debuginfo2
 	stz	credits
@@ -238,10 +225,6 @@ cestimeron	=	1
 	lda	#stagepaths.path19-stagepaths
 	sta	routes+6
 
-;	routechange	1
-;	routechange	2
-;	routechange	bhole3
-
 ; clear stage, map mode and screen transfer latch
 	stz	stage
 	stz	mapmode
@@ -251,7 +234,6 @@ cestimeron	=	1
 	rtl
 
 planetseq_l
-	IFEQ	contest
 
 	a8i16
 	jsr	convertroute
@@ -263,14 +245,6 @@ planetseq_l
 	stz	nosetport3
 
 	disable
-
-
-
-
-;	lda	#1
-;	sta	stage
-;	lda	#1
-;	sta	whichroute
 
 	a16
 	lda	#0000
@@ -296,7 +270,7 @@ planetseq_l
 	lda	drawmap+1		; set mario draw base
 	lsr	a
 	lsr	a
-	sta	mscrbase
+	sta	m_scbr
 
 	lda	#-1
 	sta	currentplanet
@@ -398,16 +372,6 @@ planetseq_l
 	sta.l	xinidisp7
 	cmp	#$f
 	bne	.nxtfad		; fade the screen in quickly
-
-; fast planet screen check:
-;	jsl	read_joypadt_l
-;	TESTKEYDOWN	SELECT
-;	beq	.nostart
-;	TESTKEYDOWN	B
-;	beq	.nostart
-;	TESTKEYDOWN	A
-;	beq	.nostart
-;	fast
 .nostart
 
 	a8i16
@@ -446,7 +410,6 @@ planetseq_l
 	sec
 	sbc	#4
 	sta.l	mspr_pal
-;	jsr	fadelines
 .full
 	jsr	switchbuffer_fast	; switch in new screen
 	lda	gameframe
@@ -463,23 +426,14 @@ planetseq_l
 	bit	#pad_SELECT!pad_LEFT!pad_RIGHT!pad_UP!pad_DOWN
 	beq	.nopress
 .fadeoot
-;	lda.l	mspr_pal
-;	inc	a
-;	inc	a			; fade out the lines
-;	cmp	#16
-;	beq	.nomorefadeout
-;	sta.l	mspr_pal
-;	jsr	fadelines2
 	lda	#16
 	sta.l	mspr_pal
-;	bra	.fadeoot
 .nomorefadeout
 	jsr	waitdma224
 	jsl	undrawplanetlines_l	; clear the course line entirely
 	lda	trig0
 	bit	#pad_LEFT!pad_SELECT!pad_UP
 	a8
-;	TESTJOYPAD	LEFT		; if left was pressed
 	bne	.doleft			; go to doleft
 
 	lda	whichroute
@@ -498,15 +452,6 @@ planetseq_l
 .carryon2
 	trigse	se_cursor
 .nxtfad123
-;	jsr	fadelines2		; transfer the cgx
-;	jsr	waitdma224
-;	jsl	drawplanetlines_l	; draw complete course (stage=max)
-;	lda.l	mspr_pal			; fade register
-;	beq	.okey
-;	dec	a
-;	dec	a
-;	sta.l	mspr_pal		; fade it up, palette 15 is dark
-;	bra	.nxtfad123
 .okey
 
 .carryon
@@ -517,11 +462,9 @@ planetseq_l
 ; NOTE: The following bit is best removed if the final game is released
 
 .nopress
-	IFNE	planetcheat
-	IFNE	cesdemo-2
+	IFNE	planetcheat ; planetcheat
 	TESTJOYPAD	X		; cheat mode select?
 	beq	.nocheat
-	ENDC
 	jsr	waitdma224
 	jsl	undrawplanetlines_l	; clear the appropiate bitz
 	lda	#10
@@ -534,7 +477,7 @@ planetseq_l
 	jsl	drawplanetlines_l
 	jmp	.cheatmode		; hit that funky cheat
 .nocheat
-	ENDC
+	ENDC ; planetcheat
 
 	lda	trig0
 	bit	#pad_START!pad_A!pad_B
@@ -550,13 +493,12 @@ planetseq_l
 	a16
 	lbra	.continuewithgame	; and get on with it
 
-	IFNE	planetcheat
+	IFNE	planetcheat ; planetcheat
 
 .cheatmode
 	jsr	drawroutename		; easy, normal or hard
 	a8i16
 .cheatloop
-	IFEQ	0
 	jsl	read_joypadt_l		; cheat
 	TESTJOYPAD	DOWN
 	bne		.newroute
@@ -604,15 +546,6 @@ planetseq_l
 	beq	.nocheatleft		; cheat
 	lda	stage			; cheat
 	beq	.nocheatleft		; cheat
-;	lda	#16			; cheat
-;	sta	fadecount		; cheat
-;	stz	togglebit		; cheat
-;	inc	stage			; cheat
-;	jsr	waitdma224		; cheat
-;	jsl	undrawplanetlines_l	; cheat
-;	dec	stage			; cheat
-;	jsr	waitdma224		; cheat
-;	jsl	drawplanetlines_l	; cheat
 	dec	stage			; cheat
 	jsr	setshippos
 	bra	.waitoncemore		; cheat
@@ -631,10 +564,7 @@ planetseq_l
 .nocheatright				; cheat
 	jsr	waitdma224		; cheat
 	jsl	drawplanetlines_l	; cheat
-;	jsr	switchbuffer_fast	; cheat
-;	jsr	fadecharsin		; cheat
-;	lbcc	.cheatloop		; cheat
-	ENDC
+
 .waitoncemore				; cheat
 	jsl	read_joypadt_l		; cheat
 	TESTJOYPAD	START		; cheat
@@ -653,27 +583,17 @@ planetseq_l
 	bra	.continue
 .noright	TESTJOYPAD	LEFT		; cheat
 	beq	.noleft			; cheat
-;	inc	stage			; cheat
-;	jsr	waitdma224		; cheat
-;	jsl	undrawplanetlines_l	; cheat
-;	dec	stage			; cheat
-;	beq	.continue		; cheat
 	lda	stage
 	beq	.continue
 	dec	stage			; cheat
 	jsr	setshippos
-;	jsr	waitdma224		; cheat
-;	jsl	drawplanetlines_l	; cheat
 	trigse	se_cursor
 .noleft					; cheat
 	bra	.waitoncemore		; cheat
 .continue					; cheat
-;	jsr	waitdma224		; cheat
-;	jsl	drawplanetlines_l	; cheat
 	brl	.waitoncemore
 	brl	.cheatloop		; cheat
 .cheatfinished				; cheat
-;	jsr	waitdma224		; cheat
 	jsl	drawplanetlines_l	; cheat
 	jmp	.continuewithgame	; cheat
 
@@ -684,9 +604,7 @@ planetseq_l
 .shownext
 	a8
 	jsr	drawroutename		; tell the player how easy it is
-;	lda	#2
 .switchonloop
-;;	pha
 	ldx	x1
 	phx
 	lda	#-1
@@ -700,27 +618,10 @@ planetseq_l
 	stx	x1
 	jsr	moveshipalongpath
 	bcc	.switchonloop
-;;	pla
-;;	dec	a
-;;	bne	.switchonloop
-
-;	dec	stage
-;	jsl	drawplanetlines_l	; draw lines between completed stages
-;	inc	stage
-;; join the dots to the next stage
-;;	stz	trans_flag
-;	dec	stage
 .loopyd
-;	jsr	waitdma224
-;;	jsr	switchbuffer_fast
-
-;	jsr	fadecharsin	; plinkety plink
-;	bcc	.loopyd		; I am going dotty
-;	inc	stage
 
 	jsr	waitdma224
 	jsl	drawplanetlines_l	; just to make sure, draw it again
-;	lbcc	.loopyd
 
 	lda	#tm_planets
 	sta	trans_flag
@@ -777,7 +678,6 @@ planetseq_l
 .nxtwait	pha
 	txa
 	jsr	fadecol0		; fade colour 0 and timed wait
-;	jsr	waitdma224
 	pla
 	dec	a
 	bne	.nxtwait		; slow down the fade a bit
@@ -867,8 +767,6 @@ planetseq_l
 
 
 	jsr	copyfox
-;	jsr	clearpepperscreen
-;	jsr	dmapepperscreen
 
 
 	waitdma	planvw_pos2
@@ -911,7 +809,6 @@ planetseq_l
 
 	jsr	drawplanetincentre	; reposition planet in bitmap
 	jsr	dma256screen_fast	; dma it
-;	jsr	switchbuffer		; switch it in, then..
 
 	a8
 	lda	#-40
@@ -1200,7 +1097,7 @@ planetseq_l
 	lda	drawmap+1		;set mario draw base
 	lsr	a
 	lsr	a
-	sta	mscrbase
+	sta	m_scbr
 	stz	trans_flag
 
 	a16				;set text prt parameters
@@ -1210,48 +1107,6 @@ planetseq_l
 
 	ai16
 	setlevel			; set starting level
-
-	ELSEIF
-; contest mode
-	a8
-	bgm	map
-	lda	stage
-	beq	.1
-	cmp	#2
-	beq	.3
-	cmp	#1
-	beq	.2
-.4	ai16
-	lda	#level1_4&$7fff
-	sta	mapptr
-	a8
-	lda	#level1_4>>16
-	bra	.owari
-
-.2	ai16
-	lda	#level1_2&$7fff
-	sta	mapptr
-	a8
-	lda	#level1_2>>16
-	bra	.owari
-.3
-	ai16
-	lda	#level1_3&$7fff
-	sta	mapptr
-	a8
-	lda	#level1_3>>16
-	bra	.owari
-.1
-	ai16
-	lda	#level1_1&$7fff
-	sta	mapptr
-	a8
-	lda	#level1_1>>16
-.owari
-	sta	mapbank
-	a16
-
-	ENDC
 
 ;	slow
 	jml	gamestart
@@ -2844,7 +2699,7 @@ setup_planets_l
 	lda	drawmap+1		;set mario draw base
 	lsr	a
 	lsr	a
-	sta	mscrbase
+	sta	m_scbr
 
 ;Set hardware pointers to screen
 	lda	vmap1+1
@@ -3388,221 +3243,90 @@ showplanetname
 	plp
 	rts
 
-cesx	=	224-40
 ;---------------------------------------------------------------------------
+	IFNE	cestimeron
+
 cestimer_l
-	php
-	a8
+	php	; Push current processor status to stack
+	a8	; Set A to 8 bit
+	; if the game has not handed control over to the player yet, do nothing
 	s_jmp_varAND	B,pshipflags,#psf_noctrl,.end
 
-
-	ai16
-
-	lda	#cesx
-	sta.l	m_x1
-	lda	#10
-	sta.l	m_y1
-
-	lda.l	cesminute
-	and	#255
-	sta.l	m_z1
-	beq	.nodo
-	call_mario	mprtdecstop
-
-	lda	#cesx+8
-	sta.l	m_x1
-	lda	#10
-	sta.l	m_y1
-	lda	#cesmintxt&WM
-	sta.l	m_txtdata
-
-	call_mario	mprintstr
-
-	bra		.alwaysshow
-
-.nodo
-	lda.l	cestimer
-	cmp	#44
-	bcs	.nodo2
-
-.alwaysshow
-	lda	#cesx+16
-	sta.l	m_x1
-	lda	#10
-	sta.l	m_y1
-
-	lda.l	cessecond10
-	and	#255
-	sta.l	m_z1
-	call_mario	mprtdecstop
-
-	lda	#cesx+24
-	sta.l	m_x1
-	lda	#10
-	sta.l	m_y1
-
-	lda.l	cessecond
-	and	#255
-	sta.l	m_z1
-	call_mario	mprtdecstop
-
-.nodo2
-
-
-	lda	#cesx+32
-	sta.l	m_x1
-	lda	#10
-	sta.l	m_y1
-	lda	#cessectxt&WM
-	sta.l	m_txtdata
-
-	call_mario	mprintstr
-
+	; Rewritten CES timer print
+	a8
+	; if the game has not handed control over to the player yet, don't print anything
+	s_jmp_varAND	B,pshipflags,#psf_noctrl,.notimer
+	; print minutes
+	bra	.twodig	; Assume we're printing a 2 digit number of minutes
+.twodig
+	lda.l	cesminute	; Load (long) current minutes into A
+	cmp	#10	; Compare with 10
+	bcc	.onedig ; if minutes < 10, print only 1 digit
+	printnuml	timerx+1,timery,cesminute	; Print minutes
+	bra	.seconds	; Print 'M', 'TIME', and the current seconds
+.onedig
+	kandoprint	(timerx+1),timery,ceszerotxt	; Print fake 0 in 10s place
+	printnuml	timerx+2,timery,cesminute	; Print single-digit minutes in 1s place
+	bra	.seconds	; Print 'M', 'TIME', and the current seconds
+.seconds
+	kandoprint	(timerx+3),timery,cesmintext	; "M"
+	; print seconds
+	printnuml	timerx+4,timery,cessecond10	; Print current seconds 10s place value
+	printnuml	timerx+5,timery,cessecond	; Print current seconds 1s place value
+	kandoprint	(timerx+6),timery,cessectext	; "S"
+	kandoprint	(timerx+1),(timery-1),cestimetext	; "TIME"
+.notimer
 
 	a8
-
 	lda.l	cestimer
 	clc
 	adc	framer
 	cmp	#60
-	bcc	.daijobu3
+	bcc	.daijobu3	; If framerate < 60? branch to .daijobu3
 	sec
 	sbc	#60
 	sta.l	cestimer
 
-	lda.l	cessecond
-	dec	a
-	bpl	.daijobu
+	; This part makes the timer tick
+	lda.l	cessecond	; Load current seconds (1s place) into A
+	dec	a				; Decrement A by one
+	bpl	.daijobu		; branch to .daijobu if A is positive (store time)
 
-	lda.l	cessecond10
-	dec	a
-	bpl	.daijobu2
+	lda.l	cessecond10	; Load current seconds (10s place) into A
+	dec	a				; Decrement A by one
+	bpl	.daijobu2		; branch to .daijobu2 if A is positive (store time)
 
-	lda.l	cesminute
-	bne	.notfinished
+	lda.l	cesminute	; Load current minutes into A
+	bne	.notfinished	; Branch to .notfinished if cesminute != 0
 
-	IFEQ	contest
-	jsl	screenoff_l
-	jml	restart
-	ELSEIF
-	jml	timeup_l
-	ENDC
-.notfinished
-	dec	a
-	sta.l	cesminute
+	; Else if cesminute	== 0
+	; Time's up!
+	jsl	screenoff_l ; Fade the screen to black
+	jml	restart 	; Reboot (go to control select)
+.notfinished	; if time hasn't run out yet:
+	dec	a	; Decrement A (current minutes) by 1
+	sta.l	cesminute ; Store A in cesminute
 
 	lda	#5
 
-.daijobu2	sta.l	cessecond10
+	; Store the remaining time
+.daijobu2
+	sta.l	cessecond10
 	lda	#9
-.daijobu	sta.l	cessecond
+.daijobu
+	sta.l	cessecond
 	lda.l	cestimer
-.daijobu3	sta.l	cestimer
-.end
-	IFNE	contest
+.daijobu3
+	sta.l	cestimer
 
-	ai16
-	lda	#1
-	sta.l	m_x1
-	sta.l	m_y1
-	lda	#scoretxt2&WM
-	sta.l	m_txtdata
+.end	; do nothing
 
-	call_mario	mprintstr
-
-	ai16
-	lda	#1
-	sta	x1
-	lda	#10
-	sta	y1
-	jsl	printpscore_l
-
-	a8
-
-	ENDC
-
-	plp
-	rtl
-
-	IFNE	CONTEST
-printpscore_l
-	php
-	ai16
-	ldx	#0
-
-	lda.l	playerscore
-
-	ldy	#10000
-	jsr	.dividedown
-
-	ldy	#1000
-	jsr	.dividedown
-
-	ldy	#100
-	jsr	.dividedown
-
-	ldy	#10
-	jsr	.dividedown
-
-	ldy	#1
-	jsr	.dividedown
-
-
-	a8
-	ldx	#0
-.again
-	a16
-	lda	x1
-	sta.l	m_x1
-	clc
-	adc	#8
-	sta	x1
-
-	lda	y1
-	sta.l	m_y1
-
-	lda.l	numbuff,x
-	and	#255
-	sta.l	m_z1
-
-	a8
-
-	phx
-	call_mario	mprtdecstop
-	plx
-	inx
-	cpx	#6
-	bne	.again
-
-	plp
-	rtl
-
-	longa
-
-
-	longa
-.dividedown
-	sty	z1
-	ldy	#-1
-.div	iny
-	sec
-	sbc	z1
-	bcs	.div
-	clc
-	adc	z1
-	pha
-
-	tya
-	a8
-	sta.l	numbuff,x
-	inx
-	a16
-	pla
-	rts
-	ENDC
-
+	; End routine
+	plp	; Retrieve process status from the stack
+	rtl	; Return from subroutine (long)
 
 	shorta
+	ENDC ; cestimeron
 ;------------------------------------
 
 
@@ -3621,7 +3345,12 @@ dpspr	macro
 rotationselect	=	0
 
 dpsphere	macro ; planet sphere macro
+	IFD	_SASM
 	db	\1_spr!128
+	ENDC
+	IFD	_ARGSFX
+	db	(\1_spr&BM)!128
+	ENDC
 	db	rotationselect
 rotationselect	=	rotationselect+2
 	endm
@@ -3629,8 +3358,8 @@ rotationselect	=	rotationselect+2
 
 planetsprs ; Stage icon definitions
 	dpsphere	playerplanet ; Corneria
-	dpspr		space2 asteroidfield ; 1-2 Asteroid Belt
-	dpspr		space2 asteroidfield ; 3-2 Asteroid Belt
+	dpspr		space2 asteroidfield ; 1-2 Asteroid Belt 1
+	dpspr		space2 asteroidfield ; 3-2 Asteroid Belt 3
 	dpspr		space1 ; 2-2 Sector X
 	dpsphere	planetb ; 3-3 Fortuna
 	dpsphere	planeta	; 2-3 Titania
@@ -3650,23 +3379,24 @@ planetsprs ; Stage icon definitions
 
 
 planetnames
-	db	93	;0
-	db	94	;1
-	db	94	;2
-	db	95	;3
-	db	96	;4
-	db	98	;5
-	db	97	;6
-	db	102	;7
-	db	101	;8
-	db	100	;9
-	db	99	;10
-	db	103	;11
-	db	104	;12
-	db	104	;13
-	db	105	;14
-	db	104	;15
-	db	105	;16
+; The numbers in this table point to message IDs in the message file.
+	db	93	;00 ; Corneria ; 1-1, 2-1, 3-1
+	db	94	;01 ; Asteroid Belt 1 ; 1-2
+	db	94	;02 ; Asteroid Belt 3 ; 3-2
+	db	95	;03 ; Sector X ; 2-2
+	db	96	;04 ; Fortuna ; 3-3
+	db	98	;05 ; Titania ; 3-5
+	db	97	;06 ; Space Armada ; 1-3
+	db	102	;07 ; Sector Z ; 3-4
+	db	101	;08 ; Meteor ; 1-4
+	db	100	;09 ; Sector Y ; 2-4
+	db	99	;10 ; Black Hole ; BHOLE
+	db	103	;11 ; Macbeth ; 3-5
+	db	104	;12 ; Venom 1 ; 1-5
+	db	104	;13 ; Venom 2 ; 2-5
+	db	105	;14 ; OOTD ; SPECIAL
+	db	104	;15 ; Venom 3 ; 2-6
+	db	105	;16 ; OOTD ; SPECIAL
 
 
 
@@ -3785,64 +3515,8 @@ rgbscale	=	rgbscale-(100/16)
 	
 
 planselpal
-	IFEQ	1
-
-;	progress_off
-;	fopen	planet.col
-rgbscale	=	100
-	REPT	15
-
-	IFEQ	rgbscale-100
-	rgbws	$0a,$09,$09,rgbscale
-	ELSEIF
-	rgbws	0,0,0,rgbscale
-	ENDC
-
-	rgbws	$0c,$02,$00,rgbscale
-	rgbws	$1a,$09,$05,rgbscale
-	rgbws	$1d,$15,$08,rgbscale
-	rgbws	$1f,$1b,$0d,rgbscale
-	rgbws	$04,$01,$13,rgbscale
-	rgbws	$0b,$09,$1b,rgbscale
-	rgbws	$0f,$14,$1f,rgbscale
-	rgbws	$16,$1d,$1f,rgbscale
-	rgbws	$00,$00,$00,rgbscale
-	rgbws	$08,$0a,$09,rgbscale
-	rgbws	$10,$14,$13,rgbscale
-	rgbws	$17,$1a,$19,rgbscale
-	rgbws	$1d,$1f,$1e,rgbscale
-	rgbws	$08,$1c,$11,rgbscale
-	rgbws	$01,$15,$0a,rgbscale
-
-;	rgbws	$0f,$02,$08,rgbscale
-;	rgbws	$15,$08,$08,rgbscale
-;	rgbws	$1f,$0f,$08,rgbscale
-;	rgbws	$1f,$1b,$0b,rgbscale
-;	rgbws	$00,$07,$13,rgbscale
-;	rgbws	$05,$0d,$1b,rgbscale
-;	rgbws	$0d,$17,$1f,rgbscale
-;	rgbws	$15,$1f,$1f,rgbscale
-;	rgbws	$00,$00,$00,rgbscale
-;	rgbws	$0c,$0e,$0c,rgbscale
-;	rgbws	$12,$14,$12,rgbscale
-;	rgbws	$18,$1a,$18,rgbscale
-;	rgbws	$1d,$1f,$1d,rgbscale
-;	rgbws	$12,$1f,$12,rgbscale
-;	rgbws	$00,$0d,$00,rgbscale
-
-rgbscale	=	rgbscale-(100/15)
-	ENDR
-
-;	fclose	!
-;	progress_on
-
-	ENDC
-
 	inccolfile	data\col\map_c.col,0,15
-
-
 	inccolfile	data\map-obj.col,0,1
-
 	rgbw	$1f,$1f,0
 	rgbw	$1f,$1f,0
 	rgbw	$1f,$1f,0
@@ -3894,7 +3568,7 @@ rightchar	=	3!pal15		;4
 highrightchar =	3!xflip!pal15	;4+1<<15
 
 
-
+; Start of planet macros
 NOMOREPATHS	MACRO
 	db	0
 	ENDM
@@ -3911,7 +3585,7 @@ PATHCHOICE	MACRO
 	dw	path_\1
 	ENDM
 	
-PATHSTART	MACRO
+PATHSTART	MACRO ; ?,?,?,map,msg,route
 	db	3
 	db	\1,\2	;32*(\2)+(\1)+p_bg1_scr1
 	db	\3
@@ -3981,6 +3655,7 @@ PATHHIGHRIGHT	MACRO
 PATHEND	MACRO
 	dw	-1
 	ENDM
+; End of planet macros
 
 path_1	equ	0
 path_2	equ	2
@@ -3988,16 +3663,18 @@ path_3	equ	4
 path_4	equ	6
 
 stagepaths ; definitions for the 3 map routes and other stages on the map screen
-	dw	.path1-stagepaths	; route 2
-	dw	.path6-stagepaths	; route 1
-	dw	.path11-stagepaths	; route 3
+	dw	.path1-stagepaths	; route 1/2
+	dw	.path6-stagepaths	; route 0/1
+	dw	.path11-stagepaths	; route 2/3
 
 .path1	local
+; Corneria 2
 	PATHSTART	4,20,0,2_1,88,1
 	PATHUP
 	PATHCHOICE	3
 
 .path2	local
+; Sector X
 	PATHSTART	4,14,3,2_2,89,1
 	PATHUP
 	PATHUP
@@ -4005,6 +3682,7 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHNEXT	.path3
 
 .path3	local
+; Titania
 	PATHSTART	9,8,5,2_3,106,1
 	PATHUPRIGHT
 	PATHUPRIGHT
@@ -4014,6 +3692,7 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHNEXT	.path4
 
 .path4	local
+; Sector Y
 	PATHSTART	18,5,9,2_4,107,1
 	PATHRIGHT
 	PATHRIGHT
@@ -4022,14 +3701,17 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHNEXT	.path5
 
 .path5	local
+; Venom 2 Orbital
 	PATHSTART	0,0,15,2_5,114,1
 	PATHNEXT	.end2
 
+; Corneria 1
 .path6	local
 	PATHSTART	6,21,0,1_1,88,0
 	PATHUPRIGHT
 	PATHCHOICE	2
 
+; Asteroid Belt 1
 .path7	local
 	PATHSTART	11,17,2,1_2,89,0
 	PATHUPRIGHT
@@ -4039,33 +3721,39 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHRIGHT
 	PATHNEXT	.path8
 
+; Space Armada
 .path8	local
 	PATHSTART	20,14,6,1_3,90,0
 	PATHRIGHT
 	PATHNEXT	.path9
 
 .path9	local
+; Meteor
 	PATHSTART	24,11,8,1_4,91,0
 	PATHUP
 	PATHNEXT	.path10
 
+; Venom 1 Orbital
 .path10	local
 	PATHSTART	0,0,15,1_5,92,0
 	PATHNEXT	.end
 
 .path11	local
+; Venom 3
 	PATHSTART	6,23,0,3_1,108,2
 	PATHRIGHT
 	PATHRIGHT
 	PATHCHOICE	1
 
 .path12	local
+; Asteroid Belt 3
 	PATHSTART	12,21,1,3_2,109,2
 	PATHUPRIGHT
 	PATHUPRIGHT
 	PATHNEXT	.path13
 
 .path13	local
+; Fortuna
 	PATHSTART	18,19,4,3_3,110,2
 	PATHRIGHT
 	PATHRIGHT
@@ -4075,27 +3763,32 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHNEXT	.path14
 
 .path14	local
+; Sector Z
 	PATHSTART	27,19,7,3_4,111,2
 	PATHUPRIGHT
 	PATHUP
 	PATHNEXT	.path15
 
 .path15	local
+; Macbeth
 	PATHSTART	28,11,11,3_5,112,2
 	PATHUP
 	PATHNEXT	.path16
 
 .path16	local
+; Venom 3 Orbital
 	PATHSTART	0,0,15,3_6,116,2
 	PATHNEXT	.end3
 
 .path17	local
+; Corneria 2
 	PATHSTART	6,15,3,2_2,89,1
 	PATHUPRIGHT_H
 	PATHUPRIGHT_H
 	PATHUPRIGHT_H
 	PATHCHOICE	4
 
+; Black Hole
 .path18	local
 	PATHSTART	12,9,10,_blackhole,113,0
 	PATHUPRIGHT_H
@@ -4132,6 +3825,7 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHNEXT	.path14
 
 .path21	local
+; Asteroid Belt 1
 	PATHSTART	9,16,2,1_2,89,0
 	PATHUP_H
 	PATHUP_H
@@ -4139,6 +3833,7 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHCHOICE	4
 
 .path22	local
+; Asteroid Belt 3
 	PATHSTART	12,25,1,3_2,109,2
 	PATHRIGHT_H
 	PATHRIGHT_H
@@ -4149,21 +3844,25 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	PATHNEXT	.otherend
 
 .end3	local
+; Venom 3
 	PATHSTART	0,0,15,3_7,116,2
 	PATHEND
 	NOMOREPATHS
 
 .end2	local
+; Venom 2 (Venom Highway)
 	PATHSTART	0,0,15,2_6,114,1
 	PATHEND
 	NOMOREPATHS
 
+; Venom 1
 .end	local
 	PATHSTART	0,0,15,1_6,92,0
 	PATHEND
 	NOMOREPATHS
 
 .otherend	local
+; Out of This Dimension
 	PATHSTART	0,0,14,_special,115,0
 	PATHEND
 	NOMOREPATHS

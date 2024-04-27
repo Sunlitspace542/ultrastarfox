@@ -1,3 +1,4 @@
+; 3-2 Asteroid Belt 3
 ; SPACE
 map3_2
 

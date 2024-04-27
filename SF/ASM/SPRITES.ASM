@@ -65,18 +65,16 @@ do_sprites_l
 	jsr	do_spec_weap
 	jsr	do_crosshair
 
-	IFEQ	CONTEST
 	jsr	do_lives
-	ENDC
 
 	jsr	do_shield
 	jsr	do_enemy
 	jsr	do_arrows
-	IFNE	shieldboostcolorbox
+	IFEQ	hidehudonbossdeath
 	jsr	prt_stageclear
 	ENDC
 .nodo
-	IFEQ	shieldboostcolorbox
+	IFNE	hidehudonbossdeath
 	jsr	prt_stageclear
 	ENDC
 	jsr	do_1credit
@@ -665,7 +663,7 @@ dspr	dw	$38+3<<12+spradd,$48+3<<12+spradd
 
 ;set specflash with 50 to flash 1 smartbomb
 do_spec_weap	a16
-	lda	#BombIconPos
+	lda	#bombIconPos
 	sta	tpx
 	ldx	spritespos
 	ldy	specwepcnt
@@ -686,7 +684,11 @@ do_spec_weap	a16
 	sta	spriteblk+2,x
 	lda	tpx
 	sec
-	sbc	#9
+	IFNE	bombcounterdirection
+	adc	#bombIconSpacing
+	ELSEIF
+	sbc	#bombIconSpacing
+	ENDC
 	sta	tpx
 	inx
 	inx
@@ -709,7 +711,11 @@ do_spec_weap	a16
 	sta	spriteblk+2,x
 	lda	tpx
 	sec
-	sbc	#9
+	IFNE	bombcounterdirection
+	adc	#bombIconSpacing
+	ELSEIF
+	sbc	#bombIconSpacing
+	ENDC
 	sta	tpx
 	inx
 	inx

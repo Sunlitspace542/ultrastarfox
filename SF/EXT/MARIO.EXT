@@ -1,7 +1,5 @@
 	global	mbumwipe,m_winwbglog,m_wintabptr
 	global	mcalcperc,mprt2zeros,mkrisdivu3115
-
-	global	oopspal,oopschr,oopspic
 	global	m_numshapes,mdo_3d_display,m_dotsorstars
 	global	mclrbitmaps2,mclrbitmaps3,m_viewposx
 	global	m_y1

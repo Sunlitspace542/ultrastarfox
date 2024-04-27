@@ -1,13 +1,18 @@
+; 2-1 Corneria 2
 level2_1
+	IFEQ	noscrambleseq ; if noscrambleseq is off
+
 	meters_off
 	initlevel	1_1i,nofadenostage,mstarwipe_circle
 	mapwait	100
 	setvar.b	scramble,50
 
-	mapjsr	map1_1a
+	mapjsr	map1_1a ; Jump to SCRAMBLE map
 
 	setfadedown
 	waitfadefin
+
+	ENDC
 
 	mapcode_jsl	initblack_l
 	mapwait	1
@@ -59,7 +64,7 @@ level2_1
 	mapobj	1000,-800,0000,8000,TOWER_2,TOWER0_ISTRAT
 	mapobj	1500,800,0000,10000,TOWER_2,TOWER0_ISTRAT
 
-	mapjsr	cl_ground
+	mapjsr	cl_ground ; Clear type
 	mapend
 
 

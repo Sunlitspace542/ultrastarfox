@@ -1,3 +1,4 @@
+; 1-3 Space Armada part A
 map1_3a
 
 	cspecial	1000,100,Space_viewCY-100,3000,zaco_7,szaco5_istrat

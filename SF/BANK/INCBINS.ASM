@@ -12,10 +12,8 @@ mworldspr	equ	msprites1
 	bank	19
 	IFEQ	GERMAN
 msprites2	incbinfile	msprites\tex_23.bin
-	fileslog	msprites\tex_23_a.bin
 	ELSEIF
 msprites2	incbinfile	msprites\tex_23_a.bin
-	fileslog	msprites\tex_23.bin
 	ENDC
 	bankend	19
 
@@ -30,10 +28,8 @@ msprites3
 
 	IFEQ	german
 	inccru	sprites,data\obj-1.ccr
-	fileslog	data\obj-1-g.ccr
 	ELSEIF
 	inccru	sprites,data\obj-1-g.ccr
-	fileslog	data\obj-1.ccr
 	ENDC
 
 	inccru	bgetestccr,data\e-test.ccr
@@ -43,10 +39,8 @@ msprites3
 
 	IFEQ	german
 	inccru	bgfoxccr,data\fox.ccr
-	fileslog	data\fox-g.ccr
 	ELSEIF
 	inccru	bgfoxccr,data\fox-g.ccr
-	fileslog	data\fox.ccr
 	ENDC
 
 	inccru	bgfoxpcr,data\fox.pcr
@@ -68,30 +62,11 @@ msprites3
 	inccru	bgfsbg3ccr,data\fs-bg3.ccr
 
 	IFEQ	german
-	IFEQ	contest
 	inccru	mapccr,data\map.ccr
 	inccru	bg33ccr,data\3-3.ccr
-
-	fileslog	data\map-g.ccr
-	fileslog	data\sc.ccr
-	fileslog	data\sc.pcr
-	ELSEIF
-	inccru	bgscccr,data\sc.ccr
-	inccru	bgscpcr,data\sc.pcr
-mapccr
-bg33ccr
-;	inccru	mapccr,data\map.ccr
-	fileslog	data\3-3.ccr
-	fileslog	data\map.ccr
-	fileslog	data\map-g.ccr
-	ENDC
 	ELSEIF
 	inccru	mapccr,data\map-g.ccr
 	inccru	bg33ccr,data\3-3.ccr
-
-	fileslog	data\map.ccr
-	fileslog	data\sc.ccr
-	fileslog	data\sc.pcr
 	ENDC
 
 	inccru	bgfsnipcr,data\fs-ni.pcr
@@ -128,19 +103,9 @@ bg33ccr
 	bank	23
 
 	IFEQ	german
-	IFEQ	contest
 	inccru	bgcppcr,data\cp.pcr
-	fileslog	data\cp-g.pcr
-	fileslog	data\e.pcr
 	ELSEIF
-	inccru	bgcppcr,data\e.pcr
-	fileslog	data\cp-g.pcr
-	fileslog	data\cp.pcr
-	ENDC
-	ELSEIF
-	inccru	bgcppcr,data\cp-g.pcr
-	fileslog	data\e.pcr
-	fileslog	data\cp.pcr
+	inccru	bgcppcr,data\cp-p.pcr
 	ENDC
 
 	inccru	bgtstccr,data\t-st.ccr
@@ -150,26 +115,14 @@ bg33ccr
 	IFNE	JAPANESE
 	inccru	bgcontccr,data\cont.ccr
 	inccru	bgcontpcr,data\cont.pcr
-
-
-	fileslog	data\cont-2.ccr
-	fileslog	data\cont-2.pcr
-	fileslog	data\ti-3-us.pcr
-	fileslog	data\ti-3-us.ccr
-	fileslog	data\cont-2-g.ccr
-	fileslog	data\cont-2-g.pcr
 	elseif
 
 	IFEQ	german
 	inccru	bgcontccr,data\cont-2.ccr
 	inccru	bgcontpcr,data\cont-2.pcr
-	fileslog	data\cont-2-g.ccr
-	fileslog	data\cont-2-g.pcr
 	ELSEIF
 	inccru	bgcontccr,data\cont-2-g.ccr
 	inccru	bgcontpcr,data\cont-2-g.pcr
-	fileslog	data\cont-2.ccr
-	fileslog	data\cont-2.pcr
 	ENDC
 	endc
 
@@ -193,29 +146,12 @@ bg33ccr
 	inccru	bgti3pcr,data\ti-3-g.pcr
 	ENDC
 
-	IFEQ	CONTEST					;if contest = 0
 	inccru	bg24ccr,data\2-4.ccr
-	ELSEIF							;if contest = 1
-	inccru	bgticcr,data\ti.ccr
-	inccru	bgtipcr,data\ti.pcr
-
-bg24ccr	=	bgticcr
-	ENDC
 
 	IFEQ	GERMAN					
-	IFEQ	CONTEST
 	inccru	bgcpccr,data\cp.ccr
-	fileslog	data\cp-g.ccr
-	fileslog	data\e.ccr
 	ELSEIF
-	inccru	bgcpccr,data\e.ccr
-	fileslog	data\cp.ccr
-	fileslog	data\cp-g.ccr
-	ENDC
-	ELSEIF
-	inccru	bgcpccr,data\cp-g.ccr
-	fileslog	data\cp.ccr
-	fileslog	data\e.ccr
+	inccru	bgcpccr,data\cp-p.ccr
 	ENDC
 
 facedata	inccolfile	data\face.cgx,0,360 ; size (in bytes) divided by 32
@@ -228,6 +164,12 @@ facedata	inccolfile	data\face.cgx,0,360 ; size (in bytes) divided by 32
 	inccru	bgmccr,data\m.ccr
 	bankend	35
 
+; Crash handler GFX (BLINK.ASM)
+	bank	41
+	inccru	oopsccr,data\oops.ccr
+	inccru	oopspcr,data\oops.pcr
+	bankend	41
+
 ;------------------------------------------------------------------
 
 firstsndbnk	=	24
@@ -237,67 +179,56 @@ musicsize	=	0
 	incsnd	sound1,snd\sgsound1.bin
 
 	IFEQ	PAL
-	incsnd	sound2,snd\sgsound2.bin
-	fileslog	snd\psgsnd2.bin
+	incsnd	orchestra,snd\sgsound2.bin
 	ELSEIF
-	incsnd	sound2,snd\psgsnd2.bin
-	fileslog	snd\sgsound2.bin
+	incsnd	orchestra,snd\psgsnd2.bin
 	ENDC
 
-	incsnd	sound3,snd\sgsound3.bin
+	incsnd	band,snd\sgsound3.bin
 	incsnd	sound4,snd\sgsound4.bin
 
 	IFEQ	PAL
 	incsnd	sound5,snd\sgsound5.bin
-	fileslog	snd\psgsnd5.bin
 	ELSEIF
 	incsnd	sound5,snd\psgsnd5.bin
-	fileslog	snd\sgsound5.bin
 	ENDC
 
 	incsnd	sound6,snd\sgsound6.bin
-	incsnd	sound7,snd\sgsound7.bin
-	incsnd	sound8,snd\sgsound8.bin
-	incsnd	sound9,snd\sgsound9.bin
+	incsnd	titlebgm,snd\sgsound7.bin
+	incsnd	bgmendseq,snd\sgsound8.bin
+	incsnd	bgmcontinue,snd\sgsound9.bin
 
 	IFEQ	GERMAN
 	IFEQ	PAL
-	incsnd	sounda,snd\sgsounda.bin
-	fileslog	snd\gsgsnda.bin
-	fileslog	snd\psgsnda.bin
+	incsnd	bgmstaff,snd\sgsounda.bin
 	ELSEIF
-	incsnd	sounda,snd\psgsnda.bin
-	fileslog	snd\gsgsnda.bin
-	fileslog	snd\sgsounda.bin
+	incsnd	bgmstaff,snd\psgsnda.bin
 	ENDC
 	ELSEIF
-	incsnd	sounda,snd\gsgsnda.bin
-	fileslog	snd\sgsounda.bin
-	fileslog	snd\psgsnda.bin
+	incsnd	bgmstaff,snd\gsgsnda.bin
 	ENDC
 
-	incsnd	bgma,snd\sgbgma.bin
-	incsnd	bgmb,snd\sgbgmb.bin
-	incsnd	bgmc,snd\sgbgmc.bin
-	incsnd	bgmo,snd\sgbgmo.bin
-	incsnd	bgme,snd\sgbgme.bin
-	incsnd	bgmf,snd\sgbgmf.bin
-	incsnd	bgmg,snd\sgbgmg.bin
-	incsnd	bgmh,snd\sgbgmh.bin
-	incsnd	bgmi,snd\sgbgmi.bin
-	incsnd	bgmk,snd\sgbgmk.bin
-	incsnd	bgmp,snd\sgbgmp.bin
-	incsnd	bgm1,snd\sgbgm1.bin
-	incsnd	bgm4,snd\sgbgm4.bin
-	incsnd	bgm5,snd\sgbgm5.bin
-	incsnd	bgm6,snd\sgbgm6.bin
-	incsnd	bgm8,snd\sgbgm8.bin
-	incsnd	bgm9,snd\sgbgm9.bin
-	incsnd	bgm10,snd\sgbgm10.bin
+	incsnd	corneria,snd\sgbgma.bin
+	incsnd	meteor_base,snd\sgbgmb.bin
+	incsnd	titania,snd\sgbgmc.bin
+	incsnd	bgmtraining,snd\sgbgmo.bin
+	incsnd	macbeth,snd\sgbgme.bin
+	incsnd	asteroid_field,snd\sgbgmf.bin
+	incsnd	space_armada,snd\sgbgmg.bin
+	incsnd	venom_base_2,snd\sgbgmh.bin
+	incsnd	sector_x_z,snd\sgbgmi.bin
+	incsnd	venom_base_1_3,snd\sgbgmk.bin
+	incsnd	out_of_this_dimension,snd\sgbgmp.bin
+	incsnd	boss_corneria,snd\sgbgm1.bin
+	incsnd	boss_titania,snd\sgbgm4.bin
+	incsnd	boss_meteor,snd\sgbgm5.bin
+	incsnd	boss_space_armada,snd\sgbgm6.bin
+	incsnd	boss_venom_base_2,snd\sgbgm8.bin
+	incsnd	boss_venom_base_1,snd\sgbgm9.bin
+	incsnd	venom_andross,snd\sgbgm10.bin
 
 	ifne	JAPANESE ; if JAPANESE = 1
 	inccru	obj2ccr,data\obj-2.ccr ; training/game text (JP)
-	fileslog data\obj-3.ccr
 	elseif
 	ifne	german ; if german = 1
 	inccru	obj2ccr,data\obj-4.ccr ; training/game text (GER)
@@ -306,43 +237,14 @@ musicsize	=	0
 	inccru	obj2ccr,data\obj-3.ccr ; training/game text (US/EU)
 	elseif
 	inccru	obj2ccr,data\obj-3.ccr ; training/game text (US/EU)
-	fileslog data\obj-2.ccr
 	endc
 	endc
 	endc
 
-	printf	:$*,"%n"
-
-	ifgt	@-$100000
-	PRINTF	"%N%N  MORE THAN 8 MEGA-BITS OF ROM USED!! %N%N"
+	ifgt	@-$200000
+	PRINTF	"%01%31MORE THAN 16 MEGA-BITS OF ROM USED!!%n%00"
 	FAIL
 	endc
-
-
-	fileslog	data\col\bg2-a.col
-	fileslog	data\col\bg2-b.col
-	fileslog	data\col\bg2-c.col
-	fileslog	data\col\bg2-d.col
-	fileslog	data\col\bg2-e.col
-	fileslog	data\col\bg2-f.col
-	fileslog	data\col\bg2-g.col
-	fileslog	data\col\t-m.col
-	fileslog	data\col\t-m-2.col
-	fileslog	data\col\t-m-3.col
-	fileslog	data\col\t-m-4.col
-	fileslog	data\col\b-m.col
-	fileslog	data\col\light.col
-	fileslog	data\col\space.col
-	fileslog	data\col\stars.col
-	fileslog	data\col\cp.col
-	fileslog	data\col\cp-us.col
-	fileslog	data\col\hole.col
-	fileslog	data\col\l.col
-	fileslog	data\col\e-test0.col
-	fileslog	data\col\e-test.col
-	fileslog	data\col\obj-1.col
-
-
 
 	include	INC\tail.inc
 

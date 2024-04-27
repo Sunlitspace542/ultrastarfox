@@ -14,11 +14,12 @@
 	incfile	STRAT\pistrats.asm
 	incfile	STRAT\pcstrats.asm
 	incfile	STRAT\pstrats.asm
+	incfile	ASM\strings.asm
 	bankend	11
 
 	bank	40
 	incfile	STRAT\gb2strats.asm
-	bankend 40
+	bankend	40
 
 	include	INC\tail.inc
 
