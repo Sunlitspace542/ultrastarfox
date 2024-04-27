@@ -154,7 +154,7 @@ msprites3
 	inccru	bgcpccr,data\cp-p.ccr
 	ENDC
 
-facedata	inccolfile	data\face.cgx,0,360 ; size (in bytes) divided by 32
+facedata	incbin	data\face.cgx
 	inccru	allcolscru,data\col\allcols.pac
 
 	bankend	23
