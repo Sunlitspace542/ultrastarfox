@@ -168,6 +168,23 @@ marioprintdec	MACRO	[xpos,ypos,var]
 
 ;------------------------------------------------------------------------
 
+; Sets up RNG seed for random_l
+setuprng	MACRO
+	savemode
+	ai8
+	lda	#$3a
+	sta	rand
+	lda	#$a7
+	sta	rand+1
+	lda	#$55
+	sta	rand+2
+	lda	#$7f
+	sta	rand+3
+	returnmode
+	ENDM
+
+;------------------------------------------------------------------------
+
 ; Checks for space remaining
 
 chkmemoryfull	macro	[symbol,name,extramsg]

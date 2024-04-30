@@ -37,6 +37,10 @@ startboot	disable ; Disable Interrupts
 
 	jsr	initialise_ram ; Clear RAM
 
+	IFNE	rngmode ; start conditional: if rngmode !=0 (=1)
+	setuprng ; setup RNG seed at boot
+	ENDC ; end conditional
+
 	i16 ; set X/Y to 16 bit
 	ldx	#$2ff ; Load $2FF into X
 	txs ; Transfer X to SP (set stack to $2FF, resets the stack)
