@@ -30,16 +30,17 @@
 
 ## Contents                                                    
 [1  : Changelog](#changelog)  
-[2  : Assembler Directives](#assembler-directives)  
+[2  : Basic Syntax](#basic-syntax)  
 [3  : Macros](#macros)  
-[4  : ``PRINTF`` Commands](#printf-commands)  
-[5  : CLI Options](#cli-options)  
-[6  : SASM Environment Variables](#sasm-environment-variables)  
-[7  : Assembler Variables](#assembler-variables)  
-[8  : Assembler Strings](#assembler-strings)  
-[9  : Expression Evaluation](#expression-evaluation)  
-[10 : SL and ARGLINK](#sl-and-arglink)  
-[11 : Special Notes](#special-notes)  
+[4  : Assembler Directives](#assembler-directives)  
+[5  : ``PRINTF`` Commands](#printf-commands)  
+[6  : CLI Options](#cli-options)  
+[7  : SASM Environment Variables](#sasm-environment-variables)  
+[8  : Assembler Variables](#assembler-variables)  
+[9  : Assembler Strings](#assembler-strings)  
+[10  : Expression Evaluation](#expression-evaluation)  
+[11 : SL and ARGLINK](#sl-and-arglink)  
+[12 : Special Notes](#special-notes)  
 
 # Changelog
 
@@ -586,9 +587,79 @@ Example...
 
 An error message referring to ``sasm.doc`` (the original SASM manual file) was changed to "see the manual".  
 
+# Basic Syntax
+
+Labels and sublabels have no whitespace before them. This is the same for names of macros in macro definitions, and equate/constant declarations.  
+Instructions, directives, and macro invocations must be preceded by either a tab or a space.  
+Comments can be made with ``*`` or ``;``.  
+Files passed to the assembler must use CRLF line endings.  
+Example...  
+```
+this_is_a_label
+	bra	.this_is_a_sublabel
+.this_is_a_sublabel
+	rts
+
+this_is_a_macro	MACRO	[parm1]
+	lda	#{parm1}
+	ENDM
+
+this_is_an_equate	equ	$01
+this_is_another_equate = 1
+
+; this is a comment
+
+* this is another comment
+
+```  
+
+# Macros
+
+Macros allow the user to turn useful code into chunks that can be invoked anywhere after they've been defined, including other macros.    
+A macro definition looks like this:  
+```
+macroname	MACRO
+; code here
+	ENDM
+```
+Parameters can be inserted into macros by typing a ``\`` followed by the number of the argument. Arguments can have numbers ``0 - 9`` and letters ``a - z``, in that order.  
+  
+Note that ``\0`` is special in that it is an argument specified directly after the macro name with a ``.``, followed by the argument.  
+Example..
+```
+	macroname.argzero	<your other args here...>
+```
+This can be used to specify an addressing mode to append on an opcode, e.g. ``LDA.L`` or it can be used for other purposes.  
+``\0`` can also be checked as a string using ``IFC``/``IFNC``.  
+Note that unlike other cases of using strings in macros, it does not need to be enclosed in angle brackets. Spaces are not allowed.  
+  
+Parameters with names are specified in a comma separated list enclosed within square brackets after the ``MACRO`` directive.
+```
+macroname	MACRO	[parm1,parm2,parm3]
+; your code here
+	ENDM
+```
+Up to 36 total macro parameters can be specified.  To reference a parameter name in a macro, type the parameter name within curly brackets, e.g. for a parameter named ``param1``, you would type ``{param1}``.  
+  
+If your macro uses labels or sublabels and you wish to call it more than once, attaching ``\@`` to the start or end of a label or sublabel will give it a unique name each time the macro is called.  
+  
+If you do not do this and your macro is used more than once, a "symbol defined twice" error will occur during assembly.  
+  
+Macros are called like so:  
+```
+	macroname	parm1,parm2,parm3
+```
+Strings can also be used in macro parameters. To insert a string as an argument in a macro call, the text of the string is enclosed in angle brackets, like so:  
+```
+	macroname	<my text>
+```
+From there, they can be used the same as any other parameter.  
+To escape ``\``, ``{`` and ``}``, use ``\\``, ``{{`` and ``}}``.  
+
 # Assembler Directives
 ```
 <label>   =   <expression>          Sets <label> to be <expression>.
+                                    Can be redefined.
                                     see EQU, EQUR
           CHECKMAC ON/OFF           Will turn on and off duplicate
                                     macro name checking. Enabled by
@@ -630,6 +701,7 @@ An error message referring to ``sasm.doc`` (the original SASM manual file) was c
                                     see REPT
 
 <label>   EQU <expression>          Sets the <label> to be <expression>.
+                                    Cannot be redefined.
                                     see =, EQUR
 
 <reg>     EQUR <expression>         Sets the <register> to be <expression>,
@@ -835,49 +907,6 @@ An error message referring to ``sasm.doc`` (the original SASM manual file) was c
                                     OFF -  Stop outputting
                                     see OUTPUT
 ```
-
-# Macros
-
-Macros allow the user to turn useful code into chunks that can be invoked anywhere after they've been defined, including other macros.    
-A macro definition looks like this:  
-```
-macroname	MACRO
-; code here
-	ENDM
-```
-Parameters can be inserted into macros by typing a ``\`` followed by the number of the argument. Arguments can have numbers ``0 - 9`` and letters ``a - z``, in that order.  
-  
-Note that ``\0`` is special in that it is an argument specified directly after the macro name with a ``.``, followed by the argument.  
-Example..
-```
-	macroname.argzero	<your other args here...>
-```
-This can be used to specify an addressing mode to append on an opcode, e.g. ``LDA.L`` or it can be used for other purposes.  
-``\0`` can also be checked as a string using ``IFC``/``IFNC``.  
-Note that unlike other cases of using strings in macros, it does not need to be enclosed in angle brackets. Spaces are not allowed.  
-  
-Parameters with names are specified in a comma separated list enclosed within square brackets after the ``MACRO`` directive.
-```
-macroname	MACRO	[parm1,parm2,parm3]
-; your code here
-	ENDM
-```
-Up to 36 total macro parameters can be specified.  To reference a parameter name in a macro, type the parameter name within curly brackets, e.g. for a parameter named ``param1``, you would type ``{param1}``.  
-  
-If your macro uses labels or sublabels and you wish to call it more than once, attaching ``\@`` to the start or end of a label or sublabel will give it a unique name each time the macro is called.  
-  
-If you do not do this and your macro is used more than once, a "symbol defined twice" error will occur during assembly.  
-  
-Macros are called like so:  
-```
-	macroname	parm1,parm2,parm3
-```
-Strings can also be used in macro parameters. To insert a string as an argument in a macro call, the text of the string is enclosed in angle brackets, like so:  
-```
-	macroname	<my text>
-```
-From there, they can be used the same as any other parameter.  
-To escape ``\``, ``{`` and ``}``, use ``\\``, ``{{`` and ``}}``.  
 
 # ``PRINTF`` Commands
 
