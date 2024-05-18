@@ -86,3 +86,9 @@ Tool that can convert to/from PAL/COL/SCL palettes.
 To use:  
 ``Usage: pc.exe [input_file] [output_file] [conversion type]``  
 Types: ``col2scl`` ``scl2col`` ``scl2pal`` ``pal2scl`` ``pal2col``  
+
+## MAPDEC.EXE
+**Tool made by Sunlit**  
+Tool to decode Argonaut .MAP linker address map files into a usable symbol listing.  
+To use:  
+``Usage: mapdec.exe [.MAP file] [output file]``  

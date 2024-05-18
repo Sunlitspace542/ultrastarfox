@@ -4,12 +4,12 @@
 
 # Assembler
 ASM=ARGSFXX
-# Setup heap for SASM and export symbols to symbols.txt
-ASMFLAGS= -e__heap=14400 -xsymbols.txt
+# Setup heap for SASM and export symbols for ARGSFX
+ASMFLAGS= -e__heap=14400 -z
 
 # Linker
 LINK=ARGLINK
-LOPTS=-b30 -h1024 -t7d
+LOPTS=-b30 -h1024 -t7d -z
 
 # ROM Extender
 EXTEND=EXTEND
@@ -29,6 +29,9 @@ CRU=CRU
 
 # Font Converter
 FONT=FON
+
+# Argonaut .MAP File Decoder
+MAPDEC=MAPDEC
 
 #!! If you add/remove a cgx/scr in these two lists, make sure to add/remove the corresponding file.
 
@@ -82,6 +85,7 @@ all: setup allcols msprites crunch fonts sf.sfc donebld
 
 setup:
 	@del BANK\*.SOB
+	@del BANK\*.MAP
 
 # Recipe to crunch palettes
 allcols:
@@ -115,21 +119,26 @@ sf.sfc: $(ALLFILES)
 	@$(LINK) $(LOPTS) -o$@ @flist
 	@$(EXTEND) $@ $(EXTOPS)
 	@$(CHECK) $(COPTS) $@
-	@del msgs.txt
 
 # Actions to perform when assembly is completed
 donebld:
+	@del msgs.txt
 	@del BANK\*.SOB
-	@copy sf.sfc ..\SF.SFC
+	@del BANK\*.MAP
+	@copy sf.sfc ..\SF.sfc
 	@del sf.sfc
-	@copy symbols.txt ..\symbols.txt
-	@del symbols.txt
+	@$(MAPDEC) SF.MAP SYMBOLS.TXT
+	@del SF.MAP
+	@copy SYMBOLS.TXT ..\SYMBOLS.TXT
+	@del SYMBOLS.TXT
 	@copy BANKS.CSV ..\BANKS.CSV
 	@del BANKS.CSV
 
 # Clean everything up
 clean:
 	@del BANK\*.SOB
+	@del BANK\*.MAP
+	@del *.MAP
 	@del MSPRITES\*.BIN
 	@del DATA\COL\ALLCOLS.COL
 	@del DATA\COL\*.PAC
@@ -138,12 +147,12 @@ clean:
 	@del DATA\*.PCR
 	@del msgs.txt
 	@del ..\sf.sfc
-	@del sf.SFC
-	@del ..\symbols.txt
-	@del symbols.txt
+	@del sf.sfc
 	@del ..\build.log
 	@del ..\BANKS.CSV
 	@del BANKS.CSV
+	@del SYMBOLS.TXT
+	@del ..\SYMBOLS.TXT
 
 ## Banks to assemble
 

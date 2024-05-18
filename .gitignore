@@ -45,3 +45,7 @@ SF/DATA/COL/ALLCOLS.COL
 # Object files
 *.sob
 *.SOB
+
+# Linker Address Maps
+*.map
+*.MAP
