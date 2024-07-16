@@ -34,7 +34,7 @@ shieldboostcolorbox	equ	0
 
 ; Hides the HUD when a boss is defeated.
 ; [0 = off, 1 = on]
-hidehudonbossdeath	equ	1
+hidehudonbossdeath	equ	0
 
 ;; HUD Sprite positions
 
