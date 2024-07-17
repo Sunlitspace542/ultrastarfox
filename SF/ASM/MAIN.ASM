@@ -1836,6 +1836,7 @@ SetCharMapgame_l
 	bne	.lolv
 
 	IFNE	shieldboostcolorbox
+	; Change palette indices for damage and boost meters in BG1 tilemap
 	; why was this done in the first place? added a flag for vanilla game purposes
 	; witchcraft
 	lda.l	m_meters
