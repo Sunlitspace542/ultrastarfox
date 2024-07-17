@@ -32,7 +32,7 @@ controlsscreenpal	equ	0
 ; If set to 1, palette line 2 color $d is the outlines' color,
 ; palette line 2 color 4 is the shield meter's color and palette line 2 color 7 is the boost meter's color.
 ; Those can be changed by changing the background palette.
-; If set to 0, thet instead use colors from palette line 7.
+; If set to 0, they instead use colors from palette line 7.
 ; [0 = off, 1 = on]
 shieldboostcolorbox	equ	0
 
