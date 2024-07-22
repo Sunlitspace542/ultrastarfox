@@ -10,7 +10,9 @@
 	zmalc	m_damage,2
 	zmalc	m_boostcnt,2
 	zmalc	m_boostanim,2
+	ifeq	shieldboostcolorbox
 	zmalc	m_shieldup,2
+	endc
 
 rlistptr	equr	r1
 rzstore	equr	r2
