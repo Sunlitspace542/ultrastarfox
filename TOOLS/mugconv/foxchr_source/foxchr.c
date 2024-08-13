@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "foxchr.h"
 
 
@@ -62,7 +63,7 @@ void convertHoriz2Vert(FILE * fpInput, char * outputFileName)
 
 	#ifdef DEBUG
 	if (inBuffPtr != inBuff + NEXTTILEDOWN) {
-		printf("DEBUG ERROR: inBuffPtr off by %d\n", inBuffPtr - (inBuff + NEXTTILEDOWN));
+		printf("DEBUG ERROR: inBuffPtr off by %ld\n", inBuffPtr - (inBuff + NEXTTILEDOWN));
 		free(inBuff);
 		free(outBuff);
 		exit(EX_SOFTWARE);
