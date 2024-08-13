@@ -1,3 +1,5 @@
+#! /bin/bash
+
 echo "======"
 echo "Star Fox Background Maker 9000"
 echo "Tool by Sunlit, version 1.01_02_l"
