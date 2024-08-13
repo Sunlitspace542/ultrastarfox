@@ -1,3 +1,5 @@
+#! /bin/sh
+
 echo "Enter commit description:"
 read desc
 echo "Enter branch:"
