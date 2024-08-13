@@ -49,3 +49,7 @@ SF/DATA/COL/ALLCOLS.COL
 # Linker Address Maps
 *.map
 *.MAP
+.DS_Store
+
+# File managers stuff
+.DS_Store
