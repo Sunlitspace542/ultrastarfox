@@ -1,5 +1,5 @@
 //
-//  sf_crunch.cpp
+//  sf_crunch.c
 //  sf_crunch
 //
 //  Created by everything8215 on 7/29/20.
@@ -8,8 +8,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-using namespace std;
 
 // 64k should be enough for anything
 unsigned char src[0x10000]; // source buffer
