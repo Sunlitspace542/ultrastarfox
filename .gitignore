@@ -45,3 +45,4 @@ SF/DATA/COL/ALLCOLS.COL
 # Object files
 *.sob
 *.SOB
+.DS_Store
