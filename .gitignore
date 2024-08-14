@@ -49,7 +49,10 @@ SF/DATA/COL/ALLCOLS.COL
 # Linker Address Maps
 *.map
 *.MAP
+
+# macOS stuff
 .DS_Store
 
-# File managers stuff
-.DS_Store
+# Downloaded SuperFamiconv
+TOOLS/SuperFamiconv-*.tar.gz
+TOOLS/SuperFamiconv-*/
