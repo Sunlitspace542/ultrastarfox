@@ -45,4 +45,10 @@ SF/DATA/COL/ALLCOLS.COL
 # Object files
 *.sob
 *.SOB
+
+# macOS Stuff
 .DS_Store
+
+# Downloaded SuperFamiconv
+TOOLS/SuperFamiconv-*.tar.gz
+TOOLS/SuperFamiconv-*/
