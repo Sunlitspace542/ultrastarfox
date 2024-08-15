@@ -1,7 +1,7 @@
 SUPERFAMICONV_VERSION := 0.10.0
 CC := cc
 # Does -march=native also work on Clang?
-CFLAGS_OPTIM := -O2
+CFLAGS_OPTIM := -O2 -pipe
 
 all: bgconv/bin/palconv mugconv/foxchr bgconv/bin/sf_crunch bgconv/bin/superfamiconv mugconv/superfamiconv/superfamiconv
 
@@ -14,17 +14,17 @@ clean:
 	make -C SuperFamiconv-$(SUPERFAMICONV_VERSION) clean
 
 distclean: clean
-	rm -f SuperFamiconv-$(SUPERFAMICONV_VERSION).tar.gz
-	rm -rf SuperFamiconv-$(SUPERFAMICONV_VERSION)
+	rm -f SuperFamiconv-*.tar.gz
+	rm -rf SuperFamiconv-*
 
 bgconv/bin/palconv: palconv_src/palconv.c
-	$(CC) $(CFLAGS_OPTIM) -pipe palconv_src/palconv.c -o bgconv/bin/palconv
+	$(CC) $(CFLAGS_OPTIM) palconv_src/palconv.c -o bgconv/bin/palconv
 
 bgconv/bin/sf_crunch: cru_src/sf_crunch_mod.c
-	$(CC) $(CFLAGS_OPTIM) -pipe cru_src/sf_crunch_mod.c -o bgconv/bin/sf_crunch
+	$(CC) $(CFLAGS_OPTIM) cru_src/sf_crunch_mod.c -o bgconv/bin/sf_crunch
 
 mugconv/foxchr: mugconv/foxchr_source/foxchr.c mugconv/foxchr_source/foxchr.h
-	$(CC) $(CFLAGS_OPTIM) -pipe mugconv/foxchr_source/foxchr.c -o mugconv/foxchr
+	$(CC) $(CFLAGS_OPTIM) mugconv/foxchr_source/foxchr.c -o mugconv/foxchr
 
 SuperFamiconv-$(SUPERFAMICONV_VERSION).tar.gz:
 	curl https://codeload.github.com/Optiroc/SuperFamiconv/tar.gz/refs/tags/v$(SUPERFAMICONV_VERSION) -o SuperFamiconv-$(SUPERFAMICONV_VERSION).tar.gz
