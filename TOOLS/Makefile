@@ -5,17 +5,33 @@ CFLAGS_OPTIM := -O2 -pipe
 
 all: bgconv/bin/palconv mugconv/foxchr bgconv/bin/sf_crunch bgconv/bin/superfamiconv mugconv/superfamiconv/superfamiconv
 
-clean:
+clean-superfamiconv:
+	make -C SuperFamiconv-$(SUPERFAMICONV_VERSION) clean
+
+clean-tools:
 	rm -f bgconv/bin/palconv
 	rm -f bgconv/bin/sf_crunch
 	rm -f mugconv/foxchr
 	rm -f bgconv/bin/superfamiconv
 	rm -f mugconv/superfamiconv/superfamiconv
-	make -C SuperFamiconv-$(SUPERFAMICONV_VERSION) clean
 
-distclean: clean
+clean: clean-tools clean-superfamiconv
+
+distclean: clean-tools
 	rm -f SuperFamiconv-*.tar.gz
 	rm -rf SuperFamiconv-*
+
+nowindows:
+	rm -f palconv.exe
+	rm -f palconv_win64.exe
+	rm -f sf_crunch.exe
+	rm -f bgconv/bin/palconv.exe
+	rm -f bgconv/bin/sf_crunch.exe
+	rm -f bgconv/bin/superfamiconv.exe
+	rm -f mugconv/superfamiconv/superfamiconv.exe
+	rm -f mugconv/foxchr.exe
+
+mrproper: distclean nowindows
 
 bgconv/bin/palconv: palconv_src/palconv.c
 	$(CC) $(CFLAGS_OPTIM) palconv_src/palconv.c -o bgconv/bin/palconv
@@ -41,4 +57,4 @@ bgconv/bin/superfamiconv: SuperFamiconv-$(SUPERFAMICONV_VERSION)/bin/superfamico
 mugconv/superfamiconv/superfamiconv: SuperFamiconv-$(SUPERFAMICONV_VERSION)/bin/superfamiconv
 	install -CS ./SuperFamiconv-$(SUPERFAMICONV_VERSION)/bin/superfamiconv ./mugconv/superfamiconv
 
-.PHONY: all clean distclean
+.PHONY: all clean distclean nowindows mrproper
