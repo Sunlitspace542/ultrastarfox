@@ -52,3 +52,10 @@ SF/DATA/COL/ALLCOLS.COL
 # Downloaded SuperFamiconv
 TOOLS/SuperFamiconv-*.tar.gz
 TOOLS/SuperFamiconv-*/
+
+# Compiled tools
+TOOLS/bgconv/bin/palconv
+TOOLS/bgconv/bin/sf_crunch
+TOOLS/bgconv/bin/superfamiconv
+TOOLS/mugconv/foxchr
+TOOLS/mugconv/superfamiconv/superfamiconv
