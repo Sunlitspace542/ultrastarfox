@@ -5,7 +5,7 @@ Star Fox / Starwing source code, modified for ease-of-use and ROMHacking.
 ## Features
 
 - Uses GSU-2/Super FX 2 @21.4Mhz instead of MC1 @10.7Mhz
-- FastROM support (An SD2SNES/FXPak Pro bug causes instability on 2CHIP SNES revisions)
+- FastROM support (An SD2SNES/FXPak Pro bug caused instability on 2CHIP SNES revisions, though with the latest firmware this appears to no longer be the case)
 - MSU-1 support (Original ASM patch by Kurrono, ported by Kando and Sunlit)
 - SNES Mouse support and analog stick support via the SNES mouse
 - Very configurable, see SF\CONFIG\CONFIG.INC for more info
