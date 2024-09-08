@@ -51,5 +51,6 @@ status_revision3        equ 00000001b ; 1
 audiostate_none		equ	00000000b ; 0
 audiostate_norepeat	equ	00000001b ; 1
 audiostate_repeat	equ	00000011b ; 3
+audiostate_pause	equ	00000100b ; 4
 
 ; EOF

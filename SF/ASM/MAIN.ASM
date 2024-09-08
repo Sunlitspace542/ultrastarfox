@@ -1388,7 +1388,8 @@ bonertab	dw	2100,1900,1700,1500,1300,1100,900,700,500,300,100,0
     IFNE    msu
 pauseStart
 	a8
-	STZ msu_control
+	LDA	#audiostate_pause
+	STA	msu_control
 	LDA #$64
 	RTS
 
@@ -1397,7 +1398,7 @@ pauseEnd
 ; to make room and moved those 2 here
 ;	STZ $1202 ; cont0
 ;	STZ $1204 ; contl0
-	LDA #$03
+	LDA #audiostate_repeat
 	STA msu_control
 	RTS
     ENDC
