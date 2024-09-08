@@ -9,7 +9,7 @@
 ; MSU-1 support [0 = off, 1 = on]
 ; The game looks for the MSU-1 on startup.
 ; If the MSU-1 is not present, the game falls back to SPC700 audio.
-msu			equ 1
+msu			equ 0
 
 ; MSU-1 video player (not yet implemented)
 ; requires that MSU-1 support be enabled
