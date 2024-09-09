@@ -5868,10 +5868,16 @@ fast	MACRO ; Run MARIO chip @ 21.4mhz (no clock divider)
 	IFEQ	LONGA
 	lda	#1
 	sta	m_clsr
+	; Enable fast multiplication mode (MS1)
+	lda	#$20
+	sta	m_cfgr
 	ELSEIF
 	a8
 	lda	#1
 	sta	m_clsr
+	; Enable fast multiplication mode (MS1)
+	lda	#$20
+	sta	m_cfgr
 	a16
 	ENDC
 	ENDM
