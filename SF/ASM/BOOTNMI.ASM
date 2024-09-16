@@ -254,8 +254,8 @@ initialise_ram
 
 ; NTSC/PAL
 	a8 ; set A to 8 bit
-	lda	stat78r ; load stat78r ($213F) into A
-	and	#1<<4 ; AND #1 Shifted left by 4 (?)
+	lda	stat78r ; load stat78r ($213F, PPU2 Status) into A
+	and	#1<<4 ; Get bit 4, which indicates the region of the PPU (0=NTSC/60Hz, 1=PAL/50Hz)
 	sta	ntscpal ; Store A at ntscpal variable
 
 

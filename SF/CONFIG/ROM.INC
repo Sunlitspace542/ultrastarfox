@@ -21,6 +21,7 @@ FASTROM	equ 1
 
 ; Disables the SuperFX clock divider, 
 ; doubling the clock speed from 10.7mhz to 21.4mhz.
+; This also enables fast multiplication mode (MS1).
 ; [0 = off, 1 = on]
 fast	equ 1
 
