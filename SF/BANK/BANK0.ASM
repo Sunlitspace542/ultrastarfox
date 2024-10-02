@@ -92,9 +92,8 @@ abort_vn
 	incfile	STRAT\istrats.asm
 	incfile	STRAT\d3strats.asm
 	IFNE	msu
-	include	ASM\MSU.ASM ; Include MSU playback logic (I hate hardcoded ROM locations)
+	include	ASM\MSU.ASM ; Include MSU playback logic
 	ENDC
-	; must be space at end of bank 32 for MSU
 	bankend	32
 
 	;; ROM HEADER
