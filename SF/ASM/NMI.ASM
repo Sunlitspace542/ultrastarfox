@@ -78,8 +78,7 @@ nmihan ; Start of NMI handler
 .irq	ai16		;$010c	irq
 	pha	; Push A to stack
 	IFNE	msu
-;	jsl	$7ED1C0 ; MSU-1 fade routine
-	jsl	$000162
+	jsl	$000162 ; MSU-1 fade routine
 	ELSEIF
 	lda.l	m_sfr ; Load m_sfr into A (MARIO chip flags?)
 	ENDC
