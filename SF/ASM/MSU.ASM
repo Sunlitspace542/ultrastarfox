@@ -20,14 +20,8 @@
 
 	INCPUBLICS	ext\msu.ext
 
-	IFNE	fastrom
-	org	$B2FD00,$8000*$32+$7D00			;B2 = bank number			empty space needed at end of bank
-	ELSEIF
-	org	$32FD00,$8000*$32+$7D00			;32 = bank number			empty space needed at end of bank
-	ENDC
-
 ; Determines the MSU1 track to play by performing a lot of comparisons
-;determine_msu_track	
+msuhan
 	a8i16
 	STA $2140
 	CMP #$11
@@ -141,7 +135,7 @@
 	PLA 
 	PHX
 	TAX
-	LDA.l $7ED200,x ; MSU-1 loop table
+	LDA.l msulooptab,x ; MSU-1 loop table
 	STA msu_control
 	LDA #$FF
 	STA msu_volume
@@ -203,60 +197,26 @@
 	BRL .playtrack
 
 transfermsu
-	JSL copy_to_0101_l			;bank 32
+	JSL copy_to_0101_l	;bank 32
 	PHB
 	ai16
-	LDA #$02FF ; transfer $300 bytes
-	LDX #$FD00 ; start address FD00
+	LDX #msuhan&WM ; start address
 	LDY #$D000 ; ram address
+	LDA #msuhanend-msuhan-1 ; len of data to xfer
 
 	IFNE	fastrom
-	sasm_mvn	$B2,$7E ; MVN $B27E  ; bank B2 -> 7E  (must be tricked to assemble)
+	sasm_mvn	$A0,$7E ; MVN $A07E  ; bank $A0 -> $7E  (must be tricked to assemble)
 	ELSEIF
-	sasm_mvn	$32,$7E ; MVN $327E  ; bank 32 -> 7E  (must be tricked to assemble)
+	sasm_mvn	$20,$7E ; MVN $207E  ; bank $20 -> $7E  (must be tricked to assemble)
 	ENDC
 	
 	PLB
 	RTL
+msuhanend
 
-;fade
-	IFNE	fastrom
-	org $B2FEC0,$8000*$32+$7EC0			;32 = bank number
-	ELSEIF
-	org $32FEC0,$8000*$32+$7EC0			;32 = bank number	
-	ENDC
-	
-	LDA.l msu_017f
-	AND #$00ff
-	CMP #$00f1
-	BEQ .k1
-	LDA.l $003030
-	RTL
-.k1	PHP
-	a8
-	lda.l msu_017e
-	CMP #$00
-	BEQ .endslow
-	dec a
-	dec a
-	cmp #$10
-	bcs .k2
-.endslow
-	lda #$00
-	sta.l msu_017f ;erase fade flag
-.k2	sta.l $002006
-	sta.l msu_017e
-	PLP
-	LDA.l $003030
-	RTL	
-	
-; loop table
-	IFNE	fastrom
-	org $B2FF00,$8000*$32+$7F00			;32 = bank number
-	ELSEIF
-	org $32FF00,$8000*$32+$7F00			;32 = bank number
-	ENDC
-;msulooptab
+; Fade handler was moved to NMI.ASM, see 'msufadehan'
+
+msulooptab
 	;   0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
 	db $03,$01,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03 ; 03-0F
 	db $03,$01,$03,$03,$03,$03,$03,$01,$03,$03,$03,$03,$03,$03,$03,$03 ; 10-1F
