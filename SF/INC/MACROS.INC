@@ -196,7 +196,7 @@ chkmemoryfull	macro	[symbol,name,extramsg]
 chkmemoryexceeded	macro	[symbol,name,extramsg]
 	IFLT	{symbol}
 	printf	"%01%31Error: {name} space exceeded! {extramsg}%n%00"
-	fail
+	error+
 	ENDC
 	ENDM
 
@@ -4332,10 +4332,9 @@ setlevel	macro
 
 bankend	macro
 	IFEQ	NARG
-		IFD	_SASM!_ARGSFX
 		printf	"BANKEND: Which bank are we talking about here?"
+		error+
 		MEXIT
-		ENDC
 	ENDC
 
 
@@ -4356,14 +4355,10 @@ totalromspaceleft	=	0
 totalromspaceleft = totalromspaceleft+bank\1left
 
 	IFLT	bank\1left
-		IFD	_SASM!_ARGSFX
 		progress_off
 		printf	"[0;5;31;1mError: Bank \1 is out of space by ",-bank\1left," bytes.[0m%n"
+		error+
 		progress_on
-		ELSEIF
-Bank_over_flow_in_Bank	=	\1
-		?Bank_over_flow_in_Bank
-		ENDC
 	ENDC
 
 	; Write free space info to BANKS.CSV
@@ -4379,10 +4374,6 @@ Bank_over_flow_in_Bank	=	\1
 	printf	"%01-- %xbank\1left  bytes free.%00%n"
 	ENDC
 
-	IFND	_SASM!_ARGSFX
-	?bank\1left
-	ENDC
-
 	endm
 
 ;------------------------------------------------------------------------
@@ -4390,12 +4381,11 @@ Bank_over_flow_in_Bank	=	\1
 bank	macro
 
 	IFEQ	NARG
-		IFD	_SASM!_ARGSFX
 		progress_off
 		printf	"Chigau matey.. the bank macro needs um.. a thingy on the end."
+		error+
 		progress_on
 		MEXIT
-		ENDC
 	ENDC
 
 	printf	"%01-- BANK \1:%00%n"
@@ -4408,9 +4398,6 @@ bank	macro
 
 banknum	=	\1
 Assembling_bank	=	\1
-	IFND	_SASM!_ARGSFX
-	?Assembling_bank
-	ENDC
 
 	endm
 
