@@ -37,3 +37,6 @@ m_rambr		equ	$303C ; RAM Bank Register (R)
 m_un3d		equ	$303D ; Unused
 m_cbr		equ	$303E ; Cache Base Register (R)
 
+; MARIO chip Config Register (CFGR, $3037) bits
+cfgr_noirq	equ	%10000000	; IRQs DISABLED
+cfgr_ms1		equ	%00100000	; HighSpeed Multiply ON (MS1)
