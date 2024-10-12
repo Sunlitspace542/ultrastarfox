@@ -105,7 +105,7 @@ int main(int argc, char**argv)
 {
 	// SUNLITFIX add help text so it doesn't crash with no arguments supplied
 	if (argv[1] == NULL){
-		printf("Interleaved FXGfx extractor/inserter\nUsage: %s [extract/insert] [bin/dat file] [file1] [file2]\nModified from fx.cpp by Mathew Callis\n", argv[0]);
+		printf("Interleaved FXGfx extractor/inserter\nUsage: %s [extract/insert] [bin/dat file] [file1] [file2]\nModified from fx.cpp by Matthew Callis\n", argv[0]);
 		return 0;
 	}
 	if(strcmp(argv[1],"extract")==0)
