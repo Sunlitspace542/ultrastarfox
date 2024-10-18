@@ -27,10 +27,17 @@ titlelogo	equ 1
 ; [0 = NTSC, 1 = PAL] (DOES NOT AFFECT JP)
 controlsscreenpal	equ	0
 
-; Enable colored window over shield and boost meters as in vanilla.
-; Set this to 0 if moving meter positions.
+; Enable colored window to change from palette line 7 to 2 over shield and boost meters as in vanilla.
+; Set this to 0 if moving meter positions, or if using all 15 colors on palette line 2 instead of 12.
+; If set to 1, palette line 2 color $d is the outlines' color,
+; palette line 2 color 4 is the shield meter's color and palette line 2 color 7 is the boost meter's color.
+; Those can be changed by changing the background palette.
+; If set to 0, they instead use colors from palette line 7.
 ; [0 = off, 1 = on]
 shieldboostcolorbox	equ	0
+
+; Shield meter's color when wireframe is activated. Have to set shieldboostcolorbox to 1 to work.
+wireframeshieldmetercolor   equ $7ee0
 
 ; Hides the HUD when a boss is defeated.
 ; [0 = off, 1 = on]
