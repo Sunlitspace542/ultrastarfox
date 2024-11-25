@@ -8,7 +8,7 @@ sf_crunch is faster and saves more bytes compared to PACKER.
 
 ## MERGE
 **Tool made by Argonaut Software**  
-Texture interleaving tool.
+Texture interleaving tool. No longer used in this repo. It is recommended you use cgx2fx instead.  
 To use:  
 ``merge.exe [infile1] [infile2] [outfile] /cgx``  
 
@@ -42,7 +42,17 @@ Outputs a CGX tileset, SCR tilemap, and COL and PAL format palettes, and optiona
 Texture deinterleaving tool. Based on fx.cpp from [Star Fox 2 Font Tools](https://www.romhacking.net/utilities/346/) by Matthew Callis, modified by Sega Mega Drive.  
 To use:  
 ``unmerge extract [bin/dat file] [file1] [file2]`` (no brackets, obviously)  
-outputs 2 files in MSX 4bpp format.  
+Outputs 2 files in MSX 4BPP format.  
+This tool is now obsolete, it is recommended that you use cgx2fx and fx2cgx for interleaving and deinterleaving texture files.  
+
+## cgx2fx / fx2cgx
+**Tool made by Sega Mega Drive**  
+**DOS/Windows executables**  
+``cgx2fx`` interleaves two 4BPP CGX files into one FXGfx file.  
+Usage: ``cgx2fx <input_cgx1> <input_cgx2> <output_bin>``  
+  
+``fx2cgx`` deinterleaves a FXGfx file back into two 4BPP CGX files.  
+Usage: ``fx2cgx <input_bin>``  
 
 ## SHAPED
 **Tool made by Argonaut Software**  
