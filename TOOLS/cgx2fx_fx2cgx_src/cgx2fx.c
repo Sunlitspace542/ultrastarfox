@@ -37,6 +37,8 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
 
+	printf("Interleaving FXGfx data for %s...", argv[2]);
+
     const char *input_cgx1 = argv[1];
     const char *input_cgx2 = argv[2];
     const char *output_bin = argv[3];

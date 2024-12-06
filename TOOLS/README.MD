@@ -48,6 +48,7 @@ This tool is now obsolete, it is recommended that you use cgx2fx and fx2cgx for 
 ## cgx2fx / fx2cgx
 **Tool made by Sega Mega Drive**  
 **DOS/Windows executables**  
+  
 ``cgx2fx`` interleaves two 4BPP CGX files into one FXGfx file.  
 Usage: ``cgx2fx <input_cgx1> <input_cgx2> <output_bin>``  
   
