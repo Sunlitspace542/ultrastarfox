@@ -33,6 +33,7 @@
 *.csv
 *.CSV#
 *.csv#
+*:Zone.Identifier
 
 # VSCode stuff
 */.vscode/*
