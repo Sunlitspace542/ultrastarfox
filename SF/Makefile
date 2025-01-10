@@ -2,50 +2,62 @@
 # UltraStarFox Makefile #
 #########################
 
+# Silence the assembler+linker unless an error occurs
+QUIET ?= true
+
+# If on Linux, use Wine to run msdos.exe
+WINE=wine
+
+# MS-DOS player userland application emulator
+MSDOS=../bin/msdos.exe
+
 # Assembler
-ASM=wine ../BIN/msdos.exe ../BIN/ARGSFXX.EXE
+ASM=$(WINE) $(MSDOS) ../bin/ARGSFXX.EXE
 # Setup heap for SASM and export symbols for ARGSFX
 ASMFLAGS= -e__heap=14400 -z
 
 # Linker
-LINK=wine ../BIN/msdos.exe ../BIN/ARGLINK.EXE
+LINK=$(WINE) $(MSDOS) ../bin/ARGLINK.EXE
 LOPTS=-b30 -h1024 -t7d -z
 
 # ROM Extender
-EXTEND=../BIN/extend
+EXTEND=../tools/romextender
 # Extended size in Mbits, byte to pad with
 EXTOPTS= 16 ff
 
 # Checksum Fixer
-CHECK=../BIN/sfcheck
+CHECK=../tools/superfamicheck_linux
 COPTS=-s -f
 
 # FXGFX Interleaver
-MERGE=../BIN/cgx2fx
+MERGE=../tools/cgx2fx
 
 # Graphics Cruncher
-CRU=../BIN/cru
+CRU=../tools/sf_crunch
 
-# ALLCOLS Cruncher thing
+# ALLCOLS Builder
 MC=DATA/COL/mc.sh
 
-# Copy command
-COPY=cp
-
 # Font Converter
-FONT=../BIN/fon
+FONT=../tools/foxfont
 
 # Argonaut .MAP File Decoder
-MAPDEC=../BIN/mapdec
+MAPDEC=../tools/argonautmapdecoder
 
-# Command for printing messages during the make.
+# Terminal-specific commands
+
+# Copy Command
+COPY=cp
+
+# Command for printing messages
 PRINT ?= echo
 
-# Silence the assembler
-QUIET ?= true
+# File Checksum Calculator
+SHA1SUM=sha1sum
 
-# Checksum calculator
-SHA1SUM = sha1sum
+MV=[ ! -f src ] || mv
+
+############################
 
 # Colors for status messages
 NO_COL=\033[0m
@@ -64,6 +76,11 @@ define print2
   @$(PRINT) "$(GREEN)$(1) $(BLUE)$(2)$(NO_COL)"
 endef
 
+define print3
+  @$(PRINT) "$(GREEN)$(1)$(NO_COL)"
+endef
+
+# Function to interleave FXGfx
 define merge
 	$(call print2,Interleaving FXGfx:,$@)
 	@$(MERGE) MSPRITES/$(1) MSPRITES/$(2) MSPRITES/$@
@@ -129,14 +146,14 @@ ALLFILES= $(patsubst %.ASM, %.SOB, $(wildcard BANK/*.ASM))
 all: allcols.pac msprites crunch fonts sf.sfc donebld
 
 # Initialize allcols.col
-init:
+init-allcols:
 	@rm -f DATA/COL/allcols.col
 	@touch DATA/COL/allcols.col
 	@touch DATA/COL/col2.tmp
 
 # Process a single palette
 process-palette:
-	$(call print2,\nBuilding ALLCOLS:,$@)
+	$(call print3,\nBuilding ALLCOLS:)
 
 	@$(MC) OOPS 0 2
 	@$(MC) BG2-A 0 7
@@ -166,7 +183,7 @@ process-palette:
 	@$(MC) BG2-E-P 0 9
 
 # Final step: Crunch all palettes into allcols.pac
-allcols.pac: init process-palette
+allcols.pac: init-allcols process-palette
 	@$(CRU) DATA/COL/allcols.col DATA/COL/allcols.pac
 	@$(PRINT) "$(GREEN)Palette crunching complete.$(NO_COL)"
 
@@ -226,14 +243,15 @@ sf.sfc: $(ALLFILES)
 	@$(PRINT) "${BLINK}Build succeeded.\n$(NO_COL)"
 
 donebld: sf.sfc
-	@mv sf.sfc ../sf.sfc
-	@mv BANKS.CSV ../banks.csv
-	@$(MAPDEC) sf.MAP ../symbols.txt
-	@rm -rf sf.MAP
+	@mkdir -p ../build
+	@$(MV) sf.sfc ../build/sf.sfc
+	@$(MV) BANKS.CSV ../build/banks.csv
+	@$(MAPDEC) sf.MAP ../build/symbols.txt
+	@$(MV) sf.MAP ../build/sf.map
 	@rm -rf msgs.txt
 
 clean:
-	@$(PRINT) "$(RED)Cleaning...$(NO_COL)"
+	@rm -rf ../build \
 	rm -rf BANK/*.SOB \
 	BANK/*.MAP *.MAP \
 	MSPRITES/*.bin \
@@ -248,40 +266,53 @@ clean:
 ## Banks to assemble
 
 ## Banks 0, 32
-BANK/BANK0.SOB: BANK/BANK0.ASM
+BANK/BANK0.SOB: \
+ BANK/BANK0.ASM
 
 ## Banks 1, 41
-BANK/BANK1.SOB: BANK/BANK1.ASM
+BANK/BANK1.SOB: \
+ BANK/BANK1.ASM
 
 ## Banks 2, 3, 31, 36
-BANK/BANK2.SOB: BANK/BANK2.ASM
+BANK/BANK2.SOB: \
+ BANK/BANK2.ASM
 
 ## Bank 4
-BANK/BANK4.SOB: BANK/BANK4.ASM
+BANK/BANK4.SOB: \
+ BANK/BANK4.ASM
 
 ## Banks 5, 13, 39
-BANK/BANK5.SOB: BANK/BANK5.ASM
+BANK/BANK5.SOB: \
+ BANK/BANK5.ASM
 
 ## Banks 6, 33
-BANK/BANK6.SOB: BANK/BANK6.ASM
+BANK/BANK6.SOB: \
+ BANK/BANK6.ASM
 
 ## Bank 7
-BANK/BANK7.SOB: BANK/BANK7.ASM
+BANK/BANK7.SOB: \
+ BANK/BANK7.ASM
 
 ## Bank 8
-BANK/BANK8.SOB: BANK/BANK8.ASM
+BANK/BANK8.SOB: \
+ BANK/BANK8.ASM
 
 ## Bank 9
-BANK/BANK9.SOB: BANK/BANK9.ASM
+BANK/BANK9.SOB: \
+ BANK/BANK9.ASM
 
 ## Bank 10
-BANK/BANK10.SOB: BANK/BANK10.ASM
+BANK/BANK10.SOB: \
+ BANK/BANK10.ASM
 
 ## Banks 11, 40
-BANK/BANK11.SOB: BANK/BANK11.ASM
+BANK/BANK11.SOB: \
+ BANK/BANK11.ASM
 
 ## Banks 12, 14, 15, 16, 17, 37, 38
-BANK/SHBANKS.SOB: BANK/SHBANKS.ASM
+BANK/SHBANKS.SOB: \
+ BANK/SHBANKS.ASM
 
 ## Banks 18, 19, 20, 21, 22, 23, 35 
-BANK/INCBINS.SOB: BANK/INCBINS.ASM
+BANK/INCBINS.SOB: \
+ BANK/INCBINS.ASM

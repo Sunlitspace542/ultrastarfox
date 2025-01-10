@@ -5,7 +5,7 @@
 set -e  # Exit immediately if any command fails
 
 # Invoke inccol with the provided arguments
-../BIN/inccol "DATA/COL/$1.COL" "$2" "$3"
+../tools/inccol "DATA/COL/$1.COL" "$2" "$3"
 
 # This has to be done due to filepath memes
 mv col.tmp DATA/COL/col.tmp

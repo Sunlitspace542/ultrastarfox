@@ -1,6 +1,8 @@
-# NOTE: the actual makefile is in SF
+# Redirects to the correct Makefiles
 all:
-	make -C SF
+	@make -C tools
+	@make -C SF
 
 clean:
-	make -C SF clean
+	@make -C tools clean
+	@make -C SF clean
