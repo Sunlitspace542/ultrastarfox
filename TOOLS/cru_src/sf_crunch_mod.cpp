@@ -201,9 +201,9 @@ int main(int argc, const char* argv[]) {
     }
 	
 	// added by Sunlit, printf's status so it doesn't look weird executed en masse
-    if (argc == 3) {
-        printf("Crunching %s...", argv[2]);
-    }
+//    if (argc == 3) {
+//        printf("Crunching %s...", argv[2]);
+//    }
     
     const char* i_filename = argv[1];
     const char* o_filename = argv[2];

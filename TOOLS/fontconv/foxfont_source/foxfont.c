@@ -150,7 +150,7 @@ void convertBMP2Fon(FILE * fpBitmap, char * outputFileName)
 	// don't need output buffer anymore
 	free(outBuff);
 
-	printf("Foxfont done, output: %s\n", outputFileName);
+	//printf("Foxfont done, output: %s\n", outputFileName);
 
 	exit(EX_OK);
 }
