@@ -377,7 +377,7 @@ cont3_7
 	mapwait	2000
 	fadeoutbgm
 	setbgm	6
-	incmap	transformer
+	incmap	transfor
 	maprts
 
 

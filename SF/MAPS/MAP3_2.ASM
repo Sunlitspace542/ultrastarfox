@@ -189,7 +189,7 @@ map3_2
 ; propeller boss
 	fadeoutbgm
 	setbgm	bgm_boss1
-	incmap	webmonster
+	incmap	webmonst
 	mapwaitboss
 	markboss	boss32
 

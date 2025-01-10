@@ -23,10 +23,10 @@
 	include	EXT\kstrats.ext
 	include	EXT\d2strats.ext
 	include	EXT\gastrats.ext
-	include	EXT\ga2strats.ext
+	include	EXT\ga2strat.ext
 	include	EXT\gbstrats.ext
-	include	EXT\gb2strats.ext
-	include	EXT\gb3strats.ext
+	include	EXT\gb2strat.ext
+	include	EXT\gb3strat.ext
 	include	EXT\gistrats.ext
 	include	EXT\gcstrats.ext
 	include	EXT\pstrats.ext

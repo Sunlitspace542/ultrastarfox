@@ -31,7 +31,7 @@
 ;*                                                                         *
 ;***************************************************************************
 
-	incpublics	EXT\ga3strats.ext
+	incpublics	EXT\ga3strat.ext
 
 
 ;****************************************************************************
@@ -184,7 +184,7 @@ spacepilonP_strat
 
 
 	IFNE	prntrouln_on
-	printroulen	spacepilon_Istrat,<ga3strats>
+	printroulen	spacepilon_Istrat,<ga3strat>
 	ENDC
 
 

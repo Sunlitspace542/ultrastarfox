@@ -12,7 +12,7 @@
 
 	bank	9
 	incfile	STRAT\dstrats.asm
-	incfile	STRAT\ga3strats.asm
+	incfile	STRAT\ga3strat.asm
 
 	public	game_overbgm
 	public	game_overbgmlen
