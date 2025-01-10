@@ -14,7 +14,7 @@ MSDOS=../bin/msdos.exe
 # Assembler
 ASM=$(WINE) $(MSDOS) ../bin/ARGSFXX.EXE
 # Setup heap for SASM and export symbols for ARGSFX
-ASMFLAGS= -e__heap=14400 -z
+ASMFLAGS= -e__notitle -e__heap=14400 -z
 
 # Linker
 LINK=$(WINE) $(MSDOS) ../bin/ARGLINK.EXE
@@ -49,13 +49,20 @@ MAPDEC=../tools/argonautmapdecoder
 # Copy Command
 COPY=cp
 
-# Command for printing messages
+# Print Command
 PRINT ?= echo
 
 # File Checksum Calculator
 SHA1SUM=sha1sum
 
+# File move Command
 MV=[ ! -f src ] || mv
+
+# Directory Creation
+MKDIR=mkdir -p
+
+# Delete Command
+DEL=rm -rf
 
 ############################
 
@@ -67,7 +74,7 @@ BLUE=\033[34m
 RED=\033[31m
 BLINK=\033[32;5m
 
-# Common build print status function
+# Common build print status functions
 define print
   @$(PRINT) "$(GREEN)$(1) $(YELLOW)$(2)$(GREEN) -> $(BLUE)$(3)$(NO_COL)"
 endef
@@ -91,10 +98,10 @@ BANK/%.SOB: BANK/%.ASM
 	$(call print,Assembling:,$<,$@)
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
-		$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@ > /dev/null 2>&1 || \
-		$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@; \
+		$(ASM) -m30 $(ASMFLAGS) $< -v$@ > /dev/null 2>&1 || \
+		$(ASM) -m30 $(ASMFLAGS) $< -v$@; \
 	else \
-		$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@; \
+		$(ASM) -m30 $(ASMFLAGS) $< -v$@; \
 	fi'
 
 # Recipes to crunch graphics
@@ -151,9 +158,9 @@ init-allcols:
 	@touch DATA/COL/allcols.col
 	@touch DATA/COL/col2.tmp
 
-# Process a single palette
-process-palette:
-	$(call print3,\nBuilding ALLCOLS:)
+# Palettes to include in ALLCOLS
+process-palettes:
+	$(call print3,\nBuilding ALLCOLS...)
 
 	@$(MC) OOPS 0 2
 	@$(MC) BG2-A 0 7
@@ -183,7 +190,7 @@ process-palette:
 	@$(MC) BG2-E-P 0 9
 
 # Final step: Crunch all palettes into allcols.pac
-allcols.pac: init-allcols process-palette
+allcols.pac: init-allcols process-palettes
 	@$(CRU) DATA/COL/allcols.col DATA/COL/allcols.pac
 	@$(PRINT) "$(GREEN)Palette crunching complete.$(NO_COL)"
 
@@ -243,16 +250,16 @@ sf.sfc: $(ALLFILES)
 	@$(PRINT) "${BLINK}Build succeeded.\n$(NO_COL)"
 
 donebld: sf.sfc
-	@mkdir -p ../build
+	@$(MKDIR) ../build
 	@$(MV) sf.sfc ../build/sf.sfc
 	@$(MV) BANKS.CSV ../build/banks.csv
 	@$(MAPDEC) sf.MAP ../build/symbols.txt
 	@$(MV) sf.MAP ../build/sf.map
-	@rm -rf msgs.txt
+	@$(DEL) msgs.txt
 
 clean:
-	@rm -rf ../build \
-	rm -rf BANK/*.SOB \
+	@$(DEL) ../build \
+	BANK/*.SOB \
 	BANK/*.MAP *.MAP \
 	MSPRITES/*.bin \
 	DATA/*.CCR \

@@ -12,19 +12,19 @@ clean:
 	@rm -rf ./sf_crunch ./cgx2fx ./romextender ./foxfont ./inccol ./argonautmapdecoder
 
 sf_crunch:
-	$(CC) sf_crunch.cpp -o $@
+	@$(CC) sf_crunch.cpp -o $@
 
 cgx2fx:
-	$(CC) cgx2fx.c -o $@
+	@$(CC) cgx2fx.c -o $@
 
 romextender:
-	$(CC) romextender.c -o $@
+	@$(CC) romextender.c -o $@
 
 foxfont:
-	$(CC) foxfont.c -o $@
+	@$(CC) foxfont.c -o $@
 
 inccol:
-	$(CC) inccol.c -o $@
+	@$(CC) inccol.c -o $@
 
 argonautmapdecoder:
-	$(CC) argonautmapdecoder.c -o $@
+	@$(CC) argonautmapdecoder.c -o $@
