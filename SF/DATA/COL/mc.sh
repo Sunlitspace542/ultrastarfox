@@ -2,6 +2,8 @@
 # mc.sh
 # Syntax: ./mc.sh <file prefix> <start> <end>
 
+set -e  # Exit immediately if any command fails
+
 # Invoke inccol with the provided arguments
 ../BIN/inccol "DATA/COL/$1.COL" "$2" "$3"
 

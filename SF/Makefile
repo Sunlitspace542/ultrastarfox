@@ -138,36 +138,36 @@ init:
 process-palette:
 	$(call print2,\nBuilding ALLCOLS:,$@)
 
-	$(MC) OOPS 0 2
-	$(MC) BG2-A 0 7
-	$(MC) BG2-B 0 13
-	$(MC) BG2-C 0 7
-	$(MC) BG2-D 0 7
-	$(MC) BG2-E 0 9
-	$(MC) BG2-F 0 7
-	$(MC) BG2-G 0 7
-	$(MC) T-M 0 7
-	$(MC) T-M-2 0 7
-	$(MC) T-M-3 0 7
-	$(MC) T-M-4 0 7
-	$(MC) B-M 0 7
-	$(MC) LIGHT 0 7
-	$(MC) SPACE 0 7
-	$(MC) STARS 0 7
-	$(MC) CP 0 7
-	$(MC) CP-US 0 7
-	$(MC) CP-USP 0 7
-	$(MC) CP-P 0 7
-	$(MC) HOLE 0 7
-	$(MC) L 0 7
-	$(MC) E-TEST0 0 7
-	$(MC) E-TEST 0 7
-	$(MC) OBJ-1 8 13
-	$(MC) BG2-E-P 0 9
+	@$(MC) OOPS 0 2
+	@$(MC) BG2-A 0 7
+	@$(MC) BG2-B 0 13
+	@$(MC) BG2-C 0 7
+	@$(MC) BG2-D 0 7
+	@$(MC) BG2-E 0 9
+	@$(MC) BG2-F 0 7
+	@$(MC) BG2-G 0 7
+	@$(MC) T-M 0 7
+	@$(MC) T-M-2 0 7
+	@$(MC) T-M-3 0 7
+	@$(MC) T-M-4 0 7
+	@$(MC) B-M 0 7
+	@$(MC) LIGHT 0 7
+	@$(MC) SPACE 0 7
+	@$(MC) STARS 0 7
+	@$(MC) CP 0 7
+	@$(MC) CP-US 0 7
+	@$(MC) CP-USP 0 7
+	@$(MC) CP-P 0 7
+	@$(MC) HOLE 0 7
+	@$(MC) L 0 7
+	@$(MC) E-TEST0 0 7
+	@$(MC) E-TEST 0 7
+	@$(MC) OBJ-1 8 13
+	@$(MC) BG2-E-P 0 9
 
 # Final step: Crunch all palettes into allcols.pac
 allcols.pac: init process-palette
-	$(CRU) DATA/COL/allcols.col DATA/COL/allcols.pac
+	@$(CRU) DATA/COL/allcols.col DATA/COL/allcols.pac
 	@$(PRINT) "$(GREEN)Palette crunching complete.$(NO_COL)"
 
 # FXGFX files to be interleaved

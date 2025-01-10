@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
     fclose(sourceFile);
     fclose(destinationFile);
 
-    printf("%s stripped successfully.\n", argv[1]);
+    //printf("%s stripped successfully.\n", argv[1]);
 
     return EXIT_SUCCESS;
 }
