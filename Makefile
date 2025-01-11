@@ -1,20 +1,17 @@
 # Redirects to the correct Makefiles
 all:
-	@make -C tools
-	@make -C SF
-
-tools:
-	@make -C tools
+	@$(MAKE) -C tools
+	@$(MAKE) -C SF
 
 upload:
-	@make -C SF upload
+	@$(MAKE) -C SF upload
 
 boot:
-	@make -C SF boot
+	@$(MAKE) -C SF boot
 
 clean:
-	@make -C SF clean
+	@$(MAKE) -C SF clean
 
 distclean:
-	@make -C SF clean
-	@make -C tools clean
+	@$(MAKE) -C SF clean
+	@$(MAKE) -C tools clean
