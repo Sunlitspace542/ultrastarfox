@@ -4,4 +4,4 @@ all:
 	@make -C SF
 
 clean:
-	@make -C tools clean
+	@make -C SF clean

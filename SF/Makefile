@@ -79,9 +79,6 @@ PRINT ?= echo
 # File Checksum Calculator
 SHA1SUM=sha1sum
 
-# Delete Command
-DEL=rm -rf
-
 ############################
 
 # ANSI color codes for status messages
@@ -110,7 +107,7 @@ endef
 # Function to interleave FXGfx
 define merge
 	$(call print2,Interleaving FXGfx:,$@)
-	@$(MERGE) MSPRITES/$(1) MSPRITES/$(2) MSPRITES/$@
+	@$(MERGE) MSPRITES/$(1) MSPRITES/$(2) $@
 endef
 
 # Recipe to assemble a .ASM file and create a linkable .SOB file
@@ -141,7 +138,7 @@ DATA/FONT/%.fon: DATA/FONT/%.bmp
 #!! If you add/remove a cgx/scr in these two lists, make sure to add/remove the corresponding file.
 
 # Crunched tilesets
-CGXFILES= DATA/1-3-B.CCR DATA/2-3B.CCR DATA/3-4.CCR DATA/B.CCR DATA/CONT.CCR DATA/DOG.CCR \
+CCRFILES= DATA/1-3-B.CCR DATA/2-3B.CCR DATA/3-4.CCR DATA/B.CCR DATA/CONT.CCR DATA/DOG.CCR \
  DATA/F-1.CCR DATA/FS-BG3.CCR DATA/MAP-G.CCR DATA/OBJ-2.CCR DATA/SPACE.CCR DATA/T-ST.CCR \
  DATA/1-4.CCR DATA/2-4.CCR DATA/AND.CCR DATA/C-M.CCR DATA/CP-P.CCR DATA/E-TEST.CCR \
  DATA/F-OBJ.CCR DATA/HOLE-A.CCR DATA/MAP.CCR DATA/OBJ-3.CCR DATA/ST-P.CCR DATA/TI-3-G.CCR \
@@ -151,7 +148,7 @@ CGXFILES= DATA/1-3-B.CCR DATA/2-3B.CCR DATA/3-4.CCR DATA/B.CCR DATA/CONT.CCR DAT
  DATA/FOX.CCR DATA/M.CCR DATA/OBJ-1.CCR DATA/T-SP.CCR DATA/TI-3.CCR
 
 # Crunched tilemaps
-SCRFILES= DATA/1-3-B.PCR DATA/2-3.PCR DATA/3-2.PCR DATA/B-HOLE.PCR DATA/CONT.PCR DATA/DOG.PCR \
+PCRFILES= DATA/1-3-B.PCR DATA/2-3.PCR DATA/3-2.PCR DATA/B-HOLE.PCR DATA/CONT.PCR DATA/DOG.PCR \
  DATA/F-1.PCR DATA/LAST.PCR DATA/T-SP.PCR DATA/TI-3-US.PCR DATA/1-3.PCR DATA/2-3B.PCR \
  DATA/3-3.PCR DATA/B.PCR DATA/CP-P.PCR DATA/E-TEST.PCR DATA/FOX.PCR DATA/LSB.PCR DATA/ST-P.PCR \
  DATA/T-SS.PCR DATA/TI-3.PCR DATA/1-4.PCR DATA/2-3H.PCR DATA/3-4.PCR DATA/CONT-2-G.PCR \
@@ -183,7 +180,7 @@ ALLFILES= \
 #!! If you add/remove/modify a cgx/bin in these two lists, make sure the corresponding files are present here.
 
 # Everything that should be done when make is executed
-all: allcols.pac msprites crunch fonts sf.sfc donebld
+all: make-allcols msprites crunch fonts sf.sfc donebld
 
 # Initialize allcols.col
 init-allcols:
@@ -191,8 +188,20 @@ init-allcols:
 	@touch DATA/COL/allcols.col
 	@touch DATA/COL/col2.tmp
 
+# List of palette source files
+ALLCOLS_PALETTES := \
+ DATA/COL/OOPS.COL DATA/COL/BG2-A.COL DATA/COL/BG2-B.COL \
+ DATA/COL/BG2-C.COL DATA/COL/BG2-D.COL DATA/COL/BG2-E.COL \
+ DATA/COL/BG2-F.COL DATA/COL/BG2-G.COL DATA/COL/T-M.COL \
+ DATA/COL/T-M-2.COL DATA/COL/T-M-3.COL DATA/COL/T-M-4.COL \
+ DATA/COL/B-M.COL DATA/COL/LIGHT.COL DATA/COL/SPACE.COL \
+ DATA/COL/STARS.COL DATA/COL/CP.COL DATA/COL/CP-US.COL \
+ DATA/COL/CP-USP.COL DATA/COL/CP-P.COL DATA/COL/HOLE.COL \
+ DATA/COL/L.COL DATA/COL/E-TEST0.COL DATA/COL/E-TEST.COL \
+ DATA/COL/OBJ-1.COL DATA/COL/BG2-E-P.COL
+
 # Palettes to include in ALLCOLS
-process-palettes:
+DATA/COL/allcols.pac: $(ALLCOLS_PALETTES)
 	$(call print3,Building ALLCOLS...)
 
 	@$(MC) OOPS 0 2
@@ -223,25 +232,26 @@ process-palettes:
 	@$(MC) BG2-E-P 0 9
 
 # Final step: Crunch all palettes into allcols.pac
-allcols.pac: init-allcols process-palettes
 	@$(CRU) DATA/COL/allcols.col DATA/COL/allcols.pac
 	@$(PRINT) "$(GREEN)Palette crunching complete.$(NO_COL)"
 
+make-allcols: init-allcols DATA/COL/allcols.pac
+
 # FXGFX files to be interleaved
-msprites: tex_01.bin tex_23.bin tex_23_a.bin
+msprites: MSPRITES/TEX_01.BIN MSPRITES/TEX_23.BIN MSPRITES/TEX_23_A.BIN
 
 # MSPRITES .BIN recipes
-tex_01.bin:
+MSPRITES/TEX_01.BIN:
 	$(call merge,tex_0.CGX,tex_1.CGX)
 
-tex_23.bin:
+MSPRITES/TEX_23.BIN:
 	$(call merge,tex_2.CGX,tex_3.CGX)
 
-tex_23_a.bin:
+MSPRITES/TEX_23_A.BIN:
 	$(call merge,tex_2.CGX,tex_3_a.CGX)
 
 # Crunch all compressible GFX
-crunch: $(CGXFILES) $(SCRFILES)
+crunch: $(CCRFILES) $(PCRFILES)
 
 # Convert fonts
 fonts: $(FONFILES)
@@ -259,7 +269,7 @@ sf.sfc: $(ALLFILES)
 		$(LINK) $(LOPTS) -o$@ @flist.tmp; \
 	fi'
 
-	@$(DEL) flist.tmp
+	@rm -f flist.tmp
 
 	$(call print2,Extending ROM:,$@)
 	@bash -c '\
@@ -284,78 +294,117 @@ sf.sfc: $(ALLFILES)
 
 donebld: sf.sfc
 	@mv sf.sfc ../sf.sfc
-	@mv BANKS.CSV ../banks.csv
-# temporarily clearing object files for time being
-	@$(DEL) BANK/*.SOB
-	@$(DEL) BANK/*.MAP
+	@{ [ -f BANKS.CSV ] && mv BANKS.CSV ../banks.csv || true; }
 	@$(MAPDEC) sf.MAP ../symbols.txt
 	@rm -rf sf.MAP
 	@rm -rf msgs.txt
 
 clean:
-	@$(DEL) ../sf.sfc
-	@$(DEL) ../banks.csv
-	@$(DEL) BANK/*.SOB
-	@$(DEL) BANK/*.MAP *.MAP
-	@$(DEL) MSPRITES/*.bin
-	@$(DEL) DATA/*.CCR
-	@$(DEL) DATA/*.PCR
-	@$(DEL) DATA/FONT/MOJI_0.fon
-	@$(DEL) DATA/FONT/MOJI_D.fon
-	@$(DEL) DATA/COL/allcols.pac
-	@$(DEL) sf.sfc
-	@$(DEL) BANKS.CSV
+	@rm -rf ../sf.sfc
+	@rm -rf ../banks.csv
+	@rm -rf BANK/*.SOB
+	@rm -rf BANK/*.MAP *.MAP
+	@rm -rf MSPRITES/*.BIN
+	@rm -rf DATA/*.CCR
+	@rm -rf DATA/*.PCR
+	@rm -rf DATA/FONT/MOJI_0.fon
+	@rm -rf DATA/FONT/MOJI_D.fon
+	@rm -rf DATA/COL/allcols.pac
+	@rm -rf sf.sfc
+	@rm -rf BANKS.CSV
 
-## Banks to assemble
+## The great big list of source files to detect changes for and whatnot
+
+INCFILES = $(wildcard INC/*.INC)
+EXTFILES = $(wildcard EXT/*.EXT)
+CFGFILES = $(wildcard CONFIG/*.INC)
+MAPFILES = $(wildcard MAPS/*.*)
+SNDFILES = $(wildcard SND/*.*)
+MSPRITESFILES = $(wildcard MSPRITES/*.BIN)
+STRATFILES = $(wildcard STRAT/*.ASM)
+SHAPEFILES = $(wildcard SHAPES/*.ASM)
+PATHFILES = $(wildcard PATH/*.ASM)
+MSGFILES = $(wildcard MSG/*.INC)
+ALLFONFILES = $(wildcard DATA/FONT/*.*)
+COLFILES = $(wildcard DATA/COL/*.COL)
+MARIOFILES = $(wildcard MARIO/*.MC)
+
+STDFILES = $(INCFILES) $(EXTFILES) $(CFGFILES)
+
+## Banks to assemble and files they include
 
 ## Banks 0, 32
 BANK/BANK0.SOB: \
- BANK/BANK0.ASM
+ $(STDFILES) $(ALLFONFILES) $(STRATFILES) $(PCRFILES) $(SHAPEFILES) \
+ BANK/BANK0.ASM \
+ ASM/SGTABS.ASM ASM/SGDATA.ASM ASM/MSU.ASM \
+ DATA/ETABS.DAT DATA/MAP-OBJ.CGX
 
 ## Banks 1, 41
 BANK/BANK1.SOB: \
- BANK/BANK1.ASM
+ $(STDFILES) $(ALLFONFILES) $(MSGFILES) $(MARIOFILES) \
+ BANK/BANK1.ASM \
+ ASM/FONTDATA.ASM ASM/GAMETEXT.ASM
 
 ## Banks 2, 3, 31, 36
 BANK/BANK2.SOB: \
- BANK/BANK2.ASM
+ $(STDFILES) $(STRATFILES) $(COLFILES) $(PCRFILES) \
+ BANK/BANK2.ASM \
+ ASM/RAMSTUFF.ASM ASM/IRQ.ASM ASM/HDMATABS.ASM ASM/COLDET.ASM ASM/COLBOXES.ASM \
+ ASM/TRANS.ASM ASM/GAME.ASM ASM/WINDOWS.ASM ASM/COLTABS.ASM ASM/DEFSPR.ASM ASM/COLTAB.ASM \
+ ASM/LIGHT.ASM ASM/BGS.ASM ASM/OBJ.ASM ASM/PLANETS.ASM ASM/SPRITES.ASM ASM/CONTINUE.ASM \
+ ASM/WORLD.ASM ASM/MOTHER.ASM ASM/DEBUG.ASM ASM/BOOTNMI.ASM ASM/BLINK.ASM ASM/NMI.ASM \
+ ASM/DRAW.ASM ASM/ENDSEQ.ASM ASM/CONT.ASM ASM/SOUND.ASM
 
 ## Bank 4
 BANK/BANK4.SOB: \
+ $(STDFILES) $(STRATFILES) $(PATHFILES) \
  BANK/BANK4.ASM
 
 ## Banks 5, 13, 39
 BANK/BANK5.SOB: \
+ $(STDFILES) $(MAPFILES) $(CCRFILES) $(PCRFILES) $(STRATFILES) \
  BANK/BANK5.ASM
 
 ## Banks 6, 33
 BANK/BANK6.SOB: \
+ $(STDFILES) $(STRATFILES) $(MARIOFILES) \
  BANK/BANK6.ASM
 
 ## Bank 7
 BANK/BANK7.SOB: \
+ $(STDFILES) $(STRATFILES) \
  BANK/BANK7.ASM
 
 ## Bank 8
 BANK/BANK8.SOB: \
+ $(STDFILES) $(STRATFILES) $(SNDFILES) \
  BANK/BANK8.ASM
 
 ## Bank 9
 BANK/BANK9.SOB: \
+ $(STDFILES) $(STRATFILES) $(SNDFILES) \
  BANK/BANK9.ASM
 
 ## Bank 10
 BANK/BANK10.SOB: \
- BANK/BANK10.ASM
+ $(STDFILES) $(STRATFILES) $(SNDFILES) \
+ BANK/BANK10.ASM \
+ ASM/MEM.ASM
 
 ## Banks 11, 40
 BANK/BANK11.SOB: \
- BANK/BANK11.ASM
+ $(STDFILES) $(STRATFILES) \
+ BANK/BANK11.ASM \
+ ASM/STRINGS.ASM
 
 ## Banks 12, 14, 15, 16, 17, 37, 38
 BANK/SHBANKS.SOB: \
+ $(STDFILES) $(CCRFILES) $(PCRFILES) $(STRATFILES) $(SHAPEFILES) $(SNDFILES) \
  BANK/SHBANKS.ASM
 
 ## Banks 18, 19, 20, 21, 22, 23, 35 
 BANK/INCBINS.SOB: \
- BANK/INCBINS.ASM
+ $(STDFILES) $(CCRFILES) $(PCRFILES) $(COLFILES) $(SNDFILES) $(MSPRITESFILES) $(MARIOFILES) \
+ BANK/INCBINS.ASM \
+ DATA/COL/allcols.pac DATA/FACE.CGX
