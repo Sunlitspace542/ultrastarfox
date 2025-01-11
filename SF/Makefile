@@ -5,8 +5,23 @@
 # Silence the assembler+linker unless an error occurs
 QUIET ?= true
 
+UNAME_S := $(shell uname -s)
+
+# Whether to colorize build messages
+ifeq ($(UNAME_S),Linux)
+COLOR ?= 1
+else
+# Assume we can't use ANSI codes if we're not on
+COLOR ?= 0
+NOANSI = -sNOANSI
+endif
+
 # If on Linux, use Wine to run msdos.exe
+ifeq ($(UNAME_S),Linux)
 WINE=wine
+else
+WINE=
+endif
 
 # MS-DOS player userland application emulator
 MSDOS=../bin/msdos.exe
@@ -26,7 +41,11 @@ EXTEND=../tools/romextender
 EXTOPTS= 16 ff
 
 # Checksum Fixer
+ifeq ($(UNAME_S),Linux)
 CHECK=../tools/superfamicheck_linux
+else
+CHECK=../tools/superfamicheck
+endif
 COPTS=-s -f
 
 # FXGFX Interleaver
@@ -58,12 +77,14 @@ DEL=rm -rf
 ############################
 
 # ANSI color codes for status messages
+ifeq ($(COLOR),1)
 NO_COL=\033[0m
 GREEN=\033[32m
 YELLOW=\033[33m
 BLUE=\033[34m
 RED=\033[31m
 BLINK=\033[32;5m
+endif
 
 # Common build print status functions
 define print
@@ -89,10 +110,10 @@ BANK/%.SOB: BANK/%.ASM
 	$(call print,Assembling:,$<,$@)
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
-		$(ASM) -m30 $(ASMFLAGS) $< -v$@ > /dev/null 2>&1 || \
-		$(ASM) -m30 $(ASMFLAGS) $< -v$@; \
+		$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@ > /dev/null 2>&1 || \
+		$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@; \
 	else \
-		$(ASM) -m30 $(ASMFLAGS) $< -v$@; \
+		$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@; \
 	fi'
 
 # Recipes to crunch graphics
