@@ -107,7 +107,7 @@ endef
 
 # Function to interleave FXGfx
 define merge
-	@$(PRINT) "$(GREEN)Interleaving FXGfx: $(YELLOW) $(1) + $(2) $(GREEN) -> $(BLUE)$@$(NEWLINE)"
+	@$(PRINT) "$(GREEN)Interleaving FXGfx: $(YELLOW)$(1) + $(2) $(GREEN) -> $(BLUE)$@$(NEWLINE)"
 	@$(MERGE) MSPRITES/$(1) MSPRITES/$(2) $@
 endef
 

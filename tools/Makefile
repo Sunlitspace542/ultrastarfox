@@ -21,7 +21,7 @@ sf_crunch:
 	@$(CC) -O2 sf_crunch.cpp -o $@$(EXT)
 
 cgx2fx:
-	@$(CC) cgx2fx.c -o $@$(EXT)
+	@$(CC) -O2 cgx2fx.c -o $@$(EXT)
 
 romextender:
 	@$(CC) romextender.c -o $@$(EXT)
