@@ -14,7 +14,14 @@ NOANSI=
 else
 # Assume we can't use ANSI codes if UNAME_S != linux
 COLOR ?= 0
+
+# MSYS is weird with ANSI, so if we specifically detect MSYS, allow assembler ANSI codes
+ifdef MSYSTEM
+NOANSI=
+else
 NOANSI= -eNOANSI
+endif
+
 endif
 
 # If on Linux, use Wine to run msdos.exe
@@ -273,7 +280,7 @@ sf.sfc: $(ALLFILES)
 	fi'
 
 	@$(SHA1SUM) $@
-	@$(PRINT) "${BLINK}Build succeeded.\n$(NO_COL)"
+	@$(PRINT) "${BLINK}Build succeeded.$(NO_COL)"
 
 donebld: sf.sfc
 	@mv sf.sfc ../sf.sfc
