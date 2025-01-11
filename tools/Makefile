@@ -5,9 +5,9 @@
 # C/C++ compiler
 CC=gcc
 
-ifneq ($(UNAME_S),Linux)
 EXT=
-else
+
+ifdef MSYSTEM
 EXT=.exe
 endif
 
