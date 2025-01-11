@@ -188,7 +188,7 @@ check-jobs:
 	@$(PRINT) "$(GREEN)Checking parallel build jobs...$(NO_COL)$(NEWLINE)"
 	@case "$(MAKEFLAGS)" in \
 		*-j*) \
-			echo "$(RED)WARNING: A parallel job count greater than 1 may cause issues!!$(NO_COL)$(NEWLINE)"; \
+			$(PRINT) "$(RED)WARNING: A parallel job count greater than 1 may cause issues!!$(NO_COL)$(NEWLINE)"; \
 		;; \
 	esac
 
