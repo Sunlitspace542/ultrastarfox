@@ -5,3 +5,7 @@ all:
 
 clean:
 	@make -C SF clean
+
+distclean:
+	@make -C SF clean
+	@make -C tools clean
