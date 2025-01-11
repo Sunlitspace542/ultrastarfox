@@ -13,14 +13,10 @@ COLOR ?= 1
 # Disable assembler ANSI codes (must be handled differently for MSYS2, see below)
 NOANSI=
 
-# Configure platform-specific things
-ifeq ($(UNAME_S),Linux)
+# Newline character to use (adjust this if newlines aren't working in your terminal)
 NEWLINE=\n
-else
-NEWLINE=\n
-endif
 
-# If we detect MSYS, handle disabling asssembler ANSI codes internally in INC/HEADER.INC
+# If we detect MSYS, handle disabling asssembler ANSI codes internally in INC/HEADER.INC and use the correct newline
 ifdef MSYSTEM
 NOANSI=
 NEWLINE=\r\n
