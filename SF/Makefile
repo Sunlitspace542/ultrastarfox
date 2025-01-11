@@ -10,10 +10,11 @@ UNAME_S := $(shell uname -s)
 # Whether to colorize build messages
 ifeq ($(UNAME_S),Linux)
 COLOR ?= 1
+NOANSI=
 else
-# Assume we can't use ANSI codes if we're not on
+# Assume we can't use ANSI codes if UNAME_S != linux
 COLOR ?= 0
-NOANSI = -sNOANSI
+NOANSI= -eNOANSI
 endif
 
 # If on Linux, use Wine to run msdos.exe
@@ -29,7 +30,7 @@ MSDOS=../bin/msdos.exe
 # Assembler
 ASM=$(WINE) $(MSDOS) ../bin/ARGSFXX.EXE
 # Setup heap for SASM and export symbols for ARGSFX
-ASMFLAGS= -e__notitle -e__heap=14400 -z
+ASMFLAGS= $(NOANSI) -e__notitle -e__heap=14400 -z
 
 # Linker
 LINK=$(WINE) $(MSDOS) ../bin/ARGLINK.EXE
@@ -185,7 +186,7 @@ init-allcols:
 
 # Palettes to include in ALLCOLS
 process-palettes:
-	$(call print3,\nBuilding ALLCOLS...)
+	$(call print3,Building ALLCOLS...)
 
 	@$(MC) OOPS 0 2
 	@$(MC) BG2-A 0 7

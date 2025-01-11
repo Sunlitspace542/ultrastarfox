@@ -12,7 +12,6 @@ TIMINGS		=	0	; generate timings report (fast)
 ; display mode equates
 
 PROGRESS_INDICATOR	=	0	; switch on progress indicator (fast)
-ANSI		=	1	; ansi colour codes? (no time)
 TITLE_BAR		=	0	; colourful title bar (fast) (ansi only)
 TITLEBANKINFO	=	0	; info while assembling (only if ansi/progress/titlebar on)
 RAMLEFT		=	1	; displays information on ram space
@@ -22,6 +21,8 @@ RAMLEFT		=	1	; displays information on ram space
 ; Turn ANSI colour codes off if assembler output is being written to a log file
 	IFD	NOANSI
 ANSI		=	0
+	ELSEIF
+ANSI		=	1	; ansi colour codes? (no time)
 	ENDC
 
 	IFEQ	ANSI

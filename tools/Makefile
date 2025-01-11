@@ -5,7 +5,7 @@
 # C/C++ compiler
 CC=gcc
 
-ifeq ($(UNAME_S),Linux)
+ifneq ($(UNAME_S),Linux)
 EXT=
 else
 EXT=.exe
