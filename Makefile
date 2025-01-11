@@ -3,6 +3,12 @@ all:
 	@make -C tools
 	@make -C SF
 
+upload:
+	make -C SF upload
+
+boot:
+	make -C SF boot
+
 clean:
 	@make -C SF clean
 

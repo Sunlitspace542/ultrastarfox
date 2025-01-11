@@ -73,6 +73,9 @@ FONT=../tools/foxfont
 # Argonaut .MAP File Decoder
 MAPDEC=../tools/argonautmapdecoder
 
+# USB2SNES CLI Utility
+USB2SNES=../bin/usb2snes-cli.exe
+
 # Terminal-specific commands
 
 # Print Command
@@ -341,6 +344,14 @@ clean:
 	@rm -rf DATA/COL/allcols.pac
 	@rm -rf sf.sfc
 	@rm -rf BANKS.CSV
+
+upload:
+	@$(USB2SNES)	--upload ../sf.sfc --path ./sf.sfc
+	@$(PRINT) "$(NEWLINE)"
+
+boot:
+	@$(USB2SNES) --boot ./sf.sfc
+	@$(PRINT) "$(NEWLINE)"
 
 ## The great big list of source files to detect changes for and whatnot
 
