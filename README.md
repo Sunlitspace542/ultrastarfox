@@ -29,7 +29,9 @@ Install MSYS2.
 
 Run ``MSYS2 MINGW64``.  
 
-Ensure that GCC and Git are installed in MSYS2.  
+Update MSYS2: ``pacman -Syu``  
+
+Install Dependencies:  ``pacman -Sy git make gcc``  
 
 Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``  
 
@@ -50,7 +52,7 @@ After building, a debug symbol map will be created in the root directory at ``SY
 
 Requirements: Ubuntu (might work with other distros) Wine, Git  
 
-Install snapstore: ``sudo apt install wine``  
+Install snapstore: ``sudo apt install -y wine build-essential git``  
 
 Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``  
 
