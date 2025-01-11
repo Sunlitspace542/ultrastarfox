@@ -15,7 +15,7 @@ else
 # Assume we can't use ANSI codes if UNAME_S != linux
 COLOR ?= 0
 
-# MSYS is weird with ANSI, so if we specifically detect MSYS, allow assembler ANSI codes
+# MSYS is weird with ANSI, so if we specifically detect MSYS, handle disabling asssembler ANSI codes internally
 ifdef MSYSTEM
 NOANSI=
 else
@@ -24,14 +24,14 @@ endif
 
 endif
 
-# If on Linux, use Wine to run msdos.exe
+# If on Linux, use Wine to run MS-DOS Player
 ifeq ($(UNAME_S),Linux)
 WINE=wine
 else
 WINE=
 endif
 
-# MS-DOS player userland application emulator
+# MS-DOS player DOS userland application emulator executable
 MSDOS=../bin/msdos.exe
 
 # Assembler
@@ -180,7 +180,16 @@ ALLFILES= \
 #!! If you add/remove/modify a cgx/bin in these two lists, make sure the corresponding files are present here.
 
 # Everything that should be done when make is executed
-all: make-allcols msprites crunch fonts sf.sfc donebld
+all: check-jobs make-allcols msprites crunch fonts sf.sfc donebld
+
+# Check for job flags and print a warning
+check-jobs:
+	@echo "Checking parallel build jobs..."
+	@case "$(MAKEFLAGS)" in \
+		*-j*) \
+			echo "$(RED)WARNING: A parallel job count greater than 1 may cause issues!!$(NO_COL)"; \
+		;; \
+	esac
 
 # Initialize allcols.col
 init-allcols:
@@ -189,16 +198,34 @@ init-allcols:
 	@touch DATA/COL/col2.tmp
 
 # List of palette source files
+# Both of these lists must match SF/INC/KALCS.INC's list!!
 ALLCOLS_PALETTES := \
- DATA/COL/OOPS.COL DATA/COL/BG2-A.COL DATA/COL/BG2-B.COL \
- DATA/COL/BG2-C.COL DATA/COL/BG2-D.COL DATA/COL/BG2-E.COL \
- DATA/COL/BG2-F.COL DATA/COL/BG2-G.COL DATA/COL/T-M.COL \
- DATA/COL/T-M-2.COL DATA/COL/T-M-3.COL DATA/COL/T-M-4.COL \
- DATA/COL/B-M.COL DATA/COL/LIGHT.COL DATA/COL/SPACE.COL \
- DATA/COL/STARS.COL DATA/COL/CP.COL DATA/COL/CP-US.COL \
- DATA/COL/CP-USP.COL DATA/COL/CP-P.COL DATA/COL/HOLE.COL \
- DATA/COL/L.COL DATA/COL/E-TEST0.COL DATA/COL/E-TEST.COL \
- DATA/COL/OBJ-1.COL DATA/COL/BG2-E-P.COL
+ DATA/COL/OOPS.COL \
+ DATA/COL/BG2-A.COL \
+ DATA/COL/BG2-B.COL \
+ DATA/COL/BG2-C.COL \
+ DATA/COL/BG2-D.COL \
+ DATA/COL/BG2-E.COL \
+ DATA/COL/BG2-F.COL \
+ DATA/COL/BG2-G.COL \
+ DATA/COL/T-M.COL \
+ DATA/COL/T-M-2.COL \
+ DATA/COL/T-M-3.COL \
+ DATA/COL/T-M-4.COL \
+ DATA/COL/B-M.COL \
+ DATA/COL/LIGHT.COL \
+ DATA/COL/SPACE.COL \
+ DATA/COL/STARS.COL \
+ DATA/COL/CP.COL \
+ DATA/COL/CP-US.COL \
+ DATA/COL/CP-USP.COL \
+ DATA/COL/CP-P.COL \
+ DATA/COL/HOLE.COL \
+ DATA/COL/L.COL \
+ DATA/COL/E-TEST0.COL \
+ DATA/COL/E-TEST.COL \
+ DATA/COL/OBJ-1.COL \
+ DATA/COL/BG2-E-P.COL
 
 # Palettes to include in ALLCOLS
 DATA/COL/allcols.pac: $(ALLCOLS_PALETTES)
