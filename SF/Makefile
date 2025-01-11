@@ -340,6 +340,7 @@ clean:
 	@rm -rf DATA/COL/allcols.pac
 	@rm -rf sf.sfc
 	@rm -rf BANKS.CSV
+	@rm -rf ../symbols.txt
 
 upload:
 	@$(USB2SNES)	--upload ../sf.sfc --path ./sf.sfc
