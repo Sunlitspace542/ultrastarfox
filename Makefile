@@ -4,10 +4,10 @@ all:
 	@make -C SF
 
 upload:
-	make -C SF upload
+	@make -C SF upload
 
 boot:
-	make -C SF boot
+	@make -C SF boot
 
 clean:
 	@make -C SF clean
