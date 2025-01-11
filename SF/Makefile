@@ -46,27 +46,18 @@ MAPDEC=../tools/argonautmapdecoder
 
 # Terminal-specific commands
 
-# Copy Command
-COPY=cp
-
 # Print Command
 PRINT ?= echo
 
 # File Checksum Calculator
 SHA1SUM=sha1sum
 
-# File move Command
-MV=[ ! -f src ] || mv
-
-# Directory Creation
-MKDIR=mkdir -p
-
 # Delete Command
 DEL=rm -rf
 
 ############################
 
-# Colors for status messages
+# ANSI color codes for status messages
 NO_COL=\033[0m
 GREEN=\033[32m
 YELLOW=\033[33m
@@ -114,7 +105,7 @@ DATA/%.PCR: DATA/%.SCR
 	@$(CRU) $< DATA/$*.PCR
 
 # Recipe to convert BMP to FON
-DATA/FONT/%.FON: DATA/FONT/%.bmp
+DATA/FONT/%.fon: DATA/FONT/%.bmp
 	$(call print,Encoding Font:,$<,$@)
 	@$(FONT) $<
 
@@ -142,10 +133,23 @@ SCRFILES= DATA/1-3-B.PCR DATA/2-3.PCR DATA/3-2.PCR DATA/B-HOLE.PCR DATA/CONT.PCR
 #!! If you add/remove a font, make sure to add/remove the corresponding file.
 
 # Font files converted from bmp
-FONFILES= DATA/FONT/MOJI_0.FON DATA/FONT/MOJI_D.FON
+FONFILES= DATA/FONT/MOJI_0.fon DATA/FONT/MOJI_D.fon
 
 # Banks to assemble
-ALLFILES= $(patsubst %.ASM, %.SOB, $(wildcard BANK/*.ASM))
+ALLFILES= \
+ BANK/BANK0.SOB \
+ BANK/BANK1.SOB \
+ BANK/BANK2.SOB \
+ BANK/BANK4.SOB \
+ BANK/BANK5.SOB \
+ BANK/BANK6.SOB \
+ BANK/BANK7.SOB \
+ BANK/BANK8.SOB \
+ BANK/BANK9.SOB \
+ BANK/BANK10.SOB \
+ BANK/BANK11.SOB \
+ BANK/SHBANKS.SOB \
+ BANK/INCBINS.SOB
 
 #!! If you add/remove/modify a cgx/bin in these two lists, make sure the corresponding files are present here.
 
@@ -226,7 +230,7 @@ sf.sfc: $(ALLFILES)
 		$(LINK) $(LOPTS) -o$@ @flist.tmp; \
 	fi'
 
-	@rm -f flist.tmp
+	@$(DEL) flist.tmp
 
 	$(call print2,Extending ROM:,$@)
 	@bash -c '\
@@ -250,25 +254,28 @@ sf.sfc: $(ALLFILES)
 	@$(PRINT) "${BLINK}Build succeeded.\n$(NO_COL)"
 
 donebld: sf.sfc
-	@$(MKDIR) ../build
-	@$(MV) sf.sfc ../build/sf.sfc
-	@$(MV) BANKS.CSV ../build/banks.csv
-	@$(MAPDEC) sf.MAP ../build/symbols.txt
-	@$(MV) sf.MAP ../build/sf.map
-	@$(DEL) msgs.txt
+	@mv sf.sfc ../sf.sfc
+	@mv BANKS.CSV ../banks.csv
+# temporarily clearing object files for time being
+	@$(DEL) BANK/*.SOB
+	@$(DEL) BANK/*.MAP
+	@$(MAPDEC) sf.MAP ../symbols.txt
+	@rm -rf sf.MAP
+	@rm -rf msgs.txt
 
 clean:
-	@$(DEL) ../build \
-	BANK/*.SOB \
-	BANK/*.MAP *.MAP \
-	MSPRITES/*.bin \
-	DATA/*.CCR \
-	DATA/*.PCR \
-	DATA/FONT/MOJI_0.fon \
-	DATA/FONT/MOJI_D.fon \
-	msgs.txt \
-	BANKS.CSV \
-	sf.sfc
+	@$(DEL) ../sf.sfc
+	@$(DEL) ../banks.csv
+	@$(DEL) BANK/*.SOB
+	@$(DEL) BANK/*.MAP *.MAP
+	@$(DEL) MSPRITES/*.bin
+	@$(DEL) DATA/*.CCR
+	@$(DEL) DATA/*.PCR
+	@$(DEL) DATA/FONT/MOJI_0.fon
+	@$(DEL) DATA/FONT/MOJI_D.fon
+	@$(DEL) DATA/COL/allcols.pac
+	@$(DEL) sf.sfc
+	@$(DEL) BANKS.CSV
 
 ## Banks to assemble
 
