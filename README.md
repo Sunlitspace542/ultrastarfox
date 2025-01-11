@@ -18,41 +18,51 @@ Star Fox / Starwing source code, modified for ease-of-use and ROMHacking.
 - Uses ARGLINK and ARGSFX from Star Fox 2 as linker and assembler instead of SL and SASM
 - Easier creation of wireframe models (replace face3 and face4 with aface3 and aface4 in your shape file)
 - All Starwing PAL and Germany text/GFX for PAL builds
+- uses [MS-DOS Player](http://takeda-toshiya.my.coocan.jp/msdos/index.html) to emulate the toolchain, everything else uses modern tools
 - **Kando was involved so you know it's good**
 
 ## Building on Windows
 
-Requirements: Microsoft Windows
+Requirements: Microsoft Windows, MSYS2
 
-Download repo as ZIP and extract somewhere, or clone the repo with git via the command line.  
+Install MSYS2.  
 
-To build ROM, run ``build.cmd``.  
+Run ``MSYS2 MINGW64``.  
 
-To build ROM with Logging, run ``build to log.cmd``.  
-
-To clean, run ``clean.cmd``.  
-
-After building, a debug symbol map will be created at, and a bank space report at ``BANKS.CSV``.  
-
-## Building on Linux
-
-**NOTE: this was tested on WSL with Ubuntu installed. Your mileage may vary.**  
-
-Requirements: Ubuntu (might work with other distros) snap, DOSBox-X, git  
-
-Install snapstore: ``sudo apt install snapd``  
-
-Install DOSBOX-X from snap: ``sudo snap install dosbox-x``  
+Ensure that GCC and Git are installed in MSYS2.  
 
 Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``  
 
-To build ROM, run ``make``.  
+Go to the directory in your terminal where you cloned the repo.  
 
-To build ROM with logging, run ``make log``.  
+To build ROM, run ``make``.  
 
 To clean, run ``make clean``.  
 
-After building, a debug symbol map will be created at ``SYMBOLS.TXT``, and a bank space report at ``BANKS.CSV``.  
+To completely clean, run ``make distclean``.  
+
+After building, a debug symbol map will be created in the root directory at ``SYMBOLS.TXT``, and a bank space report will be at ``BANKS.CSV``. The ROM will also be with these files.  
+
+
+## Building on Linux/WSL
+
+**NOTE: this was tested on WSL with Ubuntu installed. Your mileage may vary.**  
+
+Requirements: Ubuntu (might work with other distros) Wine, Git  
+
+Install snapstore: ``sudo apt install wine``  
+
+Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``  
+
+Go to the directory in your terminal where you cloned the repo.  
+
+To build ROM, run ``make``.  
+
+To clean, run ``make clean``.  
+
+To completely clean, run ``make distclean``.  
+
+After building, a debug symbol map will be created in the root directory at ``SYMBOLS.TXT``, and a bank space report will be at ``BANKS.CSV``. The ROM will also be with these files.  
 
 ## Uploading ROM to SNES over USB with SD2SNES/FXPak(Pro)
 Uses [USB2SNES-cli](https://github.com/Hyphen-ated/usb2snes-cli) fork by Hyphen-ated. A prebuilt windows EXE is provided.  
@@ -83,7 +93,7 @@ All changes to be submitted should be made to the [dev](https://github.com/Sunli
 ## Project Structure
 ```
 ultrastarfox
-├── BIN: exe files needed to assemble game code
+├── bin: exe files needed to assemble game code
 ├── optionalstuff: optional graphics files
 ├── SF: Main source code is located here
 │   ├── ASM: Main game code located here (65816)
@@ -101,6 +111,6 @@ ultrastarfox
 │   ├── SHAPES: contains all shape files
 │   ├── SND: sound/music data
 │   └── STRAT: Code for Strategies (Object behaviors)
-├── TOOLS: tools such as PACKER and SHAPED
-└── DOCS: .md format text files covering various aspects of Star Fox
+├── tools: tools such as PACKER and SHAPED
+└── docs: .md format text files covering various aspects of Star Fox
 ```
