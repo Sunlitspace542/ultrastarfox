@@ -3,6 +3,9 @@ all:
 	@make -C tools
 	@make -C SF
 
+tools:
+	@make -C tools
+
 upload:
 	@make -C SF upload
 

@@ -6,6 +6,7 @@
 CC=gcc
 
 EXT=
+OPT= -O2
 
 ifdef MSYSTEM
 EXT=.exe
@@ -18,19 +19,19 @@ clean:
 	@rm -rf ./sf_crunch ./cgx2fx ./romextender ./foxfont ./inccol ./argonautmapdecoder
 
 sf_crunch:
-	@$(CC) -O2 sf_crunch.cpp -o $@$(EXT)
+	@$(CC) $(OPT) sf_crunch.cpp -o $@$(EXT)
 
 cgx2fx:
-	@$(CC) -O2 cgx2fx.c -o $@$(EXT)
+	@$(CC) $(OPT) cgx2fx.c -o $@$(EXT)
 
 romextender:
-	@$(CC) romextender.c -o $@$(EXT)
+	@$(CC) $(OPT) romextender.c -o $@$(EXT)
 
 foxfont:
-	@$(CC) foxfont.c -o $@$(EXT)
+	@$(CC) $(OPT) foxfont.c -o $@$(EXT)
 
 inccol:
-	@$(CC) inccol.c -o $@$(EXT)
+	@$(CC) $(OPT) inccol.c -o $@$(EXT)
 
 argonautmapdecoder:
-	@$(CC) argonautmapdecoder.c -o $@$(EXT)
+	@$(CC) $(OPT) argonautmapdecoder.c -o $@$(EXT)
