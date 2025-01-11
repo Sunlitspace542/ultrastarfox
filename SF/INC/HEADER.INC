@@ -25,17 +25,17 @@ RAMLEFT		=	1	; displays information on ram space
 ANSI		=	0
 	ELSEIF
 ANSI		=	1	; ansi colour codes? (no time)
-	ENDC
-	ENDC
+	ENDC ;NOANSI
+	ENDC ;"MSYSTEM"
 
 ; HACK to fix MSYS2 handling NOANSI weird
-	IFV	"MSYSTEM" ; If we are running on MSYS2
-ANSI		=	0
-	ENDC
+	IFV	"MSYSTEM" ; If we are running on MSYS2, configure ANSI manually
+ANSI		=	1
+	ENDC ;"MSYSTEM"
 
 	IFEQ	ANSI
 TITLE_BAR	=	0
-	ENDC
+	ENDC ;ANSI
 
 	include	INC\ifcold.inc
 

@@ -8,20 +8,22 @@ QUIET ?= true
 UNAME_S := $(shell uname -s)
 
 # Whether to colorize build messages
-ifeq ($(UNAME_S),Linux)
 COLOR ?= 1
-NOANSI=
-else
-# Assume we can't use ANSI codes if UNAME_S != linux
-COLOR ?= 0
 
-# MSYS is weird with ANSI, so if we specifically detect MSYS, handle disabling asssembler ANSI codes internally
-ifdef MSYSTEM
+# Disable assembler ANSI codes (must be handled differently for MSYS2, see below)
 NOANSI=
+
+# Configure platform-specific things
+ifeq ($(UNAME_S),Linux)
+NEWLINE=\n
 else
-NOANSI= -eNOANSI
+NEWLINE=\n
 endif
 
+# If we detect MSYS, handle disabling asssembler ANSI codes internally in INC/HEADER.INC
+ifdef MSYSTEM
+NOANSI=
+NEWLINE=\r\n
 endif
 
 # If on Linux, use Wine to run MS-DOS Player
@@ -50,9 +52,9 @@ EXTOPTS= 16 ff
 
 # Checksum Fixer
 ifeq ($(UNAME_S),Linux)
-CHECK=../tools/superfamicheck_linux
+CHECK=../bin/superfamicheck_linux
 else
-CHECK=../tools/superfamicheck
+CHECK=../bin/superfamicheck
 endif
 COPTS=-s -f
 
@@ -74,7 +76,7 @@ MAPDEC=../tools/argonautmapdecoder
 # Terminal-specific commands
 
 # Print Command
-PRINT ?= echo
+PRINT ?= printf
 
 # File Checksum Calculator
 SHA1SUM=sha1sum
@@ -93,15 +95,15 @@ endif
 
 # Common build print status functions
 define print
-  @$(PRINT) "$(GREEN)$(1) $(YELLOW)$(2)$(GREEN) -> $(BLUE)$(3)$(NO_COL)"
+  @$(PRINT) "$(GREEN)$(1) $(YELLOW)$(2)$(GREEN) -> $(BLUE)$(3)$(NO_COL)$(NEWLINE)"
 endef
 
 define print2
-  @$(PRINT) "$(GREEN)$(1) $(BLUE)$(2)$(NO_COL)"
+  @$(PRINT) "$(GREEN)$(1) $(BLUE)$(2)$(NO_COL)$(NEWLINE)"
 endef
 
 define print3
-  @$(PRINT) "$(GREEN)$(1)$(NO_COL)"
+  @$(PRINT) "$(GREEN)$(1)$(NO_COL)$(NEWLINE)"
 endef
 
 # Function to interleave FXGfx
@@ -162,7 +164,7 @@ PCRFILES= DATA/1-3-B.PCR DATA/2-3.PCR DATA/3-2.PCR DATA/B-HOLE.PCR DATA/CONT.PCR
 FONFILES= DATA/FONT/MOJI_0.fon DATA/FONT/MOJI_D.fon
 
 # Banks to assemble
-ALLFILES= \
+SOBFILES= \
  BANK/BANK0.SOB \
  BANK/BANK1.SOB \
  BANK/BANK2.SOB \
@@ -184,10 +186,10 @@ all: check-jobs make-allcols msprites crunch fonts sf.sfc donebld
 
 # Check for job flags and print a warning
 check-jobs:
-	@echo "Checking parallel build jobs..."
+	@$(PRINT) "$(GREEN)Checking parallel build jobs...$(NO_COL)$(NEWLINE)"
 	@case "$(MAKEFLAGS)" in \
 		*-j*) \
-			echo "$(RED)WARNING: A parallel job count greater than 1 may cause issues!!$(NO_COL)"; \
+			echo "$(RED)WARNING: A parallel job count greater than 1 may cause issues!!$(NO_COL)$(NEWLINE)"; \
 		;; \
 	esac
 
@@ -260,7 +262,7 @@ DATA/COL/allcols.pac: $(ALLCOLS_PALETTES)
 
 # Final step: Crunch all palettes into allcols.pac
 	@$(CRU) DATA/COL/allcols.col DATA/COL/allcols.pac
-	@$(PRINT) "$(GREEN)Palette crunching complete.$(NO_COL)"
+	@$(PRINT) "$(GREEN)Palette crunching complete.$(NO_COL)$(NEWLINE)"
 
 make-allcols: init-allcols DATA/COL/allcols.pac
 
@@ -284,9 +286,9 @@ crunch: $(CCRFILES) $(PCRFILES)
 fonts: $(FONFILES)
 
 # The ROM Itself
-sf.sfc: $(ALLFILES)
+sf.sfc: $(SOBFILES)
 	$(call print2,Linking ROM:,$@)
-	@echo $(ALLFILES) | sed 's/\//\\/g' > flist.tmp
+	@echo $(SOBFILES) | sed 's/\//\\/g' > flist.tmp
 
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
@@ -317,7 +319,7 @@ sf.sfc: $(ALLFILES)
 	fi'
 
 	@$(SHA1SUM) $@
-	@$(PRINT) "${BLINK}Build succeeded.$(NO_COL)"
+	@$(PRINT) "${BLINK}Build succeeded.$(NO_COL)$(NEWLINE)"
 
 donebld: sf.sfc
 	@mv sf.sfc ../sf.sfc
