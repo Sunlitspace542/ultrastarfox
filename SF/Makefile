@@ -253,7 +253,19 @@ SOBFILES= \
 #!! If you add/remove/modify a cgx/bin in these two lists, make sure the corresponding files are present here.
 
 # Everything that should be done when make is executed
-all: check-jobs make-allcols msprites crunch fonts sf.sfc donebld
+all: welcome check-jobs make-allcols msprites crunch fonts sf.sfc donebld
+
+welcome:
+	@$(PRINT) "$(BLUE)Welcome to UltraStarFox!!$(NO_COL)$(NEWLINE)"
+# Platform Detection
+ifeq ($(PLATFORM),windows)
+	@$(PRINT) "$(GREEN)You're on $(BLUE)Windows!$(NO_COL)$(NEWLINE)"
+else ifeq ($(PLATFORM),msys2)
+	@$(PRINT) "$(GREEN)You're on $(BLUE)MSYS2!$(NO_COL)$(NEWLINE)"
+else ifeq ($(PLATFORM),linux)
+	@$(PRINT) "$(GREEN)You're on $(BLUE)Linux!$(NO_COL)$(NEWLINE)"
+endif
+
 
 # Check for job flags and print a warning
 check-jobs:
@@ -271,6 +283,7 @@ endif
 # Initialize allcols.col
 init-allcols:
 ifeq ($(PLATFORM),windows)
+	@copy NUL DATA\COL\allcols.col
 	@$(DEL) DATA\COL\allcols.col
 else
 	@$(DEL) DATA/COL/allcols.col
@@ -451,7 +464,7 @@ ifeq ($(PLATFORM),windows)
 	@$(DEL) DATA\*.PCR
 	@$(DEL) DATA\FONT\MOJI_0.fon
 	@$(DEL) DATA\FONT\MOJI_D.fon
-	@$(DEL) DATA/COL/allcols.pac
+	@$(DEL) DATA\COL\allcols.pac
 	@$(DEL) sf.sfc
 	@$(DEL) BANKS.CSV
 	@$(DEL) ..\symbols.txt
