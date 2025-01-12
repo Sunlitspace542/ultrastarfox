@@ -283,7 +283,9 @@ endif
 # Initialize allcols.col
 init-allcols:
 ifeq ($(PLATFORM),windows)
+	@$(DEL) DATA\COL\allcols.col
 	@copy NUL DATA\COL\allcols.col
+	@copy NUL DATA\COL\col2.tmp
 else
 	@$(DEL) DATA/COL/allcols.col
 	@touch DATA/COL/allcols.col
