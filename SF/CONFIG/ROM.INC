@@ -17,7 +17,7 @@ msu			equ 0
 msuvideo	equ	0
 
 ; enable/disable FastROM [1 = on, 0=off]
-FASTROM	equ 1
+FASTROM	equ 0
 
 ; Disables the SuperFX clock divider, 
 ; doubling the clock speed from 10.7mhz to 21.4mhz.
