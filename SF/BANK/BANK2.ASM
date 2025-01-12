@@ -5,7 +5,7 @@
 	include	INC\bgmacs.inc
 	;include	EXT\blink.ext
 
-	include	INC\mapstructs.inc
+	include	INC\mapstruc.inc
 	include	INC\mapmacs.inc
 	include	INC\shmacs.inc
 	include	EXT\strings.ext
@@ -19,14 +19,14 @@
 	include	EXT\pstrats.ext
 	include	EXT\pistrats.ext
 	include	EXT\pcstrats.ext
-	include	EXT\gb2strats.ext
+	include	EXT\gb2strat.ext
 	include	EXT\gstrats.ext
 	include	EXT\gbstrats.ext
 	include	EXT\gcstrats.ext
 	include	EXT\gistrats.ext
 	include	EXT\kstrats.ext
-	include	EXT\ga2strats.ext
-	include	EXT\gb3strats.ext
+	include	EXT\ga2strat.ext
+	include	EXT\gb3strat.ext
 	include	EXT\shapes.ext
 	include	EXT\sgtabs.ext
 	include	EXT\gastrats.ext

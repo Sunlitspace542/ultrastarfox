@@ -6,27 +6,52 @@
 ;*                           SuperNES version.                             *
 ;*                                                                         *
 ;*                                                                         *
-;*                           Argonaut Software.      		               *
+;*                           Argonaut Software.                            *
 ;*                                                                         *
 ;*_________________________________________________________________________*
 ;*                                                                         *
 ;*   File: NMI.ASM                                                         *
 ;*_________________________________________________________________________*
 ;*                                                                         *
-;*  Descr: NMI handler.                                                    *
+;*  Descr: NMI/IRQ handler.                                                *
 ;*                                                                         *
 ;***************************************************************************
 
-; Copies NMI handler to RAM at addr $0101
+; Copies NMI/IRQ handler to RAM at addr $0101
 copy_to_0101_l
 	php ; Push Processor status to stack
+
+	ai16
+	ldx	#nmihan&WM ; src data addr
+	ldy	#$0101 ; dest data addr
+	lda	#nmihanend-nmihan-1 ; len of data to copy
+	IFNE	FASTROM
+	sasm_mvn	$9f,$80
+	ELSEIF
+	sasm_mvn	$1f,$00
+	ENDC
+
+	IFNE	msu
+; Copy MSU fade handler to $0162 (right after the NMI/IRQ handler in RAM)
+	ai16
+	ldx	#msufadehan&WM ; src data addr
+	ldy	#$0162 ; dest data addr
+	lda	#msufadehanend-msufadehan-1 ; len of data to copy
+	IFNE	FASTROM
+	sasm_mvn	$9f,$80
+	ELSEIF
+	sasm_mvn	$1f,$00
+	ENDC
+	ENDC
+
 	a8i16 ; set A to 8 bit and X/Y to 16 bit
 
-	ldx	#nmihanend-nmihan-1 ; Load size of NMI handler routine into X(?)
-.codeloop2	lda.l	nmihan,x ; Load (Long) NMIHAN + size of NMIHAN into A(?)
-	sta.l	$0101,x ; Store A (Long) at $0101 + size of NMIHAN(?)
-	dex ; Decrement X
-	bpl	.codeloop2 ; repeat until x = 0
+; old NMIHAN uploader code, retained for future reference
+;	ldx	#nmihanend-nmihan-1 ; Load size of NMI handler routine into X(?)
+;.codeloop2	lda.l	nmihan,x ; Load (Long) NMIHAN + size of NMIHAN into A(?)
+;	sta.l	$0101,x ; Store A (Long) at $0101 + size of NMIHAN(?)
+;	dex ; Decrement X
+;	bpl	.codeloop2 ; repeat until x = 0
 
 	; xlen = 22*1024+450
 	ldx	#xlen-1 ; Load xlen-1 (22977) into X
@@ -53,7 +78,7 @@ nmihan ; Start of NMI handler
 .irq	ai16		;$010c	irq
 	pha	; Push A to stack
 	IFNE	msu
-	jsl	$7ED1C0 ; MSU-1 fade routine
+	jsl	$000162 ; MSU-1 fade routine
 	ELSEIF
 	lda.l	m_sfr ; Load m_sfr into A (MARIO chip flags?)
 	ENDC
@@ -115,4 +140,31 @@ nmihan ; Start of NMI handler
 
 nmihanend ; End of NMI Handler
 
+	IFNE	MSU
+msufadehan
+	lda.l msu_017f
+	and	#$00ff
+	cmp	#$00f1
+	beq	.k1
+	bra	.skipfade
+	rtl
+.k1
+	a8
+	lda.l msu_017e
+	beq .endslow
+	dec a
+	dec a
+	cmp #$10
+	bcs .k2
+.endslow
+	lda #$00
+	sta.l	msu_017f ;erase fade flag
+.k2	sta.l	msu_017e
+	sta	msu_volume
+.skipfade
+	ai16
+	lda.l m_sfr
+	rtl
+msufadehanend
+	ENDC
 

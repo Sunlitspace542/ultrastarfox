@@ -14,7 +14,7 @@
 
 	bank	10
 	incfile	STRAT\kstrats.asm
-	incfile	STRAT\ga2strats.asm
+	incfile	STRAT\ga2strat.asm
 	incfile	ASM\mem.asm
 
 	public	black_holebgm

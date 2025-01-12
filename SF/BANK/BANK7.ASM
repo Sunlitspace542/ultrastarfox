@@ -2,8 +2,8 @@
 	include	INC\strathdr.inc
 	include	EXT\gstrats.ext
 	include	EXT\gastrats.ext
-	include	EXT\ga2strats.ext
-	include	EXT\gb2strats.ext
+	include	EXT\ga2strat.ext
+	include	EXT\gb2strat.ext
 	include	EXT\strings.ext
 	include	EXT\gcstrats.ext
 	include	EXT\pistrats.ext
@@ -15,7 +15,7 @@
 
 	bank	7
 	incfile	STRAT\gistrats.asm
-	incfile	STRAT\gb3strats.asm
+	incfile	STRAT\gb3strat.asm
 	bankend	7
 
 	include	INC\tail.inc

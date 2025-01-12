@@ -1,14 +1,17 @@
-###############################
-# UltraStarFox Linux Makefile #
-###############################
+# Redirects to the correct Makefiles
+all:
+	@$(MAKE) -C tools
+	@$(MAKE) -C SF
 
-DOSBOX=dosbox-x
+upload:
+	@$(MAKE) -C SF upload
 
-all: 
-	@$(DOSBOX) BUILD.BAT
-
-log: 
-	@$(DOSBOX) BLDTOLOG.BAT
+boot:
+	@$(MAKE) -C SF boot
 
 clean:
-	@$(DOSBOX) CLEAN.BAT
+	@$(MAKE) -C SF clean
+
+distclean:
+	@$(MAKE) -C SF clean
+	@$(MAKE) -C tools clean

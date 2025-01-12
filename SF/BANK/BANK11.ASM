@@ -6,7 +6,7 @@
 	include	EXT\gastrats.ext
 	include	EXT\expstrat.ext
 	include	EXT\windows.ext
-	include	EXT\ga2strats.ext
+	include	EXT\ga2strat.ext
 	include	EXT\dstrats.ext
 	include	EXT\bootnmi.ext
 
@@ -18,7 +18,7 @@
 	bankend	11
 
 	bank	40
-	incfile	STRAT\gb2strats.asm
+	incfile	STRAT\gb2strat.asm
 	bankend	40
 
 	include	INC\tail.inc

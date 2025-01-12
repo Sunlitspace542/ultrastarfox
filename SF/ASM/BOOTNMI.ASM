@@ -37,6 +37,10 @@ startboot	disable ; Disable Interrupts
 
 	jsr	initialise_ram ; Clear RAM
 
+	IFNE	rngmode ; start conditional: if rngmode !=0 (=1)
+	setuprng ; setup RNG seed at boot
+	ENDC ; end conditional
+
 	i16 ; set X/Y to 16 bit
 	ldx	#$2ff ; Load $2FF into X
 	txs ; Transfer X to SP (set stack to $2FF, resets the stack)
@@ -250,8 +254,8 @@ initialise_ram
 
 ; NTSC/PAL
 	a8 ; set A to 8 bit
-	lda	stat78r ; load stat78r ($213F) into A
-	and	#1<<4 ; AND #1 Shifted left by 4 (?)
+	lda	stat78r ; load stat78r ($213F, PPU2 Status) into A
+	and	#1<<4 ; Get bit 4, which indicates the region of the PPU (0=NTSC/60Hz, 1=PAL/50Hz)
 	sta	ntscpal ; Store A at ntscpal variable
 
 

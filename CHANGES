@@ -1,3 +1,19 @@
+Version 3.0
+- Toolchain modernized, no more DOSBox!
+- Assembler/linker now runs using MS-DOS Player instead of DOSBox
+- Merged PR #37; Shield meter now changes color when you have a shield power-up with shieldboostcolorbox off
+- Fix CGRAM line 2 fix oversight
+
+Version 2.1
+- Added option to change RNG behavior: either reset RNG at map screen (vanilla) or set RNG at boot and never reset (from Kando)
+- new SYMBOLS.TXT generated using ARGSFX .map output and a custom tool
+- SD2SNES uploading added
+- Super FX fast multiply mode enabled
+- Optimized MSU-1 code to fix flicker on SD2SNES
+- fixed high poly arwing zoom in animation scale
+- replaced MERGE.EXE with cgx2fx/fx2cgx by SegaRetro
+- redone high poly arwing shapes
+
 Version 2.0_01
 - Hotfix: ENGLISH.INC and LANGUAGE.INC had unix line endings, causing assembler errors
 
@@ -61,4 +77,58 @@ Version 1.0
 - Remove configuration equates from VARS.INC and move them into SF/CONFIG, sorted into categories
 
 Pre-1.0
-See commit logs
+- Repository initalized
+- SuperFX 2 upgrade added
+- SuperFX 21mhz mode added
+- Optional graphics files added
+- Unused data removed, saving ROM space
+- Planet select cheat option added
+- Building to LOG file added
+- Unused RAM allocations removed
+- Unused MARIO RAM allocations removed
+- Debug print routines enabled, debug mode restored
+- SHAPED tool added
+- Unused equates in VARS removed
+- Equate to enable message test in training mode added
+- Debug mode controls documentation added
+- Raised model point limit to 256
+- PACKER LZW compressor tool added
+- MERGE MSPRITES interleaver tool added
+- God mode cheat equate added, disables collision for the player
+- Palettes can now be rebuilt
+- ROM now linked using ARGLINK instead of SL
+- Lots of commented out code removed
+- More shape files and MAPLIST3 added
+- Unused floor1/floor2 data removed
+- If Xroutines space is exceeded, assembly will now fail
+- If a shape has a funny collision box, assembly will now fail
+- Hi-poly arwing option added
+- Wireframe face macros added
+- MSPRITES texture source files added by SegaRetro
+- Texture documentation added by SegaRetro (PR #24)
+- Starwing Germany/Europe graphics and text restored by Sunlit and SegaRetro (PR #25)
+- Texture limit raised to 256 by MrL314
+- ROM extender and SuperFamiCheck added to expand and checksum built ROM
+- French message file added
+- Source code file structure reorganized
+- Game converted to FastROM (Kando's first FastROM conversion!)
+- All-range mode cheat added
+- Infinite bombs cheat added
+- SNES Mouse support added
+- Placeholder Spanish text added
+- ROM header improved by Phonymike
+- Mugconv/foxchr FACE.CGX converter/scrambler tool by Phonymike added
+- All graphics recrunched with sf_crunch, saving ROM space
+- PATH language, Strat language documentation added
+- Some map macro documentation added
+- Linux support added
+- UNMERGE MSPRITES deinterleaver tool by SegaRetro added
+- MSPRITES files now use the Star Fox 2 naming scheme
+- Texture source files matched
+- BLINK crash handler restored
+- FastROM made optional
+- Added message macros for different text colors: red, yellow, blue
+- Documentation added in various places in the source
+- SASM assembler manual added
+- ROM extender rewritten in C and compiled for DOS, SuperFamiCheck also compiled for DOS
+- Build process is now entirely self-contained within DOS

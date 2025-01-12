@@ -7,7 +7,7 @@
 	include	EXT\pcstrats.ext
 	include	EXT\pstrats.ext
 	include	EXT\dstrats.ext
-	include	EXT\ga2strats.ext
+	include	EXT\ga2strat.ext
 	include	EXT\expstrat.ext
 	include	EXT\bootnmi.ext
 

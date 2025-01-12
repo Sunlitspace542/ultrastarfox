@@ -46,6 +46,12 @@ cestime				equ	15
 timerx = 20 ; Column (from left of screen) 0 - 28
 timery = 2 ; Row (from top of screen) 0 - 24
 
+; Random Number Generation Behavior
+
+; 0 = RNG reset at map screen (vanilla)
+; 1 = RNG set at boot and never reset
+rngmode	equ	0
+
 ; Random Vertices
 
 ; randomize the vertices slightly

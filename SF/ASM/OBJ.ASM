@@ -29,14 +29,11 @@ init3d_l
 	ai8
 
 init3d1
-	lda	#$3a
-	sta	rand
-	lda	#$a7
-	sta	rand+1
-	lda	#$55
-	sta	rand+2
-	lda	#$7f
-	sta	rand+3
+
+;! Possible bug: In vanilla, RNG gets reset whenever 3D gfx are initialised (which is soon after the map is set up)
+	IFEQ	rngmode
+	setuprng	; Setup RNG seed
+	ENDC
 
 	stz	pauseflag
 	stz	expcnt

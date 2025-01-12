@@ -39,7 +39,7 @@ status_audiobusy        equ 01000000b ; 64
 status_audiorepeat      equ 00100000b ; 32
 status_audioplaying     equ 00010000b ; 16
 status_trackmissing     equ 00001000b ; 8
-; Chip revision, will always be 1
+; Chip revision, will either report 1 or 2 depending on the emulator/hardware
 status_revision1        equ 00000100b ; 4
 status_revision2        equ 00000010b ; 2
 status_revision3        equ 00000001b ; 1
@@ -47,9 +47,11 @@ status_revision3        equ 00000001b ; 1
 ; ## MSU_CONTROL register ($2007) ##
 ; Bit 0: Play track flag
 ; Bit 1: Repeat track flag
-; Bits 2 - 7: unused
+; Bit 2: Pause track flag
+; Bits 3 - 7: unused
 audiostate_none		equ	00000000b ; 0
 audiostate_norepeat	equ	00000001b ; 1
 audiostate_repeat	equ	00000011b ; 3
+audiostate_pause	equ	00000100b ; 4
 
 ; EOF

@@ -23,10 +23,10 @@
 	include	EXT\kstrats.ext
 	include	EXT\d2strats.ext
 	include	EXT\gastrats.ext
-	include	EXT\ga2strats.ext
+	include	EXT\ga2strat.ext
 	include	EXT\gbstrats.ext
-	include	EXT\gb2strats.ext
-	include	EXT\gb3strats.ext
+	include	EXT\gb2strat.ext
+	include	EXT\gb3strat.ext
 	include	EXT\gistrats.ext
 	include	EXT\gcstrats.ext
 	include	EXT\pstrats.ext
@@ -92,9 +92,8 @@ abort_vn
 	incfile	STRAT\istrats.asm
 	incfile	STRAT\d3strats.asm
 	IFNE	msu
-	include	ASM\MSU.ASM ; Include MSU playback logic (I hate hardcoded ROM locations)
+	include	ASM\MSU.ASM ; Include MSU playback logic
 	ENDC
-	; must be space at end of bank 32 for MSU
 	bankend	32
 
 	;; ROM HEADER

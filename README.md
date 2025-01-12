@@ -4,8 +4,8 @@ Star Fox / Starwing source code, modified for ease-of-use and ROMHacking.
 
 ## Features
 
-- Uses GSU-2/Super FX 2 @21.4Mhz instead of MC1 @10.7Mhz
-- FastROM support (An SD2SNES/FXPak Pro bug causes instability on 2CHIP SNES revisions)
+- Uses GSU-2/Super FX 2 @21.4Mhz instead of MARIO Chip 1 @10.7Mhz
+- FastROM support (not recommended to use if you are targeting real hardware with a real Super FX cartridge as it will not boot; SD2SNES/FXPak Pro currently work with FastROM just fine)
 - MSU-1 support (Original ASM patch by Kurrono, ported by Kando and Sunlit)
 - SNES Mouse support and analog stick support via the SNES mouse
 - Very configurable, see SF\CONFIG\CONFIG.INC for more info
@@ -13,46 +13,71 @@ Star Fox / Starwing source code, modified for ease-of-use and ROMHacking.
 - Bugfixes and improvements
 - 256 texture slots
 - 250 faces/vertices limit for models
-- Build process optimized for speed
+- Build process modernized and optimized for speed
+- Uses [MS-DOS Player](http://takeda-toshiya.my.coocan.jp/msdos/index.html) to emulate the toolchain, everything else uses modern tools
 - Palettes and graphics crunched, textures interleaved, and fonts built at assembly
 - Uses ARGLINK and ARGSFX from Star Fox 2 as linker and assembler instead of SL and SASM
 - Easier creation of wireframe models (replace face3 and face4 with aface3 and aface4 in your shape file)
 - All Starwing PAL and Germany text/GFX for PAL builds
 - **Kando was involved so you know it's good**
 
-## Building on Windows
+## Building
 
-Requirements: Microsoft Windows
+```diff  
+-IMPORTANT!-
+Note that if you run make with parallel jobs (-j), certain files relevant for debugging will fail to generate properly.
+```
 
-Download repo as ZIP and extract somewhere, or clone the repo with git via the command line.  
+## Windows Setup
 
-To build ROM, run ``build.cmd``.  
+Requirements: Microsoft Windows, MSYS2
 
-To build ROM with Logging, run ``build to log.cmd``.  
+Install MSYS2.  
 
-To clean, run ``clean.cmd``.  
+Run ``MSYS2 MINGW64``.  
 
-After building, a debug symbol map will be created at, and a bank space report at ``BANKS.CSV``.  
+Update MSYS2: ``pacman -Syu``  
 
-## Building on Linux
-
-**NOTE: this was tested on WSL with Ubuntu installed. Your mileage may vary.**  
-
-Requirements: Ubuntu (might work with other distros) snap, DOSBox-X, git  
-
-Install snapstore: ``sudo apt install snapd``  
-
-Install DOSBOX-X from snap: ``sudo snap install dosbox-x``  
+Install dependencies:  ``pacman -Sy git make gcc``  
 
 Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``  
 
-To build ROM, run ``make``.  
+## Linux/WSL Setup
 
-To build ROM with logging, run ``make log``.  
+**NOTE: this was tested on WSL with Ubuntu installed. Your mileage may vary.**  
+
+Requirements: Ubuntu (might work with other distros) Wine, Git  
+
+Update if necessary: ``sudo apt-get update``  
+
+Install dependencies: ``sudo apt install -y wine build-essential git``  
+
+Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``  
+
+## Usage
+
+Go to the directory in your terminal where you cloned the repo.  
+
+To build, run ``make``.  
 
 To clean, run ``make clean``.  
 
-After building, a debug symbol map will be created at ``SYMBOLS.TXT``, and a bank space report at ``BANKS.CSV``.  
+To clean everything (game code + tools), run ``make distclean``.  
+
+After building, a debug symbol map will be created in the root directory at ``SYMBOLS.TXT``, and a bank space report will be at ``BANKS.CSV``. The ROM will also be with these files.  
+
+## Uploading ROM to SNES over USB with SD2SNES/FXPak(Pro) (Currently Windows Only)
+
+Uses [USB2SNES-cli](https://github.com/Hyphen-ated/usb2snes-cli) fork by Hyphen-ated. A prebuilt windows EXE is provided.  
+Download [QUSB2SNES](https://github.com/Skarsnik/QUsb2snes/releases).  
+Extract it somewhere and run it. Set it up for an SD2SNES/FXPak Pro.  
+**QUSB2SNES must be running in the background for uploading to function.**  
+You can then run ``make upload`` to upload the ROM to the SNES. ``make boot`` boots the ROM.  
+
+## Notes
+
+- All files that the assembler/linker will interact with should have all caps filenames that follow the MS-DOS 8.3 name format; up to 8 characters for the filename, up to 3 characters for the extension.
+- If you need access to the old MS-DOS/DOSBox-X based build system, see the [legacy](https://github.com/Sunlitspace542/ultrastarfox/tree/legacy) branch.
 
 ## Contributing
 
@@ -71,13 +96,13 @@ All changes to be submitted should be made to the [dev](https://github.com/Sunli
 ## TODO
 1. Optimize game where possible (We already have FastROM and 21Mhz SuperFX 2, can we go any further?)  
 2. Annotate and document code (in progress)  
-3. MAYBE: Disassemble all BIN files in SND directory, add documentation on custom music and the like  
+3. Disassemble all BIN files in SND directory and integrate into build system, add documentation on custom music and the like  
 
 ## Project Structure
 ```
 ultrastarfox
-├── BIN: exe files needed to assemble game code
-├── optionalstuff: optional graphics files
+├── bin: exe files needed to assemble game code
+├── extras: extra graphics files
 ├── SF: Main source code is located here
 │   ├── ASM: Main game code located here (65816)
 │   ├── BANK: Bank data\ASM files
@@ -94,6 +119,6 @@ ultrastarfox
 │   ├── SHAPES: contains all shape files
 │   ├── SND: sound/music data
 │   └── STRAT: Code for Strategies (Object behaviors)
-├── TOOLS: tools such as PACKER and SHAPED
-└── DOCS: .md format text files covering various aspects of Star Fox
+├── tools: tools such as PACKER and SHAPED
+└── docs: .md format text files covering various aspects of Star Fox
 ```

@@ -28,10 +28,12 @@
 */SF/*.tmp
 */SF/*.txt
 *.TXT
+*.txt
 *.CSV
 *.csv
 *.CSV#
 *.csv#
+*:Zone.Identifier
 
 # VSCode stuff
 */.vscode/*
@@ -40,8 +42,14 @@
 *.CCR
 *.PCR
 SF/DATA/COL/*.PAC
+SF/DATA/COL/*.pac
 SF/DATA/COL/ALLCOLS.COL
+SF/DATA/COL/allcols.col
 
 # Object files
 *.sob
 *.SOB
+
+# Linker Address Maps
+*.map
+*.MAP

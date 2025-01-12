@@ -6,8 +6,8 @@
 	include	EXT\paths.ext
 	include	EXT\pistrats.ext
 	include	EXT\pcstrats.ext
-	include	EXT\gb2strats.ext
-	include	EXT\ga2strats.ext
+	include	EXT\gb2strat.ext
+	include	EXT\ga2strat.ext
 	include	EXT\dstrats.ext
 	include	INC\shmacs.inc
 	include	EXT\windows.ext
