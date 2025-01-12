@@ -77,6 +77,7 @@ You can then run ``make upload`` to upload the ROM to the SNES. ``make boot`` bo
 ## Notes
 
 - All files that the assembler/linker will interact with should have all caps filenames that follow the MS-DOS 8.3 name format; up to 8 characters for the filename, up to 3 characters for the extension.
+- If you need access to the old MS-DOS/DOSBox-X based build system, see the [legacy](https://github.com/Sunlitspace542/ultrastarfox/tree/legacy) branch.
 
 ## Contributing
 
