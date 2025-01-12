@@ -101,7 +101,7 @@ All changes to be submitted should be made to the [dev](https://github.com/Sunli
 ```
 ultrastarfox
 ├── bin: exe files needed to assemble game code
-├── optionalstuff: optional graphics files
+├── extras: extra graphics files
 ├── SF: Main source code is located here
 │   ├── ASM: Main game code located here (65816)
 │   ├── BANK: Bank data\ASM files
