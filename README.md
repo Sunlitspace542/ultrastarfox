@@ -32,6 +32,12 @@ Note that if you run make with parallel jobs (-j), certain files relevant for de
 
 Requirements: Microsoft Windows, MSYS2
 
+Download repository and extract it somewhere or clone it with git: ``git clone https://github.com/Sunlitspace542/ultrastarfox``  
+
+## Windows (MSYS2) Setup
+
+Requirements: Microsoft Windows, MSYS2
+
 Install MSYS2.  
 
 Run ``MSYS2 MINGW64``.  
@@ -58,11 +64,19 @@ Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``
 
 Go to the directory in your terminal where you cloned the repo.  
 
+Windows without MSYS2:
+To build, run ``build.cmd``.
+
+To clean, run ``clean.cmd``.
+
+MSYS2/Linux:
 To build, run ``make``.  
 
 To clean, run ``make clean``.  
 
 To clean everything (game code + tools), run ``make distclean``.  
+
+All:
 
 After building, a debug symbol map will be created in the root directory at ``SYMBOLS.TXT``, and a bank space report will be at ``BANKS.CSV``. The ROM will also be with these files.  
 
