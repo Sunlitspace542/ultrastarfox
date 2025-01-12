@@ -284,7 +284,6 @@ endif
 init-allcols:
 ifeq ($(PLATFORM),windows)
 	@copy NUL DATA\COL\allcols.col
-	@$(DEL) DATA\COL\allcols.col
 else
 	@$(DEL) DATA/COL/allcols.col
 	@touch DATA/COL/allcols.col
