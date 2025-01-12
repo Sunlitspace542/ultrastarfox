@@ -20,9 +20,7 @@ endif
 QUIET ?= true
 
 ifeq ($(PLATFORM),windows)
-else ifeq ($(PLATFORM),msys2)
-	UNAME_S := $(shell uname -s)
-else ifeq ($(PLATFORM),linux)
+else
 	UNAME_S := $(shell uname -s)
 endif
 
@@ -33,17 +31,15 @@ COLOR ?= 1
 NOANSI=
 
 # Newline character to use (adjust this if newlines aren't working in your terminal)
-NEWLINE=\n
-
-# If we detect MSYS, handle disabling asssembler ANSI codes internally in INC/HEADER.INC and use the correct newline
-
 ifeq ($(PLATFORM),windows)
 COLOR=1
 NEWLINE=
 else ifeq ($(PLATFORM),msys2)
+# If we detect MSYS, handle disabling asssembler ANSI codes internally in INC/HEADER.INC and use the correct newline
 NOANSI=
 NEWLINE=\r\n
 else ifeq ($(PLATFORM),linux)
+NEWLINE=\n
 endif
 
 # If on Linux, use Wine to run MS-DOS Player
@@ -68,9 +64,7 @@ LOPTS=-b30 -h1024 -t7d -z
 # ROM Extender
 ifeq ($(PLATFORM),windows)
 EXTEND=../win_bin/romextender.exe
-else ifeq ($(PLATFORM),msys2)
-EXTEND=../tools/romextender
-else ifeq ($(PLATFORM),linux)
+else
 EXTEND=../tools/romextender
 endif
 
@@ -89,9 +83,7 @@ COPTS=-s -f
 # FXGFX Interleaver
 ifeq ($(PLATFORM),windows)
 MERGE=..\win_bin\cgx2fx.exe
-else ifeq ($(PLATFORM),msys2)
-MERGE=../tools/cgx2fx
-else ifeq ($(PLATFORM),linux)
+else
 MERGE=../tools/cgx2fx
 endif
 
@@ -99,9 +91,7 @@ endif
 # Graphics Cruncher
 ifeq ($(PLATFORM),windows)
 CRU=..\win_bin\sf_crunch.exe
-else ifeq ($(PLATFORM),msys2)
-CRU=../tools/sf_crunch
-else ifeq ($(PLATFORM),linux)
+else
 CRU=../tools/sf_crunch
 endif
 
@@ -109,27 +99,21 @@ endif
 # ALLCOLS Builder
 ifeq ($(PLATFORM),windows)
 MC=DATA\COL\MC.BAT
-else ifeq ($(PLATFORM),msys2)
-MC=DATA/COL/mc.sh
-else ifeq ($(PLATFORM),linux)
+else
 MC=DATA/COL/mc.sh
 endif
 
 # Font Converter
 ifeq ($(PLATFORM),windows)
 FONT=../win_bin/foxfont.exe
-else ifeq ($(PLATFORM),msys2)
-FONT=../tools/foxfont
-else ifeq ($(PLATFORM),linux)
+else
 FONT=../tools/foxfont
 endif
 
 # Argonaut .MAP File Decoder
 ifeq ($(PLATFORM),windows)
 MAPDEC=..\win_bin\argonautmapdecoder.exe
-else ifeq ($(PLATFORM),msys2)
-MAPDEC=../tools/argonautmapdecoder
-else ifeq ($(PLATFORM),linux)
+else
 MAPDEC=../tools/argonautmapdecoder
 endif
 
@@ -141,18 +125,14 @@ USB2SNES=../bin/usb2snes-cli.exe
 # Print Command
 ifeq ($(PLATFORM),windows)
 PRINT ?= ..\win_bin\printf.exe
-else ifeq ($(PLATFORM),msys2)
-PRINT ?= printf
-else ifeq ($(PLATFORM),linux)
+else
 PRINT ?= printf
 endif
 
 # Move Command
 ifeq ($(PLATFORM),windows)
 MV=move
-else ifeq ($(PLATFORM),msys2)
-MV=mv
-else ifeq ($(PLATFORM),linux)
+else
 MV=mv
 endif
 
@@ -160,9 +140,7 @@ endif
 
 ifeq ($(PLATFORM),windows)
 DEL=del
-else ifeq ($(PLATFORM),msys2)
-DEL=rm -rf
-else ifeq ($(PLATFORM),linux)
+else
 DEL=rm -rf
 endif
 
@@ -206,15 +184,7 @@ BANK/%.SOB: BANK/%.ASM
 
 ifeq ($(PLATFORM),windows)
 	@$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@
-else ifeq ($(PLATFORM),msys2)
-	@bash -c '\
-	if [ "$(QUIET)" = "true" ]; then \
-		$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@ > /dev/null 2>&1 || \
-		$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@; \
-	else \
-		$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@; \
-	fi'
-else ifeq ($(PLATFORM),linux)
+else
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
 		$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@ > /dev/null 2>&1 || \
@@ -288,15 +258,7 @@ all: check-jobs make-allcols msprites crunch fonts sf.sfc donebld
 # Check for job flags and print a warning
 check-jobs:
 ifeq ($(PLATFORM),windows)
-
-else ifeq ($(PLATFORM),msys2)
-	@$(PRINT) "$(GREEN)Checking parallel build jobs...$(NO_COL)$(NEWLINE)"
-	@case "$(MAKEFLAGS)" in \
-		*-j*) \
-			$(PRINT) "$(RED)WARNING: A parallel job count greater than 1 may cause issues!!$(NO_COL)$(NEWLINE)"; \
-		;; \
-	esac
-else ifeq ($(PLATFORM),linux)
+else
 	@$(PRINT) "$(GREEN)Checking parallel build jobs...$(NO_COL)$(NEWLINE)"
 	@case "$(MAKEFLAGS)" in \
 		*-j*) \
@@ -310,11 +272,7 @@ endif
 init-allcols:
 ifeq ($(PLATFORM),windows)
 	@$(DEL) DATA\COL\allcols.col
-else ifeq ($(PLATFORM),msys2)
-	@$(DEL) DATA/COL/allcols.col
-	@touch DATA/COL/allcols.col
-	@touch DATA/COL/col2.tmp
-else ifeq ($(PLATFORM),linux)
+else
 	@$(DEL) DATA/COL/allcols.col
 	@touch DATA/COL/allcols.col
 	@touch DATA/COL/col2.tmp
@@ -413,23 +371,13 @@ sf.sfc: $(SOBFILES)
 
 ifeq ($(PLATFORM),windows)
 	@echo $(SOBFILES) > flist.tmp
-else ifeq ($(PLATFORM),msys2)
-	@echo $(SOBFILES) | sed 's/\//\\/g' > flist.tmp
-else ifeq ($(PLATFORM),linux)
+else
 	@echo $(SOBFILES) | sed 's/\//\\/g' > flist.tmp
 endif
 
 ifeq ($(PLATFORM),windows)
 	@$(LINK) $(LOPTS) -o$@ @flist.tmp
-else ifeq ($(PLATFORM),msys2)
-	@bash -c '\
-	if [ "$(QUIET)" = "true" ]; then \
-		$(LINK) $(LOPTS) -o$@ @flist.tmp > /dev/null 2>&1 || \
-		$(LINK) $(LOPTS) -o$@ @flist.tmp; \
-	else \
-		$(LINK) $(LOPTS) -o$@ @flist.tmp; \
-	fi'
-else ifeq ($(PLATFORM),linux)
+else
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
 		$(LINK) $(LOPTS) -o$@ @flist.tmp > /dev/null 2>&1 || \
@@ -443,16 +391,7 @@ endif
 
 ifeq ($(PLATFORM),windows)
 	@$(EXTEND) $@ $(EXTOPTS)
-else ifeq ($(PLATFORM),msys2)
-	$(call print2,Extending ROM:,$@)
-	@bash -c '\
-	if [ "$(QUIET)" = "true" ]; then \
-		$(EXTEND) $@ $(EXTOPTS) > /dev/null 2>&1 || \
-		$(EXTEND) $@ $(EXTOPTS); \
-	else \
-		$(EXTEND) $@ $(EXTOPTS); \
-	fi'
-else ifeq ($(PLATFORM),linux)
+else
 	$(call print2,Extending ROM:,$@)
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
@@ -465,16 +404,7 @@ endif
 
 ifeq ($(PLATFORM),windows)
 	@$(CHECK) $(COPTS) $@
-else ifeq ($(PLATFORM),msys2)
-	$(call print2,Fixing Checksum:,$@)
-	@bash -c '\
-	if [ "$(QUIET)" = "true" ]; then \
-		$(CHECK) $(COPTS) $@ > /dev/null 2>&1 || \
-		$(CHECK) $(COPTS) $@; \
-	else \
-		$(CHECK) $(COPTS) $@; \
-	fi'
-else ifeq ($(PLATFORM),linux)
+else
 	$(call print2,Fixing Checksum:,$@)
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
@@ -486,10 +416,7 @@ else ifeq ($(PLATFORM),linux)
 endif
 
 ifeq ($(PLATFORM),windows)
-
-else ifeq ($(PLATFORM),msys2)
-	@$(SHA1SUM) $@
-else ifeq ($(PLATFORM),linux)
+else
 	@$(SHA1SUM) $@
 endif
 	@$(PRINT) "${BLINK}Build succeeded.$(NO_COL)$(NEWLINE)"
@@ -503,13 +430,7 @@ ifeq ($(PLATFORM),windows)
 	@$(MAPDEC) sf.MAP ..\symbols.txt
 	@$(DEL) sf.MAP
 	@$(DEL) msgs.txt
-else ifeq ($(PLATFORM),msys2)
-	@$(MV) sf.sfc ../sf.sfc
-	@{ [ -f BANKS.CSV ] && $(MV) BANKS.CSV ../banks.csv || true; }
-	@$(MAPDEC) sf.MAP ../symbols.txt
-	@$(DEL) sf.MAP
-	@$(DEL) msgs.txt
-else ifeq ($(PLATFORM),linux)
+else
 	@$(MV) sf.sfc ../sf.sfc
 	@{ [ -f BANKS.CSV ] && $(MV) BANKS.CSV ../banks.csv || true; }
 	@$(MAPDEC) sf.MAP ../symbols.txt
@@ -534,21 +455,7 @@ ifeq ($(PLATFORM),windows)
 	@$(DEL) sf.sfc
 	@$(DEL) BANKS.CSV
 	@$(DEL) ..\symbols.txt
-else ifeq ($(PLATFORM),msys2)
-	@$(DEL) ../sf.sfc
-	@$(DEL) ../banks.csv
-	@$(DEL) BANK/*.SOB
-	@$(DEL) BANK/*.MAP *.MAP
-	@$(DEL) MSPRITES/*.BIN
-	@$(DEL) DATA/*.CCR
-	@$(DEL) DATA/*.PCR
-	@$(DEL) DATA/FONT/MOJI_0.fon
-	@$(DEL) DATA/FONT/MOJI_D.fon
-	@$(DEL) DATA/COL/allcols.pac
-	@$(DEL) sf.sfc
-	@$(DEL) BANKS.CSV
-	@$(DEL) ../symbols.txt
-else ifeq ($(PLATFORM),linux)
+else
 	@$(DEL) ../sf.sfc
 	@$(DEL) ../banks.csv
 	@$(DEL) BANK/*.SOB
