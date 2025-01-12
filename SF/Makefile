@@ -429,6 +429,7 @@ else
 endif
 
 ifeq ($(PLATFORM),windows)
+	@certutil -hashfile sf.sfc SHA1
 else
 	@$(SHA1SUM) $@
 endif
