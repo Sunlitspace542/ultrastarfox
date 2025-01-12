@@ -1,6 +1,11 @@
 # Redirects to the correct Makefiles
 all:
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+else
 	@$(MAKE) -C tools
+endif
+endif
 	@$(MAKE) -C SF
 
 upload:

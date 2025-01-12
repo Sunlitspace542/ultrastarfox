@@ -5,7 +5,12 @@
 # Silence the assembler+linker unless an error occurs
 QUIET ?= true
 
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+else
 UNAME_S := $(shell uname -s)
+endif
+endif
 
 # Whether to colorize build messages
 COLOR ?= 1
@@ -20,6 +25,13 @@ NEWLINE=\n
 ifdef MSYSTEM
 NOANSI=
 NEWLINE=\r\n
+endif
+
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+COLOR=1
+NEWLINE=
+endif
 endif
 
 # If on Linux, use Wine to run MS-DOS Player
@@ -42,7 +54,13 @@ LINK=$(WINE) $(MSDOS) ../bin/ARGLINK.EXE
 LOPTS=-b30 -h1024 -t7d -z
 
 # ROM Extender
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+EXTEND=../win_bin/romextender.exe
+else
 EXTEND=../tools/romextender
+endif
+endif
 # Extended size in Mbits, byte to pad with
 EXTOPTS= 16 ff
 
@@ -50,24 +68,54 @@ EXTOPTS= 16 ff
 ifeq ($(UNAME_S),Linux)
 CHECK=../bin/superfamicheck_linux
 else
-CHECK=../bin/superfamicheck
+CHECK=../bin/superfamicheck.exe
 endif
 COPTS=-s -f
 
 # FXGFX Interleaver
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+MERGE=..\win_bin\cgx2fx.exe
+else
 MERGE=../tools/cgx2fx
+endif
+endif
 
 # Graphics Cruncher
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+CRU=..\win_bin\sf_crunch.exe
+else
 CRU=../tools/sf_crunch
+endif
+endif
 
 # ALLCOLS Builder
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+MC=DATA\COL\MC.BAT
+else
 MC=DATA/COL/mc.sh
+endif
+endif
 
 # Font Converter
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+FONT=../win_bin/foxfont.exe
+else
 FONT=../tools/foxfont
+endif
+endif
 
 # Argonaut .MAP File Decoder
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+MAPDEC=..\win_bin\argonautmapdecoder.exe
+else
 MAPDEC=../tools/argonautmapdecoder
+endif
+endif
 
 # USB2SNES CLI Utility
 USB2SNES=../bin/usb2snes-cli.exe
@@ -75,7 +123,31 @@ USB2SNES=../bin/usb2snes-cli.exe
 # Terminal-specific commands
 
 # Print Command
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+PRINT ?= ..\win_bin\printf.exe
+else
 PRINT ?= printf
+endif
+endif
+
+# Move Command
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+MV=move
+else
+MV=mv
+endif
+endif
+
+# Delete Command
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+DEL=del
+else
+DEL=rm -rf
+endif
+endif
 
 # File Checksum Calculator
 SHA1SUM=sha1sum
@@ -114,6 +186,11 @@ endef
 # Recipe to assemble a .ASM file and create a linkable .SOB file
 BANK/%.SOB: BANK/%.ASM
 	$(call print,Assembling:,$<,$@)
+
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+	@$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@
+else
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
 		$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@ > /dev/null 2>&1 || \
@@ -121,6 +198,8 @@ BANK/%.SOB: BANK/%.ASM
 	else \
 		$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@; \
 	fi'
+endif
+endif
 
 # Recipes to crunch graphics
 DATA/%.CCR: DATA/%.CGX
@@ -185,18 +264,30 @@ all: check-jobs make-allcols msprites crunch fonts sf.sfc donebld
 
 # Check for job flags and print a warning
 check-jobs:
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+else
 	@$(PRINT) "$(GREEN)Checking parallel build jobs...$(NO_COL)$(NEWLINE)"
 	@case "$(MAKEFLAGS)" in \
 		*-j*) \
 			$(PRINT) "$(RED)WARNING: A parallel job count greater than 1 may cause issues!!$(NO_COL)$(NEWLINE)"; \
 		;; \
 	esac
+endif
+endif
 
 # Initialize allcols.col
 init-allcols:
-	@rm -f DATA/COL/allcols.col
+	@$(DEL) DATA\COL\allcols.col
+
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+	@copy NUL DATA\COL\allcols.col
+else
 	@touch DATA/COL/allcols.col
 	@touch DATA/COL/col2.tmp
+endif
+endif
 
 # List of palette source files
 # Both of these lists must match SF/INC/KALCS.INC's list!!
@@ -287,8 +378,19 @@ fonts: $(FONFILES)
 # The ROM Itself
 sf.sfc: $(SOBFILES)
 	$(call print2,Linking ROM:,$@)
-	@echo $(SOBFILES) | sed 's/\//\\/g' > flist.tmp
 
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+	@echo $(SOBFILES) > flist.tmp
+else
+	@echo $(SOBFILES) | sed 's/\//\\/g' > flist.tmp
+endif
+endif
+
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+	@$(LINK) $(LOPTS) -o$@ @flist.tmp
+else
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
 		$(LINK) $(LOPTS) -o$@ @flist.tmp > /dev/null 2>&1 || \
@@ -296,9 +398,15 @@ sf.sfc: $(SOBFILES)
 	else \
 		$(LINK) $(LOPTS) -o$@ @flist.tmp; \
 	fi'
+endif
+endif
 
-	@rm -f flist.tmp
+	@$(DEL) flist.tmp
 
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+	@$(EXTEND) $@ $(EXTOPTS)
+else
 	$(call print2,Extending ROM:,$@)
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
@@ -307,7 +415,13 @@ sf.sfc: $(SOBFILES)
 	else \
 		$(EXTEND) $@ $(EXTOPTS); \
 	fi'
+endif
+endif
 
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+	@$(CHECK) $(COPTS) $@
+else
 	$(call print2,Fixing Checksum:,$@)
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
@@ -316,31 +430,68 @@ sf.sfc: $(SOBFILES)
 	else \
 		$(CHECK) $(COPTS) $@; \
 	fi'
+endif
+endif
 
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+else
 	@$(SHA1SUM) $@
+endif
+endif
 	@$(PRINT) "${BLINK}Build succeeded.$(NO_COL)$(NEWLINE)"
 
 donebld: sf.sfc
-	@mv sf.sfc ../sf.sfc
-	@{ [ -f BANKS.CSV ] && mv BANKS.CSV ../banks.csv || true; }
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+	@copy sf.sfc ..\sf.sfc
+	@del sf.sfc
+	if exist BANKS.CSV $(MV) BANKS.CSV ..\banks.csv
+	@$(MAPDEC) sf.MAP ..\symbols.txt
+	@$(DEL) sf.MAP
+	@$(DEL) msgs.txt
+else
+	@$(MV) sf.sfc ../sf.sfc
+	@{ [ -f BANKS.CSV ] && $(MV) BANKS.CSV ../banks.csv || true; }
 	@$(MAPDEC) sf.MAP ../symbols.txt
-	@rm -rf sf.MAP
-	@rm -rf msgs.txt
+	@$(DEL) sf.MAP
+	@$(DEL) msgs.txt
+endif
+endif
 
 clean:
-	@rm -rf ../sf.sfc
-	@rm -rf ../banks.csv
-	@rm -rf BANK/*.SOB
-	@rm -rf BANK/*.MAP *.MAP
-	@rm -rf MSPRITES/*.BIN
-	@rm -rf DATA/*.CCR
-	@rm -rf DATA/*.PCR
-	@rm -rf DATA/FONT/MOJI_0.fon
-	@rm -rf DATA/FONT/MOJI_D.fon
-	@rm -rf DATA/COL/allcols.pac
-	@rm -rf sf.sfc
-	@rm -rf BANKS.CSV
-	@rm -rf ../symbols.txt
+ifeq ($(OS),Windows_NT)
+ifndef MSYSTEM
+	@$(DEL) ..\sf.sfc
+	@$(DEL) ..\banks.csv
+	@$(DEL) BANK\*.SOB
+	@$(DEL) BANK\*.MAP 
+	@$(DEL) *.MAP
+	@$(DEL) MSPRITES\*.BIN
+	@$(DEL) DATA\*.CCR
+	@$(DEL) DATA\*.PCR
+	@$(DEL) DATA\FONT\MOJI_0.fon
+	@$(DEL) DATA\FONT\MOJI_D.fon
+	@$(DEL) DATA\COL\allcols.pac
+	@$(DEL) sf.sfc
+	@$(DEL) BANKS.CSV
+	@$(DEL) ..\symbols.txt
+else
+	@$(DEL) ../sf.sfc
+	@$(DEL) ../banks.csv
+	@$(DEL) BANK/*.SOB
+	@$(DEL) BANK/*.MAP *.MAP
+	@$(DEL) MSPRITES/*.BIN
+	@$(DEL) DATA/*.CCR
+	@$(DEL) DATA/*.PCR
+	@$(DEL) DATA/FONT/MOJI_0.fon
+	@$(DEL) DATA/FONT/MOJI_D.fon
+	@$(DEL) DATA/COL/allcols.pac
+	@$(DEL) sf.sfc
+	@$(DEL) BANKS.CSV
+	@$(DEL) ../symbols.txt
+endif
+endif
 
 upload:
 	@$(USB2SNES)	--upload ../sf.sfc --path ./sf.sfc
