@@ -28,7 +28,7 @@ Star Fox / Starwing source code, modified for ease-of-use and ROMHacking.
 Note that if you run make with parallel jobs (-j), certain files relevant for debugging will fail to generate properly.
 ```
 
-### Windows Setup
+## Windows Setup
 
 Requirements: Microsoft Windows, MSYS2
 
@@ -42,7 +42,7 @@ Install dependencies:  ``pacman -Sy git make gcc``
 
 Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``  
 
-### Linux/WSL Setup
+## Linux/WSL Setup
 
 **NOTE: this was tested on WSL with Ubuntu installed. Your mileage may vary.**  
 
@@ -54,7 +54,7 @@ Install dependencies: ``sudo apt install -y wine build-essential git``
 
 Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``  
 
-### Usage
+## Usage
 
 Go to the directory in your terminal where you cloned the repo.  
 
