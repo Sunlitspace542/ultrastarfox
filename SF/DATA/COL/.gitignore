@@ -1,3 +1,7 @@
 *.PAC
+*.pac
 *.TMP
+*.tmp
+
 ALLCOLS.COL
+allcols.col
