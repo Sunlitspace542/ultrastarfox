@@ -34,6 +34,8 @@ Requirements: Microsoft Windows, Github Desktop (or similar, just need something
 
 Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``  
 
+Please note that downloading the repo as ZIP will not work.  
+
 ## Windows (MSYS2) Setup
 
 Requirements: Microsoft Windows, MSYS2, Git, Make, GCC
@@ -62,21 +64,21 @@ Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``
 
 ## Usage
 
-Go to the directory in your terminal where you cloned the repo.  
+Go to the directory where you cloned the repo.  
 
-Windows without MSYS2:
+Windows without MSYS2:  
 To build, run ``build.cmd``.
 
 To clean, run ``clean.cmd``.
 
-MSYS2/Linux:
+MSYS2/Linux:  
 To build, run ``make``.  
 
 To clean, run ``make clean``.  
 
 To clean everything (game code + tools), run ``make distclean``.  
 
-All:
+All:  
 
 After building, a debug symbol map will be created in the root directory at ``SYMBOLS.TXT``, and a bank space report will be at ``BANKS.CSV``. The ROM will also be with these files.  
 
