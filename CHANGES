@@ -1,3 +1,7 @@
+Version 3.1
+- Support for Windows without MSYS2 added
+- Makefile properly detects the platform you're on
+
 Version 3.0
 - Toolchain modernized, no more DOSBox!
 - Assembler/linker now runs using MS-DOS Player instead of DOSBox

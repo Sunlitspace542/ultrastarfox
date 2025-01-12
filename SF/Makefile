@@ -2,10 +2,27 @@
 # UltraStarFox Makefile #
 #########################
 
+# Detect what we're running on
+ifeq ($(OS),Windows_NT)
+    ifndef MSYSTEM
+        # Windows without MSYS2
+        PLATFORM := windows
+    else
+        # Windows with MSYS2
+        PLATFORM := msys2
+    endif
+else
+    # Assume Linux/Unix if not Windows
+    PLATFORM := linux
+endif
+
 # Silence the assembler+linker unless an error occurs
 QUIET ?= true
 
-UNAME_S := $(shell uname -s)
+ifeq ($(PLATFORM),windows)
+else
+	UNAME_S := $(shell uname -s)
+endif
 
 # Whether to colorize build messages
 COLOR ?= 1
@@ -14,12 +31,15 @@ COLOR ?= 1
 NOANSI=
 
 # Newline character to use (adjust this if newlines aren't working in your terminal)
-NEWLINE=\n
-
+ifeq ($(PLATFORM),windows)
+COLOR=1
+NEWLINE=
+else ifeq ($(PLATFORM),msys2)
 # If we detect MSYS, handle disabling asssembler ANSI codes internally in INC/HEADER.INC and use the correct newline
-ifdef MSYSTEM
 NOANSI=
 NEWLINE=\r\n
+else ifeq ($(PLATFORM),linux)
+NEWLINE=\n
 endif
 
 # If on Linux, use Wine to run MS-DOS Player
@@ -42,32 +62,60 @@ LINK=$(WINE) $(MSDOS) ../bin/ARGLINK.EXE
 LOPTS=-b30 -h1024 -t7d -z
 
 # ROM Extender
+ifeq ($(PLATFORM),windows)
+EXTEND=../win_bin/romextender.exe
+else
 EXTEND=../tools/romextender
+endif
+
 # Extended size in Mbits, byte to pad with
 EXTOPTS= 16 ff
 
 # Checksum Fixer
+
 ifeq ($(UNAME_S),Linux)
 CHECK=../bin/superfamicheck_linux
 else
-CHECK=../bin/superfamicheck
+CHECK=../bin/superfamicheck.exe
 endif
 COPTS=-s -f
 
 # FXGFX Interleaver
+ifeq ($(PLATFORM),windows)
+MERGE=..\win_bin\cgx2fx.exe
+else
 MERGE=../tools/cgx2fx
+endif
+
 
 # Graphics Cruncher
+ifeq ($(PLATFORM),windows)
+CRU=..\win_bin\sf_crunch.exe
+else
 CRU=../tools/sf_crunch
+endif
+
 
 # ALLCOLS Builder
+ifeq ($(PLATFORM),windows)
+MC=DATA\COL\MC.BAT
+else
 MC=DATA/COL/mc.sh
+endif
 
 # Font Converter
+ifeq ($(PLATFORM),windows)
+FONT=../win_bin/foxfont.exe
+else
 FONT=../tools/foxfont
+endif
 
 # Argonaut .MAP File Decoder
+ifeq ($(PLATFORM),windows)
+MAPDEC=..\win_bin\argonautmapdecoder.exe
+else
 MAPDEC=../tools/argonautmapdecoder
+endif
 
 # USB2SNES CLI Utility
 USB2SNES=../bin/usb2snes-cli.exe
@@ -75,7 +123,26 @@ USB2SNES=../bin/usb2snes-cli.exe
 # Terminal-specific commands
 
 # Print Command
+ifeq ($(PLATFORM),windows)
+PRINT ?= ..\win_bin\printf.exe
+else
 PRINT ?= printf
+endif
+
+# Move Command
+ifeq ($(PLATFORM),windows)
+MV=move
+else
+MV=mv
+endif
+
+# Delete Command
+
+ifeq ($(PLATFORM),windows)
+DEL=del
+else
+DEL=rm -rf
+endif
 
 # File Checksum Calculator
 SHA1SUM=sha1sum
@@ -114,6 +181,10 @@ endef
 # Recipe to assemble a .ASM file and create a linkable .SOB file
 BANK/%.SOB: BANK/%.ASM
 	$(call print,Assembling:,$<,$@)
+
+ifeq ($(PLATFORM),windows)
+	@$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@
+else
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
 		$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@ > /dev/null 2>&1 || \
@@ -121,6 +192,7 @@ BANK/%.SOB: BANK/%.ASM
 	else \
 		$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@; \
 	fi'
+endif
 
 # Recipes to crunch graphics
 DATA/%.CCR: DATA/%.CGX
@@ -181,22 +253,44 @@ SOBFILES= \
 #!! If you add/remove/modify a cgx/bin in these two lists, make sure the corresponding files are present here.
 
 # Everything that should be done when make is executed
-all: check-jobs make-allcols msprites crunch fonts sf.sfc donebld
+all: welcome check-jobs make-allcols msprites crunch fonts sf.sfc donebld
+
+welcome:
+	@$(PRINT) "$(YELLOW)Welcome to UltraStarFox!!$(NO_COL)$(NEWLINE)"
+# Platform Detection
+ifeq ($(PLATFORM),windows)
+	@$(PRINT) "$(GREEN)You're on $(YELLOW)Windows!$(NO_COL)$(NEWLINE)"
+else ifeq ($(PLATFORM),msys2)
+	@$(PRINT) "$(GREEN)You're on $(YELLOW)MSYS2!$(NO_COL)$(NEWLINE)"
+else ifeq ($(PLATFORM),linux)
+	@$(PRINT) "$(GREEN)You're on $(YELLOW)Linux!$(NO_COL)$(NEWLINE)"
+endif
+
 
 # Check for job flags and print a warning
 check-jobs:
+ifeq ($(PLATFORM),windows)
+else
 	@$(PRINT) "$(GREEN)Checking parallel build jobs...$(NO_COL)$(NEWLINE)"
 	@case "$(MAKEFLAGS)" in \
 		*-j*) \
 			$(PRINT) "$(RED)WARNING: A parallel job count greater than 1 may cause issues!!$(NO_COL)$(NEWLINE)"; \
 		;; \
 	esac
+endif
+
 
 # Initialize allcols.col
 init-allcols:
-	@rm -f DATA/COL/allcols.col
+ifeq ($(PLATFORM),windows)
+	@copy NUL DATA\COL\allcols.col
+	@$(DEL) DATA\COL\allcols.col
+else
+	@$(DEL) DATA/COL/allcols.col
 	@touch DATA/COL/allcols.col
 	@touch DATA/COL/col2.tmp
+endif
+
 
 # List of palette source files
 # Both of these lists must match SF/INC/KALCS.INC's list!!
@@ -287,8 +381,16 @@ fonts: $(FONFILES)
 # The ROM Itself
 sf.sfc: $(SOBFILES)
 	$(call print2,Linking ROM:,$@)
-	@echo $(SOBFILES) | sed 's/\//\\/g' > flist.tmp
 
+ifeq ($(PLATFORM),windows)
+	@echo $(SOBFILES) > flist.tmp
+else
+	@echo $(SOBFILES) | sed 's/\//\\/g' > flist.tmp
+endif
+
+ifeq ($(PLATFORM),windows)
+	@$(LINK) $(LOPTS) -o$@ @flist.tmp
+else
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
 		$(LINK) $(LOPTS) -o$@ @flist.tmp > /dev/null 2>&1 || \
@@ -296,9 +398,13 @@ sf.sfc: $(SOBFILES)
 	else \
 		$(LINK) $(LOPTS) -o$@ @flist.tmp; \
 	fi'
+endif
 
-	@rm -f flist.tmp
+	@$(DEL) flist.tmp
 
+ifeq ($(PLATFORM),windows)
+	@$(EXTEND) $@ $(EXTOPTS)
+else
 	$(call print2,Extending ROM:,$@)
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
@@ -307,7 +413,11 @@ sf.sfc: $(SOBFILES)
 	else \
 		$(EXTEND) $@ $(EXTOPTS); \
 	fi'
+endif
 
+ifeq ($(PLATFORM),windows)
+	@$(CHECK) $(COPTS) $@
+else
 	$(call print2,Fixing Checksum:,$@)
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
@@ -316,31 +426,64 @@ sf.sfc: $(SOBFILES)
 	else \
 		$(CHECK) $(COPTS) $@; \
 	fi'
+endif
 
+ifeq ($(PLATFORM),windows)
+	@certutil -hashfile sf.sfc SHA1
+else
 	@$(SHA1SUM) $@
+endif
 	@$(PRINT) "${BLINK}Build succeeded.$(NO_COL)$(NEWLINE)"
 
 donebld: sf.sfc
-	@mv sf.sfc ../sf.sfc
-	@{ [ -f BANKS.CSV ] && mv BANKS.CSV ../banks.csv || true; }
+
+ifeq ($(PLATFORM),windows)
+	@copy sf.sfc ..\sf.sfc
+	@del sf.sfc
+	@if exist BANKS.CSV $(MV) BANKS.CSV ..\banks.csv
+	@$(MAPDEC) sf.MAP ..\symbols.txt
+	@$(DEL) sf.MAP
+	@$(DEL) msgs.txt
+else
+	@$(MV) sf.sfc ../sf.sfc
+	@{ [ -f BANKS.CSV ] && $(MV) BANKS.CSV ../banks.csv || true; }
 	@$(MAPDEC) sf.MAP ../symbols.txt
-	@rm -rf sf.MAP
-	@rm -rf msgs.txt
+	@$(DEL) sf.MAP
+	@$(DEL) msgs.txt
+endif
 
 clean:
-	@rm -rf ../sf.sfc
-	@rm -rf ../banks.csv
-	@rm -rf BANK/*.SOB
-	@rm -rf BANK/*.MAP *.MAP
-	@rm -rf MSPRITES/*.BIN
-	@rm -rf DATA/*.CCR
-	@rm -rf DATA/*.PCR
-	@rm -rf DATA/FONT/MOJI_0.fon
-	@rm -rf DATA/FONT/MOJI_D.fon
-	@rm -rf DATA/COL/allcols.pac
-	@rm -rf sf.sfc
-	@rm -rf BANKS.CSV
-	@rm -rf ../symbols.txt
+
+ifeq ($(PLATFORM),windows)
+	@$(DEL) ..\sf.sfc
+	@$(DEL) ..\banks.csv
+	@$(DEL) BANK\*.SOB
+	@$(DEL) BANK\*.MAP 
+	@$(DEL) *.MAP
+	@$(DEL) MSPRITES\*.BIN
+	@$(DEL) DATA\*.CCR
+	@$(DEL) DATA\*.PCR
+	@$(DEL) DATA\FONT\MOJI_0.fon
+	@$(DEL) DATA\FONT\MOJI_D.fon
+	@$(DEL) DATA\COL\allcols.pac
+	@$(DEL) sf.sfc
+	@$(DEL) BANKS.CSV
+	@$(DEL) ..\symbols.txt
+else
+	@$(DEL) ../sf.sfc
+	@$(DEL) ../banks.csv
+	@$(DEL) BANK/*.SOB
+	@$(DEL) BANK/*.MAP *.MAP
+	@$(DEL) MSPRITES/*.BIN
+	@$(DEL) DATA/*.CCR
+	@$(DEL) DATA/*.PCR
+	@$(DEL) DATA/FONT/MOJI_0.fon
+	@$(DEL) DATA/FONT/MOJI_D.fon
+	@$(DEL) DATA/COL/allcols.pac
+	@$(DEL) sf.sfc
+	@$(DEL) BANKS.CSV
+	@$(DEL) ../symbols.txt
+endif
 
 upload:
 	@$(USB2SNES)	--upload ../sf.sfc --path ./sf.sfc
