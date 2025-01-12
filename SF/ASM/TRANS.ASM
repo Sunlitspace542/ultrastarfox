@@ -606,10 +606,6 @@ dmahpos	ai8
 
 ;------------------------------------------------------------------------------
 calcmeters	a8i16
-	ifeq	shieldboostcolorbox
-	lda	shieldup
-	sta.l	m_shieldup
-	endc
 	ldx	pcboxobj_b
 	lda	al_HP,x
 	bpl	.ok

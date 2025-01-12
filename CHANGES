@@ -1,25 +1,8 @@
-Version 3.1
-- Support for Windows without MSYS2 added
-- Makefile properly detects the platform you're on
-
-Version 3.0
-- Toolchain modernized, no more DOSBox!
-- Assembler/linker now runs using MS-DOS Player instead of DOSBox
-- Merged PR #37; Shield meter now changes color when you have a shield power-up with shieldboostcolorbox off
-- Fix CGRAM line 2 fix oversight
+Version 2.0_01
+- Hotfix: ENGLISH.INC and LANGUAGE.INC had unix line endings, causing assembler errors
 
 Version 2.1
 - Added option to change RNG behavior: either reset RNG at map screen (vanilla) or set RNG at boot and never reset (from Kando)
-- new SYMBOLS.TXT generated using ARGSFX .map output and a custom tool
-- SD2SNES uploading added
-- Super FX fast multiply mode enabled
-- Optimized MSU-1 code to fix flicker on SD2SNES
-- fixed high poly arwing zoom in animation scale
-- replaced MERGE.EXE with cgx2fx/fx2cgx by SegaRetro
-- redone high poly arwing shapes
-
-Version 2.0_01
-- Hotfix: ENGLISH.INC and LANGUAGE.INC had unix line endings, causing assembler errors
 
 Version 2.0
 - All GFX and palettes crunched, all FXGFX interleaved when built

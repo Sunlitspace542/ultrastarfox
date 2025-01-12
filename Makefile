@@ -1,38 +1,14 @@
-# Redirects to the correct Makefiles
+###############################
+# UltraStarFox Linux Makefile #
+###############################
 
-# Detect what we're running on
-ifeq ($(OS),Windows_NT)
-    ifndef MSYSTEM
-        # Windows without MSYS2
-        PLATFORM := windows
-    else
-        # Windows with MSYS2
-        PLATFORM := msys2
-    endif
-else
-    # Assume Linux/Unix if not Windows
-    PLATFORM := linux
-endif
+DOSBOX=dosbox-x
 
-all:
-ifeq ($(PLATFORM),windows)
+all: 
+	@$(DOSBOX) BUILD.BAT
 
-else ifeq ($(PLATFORM),msys2)
-	@$(MAKE) -C tools
-else ifeq ($(PLATFORM),linux)
-	@$(MAKE) -C tools
-endif
-	@$(MAKE) -C SF
-
-upload:
-	@$(MAKE) -C SF upload
-
-boot:
-	@$(MAKE) -C SF boot
+log: 
+	@$(DOSBOX) BLDTOLOG.BAT
 
 clean:
-	@$(MAKE) -C SF clean
-
-distclean:
-	@$(MAKE) -C SF clean
-	@$(MAKE) -C tools clean
+	@$(DOSBOX) CLEAN.BAT

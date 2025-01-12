@@ -10,9 +10,6 @@
 	zmalc	m_damage,2
 	zmalc	m_boostcnt,2
 	zmalc	m_boostanim,2
-	ifeq	shieldboostcolorbox
-	zmalc	m_shieldup,2
-	endc
 
 rlistptr	equr	r1
 rzstore	equr	r2
@@ -801,11 +798,7 @@ mboostmeter
 	move	r2,#boosty+2
 	move	r4,#boostheight-4
 
-	IFNE shieldboostcolorbox
 	move	r0,#7
-	ELSEIF
-	move	r0,#6
-	ENDC
 	mcall	mdrawsolidbox
 	nop
 	
@@ -909,16 +902,7 @@ mdamagemeter
 	IFNE	shieldboostcolorbox
 	move	r0,#4
 	ELSEIF
-	move	r0,[m_shieldup]	; if wireframe shield activated:
-	dec	r0	; instruction above dosn't set zero flag
-	bne	.nowireframe
-	nop
-	move	r0,#7
-	bra	.pickedcolor
-	nop
-.nowireframe
 	move	r0,#2
-.pickedcolor
 	ENDC
 	mcall	mdrawsolidbox
 	nop

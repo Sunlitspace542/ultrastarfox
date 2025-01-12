@@ -1105,24 +1105,24 @@ irqbit3	lda	noirqbit3
 	bcs	.skipt
 	dmacgram	0,5*16,thundercol,32
 .skipt
-	IFNE	shieldboostcolorbox
-;!! Unnecessary color writes to palette line 2.
-; These are the exact same as colors that are already
-; loaded into CGRAM in most level palettes,
-; and are used for the "colored boxes" that
-; are used in the shield/boost box translucency effect.
-; Removing this frees up line 2 of CGRAM for more background
-; color palettes, if shieldboostcolorbox is off.
 	lda	#2*16+4
 	sta	cgadd
 	lda	shieldup
 	beq	.nope
-	lda	#$e0 ; shield power-up meter color lo byte
+	lda	#$e0
 	sta	cgdata
-	lda	#$7e ; shield power-up meter color hi byte
+	lda	#$7e
 	sta	cgdata
 	bra	.conti
 .nope
+	IFNE	shieldboostcolorbox
+;!! Unnecessary color write to palette line 2.
+; This is the exact same as a color that is already
+; loaded into CGRAM in most level palettes,
+; and is used for the "colored boxes" that
+; are used in the shield/boost box translucency effect.
+; Removing this frees up line 2 of CGRAM for more background
+; color palettes, if shieldboostcolorbox is off.
 	lda	#$1f
 	sta	cgdata
 	stz	cgdata

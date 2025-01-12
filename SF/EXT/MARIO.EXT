@@ -41,9 +41,6 @@
 	global	m_planetstars,m_particlesON,m_defaultID
 	global	m_hudcolour,m_hudflags
 	global	mallrotzsort,mdrawsprite32
-	ifeq	shieldboostcolorbox
-	global	m_shieldup
-	endc
 
 
 	ifne	mario_stats3d
