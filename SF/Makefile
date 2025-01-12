@@ -278,11 +278,11 @@ endif
 
 # Initialize allcols.col
 init-allcols:
-	@$(DEL) DATA\COL\allcols.col
+	@$(DEL) DATA/COL/allcols.col
 
 ifeq ($(OS),Windows_NT)
 ifndef MSYSTEM
-	@copy NUL DATA\COL\allcols.col
+	@copy NUL DATA/COL/allcols.col
 else
 	@touch DATA/COL/allcols.col
 	@touch DATA/COL/col2.tmp
@@ -472,7 +472,7 @@ ifndef MSYSTEM
 	@$(DEL) DATA\*.PCR
 	@$(DEL) DATA\FONT\MOJI_0.fon
 	@$(DEL) DATA\FONT\MOJI_D.fon
-	@$(DEL) DATA\COL\allcols.pac
+	@$(DEL) DATA/COL/allcols.pac
 	@$(DEL) sf.sfc
 	@$(DEL) BANKS.CSV
 	@$(DEL) ..\symbols.txt
