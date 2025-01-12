@@ -9,6 +9,7 @@ Version 2.1
 - redone high poly arwing shapes
 - Merged PR #37; Shield meter now changes color when you have a shield power-up with shieldboostcolorbox off
 - Fix CGRAM line 2 fix oversight
+- FastROM is now disabled by default
 
 Version 2.0_01
 - Hotfix: ENGLISH.INC and LANGUAGE.INC had unix line endings, causing assembler errors
