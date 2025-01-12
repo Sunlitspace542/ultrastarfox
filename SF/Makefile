@@ -256,14 +256,14 @@ SOBFILES= \
 all: welcome check-jobs make-allcols msprites crunch fonts sf.sfc donebld
 
 welcome:
-	@$(PRINT) "$(BLUE)Welcome to UltraStarFox!!$(NO_COL)$(NEWLINE)"
+	@$(PRINT) "$(YELLOW)Welcome to UltraStarFox!!$(NO_COL)$(NEWLINE)"
 # Platform Detection
 ifeq ($(PLATFORM),windows)
-	@$(PRINT) "$(GREEN)You're on $(BLUE)Windows!$(NO_COL)$(NEWLINE)"
+	@$(PRINT) "$(GREEN)You're on $(YELLOW)Windows!$(NO_COL)$(NEWLINE)"
 else ifeq ($(PLATFORM),msys2)
-	@$(PRINT) "$(GREEN)You're on $(BLUE)MSYS2!$(NO_COL)$(NEWLINE)"
+	@$(PRINT) "$(GREEN)You're on $(YELLOW)MSYS2!$(NO_COL)$(NEWLINE)"
 else ifeq ($(PLATFORM),linux)
-	@$(PRINT) "$(GREEN)You're on $(BLUE)Linux!$(NO_COL)$(NEWLINE)"
+	@$(PRINT) "$(GREEN)You're on $(YELLOW)Linux!$(NO_COL)$(NEWLINE)"
 endif
 
 
