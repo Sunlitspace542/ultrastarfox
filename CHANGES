@@ -1,6 +1,8 @@
 Version 3.0
 - Toolchain modernized, no more DOSBox!
 - Assembler/linker now runs using MS-DOS Player instead of DOSBox
+- Merged PR #37; Shield meter now changes color when you have a shield power-up with shieldboostcolorbox off
+- Fix CGRAM line 2 fix oversight
 
 Version 2.1
 - Added option to change RNG behavior: either reset RNG at map screen (vanilla) or set RNG at boot and never reset (from Kando)
