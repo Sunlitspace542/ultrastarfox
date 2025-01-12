@@ -1,13 +1,3 @@
-Version 3.1
-- Support for Windows without MSYS2 added
-- Makefile properly detects the platform you're on
-
-Version 3.0
-- Toolchain modernized, no more DOSBox!
-- Assembler/linker now runs using MS-DOS Player instead of DOSBox
-- Merged PR #37; Shield meter now changes color when you have a shield power-up with shieldboostcolorbox off
-- Fix CGRAM line 2 fix oversight
-
 Version 2.1
 - Added option to change RNG behavior: either reset RNG at map screen (vanilla) or set RNG at boot and never reset (from Kando)
 - new SYMBOLS.TXT generated using ARGSFX .map output and a custom tool
@@ -17,6 +7,9 @@ Version 2.1
 - fixed high poly arwing zoom in animation scale
 - replaced MERGE.EXE with cgx2fx/fx2cgx by SegaRetro
 - redone high poly arwing shapes
+- Merged PR #37; Shield meter now changes color when you have a shield power-up with shieldboostcolorbox off
+- Fix CGRAM line 2 fix oversight
+- FastROM is now disabled by default
 
 Version 2.0_01
 - Hotfix: ENGLISH.INC and LANGUAGE.INC had unix line endings, causing assembler errors
