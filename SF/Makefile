@@ -4,8 +4,8 @@
 
 # Assembler
 ASM=ARGSFXX
-# Setup heap for SASM and export symbols for ARGSFX
-ASMFLAGS= -e__heap=14400 -z
+# Set max error count, set heap for SASM, hide assembler title text, and export symbols for ARGSFX
+ASMFLAGS= -m30 -e__heap=14400 -e__notitle -z
 
 # Linker
 LINK=ARGLINK
@@ -14,7 +14,7 @@ LOPTS=-b30 -h1024 -t7d -z
 # ROM Extender
 EXTEND=EXTEND
 # Extended size in Mbits, byte to pad with
-EXTOPS= 16 ff
+EXTOPTS= 16 ff
 
 # Checksum Fixer
 CHECK=SFCHECK
@@ -66,7 +66,7 @@ ALLFILES= BANK\BANK0.SOB BANK\BANK1.SOB BANK\BANK2.SOB \
 
 # Recipe to assemble a .ASM file and create a linkable .SOB file
 .asm.sob:
-	@$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$*.SOB
+	@$(ASM) $(NOANSI) $(ASMFLAGS) $< -v$*.SOB
 
 # Recipes to crunch graphics
 .cgx.ccr:
@@ -116,7 +116,7 @@ fonts: $(FONFILES)
 # The ROM Itself
 sf.sfc: $(ALLFILES)
 	@$(LINK) $(LOPTS) -o$@ @flist
-	@$(EXTEND) $@ $(EXTOPS)
+	@$(EXTEND) $@ $(EXTOPTS)
 	@$(CHECK) $(COPTS) $@
 
 # Actions to perform when assembly is completed

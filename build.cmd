@@ -1,2 +1,2 @@
-dosbox-x build.bat
+dosbox-x -fastlaunch build.bat
 exit

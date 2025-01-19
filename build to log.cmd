@@ -1,3 +1,3 @@
-dosbox-x bldtolog.bat
+dosbox-x -fastlaunch bldtolog.bat
 exit
 
