@@ -20,8 +20,11 @@ EXTOPTS= 16 ff
 CHECK=SFCHECK
 COPTS=-s -f
 
-# FXGFX Interleaver
+# FXGfx Interleaver
 MERGE=CGX2FX
+
+# Macro to make a FXGfx BIN file
+MAKEBIN= $(MERGE) $** $@
 
 # Graphics Cruncher
 CRU=CRU
@@ -31,6 +34,10 @@ FONT=FON
 
 # Argonaut .MAP File Decoder
 MAPDEC=MAPDEC
+
+# ALLCOLS palette stripper
+# DATA\COL\MC.BAT
+MC=MC.BAT
 
 #!! If you add/remove a cgx/scr in these two lists, make sure to add/remove the corresponding file.
 
@@ -80,32 +87,107 @@ ALLFILES= BANK\BANK0.SOB BANK\BANK1.SOB BANK\BANK2.SOB \
 	@$(FONT) $<
 
 # Everything that should be done when make is executed
-all: setup allcols msprites crunch fonts sf.sfc donebld
+all: setup make-allcols msprites crunch fonts sf.sfc donebld
 
 setup:
-	@del BANK\*.SOB
-	@del BANK\*.MAP
+	@del BANK\*.SOB > NUL
+	@del BANK\*.MAP > NUL
 
 # Recipe to crunch palettes
-allcols:
-	@cd DATA\COL
-	@pc.bat
+# Initialize allcols.col
+init-allcols:
+	@cd DATA
+	@cd COL
+	@del col.tmp > NUL
+	@del col2.tmp > NUL
+	@del allcols.col > NUL
+	@copy NUL allcols.col > NUL
+
+# List of palette source files and how each should be handled
+# Both of these lists must match the order of SF/INC/KALCS.INC's list!!
+ALLCOLS_PALETTES= \
+ OOPS.COL \
+ BG2-A.COL \
+ BG2-B.COL \
+ BG2-C.COL \
+ BG2-D.COL \
+ BG2-E.COL \
+ BG2-F.COL \
+ BG2-G.COL \
+ T-M.COL \
+ T-M-2.COL \
+ T-M-3.COL \
+ T-M-4.COL \
+ B-M.COL \
+ LIGHT.COL \
+ SPACE.COL \
+ STARS.COL \
+ CP.COL \
+ CP-US.COL \
+ CP-USP.COL \
+ CP-P.COL \
+ HOLE.COL \
+ L.COL \
+ E-TEST0.COL \
+ E-TEST.COL \
+ OBJ-1.COL \
+ BG2-E-P.COL
+
+# Palettes to include in ALLCOLS
+allcols.pac: $(ALLCOLS_PALETTES)
+	@echo Building ALLCOLS...
+#	       file_prefix startline endline
+	@$(MC) OOPS 0 2
+	@$(MC) BG2-A 0 7
+	@$(MC) BG2-B 0 13
+	@$(MC) BG2-C 0 7
+	@$(MC) BG2-D 0 7
+	@$(MC) BG2-E 0 9
+	@$(MC) BG2-F 0 7
+	@$(MC) BG2-G 0 7
+	@$(MC) T-M 0 7
+	@$(MC) T-M-2 0 7
+	@$(MC) T-M-3 0 7
+	@$(MC) T-M-4 0 7
+	@$(MC) B-M 0 7
+	@$(MC) LIGHT 0 7
+	@$(MC) SPACE 0 7
+	@$(MC) STARS 0 7
+	@$(MC) CP 0 7
+	@$(MC) CP-US 0 7
+	@$(MC) CP-USP 0 7
+	@$(MC) CP-P 0 7
+	@$(MC) HOLE 0 7
+	@$(MC) L 0 7
+	@$(MC) E-TEST0 0 7
+	@$(MC) E-TEST 0 7
+	@$(MC) OBJ-1 8 13
+	@$(MC) BG2-E-P 0 9
+
+# Final step: Crunch all palettes into allcols.pac
+	@$(CRU) allcols.col allcols.pac
+	@echo Palette crunching complete.
+
+make-allcols: init-allcols allcols.pac
 	@cd ..\..
 
 #!! If you add/remove/modify a cgx/bin in these two lists, make sure the corresponding files are present here.
 
 # FXGFX files to be interleaved
-msprites: tex_01.bin tex_23.bin tex_23_a.bin
+MSPRITES_BINS= \
+ MSPRITES\tex_01.bin MSPRITES\tex_23.bin MSPRITES\tex_23_a.bin
+
+msprites: $(MSPRITES_BINS)
 
 # MSPRITES .BIN recipes
-tex_01.bin:
-	@$(MERGE) MSPRITES\tex_0.CGX MSPRITES\tex_1.CGX MSPRITES\$@
+MSPRITES\tex_01.bin: MSPRITES\tex_0.CGX MSPRITES\tex_1.CGX
+	@$(MAKEBIN)
 
-tex_23.bin:
-	@$(MERGE) MSPRITES\tex_2.CGX MSPRITES\tex_3.CGX MSPRITES\$@
+MSPRITES\tex_23.bin: MSPRITES\tex_2.CGX MSPRITES\tex_3.CGX
+	@$(MAKEBIN)
 
-tex_23_a.bin:
-	@$(MERGE) MSPRITES\tex_2.CGX MSPRITES\tex_3_a.CGX MSPRITES\$@
+MSPRITES\tex_23_a.bin: MSPRITES\tex_2.CGX MSPRITES\tex_3_a.CGX
+	@$(MAKEBIN)
 
 # Crunch all compressible GFX
 crunch: $(CGXFILES) $(SCRFILES)

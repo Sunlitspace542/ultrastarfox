@@ -1,2 +1,2 @@
-dosbox-x clean.bat
+dosbox-x -fastlaunch clean.bat
 exit

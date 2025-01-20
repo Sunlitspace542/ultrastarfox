@@ -15,6 +15,13 @@ rors	MACRO	[string,offset]
 	ENDC	;_ARGSFX
 ;------------------------------------------------------------------------
 
+; Define Long
+; From Star Fox 2
+dl	macro	[address]
+	dw	({address})&WM
+	db	({address})>>16
+	endm
+
 ; Used in SGDATA.ASM
 rndbyte255	macro
 rndval =	(rndval*91+$61d7)&$ffff
