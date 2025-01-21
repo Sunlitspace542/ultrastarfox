@@ -36,8 +36,7 @@ FONT=FON
 MAPDEC=MAPDEC
 
 # ALLCOLS palette stripper
-# DATA\COL\MC.BAT
-MC=MC.BAT
+MC=MAKECOL
 
 #!! If you add/remove a cgx/scr in these two lists, make sure to add/remove the corresponding file.
 
@@ -136,33 +135,33 @@ ALLCOLS_PALETTES= \
 # Palettes to include in ALLCOLS
 allcols.pac: $(ALLCOLS_PALETTES)
 	@echo Building ALLCOLS...
-#	       file_prefix startline endline
-	@$(MC) OOPS 0 2
-	@$(MC) BG2-A 0 7
-	@$(MC) BG2-B 0 13
-	@$(MC) BG2-C 0 7
-	@$(MC) BG2-D 0 7
-	@$(MC) BG2-E 0 9
-	@$(MC) BG2-F 0 7
-	@$(MC) BG2-G 0 7
-	@$(MC) T-M 0 7
-	@$(MC) T-M-2 0 7
-	@$(MC) T-M-3 0 7
-	@$(MC) T-M-4 0 7
-	@$(MC) B-M 0 7
-	@$(MC) LIGHT 0 7
-	@$(MC) SPACE 0 7
-	@$(MC) STARS 0 7
-	@$(MC) CP 0 7
-	@$(MC) CP-US 0 7
-	@$(MC) CP-USP 0 7
-	@$(MC) CP-P 0 7
-	@$(MC) HOLE 0 7
-	@$(MC) L 0 7
-	@$(MC) E-TEST0 0 7
-	@$(MC) E-TEST 0 7
-	@$(MC) OBJ-1 8 13
-	@$(MC) BG2-E-P 0 9
+#	       filename startline endline
+	@$(MC) OOPS.COL 0 2
+	@$(MC) BG2-A.COL 0 7
+	@$(MC) BG2-B.COL 0 13
+	@$(MC) BG2-C.COL 0 7
+	@$(MC) BG2-D.COL 0 7
+	@$(MC) BG2-E.COL 0 9
+	@$(MC) BG2-F.COL 0 7
+	@$(MC) BG2-G.COL 0 7
+	@$(MC) T-M.COL 0 7
+	@$(MC) T-M-2.COL 0 7
+	@$(MC) T-M-3.COL 0 7
+	@$(MC) T-M-4.COL 0 7
+	@$(MC) B-M.COL 0 7
+	@$(MC) LIGHT.COL 0 7
+	@$(MC) SPACE.COL 0 7
+	@$(MC) STARS.COL 0 7
+	@$(MC) CP.COL 0 7
+	@$(MC) CP-US.COL 0 7
+	@$(MC) CP-USP.COL 0 7
+	@$(MC) CP-P.COL 0 7
+	@$(MC) HOLE.COL 0 7
+	@$(MC) L.COL 0 7
+	@$(MC) E-TEST0.COL 0 7
+	@$(MC) E-TEST.COL 0 7
+	@$(MC) OBJ-1.COL 8 13
+	@$(MC) BG2-E-P.COL 0 9
 
 # Final step: Crunch all palettes into allcols.pac
 	@$(CRU) allcols.col allcols.pac
@@ -171,7 +170,7 @@ allcols.pac: $(ALLCOLS_PALETTES)
 make-allcols: init-allcols allcols.pac
 	@cd ..\..
 
-#!! If you add/remove/modify a cgx/bin in these two lists, make sure the corresponding files are present here.
+#!! If you add/remove/modify a cgx/bin in this list, make sure the corresponding files are present here.
 
 # FXGFX files to be interleaved
 MSPRITES_BINS= \
