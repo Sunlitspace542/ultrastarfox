@@ -6,6 +6,10 @@
 
 ; Cartridge Configuration
 
+; Super FX 3 support [0 = off, 1 = on]
+; Indicates support for Randy Linden's Super FX 3 chip in the ROM header.
+SUPERFX3	equ 0
+
 ; MSU-1 support [0 = off, 1 = on]
 ; The game looks for the MSU-1 on startup.
 ; If the MSU-1 is not present, the game falls back to SPC700 audio.
@@ -19,13 +23,14 @@ msuvideo	equ	0
 ; enable/disable FastROM [1 = on, 0=off]
 FASTROM	equ 0
 
-; Disables the SuperFX clock divider, 
-; doubling the clock speed from 10.7mhz to 21.4mhz.
+; Disables the Super FX clock divider, 
+; doubling the clock speed from 10.7mhz to 21.4mhz on GSU series Super FX Chips (GSU-1/2).
+; This has no effect on the original MARIO Chip, as it is locked to 10.7mhz.
 ; This also enables fast multiplication mode (MS1).
 ; [0 = off, 1 = on]
 fast	equ 1
 
-; Enable/disable SuperFX instruction cache [0 = off, 1 = on]
+; Enable/disable Super FX instruction cache [0 = off, 1 = on]
 ; you should have no good reason to ever switch this off, as it makes performance much, much worse.
 cacheon	equ	1
 

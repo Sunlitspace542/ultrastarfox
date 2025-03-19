@@ -104,7 +104,12 @@ abort_vn
 	db	0,0,0,0,0,0,0		; Fixed Value
 	db	6					; Expansion RAM Size (5 = 32kbyte, 6 = 64kbyte)
 	db	0					; Special Version
-	db	0					; Cartridge Type (Sub-number)
+	IFNE	SUPERFX3
+	db	$52					; Cartridge Type (Sub-number)
+							; (52) Super FX 3 (The Ultimate DOOM) - the Super FX Version Code Register $303B also reports $52
+	ELSEIF
+	db	0					; (0) None
+	ENDC
 
 	org	$00ffc0,$7fc0
 
@@ -124,7 +129,7 @@ abort_vn
 	IFNE	FASTROM 
 	; NOTE: Super FX games actually use map mode 24, though the header reports LoROM.
 	; The FastROM map mode is not set to ensure compatibility with older emulators.
-	; FastROM is not header dependent and this byte not being set to 30 will not affect performance.
+	; FastROM is not header dependent and this byte not being set to $30 will not affect performance.
 	db	$20					; Map Mode
 							 ; (20) SlowROM LoROM
 							 ; (30) FastROM LoROM
@@ -135,7 +140,7 @@ abort_vn
 	ENDC
 	db	$14					; Cartridge Type
 							 ; (13) Super FX 1 (StarFox 1)
-							 ; (14) Super FX 2 (DOOM)
+							 ; (14) Super FX 2 (DOOM) / Super FX 3 (The Ultimate DOOM)
 							 ; (15) Battery + Super FX 2 (Yoshi's Island)
 							 ; (1A) Battery + Super FX 1 (Stunt Race FX)
 	db	$0b					; ROM Size (0A = 8mbit, 0B = 16mbit)
