@@ -32,8 +32,8 @@ Outputs ``[filename].fon``.
 ## bgconv
 **Tool made by Sunlit**  
 **Windows/Linux executables/batch/bash script**  
-Converts a 256x1024px PNG to a 512x512px background for use with the game.  
-(can also be used with 256x256px PNGs to make single-screen BGs.)  
+**Requires Python 3 and Pillow library**
+Converts a 512x512px PNG to a 512x512px background for use with the game.  
 Run ``convert.bat`` (Windows) or ``convert.sh`` (Linux) and follow the instructions on-screen.  
 Outputs a CGX tileset, SCR tilemap, and COL and PAL format palettes, and optionally, CCR and PCR compressed tiles and tilemap for versions of ultrastarfox below 2.0.  
 
