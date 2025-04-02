@@ -37,6 +37,15 @@ Converts a 512x512px PNG to a 512x512px background for use with the game.
 Run ``convert.bat`` (Windows) or ``convert.sh`` (Linux) and follow the instructions on-screen.  
 Outputs a CGX tileset, SCR tilemap, and COL and PAL format palettes, and optionally, CCR and PCR compressed tiles and tilemap for versions of ultrastarfox below 2.0.  
 
+## bgoptimize
+**Tool made by Sunlit**  
+**Windows batch script**  
+**Requires Python 3 and Pillow library**
+In the same directory as bgconv  
+Optimizes an existing background to save on tiles, while keeping the original palette for it untouched.  
+Run ``optimize.bat`` and follow the instructions on-screen.  
+Outputs a CGX tileset and SCR tilemap, and optionally, CCR and PCR compressed tiles and tilemap for versions of ultrastarfox below 2.0.  
+
 ## unmerge
 **Windows executable**  
 Texture deinterleaving tool. Based on fx.cpp from [Star Fox 2 Font Tools](https://www.romhacking.net/utilities/346/) by Matthew Callis, modified by Sega Mega Drive.  
