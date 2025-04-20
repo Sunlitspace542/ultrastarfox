@@ -1093,14 +1093,22 @@ irqbit3	lda	noirqbit3
 
 	lda	flashtunnelon
 	beq	.skip
+	IFEQ	rngmode-2
+	lda	rand
+	ELSEIF
 	jsr	irqrand
+	ENDC
 	cmp	#((20)*255)/100		;20% chance of a flash
 	bcs	.skip
 	dmacgram	0,0,redtunnel,64
 .skip
 	lda	flashbg
 	beq	.skipt
+	IFEQ	rngmode-2
+	lda	rand
+	ELSEIF
 	jsr	irqrand
+	ENDC
 	cmp	#((2)*255)/100		;2% chance of a flash
 	bcs	.skipt
 	dmacgram	0,5*16,thundercol,32
@@ -1629,6 +1637,9 @@ startmus	php
 
 
 ;-----------------------------------------------------------------------
+	IFEQ	rngmode-2
+
+	ELSEIF
 irqrand	lda	rand
 	clc
 	sbc	rand+1
@@ -1640,7 +1651,7 @@ irqrand	lda	rand
 	sbc	rand
 	sta	rand
 	rts
-
+	ENDC
 ;-----------------------------------------------------------------------
 	shorta
 	longi

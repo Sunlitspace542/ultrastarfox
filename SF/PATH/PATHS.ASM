@@ -1260,6 +1260,7 @@ path_istrat
 	jmp		.okdok
 .randomselect
 
+	IFEQ	randomselectmode
 	lda		cock
 	beq		.5050bunnyfrog
 	lda		frog
@@ -1288,6 +1289,21 @@ path_istrat
 	beq		.frog
 	s_jmp_random	.frog
 	jmp		.bunny
+	ELSEIF
+
+	lda	cock
+	beq	.falcodead
+	s_jmp_random	.cock,teammateselectchance
+.falcodead
+	lda	bunny
+	beq	.peppydead
+	s_jmp_random	.bunny,teammateselectchance
+.peppydead
+	lda		frog
+	beq		.nooneleft
+	s_jmp_random	.frog,teammateselectchance
+	bra	.randomselect ; roll again if none picked
+	ENDC
 
 .nooneleft
 	lda		bunny

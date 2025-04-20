@@ -37,7 +37,7 @@ startboot	disable ; Disable Interrupts
 
 	jsr	initialise_ram ; Clear RAM
 
-	IFNE	rngmode ; start conditional: if rngmode !=0 (=1)
+	IFNE	rngmode ; start conditional: if rngmode >= 1
 	setuprng ; setup RNG seed at boot
 	ENDC ; end conditional
 

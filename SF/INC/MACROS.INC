@@ -177,6 +177,15 @@ marioprintdec	MACRO	[xpos,ypos,var]
 
 ; Sets up RNG seed for random_l
 setuprng	MACRO
+	IFEQ	rngmode-2
+	savemode
+	ai8
+	LDA #$E5 ; seed, can be anything except 0
+	STA rand
+	LDA #$28
+	STA rand+1
+	returnmode
+	ELSEIF ; rngmode == 0 || 1
 	savemode
 	ai8
 	lda	#$3a
@@ -188,6 +197,29 @@ setuprng	MACRO
 	lda	#$7f
 	sta	rand+3
 	returnmode
+	ENDC
+	ENDM
+
+xorshiftrng	MACRO
+	; Code taken from https://codebase64.org/doku.php?id=base:16bit_xorshift_random_generator
+	; should be run with A in 8-bit mode
+	; saves 2 bytes of zp vs the original routine
+	; in C, what this does is:
+	;	rand ^= rand << 7;
+	;	rand ^= rand >> 9;
+	;	rand ^= rand << 8;
+	;	return rand;
+	LDA rand+1
+	LSR a
+	LDA rand
+	ROR a
+	EOR rand+1
+	STA rand+1 ; high part of x ^= x << 7 done
+	ROR a	; A has now x >> 9 and high bit comes from low byte
+	EOR rand
+	STA rand  ; x ^= x >> 9 and the low part of x ^= x << 7 done
+	EOR rand+1 
+	STA rand+1 ; x ^= x << 8 done
 	ENDM
 
 ;------------------------------------------------------------------------

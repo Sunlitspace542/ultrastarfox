@@ -222,6 +222,11 @@ tm_planets2	equ	34
 
 dec_base	equ	2800h
 
+	TIME	_TIME
+_HOUR	=	_TIME>>24&$FF
+_MIN	=	_TIME>>16&$FF
+_SEC	=	_TIME>>8&$FF
+
 ; Include master configuration file
 	include	CONFIG\CONFIG.INC
 

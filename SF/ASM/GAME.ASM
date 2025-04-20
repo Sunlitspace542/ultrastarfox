@@ -456,7 +456,10 @@ random
 ;	sta	rand+1
 ;	adc	#4
 ;	sta	rand
-	
+
+	IFEQ	rngmode-2
+	xorshiftrng
+	ELSEIF
 	lda rand
 	clc
 	sbc rand+1
@@ -467,6 +470,7 @@ random
 	sta rand+3
 	sbc rand
 	sta rand
+	ENDC
 	rts
 
 

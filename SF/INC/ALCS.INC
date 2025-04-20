@@ -308,8 +308,11 @@ xlen	=	22*1024+450
 
 
 ; Vars kept between levels
+	IFEQ	rngmode-2
+	zalc	rand,2
+	ELSEIF
 	zalc	rand,4
-
+	ENDC
 ;
 ; Workspace Vars
 ;
