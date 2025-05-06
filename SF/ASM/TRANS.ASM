@@ -607,8 +607,8 @@ dmahpos	ai8
 ;------------------------------------------------------------------------------
 calcmeters	a8i16
 	ifeq	shieldboostcolorbox
-	lda	shieldup
-	sta.l	m_shieldup
+	lda	shieldup	; send shieldup flag to mario chip
+	sta.l	m_shieldup	; note that we're in a8 mode so we're only storing to the lo byte
 	endc
 	ldx	pcboxobj_b
 	lda	al_HP,x
