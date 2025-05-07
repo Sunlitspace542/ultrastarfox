@@ -721,6 +721,7 @@ xlen	=	22*1024+450
 	ENDC
 	alc	open_text,2
 	alc	msupresent,1
+	alc	boostcnt,1
 
 
 

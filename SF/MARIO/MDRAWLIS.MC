@@ -8,7 +8,7 @@
 	zmalc	m_player,2
 	zmalc	m_numshapes,2
 	zmalc	m_damage,2
-	zmalc	m_boostcnt,2
+;	zmalc	m_boostcnt,2	; moved from zmario to snes wram, 2 bytes of zmario ram freed!!
 	zmalc	m_boostanim,2
 	ifeq	shieldboostcolorbox
 	zmalc	m_shieldup,2

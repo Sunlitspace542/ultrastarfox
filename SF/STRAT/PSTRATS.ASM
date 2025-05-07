@@ -2140,10 +2140,9 @@ playermove_srou
 
 	s_or_var		B,pshipflags2,#psf2_boosting
 
-
 	lda			#1
 	IFEQ	INFBOOST
-	sta.l			m_boostcnt
+	sta			boostcnt
 	ENDC
 
 	s_set_vartobeobj	boostobj,x
@@ -2231,7 +2230,7 @@ playermove_srou
 	s_or_var	B,pshipflags2,#psf2_braking
 	trigse	$33
 	lda	#1
-	sta.l	m_boostcnt
+	sta	boostcnt
 	s_set_var	B,player_tospeed,#minpspeed
 	s_set_alvar	B,x,al_sbyte2,#30
 

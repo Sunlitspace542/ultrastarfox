@@ -616,14 +616,14 @@ calcmeters	a8i16
 	lda	#0
 .ok	sta.l	m_damage
 
-boost	lda.l	m_boostcnt
+boost	lda	boostcnt
 	beq	.end
 	lda.l	m_boostanim
 	dec	a
 	dec	a
 	bpl	.ok
 	lda	#0
-	sta.l	m_boostcnt
+	sta	boostcnt
 .ok	sta.l	m_boostanim
 	bra	.draw
 .end	lda.l	m_boostanim

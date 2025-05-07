@@ -255,7 +255,6 @@ kf_LRkeydown	equ	2
 	alc	floatvar2,1	
 
 	alc	dummyobj,2 
-	alc	boostcnt,1
 	alc	boostZoff,1
 	alc	minpmoveX,2
 	alc	maxpmoveX,2
