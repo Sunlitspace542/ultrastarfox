@@ -475,6 +475,7 @@ mdrawloop
 	sms	[m_shift],r0
 	mpush	rshapehdrptr
 
+	IFEQ	NOLODS
 	move	r0,rzspare
 	miwt	rwork,3000
 	cmp	rwork
@@ -510,6 +511,7 @@ mdrawloop
 	to	r14
 	add	r14
 	mgetw	rshapehdrptr
+	ENDC	;NOLODS
 .gotshapehd
 
 ;---------------------------------------

@@ -19,9 +19,11 @@ shnumfaces	=	0
 	struct	sh_size,2
 	struct	sh_col_ptr,2
 	struct	sh_shadow,2
+	IFEQ	NOLODS
 	struct	sh_simple1,2
 	struct	sh_simple2,2
 	struct	sh_simple3,2
+	ENDC	;NOLODS
 	struct	sh_name,0
 	struct	sh_header_size,0
 
@@ -153,6 +155,7 @@ no_of_shapes	=	no_of_shapes+1
 	dw	(\F)&$ffff	;sh_shadow,2
 	ENDC
 
+	IFEQ	NOLODS
 	IFC	"\G","0"
 	dw	.thisshape\@&WM
 	ELSEIF
@@ -170,6 +173,7 @@ no_of_shapes	=	no_of_shapes+1
 	ELSEIF
 	dw	(\I)&$FFFF	;sh_simple3,2
 	ENDC
+	ENDC	;NOLODS
 
 	IFNE	debuginfo
 	db	"\J"
