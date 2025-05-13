@@ -5143,7 +5143,18 @@ eguchi1
 
 	P_MSG		133
 	P_REMOVE
+;-------------------------------------------------------------------
+; language extension by kando
+	START_PATH		mes_message
+	
+	P_RELTOPLAYER	ON
+	P_INVISIBLE		ON
 
+	P_MSG2
+	
+	P_WAIT		60
+
+	P_REMOVE
 ;-------------------------------------------------------------------
 
 	START_PATH	e_shawerl

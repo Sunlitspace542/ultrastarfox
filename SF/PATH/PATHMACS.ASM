@@ -1257,6 +1257,14 @@ MYNARG	=	NARG
 	pathmac_end
 		ENDM
 ;--------------------------------------------------------------------
+; language extension by kando
+P_MSG2		MACRO	
+	pathmac_start
+	db	p_msg2
+	db	0
+	pathmac_end
+		ENDM
+;--------------------------------------------------------------------
 P_DAMAGE		MACRO
 	pathmac_start
 MYNARG	=	NARG
@@ -2202,6 +2210,29 @@ P_SCORE	MACRO	[score]
 	pathmac_end
 	ENDM
 ;--------------------------------------------------------------------
-
+P_CAMERA_LOCKON	macro
+	p_start65816
+	s_camera_lockon	x	;camera lock-on
+	P_END65816
+	ENDM
+;--------------------------------------------------------------------
+P_RETURN_CAMERA	macro
+	p_start65816
+	s_return_camera	;return camera to player
+	P_END65816
+	ENDM
+;--------------------------------------------------------------------
+P_KILLSHAPE	MACRO
+	p_start65816
+	s_remove_obj	x	;kill it
+	P_END65816
+	ENDM
+;--------------------------------------------------------------------
+P_SETVAR	MACRO	[size,var,value]
+	p_start65816
+	s_set_var		{size},{var},{value}
+	P_END65816
+	ENDM
+;--------------------------------------------------------------------
 
 

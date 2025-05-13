@@ -5532,12 +5532,6 @@ setrad	MACRO	[size]
 	db	ct_set_rad
 	dw	{size}
 	ENDM
-;-------------------------------------------------------------------
-
-saymsg	MACRO	[message]
-	lda	#{message}
-	jsl	send_message_l
-	ENDM
 
 ;-------------------------------------------------------------------
 databank	MACRO

@@ -388,6 +388,7 @@ init_strats_l
 
 ;----------------------------------------------------
 ; view toggle.
+	s_jmp_varAND	B,pshipflags3,#psf3_noviewchange,.npst
 	s_jmp_varNE	W,viewdist,outdist,.npst
 	s_jmp_varNE	B,stayblack,#-1,.npst
 	s_jmp_varAND	B,pshipflags,#psf_noctrl,.npst

@@ -954,6 +954,12 @@ MYNARG	=	NARG
 
 	ENDM
 ;-----------------------------------------------------------------------------
+; Makes an object a software sprite
+s_becomesprite	MACRO	[obj]
+	CHK_OBJ		{obj}
+	s_sprite_obj	{obj},#0
+	ENDM
+;-----------------------------------------------------------------------------
 smp_B	=	1
 smp_W	=	2
 smp_D	=	3

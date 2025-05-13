@@ -244,6 +244,15 @@ planetseq_l
 	stx	sdspt3
 	stz	nosetport3
 
+; unlock view change if it was locked during a level
+	lda	pshipflags3
+	bit	#psf3_noviewchange	; bit set?
+	beq	.noclearviewchange
+	and	#~psf3_noviewchange	; yes!
+	sta	pshipflags3	; clear it
+.noclearviewchange
+
+
 	disable
 
 	a16

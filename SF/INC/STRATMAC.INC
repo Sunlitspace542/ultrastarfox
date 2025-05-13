@@ -3250,12 +3250,13 @@ MYNARG	=	NARG
 	endc
 
 ;-----------------------------------------------------------------------------
-s_turnto_obj		MACRO	obj1,obj2,Y rotation offset.		
+s_turnto_obj		MACRO	[obj1],[obj2],[yrotofs]
 	stratmac_start
 MYNARG	=	NARG
 	CHK_NARG	3
 	CHK_OBJ	\1
 	CHK_OBJ	\2
+	;TODO: PATH has an implementation of this (P_FACESHAPE), steal it
 		stratmac_end
 	ENDM
 
@@ -8234,7 +8235,42 @@ MYNARG	=	NARG
 	lbeq		\1
 
 	ENDM
-
+;*****************************************************************************
+; language extension by kando
+s_say_msg	MACRO	[message]
+	phy
+	s_make_obj			#nullshape,.no\@
+	s_set_alvar			B,y,al_sbyte1,#{message}
+	s_set_strat			y,path_istrat
+	s_set_path			y,mes_message
+.no\@
+	ply
+	ENDM
+;*****************************************************************************
+s_camera_lockon	macro	[obj]
+	IFEQ	NARG
+	error
+	ENDC
+	CHK_OBJ	\1
+	a8
+	EXG_IFY	\1	;xchange x/y if the obj we're referencing is Y
+	stx	viewtoobj
+	lda	viewtype
+	ora	#viewtype_toobj
+	sta	viewtype
+	EXG_IFY	\1	;xchange x/y if the obj we're referencing is Y
+	endm
+;*****************************************************************************
+s_return_camera	macro
+	php
+	pha
+	a8
+	lda	#viewtype_norm
+	sta	viewtype
+	pla
+	plp
+	endm
+;*****************************************************************************
 
 
 
