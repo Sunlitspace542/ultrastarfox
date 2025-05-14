@@ -27,7 +27,6 @@
 	s_remove_obj		obj1
 	s_remove_fire		obj1
 	s_circle_obj		obj1,obj2,#distance,speed,#skid - USES SBYTE2
-	s_turnto_obj		obj1,obj2,Y rotation offset,label
 	s_carry_obj		obj1,obj2,#x,#y,#z offset.	16bit offsets. obj1 carry obj2
 	s_damagesmoke		obj1,smoke HP,#smoke rate(0-8),[x,y,z offset BYTES,scale] 
 	s_damagefire		obj1,smoke HP,#smoke rate(0-8),[x,y,z offset BYTES,scale] 
