@@ -3250,17 +3250,6 @@ MYNARG	=	NARG
 	endc
 
 ;-----------------------------------------------------------------------------
-s_turnto_obj		MACRO	[obj1],[obj2],[yoffset],[label]
-	stratmac_start
-MYNARG	=	NARG
-	CHK_NARG	4
-	CHK_OBJ	\1
-	CHK_OBJ	\2
-	s_obj2obj_angleOFF	{obj1},{obj2},al_roty,{yoffset},3,{label}
-		stratmac_end
-	ENDM
-
-;-----------------------------------------------------------------------------
 s_set_speed		MACRO	obj1,speed
 	stratmac_start
 MYNARG	=	NARG
