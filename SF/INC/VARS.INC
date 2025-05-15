@@ -192,6 +192,30 @@ friend_pepper3 	equ	4+128
 friend_andross3 equ	5+128
 friend_anyone3 	equ	6+128
 
+; FACE.CGX Frame Index
+; Comms window open animation
+face_frame0		equ	0 ;facedata&WM
+face_frame1		equ	1 ;facedata&WM+640
+face_frame2		equ	2
+face_frame3		equ	3
+face_frame4		equ	4
+
+; Characters
+face_fox1		equ	5
+face_fox2		equ	6
+face_peppy1		equ	7
+face_peppy2		equ	8
+face_falco1		equ	9
+face_falco2		equ	10
+face_slippy1	equ	11
+face_slippy2	equ	12
+face_pepper1	equ	13
+face_pepper2	equ	14
+face_andross1	equ	15
+face_andross2	equ	16
+
+;Comms Static
+face_anyone		equ	17
 
 ; sprites.asm
 spradd	equ	128	;((24*28)-512+2)

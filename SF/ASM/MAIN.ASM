@@ -1306,10 +1306,10 @@ printspeclp
 	and	#1
 	a16
 	bne	.oneframe
-	lda	#facedata&WM+640*17
+	lda	#facedata&WM+640*face_anyone
 	bra	.writeit
 .oneframe
-	lda	#facedata&WM+640*4
+	lda	#facedata&WM+640*face_frame4
 	bra	.writeit
 .stillalive
 	a16
@@ -1317,11 +1317,11 @@ printspeclp
 	beq	.bunny
 	cpx	#2
 	beq	.falco
-	lda	#facedata&WM+640*11
+	lda	#facedata&WM+640*face_slippy1
 	bra	.writeit
-.bunny	lda	#facedata&WM+640*7
+.bunny	lda	#facedata&WM+640*face_peppy1
 	bra	.writeit
-.falco	lda	#facedata&WM+640*9
+.falco	lda	#facedata&WM+640*face_falco1
 .writeit
 	sta.l	m_faceptr
 
