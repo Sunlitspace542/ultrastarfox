@@ -78,6 +78,9 @@ bombcounterdirection	equ	0
 
 ; Teammate message positions
 
+; X position to clip overflowing message text and start a new line
+friendmsgrighttextclip	equ	174
+
 ; Change these to change the overall position of the message box on screen
 friendmsgxadd	equ	0
 friendmsgyadd	equ	0
