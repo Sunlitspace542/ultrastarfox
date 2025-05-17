@@ -133,7 +133,8 @@ ALLCOLS_PALETTES= \
  BG2-E-P.COL
 
 # Palettes to include in ALLCOLS
-allcols.pac: $(ALLCOLS_PALETTES)
+# allcols.pac: $(ALLCOLS_PALETTES) # use this label instead to only rebuild ALLCOLS when a palette file change is detected
+allcols.pac:
 	@echo Building ALLCOLS...
 #	       filename startline endline
 	@$(MC) OOPS.COL 0 2
