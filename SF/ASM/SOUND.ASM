@@ -302,11 +302,11 @@ boot_repeat
 	xba
 	lda	#0
 	bra	boot_entry2
+	IFNE	MSU
+	; Hard mute BGM if MSU-1 activated
 boot_loop	xba
-
 	cpx	#$235C
 	bne	.reg
-
 	lda	msupresent
 	beq	.reg
 	lda #$2F
@@ -316,6 +316,12 @@ boot_loop	xba
 .don
 	iny
 	xba
+	ELSEIF	;IFEQ	MSU
+boot_loop	xba
+	lda	[address],y
+	iny
+	xba
+	ENDC	;MSU
 boot_wait1	cmp	apu_port0
 	bne	boot_wait1
 	inc	a
