@@ -857,41 +857,6 @@ boxc	=	1
 
 ;************************************************
 
-	ifne	0
-
-face2	macro
-	db	2,\1,\3,\4,-(\5),\6,\7
-	endm
-face3	macro
-	db	3,\1,\3,\4,-(\5),\6,\7,\8
-	endm
-face4	macro
-	db	4,\1,\3,\4,-(\5),\6,\7,\8,\9
-	endm
-face5	macro
-	db	5,\1,\3,\4,-(\5),\6,\7,\8,\9,\A
-	endm
-face6	macro
-	db	6,\1,\3,\4,-(\5),\6,\7,\8,\9,\A,\B
-	endm
-face7	macro
-	db	7,\1,\3,\4,-(\5),\6,\7,\8,\9,\A,\B,\C
-	endm
-face8	macro
-	db	8,\1,\3,\4,-(\5),\6,\7,\8,\9,\A,\B,\C,\D
-	endm
-
-
-face12	macro
-	db	12,\1,\3,\4,-(\5),\6,\7,\8,\9,\A,\B,\C,\D,\E,\F,\G,\H
-	endm
-
-endface	macro
-	fendq
-	endm
-
-	endc
-
 	ifne	1
 
 face2	macro
@@ -922,7 +887,18 @@ face8	macro
 	db	8,\2,\1,\3,\4,-(\5),\6,\7,\8,\9,\A,\B,\C,\D
 shnumfaces	=	shnumfaces+1
 	endm
-	
+face9	macro
+	db	9,\2,\1,\3,\4,-(\5),\6,\7,\8,\9,\A,\B,\C,\D,\E
+shnumfaces	=	shnumfaces+1
+	endm
+face10	macro
+	db	10,\2,\1,\3,\4,-(\5),\6,\7,\8,\9,\A,\B,\C,\D,\E,\F
+shnumfaces	=	shnumfaces+1
+	endm
+face11	macro
+	db	11,\2,\1,\3,\4,-(\5),\6,\7,\8,\9,\A,\B,\C,\D,\E,\F,\G
+shnumfaces	=	shnumfaces+1
+	endm
 face12	macro
 	db	12,\2,\1,\3,\4,-(\5),\6,\7,\8,\9,\A,\B,\C,\D,\E,\F,\G,\H
 shnumfaces	=	shnumfaces+1
