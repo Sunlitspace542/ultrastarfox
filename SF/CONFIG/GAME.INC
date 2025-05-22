@@ -29,6 +29,7 @@ friendmessagesinintro	equ	0
 
 ; Number of lives the player starts with (stock = 3)
 ; Note that the game displays the number of lives as 1 less than it actually is.
+; Cannot be set to zero as that breaks some game logic.
 numlives	equ	3
 
 ; Input window for barrel rolls (in frames). (stock = 3)
@@ -77,3 +78,10 @@ randvertandbit	equ	15
 randverts2	equ	0		
 
 ;####################################################################################################################
+
+; Sanity checks (do not touch)
+
+	IFEQ	numlives
+	printf	"numlives cannot be zero!"
+	error+
+	ENDC
