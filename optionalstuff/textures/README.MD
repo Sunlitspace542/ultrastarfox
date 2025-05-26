@@ -7,7 +7,7 @@ Textures in Star Fox are .CGX files which are interleaved using MERGE.EXE (found
 
 **sf1tex.col/sf1tex_yychr.pal** is a reference palette for textures that contains every variant in the source, found in the texture folder (this one).
 
-**See _texpal_ref.txt_ for more info.**
+**See _texpal_ref.md_ for more info.**
 
 ## Editing/Viewing
 For viewing these texture files, you can use SCAD (found in Gigaleak 2), or Hyper CG-CAD by LuigiBlood (hcgcad).
