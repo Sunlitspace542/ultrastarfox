@@ -1,0 +1,11 @@
+Line 0 - Default palette (NIGHT.COL)
+
+Line 1 - Unused green palette (found in NIGHT.COL - it's on its own as GREEN.COL in this folder, so you can add it to the game yourself)
+
+Line 2 - Macbeth palette (RED.COL)
+
+Line 3 - Corneria palette (BLUE.COL)
+
+Line 4 - Map palette (MAP_C.COL, the line used for it in the base game)
+
+Line 5 - Game over screen (OVER_D.COL)
