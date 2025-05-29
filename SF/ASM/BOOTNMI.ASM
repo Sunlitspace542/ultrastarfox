@@ -85,7 +85,9 @@ restart	ai16 ; set A/X/Y to 16 bit
 
 	jsl	startsfx_l ; Initialize the SNES
 
+	;SAVE ALL RAM VALUES WE WANT TO KEEP BEFORE RAM IS REINITIALISED
 
+	a8
 	lda.l	whichroute ; Load Route # into A
 	pha	; Push A to stack, preserving route number
 	lda	defaulttrain ; Load defaulttrain into A
@@ -106,7 +108,22 @@ restart	ai16 ; set A/X/Y to 16 bit
 	pha
 	ENDC
 
+	IFNE	rngmode	; if rngmode is xorshift/set at boot
+	lda	rand
+	pha
+	lda	rand+1
+	pha
+	ENDC
+
 	jsr	initialise_ram ; Clear RAM
+
+	a8
+	IFNE	rngmode	; if rngmode is xorshift/set at boot
+	pla
+	sta	rand+1
+	pla
+	sta	rand
+	ENDC
 
 	IFNE	MSU
 	pla
