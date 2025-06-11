@@ -62,42 +62,42 @@
 
 ;			 78  79  7A  7B  7C  7D  7E  7F	; End of standard ASCII, Start of extended ASCII
 ;			 x   y   z   {   |   }   ~   DEL
-;			 x   y   z   0^  0^  0^  0^  * ; Japanese characters begin here, I can't read this stuff so you get a bunch of *'s -sl
+;			 x   y   z   0^  0^  0^  0^  * ; Japanese characters begin here
 	MOJI	$3F,$40,$41,$00,$00,$00,$00,$4F
 
 ;			 80  81  82  83  84  85  86  87
 ;			 €   UN  ‚   ƒ   „   …   †   ‡
-;			 *   *   *   *   *   *   *   *
+;			アa* イi* ウu* エe* オo* カka キki クku
 	MOJI	$48,$49,$4A,$4B,$4C,$4D,$4E,$4F
 
 ;			 88  89  8A  8B  8C  8D  8E  8F
 ;			 ˆ   ‰   Š   ‹   Œ   UN  Ž   UN
-;			 *   *   *   *   *   *   *   *
+;			ケke コko サsa シsi スsu セse ソso タta
 	MOJI	$50,$51,$52,$53,$54,$55,$56,$57
 
 ;			 90  91  92  93  94  95  96  97
 ;			 UN  ‘   ’   “   ”   •   –   —
-;			 *   *   *   *   *   *   *   *
+;			チti ツtu テte トto ナna ニni ヌnu ネne
 	MOJI	$58,$59,$5A,$5B,$5C,$5D,$5E,$5F
 
 ;			 98  99  9A  9B  9C  9D  9E  9F
 ;			 ˜   ™   š   ›   œ   UN  ž   Ÿ
-;			 *   *   *   *   *   *   *   *
+;			ノno ハha ヒhi フfu ヘhe ホho マma ミmi
 	MOJI	$60,$61,$62,$63,$64,$65,$66,$67
 
 ;			 A0  A1  A2  A3  A4  A5  A6  A7
 ;			NBSP ¡   ¢   £   ¤   ¥   ¦   §
-;			 *   *   *   *   *   *   *   *
+;			ムmu メme モmo ヤya ユyu ヨyo ラra リri
 	MOJI	$68,$69,$6A,$6B,$6C,$6D,$6E,$6F
 
 ;			 A8  A9  AA  AB  AC  AD  AE  AF
 ;			 ¨   ©   ª   «   ¬  SHY  ®   ¯
-;			 *   *   *   *   *   *   *   *
+;			ルru レre ロro ワwa ヲwo ンn*  ﾞ*   ﾟ*
 	MOJI	$70,$71,$72,$73,$74,$75,$76,$77
 
 ;			 B0  B1  B2  B3  B4  B5  B6  B7
 ;			 °   ±   ²   ³   ´   µ   ¶   ·
-;			 *   *   *   *   *   *   *   *
+;			。*  〜*  *   *   *   *   *   *
 	MOJI	$78,$79,$7A,$7B,$7C,$7D,$7E,$7F
 
 ;			 B8  B9  BA  BB  BC  BD  BE  BF
