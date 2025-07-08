@@ -302,7 +302,7 @@ boot_repeat
 	xba
 	lda	#0
 	bra	boot_entry2
-	IFNE	MSU
+	IFNE	msu_legacy
 	; Hard mute BGM if MSU-1 activated
 boot_loop	xba
 	cpx	#$235C
@@ -316,7 +316,7 @@ boot_loop	xba
 .don
 	iny
 	xba
-	ELSEIF	;IFEQ	MSU
+	ELSEIF	;IFEQ	msu_legacy
 boot_loop	xba
 	lda	[address],y
 	iny

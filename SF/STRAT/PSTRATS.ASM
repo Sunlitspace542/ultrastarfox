@@ -121,6 +121,9 @@ pwingcol
 	s_brl		no_pwingcol
 .wirewcol
 	trigse		$14
+	IFNE	RUMBLE
+	s_queue_rumble	1,1,2
+	ENDC
 no_pwingcol
 
 
@@ -177,9 +180,15 @@ pcolB_Istrat
 	s_jmp_objptrBAD		y,.b8snd
 	s_jmp_alvarLESS.w	B,y,al_AP,#8,.b8snd
 	TRIGSE			$04
+	IFNE	RUMBLE
+	s_queue_rumble	8,8,10
+	ENDC
 	bra			.dsn
 .b8snd
 	TRIGSE			$19
+	IFNE	RUMBLE
+	s_queue_rumble	8,8,10
+	ENDC
 .dsn
 
 	s_chk_objptr		y,.bady
@@ -310,9 +319,15 @@ pcolLW_Istrat
 	s_jmp_objptrBAD		y,.b8snd
 	s_jmp_alvarLESS.w	B,y,al_AP,#8,.b8snd
 	TRIGSE			$04
+	IFNE	RUMBLE
+	s_queue_rumble	8,0,10
+	ENDC
 	bra			.dsn
 .b8snd
 	TRIGSE			$07
+	IFNE	RUMBLE
+	s_queue_rumble	8,0,10
+	ENDC
 .dsn
 
 
@@ -373,6 +388,9 @@ PLWbrk_Istrat
 	s_jmp_varAND	B,pshipflags3,#psf3_nocollisions,.ncoll
 
 	TRIGSE			se_wingdestructleft
+	IFNE	RUMBLE
+	s_queue_rumble	15,0,5
+	ENDC
 	s_set_alvar		B,x,al_HP,#-1
 	s_set_alvar		B,x,al_AP,#0
 	s_and_var		B,pshipflags,#~psf_Lwingcoll
@@ -447,9 +465,15 @@ pcolRW_Istrat
 	s_jmp_objptrBAD		y,.b8snd
 	s_jmp_alvarLESS.w	B,y,al_AP,#8,.b8snd
 	TRIGSE			$04
+	IFNE	RUMBLE
+	s_queue_rumble	0,8,10
+	ENDC
 	bra			.dsn
 .b8snd
 	TRIGSE			$08
+	IFNE	RUMBLE
+	s_queue_rumble	0,8,10
+	ENDC
 .dsn
 
 	s_chk_objptr		y,.bady
@@ -510,6 +534,9 @@ PRWbrk_Istrat
 	s_jmp_varAND	B,pshipflags3,#psf3_nocollisions,.ncoll
 
 	TRIGSE		se_wingdestructright
+	IFNE	RUMBLE
+	s_queue_rumble	0,15,5
+	ENDC
 	s_set_alvar		B,x,al_HP,#-1
 	s_set_alvar		B,x,al_AP,#0
 	s_and_var		B,pshipflags,#~psf_Rwingcoll
@@ -535,6 +562,13 @@ player_Istrat
 	s_end_strat
 
 
+
+
+	IFNE	RUMBLE
+	; sequenced rumble testing
+testrumble1
+	db		$11,$22,$33,$44,$55,$66,$77,$88,$99,$AA,$BB,$CC,$DD,$EE,$FF,$EE,$DD,$CC,$BB,$AA,$99,$88,$77,$66,$55,$44,$33,$22,$11,$91
+	ENDC
 
 ;*****************************************************************************
 set_playercred_l
@@ -590,6 +624,14 @@ playercred_strat
 	s_set_var		W,plrotz,#0
 	
 	s_add_var		W,slowstars_viewposz,#medpspeed/4
+
+	IFNE	RUMBLE
+	; sequenced rumble testing
+	s_jmp_keyup		jup,.end
+	
+	s_queue_rumble_table	testrumble1
+.end
+	ENDC
 
 	s_end_strat
 
@@ -2155,6 +2197,9 @@ playermove_srou
 	boost_sprite
 .nboostspr
 	trigse			$32
+	IFNE	RUMBLE
+	s_queue_rumble	4,4,10
+	ENDC
 
 	s_jmp			.npsd
 .npsi
@@ -2229,6 +2274,9 @@ playermove_srou
 	IFEQ	INFBRAKE
 	s_or_var	B,pshipflags2,#psf2_braking
 	trigse	$33
+	IFNE	RUMBLE
+	s_queue_rumble	1,1,5
+	ENDC
 	lda	#1
 	sta	boostcnt
 	s_set_var	B,player_tospeed,#minpspeed
@@ -2861,6 +2909,9 @@ playerfire_srou
 	ENDC
 
 	trigse			$31
+	IFNE	RUMBLE
+	s_queue_rumble	2,2,5
+	ENDC
 
 	s_weapon_pos		#0,#0,#80>>weapon_scale
 	s_weapon_rot		#0,#0
@@ -2907,6 +2958,9 @@ playerfire_srou
 	s_weapon_rot		#0,#0
 	s_fire_weapon		x,ELASER,.npfy
 	trigse	se_laser
+	IFNE	RUMBLE
+	s_queue_rumble	1,1,1
+	ENDC
 	inc			numplasers
 	s_brl			.npfy
 
@@ -2919,6 +2973,9 @@ playerfire_srou
 	s_fire_weapon		x,ELASER,.npfy
 	inc			numplasers
 	trigse			$34
+	IFNE	RUMBLE
+	s_queue_rumble	2,2,1
+	ENDC
 	s_brl			.npfy
 .beamb
 
@@ -2930,6 +2987,9 @@ playerfire_srou
 	s_fire_weapon		x,PLAYERBEAM,.npfy
 	inc			numplasers
 	trigse			$36
+	IFNE	RUMBLE
+	s_queue_rumble	4,4,3
+	ENDC
 .npfy
 	s_bra			.noresetfc
 
@@ -3009,6 +3069,9 @@ playerdead_Istrat
 	startbgm		$11
 	s_and_var		B,gameflags2,#~gf2_ingame
 	trigse			se_playerdown
+	IFNE	RUMBLE
+	s_queue_rumble	10,10,20
+	ENDC
 	s_or_var		B,gameflags2,#gf2_ingame
 	s_or_var		B,pshipflags2,#psf2_playerHP0
 	s_set_alsflag		x,colldisable
@@ -3062,6 +3125,9 @@ playerdead_Istrat
 	s_or_var		B,pshipflags2,#psf2_playerHP0
 	s_and_var		B,gameflags2,#~gf2_ingame
 	trigse			se_playerdown
+	IFNE	RUMBLE
+	s_queue_rumble	10,10,20
+	ENDC
 	s_or_var		B,gameflags2,#gf2_ingame
 	startbgm		$11
 .nsnd
@@ -3200,6 +3266,9 @@ pexplode_Istrat
 .badobj1
 	s_and_var		B,gameflags2,#~gf2_ingame
 	trigse			3
+	IFNE	RUMBLE
+	s_queue_rumble	15,15,20
+	ENDC
 	s_or_var		B,gameflags2,#gf2_ingame
 	s_or_var		B,gameflags,#GF_PLAYERDEAD
 
@@ -3227,6 +3296,9 @@ playercoll_Istrat
 
 	s_jmpNOT_varAND		B,pshipflags2,#psf2_wireship,.normcoll
 	TRIGSE			$14
+	IFNE	RUMBLE
+	s_queue_rumble	1,1,2
+	ENDC
 	s_set_objtobealvar	y,x,al_collobjptr
 	s_jmp_alvarNE.w		B,y,al_hp,#hardHP,.ncoll
 .normcoll
@@ -3260,6 +3332,9 @@ playercoll_Istrat
 	s_set_strat			x,relflatmiss_strat
 	s_set_lifecnt		x,#30
 	trigse			$14
+	IFNE	RUMBLE
+	s_queue_rumble	1,1,2
+	ENDC
 	plx
 	s_jmp			.ncoll
 .nlaser

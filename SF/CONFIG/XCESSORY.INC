@@ -13,6 +13,9 @@ mouseon	equ	0
 ; Up and down on the mouse may need to be manually inverted dependent on preference.
 analogstick	equ	0
 
+; Enable rumble support on controller port 1.
+rumble	equ	1
+
 ;####################################################################################################################
 
 ; Sanity checks (do not touch)

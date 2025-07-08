@@ -5633,6 +5633,9 @@ madtrucker_istrat
 	s_set_alvar	W,x,al_sword1,#20
 	jsl		bigwhiteFOsprite_l
 	stx		circleobj
+	IFNE	RUMBLE
+	s_queue_rumble	15,15,20
+	ENDC
 	trigse		$1d
 	s_jmp		.skid
 .swervy

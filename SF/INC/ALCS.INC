@@ -300,7 +300,7 @@ xlen	=	22*1024+450
 ;	zalc	pattern0,1
 ;	zalc	pattern1,1
 ;--------MSU1---------
-	IFNE	msu
+	IFNE	msu_legacy
     zalc    msu_017e,1 ; MSU1 zeropage variable ($7E017E)
     zalc    msu_017f,1 ; MSU1 zeropage variable ($7E017F)
 	ENDC
@@ -723,7 +723,12 @@ xlen	=	22*1024+450
 	alc	msupresent,1
 	alc	boostcnt,1
 
-
+	IFNE	RUMBLE
+; zeropage alcs for rumble
+	zalc	rumble_cmd,1	; command byte
+	zalc	rumble_time,1	; time (in frames?) 0-255 to rumble
+	zalc	rumble_index,1	; time (in frames?) 0-255 to rumble
+	ENDC
 
 ;---------------------------------------------------
 	alc	numshapes,2
@@ -733,7 +738,7 @@ xlen	=	22*1024+450
 	alc	palnum,2
 	alc	palcnt,2
 	alc	fadepal,1
-
+	alc	rumble_table,40
 ; stratrou
 
 	alc	objx,2

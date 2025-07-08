@@ -10,10 +10,13 @@
 ; Indicates support for Randy Linden's Super FX 3 chip in the ROM header.
 SUPERFX3	equ 0
 
-; MSU-1 support [0 = off, 1 = on]
+; MSU-1 support (not yet implemented)
+msu1		equ	0
+
+; Old-style MSU-1 support (DEPRECATED, to be rewritten) [0 = off, 1 = on]
 ; The game looks for the MSU-1 on startup.
 ; If the MSU-1 is not present, the game falls back to SPC700 audio.
-msu			equ 0
+msu_legacy	equ 0
 
 ; MSU-1 video player (not yet implemented)
 ; requires that MSU-1 support be enabled
@@ -73,7 +76,7 @@ docredzname	MACRO
 
 ; Sanity checks (do not touch)
 
-	IFEQ	msu
+	IFEQ	msu_legacy!msu1
 	IFNE	msuvideo
 	printf	"msu must be enabled in CONFIG\ROM.INC!"
 	fail

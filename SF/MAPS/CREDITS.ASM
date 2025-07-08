@@ -98,6 +98,16 @@ actualcreds
 	textpath	1000,2000,200,3500,claude,dsideslip,14,32
 	ENDC
 
+	IFNE	RUMBLE
+	mapwait	credwait
+	textpath	1000,2000,-600,3000,rumbleversion,dsideslip,14,32
+	textpath	1000,2000,-300,3000,programmed,dsideslip,14,32
+	textpath	1000,2000,0000,3000,by,dsideslip,14
+	textpath	1000,2000,0400,4400,kando,dsideslip,14,100
+	textpath	1000,2000,0800,4400,randy,dsideslip,14,100
+	textpath	1000,2000,1200,4400,sunlit,dsideslip,14,100
+	ENDC
+
 	mapwait	9000-31*medpspeed
 	maprts
 

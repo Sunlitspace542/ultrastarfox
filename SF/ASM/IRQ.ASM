@@ -1112,6 +1112,9 @@ irqbit3	lda	noirqbit3
 	cmp	#((2)*255)/100		;2% chance of a flash
 	bcs	.skipt
 	dmacgram	0,5*16,thundercol,32
+	IFNE	RUMBLE
+	queue_rumble	4,4,3
+	ENDC
 .skipt
 	IFNE	shieldboostcolorbox
 ;!! Unnecessary color writes to palette line 2.
@@ -1585,7 +1588,7 @@ startmus	php
 	beq	.check
 	bra	.trig3
 .start	lda	bgm_music
-	IFNE	msu
+	IFNE	msu_legacy
 	jsr 	$7ED000 ; MSU-1 routine to determine song to play
 	ELSEIF
 	sta	apu_port0

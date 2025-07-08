@@ -1105,7 +1105,7 @@ printspeclp
 	jsl	transfer_l ; Go to transfer loop subroutine
 
 	ai16 ; Set A/X/Y to 16 bit
-	clrmes	totalscoretxt,16,44	;total score
+	clrmes	totalscoretxt,16,44-4	;total score
 
 	a16 ; set A to 16 bit
 	jsr	calctotalscore ; Get total score
@@ -1385,7 +1385,7 @@ checkbonus	jsr	calctotalscore
 bonertab	dw	2100,1900,1700,1500,1300,1100,900,700,500,300,100,0
 
 
-    IFNE    msu
+	IFNE	msu_legacy
 pauseStart
 	a8
 	LDA	#audiostate_pause
@@ -1416,9 +1416,9 @@ dopause	php
 	jsl	transfer_l		;transfer bitmap, do strats etc.
 	jsr	printpause
 	jsl	transfer_l		;transfer bitmap, do strats etc.
-    IFNE    msu
-    jsr pauseStart
-    ENDC
+	IFNE	msu_legacy
+	jsr pauseStart
+	ENDC
 	a8
 .wait	waitdma	100
 	lda	joy1h
@@ -1432,9 +1432,9 @@ dopause	php
 	lda	joy1h
 	bit	#key_start
 	bne	.wait3
-    IFNE    msu
-    jsr pauseEnd
-    endc
+	IFNE	msu_legacy
+	jsr pauseEnd
+	endc
 	stz	cont0
 	stz	contl0
 	stz	cont0l

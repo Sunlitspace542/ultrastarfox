@@ -170,8 +170,15 @@ conttraining
 
 	jsl	initialise_l
 	a8i16
+	IFEQ	trainingmapredirect
 	lda	#trainingmap>>16
 	ldx	#trainingmap&$7fff
+	ELSEIF	;IFNE	trainingmapredirect
+	IFD		_ARGSFX
+	run	" lda #%$trainingredirectmap>>16"
+	run	" ldx #%$trainingredirectmap&$7fff"
+	ENDC
+	ENDC	;trainingmapredirect
 	sta	mapbank
 	stx	mapptr
 	jsl	initgame_l

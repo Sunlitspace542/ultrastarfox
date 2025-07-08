@@ -1631,7 +1631,7 @@ titleseq_l	php
 	IFNE	nointroseq ; If intro sequence disabled
 	a8i16
 
-	IFNE	msu
+	IFNE	msu_legacy
 	jsl CheckForMSU ; check for the MSU-1
 	ENDC
 
@@ -1731,7 +1731,7 @@ titleredo	a8i16
 intro_l
 	a8i16
 
-	IFNE	msu
+	IFNE	msu_legacy
 	jsl CheckForMSU ; check for the MSU-1
 	ENDC
 

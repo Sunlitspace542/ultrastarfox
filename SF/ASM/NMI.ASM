@@ -31,7 +31,7 @@ copy_to_0101_l
 	sasm_mvn	$1f,$00
 	ENDC
 
-	IFNE	msu
+	IFNE	msu_legacy
 ; Copy MSU fade handler to $0162 (right after the NMI/IRQ handler in RAM)
 	ai16
 	ldx	#msufadehan&WM ; src data addr
@@ -77,12 +77,23 @@ nmihan ; Start of NMI handler
 	nop		;$010b ; No Operation
 .irq	ai16		;$010c	irq
 	pha	; Push A to stack
-	IFNE	msu
-	jsl	$000162 ; MSU-1 fade routine
+
+	IFNE	msu_legacy
+	jsl	$000162 ; Legacy MSU-1 fade routine (unstable!!)
 	ELSEIF
+
 	lda.l	m_sfr ; Load m_sfr into A (MARIO chip flags?)
 	ENDC
+
+	IFEQ	RUMBLE
 	bmi	.qexit ; branch if a = 1
+	ELSEIF
+	bpl	.irqq
+.qexit	pla ; Pull A from stack
+	rti ; Return from interrupt
+	ENDC
+
+.irqq
 	phb ; Push data bank to stack
 	disable ; disable interrupts
 	phx ; Push X to stack
@@ -98,15 +109,163 @@ nmihan ; Start of NMI handler
 	plb ; Pull data bank from stack
 	ENDC ; End conditional
 
+	IFNE	RUMBLE
+; Randy's rumble controller fix for hardware
+; HACK: Force re-read of controller bits to get timing right for rumble handler
+
+	lda	slhvr				; Latch Raster Position
+	lda	stat78r				; Update H/V Counters
+	lda	opvctr				; Get Low 8Bits VPos
+	xba
+	lda	opvctr				; Get High 8Bits VPos
+	xba
+	cmp	#40
+	bcc	.to_skip_rumble
+	cmp	#220
+	bcc	.readjoy
+.to_skip_rumble
+	brl	.skip_rumble
+
+.readjoy
+	lda	#$01
+	sta	JOYSER0				; Reset Data Counter
+	nop
+	nop
+	stz	JOYSER0
+	nop
+	nop
+
+	ldy	#16-1				; Read 16 Controller Bits
+.readjoy2
+	lda	JOYSER0				; Controller I
+	dey
+	bpl	.readjoy2
+
+	ldx	#$40
+
+; Handle rumble controller commands
+
+; Send magic number 01110010 (rumble sentry)
+	stz	WRIO				; %0
+	bit	JOYSER0
+
+	stx	WRIO				; %1
+	bit	JOYSER0
+
+;							; %1
+	bit	JOYSER0
+
+;							; %1
+	bit	JOYSER0
+
+	stz	WRIO				; %0
+	bit	JOYSER0
+
+;							; %0
+	bit	JOYSER0
+
+	stx	WRIO				; %1
+	bit	JOYSER0
+
+	stz	WRIO				; %0
+	bit	JOYSER0
+
+; Check rumble timer
+; Only send a nonzero rumble command if the timer is nonzero
+	lda	rumble_index
+	beq	.notable
+	phx
+	ldx	rumble_index
+	dex
+	lda.l	rumble_table,x
+	inx
+	inx
+	stx	rumble_index
+	plx
+	cmp #0						;so I dont have to pull x twice
+	bne	.rumblehan_donerumblecmd2		;if you hit a $00, end it all. otherwise, run it.
+	stz	rumble_index
+	bra	.rumblehan_turnoffmotors
+
+.notable
+	lda	rumble_time
+	beq	.rumblehan_turnoffmotors	; if 0, turn off motors!
+	lda	rumble_cmd		; get rumble cmd bits
+	bra	.rumblehan_donerumblecmd
+	
+.rumblehan_donerumblecmd2
+	cmp #$91
+	bne	.rumblehan_donerumblecmd
+	pha
+	lda #1
+	sta	rumble_index
+	pla
+	bra .rumblehan_donerumblecmd
+
+.rumblehan_turnoffmotors
+	lda	#0	; 0 = no rumble!
+.rumblehan_donerumblecmd
+
+	lsr	a				; .7 -> .6 / .0 -> .C
+	sta	WRIO
+	bit	JOYSER0
+
+	rol	a				; .6 / .C -> .0
+	sta	WRIO
+	bit	JOYSER0
+
+	asl	a				; .5
+	sta	WRIO
+	bit	JOYSER0
+
+	asl	a				; .4
+	sta	WRIO
+	bit	JOYSER0
+
+	asl	a				; .3
+	sta	WRIO
+	bit	JOYSER0
+
+	asl	a				; .2
+	sta	WRIO
+	bit	JOYSER0
+
+	asl	a				; .1
+	sta	WRIO
+	bit	JOYSER0
+
+	asl	a				; .0
+	sta	WRIO
+	bit	JOYSER0
+
+	lda	#$ff				; Restore WRIO
+	sta	WRIO
+
+; Check rumble timer
+	lda	rumble_time
+	beq	.rumblehan_dontdectime	; If 0, don't decrement or we'll overflow!!
+	dec	rumble_time
+.rumblehan_dontdectime
+
+.skip_rumble
+	ENDC
+
 	nastyon ; Turn MARIO nasty mode on
 	jsl	irqcode_l ; Jump to irqcode_l
 	a8 ; Set A to 8 bit
 	inc	framec ; increment frame count?
 	lda	timeupr ; Load TIMEUPR register into A
+	IFEQ	RUMBLE
 	bra	.exit ; branch to .exit sublabel
+	ELSEIF
+	brl	.exit ; branch to .exit sublabel
+	ENDC
 	longa
+
+	IFEQ	RUMBLE
 .qexit	pla ; Pull A from stack
 	rti ; Return from interrupt
+	ENDC
 .brk
 .nmi
 	ai16 ; Set A/X/Y to 16 bit
@@ -140,7 +299,7 @@ nmihan ; Start of NMI handler
 
 nmihanend ; End of NMI Handler
 
-	IFNE	MSU
+	IFNE	msu_legacy
 msufadehan
 	lda.l msu_017f
 	and	#$00ff

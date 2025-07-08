@@ -32,6 +32,8 @@ TITLE_BAR	=	0
 
 ; Macros
 	include	INC\macros.inc
+	include	INC\RMBLMACS.INC
+	include	INC\MODEMAC.INC
 
 ; reset timer
 totaltime	=	0
@@ -43,8 +45,8 @@ totaltime	=	0
 ; System defines
 	include	INC\sfcregs.inc	; SNES registers
 	include INC\mregs.inc	; MARIO chip registers
-	IFNE	msu
 	include	INC\msuregs.inc	; MSU-1 registers
+	IFNE	msu_legacy
 	include	INC\msutrks.inc	; MSU-1 tracklist
 	ENDC
 

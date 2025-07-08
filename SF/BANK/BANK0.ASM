@@ -91,7 +91,7 @@ abort_vn
 	inccru	bgandpcr,data\and.pcr
 	incfile	STRAT\istrats.asm
 	incfile	STRAT\d3strats.asm
-	IFNE	msu
+	IFNE	msu_legacy
 	include	ASM\MSU.ASM ; Include MSU playback logic
 	ENDC
 	bankend	32

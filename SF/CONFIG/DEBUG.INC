@@ -26,7 +26,7 @@ totalmsgs			equ	142
 
 ; Allows you to enable planet select cheat on the map
 ; before you have selected a level. Press X to activate.
-planetcheaton 		equ 0
+planetcheaton 		equ 1
 
 ; Debug mode font to use
 ; 2BPP 8x8 tiles (2BPP GB in YY-CHR)
@@ -36,6 +36,16 @@ debugfont			equ	0
 ; print "printroulen" lines during assembly
 ; [0 = off, 1 = on]
 prntrouln_on		equ 0
+
+; Redirect training mode button in controls select to a different map
+; [0 = off, 1 = on]
+trainingmapredirect	equ	1
+
+; If above equate set to 1, specify map to redirect to here
+; See EXT\MAPLIST.EXT for valid labels
+	IFD	_ARGSFX
+	STRING	trainingredirectmap[64]="creditsmap"
+	ENDC
 
 ;; Cheats
 

@@ -246,7 +246,7 @@ stratsfrozen
 	printd	1,6
 
 	; MSU track debugging
-	IFNE	msu
+	IFNE	msu_legacy
 	lda	msu_017f ; current MSU track
 	printd	1,2
 	ENDC

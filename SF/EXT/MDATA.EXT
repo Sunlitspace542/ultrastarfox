@@ -18,6 +18,7 @@
 	global	msg_composer,msg_yamamoto,msg_theend
 	global	msg_yajima,msg_kimura,msg_tony,msg_shimizu,msg_ian,msg_dan
 	global	msg_nishida,msg_english,msg_japanese,msg_software
+	global	msg_rumbleversion,msg_randy,msg_sunlit
 	global	msg_0	
 	global	msg_1	
 	global	msg_2	
