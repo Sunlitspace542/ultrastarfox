@@ -68,7 +68,7 @@ alcon	=	1
 	zalc	printpt,2
 	zalc	drawmap,2
 	zalc	showmap,2
-	zalc	drawsprptr,2
+;	zalc	drawsprptr,2	; unused zp i think
 	zalc	vmap1,2
 	zalc	vmap2,2
 	zalc	vcmap,2
