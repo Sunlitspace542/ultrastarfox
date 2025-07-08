@@ -738,7 +738,9 @@ xlen	=	22*1024+450
 	alc	palnum,2
 	alc	palcnt,2
 	alc	fadepal,1
-	alc	rumble_table,40
+	IFNE	RUMBLE
+	alc	rumble_table,40	; cache for sequenced rumble commands (unfortunately it must be done this way)
+	ENDC
 ; stratrou
 
 	alc	objx,2
