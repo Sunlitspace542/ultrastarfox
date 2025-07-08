@@ -564,11 +564,11 @@ player_Istrat
 
 
 
-	IFNE	RUMBLE
-	; sequenced rumble testing
-testrumble1
-	db		$11,$22,$33,$44,$55,$66,$77,$88,$99,$AA,$BB,$CC,$DD,$EE,$FF,$EE,$DD,$CC,$BB,$AA,$99,$88,$77,$66,$55,$44,$33,$22,$11,$91
-	ENDC
+; 	IFNE	RUMBLE
+; 	; sequenced rumble testing
+; testrumble1
+; 	db		$11,$22,$33,$44,$55,$66,$77,$88,$99,$AA,$BB,$CC,$DD,$EE,$FF,$EE,$DD,$CC,$BB,$AA,$99,$88,$77,$66,$55,$44,$33,$22,$11,$91
+; 	ENDC
 
 ;*****************************************************************************
 set_playercred_l
@@ -625,13 +625,13 @@ playercred_strat
 	
 	s_add_var		W,slowstars_viewposz,#medpspeed/4
 
-	IFNE	RUMBLE
-	; sequenced rumble testing
-	s_jmp_keyup		jup,.end
+; 	IFNE	RUMBLE
+; 	; sequenced rumble testing
+; 	s_jmp_keyup		jup,.end
 	
-	s_queue_rumble_table	testrumble1
-.end
-	ENDC
+; 	s_queue_rumble_table	testrumble1
+; .end
+; 	ENDC
 
 	s_end_strat
 
@@ -3070,7 +3070,7 @@ playerdead_Istrat
 	s_and_var		B,gameflags2,#~gf2_ingame
 	trigse			se_playerdown
 	IFNE	RUMBLE
-	s_queue_rumble	10,10,20
+	s_queue_rumble	5,5,20
 	ENDC
 	s_or_var		B,gameflags2,#gf2_ingame
 	s_or_var		B,pshipflags2,#psf2_playerHP0
@@ -3126,7 +3126,7 @@ playerdead_Istrat
 	s_and_var		B,gameflags2,#~gf2_ingame
 	trigse			se_playerdown
 	IFNE	RUMBLE
-	s_queue_rumble	10,10,20
+	s_queue_rumble	5,5,20
 	ENDC
 	s_or_var		B,gameflags2,#gf2_ingame
 	startbgm		$11
@@ -3267,7 +3267,7 @@ pexplode_Istrat
 	s_and_var		B,gameflags2,#~gf2_ingame
 	trigse			3
 	IFNE	RUMBLE
-	s_queue_rumble	15,15,20
+	s_queue_rumble	5,5,20
 	ENDC
 	s_or_var		B,gameflags2,#gf2_ingame
 	s_or_var		B,gameflags,#GF_PLAYERDEAD

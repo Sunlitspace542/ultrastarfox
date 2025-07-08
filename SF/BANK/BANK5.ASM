@@ -38,6 +38,7 @@
 	include	EXT\continue.ext
 	include	EXT\trans.ext
 	include	INC\bgmacs.inc
+	include	EXT\bootnmi.ext
 
 
 

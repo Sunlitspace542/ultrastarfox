@@ -2130,7 +2130,7 @@ nukeexp_strat
 	s_start_strat
 
 	IFNE	RUMBLE
-	s_queue_rumble	15,15,30	; putting it in a looping strat gives this one priority
+	s_queue_rumble	5,5,20	; putting it in a looping strat gives this one priority
 	ENDC
 
 	a16

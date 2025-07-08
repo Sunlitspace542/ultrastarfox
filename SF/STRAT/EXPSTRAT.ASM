@@ -298,28 +298,28 @@ circdelayexplode_strat
 ;*******************************************************************************
 makeLexpobj_srou
 	IFNE	RUMBLE
-	s_queue_rumble	15,15,20
+	s_queue_rumble	5,5,20
 	ENDC
 	jsl			makeexpobj_srou
 	s_set_alvar		W,y,al_shape,#largeshape
 	s_rtl
 makeMEDexpobj_srou
 	IFNE	RUMBLE
-	s_queue_rumble	8,8,20
+	s_queue_rumble	3,3,20
 	ENDC
 	jsl			makeexpobj_srou
 	s_set_alvar		W,y,al_shape,#mediumshape
 	s_rtl
 makeSMLexpobj_srou
 	IFNE	RUMBLE
-	s_queue_rumble	4,4,20
+	s_queue_rumble	1,1,20
 	ENDC
 	jsl			makeexpobj_srou
 	s_set_alvar		W,y,al_shape,#smallshape
 	s_rtl
 makeFOLexpobj_srou
 	IFNE	RUMBLE
-	s_queue_rumble	15,15,20
+	s_queue_rumble	5,5,20
 	ENDC
 	jsl			makeexpobj_srou
 	s_set_alvar		W,y,al_shape,#FOlargeshape
@@ -959,7 +959,7 @@ BIGparticleexplode_Istrat
 BIGparticleexplode_strat
 	s_start_strat
 	IFNE	RUMBLE
-	s_queue_rumble	15,15,1
+	s_queue_rumble	2,2,1
 	ENDC
 	s_particle_data	x,0,0,0
 	s_inc_alvar	 	B,x,al_count

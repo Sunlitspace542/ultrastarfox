@@ -47,6 +47,12 @@ cestime				equ	15
 timerx = 20 ; Column (from left of screen) 0 - 28
 timery = 2 ; Row (from top of screen) 0 - 24
 
+; Credits Sequence Behavior
+
+; Enable the ability to press START at the "THE END" screen to exit back to controls select
+; [0 = off, 1 = on]
+exitcredits	equ	1
+
 ; Random Number Generation Behavior
 
 ; 0 = RNG reset at map screen (vanilla)

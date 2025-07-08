@@ -47,8 +47,28 @@
 	pathobj	000,-1050+129,1428,1000,font_d,theendd,6,4
 	mapwait	6000
 	setvar.b	levelfinished,le_endofcreds
-.lp	mapwait	5000
+.lp
+	IFEQ	EXITCREDITS
+	mapwait	5000
 	mapgoto	.lp
+	ENDC
+
+	IFNE	EXITCREDITS
+	mapwait	1
+	start_65816
+	a8
+	lda	cont0
+	and	#key_start
+	lbne	.credits_reboot
+	end_65816
+	mapgoto	.lp
+
+	end_65816
+.credits_reboot
+	jml	restart
+	end_65816
+	mapend
+	ENDC
 
 	IFEQ	PAL
 credwait	=	5000

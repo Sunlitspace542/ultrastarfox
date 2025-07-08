@@ -5634,7 +5634,7 @@ madtrucker_istrat
 	jsl		bigwhiteFOsprite_l
 	stx		circleobj
 	IFNE	RUMBLE
-	s_queue_rumble	15,15,20
+	s_queue_rumble	5,5,20
 	ENDC
 	trigse		$1d
 	s_jmp		.skid
