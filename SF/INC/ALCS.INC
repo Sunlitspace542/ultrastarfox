@@ -726,8 +726,8 @@ xlen	=	22*1024+450
 	IFNE	RUMBLE
 ; zeropage alcs for rumble
 	zalc	rumble_cmd,1	; command byte
-	zalc	rumble_time,1	; time (in frames?) 0-255 to rumble
-	zalc	rumble_index,1	; time (in frames?) 0-255 to rumble
+	zalc	rumble_time,1	; time (in frames, 0-255) to rumble
+	zalc	rumble_index,1	; index into rumble_table for sequenced rumbles (0-255)
 	ENDC
 
 ;---------------------------------------------------

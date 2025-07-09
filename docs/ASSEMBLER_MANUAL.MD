@@ -678,7 +678,7 @@ To escape ``\``, ``{`` and ``}``, use ``\\``, ``{{`` and ``}}``.
           DEFERROR,ERROR "<string>" Defines the error message with a
                                     printf string.
                                     see PRINTF
-                                    
+
           DEFS strnum,"<string>"    Defines string number 1-5 with
                                     the result of a printf string.
                                     see PRINTF,ROLS,STRLEN,STRING
@@ -816,7 +816,10 @@ To escape ``\``, ``{`` and ``}``, use ``\\``, ``{{`` and ``}}``.
                                     see EXTERN
 
           ROLS <string>,<offset>    Moves string left by offset.
-                                    see DEFS,PRINTF,STRLEN
+                                    Not normally available in ARGSFX,
+                                    Can easily be replicated with 
+                                    SUBSTR.
+                                    see DEFS,PRINTF,STRLEN,SUBSTR
 
           RUN "<string>"            This will run the result of a printf string
                                     (use with care, read notes on v1.25)
@@ -835,19 +838,12 @@ To escape ``\``, ``{`` and ``}``, use ``\\``, ``{{`` and ``}}``.
           REPT                      Starts a repeat loop. (nested is ok)
                                     see ENDR
 
-          ROLS str,offset           Rotates a string left by the
-                                    amount specified. Not normally available
-                                    in ARGSFX, Can easily be replicated
-                                    with SUBSTR.
-                                    see DEFS,PRINTF,STRLEN,SUBSTR
-
           SEND (expression)         Send the object code to a RAMBOY
                                     of type (expression). (default=$3d)
                                     see FABCARD
 
-          SETDBR <bank>	            Tells the assembler what the current
-                                    DBR (data bank register) is. ARGSFX
-                                    only.
+          SETDBR <bank>             Tells the assembler what the current
+                                    DBR (data bank register) is.
 
           SHORTA                    Tells the assembler the code is to be
                                     assembled with the accumulator as 8 bits.
@@ -858,17 +854,18 @@ To escape ``\``, ``{`` and ``}``, use ``\\``, ``{{`` and ``}}``.
                                     see LONGI,SHORTA,LONGA
 
           SICE                      Does an invalid instruction (Invokes
-                                    soft ice if present.)
+                                    soft ICE if present.)
 
-          STRING <name>([len])("<text>" or <label>)
+          STRING <name>([len])(="<text>" or <label>)
 
                                     Defines a string of a specified length,
                                     and optionally, its contents. If contents
                                     are specified to be a label, the contents
                                     of the label are inserted in the string.
-                                    Length does not need to be specified
-                                    when assigning contents. Maximum length
-                                    is 150 characters. ARGSFX only.
+                                    Length should not be specified when 
+                                    assigning text afterwards.
+                                    Maximum length is 150 characters.
+                                    ARGSFX only.
                                     see PRINTF,ROLS,STRLEN,DEFS
 
           STRLEN <string>           Puts the length of string into
@@ -876,7 +873,7 @@ To escape ``\``, ``{`` and ``}``, use ``\\``, ``{{`` and ``}}``.
                                     see DEFS,PRINTF,ROLS
 
           SUBSTR <start,end,string> Gets the portion of the specified
-		                            string between the specified start
+                                    string between the specified start
                                     and end. This replaces ROLS from
                                     SASM. ARGSFX only.
                                     see DEFS,PRINTF,STRLEN,ROLS
@@ -901,9 +898,9 @@ To escape ``\``, ``{`` and ``}``, use ``\\``, ``{{`` and ``}}``.
                                     see LOWER
 
           WRITE <ON,OFF>            When object code is written out to
-                                    disk then only blocks blocks flagged
+                                    disk then only blocks flagged
                                     to be output are written.
-                                    ON  -  Ouput blocks (Default)
+                                    ON  -  Output blocks (Default)
                                     OFF -  Stop outputting
                                     see OUTPUT
 ```
@@ -997,6 +994,9 @@ The following are labels which if defined on the command line, do various things
 
 Expression evaluation is done in order of precedence, if two operators have equal precedence then they are evaluated left to right.
 This table is a list of the operators available and their precedence (A high number means it has a high precedence).....
+
+NOTE: The MOD operation is bugged. Do not use it.
+
 ```
     Operator     Name             Action               Precedence
       >        Hi-byte      Gets the hi byte               10
@@ -1019,9 +1019,18 @@ This table is a list of the operators available and their precedence (A high num
       +        Add          Adds two numbers                1
       -        Subtract     Subtracts two numbers           1
 ```
+
 Partially enclosing an expression in brackets will give that part of the expression a higher priority, hence ``1+2*3 = 7``, but ``(1+2)*3 = 9``.
 
  All expressions are done with a 32 bit expression evaluator, if an overflow occurs while performing an operator, no overflow error will be given, however overflow errors will be given if a number is too big, i.e. a hex number has more than 8 digits, etc.
+
+Accepted bases:
+
+```
+@ - Gets the current ROM position
+$ prefix or h suffix - Hexadecimal (base-16) number
+% prefix or b suffix - Binary (base-2) number
+```
 
 # SL and ARGLINK
 SL and ArgLink SFX are the integrated linkers included with SASM and ARGSFX, respectively.  

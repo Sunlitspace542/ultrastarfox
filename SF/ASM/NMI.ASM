@@ -146,6 +146,7 @@ nmihan ; Start of NMI handler
 ; Handle rumble controller commands
 
 ; Send magic number 01110010 (rumble sentry)
+; send a bit, clock controller port 1
 	stz	WRIO				; %0
 	bit	JOYSER0
 
@@ -170,8 +171,7 @@ nmihan ; Start of NMI handler
 	stz	WRIO				; %0
 	bit	JOYSER0
 
-; Check rumble timer
-; Only send a nonzero rumble command if the timer is nonzero
+; Handle sequenced rumbles
 	lda	rumble_index
 	beq	.notable
 	phx
@@ -182,12 +182,14 @@ nmihan ; Start of NMI handler
 	inx
 	stx	rumble_index
 	plx
-	cmp #0						;so I dont have to pull x twice
-	bne	.rumblehan_donerumblecmd2		;if you hit a $00, end it all. otherwise, run it.
+	cmp #0	; So I don't have to pull X twice - Kando
+	bne	.rumblehan_donerumblecmd2	; If you hit a 0, end it all. Otherwise, run it.
 	stz	rumble_index
 	bra	.rumblehan_turnoffmotors
 
 .notable
+; Check rumble timer
+; Only send a nonzero rumble command if the timer is nonzero
 	lda	rumble_time
 	beq	.rumblehan_turnoffmotors	; if 0, turn off motors!
 	lda	rumble_cmd		; get rumble cmd bits
@@ -205,6 +207,9 @@ nmihan ; Start of NMI handler
 .rumblehan_turnoffmotors
 	lda	#0	; 0 = no rumble!
 .rumblehan_donerumblecmd
+
+; send rumble command bits out to controller port 1
+; read in a bit, send it, clock controller port 1
 
 	lsr	a				; .7 -> .6 / .0 -> .C
 	sta	WRIO
