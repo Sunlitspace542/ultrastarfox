@@ -561,15 +561,6 @@ player_Istrat
 	stz	slowstars
 	s_end_strat
 
-
-
-
-; 	IFNE	RUMBLE
-; 	; sequenced rumble testing
-; testrumble1
-; 	db		$11,$22,$33,$44,$55,$66,$77,$88,$99,$AA,$BB,$CC,$DD,$EE,$FF,$EE,$DD,$CC,$BB,$AA,$99,$88,$77,$66,$55,$44,$33,$22,$11,$91
-; 	ENDC
-
 ;*****************************************************************************
 set_playercred_l
 	a8i16
@@ -624,14 +615,6 @@ playercred_strat
 	s_set_var		W,plrotz,#0
 	
 	s_add_var		W,slowstars_viewposz,#medpspeed/4
-
-; 	IFNE	RUMBLE
-; 	; sequenced rumble testing
-; 	s_jmp_keyup		jup,.end
-	
-; 	s_queue_rumble_table	testrumble1
-; .end
-; 	ENDC
 
 	s_end_strat
 
@@ -2988,7 +2971,7 @@ playerfire_srou
 	inc			numplasers
 	trigse			$36
 	IFNE	RUMBLE
-	s_queue_rumble	4,4,3
+	s_queue_rumble	3,3,3
 	ENDC
 .npfy
 	s_bra			.noresetfc

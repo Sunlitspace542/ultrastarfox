@@ -3185,6 +3185,9 @@ dummyparent
 
 .e_do_3
 	P_SOUNDEFFECT	$49
+	IFNE	RUMBLE
+	P_QUEUERUMBLE	3,3,3
+	ENDC
 	P_SET		worldy,-50
 
 	P_END
@@ -3215,6 +3218,9 @@ dummyparent
 
 .i_do_3
 	P_SOUNDEFFECT	$49
+	IFNE	RUMBLE
+	P_QUEUERUMBLE	3,3,3
+	ENDC
 	P_SET		worldy,-10
 
 	P_END

@@ -32,7 +32,6 @@ TITLE_BAR	=	0
 
 ; Macros
 	include	INC\macros.inc
-	include	INC\RMBLMACS.INC	; Rumble controller macros
 	include	INC\MODEMAC.INC	; xAsm 'MODE' macro reimplementation
 
 ; reset timer
@@ -41,6 +40,11 @@ totaltime	=	0
 
 ; Constants
 	include	INC\vars.inc
+
+; Rumble controller macros
+	IFNE	RUMBLE
+	include	INC\RMBLMACS.INC
+	ENDC
 
 ; System defines
 	include	INC\sfcregs.inc	; SNES registers

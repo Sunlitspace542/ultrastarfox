@@ -173,7 +173,7 @@ nmihan ; Start of NMI handler
 
 ; Handle sequenced rumbles
 	lda	rumble_index
-	beq	.notable
+	beq	.notable	; If rumble_index == 0, handle timed rumbles
 	phx
 	ldx	rumble_index
 	dex
@@ -196,9 +196,9 @@ nmihan ; Start of NMI handler
 	bra	.rumblehan_donerumblecmd
 	
 .rumblehan_donerumblecmd2
-	cmp #$91
+	cmp #$91	; Is the current table value == $91?
 	bne	.rumblehan_donerumblecmd
-	pha
+	pha	; Yes! Loop rumble sequence.
 	lda #1
 	sta	rumble_index
 	pla
