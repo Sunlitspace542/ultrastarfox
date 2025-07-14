@@ -3158,7 +3158,7 @@ bossBrobnextstate
 
 	IFNE	RUMBLE
 boss7rumble1_tab
-	db	$40,$00,$04,$91
+	db	$40,$00,$00,$04,$00,$00,$91
 	ENDC
 
 boss7_Istrat
