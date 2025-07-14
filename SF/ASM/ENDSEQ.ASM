@@ -1686,7 +1686,9 @@ titleredo	a8i16
 	lda	cont0
 	bit	#key_start
 	beq	.lp
-
+	IFNE	RUMBLE
+	s_queue_rumble	4,4,6
+	ENDC
 	a16
 	pla
 	a8
@@ -1771,6 +1773,9 @@ intro_l
 	ora	contl0
 	beq	.lp3
 .waitup
+	IFNE	RUMBLE
+	s_end_rumble_table
+	ENDC
 	lda	#-2
 	sta	fadedir
 	lda	#11

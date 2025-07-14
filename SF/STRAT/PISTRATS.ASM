@@ -38,6 +38,10 @@
 
 	incpublics	EXT\pistrats.ext
 
+	IFNE	RUMBLE
+partyboost2
+	db	$11,$11,$22,$22,$33,$33,$44,$44,$44,$44,$44,$44,$44,$44,$44,$44,$44,$44,$44,$44,$44,$19
+	ENDC
 ;*****************************************************************************
 playeropening_Istrat
 	s_start_strat
@@ -95,6 +99,9 @@ playerpening_strat
 playeropeningboost_init
 	s_set_strat		x,playeropeningboost_strat
 	s_set_vartobeobj	boostobj,x
+	IFNE	RUMBLE
+	s_queue_rumble_table		partyboost2
+	ENDC
 	boost_sprite
 	trigse			$32
 	s_and_var		B,pshipflags3,#~psf3_enginesnd

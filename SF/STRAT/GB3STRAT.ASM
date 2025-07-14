@@ -3158,7 +3158,7 @@ bossBrobnextstate
 
 	IFNE	RUMBLE
 boss7rumble1_tab
-	db	$20,$11,$02,$91
+	db	$40,$00,$04,$91
 	ENDC
 
 boss7_Istrat
@@ -3403,7 +3403,7 @@ boss7alldeadb_strat
 ;-----------------------------------------------------------------------------
 boss7b_init	; hatch fire
 	IFNE	RUMBLE
-	stz	rumble_index	; kill sequenced rumble
+	s_end_rumble_table	; kill sequenced rumble
 	ENDC
 	s_set_objtobechild	y,x,#1
 	s_chk_objptr		y,boss7c2_init	

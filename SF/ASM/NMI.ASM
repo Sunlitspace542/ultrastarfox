@@ -170,7 +170,7 @@ nmihan ; Start of NMI handler
 
 	stz	WRIO				; %0
 	bit	JOYSER0
-
+.rumblehan_recheck
 ; Handle sequenced rumbles
 	lda	rumble_index
 	beq	.notable	; If rumble_index == 0, handle timed rumbles
@@ -182,8 +182,10 @@ nmihan ; Start of NMI handler
 	inx
 	stx	rumble_index
 	plx
-	cmp #0	; So I don't have to pull X twice - Kando
-	bne	.rumblehan_donerumblecmd2	; If you hit a 0, end it all. Otherwise, run it.
+	cmp #0
+	beq	.rumblehan_turnoffmotors
+	cmp #$19	; So I don't have to pull X twice - Kando
+	bne	.rumblehan_donerumblecmd2	; If you hit a $19, end it all. Otherwise, run it.
 	stz	rumble_index
 	bra	.rumblehan_turnoffmotors
 
@@ -202,7 +204,7 @@ nmihan ; Start of NMI handler
 	lda #1
 	sta	rumble_index
 	pla
-	bra .rumblehan_donerumblecmd
+	bra .rumblehan_recheck
 
 .rumblehan_turnoffmotors
 	lda	#0	; 0 = no rumble!

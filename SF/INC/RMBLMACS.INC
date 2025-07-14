@@ -54,11 +54,23 @@ s_queue_rumble_table	MACRO	[table]
 	ldx	#0
 .loop\@
 	lda.l {table},x
-	beq	.done\@
+	cmp #$19
+	beq	.done2\@
 	sta rumble_table,x
 	inx
-	cmp #20
-	bne	.loop\@
+	cpx #40
+	bmi	.loop\@
+	bra	.done\@
+.done2\@
+	sta rumble_table,x
 .done\@
 	plx
+	ENDM
+
+; Terminate rumble sequence
+s_end_rumble_table	MACRO
+	ifne	longa
+	printerror	<%m: A must be in 8-bit mode!>
+	endc
+	stz	rumble_index
 	ENDM

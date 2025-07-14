@@ -319,7 +319,7 @@ makeSMLexpobj_srou
 	s_rtl
 makeFOLexpobj_srou
 	IFNE	RUMBLE
-	s_queue_rumble	5,5,20
+	s_queue_rumble	5,5,16
 	ENDC
 	jsl			makeexpobj_srou
 	s_set_alvar		W,y,al_shape,#FOlargeshape
