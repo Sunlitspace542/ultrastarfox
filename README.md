@@ -66,7 +66,7 @@ You can then run ``send2snes.cmd`` or ``build and send to snes.cmd`` to either u
 ## Contributing
 
 PRs are welcome!  
-All changes to be submitted should be made to the [dev](https://github.com/Sunlitspace542/ultrastarfox/tree/dev) branch.  
+All changes to be submitted should be made to the [main](https://github.com/Sunlitspace542/ultrastarfox/tree/main) branch.  
 
 ## Helpful Links/tools
 
