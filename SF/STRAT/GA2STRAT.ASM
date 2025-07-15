@@ -2166,71 +2166,6 @@ meteo0_Istrat
 .badobj
 	s_jmp		explode_Istrat
 
-
-
-
-	ifeq	1
-;**********************************************************************************
-blackhole_Istrat
-	s_start_strat
-	s_sprite_obj	x,#0
-	s_set_alptrs	x,.blackhole_strat,hitflash_Istrat,.exp_Istrat
-	s_set_aldata	x,#10,#meteorAP
-	s_set_alvar	B,x,al_roty,#deg180
-	s_set_alvar	B,x,al_sbyte1,#70
-	s_set_var		B,nosetport3,#1
-.blackhole2_strat
-	s_start_strat
-	s_add_alvar		B,x,al_rotz,#12
-	s_set_objtobeplayer	y
-	s_jmp_alsflag		x,sflag1,.do
-	s_jmp_distmore		x,y,#100,.ninto
-	s_setnoremove_behind	x
-	s_set_alsflag		x,sflag1
-.do	
-	s_copy_pos		x,y
-	s_add_alvar		W,x,al_worldz,#100
-
-	s_jmp_alvarNE		B,x,al_sbyte1,#31,.nf
-	startbgm		$f1
-	fadedown
-.nf
-	s_decbne_alvar		B,x,al_sbyte1,.nc
-	routechange	2
-	s_set_var	B,levelfinished,#le_enterbhole
-.nc
-	startbgm		$f4
-
-	s_playerctrl		off
-	s_achase_alvar		W,y,al_worldy,viewcy,2
-	s_achase_alvar		W,y,al_worldx,#0,2
-
-	s_add_var		W,viewdist,#8
-
-	s_add_var		B,player_zstratadd,#12
-	s_set_var		B,screenflashcnt,#screenflashwingfrms
-	s_set_var		B,screenflashtype,#screenflashwingtype
-
-
-	s_achase_alvar		W,x,al_worldy,player_posy,2
-	s_achase_alvar		W,x,al_worldx,player_posx,2
-	s_add_alvar		W,x,al_worldz,#-20
-.ninto
-.blackhole_strat
-	s_add_playerZ	x
-	s_add_alvar	W,x,al_worldz,#-30
-	s_end_strat
-.exp_Istrat
-	s_start_strat
-	s_set_alvar	B,x,al_roty,#0
-	s_set_alvar	W,x,al_shape,#b_holl
-	s_set_alsflag	x,colldisable
-	s_set_strat	x,.blackhole2_strat	
-	s_jmpto_strat
-	endc
-
-
-	ifeq	0
 ;*********************************************************************************
 blackhole_Istrat
 	s_start_strat
@@ -2325,9 +2260,6 @@ blackhole_Istrat
 	s_achase_alvar		W,x,al_worldx,player_posx,2
 	s_add_alvar		W,x,al_worldz,#-20
 	s_brl			.blackhole_strat
-
-	endc
-
 
 ;***********************************************************************************
 aircarHP	equ	10
