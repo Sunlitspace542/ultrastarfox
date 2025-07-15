@@ -236,6 +236,13 @@ initplanets_l
 planetseq_l
 
 	a8i16
+	IFNE	RUMBLE
+; clear any timed rumbles that did not complete before we got here
+	stz	rumble_cmd
+	stz	rumble_time
+; clear any sequenced rumbles as well
+	stz	rumble_index
+	ENDC
 	jsr	convertroute
 
 	stz	sdpck3

@@ -379,6 +379,9 @@ playerWarpOut_Istrat
 
 	s_make_obj		#nullshape,.badobj
 	s_set_strat		y,hyperspaceout_Istrat
+	IFNE	RUMBLE
+	s_queue_rumble_table	hyperspacerumbletab
+	ENDC
 .badobj
 	s_set_speed		x,#120
 	s_set_var		B,player_tospeed,#120
@@ -427,6 +430,9 @@ playerWarpOut_strat
 	plx
 
 	startbgm		4
+	IFNE	RUMBLE
+	s_end_rumble_table
+	ENDC
 	s_jmp			playerinspace_strat
 
 ;*****************************************************************************

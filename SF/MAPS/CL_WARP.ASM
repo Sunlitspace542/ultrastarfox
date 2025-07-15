@@ -40,6 +40,11 @@ friendwait	=	medpspeed*30
 	maprem		mother1
 	mapwait		9000
 	setvar.n	clb2,1
+	IFNE	RUMBLE
+	start_65816
+	s_end_rumble_table	; kill hyperjump rumble
+	end_65816
+	ENDC
 	maprts
 
 

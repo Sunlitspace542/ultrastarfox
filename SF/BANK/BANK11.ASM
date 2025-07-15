@@ -11,6 +11,11 @@
 	include	EXT\bootnmi.ext
 
 	bank	11
+	IFNE	RUMBLE
+	; used by both PCSTRATS and PISTRATS
+hyperspacerumbletab
+	db	$FF,$7F,$91
+	ENDC
 	incfile	STRAT\pistrats.asm
 	incfile	STRAT\pcstrats.asm
 	incfile	STRAT\pstrats.asm
