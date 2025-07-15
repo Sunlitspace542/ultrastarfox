@@ -63,3 +63,9 @@
 	PRINTF	"Happy birthday CoolK!%n"
 	ENDC
 	ENDC 
+
+	IFEQ	_MONTH-1
+	IFEQ	_DAY-6
+	PRINTF	"Happy birthday Randy!%n"
+	ENDC
+	ENDC
