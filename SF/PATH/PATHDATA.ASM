@@ -381,6 +381,9 @@
 	s_and_var		B,pshipflags3,#~psf3_enginesnd
 	s_or_var	B,pshipflags3,#psf3_nocollisions
 	startbgm	$2
+	IFNE	RUMBLE
+	s_queue_rumble	3,3,60 ; approx. 3sec at max frame rate
+	ENDC
 	routechange	1
 	lda	#0
 	sta.l	m_clrbitmaps
