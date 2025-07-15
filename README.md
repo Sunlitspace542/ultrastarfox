@@ -35,7 +35,7 @@ Go [here](#building) to jump straight to the building instructions.
 - Palettes and graphics crunched, textures interleaved, and fonts built at assembly
 - Uses ARGLINK and ARGSFX from Star Fox 2 as linker and assembler instead of SL and SASM
 - Easier creation of wireframe models (replace face3 and face4 with aface3 and aface4 in your shape file)
-- Upload ROM directly to SNES and boot with QUsb2Snes
+- Upload ROM directly to SNES and boot with QUsb2Snes and a SD2SNES/FXPak Pro flash cartridge
 
 ## Limits Removed/Increased
 
@@ -96,7 +96,7 @@ You can then run ``send2snes.cmd`` or ``build and send to snes.cmd`` to either u
 PRs are welcome!  
 All changes to be submitted should be made to the [main](https://github.com/Sunlitspace542/ultrastarfox/tree/main) branch.  
 
-## Helpful Links/tools
+## Helpful Links/Tools
 
 [Argonaut 65816/Super FX Assembly Extension for VS Code](https://github.com/Sunlitspace542/65816-superfx-asm-argonaut-vscode)  
 [SNES Development Manual](https://archive.org/details/SNESDevManual)  
