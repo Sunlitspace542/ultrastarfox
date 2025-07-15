@@ -1,15 +1,16 @@
-
 # UltraStarFox
+
 Star Fox / Starwing source code, modified for ease-of-use and ROMHacking.
 
 ## Features
 
 - Uses GSU-2/Super FX 2 @21.4Mhz instead of MC1 @10.7Mhz
 - FastROM support (An SD2SNES/FXPak Pro bug caused instability on 2CHIP SNES revisions, though with the latest firmware this appears to no longer be the case)
-- MSU-1 support (Original ASM patch by Kurrono, ported by Kando and Sunlit)
-- SNES Mouse support and analog stick support via the SNES mouse
-- Very configurable, see SF\CONFIG\CONFIG.INC for more info
-- Lots of free ROM space
+- MSU-1 support (Original ASM patch by Kurrono, ported by Kando and Sunlit) (**DEPRECATED, TO BE REWRITTEN**)
+- SNES Mouse support and "analog stick" support via the SNES mouse
+- SNES Rumble Pad support and macros (see ``SF\INC\RMBLMACS.INC`` for macros)
+- Very configurable, see ``SF\CONFIG\CONFIG.INC`` for more info
+- Lots of free ROM space (2MB/16Mbit ROM)
 - Bugfixes and improvements
 - 256 texture slots
 - 250 faces/vertices limit for models
@@ -18,7 +19,7 @@ Star Fox / Starwing source code, modified for ease-of-use and ROMHacking.
 - Uses ARGLINK and ARGSFX from Star Fox 2 as linker and assembler instead of SL and SASM
 - Easier creation of wireframe models (replace face3 and face4 with aface3 and aface4 in your shape file)
 - All Starwing PAL and Germany text/GFX for PAL builds
-- **Kando was involved so you know it's good**
+- **Kando and Randy were involved so you know it's good**
 
 ## Building on Windows
 
@@ -36,7 +37,7 @@ After building, a debug symbol map will be created at, and a bank space report a
 
 ## Building on Linux
 
-**NOTE: this was tested on WSL with Ubuntu installed. Your mileage may vary.**  
+**NOTE: this was tested on WSL with Ubuntu installed. YMMV.**  
 
 Requirements: Ubuntu (might work with other distros) snap, DOSBox-X, git  
 
@@ -55,6 +56,7 @@ To clean, run ``make clean``.
 After building, a debug symbol map will be created at ``SYMBOLS.TXT``, and a bank space report at ``BANKS.CSV``.  
 
 ## Uploading ROM to SNES over USB with SD2SNES/FXPak(Pro)
+
 Uses [USB2SNES-cli](https://github.com/Hyphen-ated/usb2snes-cli) fork by Hyphen-ated. A prebuilt windows EXE is provided.  
 Download [QUSB2SNES](https://github.com/Skarsnik/QUsb2snes/releases).  
 Extract it somewhere and run it. Set it up for an SD2SNES/FXPak Pro.  
@@ -76,11 +78,13 @@ All changes to be submitted should be made to the [dev](https://github.com/Sunli
 [Star Fox Music Programming Starter Kit (by livvy94)](https://www.dropbox.com/sh/m3sk75dmsyx5tey/AACLDXVcQEJk3ezQCDBitEs7a?dl=0)
 
 ## TODO
+
 1. Optimize game where possible (We already have FastROM and 21Mhz SuperFX 2, can we go any further?)  
 2. Annotate and document code (in progress)  
 3. MAYBE: Disassemble all BIN files in SND directory, add documentation on custom music and the like  
 
 ## Project Structure
+
 ```
 ultrastarfox
 ├── BIN: exe files needed to assemble game code
