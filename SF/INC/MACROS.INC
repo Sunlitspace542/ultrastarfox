@@ -5888,14 +5888,14 @@ fast	MACRO ; Run MARIO chip @ 21.4mhz (no clock divider)
 	IFEQ	LONGA
 	lda	#1
 	sta	m_clsr
-	; Enable fast multiplication mode (MS1)
+	; Enable fast multiplication mode (MS1) and disable GSU IRQs
 	lda	#cfgr_ms1+cfgr_noirq
 	sta	m_cfgr
 	ELSEIF
 	a8
 	lda	#1
 	sta	m_clsr
-	; Enable fast multiplication mode (MS1)
+	; Enable fast multiplication mode (MS1) and disable GSU IRQs
 	lda	#cfgr_ms1+cfgr_noirq
 	sta	m_cfgr
 	a16
