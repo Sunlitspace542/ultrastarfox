@@ -1,25 +1,53 @@
 # UltraStarFox
 
-Star Fox / Starwing source code, modified for ease-of-use and ROMHacking.
+Star Fox / Starwing source code, modified for ease-of-use and ROMHacking.  
+
+Go [here](#building) to jump straight to the building instructions.  
+
+## Credits (A-Z)
+**Kandowontu** - The Original Star Fox Guy, Lifesaver, MSU-1 Patch RE, Rumble System Programmer (Sequences), Implemented several features (Mouse, Debug Mode/Crash Handler Restoration, Limit Removals, Easy Wireframes, other fixes and improvements)  
+**MrL314** - Texture Limit Removal Super FX Code  
+**Phonymike** - Tools (mugconv, fontconv), ROM Header  
+**Randal Linden** - Rumble Pad Designer, Rumble Pad Docs, Rumble System Programmer (Rumble Pad NMI Code)  
+**SegaRetro92** - Texture/Palette Docs, General Graphics Stuff, Author of Several Graphics Tools, German Version GFX/Text Restoration   
+**Sunlit** - Maintainer, Documentation, Toolchain Engineer, MSU-1 Patch RE, Rumble System Programmer ("Flat Rate" rumble), Rumble effect programmer, Tool Author, German Version GFX/Text Restoration  
 
 ## Features
 
-- Uses GSU-2/Super FX 2 @21.4Mhz instead of MC1 @10.7Mhz
-- FastROM support (An SD2SNES/FXPak Pro bug caused instability on 2CHIP SNES revisions, though with the latest firmware this appears to no longer be the case)
+## Cartridge Hardware Support and ROM Configuration
+
+- Uses GSU-2/Super FX 2 @21.4Mhz instead of MARIO Chip 1 @10.7Mhz
+- Super FX MS1 high-speed multiply enabled (if 21mhz is enabled)
+- FastROM support (Do not enable if you are targeting a real cartridge with a real MARIO/GSU-1/GSU-2 IC chip!)
 - MSU-1 support (Original ASM patch by Kurrono, ported by Kando and Sunlit) (**DEPRECATED, TO BE REWRITTEN**)
+
+## Accessory Support
+
 - SNES Mouse support and "analog stick" support via the SNES mouse
 - SNES Rumble Pad support and macros (see ``SF\INC\RMBLMACS.INC`` for macros)
+
+## QOL / Ease-of-use
+
 - Very configurable, see ``SF\CONFIG\CONFIG.INC`` for more info
 - Lots of free ROM space (2MB/16Mbit ROM)
 - Bugfixes and improvements
-- 256 texture slots
-- 250 faces/vertices limit for models
 - Build process optimized for speed
 - Palettes and graphics crunched, textures interleaved, and fonts built at assembly
 - Uses ARGLINK and ARGSFX from Star Fox 2 as linker and assembler instead of SL and SASM
 - Easier creation of wireframe models (replace face3 and face4 with aface3 and aface4 in your shape file)
+- Upload ROM directly to SNES and boot with QUsb2Snes
+
+## Limits Removed/Increased
+
+- 256 texture slots
+- 250 faces/vertices limit for models
+
+## Miscellaneous
+
 - All Starwing PAL and Germany text/GFX for PAL builds
 - **Kando and Randy were involved so you know it's good**
+
+## Building
 
 ## Building on Windows
 
@@ -70,17 +98,20 @@ All changes to be submitted should be made to the [main](https://github.com/Sunl
 
 ## Helpful Links/tools
 
-[Star Fox - Source Code Mods](https://docs.google.com/document/d/1kdgPCBeQFYsAepSDNpmwO8ZysRJjdnwK_5gWT2FFQEk/edit?usp=sharing)  
+[Argonaut 65816/Super FX Assembly Extension for VS Code](https://github.com/Sunlitspace542/65816-superfx-asm-argonaut-vscode)  
+[SNES Development Manual](https://archive.org/details/SNESDevManual)  
+[fullsnes - SNES Hardware Specifications (by Nocash)](https://problemkaputt.de/fullsnes.htm)  
+[MSU-1 Documentation](https://github.com/Sunlitspace542/MSU-1-Docs)  
 [65c816 Opcodes](https://undisbeliever.net/snesdev/65816-opcodes.html)  
 [65c816 Reference](https://wiki.superfamicom.org/65816-reference)  
-[MARIO (SuperFX) Chip ASM Tutorial/Reference](https://en.m.wikibooks.org/wiki/Super_NES_Programming/Super_FX_tutorial)  
+[Super FX (MARIO) Chip ASM Reference](https://en.m.wikibooks.org/wiki/Super_NES_Programming/Super_FX_tutorial)  
 [EarthBound Music Editor (But for Star Fox)](https://github.com/phonymike/ebmused4sf/)  
 [Star Fox Music Programming Starter Kit (by livvy94)](https://www.dropbox.com/sh/m3sk75dmsyx5tey/AACLDXVcQEJk3ezQCDBitEs7a?dl=0)
 
 ## TODO
 
 1. Optimize game where possible (We already have FastROM and 21Mhz SuperFX 2, can we go any further?)  
-2. Annotate and document code (in progress)  
+2. Annotate and document code (not so sure about doing this anymore)  
 3. MAYBE: Disassemble all BIN files in SND directory, add documentation on custom music and the like  
 
 ## Project Structure
