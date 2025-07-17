@@ -254,5 +254,12 @@ _SEC	=	_TIME>>8&$FF
 ; Include master configuration file
 	include	CONFIG\CONFIG.INC
 
+; Fix vanilla bug: incorrect FPS computation if PAL == 1
+	IFEQ	PAL	; if NTSC
+consoleframerate	equ	60	; NTSC = 60 frames/sec
+	ELSEIF	; if PAL
+consoleframerate	equ	50	; PAL = 50 frames/sec
+	ENDC
+
 
 

@@ -4,13 +4,6 @@
 
 ;####################################################################################################################
 
-; Increases framerate cap to 30FPS, no pacing changes.
-; Has no effect on PAL builds, as that version already
-; does this to compensate for 50hz.
-; Does not work on hardware.
-; [0 = off, 1 = on]
-_30fps	equ	0
-
 ; Disables Level of Detail (LOD, AKA simple1/2/3) model support in the shape format and renderer.
 ; Saves 6 bytes per shape, and may improve performance slightly?
 NOLODS	equ	0

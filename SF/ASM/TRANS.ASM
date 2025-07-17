@@ -210,14 +210,14 @@ stratsfrozen
 	sta	framecount
 	inc	frames
 	lda	framecount
-	cmp	#60		; per second
+	cmp	#consoleframerate	; SNES framerate
 	bcc	.noreset
 	lda	frames
 	sta	framesb
 	stz	frames
 	lda	framecount
 	sec
-	sbc	#60
+	sbc	#consoleframerate	; SNES framerate
 	sta	framecount
 .noreset
 
