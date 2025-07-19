@@ -1,4 +1,9 @@
 ;------------------------------------------------------------------------
+printerror	macro	[errormsg]
+	printf	"%q%f%q (%l) %01%31Error: {errormsg}%00%n"
+	error+
+	ENDM
+;------------------------------------------------------------------------
 	IFD		_ARGSFX
 ; Rotates a string left by offset for ARGSFX
 rols	MACRO	[string,offset]

@@ -1647,6 +1647,10 @@ titleseq_l	php
 titleredo	a8i16
 	disable
 
+	IFNE	RUMBLE
+	s_end_rumble_table	; kill intro sequenced rumble if it wasn't already for some reason
+	ENDC
+
 	lda	#1
 	sta.l	oncewipe
 	lda	#titlemap>>16

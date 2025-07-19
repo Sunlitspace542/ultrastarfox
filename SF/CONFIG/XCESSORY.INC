@@ -17,7 +17,7 @@ analogstick	equ	0
 
 ; Enable rumble support on controller port 1.
 ; [0 = off, 1 = on]
-rumble	equ	0
+rumble	equ	1
 
 ;####################################################################################################################
 
