@@ -174,14 +174,10 @@ nmihan ; Start of NMI handler
 ; Handle sequenced rumbles
 	lda	rumble_index
 	beq	.notable	; If rumble_index == 0, handle timed rumbles
-	phx
 	ldx	rumble_index
-	dex
-	lda.l	rumble_table,x
-	inx
+	lda.l	rumble_table,x - 1
 	inx
 	stx	rumble_index
-	plx
 	cmp #0
 	beq	.rumblehan_turnoffmotors
 	cmp #$19	; So I don't have to pull X twice - Kando
@@ -198,12 +194,10 @@ nmihan ; Start of NMI handler
 	bra	.rumblehan_donerumblecmd
 	
 .rumblehan_donerumblecmd2
-	cmp #$91	; Is the current table value == $91?
+	cmp	#$91	; Is the current table value == $91?
 	bne	.rumblehan_donerumblecmd
-	pha	; Yes! Loop rumble sequence.
-	lda #1
+	lda	#1	; Yes! Loop rumble sequence.
 	sta	rumble_index
-	pla
 	bra .rumblehan_recheck
 
 .rumblehan_turnoffmotors
