@@ -138,15 +138,19 @@ nmihan ; Start of NMI handler
 	nop
 	nop
 
-	ldy	#16-1				; Read 16 Controller Bits
-.readjoy2
-	lda	JOYSER0				; Controller I
-	dey
-	bpl	.readjoy2
+;	ldy	#16-1				; Read 16 Controller Bits
+;.readjoy2
+;	lda	JOYSER0				; Controller I
+;	dey
+;	bpl	.readjoy2
 
-	ldx	#$40
+; Clock controller port 1 16 times
+; Saves 70 cycles
+	jsl	clkjoyser016x_l
 
 ; Handle rumble controller commands
+
+	ldx	#$40
 
 ; Send magic number 01110010 (rumble sentry)
 ; send a bit, clock controller port 1
