@@ -113,6 +113,7 @@ nmihan ; Start of NMI handler
 ; Randy's rumble controller fix for hardware
 ; HACK: Force re-read of controller bits to get timing right for rumble handler
 
+; This part is to make sure that you don't overrun blanking
 	lda	slhvr				; Latch Raster Position
 	lda	stat78r				; Update H/V Counters
 	lda	opvctr				; Get Low 8Bits VPos
@@ -126,6 +127,8 @@ nmihan ; Start of NMI handler
 .to_skip_rumble
 	brl	.skip_rumble
 
+; This part does the equivalent of the auto-read of the controllers,
+; which is what the rumble hardware is looking for
 .readjoy
 	lda	#$01
 	sta	JOYSER0				; Reset Data Counter
