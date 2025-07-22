@@ -10,10 +10,7 @@
 
 void decode_byte_sequence(unsigned char *byte_seq, FILE *output) {
     // Extract address in little endian format
-    unsigned int address = byte_seq[0] | (byte_seq[1] << 8) | (byte_seq[2] << 16);
-
-    // Extract unknown byte
-    unsigned char unknown_byte = byte_seq[3];
+    unsigned int address = byte_seq[0] | (byte_seq[1] << 8) | (byte_seq[2] << 16) | (byte_seq[3] << 24);
 
     // Extract length of symbol name
     unsigned char name_length = byte_seq[4];
@@ -24,9 +21,9 @@ void decode_byte_sequence(unsigned char *byte_seq, FILE *output) {
     symbol_name[name_length] = '\0';
 
 	#ifdef	VERBOSE
-    fprintf(output, "Address: $%x, Unknown Byte: $%x, Name Length: $%x, Symbol Name: %s\n", address, unknown_byte, name_length, symbol_name);
+    fprintf(output, "Address: $%x, Name Length: $%x, Symbol Name: %s\n", address, name_length, symbol_name);
 	#else
-    fprintf(output, "%s\t$%x\n", symbol_name, address);
+    fprintf(output, "%s\t$%08x\n", symbol_name, address);
 	#endif
 }
 
