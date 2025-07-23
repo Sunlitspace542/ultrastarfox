@@ -41,21 +41,20 @@ pal			equ	0
 
 ;  ROM name
 
-; internal rom name, [0 = STAR FOX, 1 = STAR WING, 2 = Custom Name]
-internalname	equ	0
+; Game name
+; Changes the ROM header and Credits game names.
+; ROM Header name: [0 = STAR FOX, 1 = STAR WING, 2 = Custom Name]
+; End Credits name: [0 = STAR FOX, 1 = STARWING, 2 = Custom Name]
+gamename	equ	0
 
-; field for a custom name. the internal ROM name must be 21 CHARACTERS long. No more, no less.
+; Custom header name
+; field for a custom internal ROM name. the internal ROM name must be 21 CHARACTERS long. No more, no less.
 docustomname	MACRO
 ;		"---------------------"  line name up with these quotes
 	db	"ULTRASTARFOX         "
 	ENDM
 
-
-; Credits name
-
-; Changes the game name that shows up in the credits [0 = STAR FOX, 1 = STARWING, 2 = Custom Name]
-; distance to camera may need to be manually adjusted in MAPS\CREDITS.ASM
-credzname	equ	0
+; Custom credits name
 
 ; field for custom credits name
 docredzname	MACRO

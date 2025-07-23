@@ -22,6 +22,7 @@ Version 2.2
 - Assembler manual rewritten and moved to its own repo
 - Removed old-style MSU-1 code in preparation for the new driver from Star Fox CD
 - Added release builder script
+- internalname and credzname consolidated into one gamename equate
 
 Version 2.1
 - Added option to change RNG behavior: either reset RNG at map screen (vanilla) or set RNG at boot and never reset (from Kando)
