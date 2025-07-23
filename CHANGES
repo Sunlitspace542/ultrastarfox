@@ -1,3 +1,5 @@
+Version 2.2
+
 Version 2.1
 - Added option to change RNG behavior: either reset RNG at map screen (vanilla) or set RNG at boot and never reset (from Kando)
 - new SYMBOLS.TXT generated using ARGSFX .map output and a custom tool

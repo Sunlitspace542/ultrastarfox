@@ -5,10 +5,12 @@ Star Fox / Starwing source code, modified for ease-of-use and ROMHacking.
 Go [here](#building) to jump straight to the building instructions.  
 
 ## Credits (A-Z)
+
 - **Kandowontu** - The Original Star Fox Guy, Lifesaver, MSU-1 Patch RE, Rumble System Programmer (Sequences), Rumble Effect Programmer/Polishing, Implemented several features (Mouse, Debug Mode/Crash Handler Restoration, Limit Removals, Easy Wireframes, other fixes and improvements)  
 - **MrL314** - Texture Limit Removal Super FX Code  
 - **Phonymike** - Tools (mugconv, fontconv), ROM Header  
 - **Randal Linden** - Rumble Pad Designer, Rumble Pad Docs, Rumble System Programmer (Rumble Pad NMI Code)  
+- **Repzilon** - Misc. documentation
 - **SegaRetro92** - Texture/Palette Docs, General Graphics Stuff, Author of Several Graphics Tools, German Version GFX/Text Restoration   
 - **Sunlit** - Maintainer, Documentation, Toolchain Engineer, MSU-1 Patch RE, Rumble System Programmer ("Flat Rate" Rumble), Rumble Effect Programmer, Tool Author, German Version GFX/Text Restoration  
 
