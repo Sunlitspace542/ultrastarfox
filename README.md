@@ -64,7 +64,7 @@ To build ROM with Logging, run ``build to log.cmd``.
 
 To clean, run ``clean.cmd``.  
 
-After building, a debug symbol map will be created at, and a bank space report at ``BANKS.CSV``.  
+After building, a debug symbol map will be created at ``SYMBOLS.TXT``, and a bank space report at ``BANKS.CSV``.  
 
 ## Building on Linux
 
