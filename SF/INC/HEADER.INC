@@ -50,6 +50,11 @@ totaltime	=	0
 	include	INC\sfcregs.inc	; SNES registers
 	include INC\mregs.inc	; MARIO chip registers
 	include	INC\msuregs.inc	; MSU-1 registers
+
+; MSU-1 stuff
+	IFNE	MSU1
+	include	INC\msumacs.inc
+	ENDC
 	IFNE	msu1
 	include	INC\msutrks.inc	; MSU-1 tracklist
 	ENDC

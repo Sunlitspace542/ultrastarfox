@@ -719,6 +719,16 @@ xlen	=	22*1024+450
 	ENDC
 	alc	boostcnt,1
 
+; msudrv.asm
+	IFNE	MSU1
+	zalc	msufadeflag,1	; \
+	zalc	curmsuvolume,1	; / MUST BE IN ZEROPAGE!!
+	zalc	msu_dest_zptr,2	; zp pointer for data stream destination
+
+	; MSU-1 data streaming routine alcs
+	alc	msu_read_len,2
+	ENDC
+
 	IFNE	RUMBLE
 ; zeropage alcs for rumble
 	zalc	rumble_cmd,1	; command byte

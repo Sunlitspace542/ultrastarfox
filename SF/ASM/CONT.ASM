@@ -30,6 +30,9 @@ briefing_l
 	php
 	a8i16
 	bgm	ops
+	IFNE	MSU1
+	msuplay_alt	controls,repeat
+	ENDC
 	disable
 	lda	#$80
 	setinidisp1

@@ -1747,6 +1747,10 @@ intro_l
 	bne	.ll
 
 	bgm	intro
+	IFNE	MSU1
+	msuplay	introdemo,repeat
+	ENDC
+
 	disable
 
 	lda	#intromap>>16

@@ -129,6 +129,9 @@ bg_training_1	init_bg	mode2
 	shadowheight 0
 	bg2Yscroll	232
 	bgm	training
+	IFNE	MSU1
+	msuplay trainingmode,repeat
+	ENDC
 	planet	night
 
 bg_1_2_1	init_bg	mode2
@@ -719,6 +722,9 @@ bg_title_1
 	hofmode	rotate
 	bg2Yscroll	257
 	bgm	title
+	IFNE	MSU1
+	msuplay	title,repeat
+	ENDC
 	lda	#1+2+4
 	sta	tm
 	space	night

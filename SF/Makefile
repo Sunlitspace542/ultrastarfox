@@ -7,6 +7,9 @@ ASM=ARGSFXX
 # Set max error count, set heap for SASM, hide assembler title text, and export symbols for ARGSFX
 ASMFLAGS= -m30 -e__heap=14400 -e__notitle -z
 
+# MSU-1 Data file Assembler
+MSUASM=SASMX -m30 -e__heap=14400 -e__notitle
+
 # Linker
 LINK=ARGLINK
 LOPTS=-b30 -h1024 -t7d -z
@@ -86,6 +89,7 @@ ALLFILES= BANK\BANK0.SOB BANK\BANK1.SOB BANK\BANK2.SOB \
 	@$(FONT) $<
 
 # Everything that should be done when make is executed
+# add sf.msu before sf.sfcd in this list if using MSU-1 data streaming
 all: setup make-allcols msprites crunch fonts sf.sfc donebld
 
 setup:
@@ -200,6 +204,12 @@ sf.sfc: $(ALLFILES)
 	@$(LINK) $(LOPTS) -o$@ @flist
 	@$(EXTEND) $@ $(EXTOPTS)
 	@$(CHECK) $(COPTS) $@
+
+# MSU-1 Data File
+sf.msu:
+	@cd msudata
+	@$(MSUASM) MSUDATA.ASM -o..\$@
+	@cd ..
 
 # Actions to perform when assembly is completed
 donebld:

@@ -9,6 +9,7 @@
 	include	EXT\ga2strat.ext
 	include	EXT\dstrats.ext
 	include	EXT\bootnmi.ext
+	include	EXT\msudrv.ext
 
 	bank	11
 	IFNE	RUMBLE

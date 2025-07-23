@@ -1396,9 +1396,8 @@ dopause	php
 	jsr	printpause
 	jsl	transfer_l		;transfer bitmap, do strats etc.
 	IFNE	msu1
-	LDA	#audiostate_pause
+	LDA	#audiostate_none
 	STA	msu_control
-	LDA #$64
 	ENDC
 	a8
 .wait	waitdma	100

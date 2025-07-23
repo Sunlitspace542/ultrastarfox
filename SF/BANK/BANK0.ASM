@@ -91,6 +91,9 @@ abort_vn
 	inccru	bgandpcr,data\and.pcr
 	incfile	STRAT\istrats.asm
 	incfile	STRAT\d3strats.asm
+	IFNE	MSU1
+	include	ASM\MSUDRV.ASM ; MSU-1 music driver
+	ENDC
 	bankend	32
 
 	;; BEGIN ROM HEADER

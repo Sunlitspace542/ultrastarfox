@@ -168,7 +168,7 @@ firsttimeuse
 	IFNE	msu1
 CheckForMSU
 	lda	MSU_ID
-	cmp	#$53	; 'S'
+	cmp	#'S'	;-MSU1
 	bne	NoMSU	; Stop checking if it's wrong
 MSUFound
 	lda	#1

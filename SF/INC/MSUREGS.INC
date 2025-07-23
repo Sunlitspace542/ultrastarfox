@@ -11,7 +11,7 @@
 
 ; READING
 msu_status	equ	$2000 ; Status port
-msu_read	equ	$2001 ; Data read port
+msu_read	equ	$2001 ; Data read port - when read, returns the next data byte, then increments the seek port address by 1
 msu_id		equ	$2002 ; Identification bytes
 msu_id2     equ $2003 ; contains ASCII string "S-MSU1"
 msu_id3     equ $2004
@@ -20,7 +20,7 @@ msu_id5     equ $2006
 msu_id6     equ $2007
 
 ; WRITING
-msu_seek	equ	$2000 ; Data seek port
+msu_seek	equ	$2000 ; Data seek port bytes, forms a 32 bit address
 msu_seek2	equ	$2001
 msu_seek3	equ	$2002
 msu_seek4	equ	$2003
@@ -47,11 +47,15 @@ status_revision3        equ 00000001b ; 1
 ; ## MSU_CONTROL register ($2007) ##
 ; Bit 0: Play track flag
 ; Bit 1: Repeat track flag
-; Bit 2: Pause track flag
+; Bit 2: Resume track flag
 ; Bits 3 - 7: unused
 audiostate_none		equ	00000000b ; 0
 audiostate_norepeat	equ	00000001b ; 1
 audiostate_repeat	equ	00000011b ; 3
-audiostate_pause	equ	00000100b ; 4
+audiostate_resume	equ	00000100b ; 4
+
+; MSU-1 Driver config
+msu_mastervol		equ	255	; Master volume
+msu_voldecrement	equ 3	; Amount to decrease per frame during fadeout
 
 ; EOF

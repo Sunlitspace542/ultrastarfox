@@ -175,7 +175,11 @@ facedata	incbin	data\face.cgx
 firstsndbnk	=	24
 musicsize	=	0
 
+	IFNE	MSU1
+	incsnd	sound0,snd\msusnd0.bin
+	ELSEIF
 	incsnd	sound0,snd\sgsound0.bin
+	ENDC
 	incsnd	sound1,snd\sgsound1.bin
 
 	IFEQ	PAL
