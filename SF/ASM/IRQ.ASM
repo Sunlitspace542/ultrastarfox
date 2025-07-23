@@ -1599,11 +1599,7 @@ startmus	php
 	beq	.check
 	bra	.trig3
 .start	lda	bgm_music
-	IFNE	msu_legacy
-	jsr 	$7ED000 ; MSU-1 routine to determine song to play
-	ELSEIF
 	sta	apu_port0
-	ENDC
 	inc	bgmcnt
 	bra	.trig3
 .check	lda	apu_port0

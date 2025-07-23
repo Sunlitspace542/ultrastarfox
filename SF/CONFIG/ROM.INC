@@ -13,16 +13,6 @@ SUPERFX3	equ 0
 ; MSU-1 support (not yet implemented)
 msu1		equ	0
 
-; Old-style MSU-1 support (DEPRECATED, to be rewritten) [0 = off, 1 = on]
-; The game looks for the MSU-1 on startup.
-; If the MSU-1 is not present, the game falls back to SPC700 audio.
-msu_legacy	equ 0
-
-; MSU-1 video player (not yet implemented)
-; requires that MSU-1 support be enabled
-; [0 = off, 1 = on]
-msuvideo	equ	0
-
 ; enable/disable FastROM [1 = on, 0=off]
 ; Note that this is not supported by the real MARIO or Super FX 1/2 chips.
 ; Emulators/Flashcarts support it due to inaccurate implementations of the hardware.
@@ -73,12 +63,3 @@ docredzname	MACRO
 	ENDM
 
 ;####################################################################################################################
-
-; Sanity checks (do not touch)
-
-	IFEQ	msu_legacy!msu1
-	IFNE	msuvideo
-	printf	"msu must be enabled in CONFIG\ROM.INC!"
-	fail
-	ENDC
-	ENDC

@@ -6,6 +6,7 @@ Go [here](#building) to jump straight to the building instructions.
 
 ## Credits (A-Z)
 
+- **H A M G E R** - Wireframe shield meter color changing Super FX code
 - **Kandowontu** - The Original Star Fox Guy, Lifesaver, MSU-1 Patch RE, Rumble System Programmer (Sequences), Rumble Effect Programmer/Polishing, Implemented several features (Mouse, Debug Mode/Crash Handler Restoration, Limit Removals, Easy Wireframes, other fixes and improvements)  
 - **MrL314** - Texture Limit Removal Super FX Code  
 - **Phonymike** - Tools (mugconv, fontconv), ROM Header  
@@ -21,7 +22,7 @@ Go [here](#building) to jump straight to the building instructions.
 - Uses GSU-2/Super FX 2 @21.4Mhz instead of MARIO Chip 1 @10.7Mhz
 - Super FX MS1 high-speed multiply enabled (if 21mhz is enabled)
 - FastROM support (Do not enable if you are targeting a real cartridge with a real MARIO/GSU-1/GSU-2 IC chip!)
-- MSU-1 support (Original ASM patch by Kurrono, ported by Kando and Sunlit) (**DEPRECATED, TO BE REWRITTEN**)
+- 
 
 ## Accessory Support
 
@@ -30,7 +31,7 @@ Go [here](#building) to jump straight to the building instructions.
 
 ## QOL / Ease-of-use
 
-- Very configurable, see ``SF\CONFIG\CONFIG.INC`` for more info
+- Very configurable out-of-the-box, see ``SF\CONFIG\CONFIG.INC`` for more info
 - Lots of free ROM space (2MB/16Mbit ROM)
 - Bugfixes and improvements
 - Build process optimized for speed
@@ -101,6 +102,7 @@ All changes to be submitted should be made to the [main](https://github.com/Sunl
 ## Helpful Links/Tools
 
 [Argonaut 65816/Super FX Assembly Extension for VS Code](https://github.com/Sunlitspace542/65816-superfx-asm-argonaut-vscode)  
+[ArgSfx/SASM Assembler Manual](https://github.com/Sunlitspace542/ArgSfx-SASM-Docs/tree/main)  
 [SNES Development Manual](https://archive.org/details/SNESDevManual)  
 [fullsnes - SNES Hardware Specifications (by Nocash)](https://problemkaputt.de/fullsnes.htm)  
 [MSU-1 Documentation](https://github.com/Sunlitspace542/MSU-1-Docs)  
@@ -134,10 +136,10 @@ ultrastarfox
 │   ├── MARIO: .MC MARIO (SuperFX) ASM code
 │   ├── MSG: Message files for English, Japanese, German, and French
 │   ├── MSPRITES: contains interleaved FXGfx format textures
-│   ├── PATH: contains all PATH language code
-│   ├── SHAPES: contains all shape files
+│   ├── PATH: contains all PATH language code (used for some object behaviors)
+│   ├── SHAPES: contains all shape (model) files
 │   ├── SND: sound/music data
-│   └── STRAT: Code for Strategies (Object behaviors)
+│   └── STRAT: Code for Strategies (object behaviors)
 ├── TOOLS: tools such as PACKER and SHAPED
 └── DOCS: .md format text files covering various aspects of Star Fox
 ```

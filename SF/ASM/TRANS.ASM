@@ -245,12 +245,6 @@ stratsfrozen
 	lda.l	m_points_done
 	printd	1,6
 
-	; MSU track debugging
-	IFNE	msu_legacy
-	lda	msu_017f ; current MSU track
-	printd	1,2
-	ENDC
-
 	;lda.l	m_visis_done+1
 	;printd	1,7
 	;lda.l	m_visis_done

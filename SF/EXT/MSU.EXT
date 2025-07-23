@@ -1,3 +1,0 @@
-	IFNE	msu_legacy
-	global	transfermsu
-	ENDC

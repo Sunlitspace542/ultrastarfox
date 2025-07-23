@@ -103,7 +103,7 @@ restart	ai16 ; set A/X/Y to 16 bit
 	lda	mousemodetemp ; load value in mousemode temp var to A
 	pha ; Push A to stack
 	ENDC ; End conditional
-	IFNE	msu_legacy
+	IFNE	msu1
 	lda	msupresent
 	pha
 	ENDC
@@ -125,7 +125,7 @@ restart	ai16 ; set A/X/Y to 16 bit
 	sta	rand
 	ENDC
 
-	IFNE	msu_legacy
+	IFNE	msu1
 	pla
 	sta	msupresent
 	ENDC
@@ -165,7 +165,7 @@ firsttimeuse
 	jml	planetseq_l ; Jump to planet routine
 
 ;-----------------------------------------------------------------------
-	IFNE	msu_legacy
+	IFNE	msu1
 CheckForMSU
 	lda	MSU_ID
 	cmp	#$53	; 'S'
@@ -173,7 +173,6 @@ CheckForMSU
 MSUFound
 	lda	#1
 	sta	msupresent
-;	startbgm $F0
 NoMSU
 	rtl
 	ENDC
@@ -263,11 +262,7 @@ initialise_ram
 	dex ; decrement X
 	bpl	.zpage ; repeat until x = 0
 
-	IFNE	msu_legacy
-	jsl	transfermsu ; Copy MSU1 handler to RAM at $FD00
-	ELSEIF ; when MSU is on, this is called in MSU.ASM instead
 	jsl	copy_to_0101_l ; Copy NMI handler to RAM at $0101
-	ENDC
 
 ; NTSC/PAL
 	a8 ; set A to 8 bit

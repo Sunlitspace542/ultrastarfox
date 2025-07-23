@@ -299,12 +299,6 @@ xlen	=	22*1024+450
 ;	zalc	pat0ptr,2
 ;	zalc	pattern0,1
 ;	zalc	pattern1,1
-;--------MSU1---------
-	IFNE	msu_legacy
-    zalc    msu_017e,1 ; MSU1 zeropage variable ($7E017E)
-    zalc    msu_017f,1 ; MSU1 zeropage variable ($7E017F)
-	ENDC
-;---------------------
 
 
 ; Vars kept between levels
@@ -720,7 +714,9 @@ xlen	=	22*1024+450
 	alc	boostorbrake,2
 	ENDC
 	alc	open_text,2
+	IFNE	msu1
 	alc	msupresent,1
+	ENDC
 	alc	boostcnt,1
 
 	IFNE	RUMBLE
