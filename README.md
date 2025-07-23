@@ -7,13 +7,13 @@ Go [here](#building) to jump straight to the building instructions.
 ## Credits (A-Z)
 
 - **H A M G E R** - Wireframe shield meter color changing Super FX code
-- **Kandowontu** - The Original Star Fox Guy, Lifesaver, MSU-1 Patch RE, Rumble System Programmer (Sequences), Rumble Effect Programmer/Polishing, Implemented several features (Mouse, Debug Mode/Crash Handler Restoration, Limit Removals, Easy Wireframes, other fixes and improvements)  
+- **Kandowontu** - The Original Star Fox Guy, Lifesaver, Rumble System Programmer (Sequences), Rumble Effect Programmer/Polishing, Implemented several features (Mouse, Debug Mode/Crash Handler Restoration, Limit Removals, Easy Wireframes, other fixes and improvements)  
 - **MrL314** - Texture Limit Removal Super FX Code  
 - **Phonymike** - Tools (mugconv, fontconv), ROM Header  
 - **Randal Linden** - Rumble Pad Designer, Rumble Pad Docs, Rumble System Programmer (Rumble Pad NMI Code)  
 - **Repzilon** - Misc. documentation
 - **SegaRetro92** - Texture/Palette Docs, General Graphics Stuff, Author of Several Graphics Tools, German Version GFX/Text Restoration   
-- **Sunlit** - Maintainer, Documentation, Toolchain Engineer, MSU-1 Patch RE, Rumble System Programmer ("Flat Rate" Rumble), Rumble Effect Programmer, Tool Author, German Version GFX/Text Restoration  
+- **Sunlit** - Maintainer, Documentation, Toolchain Engineer, Rumble System Programmer ("Flat Rate" Rumble), Rumble Effect Programmer, Tool Author, German Version GFX/Text Restoration  
 
 ## Features
 
@@ -22,7 +22,6 @@ Go [here](#building) to jump straight to the building instructions.
 - Uses GSU-2/Super FX 2 @21.4Mhz instead of MARIO Chip 1 @10.7Mhz
 - Super FX MS1 high-speed multiply enabled (if 21mhz is enabled)
 - FastROM support (Do not enable if you are targeting a real cartridge with a real MARIO/GSU-1/GSU-2 IC chip!)
-- 
 
 ## Accessory Support
 
