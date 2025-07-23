@@ -1,6 +1,6 @@
 # UltraStarFox
 
-Star Fox / Starwing source code, modified for ease-of-use and ROMHacking.  
+Star Fox / Starwing source code, modified for ease-of-use and ROMhacking.  
 
 Go [here](#building) to jump straight to the building instructions.  
 
@@ -13,7 +13,7 @@ Go [here](#building) to jump straight to the building instructions.
 - **Randal Linden** - Rumble Pad Designer, Rumble Pad Docs, Rumble System Programmer (Rumble Pad NMI Code)  
 - **Repzilon** - Misc. documentation
 - **SegaRetro92** - Texture/Palette Docs, General Graphics Stuff, Author of Several Graphics Tools, German Version GFX/Text Restoration   
-- **Sunlit** - Maintainer, Documentation, Toolchain Engineer, Rumble System Programmer ("Flat Rate" Rumble), Rumble Effect Programmer, Tool Author, German Version GFX/Text Restoration  
+- **Sunlit** - Maintainer, Documentation, Toolchain Engineer, Rumble System Programmer ("Flat Rate" Rumble), Rumble Effect Programmer, Tool Author, German Version GFX/Text Restoration, Release Builder Script  
 
 ## Features
 
@@ -38,6 +38,7 @@ Go [here](#building) to jump straight to the building instructions.
 - Uses ARGLINK and ARGSFX from Star Fox 2 as linker and assembler instead of SL and SASM
 - Easier creation of wireframe models (replace face3 and face4 with aface3 and aface4 in your shape file)
 - Upload ROM directly to SNES and boot with QUsb2Snes and a SD2SNES/FXPak Pro flash cartridge
+- Easily create patches for your ROMhack with ``buildrelease.cmd``
 
 ## Limits Removed/Increased
 
