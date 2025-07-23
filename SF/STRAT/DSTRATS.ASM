@@ -5110,9 +5110,6 @@ madbiker_istrat
 
 .initboost
 	s_mode_change		x,+1
-;	s_set_vartobeobj	boostobj,x
-;	s_set_var		W,spranimcnt,#2
-;	s_set_alvar		B,x,al_sbyte1,#20
 
 ;*********
 .doboost

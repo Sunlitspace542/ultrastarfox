@@ -58,8 +58,6 @@ initgame_strats_l
 	sta	gameflags2
 	stz	bossflags
 	stz	stratflags
-	lda	#1
-	sta	shieldon
 
 
 	lda	#40

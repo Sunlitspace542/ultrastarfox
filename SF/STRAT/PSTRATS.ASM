@@ -3257,8 +3257,6 @@ pexplode_Istrat
 
 	s_dec_var		B,lives
 	bne			.settime
-	lda	#1
-	sta	gameover
 	s_set_var		B,timeuntilfade,#20
 	s_bra			.end
 .settime

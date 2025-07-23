@@ -14,7 +14,7 @@
 	end_65816
 
 	mapcode_jsl	initblack_l
-	setvar		stayblack,10
+	setvar.b		stayblack,10
 
 	setfadeup	quick
 

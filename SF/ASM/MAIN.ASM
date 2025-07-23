@@ -110,8 +110,6 @@ initgame_l ; Initialize game
 	stz	sdpck3 ; store 0 at sdpck3 var
 
 	a8 ; set A to 8 bit
-	lda	#1 ; Load 1 into A
-	sta	shieldon ; Store A into shieldon var (shield on)
 	stz	showtype ; store 0 at showtype var
 	stz	msg_count1 ; store 0 at msg_count1 var
 	stz	msg_count2 ; store 0 at msg_count2 var

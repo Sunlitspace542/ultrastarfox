@@ -16,7 +16,7 @@ timeovercont
 	end_65816
 
 	mapcode_jsl	initblack_l
-	setvar		stayblack,10
+	setvar.b		stayblack,10
 
 	mapwait	800
 
@@ -60,7 +60,7 @@ contmap	setfadedown	quick
 	mapwait	medpspeed*4
 
 	mapcode_jsl	initblack_l
-	setvar.n	stayblack,3
+	setvar.b	stayblack,3
 	setfadeup	quick
 .ll	mapwait	4000
 	mapgoto	.ll

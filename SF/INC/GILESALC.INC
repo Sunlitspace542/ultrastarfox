@@ -97,7 +97,8 @@ psf3_forcebrake	equ	4
 psf3_nocollisions	equ	8
 psf3_beamball		equ	16
 psf3_noviewchange	equ	32
-; 2 bits free
+psf3_keeppstrat		equ	64
+; 1 bit free
 
 	alc	specials_dead,1
 

@@ -488,9 +488,11 @@ setbginforeq_l
 	ora	newplayerstrat+1
 	beq	.con534
 
-	lda	keeppstrat
-	and	#255
+	a8
+	lda	pshipflags3
+	bit	#psf3_keeppstrat
 	bne	.con534
+	a16
 
 	lda	newplayerstrat
 	sta	al_stratptr,x
@@ -500,7 +502,10 @@ setbginforeq_l
 .nowrite	blink
 .con534
 	a8
-	stz	keeppstrat
+	lda	pshipflags3
+	and	#~psf3_keeppstrat
+	sta	pshipflags3
+;	stz	keeppstrat
 
 
 	lda	inatunnel
