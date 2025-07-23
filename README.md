@@ -117,6 +117,7 @@ All changes to be submitted should be made to the [main](https://github.com/Sunl
 1. Optimize game where possible (We already have FastROM and 21Mhz SuperFX 2, can we go any further?)  
 2. Annotate and document code (not so sure about doing this anymore)  
 3. MAYBE: Disassemble all BIN files in SND directory, add documentation on custom music and the like  
+4. Reimplement MSU-1 support using the driver I wrote for Star Fox CD
 
 ## Project Structure
 
