@@ -48,7 +48,7 @@ pal			equ	0
 gamename	equ	0
 
 ; Custom header name
-; field for a custom internal ROM name. the internal ROM name must be 21 CHARACTERS long. No more, no less.
+; field for a custom internal ROM name. the internal ROM name must be 21 ASCII CHARACTERS long. No more, no less.
 docustomname	MACRO
 ;		"---------------------"  line name up with these quotes
 	db	"ULTRASTARFOX         "
