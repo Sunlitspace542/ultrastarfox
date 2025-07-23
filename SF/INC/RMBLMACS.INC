@@ -74,3 +74,11 @@ s_end_rumble_table	MACRO
 	endc
 	stz	rumble_index
 	ENDM
+
+;------------------------------------
+; rumble sequence constants
+rmblseqlen	equ	40	; rumble sequence max length
+
+; special rumble sequence commands
+rmblend		equ	$19	; end sequence
+rmblloop	equ	$91	; loop sequence

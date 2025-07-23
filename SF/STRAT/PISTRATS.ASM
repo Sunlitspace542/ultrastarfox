@@ -39,8 +39,8 @@
 	incpublics	EXT\pistrats.ext
 
 	IFNE	RUMBLE
-partyboost2
-	db	$11,$11,$22,$22,$33,$33,$44,$44,$44,$44,$44,$44,$44,$44,$44,$44,$44,$44,$44,$44,$44,$19
+partyboostrumbletab2
+	db	$11,$11,$22,$22,$33,$33,$44,$44,$44,$44,$44,$44,$44,$44,$44,$44,$44,$44,$44,$44,$44,rmblend
 	ENDC
 ;*****************************************************************************
 playeropening_Istrat
@@ -100,7 +100,7 @@ playeropeningboost_init
 	s_set_strat		x,playeropeningboost_strat
 	s_set_vartobeobj	boostobj,x
 	IFNE	RUMBLE
-	s_queue_rumble_table		partyboost2
+	s_queue_rumble_table	partyboostrumbletab2
 	ENDC
 	boost_sprite
 	trigse			$32

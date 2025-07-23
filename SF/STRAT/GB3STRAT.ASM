@@ -3157,8 +3157,8 @@ bossBrobnextstate
 ;	mapobj	0000,0000,-70<<boss7_scale,-200,boss_7_1,boss7_Istrat
 
 	IFNE	RUMBLE
-boss7rumble1_tab
-	db	$40,$00,$00,$04,$00,$00,$91
+boss7rumbletab
+	db	$40,$00,$00,$04,$00,$00,rmblloop
 	ENDC
 
 boss7_Istrat
@@ -3194,7 +3194,7 @@ boss7_Istrat
 
 	trigse		$5b
 	IFNE	RUMBLE
-	s_queue_rumble_table	boss7rumble1_tab	; attack carrier go brrrrrrrrrrrrr
+	s_queue_rumble_table	boss7rumbletab	; attack carrier go brrrrrrrrrrrrr
 	ENDC
 	s_set_alsflag	x,nohitaffect
  
