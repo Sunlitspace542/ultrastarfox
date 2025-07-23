@@ -1,4 +1,27 @@
 Version 2.2
+- Build system changes
+- New optional RNG algorithm based on 789 xorshift
+- Added ROM header config for Super FX 3
+- Updated bgconv to v1.1
+- New tool: bgoptimize
+- 28 bytes of RAM saved
+- Option to disable LODs added
+- Added PATH+Strat language extensions from SFCD and SFEX
+- Document FACE.CGX frame indices
+- Configuration fixes
+- Full set of solid face macros, 1-12 points added
+- Removed dummied out 1_1b script stuff
+- Fixed missing texpal_ref.txt (now a markdown document)
+- Fixed xorshift RNG being set to 0 when restart runs
+- Remove weird duplicate TOOLS directory
+- MOJI_X.TRN file docs
+- Japanese character docs from Repzilon
+- Added rumble support (Shindou Edition)
+- Saved 70 cycles in IRQ when rumble is enabled
+- Fix MAPDEC to account for "unused byte" actually being part of the address/value
+- Assembler manual rewritten and moved to its own repo
+- Removed old-style MSU-1 code in preparation for the new driver from Star Fox CD
+- Added release builder script
 
 Version 2.1
 - Added option to change RNG behavior: either reset RNG at map screen (vanilla) or set RNG at boot and never reset (from Kando)
