@@ -39,8 +39,6 @@ japan		equ 0
 ; PAL/NTSC [0 = NTSC, 1 = PAL] (DO NOT USE IF JAPAN = 1)
 pal			equ	0
 
-;  ROM name
-
 ; Game name
 ; Changes the ROM header and Credits game names.
 ; ROM Header name: [0 = STAR FOX, 1 = STAR WING, 2 = Custom Name]
