@@ -12,7 +12,7 @@ Version 2.2
 - Full set of solid face macros, 1-12 points added
 - Removed dummied out 1_1b script stuff
 - Fixed missing texpal_ref.txt (now a markdown document)
-- Fixed xorshift RNG being set to 0 when restart runs
+- Fixed xorshift RNG seed being set to 0 when restart runs (which will kill RNG)
 - Remove weird duplicate TOOLS directory
 - MOJI_X.TRN file docs
 - Japanese character docs from Repzilon
