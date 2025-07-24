@@ -57,8 +57,8 @@
 	msutrack	secretactivated,37 ;Secret Activated
 	msutrack	gameenddemo,38
 	msutrack	gameover,39	;Game Over
-	msutrack	fanfareband,40	;Stage Clear (Band)
-	msutrack	fanfareorch,41	;Stage Clear (Orch)
+	msutrack	clearband,40	;Stage Clear (Band)
+	msutrack	clearorch,41	;Stage Clear (Orch)
 	msutrack	downband,42	;Player Down (Band)
 	msutrack1	downorch,43	;Player Down (Orch)
 ; EOF
