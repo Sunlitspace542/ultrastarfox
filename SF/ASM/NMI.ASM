@@ -90,19 +90,6 @@ nmihan ; Start of NMI handler
 	plb ; Pull data bank from stack
 	ENDC ; End conditional
 
-	IFNE	MSU1
-; Handle MSU-1 fades
-	lda msufadeflag	; check fade flag
-	beq .msu1han_nofade	; if zero, don't fade
-	lda curmsuvolume	; load current volume
-	beq .msu1han_nofade	; if zero, don't fade
-	sec
-	sbc	#msu_voldecrement
-	sta curmsuvolume	; store new volume
-	sta msu_volume	; set msu-1 volume
-.msu1han_nofade
-	ENDC
-
 	IFNE	RUMBLE
 ; Randy's rumble controller fix for hardware
 ; HACK: Force re-read of controller bits to get timing right for rumble handler
@@ -251,6 +238,20 @@ nmihan ; Start of NMI handler
 
 .skip_rumble
 	ENDC
+
+	IFNE	MSU1
+; Handle MSU-1 fades
+	lda msufadeflag	; check fade flag
+	beq .msu1han_nofade	; if zero, don't fade
+	lda curmsuvolume	; load current volume
+	beq .msu1han_nofade	; if zero, don't fade
+	sec
+	sbc	#msu_voldecrement
+	sta curmsuvolume	; store new volume
+	sta msu_volume	; set msu-1 volume
+.msu1han_nofade
+	ENDC
+
 
 	nastyon ; Turn MARIO nasty mode on
 	jsl	irqcode_l ; Jump to irqcode_l

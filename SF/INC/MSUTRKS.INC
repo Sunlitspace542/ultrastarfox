@@ -3,7 +3,7 @@
 ;###################
 
 ; -- OPENING --
-	msutrack	introdemo,1	;Intro Demonstration
+	msutrack	titledemo,1	;Title Demonstration
 	msutrack	title,2	;Title Screen
 	msutrack	controls,3	;Controls
 	msutrack	trainingmode,4	;Training
@@ -55,10 +55,13 @@
 	msutrack	enteringdangerousterritory,35 ;Entering Dangerous Territory
 	msutrack	staffroll,36 ;Staff Roll
 	msutrack	secretactivated,37 ;Secret Activated
-	msutrack	gameenddemo,38
-	msutrack	gameover,39	;Game Over
-	msutrack	clearband,40	;Stage Clear (Band)
-	msutrack	clearorch,41	;Stage Clear (Orch)
-	msutrack	downband,42	;Player Down (Band)
-	msutrack	downorch,43	;Player Down (Orch)
+	msutrack	gameenddemo,38	;Game End Demonstration
+	msutrack	bossroll,39	;Enemy Force Commander Data Roll Sequence
+	msutrack	gameover,40	;Game Over
+	msutrack	clearband,41	;Stage Clear (Band)
+	msutrack	clearorch,42	;Stage Clear (Orch)
+	msutrack	downband,43	;Player Down (Band)
+	msutrack	downorch,44	;Player Down (Orch)
+	msutrack	enterhyperspace,45	;Enter Hyperspace
+	msutrack	exithyperspace,46	;Exit Hyperspace
 ; EOF

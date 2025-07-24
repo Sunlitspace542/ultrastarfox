@@ -7,7 +7,7 @@ cl_ground
 	mapwait	2000
 	setbgm	bgm_fanfare
 	IFNE	MSU1
-	mapmsuplay	clearband,norepeat
+	mapmsuplay	clearband,repeat
 	ENDC
 
 	mapwait	3000

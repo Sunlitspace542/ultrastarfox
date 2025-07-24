@@ -3116,6 +3116,14 @@ playerdead_Istrat
 .nsnd
 
 ;	startbgm			$f0
+	IFNE	MSU1
+	s_jmp_vareq	B,orchorband,#msu_orch,.dobgmdownorch
+	s_msuplay	downband,norepeat
+	s_bra	.donedownbgm
+.dobgmdownorch
+	s_msuplay	downorch,norepeat
+.donedownbgm
+	ENDC
 	s_clr_alsflag		x,sflag1	; hit gnd sound.
 	s_playerctrl		off
 

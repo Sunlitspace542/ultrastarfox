@@ -430,6 +430,10 @@ playerWarpOut_strat
 	plx
 
 	startbgm		4
+	IFNE	msu1
+	; start space armada stage theme
+	s_msuplay	level1_3,repeat	; there is a method to my madness, see bgs.asm, "bg_1_3i_1"
+	ENDC
 	IFNE	RUMBLE
 	s_end_rumble_table
 	ENDC

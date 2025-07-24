@@ -21,6 +21,15 @@ msuplay	macro	[track,audiostate]
 	plp
 	endm
 ;-------------------------------------------------------------
+; specifically for stage 1-3. yes, really.
+msubgmrestart	MACRO	[track,audiostate]
+	lda	bgflags
+	bit	#bgf_restart
+	beq	.\@ok
+	msuplay	{track},{audiostate}
+.\@ok
+	ENDM
+;-------------------------------------------------------------
 	; use this macro if the former breaks stuff
 	; you have to know what A/X should and will be,
 	; and if any macros using savemode/returnmode are run before using this

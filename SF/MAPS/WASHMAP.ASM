@@ -7,7 +7,9 @@ rotnum	=	deg360/rotsize
 prot	=	0
 
 	setbgm	6
-
+	IFNE	MSU1
+	mapmsuplay	boss1_3,repeat
+	ENDC
 	mapwait	300
 	mapobj	0000,0000,(-50<<boss8_scale)+nucleusheight,210<<boss8_scale,boss_8_0,boss8_Istrat
 
