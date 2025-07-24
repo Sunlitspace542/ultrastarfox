@@ -54,9 +54,10 @@ totaltime	=	0
 ; MSU-1 stuff
 	IFNE	MSU1
 	include	INC\msumacs.inc
-	ENDC
-	IFNE	msu1
 	include	INC\msutrks.inc	; MSU-1 tracklist
+	IFNE	MSUDATA
+	include MSUDATA\MSUDATA.INC ; MSU-1 data file offsets
+	ENDC
 	ENDC
 
 ; Sound effect IDs

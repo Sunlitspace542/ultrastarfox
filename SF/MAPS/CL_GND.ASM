@@ -1,9 +1,14 @@
 cl_ground
-
+	IFNE	MSU1
+	mapmsufade
+	ENDC
 	setbgm	$f1
 
 	mapwait	2000
 	setbgm	bgm_fanfare
+	IFNE	MSU1
+	mapmsuplay	fanfareband,norepeat
+	ENDC
 
 	mapwait	3000
 

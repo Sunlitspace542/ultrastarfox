@@ -89,7 +89,7 @@ ALLFILES= BANK\BANK0.SOB BANK\BANK1.SOB BANK\BANK2.SOB \
 	@$(FONT) $<
 
 # Everything that should be done when make is executed
-# add sf.msu before sf.sfcd in this list if using MSU-1 data streaming
+# add sf.msu before sf.sfc in this list if using MSU-1 data streaming
 all: setup make-allcols msprites crunch fonts sf.sfc donebld
 
 setup:

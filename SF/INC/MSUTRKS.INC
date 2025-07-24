@@ -55,6 +55,10 @@
 	msutrack	enteringdangerousterritory,35 ;Entering Dangerous Territory
 	msutrack	staffroll,36 ;Staff Roll
 	msutrack	secretactivated,37 ;Secret Activated
-	msutrack	gameover,38	;Game Over
-
+	msutrack	gameenddemo,38
+	msutrack	gameover,39	;Game Over
+	msutrack	fanfareband,40	;Stage Clear (Band)
+	msutrack	fanfareorch,41	;Stage Clear (Orch)
+	msutrack	downband,42	;Player Down (Band)
+	msutrack1	downorch,43	;Player Down (Orch)
 ; EOF

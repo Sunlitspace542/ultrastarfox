@@ -13,6 +13,11 @@ SUPERFX3	equ 0
 ; MSU-1 support (not yet implemented)
 msu1		equ	0
 
+; MSU-1 data streaming support
+; You must add a recipe to all in the makefile to assemble the data file (there are comments there that explain this).
+; The MSU-1 data file source lives in the MSUDATA directory.
+msudata		equ	0
+
 ; enable/disable FastROM [1 = on, 0=off]
 ; Note that this is not supported by the real MARIO or Super FX 1/2 chips.
 ; Emulators/Flashcarts support it due to inaccurate implementations of the hardware.
