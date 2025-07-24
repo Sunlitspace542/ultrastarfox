@@ -60,5 +60,5 @@
 	msutrack	clearband,40	;Stage Clear (Band)
 	msutrack	clearorch,41	;Stage Clear (Orch)
 	msutrack	downband,42	;Player Down (Band)
-	msutrack1	downorch,43	;Player Down (Orch)
+	msutrack	downorch,43	;Player Down (Orch)
 ; EOF
