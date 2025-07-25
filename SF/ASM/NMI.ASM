@@ -26,9 +26,9 @@ copy_to_0101_l
 	ldy	#$0101 ; dest data addr
 	lda	#nmihanend-nmihan-1 ; len of data to copy
 	IFNE	FASTROM
-	sasm_mvn	$9f,$80
+	_mvn	$9f,$80
 	ELSEIF
-	sasm_mvn	$1f,$00
+	_mvn	$1f,$00
 	ENDC
 
 	a8i16 ; set A to 8 bit and X/Y to 16 bit
