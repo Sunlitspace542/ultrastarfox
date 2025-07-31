@@ -12,7 +12,7 @@
 
 ;			 28  29  2A  2B  2C  2D  2E  2F
 ;			 (   )   :   +   ,   -   .   ?
-;			 !*  ?*  R* ・*  ,*  -   .   !^ ; R* = R btn.
+;			 !*  ?*  R* ・*  ,   -   .   !^ ; R* = R btn.
 	MOJI	$85,$86,$47,$88,$83,$42,$26,$24
 
 ;			 30  31  32  33  34  35  36  37
@@ -22,12 +22,12 @@
 
 ;			 38  39  3A  3B  3C  3D  3E  3F
 ;			 8   9   :   ;   <   =   >   ?
-;			 8^  9^  A*  ;   0^  B*  0^  ?
+;			 8^  9^  A*  ;   0^  B*  0^  ? ; A* = A btn., B* = B btn.
 	MOJI	$08,$09,$89,$84,$00,$8A,$00,$45
 
 ;			 40  41  42  43  44  45  46  47
 ;			 @   A   B   C   D   E   F   G
-;			 L*  A^  B^  C^  D^  E^  F^  G^
+;			 L*  A^  B^  C^  D^  E^  F^  G^ ; L* = L btn., ;
 	MOJI	$8B,$0A,$0B,$0C,$0D,$0E,$0F,$10
 
 ;			 48  49  4A  4B  4C  4D  4E  4F
@@ -67,7 +67,7 @@
 
 ;			 80  81  82  83  84  85  86  87
 ;			 €   UN  ‚   ƒ   „   …   †   ‡
-;			アa* イi* ウu* エe* オo* カka キki クku
+;			アa  イi ウu エe オo カka キki クku
 	MOJI	$48,$49,$4A,$4B,$4C,$4D,$4E,$4F
 
 ;			 88  89  8A  8B  8C  8D  8E  8F
@@ -92,17 +92,17 @@
 
 ;			 A8  A9  AA  AB  AC  AD  AE  AF
 ;			 ¨   ©   ª   «   ¬  SHY  ®   ¯
-;			ルru レre ロro ワwa ヲwo ンn  ﾞ*   ﾟ* ; dakuten and handakuten
+;			ルru レre ロro ワwa ヲwo ンn  ﾞ   ﾟ ; dakuten and handakuten
 	MOJI	$70,$71,$72,$73,$74,$75,$76,$77
 
 ;			 B0  B1  B2  B3  B4  B5  B6  B7
 ;			 °   ±   ²   ³   ´   µ   ¶   ·
-;			。*  〜* ァa ィi ゥu ェe  ォo ャya ; kuten, namidasshu, sm. a, sm. i, sm. u, sm. e, sm. o, sm. ya
+;			。  〜   ァa ィi ゥu ェe  ォo ャya ; kuten, namidasshu, sm. a, sm. i, sm. u, sm. e, sm. o, sm. ya
 	MOJI	$78,$79,$7A,$7B,$7C,$7D,$7E,$7F
 
 ;			 B8  B9  BA  BB  BC  BD  BE  BF
 ;			 ¸   ¹   º   »   ¼   ½   ¾   ¿
-;			ュyu ョyo ッ   ,*  ;*  !*  ?*  , ; sm. yu, sm. yo, sokuon
+;			ュyu ョyo ッ  ,*  ;*  !*  ?*  , ; sm. yu, sm. yo, sokuon
 	MOJI	$80,$81,$82,$83,$84,$85,$86,$87
 
 ;			 C0  C1  C2  C3  C4  C5  C6  C7
