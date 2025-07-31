@@ -137,7 +137,7 @@ msgnum	=	1
 	ENDC
 
 	IFNE	JAPANESE
-	include	MSG\JAPANESE.inc	;use japanese message file
+	include	MSG\JAPANESE.msg	;use japanese message file
 	ENDC
 
 	IFEQ	GERMAN

@@ -99,11 +99,11 @@ setup:
 	@del BANK\*.SOB > NUL
 	@del BANK\*.MAP > NUL
 
-# Tokenize German script
-# TODO: Try to detokenize JAPANESE.INC?
+# Tokenize German/Japanese script
 text:
 	@cd msg
 	@$(CHRMAP) --tokenize chrmapde.dat GERMAN.INC GERMAN.MSG
+	@$(CHRMAP) --tokenize chrmapjp.dat JAPANESE.INC JAPANESE.MSG
 	@cd ..
 
 # Recipe to crunch palettes
@@ -235,6 +235,7 @@ donebld:
 	@copy BANKS.CSV ..\BANKS.CSV
 	@del BANKS.CSV
 	@del MSG\GERMAN.MSG
+	@del MSG\JAPANESE.MSG
 
 # Clean everything up
 clean:
