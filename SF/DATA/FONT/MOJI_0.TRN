@@ -12,7 +12,7 @@
 
 ;			 28  29  2A  2B  2C  2D  2E  2F
 ;			 (   )   :   +   ,   -   .   ?
-;			 !*  ?*  R* ・*  ,*  -   .   !^
+;			 !*  ?*  R* ・*  ,*  -   .   !^ ; R* = R btn.
 	MOJI	$85,$86,$47,$88,$83,$42,$26,$24
 
 ;			 30  31  32  33  34  35  36  37
@@ -62,7 +62,7 @@
 
 ;			 78  79  7A  7B  7C  7D  7E  7F	; End of standard ASCII, Start of extended ASCII
 ;			 x   y   z   {   |   }   ~   DEL
-;			 x   y   z   0^  0^  0^  0^  * ; Japanese characters begin here
+;			 x   y   z   0^  0^  0^  0^  クku ; Japanese characters begin here, this one specifically is unused
 	MOJI	$3F,$40,$41,$00,$00,$00,$00,$4F
 
 ;			 80  81  82  83  84  85  86  87
@@ -92,22 +92,22 @@
 
 ;			 A8  A9  AA  AB  AC  AD  AE  AF
 ;			 ¨   ©   ª   «   ¬  SHY  ®   ¯
-;			ルru レre ロro ワwa ヲwo ンn*  ﾞ*   ﾟ*
+;			ルru レre ロro ワwa ヲwo ンn  ﾞ*   ﾟ* ; dakuten and handakuten
 	MOJI	$70,$71,$72,$73,$74,$75,$76,$77
 
 ;			 B0  B1  B2  B3  B4  B5  B6  B7
 ;			 °   ±   ²   ³   ´   µ   ¶   ·
-;			。*  〜*  *   *   *   *   *   *
+;			。*  〜* ァa ィi ゥu ェe  ォo ャya ; kuten, namidasshu, sm. a, sm. i, sm. u, sm. e, sm. o, sm. ya
 	MOJI	$78,$79,$7A,$7B,$7C,$7D,$7E,$7F
 
 ;			 B8  B9  BA  BB  BC  BD  BE  BF
 ;			 ¸   ¹   º   »   ¼   ½   ¾   ¿
-;			 *   *   *   ,*  ;*  !*  ?*  ,
+;			ュyu ョyo ッ   ,*  ;*  !*  ?*  , ; sm. yu, sm. yo, sokuon
 	MOJI	$80,$81,$82,$83,$84,$85,$86,$87
 
 ;			 C0  C1  C2  C3  C4  C5  C6  C7
 ;			 À   Á   Â   Ã   Ä   Å   Æ   Ç
-;			 ・* A*  B*  L*  0^  0^  0^  0^
+;			 ・* A*  B*  L*  0^  0^  0^  0^ ; middle dot, A btn., B btn., L btn.
 	MOJI	$88,$89,$8A,$8B,$00,$00,$00,$00
 
 ;			 C8  C9  CA  CB  CC  CD  CE  CF	; Unused
