@@ -50,11 +50,35 @@ void parse_charmap(const char *filename) {
         if (sscanf(hex, "0x%x", &byte) != 1 || byte > 255)
             continue;
 
-        // Remove optional quotes/brackets
-        if ((val[0] == '"' && val[strlen(val) - 1] == '"') ||
-            (val[0] == '[' && val[strlen(val) - 1] == ']')) {
+        // Detect if wrapped in quotes or brackets
+        int wrapped_in_quotes = (val[0] == '"' && val[strlen(val) - 1] == '"');
+        int wrapped_in_brackets = (val[1] == '[' && val[strlen(val) - 2] == ']');
+
+        if (wrapped_in_quotes || wrapped_in_brackets) {
             val[strlen(val) - 1] = '\0';
             val++;
+        }
+
+        // Check number of UTF-8 characters
+        int utf8_count = 0;
+        const char *p = val;
+        while (*p) {
+            unsigned char c = (unsigned char)*p;
+            if ((c & 0x80) == 0) p += 1;
+            else if ((c & 0xE0) == 0xC0) p += 2;
+            else if ((c & 0xF0) == 0xE0) p += 3;
+            else if ((c & 0xF8) == 0xF0) p += 4;
+            else break;
+            utf8_count++;
+        }
+
+        if (utf8_count > 1 && wrapped_in_quotes && !wrapped_in_brackets) {
+            fprintf(stderr,
+                "Error in charmap '%s':\n"
+                "  Token symbol for 0x%02X has multiple UTF-8 characters in quotes: \"%s\"\n"
+                "  Hint: Wrap symbols with multiple characters in square brackets: [%s]\n",
+                filename, byte, val, val);
+            exit(1);
         }
 
         map[map_len].byte = (unsigned char)byte;
@@ -100,8 +124,12 @@ void detokenize_file(FILE *in, FILE *out) {
         if (c == '<') in_tag = 1;
         else if (c == '>') in_tag = 0;
 
-//        if (in_tag && (c >= 0x80)) {
         if (in_tag) {
+            // don't use angle brackets
+            if (c == '<' || c == '>') {
+                fputc(c, out);
+                continue;
+            }
             char *utf = find_utf8((unsigned char)c);
             if (utf)
                 fputs(utf, out);
@@ -130,6 +158,13 @@ void tokenize_file(FILE *in, FILE *out) {
         }
 
         if (!in_tag) {
+            fputc(c, out);
+            continue;
+        }
+
+        // Inside <...>
+        if (c == '<' || c == '>') {
+            // Protect angle brackets inside tag content
             fputc(c, out);
             continue;
         }
