@@ -35,13 +35,13 @@ init3d1
 	setuprng	; Setup RNG seed
 	ENDC
 
-	stz	pauseflag
+;	stz	pauseflag
 	stz	expcnt
-	stz	noclipx
+;	stz	noclipx
 	stz	rotx
 	stz	roty
 	stz	rotz
-	stz	strptr
+;	stz	strptr
 	stz	drawopt
 	stz	viewrotx
 	stz	viewroty

@@ -226,11 +226,11 @@ xlen	=	22*1024+450
 	zalc	z1,2
 	zalc	shiftz,1
 	zalc	numnoclip,1
-	zalc	noclip,1
-	zalc	noclipx,1
-	zalc	linedrawvec,2
-	zalc	pauseflag,1
-	zalc	strptr,2
+;	zalc	noclip,1
+;	zalc	noclipx,1
+;	zalc	linedrawvec,2
+;	zalc	pauseflag,1
+;	zalc	strptr,2
 
 	zalc	rotx,1
 	zalc	roty,1
