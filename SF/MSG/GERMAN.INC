@@ -88,7 +88,7 @@
 	message	white,fox,<star fox team! euer ziel ist der planet venom, den ihr vernichten müsst! viel glück!>,other	; (88)
 	message	white,fox,<andross lässt in diesem gebiet eine basis errichten!  ihr müsst alle maschinen zerstören!>,other	; (89)
 	message	white,fox,<die raumflotte besteht aus gewaltigen schlachtschiffen! zerstört ihre energiekerne!>,other	; (90)
-	message	white,fox,<nur ein tip... benutzt den rückschub, wenn ihr zu schnell seid. viel glück!>,other	; (91)
+	message	white,fox,<nur ein tip### benutzt den rückschub, wenn ihr zu schnell seid# viel glück!>,other	; (91)
 	message	white,fox,<andross hält sich auf venom versteckt! finde und zerstöre sein hauptquartier, fox!>,other	; (92)
 	message	white,fox,<       CORNERIA - DIE BASIS>,other	; (93)
 	message	white,fox,<        ASTEROIDEN GÜRTEL>,other	; (94)
