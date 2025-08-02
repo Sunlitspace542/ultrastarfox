@@ -370,7 +370,7 @@ int main(int argc, char *argv[]) {
     int mode_detokenize = strcmp(argv[1], "--detokenize") == 0;
     int mode_detokenizeSF2J = strcmp(argv[1], "--detokenize-sf2j") == 0;
     int mode_validate = strcmp(argv[1], "--validate") == 0;
-    if (!mode_tokenize && !mode_detokenize && !mode_validate) {
+    if (!mode_tokenize && !mode_detokenize && !mode_detokenizeSF2J && !mode_validate) {
         fprintf(stderr, "Invalid mode: %s\n", argv[1]);
         return 1;
     }
