@@ -5,6 +5,15 @@
 
 #define MAX_LINE 1024
 #define MAX_MAP 256
+#define SKIP_WORDS 2 // number of words to skip if --detokenize-sf2j mode is selected
+#define OPENING_DELIMITER '<' // delimiters that contain string(s) to be operated upon
+#define CLOSING_DELIMITER '>'
+#define MULTICHAR_OPENING '[' // multichar token symbol opening and closing delimiters
+#define MULTICHAR_CLOSING ']'
+
+// stringification macros
+#define _STR(x) #x
+#define STR(x) _STR(x)
 
 typedef struct {
     unsigned char byte;
@@ -52,7 +61,7 @@ void parse_charmap(const char *filename) {
 
         // Detect if wrapped in quotes or brackets
         int wrapped_in_quotes = (val[0] == '"' && val[strlen(val) - 1] == '"');
-        int wrapped_in_brackets = (val[1] == '[' && val[strlen(val) - 2] == ']');
+        int wrapped_in_brackets = (val[1] == MULTICHAR_OPENING && val[strlen(val) - 2] == MULTICHAR_CLOSING);
 
         if (wrapped_in_quotes || wrapped_in_brackets) {
             val[strlen(val) - 1] = '\0';
@@ -121,12 +130,12 @@ void detokenize_file(FILE *in, FILE *out) {
     int in_tag = 0;
     int c;
     while ((c = fgetc(in)) != EOF) {
-        if (c == '<') in_tag = 1;
-        else if (c == '>') in_tag = 0;
+        if (c == OPENING_DELIMITER) in_tag = 1;
+        else if (c == CLOSING_DELIMITER) in_tag = 0;
 
         if (in_tag) {
             // don't use angle brackets
-            if (c == '<' || c == '>') {
+            if (c == OPENING_DELIMITER || c == CLOSING_DELIMITER) {
                 fputc(c, out);
                 continue;
             }
@@ -141,17 +150,77 @@ void detokenize_file(FILE *in, FILE *out) {
     }
 }
 
+void detokenize_file_sf2j(FILE *in, FILE *out) {
+    int in_tag = 0;
+    int c;
+    char buffer[1024];
+    int pos = 0;
+
+    while ((c = fgetc(in)) != EOF) {
+        if (!in_tag) {
+            if (c == OPENING_DELIMITER) {
+                in_tag = 1;
+                fputc(c, out);
+                pos = 0;
+            } else {
+                fputc(c, out);
+            }
+            continue;
+        }
+
+        // Inside a tag
+        if (c == CLOSING_DELIMITER) {
+            in_tag = 0;
+            buffer[pos] = '\0';
+
+            // ---- Split and preserve first two words ----
+            int word_count = 0, i = 0;
+
+            // Print out the first two space-separated words
+            while (buffer[i] && word_count < SKIP_WORDS) {
+                fputc(buffer[i], out);
+                if (buffer[i] == ' ') word_count++;
+                i++;
+            }
+
+            // Now detokenize the rest
+            for (; buffer[i]; i++) {
+                unsigned char b = (unsigned char)buffer[i];
+
+                // Don't interpret angle brackets inside content
+                if (b == OPENING_DELIMITER || b == CLOSING_DELIMITER) {
+                    fputc(b, out);
+                    continue;
+                }
+
+                char *utf = find_utf8(b);
+                if (utf)
+                    fputs(utf, out);
+                else
+                    fputc(b, out);
+            }
+
+            fputc(CLOSING_DELIMITER, out); // close tag
+            continue;
+        }
+
+        if (in_tag && pos < (int)sizeof(buffer) - 1) {
+            buffer[pos++] = (char)c;
+        }
+    }
+}
 
 void tokenize_file(FILE *in, FILE *out) {
     int in_tag = 0;
     int c;
 
     while ((c = fgetc(in)) != EOF) {
-        if (c == '<') {
+        if (c == OPENING_DELIMITER) {
             in_tag = 1;
             fputc(c, out);
             continue;
-        } else if (c == '>') {
+
+        } else if (c == CLOSING_DELIMITER) {
             in_tag = 0;
             fputc(c, out);
             continue;
@@ -163,25 +232,25 @@ void tokenize_file(FILE *in, FILE *out) {
         }
 
         // Inside <...>
-        if (c == '<' || c == '>') {
+        if (c == OPENING_DELIMITER || c == CLOSING_DELIMITER) {
             // Protect angle brackets inside tag content
             fputc(c, out);
             continue;
         }
 
         // Inside <...>
-        if (c == '[') {
+        if (c == MULTICHAR_OPENING) {
             // Try to read symbolic token like [St], [0x83], [D^]
             char token[64];
             int pos = 0;
-            token[pos++] = '[';
+            token[pos++] = MULTICHAR_OPENING;
 
-            while ((c = fgetc(in)) != EOF && c != ']' && pos < (int)sizeof(token) - 2) {
+            while ((c = fgetc(in)) != EOF && c != MULTICHAR_CLOSING && pos < (int)sizeof(token) - 2) {
                 token[pos++] = (char)c;
             }
 
-            if (c == ']') {
-                token[pos++] = ']';
+            if (c == MULTICHAR_CLOSING) {
+                token[pos++] = MULTICHAR_CLOSING;
                 token[pos] = '\0';
 
                 int byte = find_byte(token);
@@ -228,18 +297,80 @@ void tokenize_file(FILE *in, FILE *out) {
 }
 
 
+void validate_bracketed_tokens(FILE *in) {
+    int c;
+    int inside_token = 0;
+    int numLines = 1;
+    int numErrors = 0;
+    printf("==BRACKETED TOKEN VALIDATION MODE==\n");
+    while ((c = fgetc(in)) != EOF) {
+        if (c == '\n') numLines++;
+        if (!inside_token && c == MULTICHAR_CLOSING) {
+            fprintf(stderr, "(%d) Error: stray " STR(MULTICHAR_CLOSING) " found.\n", numLines);
+            numErrors++;
+            continue;
+        }
+        if (c == MULTICHAR_OPENING) {
+            char token[64];
+            int pos = 0;
+            token[pos++] = MULTICHAR_OPENING;
+            inside_token = 1;
+
+            while ((c = fgetc(in)) != EOF && c != MULTICHAR_CLOSING && pos < (int)sizeof(token) - 2) {
+                token[pos++] = (char)c;
+            }
+
+            if (c == MULTICHAR_CLOSING) {
+                token[pos++] = MULTICHAR_CLOSING;
+                token[pos] = '\0';
+                inside_token = 0;
+
+                if (find_byte(token) < 0) {
+                    fprintf(stderr, "(%d) Error: undefined token %s found.\n",numLines, token);
+                    numErrors++;
+                }
+            } else {
+                fprintf(stderr, "(%d) Error: unmatched " STR(MULTICHAR_OPENING) " found.\n", numLines);
+                numErrors++;
+                inside_token = 0;
+            }
+        }
+    }
+        printf("%d line(s) processed.\n%d Error(s) detected.\n", numLines, numErrors);
+            if (!numErrors) {
+                printf("File is valid!\n");
+            }
+}
 
 
 
 int main(int argc, char *argv[]) {
     if (argc < 4 || argc > 5) {
-        fprintf(stderr, "Usage: chrmap --tokenize|--detokenize charmap.txt input.txt [output.txt]\n", argv[0]);
+        fprintf(stderr,
+            "Star Fox (2) Character Mapper v1.0\n"
+            "Usage: chrmap mode charmap.txt input.txt [output.txt]\n", argv[0]);
+        fprintf(stderr,
+            "\nMode options:\n--tokenize - tokenizes input file based on charmap file definitions.\n"
+            "--detokenize - detokenizes file based on charmap file definitions.\n"
+            "--detokenize-sf2j - detokenizes input file based on charmap file definitions,\n"
+            "skipping the first 2 words of each line. (for Japanese Star Fox 2)\n"
+            "--validate - scan input file for bracketed token errors.\n");
+        fprintf(stderr,
+            "\nExample charmap text file:\n"
+            "// token byte = \"c\" or \"[name]\"\n"
+            "0x11 = \"~\" // quoted single UTF-8 character\n"
+            "0x7E = \"[em]\" // bracketed token symbol\n");
+        fprintf(stderr,
+            "\nThe input file's text to be operated upon must must be contained within " STR(OPENING_DELIMITER) " and " STR(CLOSING_DELIMITER) ".\n"
+            "If no output file is specified, output will be written to stdout.\n");
         return 1;
     }
 
     int mode_tokenize = strcmp(argv[1], "--tokenize") == 0;
     int mode_detokenize = strcmp(argv[1], "--detokenize") == 0;
-    if (!mode_tokenize && !mode_detokenize) {
+    int mode_detokenizeSF2J = strcmp(argv[1], "--detokenize-sf2j") == 0;
+    int mode_validate = strcmp(argv[1], "--validate") == 0;
+    if (!mode_tokenize && !mode_detokenize && !mode_validate) {
         fprintf(stderr, "Invalid mode: %s\n", argv[1]);
         return 1;
     }
@@ -255,10 +386,15 @@ int main(int argc, char *argv[]) {
         if (!out) { perror("output file"); fclose(in); return 1; }
     }
 
-    if (mode_tokenize)
+    if (mode_tokenize) {
         tokenize_file(in, out);
-    else
+    } else if (mode_detokenize) {
         detokenize_file(in, out);
+    } else if (mode_detokenizeSF2J) {
+        detokenize_file_sf2j(in, out);
+    } else if (mode_validate) {
+        validate_bracketed_tokens(in);
+    }
 
     fclose(in);
     if (out != stdout) fclose(out);
