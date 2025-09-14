@@ -1,4 +1,4 @@
-// Tool to decode Argonaut .MAP linker address map files into a usable symbol listing (C version)
+// Tool to decode ArgSfx/ArgBug .MAP linker address map files into a usable symbol listing (C version)
 // To use:
 // argonautmapdecoder [.map file] [output file]
 #include <stdio.h>
@@ -38,7 +38,7 @@ void read_byte_sequences_from_file(const char *file_path, const char *output_fil
     unsigned char buffer[4];
     while (fread(buffer, 1, 4, file) == 4) {
         if (buffer[0] == 'S' && buffer[1] == 'M' && buffer[2] == '3' && buffer[3] == '2') {
-            fseek(file, 2, SEEK_CUR);  // Skip 2 bytes after "SM32"
+            fseek(file, 2, SEEK_CUR);  // Skip 2 bytes after "SM32" (little endian number of symbols)
             break;
         }
     }
@@ -64,7 +64,7 @@ void read_byte_sequences_from_file(const char *file_path, const char *output_fil
 
 int main(int argc, char *argv[]) {
     if (argc != 3) {
-        fprintf(stderr, "Argonaut Software .MAP file decoder\nDecodes Argonaut .MAP linker address map files into a usable symbol listing\nUsage: %s <.MAP file> <output file>\n", argv[0]);
+        fprintf(stderr, "Argonaut Software ArgSfx/ArgBug .MAP file decoder\nDecodes Argonaut .MAP linker address map files into a usable symbol listing\nUsage: %s <.MAP file> <output file>\n", argv[0]);
         return EXIT_FAILURE;
     }
 
