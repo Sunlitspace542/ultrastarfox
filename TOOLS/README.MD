@@ -1,6 +1,6 @@
 # Tools
 All these tools are DOS executables and are intended to be run through DOSBox, unless otherwise noted.  
-All precompiled binaries can be found in the ``binaries`` directory. There are directories within that sort them by platform (MS-DOS and Windows).  
+All precompiled binaries for DOS/Windows can be found in the ``binaries`` directory. There are directories within that sort them by platform (MS-DOS and Windows).  
 All DOS executables were compiled with DJGPP in DOSBox-X unless they were written by Argonaut Software, in which case they were compiled and/or assembled with the Zortech C/C++ toolchain for MS-DOS.  
 
 ## PACKER
