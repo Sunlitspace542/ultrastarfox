@@ -1,5 +1,7 @@
 # Tools
-All these tools are DOS executables and are intended to be run through DOSBox, unless otherwise noted.
+All these tools are DOS executables and are intended to be run through DOSBox, unless otherwise noted.  
+All precompiled binaries can be found in the ``binaries`` directory. There are directories within that sort them by platform (MS-DOS and Windows).  
+All DOS executables were compiled with DJGPP in DOSBox-X unless they were written by Argonaut Software, in which case they were compiled and/or assembled with the Zortech C/C++ toolchain for MS-DOS.  
 
 ## PACKER
 **Tool made by Argonaut Software**  
@@ -84,6 +86,7 @@ Super NES checksum tool, compiled for MS-DOS. The old 64-bit Windows version tha
 **Windows/DOS executables**  
 sf_crunch is used to compress .CGX and .SCR files into .CCR (crunched cgx) and .PCR (crunched scr) files.
 sf_decrunch is used to decompress .CCR and .PCR files into .CGX and .SCR files.  
+sf_crunch was compiled with -O2 to speed up build time just a bit more.  
 
 The prebuilt versions included here are command line utilities for Windows, the c++ source files are on RHDN (link below)  
 CRU.EXE and DECRU.EXE are versions prebuilt for MS-DOS.  
