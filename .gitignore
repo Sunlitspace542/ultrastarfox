@@ -43,6 +43,9 @@
 *.csv#
 
 # VSCode stuff
+# Allow settings and tasks and nothing else
+!/.vscode/settings.json
+!/.vsvode/tasks.json
 */.vscode/*
 
 # Files generated during assembly
