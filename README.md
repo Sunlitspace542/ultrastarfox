@@ -101,6 +101,9 @@ All changes to be submitted should be made to the [main](https://github.com/Sunl
 
 ## Helpful Links/Tools
 
+[Star Fox Sound Binary Disassemblies](https://github.com/Sunlitspace542/star-fox-sound-bins)
+[Star Fox Sound Driver Disassembly](https://github.com/phonymike/starfox_spc_driver)
+[FastFX Blender Plugin](https://github.com/Sunlitspace542/FastFX)
 [Argonaut 65816/Super FX Assembly Extension for VS Code](https://github.com/Sunlitspace542/65816-superfx-asm-argonaut-vscode)  
 [ArgSfx/SASM Assembler Manual](https://github.com/Sunlitspace542/ArgSfx-SASM-Docs/tree/main)  
 [SNES Development Manual](https://archive.org/details/SNESDevManual)  
@@ -116,8 +119,7 @@ All changes to be submitted should be made to the [main](https://github.com/Sunl
 
 1. Optimize game where possible (We already have FastROM and 21Mhz SuperFX 2, can we go any further?)  
 2. Annotate and document code (not so sure about doing this anymore)  
-3. MAYBE: Disassemble all BIN files in SND directory, add documentation on custom music and the like  
-4. Reimplement MSU-1 support using the driver I wrote for Star Fox CD
+3. Reimplement MSU-1 support using the driver I wrote for Star Fox CD
 
 ## Project Structure
 
