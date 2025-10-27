@@ -101,9 +101,9 @@ All changes to be submitted should be made to the [main](https://github.com/Sunl
 
 ## Helpful Links/Tools
 
-[Star Fox Sound Binary Disassemblies](https://github.com/Sunlitspace542/star-fox-sound-bins)
-[Star Fox Sound Driver Disassembly](https://github.com/phonymike/starfox_spc_driver)
-[FastFX Blender Plugin](https://github.com/Sunlitspace542/FastFX)
+[Star Fox Sound Binary Disassemblies](https://github.com/Sunlitspace542/star-fox-sound-bins)  
+[Star Fox Sound Driver Disassembly](https://github.com/phonymike/starfox_spc_driver)  
+[FastFX Blender Plugin](https://github.com/Sunlitspace542/FastFX)  
 [Argonaut 65816/Super FX Assembly Extension for VS Code](https://github.com/Sunlitspace542/65816-superfx-asm-argonaut-vscode)  
 [ArgSfx/SASM Assembler Manual](https://github.com/Sunlitspace542/ArgSfx-SASM-Docs/tree/main)  
 [SNES Development Manual](https://archive.org/details/SNESDevManual)  
