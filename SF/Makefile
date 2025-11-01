@@ -50,15 +50,15 @@ WINE=
 endif
 
 # MS-DOS player DOS userland application emulator executable
-MSDOS=../bin/msdos.exe
+MSDOS=dosbox-x.exe
 
 # Assembler
-ASM=$(WINE) $(MSDOS) ../bin/ARGSFXX.EXE
+ASM=$(WINE) $(MSDOS) ARGSFXX.EXE
 # Setup heap for SASM and export symbols for ARGSFX
 ASMFLAGS= $(NOANSI) -e__notitle -e__heap=14400 -z
 
 # Linker
-LINK=$(WINE) $(MSDOS) ../bin/ARGLINK.EXE
+LINK=$(WINE) $(MSDOS) ARGLINK.EXE
 LOPTS=-b30 -h1024 -t7d -z
 
 # ROM Extender
@@ -183,14 +183,14 @@ BANK/%.SOB: BANK/%.ASM
 	$(call print,Assembling:,$<,$@)
 
 ifeq ($(PLATFORM),windows)
-	@$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@
+	@$(ASM) -o "$(NOANSI) -m30 $(ASMFLAGS) $(subst /,\,$<) -v$(subst /,\,$@)"
 else
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
-		$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@ > /dev/null 2>&1 || \
-		$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@; \
+		$(ASM) -o "$(NOANSI) -m30 $(ASMFLAGS) $< -v$@" > /dev/null 2>&1 || \
+		$(ASM) -o "$(NOANSI) -m30 $(ASMFLAGS) $< -v$@"; \
 	else \
-		$(ASM) $(NOANSI) -m30 $(ASMFLAGS) $< -v$@; \
+		$(ASM) -o "$(NOANSI) -m30 $(ASMFLAGS) $< -v$@"; \
 	fi'
 endif
 
@@ -390,14 +390,14 @@ else
 endif
 
 ifeq ($(PLATFORM),windows)
-	@$(LINK) $(LOPTS) -o$@ @flist.tmp
+	@$(LINK) -o "$(LOPTS) -o$@ @flist.tmp"
 else
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
-		$(LINK) $(LOPTS) -o$@ @flist.tmp > /dev/null 2>&1 || \
-		$(LINK) $(LOPTS) -o$@ @flist.tmp; \
+		$(LINK) "$(LOPTS) -o$@ @flist.tmp" > /dev/null 2>&1 || \
+		$(LINK) "$(LOPTS) -o$@ @flist.tmp"; \
 	else \
-		$(LINK) $(LOPTS) -o$@ @flist.tmp; \
+		$(LINK) "$(LOPTS) -o$@ @flist.tmp"; \
 	fi'
 endif
 
