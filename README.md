@@ -68,13 +68,13 @@ After building, a debug symbol map will be created at ``SYMBOLS.TXT``, and a ban
 
 ## Building on Linux
 
-**NOTE: this was tested on WSL with Ubuntu installed. YMMV.**  
+**NOTE: this was tested on Ubuntu, on both real hardware and with the Windows Subsystem for Linux. YMMV.**  
 
 Requirements: Ubuntu (might work with other distros) snap, DOSBox-X, git  
 
 Install snapstore: ``sudo apt install snapd``  
 
-Install DOSBOX-X from snap: ``sudo snap install dosbox-x``  
+Install DOSBox-X from snap: ``sudo snap install dosbox-x``  
 
 Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``  
 
