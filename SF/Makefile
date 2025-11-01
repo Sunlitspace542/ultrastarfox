@@ -17,7 +17,7 @@ else
 endif
 
 # Silence the assembler+linker unless an error occurs
-QUIET ?= true
+QUIET ?= false
 
 ifeq ($(PLATFORM),windows)
 else
@@ -50,15 +50,19 @@ WINE=
 endif
 
 # MS-DOS player DOS userland application emulator executable
+ifeq ($(PLATFORM),windows)
 MSDOS=dosbox-x.exe
+else
+MSDOS=./dosbox-x
+endif
 
 # Assembler
-ASM=$(WINE) $(MSDOS) ARGSFXX.EXE
+ASM=$(MSDOS) ARGSFXX.EXE
 # Setup heap for SASM and export symbols for ARGSFX
 ASMFLAGS= $(NOANSI) -e__notitle -e__heap=14400 -z
 
 # Linker
-LINK=$(WINE) $(MSDOS) ARGLINK.EXE
+LINK=$(MSDOS) ARGLINK.EXE
 LOPTS=-b30 -h1024 -t7d -z
 
 # ROM Extender
@@ -394,10 +398,10 @@ ifeq ($(PLATFORM),windows)
 else
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
-		$(LINK) "$(LOPTS) -o$@ @flist.tmp" > /dev/null 2>&1 || \
-		$(LINK) "$(LOPTS) -o$@ @flist.tmp"; \
+		$(LINK) -o "$(LOPTS) -o$@ @flist.tmp" > /dev/null 2>&1 || \
+		$(LINK) -o "$(LOPTS) -o$@ @flist.tmp"; \
 	else \
-		$(LINK) "$(LOPTS) -o$@ @flist.tmp"; \
+		$(LINK) -o "$(LOPTS) -o$@ @flist.tmp"; \
 	fi'
 endif
 
@@ -409,30 +413,35 @@ else
 	$(call print2,Extending ROM:,$@)
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
-		$(EXTEND) $@ $(EXTOPTS) > /dev/null 2>&1 || \
-		$(EXTEND) $@ $(EXTOPTS); \
+		$(EXTEND) SF.SFC $(EXTOPTS) > /dev/null 2>&1 || \
+		$(EXTEND) SF.SFC $(EXTOPTS); \
 	else \
-		$(EXTEND) $@ $(EXTOPTS); \
+		$(EXTEND) SF.SFC $(EXTOPTS); \
 	fi'
 endif
 
+ifeq ($(PLATFORM),windows)
+	@ren SF.SFC sf.sfc
+else
+	@mv	SF.SFC sf.sfc
+endif
 ifeq ($(PLATFORM),windows)
 	@$(CHECK) $(COPTS) $@
 else
 	$(call print2,Fixing Checksum:,$@)
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
-		$(CHECK) $(COPTS) $@ > /dev/null 2>&1 || \
-		$(CHECK) $(COPTS) $@; \
+		$(CHECK) $(COPTS) sf.sfc > /dev/null 2>&1 || \
+		$(CHECK) $(COPTS) sf.sfc; \
 	else \
-		$(CHECK) $(COPTS) $@; \
+		$(CHECK) $(COPTS) sf.sfc; \
 	fi'
 endif
 
 ifeq ($(PLATFORM),windows)
 	@certutil -hashfile sf.sfc SHA1
 else
-	@$(SHA1SUM) $@
+	@$(SHA1SUM) sf.sfc
 endif
 	@$(PRINT) "${BLINK}Build succeeded.$(NO_COL)$(NEWLINE)"
 
@@ -442,15 +451,15 @@ ifeq ($(PLATFORM),windows)
 	@copy sf.sfc ..\sf.sfc
 	@del sf.sfc
 	@if exist BANKS.CSV $(MV) BANKS.CSV ..\banks.csv
-	@$(MAPDEC) sf.MAP ..\symbols.txt
-	@$(DEL) sf.MAP
-	@$(DEL) msgs.txt
+	@$(MAPDEC) SF.MAP ..\symbols.txt
+	@$(DEL) SF.MAP
+	@$(DEL) MSGS.TXT
 else
 	@$(MV) sf.sfc ../sf.sfc
 	@{ [ -f BANKS.CSV ] && $(MV) BANKS.CSV ../banks.csv || true; }
-	@$(MAPDEC) sf.MAP ../symbols.txt
-	@$(DEL) sf.MAP
-	@$(DEL) msgs.txt
+	@$(MAPDEC) SF.MAP ../symbols.txt
+	@$(DEL) SF.MAP
+	@$(DEL) MSGS.TXT
 endif
 
 clean:
