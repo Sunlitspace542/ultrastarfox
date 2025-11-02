@@ -55,7 +55,7 @@ msprintstr
 	cmode
 
 	lms	r1,[m_x1]
-	iwt	r0,#224-50+1
+	iwt	r0,#friendmsgrighttextclip+1
 	sub	r1
 	sms	[m_textrightclip],r0
 
@@ -97,7 +97,7 @@ mfprintstr
 	cmode
 
 	lms	r1,[m_x1]
-	iwt	r0,#224-50
+	iwt	r0,#friendmsgrighttextclip
 	sub	r1
 	sms	[m_textrightclip],r0
 

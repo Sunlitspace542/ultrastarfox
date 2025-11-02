@@ -39,11 +39,12 @@ gf2_stratflag1		equ	1
 gf2_stratflag2		equ	2
 gf2_viewclose		equ	4
 gf2_ingame		equ	8
+; 4 bits free
 
 ;---------------------------------------------------------------------------
 	alc	stratflags,1
 sf_nofiring	equ	1	
-
+; 7 bits free
 
 ;---------------------------------------------------------------------------
 	alc	bossflags,1
@@ -52,7 +53,7 @@ bf_flag2	equ	2
 bf_flag3	equ	4
 bf_easymode	equ	8
 bf_dying	equ	16
-
+; 3 bits free
 ;---------------------------------------------------------------------------
 ; giles strat vars.
 	alc	svar_flags,1
@@ -65,6 +66,7 @@ mb_bottom	equ	8
 mb_Lbottom	equ	16	; special left-bottom
 mb_Ltop	equ	32	; special left-top
 mb_Rtop	equ	64	; special left-top
+; 1 bit free
 
 ;---------------------------------------------------------------------------
 ; player's ship flags
@@ -94,6 +96,9 @@ psf3_enginesnd		equ	2	; 0/1 , off/on
 psf3_forcebrake	equ	4
 psf3_nocollisions	equ	8
 psf3_beamball		equ	16
+psf3_noviewchange	equ	32
+psf3_keeppstrat		equ	64
+; 1 bit free
 
 	alc	specials_dead,1
 
@@ -255,7 +260,6 @@ kf_LRkeydown	equ	2
 	alc	floatvar2,1	
 
 	alc	dummyobj,2 
-	alc	boostcnt,1
 	alc	boostZoff,1
 	alc	minpmoveX,2
 	alc	maxpmoveX,2

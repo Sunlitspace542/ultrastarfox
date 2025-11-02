@@ -61,8 +61,14 @@ sphigh	equ	6000
 
 	mapwait	4000
 	setbgm	$f1
+	IFNE	MSU1
+	mapmsufade
+	ENDC
 	mapwait	medpspeed*7
 	setbgm	5
+	IFNE	MSU1
+	mapmsuplay	enteringdangerousterritory,repeat
+	ENDC
 
 
 

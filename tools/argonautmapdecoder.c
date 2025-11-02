@@ -1,4 +1,4 @@
-// Tool to decode Argonaut .MAP linker address map files into a usable symbol listing (C version)
+// Tool to decode ArgSfx/ArgBug .MAP linker address map files into a usable symbol listing (C version)
 // To use:
 // argonautmapdecoder [.map file] [output file]
 #include <stdio.h>
@@ -10,10 +10,7 @@
 
 void decode_byte_sequence(unsigned char *byte_seq, FILE *output) {
     // Extract address in little endian format
-    unsigned int address = byte_seq[0] | (byte_seq[1] << 8) | (byte_seq[2] << 16);
-
-    // Extract unknown byte
-    unsigned char unknown_byte = byte_seq[3];
+    unsigned int address = byte_seq[0] | (byte_seq[1] << 8) | (byte_seq[2] << 16) | (byte_seq[3] << 24);
 
     // Extract length of symbol name
     unsigned char name_length = byte_seq[4];
@@ -24,9 +21,9 @@ void decode_byte_sequence(unsigned char *byte_seq, FILE *output) {
     symbol_name[name_length] = '\0';
 
 	#ifdef	VERBOSE
-    fprintf(output, "Address: $%x, Unknown Byte: $%x, Name Length: $%x, Symbol Name: %s\n", address, unknown_byte, name_length, symbol_name);
+    fprintf(output, "Address: $%x, Name Length: $%x, Symbol Name: %s\n", address, name_length, symbol_name);
 	#else
-    fprintf(output, "%s\t$%x\n", symbol_name, address);
+    fprintf(output, "%s\t$%08x\n", symbol_name, address);
 	#endif
 }
 
@@ -41,7 +38,7 @@ void read_byte_sequences_from_file(const char *file_path, const char *output_fil
     unsigned char buffer[4];
     while (fread(buffer, 1, 4, file) == 4) {
         if (buffer[0] == 'S' && buffer[1] == 'M' && buffer[2] == '3' && buffer[3] == '2') {
-            fseek(file, 2, SEEK_CUR);  // Skip 2 bytes after "SM32"
+            fseek(file, 2, SEEK_CUR);  // Skip 2 bytes after "SM32" (little endian number of symbols)
             break;
         }
     }
@@ -67,7 +64,7 @@ void read_byte_sequences_from_file(const char *file_path, const char *output_fil
 
 int main(int argc, char *argv[]) {
     if (argc != 3) {
-        fprintf(stderr, "Argonaut Software .MAP file decoder\nDecodes Argonaut .MAP linker address map files into a usable symbol listing\nUsage: %s <.MAP file> <output file>\n", argv[0]);
+        fprintf(stderr, "Argonaut Software ArgSfx/ArgBug .MAP file decoder\nDecodes Argonaut .MAP linker address map files into a usable symbol listing\nUsage: %s <.MAP file> <output file>\n", argv[0]);
         return EXIT_FAILURE;
     }
 

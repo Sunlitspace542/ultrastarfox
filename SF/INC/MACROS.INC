@@ -1,4 +1,9 @@
 ;------------------------------------------------------------------------
+printerror	macro	[errormsg]
+	printf	"%q%f%q (%l) %01%31Error: {errormsg}%00%n"
+	error+
+	ENDM
+;------------------------------------------------------------------------
 	IFD		_ARGSFX
 ; Rotates a string left by offset for ARGSFX
 rols	MACRO	[string,offset]
@@ -14,6 +19,13 @@ rors	MACRO	[string,offset]
 
 	ENDC	;_ARGSFX
 ;------------------------------------------------------------------------
+
+; Define Long
+; From Star Fox 2
+dl	macro	[address]
+	dw	({address})&WM
+	db	({address})>>16
+	endm
 
 ; Used in SGDATA.ASM
 rndbyte255	macro
@@ -170,6 +182,15 @@ marioprintdec	MACRO	[xpos,ypos,var]
 
 ; Sets up RNG seed for random_l
 setuprng	MACRO
+	IFEQ	rngmode-2
+	savemode
+	ai8
+	LDA #$E5 ; seed, can be anything except 0
+	STA rand
+	LDA #$28
+	STA rand+1
+	returnmode
+	ELSEIF ; rngmode == 0 || 1
 	savemode
 	ai8
 	lda	#$3a
@@ -181,6 +202,29 @@ setuprng	MACRO
 	lda	#$7f
 	sta	rand+3
 	returnmode
+	ENDC
+	ENDM
+
+xorshiftrng	MACRO
+	; Code taken from https://codebase64.org/doku.php?id=base:16bit_xorshift_random_generator
+	; should be run with A in 8-bit mode
+	; saves 2 bytes of zp vs the original routine
+	; in C, what this does is:
+	;	rand ^= rand << 7;
+	;	rand ^= rand >> 9;
+	;	rand ^= rand << 8;
+	;	return rand;
+	LDA rand+1
+	LSR a
+	LDA rand
+	ROR a
+	EOR rand+1
+	STA rand+1 ; high part of x ^= x << 7 done
+	ROR a	; A has now x >> 9 and high bit comes from low byte
+	EOR rand
+	STA rand  ; x ^= x >> 9 and the low part of x ^= x << 7 done
+	EOR rand+1 
+	STA rand+1 ; x ^= x << 8 done
 	ENDM
 
 ;------------------------------------------------------------------------
@@ -5493,12 +5537,6 @@ setrad	MACRO	[size]
 	db	ct_set_rad
 	dw	{size}
 	ENDM
-;-------------------------------------------------------------------
-
-saymsg	MACRO	[message]
-	lda	#{message}
-	jsl	send_message_l
-	ENDM
 
 ;-------------------------------------------------------------------
 databank	MACRO
@@ -5512,24 +5550,6 @@ databank	MACRO
 	pha
 	plb
 	a16 
-	ENDC
-	ENDM
-
-;-------------------------------------------------------------------
-sdebug	MACRO
-	IFNE	debuginfo2
-	a8
-	stz	gameover
-	ENDC
-	ENDM
-edebug	MACRO
-	IFNE	debuginfo2
-	a8
-	lda	gameover
-	cmp	#0
-	beq	.ok\@
-	blink
-.ok\@
 	ENDC
 	ENDM
 
@@ -5565,30 +5585,18 @@ startbgm	MACRO			;SET PORT 0 IF IRQ'S ENABLED
 	ifne	longa
 	error	"wrong mode"
 	endc
-;	lda	msupresent
-;	bne	.no\@
 	lda	#\1
 	sta	bgm_music
 	stz	bgmcnt
-;.no\@
 	ENDM
 ;-------------------------------------------------------------------
 bootapu	MACRO
 	php
 	i16
 	ldx	\1
-;	lda	msupresent
-;	bne	.nobgm\@
 	jsr	sbootapu
 	plp
 	rtl
-;.nobgm\@
-;	lda.l	sndtbl,x
-;	sta	bgm_music
-;	inx ; increment X
-;	stx	snd_ptr
-;	plp
-;	rtl
 	endm
 ;-------------------------------------------------------------------
 snd_data	macro
@@ -5855,15 +5863,15 @@ fast	MACRO ; Run MARIO chip @ 21.4mhz (no clock divider)
 	IFEQ	LONGA
 	lda	#1
 	sta	m_clsr
-	; Enable fast multiplication mode (MS1)
-	lda	#cfgr_ms1 ;+cfgr_noirq
+	; Enable fast multiplication mode (MS1) and disable GSU IRQs
+	lda	#cfgr_ms1+cfgr_noirq
 	sta	m_cfgr
 	ELSEIF
 	a8
 	lda	#1
 	sta	m_clsr
-	; Enable fast multiplication mode (MS1)
-	lda	#cfgr_ms1 ;+cfgr_noirq
+	; Enable fast multiplication mode (MS1) and disable GSU IRQs
+	lda	#cfgr_ms1+cfgr_noirq
 	sta	m_cfgr
 	a16
 	ENDC
@@ -6107,15 +6115,15 @@ xxmempt	=	xxmempt+\2
 	endm
 ;---------------------------------------------------------------
 ; replicates MVN instruction for SASM
-sasm_mvn	MACRO ; src,dest
-; example: sasm_mvn	$32,$7E
+_mvn	MACRO ; src,dest
+; example: _mvn	$32,$7E
 ; raw opcodes are little endian so we reverse the arguments
 	db $54,\2,\1
 	ENDM
 ;---------------------------------------------------------------
 ; replicates MVP instruction for SASM
-sasm_mvp	MACRO ; src,dest
-; example: sasm_mvp	$32,$7E
+_mvp	MACRO ; src,dest
+; example: _mvp	$32,$7E
 ; raw opcodes are little endian so we reverse the arguments
 	db $44,\2,\1
 	ENDM

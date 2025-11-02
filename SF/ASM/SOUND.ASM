@@ -131,13 +131,6 @@ sbootapu	a8 ; Start the SPC700, set A to 8-bit
 	sta	bgm_music
 	inx ; increment X
 	stx	snd_ptr
-
-;	lda	msupresent
-;	beq	.noexit
-;	stz	bgmcnt	
-;	rts
-;.noexit
-
 	lda	firstdnld
 	beq	.first
 	lda	#$ff
@@ -302,11 +295,11 @@ boot_repeat
 	xba
 	lda	#0
 	bra	boot_entry2
+	IFNE	msu1
+	; Hard mute BGM if MSU-1 activated
 boot_loop	xba
-
 	cpx	#$235C
 	bne	.reg
-
 	lda	msupresent
 	beq	.reg
 	lda #$2F
@@ -316,6 +309,12 @@ boot_loop	xba
 .don
 	iny
 	xba
+	ELSEIF	;IFEQ	msu1
+boot_loop	xba
+	lda	[address],y
+	iny
+	xba
+	ENDC	;msu1
 boot_wait1	cmp	apu_port0
 	bne	boot_wait1
 	inc	a

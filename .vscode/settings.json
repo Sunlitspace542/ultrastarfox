@@ -1,0 +1,8 @@
+{
+	"terminal.integrated.automationProfile.windows": {
+		"path": "cmd.exe"
+	},
+	"editor.insertSpaces": false,
+	"editor.tabSize": 4,
+	"files.eol": "\r\n"
+}

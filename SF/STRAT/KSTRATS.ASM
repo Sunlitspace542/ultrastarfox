@@ -743,6 +743,9 @@ blackholeexit_Istrat
 	s_set_alvar		W,y,al_worldz,player_posz
 	s_add_alvar		W,y,al_worldz,#600
 	s_set_strat		y,.strat2
+	IFNE	RUMBLE
+	s_queue_rumble	5,5,15
+	ENDC
 	trigse		$2c
 .badobj
 .ninto

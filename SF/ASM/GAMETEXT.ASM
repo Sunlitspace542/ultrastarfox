@@ -125,7 +125,7 @@ msgnum	=	1
 	fopen	msgs.txt
 
 	IFNE	german			;if german = 1
-	include	MSG\german.inc		;use german message file
+	include	MSG\german.msg		;use german message file
 	ENDC
 
 	IFNE	french			;if french = 1
@@ -137,7 +137,7 @@ msgnum	=	1
 	ENDC
 
 	IFNE	JAPANESE
-	include	MSG\JAPANESE.inc	;use japanese message file
+	include	MSG\JAPANESE.msg	;use japanese message file
 	ENDC
 
 	IFEQ	GERMAN

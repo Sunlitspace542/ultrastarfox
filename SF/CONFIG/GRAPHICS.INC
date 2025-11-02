@@ -4,11 +4,9 @@
 
 ;####################################################################################################################
 
-; Increases framerate cap to 30FPS, no pacing changes.
-; Has no effect on PAL builds, as that version already
-; does this to compensate for 50hz.
-; [0 = off, 1 = on]
-_30fps	equ	0
+; Disables Level of Detail (LOD, AKA simple1/2/3) model support in the shape format and renderer.
+; Saves 6 bytes per shape, and may improve performance slightly?
+NOLODS	equ	0
 
 ; High poly arwing [0 = low poly (default) 1 = hi poly]
 ; replaces the player's ship, teammates' ships, and the scramble sequence
@@ -72,6 +70,9 @@ bombIconSpacing	equ	$9
 bombcounterdirection	equ	0
 
 ; Teammate message positions
+
+; X position to clip overflowing message text and start a new line
+friendmsgrighttextclip	equ	174
 
 ; Change these to change the overall position of the message box on screen
 friendmsgxadd	equ	0

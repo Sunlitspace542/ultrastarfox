@@ -1631,7 +1631,7 @@ titleseq_l	php
 	IFNE	nointroseq ; If intro sequence disabled
 	a8i16
 
-	IFNE	msu
+	IFNE	msu1
 	jsl CheckForMSU ; check for the MSU-1
 	ENDC
 
@@ -1646,6 +1646,10 @@ titleseq_l	php
 
 titleredo	a8i16
 	disable
+
+	IFNE	RUMBLE
+	s_end_rumble_table	; kill intro sequenced rumble if it wasn't already for some reason
+	ENDC
 
 	lda	#1
 	sta.l	oncewipe
@@ -1686,7 +1690,9 @@ titleredo	a8i16
 	lda	cont0
 	bit	#key_start
 	beq	.lp
-
+	IFNE	RUMBLE
+	s_queue_rumble	4,4,6
+	ENDC
 	a16
 	pla
 	a8
@@ -1731,7 +1737,7 @@ titleredo	a8i16
 intro_l
 	a8i16
 
-	IFNE	msu
+	IFNE	msu1
 	jsl CheckForMSU ; check for the MSU-1
 	ENDC
 
@@ -1741,6 +1747,10 @@ intro_l
 	bne	.ll
 
 	bgm	intro
+	IFNE	MSU1
+	msuplay	titledemo,norepeat
+	ENDC
+
 	disable
 
 	lda	#intromap>>16
@@ -1771,6 +1781,9 @@ intro_l
 	ora	contl0
 	beq	.lp3
 .waitup
+	IFNE	RUMBLE
+	s_end_rumble_table
+	ENDC
 	lda	#-2
 	sta	fadedir
 	lda	#11

@@ -16,7 +16,7 @@ endif
 all: sf_crunch cgx2fx romextender foxfont inccol argonautmapdecoder
 
 clean:
-	@rm -rf ./sf_crunch ./cgx2fx ./romextender ./foxfont ./inccol ./argonautmapdecoder
+	@rm -rf ./sf_crunch ./cgx2fx ./romextender ./foxfont ./inccol ./argonautmapdecoder ./chrmap
 
 sf_crunch:
 	@$(CC) $(OPT) sf_crunch.cpp -o $@$(EXT)
@@ -35,3 +35,6 @@ inccol:
 
 argonautmapdecoder:
 	@$(CC) $(OPT) argonautmapdecoder.c -o $@$(EXT)
+
+chrmap:
+	@$(CC) $(OPT) chrmap.c -o $@$(EXT)

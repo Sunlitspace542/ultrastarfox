@@ -18,6 +18,17 @@
 ;***************************************************************************
 	incpublics	EXT\irq.ext
 
+	IFNE	RUMBLE
+; Clocks JOYSER0 16 times for rumble
+clkjoyser016x_l
+; 8 cycles to long jump here
+	REPT	16
+	bit	JOYSER0 ;  4 cycles/instruction == 64 cycles
+	ENDR
+	rtl ; 6 cyles to long return to nmihan
+; == 78 cycles
+	ENDC
+
 NOBGTRANS	=	0 ; something to do with the transfer loop? (BG = background?)
 
 	shorta
@@ -1066,7 +1077,7 @@ irqbit2	i16
 	lsr	a
 	lsr	a
 	sta	m_scbr
-	IFEQ	PAL+_30fps
+	IFEQ	PAL
 	jsr	startmus
 	rtl
 	ELSEIF
@@ -1093,17 +1104,28 @@ irqbit3	lda	noirqbit3
 
 	lda	flashtunnelon
 	beq	.skip
+	IFEQ	rngmode-2
+	lda	rand
+	ELSEIF
 	jsr	irqrand
+	ENDC
 	cmp	#((20)*255)/100		;20% chance of a flash
 	bcs	.skip
 	dmacgram	0,0,redtunnel,64
 .skip
 	lda	flashbg
 	beq	.skipt
+	IFEQ	rngmode-2
+	lda	rand
+	ELSEIF
 	jsr	irqrand
+	ENDC
 	cmp	#((2)*255)/100		;2% chance of a flash
 	bcs	.skipt
 	dmacgram	0,5*16,thundercol,32
+	IFNE	RUMBLE
+	queue_rumble	4,4,3
+	ENDC
 .skipt
 	IFNE	shieldboostcolorbox
 ;!! Unnecessary color writes to palette line 2.
@@ -1577,11 +1599,7 @@ startmus	php
 	beq	.check
 	bra	.trig3
 .start	lda	bgm_music
-	IFNE	msu
-	jsr 	$7ED000 ; MSU-1 routine to determine song to play
-	ELSEIF
 	sta	apu_port0
-	ENDC
 	inc	bgmcnt
 	bra	.trig3
 .check	lda	apu_port0
@@ -1629,6 +1647,9 @@ startmus	php
 
 
 ;-----------------------------------------------------------------------
+	IFEQ	rngmode-2
+
+	ELSEIF
 irqrand	lda	rand
 	clc
 	sbc	rand+1
@@ -1640,7 +1661,7 @@ irqrand	lda	rand
 	sbc	rand
 	sta	rand
 	rts
-
+	ENDC
 ;-----------------------------------------------------------------------
 	shorta
 	longi

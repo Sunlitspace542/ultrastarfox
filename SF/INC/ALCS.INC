@@ -64,14 +64,14 @@ alcon	=	1
 	zalc	tpy1,1
 	zalc	tpz,1
 	zalc	tpz1,1
-	zalc	tracept,2
+;	zalc	tracept,2	; unused zp
 	zalc	printpt,2
 	zalc	drawmap,2
 	zalc	showmap,2
-	zalc	drawsprptr,2
+;	zalc	drawsprptr,2	; unused zp
 	zalc	vmap1,2
 	zalc	vmap2,2
-	zalc	vcmap,2
+;	zalc	vcmap,2	; unused zp
 	zalc	textpt,3
 	zalc	tempaddrl,3
 
@@ -113,10 +113,10 @@ alcon	=	1
 	alc	sortz,2
 
 ;game movement vars
-	alc	pwepcnty,1
-	alc	pwepcnta,1
-	alc	pwepYnotA,1
-	alc	tankroty,2
+;	alc	pwepcnty,1
+;	alc	pwepcnta,1
+;	alc	pwepYnotA,1
+;	alc	tankroty,2
 
 	alc	plrotx,2
 	alc	plroty,2
@@ -162,16 +162,16 @@ xlen	=	22*1024+450
 
 
 	alc	doingend,1
-	alc	spranimcnt,2
+;	alc	spranimcnt,2	; unused work ram
 	alc	crosshairon,1
-	alc	shieldon,1
+;	alc	shieldon,1	; unused work ram
 	alc	specwepcnt,2
 	alc	spritespos,2
 	alc	mespos,2
 	alc	mesendpos,2
 	alc	scramble,1
-	alc	gameover,1
-	alc	clearsprs,1
+;	alc	gameover,1	; unused work ram
+;	alc	clearsprs,1
 	alc	stageclear,1
 
 
@@ -226,11 +226,11 @@ xlen	=	22*1024+450
 	zalc	z1,2
 	zalc	shiftz,1
 	zalc	numnoclip,1
-	zalc	noclip,1
-	zalc	noclipx,1
-	zalc	linedrawvec,2
-	zalc	pauseflag,1
-	zalc	strptr,2
+;	zalc	noclip,1
+;	zalc	noclipx,1
+;	zalc	linedrawvec,2
+;	zalc	pauseflag,1
+;	zalc	strptr,2
 
 	zalc	rotx,1
 	zalc	roty,1
@@ -299,17 +299,14 @@ xlen	=	22*1024+450
 ;	zalc	pat0ptr,2
 ;	zalc	pattern0,1
 ;	zalc	pattern1,1
-;--------MSU1---------
-	IFNE	msu
-    zalc    msu_017e,1 ; MSU1 zeropage variable ($7E017E)
-    zalc    msu_017f,1 ; MSU1 zeropage variable ($7E017F)
-	ENDC
-;---------------------
 
 
 ; Vars kept between levels
+	IFEQ	rngmode-2
+	zalc	rand,2
+	ELSEIF
 	zalc	rand,4
-
+	ENDC
 ;
 ; Workspace Vars
 ;
@@ -666,11 +663,11 @@ xlen	=	22*1024+450
 	alc	hdmacirclebuf1,2
 	alc	hdmacirclebuf2,2
 	alc	whichcircle,1
-	alc	numhere,2
+;	alc	numhere,2
 	alc	gamevwpos,1
 	alc	planetdead,2
-	alc	oldplanetdead,2
-	alc	coldataval,1
+;	alc	oldplanetdead,2
+;	alc	coldataval,1
 	alc	fadedir,1
 	alc	fade,1
 	alc	hdmabg2hofs1,2
@@ -681,7 +678,7 @@ xlen	=	22*1024+450
 	alc	time1,3
 	alc	time2,3
 	alc	gamemode,2
-	alc	depthnum,1
+;	alc	depthnum,1
 	alc	outvx,2
 	alc	outvy,2
 	alc	outvz,2
@@ -699,11 +696,11 @@ xlen	=	22*1024+450
 	alc	shadx,2
 	alc	shadz,2
 	alc	shadowheight,2
-	alc	foxyfoxy,1
+;	alc	foxyfoxy,1
 	alc	stayblack,1
-	alc	cgadsub_bak,1
-	alc	coldata_bak,1
-	alc	cgswsel_bak,1
+;	alc	cgadsub_bak,1
+;	alc	coldata_bak,1
+;	alc	cgswsel_bak,1
 	alc	ts_bak,1
 	alc	texxy,2
 	alc	head,2
@@ -717,9 +714,30 @@ xlen	=	22*1024+450
 	alc	boostorbrake,2
 	ENDC
 	alc	open_text,2
+	IFNE	msu1
 	alc	msupresent,1
+	ENDC
+	alc	boostcnt,1
 
+; msudrv.asm
+	IFNE	MSU1
+	zalc	msufadeflag,1	; \
+	zalc	curmsuvolume,1	; / MUST BE IN ZEROPAGE!!
+	zalc	msu_dest_zptr,2	; zp pointer for data stream destination address
 
+	; MSU-1 data streaming routine alcs
+	alc	msu_read_len,2
+	alc	orchorband,1	; orchestra or band (for player down BGM) [0 = band, 1 = orch]
+msu_band	equ	0
+msu_orch	equ	1
+	ENDC
+
+	IFNE	RUMBLE
+; zeropage alcs for rumble
+	zalc	rumble_cmd,1	; command byte
+	zalc	rumble_time,1	; time (in frames, 0-255) to rumble
+	zalc	rumble_index,1	; index into rumble_table for sequenced rumbles (0-255)
+	ENDC
 
 ;---------------------------------------------------
 	alc	numshapes,2
@@ -729,7 +747,9 @@ xlen	=	22*1024+450
 	alc	palnum,2
 	alc	palcnt,2
 	alc	fadepal,1
-
+	IFNE	RUMBLE
+	alc	rumble_table,rmblseqlen	; cache for sequenced rumble commands (unfortunately it must be done this way)
+	ENDC
 ; stratrou
 
 	alc	objx,2
@@ -743,8 +763,8 @@ xlen	=	22*1024+450
 	alc	tmpcl,2
 	alc	temp23,2
 	alc	currshape,2
-	alc	keeppstrat,1
-	alc	monitorcrosshairon,1	; FOR MONITOR TEST ONLY!!!
+;	alc	keeppstrat,1
+;	alc	monitorcrosshairon,1	; FOR MONITOR TEST ONLY!!!
 
 	xalc	xhdma_tables,xhdma_max
 

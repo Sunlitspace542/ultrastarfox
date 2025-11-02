@@ -75,7 +75,7 @@ foxy_continue_l
 	stz	wobjsel
 	stz	tmw
 	stz	tsw
-	lda	#3
+	lda	#numlives
 	sta	lives
 	a16
 	stz	foxy_option
@@ -310,7 +310,7 @@ foxy_continue_l
 	jml	restart
 .yahay
 	a8
-	lda	#3
+	lda	#numlives
 	sta	lives
 	jsl	playerstart_init_l
 

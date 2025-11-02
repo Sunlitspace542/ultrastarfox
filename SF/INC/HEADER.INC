@@ -12,35 +12,27 @@ TIMINGS		=	0	; generate timings report (fast)
 ; display mode equates
 
 PROGRESS_INDICATOR	=	0	; switch on progress indicator (fast)
+ANSI		=	1	; ansi colour codes? (no time)
 TITLE_BAR		=	0	; colourful title bar (fast) (ansi only)
 TITLEBANKINFO	=	0	; info while assembling (only if ansi/progress/titlebar on)
 RAMLEFT		=	1	; displays information on ram space
 
 ;-----------------------------------------------------------------------
 
-; Turn ANSI colour codes off in certain cases
-
-	IFNV	"MSYSTEM" ; If we're not running on MSYS2
+; Turn ANSI colour codes off if assembler output is being written to a log file
 	IFD	NOANSI
 ANSI		=	0
-	ELSEIF
-ANSI		=	1	; ansi colour codes? (no time)
-	ENDC ;NOANSI
-	ENDC ;"MSYSTEM"
-
-; HACK to fix MSYS2 handling NOANSI weird
-	IFV	"MSYSTEM" ; If we are running on MSYS2, configure ANSI manually
-ANSI		=	1
-	ENDC ;"MSYSTEM"
+	ENDC
 
 	IFEQ	ANSI
 TITLE_BAR	=	0
-	ENDC ;ANSI
+	ENDC
 
 	include	INC\ifcold.inc
 
 ; Macros
 	include	INC\macros.inc
+	include	INC\MODEMAC.INC	; xAsm 'MODE' macro reimplementation
 
 ; reset timer
 totaltime	=	0
@@ -49,12 +41,23 @@ totaltime	=	0
 ; Constants
 	include	INC\vars.inc
 
+; Rumble controller macros
+	IFNE	RUMBLE
+	include	INC\RMBLMACS.INC
+	ENDC
+
 ; System defines
 	include	INC\sfcregs.inc	; SNES registers
 	include INC\mregs.inc	; MARIO chip registers
-	IFNE	msu
 	include	INC\msuregs.inc	; MSU-1 registers
+
+; MSU-1 stuff
+	IFNE	MSU1
+	include	INC\msumacs.inc
 	include	INC\msutrks.inc	; MSU-1 tracklist
+	IFNE	MSUDATA
+	include MSUDATA\MSUDATA.INC ; MSU-1 data file offsets
+	ENDC
 	ENDC
 
 ; Sound effect IDs

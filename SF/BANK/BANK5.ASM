@@ -37,7 +37,9 @@
 	include	EXT\expstrat.ext
 	include	EXT\continue.ext
 	include	EXT\trans.ext
+	include	EXT\msudrv.ext
 	include	INC\bgmacs.inc
+	include	EXT\bootnmi.ext
 
 
 

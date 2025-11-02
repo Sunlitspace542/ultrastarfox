@@ -328,16 +328,8 @@ setothmus	macro
 	endm
 
 setbgm	macro
-;	start_65816
-;	a8
-;	lda	msupresent
-;	bne	.no\@
-;	end_65816
 	db	ctrlsetbgm
 	db	\1
-;	start_65816
-;.no\@
-;	end_65816
 	endm
 
 vofson	macro
@@ -903,13 +895,13 @@ wipedone	=	0
 wipedone	=	1
 	endc
 	mapcode_jsl	initblack_l
-	setvar		stayblack,2
+	setvar.b		stayblack,2
 	MEXIT
 	ENDC
 
 	IFEQ	il_\2-il_whitefadeout
 	mapcode_jsl	initblack_l
-	setvar		stayblack,-1
+	setvar.b		stayblack,-1
 	mapcode_jsl	initfadewhite2norm_l
 	ENDC
 
@@ -920,14 +912,14 @@ wipedone	=	1
 wipedone	=	1
 	endc
 	mapcode_jsl	initblack_l
-	setvar		stayblack,2
+	setvar.b		stayblack,2
 	ENDC
 
 	mapwait	1
 	mapwait	1
 	setstage
 	IFNE	wipedone
-	setvar	stayblack,-1
+	setvar.b	stayblack,-1
 	ENDC
 	setfadeup	quick
 	setrestart

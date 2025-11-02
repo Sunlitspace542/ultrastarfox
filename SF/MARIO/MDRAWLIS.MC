@@ -8,7 +8,7 @@
 	zmalc	m_player,2
 	zmalc	m_numshapes,2
 	zmalc	m_damage,2
-	zmalc	m_boostcnt,2
+;	zmalc	m_boostcnt,2	; moved from zmario to snes wram, 2 bytes of zmario ram freed!!
 	zmalc	m_boostanim,2
 	ifeq	shieldboostcolorbox
 	zmalc	m_shieldup,2
@@ -475,6 +475,7 @@ mdrawloop
 	sms	[m_shift],r0
 	mpush	rshapehdrptr
 
+	IFEQ	NOLODS
 	move	r0,rzspare
 	miwt	rwork,3000
 	cmp	rwork
@@ -510,6 +511,7 @@ mdrawloop
 	to	r14
 	add	r14
 	mgetw	rshapehdrptr
+	ENDC	;NOLODS
 .gotshapehd
 
 ;---------------------------------------
@@ -909,18 +911,19 @@ mdamagemeter
 	IFNE	shieldboostcolorbox
 	move	r0,#4
 	ELSEIF
-	move	r0,[m_shieldup]	; if wireframe shield activated:
-	dec	r0	; instruction above dosn't set zero flag
-	bne	.nowireframe
+	; if wireframe shield activated:
+	move	r0,[m_shieldup]	; load m_shieldup into r0
+	lob	; test lo byte (the half that the 65816 writes to in calcmeters) and set flags; is the lo byte != 0?
+	beq	.nowireframe	; no, do not change meter color
+	nop	; nop to prevent below instruction from being executed after branching
+	move	r0,#7	; yes!
+	bra	.pickedcolor	; all done
 	nop
-	move	r0,#7
-	bra	.pickedcolor
-	nop
-.nowireframe
-	move	r0,#2
+.nowireframe	; if shieldup flag not set
+	move	r0,#2	; use normal meter color
 .pickedcolor
 	ENDC
-	mcall	mdrawsolidbox
+	mcall	mdrawsolidbox	; draw the shield bar
 	nop
 
 	mpop	pc

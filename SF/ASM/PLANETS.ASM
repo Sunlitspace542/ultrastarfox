@@ -236,6 +236,18 @@ initplanets_l
 planetseq_l
 
 	a8i16
+	IFNE	RUMBLE
+; clear any timed rumbles that did not complete before we got here
+	stz	rumble_cmd
+; clear any sequenced rumbles as well
+	stz	rumble_index
+
+; make sure NMI gets processed before interrupts are switched off
+; so we know the timed rumble is done
+.waitforrumbletoend
+	lda	rumble_time
+	bne	.waitforrumbletoend
+	ENDC
 	jsr	convertroute
 
 	stz	sdpck3
@@ -243,6 +255,15 @@ planetseq_l
 	stx	sdgpt3
 	stx	sdspt3
 	stz	nosetport3
+
+; unlock view change if it was locked during a level
+	lda	pshipflags3
+	bit	#psf3_noviewchange	; bit set?
+	beq	.noclearviewchange
+	and	#~psf3_noviewchange	; yes!
+	sta	pshipflags3	; clear it
+.noclearviewchange
+
 
 	disable
 
@@ -351,6 +372,9 @@ planetseq_l
 	pha
 	enable
 	bgm	map
+	IFNE	MSU1
+	msuplay_alt	map,repeat
+	ENDC
 	pla
 	cmp	#14
 	beq	.blackholebgm
@@ -832,8 +856,14 @@ planetseq_l
 	bit	#128
 	bne	.spheresnd
 	startbgm	bgm_mapselectshort
+	IFNE	MSU1
+	msuplay_alt	briefingshort,norepeat
+	ENDC
 	bra	.miss
 .spheresnd	startbgm	bgm_mapselect
+	IFNE	MSU1
+	msuplay_alt	briefing,norepeat
+	ENDC
 .miss
 
 ; now the hdma is switching the screen on and off to give us an effective

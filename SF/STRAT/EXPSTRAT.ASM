@@ -132,8 +132,8 @@ bossexplode_Istrat
 	s_copy_pos		y,x
 	s_set_lifecnt		y,#35-20
 	s_set_alsflag		y,sflag1
-	s_set_strat		y,circdelayexplode_Istrat	
-.badobj1			
+	s_set_strat		y,circdelayexplode_Istrat
+.badobj1
 	s_set_lifecnt		x,#58-20
 	s_jmp			bossdelayexplode_Istrat
 
@@ -297,18 +297,30 @@ circdelayexplode_strat
 
 ;*******************************************************************************
 makeLexpobj_srou
+	IFNE	RUMBLE
+	s_queue_rumble	5,5,20
+	ENDC
 	jsl			makeexpobj_srou
 	s_set_alvar		W,y,al_shape,#largeshape
 	s_rtl
 makeMEDexpobj_srou
+	IFNE	RUMBLE
+	s_queue_rumble	3,3,20
+	ENDC
 	jsl			makeexpobj_srou
 	s_set_alvar		W,y,al_shape,#mediumshape
 	s_rtl
 makeSMLexpobj_srou
+	IFNE	RUMBLE
+	s_queue_rumble	1,1,20
+	ENDC
 	jsl			makeexpobj_srou
 	s_set_alvar		W,y,al_shape,#smallshape
 	s_rtl
 makeFOLexpobj_srou
+	IFNE	RUMBLE
+	s_queue_rumble	5,5,16
+	ENDC
 	jsl			makeexpobj_srou
 	s_set_alvar		W,y,al_shape,#FOlargeshape
 	s_rtl
@@ -851,12 +863,21 @@ explode_Icont
 	bcc	.mid
 .far	a8
 	trigse		se_destructenemyfar
+	IFNE	RUMBLE
+	s_queue_rumble	2,2,15
+	ENDC
 	s_jmp		.end2
 .mid	a8
 	trigse		se_destructenemymid
+	IFNE	RUMBLE
+	s_queue_rumble	4,4,15
+	ENDC
 	s_jmp		.end2
 .near	a8
 	trigse		se_destructenemynear
+	IFNE	RUMBLE
+	s_queue_rumble	8,8,15
+	ENDC
 .end2	ply
 .nesnd
 
@@ -937,6 +958,9 @@ BIGparticleexplode_Istrat
 	s_end_strat
 BIGparticleexplode_strat
 	s_start_strat
+	IFNE	RUMBLE
+	s_queue_rumble	2,2,1
+	ENDC
 	s_particle_data	x,0,0,0
 	s_inc_alvar	 	B,x,al_count
 	s_jmp_alvarEQ		B,x,al_count,#110,remove_Istrat

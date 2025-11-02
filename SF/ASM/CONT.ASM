@@ -30,6 +30,9 @@ briefing_l
 	php
 	a8i16
 	bgm	ops
+	IFNE	MSU1
+	msuplay_alt	controls,repeat
+	ENDC
 	disable
 	lda	#$80
 	setinidisp1
@@ -85,6 +88,9 @@ contcancel	a8
 	a8
 	testjoypad	select
 	beq	.nosel
+	IFNE	RUMBLE
+	s_queue_rumble	2,2,4
+	ENDC
 	lda	c_type
 	inc	a
 	and	#3
@@ -101,6 +107,9 @@ contcancel	a8
 	testjoypad	start
 	lbeq	.self
 .autoexit
+	IFNE	RUMBLE
+	s_queue_rumble	4,4,6
+	ENDC
 	trigse	$10
 conttraining
 
@@ -115,6 +124,9 @@ conttraining
 
 	testjoypad	select
 	beq	.nosel
+	IFNE	RUMBLE
+	s_queue_rumble	2,2,4
+	ENDC
 	lda.l	contexit
 	eor	#1
 	sta.l	contexit
@@ -124,6 +136,9 @@ conttraining
 	beq	.noup
 	testjoypad	up
 	beq	.noup
+	IFNE	RUMBLE
+	s_queue_rumble	2,2,4
+	ENDC
 	lda	#0
 	sta.l	contexit
 	trigse	011h
@@ -132,6 +147,9 @@ conttraining
 	bne	.nodown
 	testjoypad	down
 	beq	.nodown
+	IFNE	RUMBLE
+	s_queue_rumble	2,2,4
+	ENDC
 	lda	#1
 	sta.l	contexit
 	trigse	011h
@@ -148,6 +166,9 @@ conttraining
 
 	testjoypad start
 	lbeq	.lp
+	IFNE	RUMBLE
+	s_queue_rumble	4,4,6
+	ENDC
 .xit
 	a8
 
@@ -170,8 +191,15 @@ conttraining
 
 	jsl	initialise_l
 	a8i16
+	IFEQ	trainingmapredirect
 	lda	#trainingmap>>16
 	ldx	#trainingmap&$7fff
+	ELSEIF	;IFNE	trainingmapredirect
+	IFD		_ARGSFX
+	run	" lda #%$trainingredirectmap>>16"
+	run	" ldx #%$trainingredirectmap&$7fff"
+	ENDC
+	ENDC	;trainingmapredirect
 	sta	mapbank
 	stx	mapptr
 	jsl	initgame_l
@@ -199,6 +227,9 @@ conttraining
 	bne	.lp3
 .tstst	testjoypad start
 	beq	.lp3
+	IFNE	RUMBLE
+	s_queue_rumble	4,4,6
+	ENDC
 .fade
 	a8
 	startbgm $f1

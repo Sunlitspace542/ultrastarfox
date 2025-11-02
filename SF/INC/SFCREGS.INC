@@ -75,6 +75,9 @@ wmaddl	equ	$2181
 wmaddm	equ	$2182
 wmaddh	equ	$2183
 
+JOYSER0 equ $4016   ; old-style joypad 1
+JOYSER1 equ $4017   ; old-style joypad 2
+
 nmitimen	equ	$4200
 wrio	equ	$4201
 wrmpya	equ	$4202

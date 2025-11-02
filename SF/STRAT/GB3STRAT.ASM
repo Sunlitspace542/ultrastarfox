@@ -3156,7 +3156,11 @@ bossBrobnextstate
 ; DOUBLE LAUNCHER AND HATCH.
 ;	mapobj	0000,0000,-70<<boss7_scale,-200,boss_7_1,boss7_Istrat
 
-     
+	IFNE	RUMBLE
+boss7rumbletab
+	db	$40,$00,$00,$04,$00,$00,rmblloop
+	ENDC
+
 boss7_Istrat
 	s_start_strat
 ;	set_sound1	x,#4
@@ -3189,6 +3193,9 @@ boss7_Istrat
 	s_nodepthcue	x
 
 	trigse		$5b
+	IFNE	RUMBLE
+	s_queue_rumble_table	boss7rumbletab	; attack carrier go brrrrrrrrrrrrr
+	ENDC
 	s_set_alsflag	x,nohitaffect
  
 	s_end_strat
@@ -3395,7 +3402,9 @@ boss7alldeadb_strat
 
 ;-----------------------------------------------------------------------------
 boss7b_init	; hatch fire
-
+	IFNE	RUMBLE
+	s_end_rumble_table	; kill sequenced rumble
+	ENDC
 	s_set_objtobechild	y,x,#1
 	s_chk_objptr		y,boss7c2_init	
 

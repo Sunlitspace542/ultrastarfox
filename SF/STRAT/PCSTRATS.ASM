@@ -862,6 +862,9 @@ playerwarp_strat
 	s_set_strat		y,hyperspace_Istrat
 .bad	s_set_var		W,psvar_word1,#60
 	startbgm		8
+	IFNE	RUMBLE
+	s_queue_rumble_table	hyperspacerumbletab
+	ENDC
 .nsturn
 
 

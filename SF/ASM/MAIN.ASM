@@ -110,8 +110,6 @@ initgame_l ; Initialize game
 	stz	sdpck3 ; store 0 at sdpck3 var
 
 	a8 ; set A to 8 bit
-	lda	#1 ; Load 1 into A
-	sta	shieldon ; Store A into shieldon var (shield on)
 	stz	showtype ; store 0 at showtype var
 	stz	msg_count1 ; store 0 at msg_count1 var
 	stz	msg_count2 ; store 0 at msg_count2 var
@@ -1105,7 +1103,7 @@ printspeclp
 	jsl	transfer_l ; Go to transfer loop subroutine
 
 	ai16 ; Set A/X/Y to 16 bit
-	clrmes	totalscoretxt,16,44	;total score
+	clrmes	totalscoretxt,16,44-4	;total score
 
 	a16 ; set A to 16 bit
 	jsr	calctotalscore ; Get total score
@@ -1306,10 +1304,10 @@ printspeclp
 	and	#1
 	a16
 	bne	.oneframe
-	lda	#facedata&WM+640*17
+	lda	#facedata&WM+640*face_anyone
 	bra	.writeit
 .oneframe
-	lda	#facedata&WM+640*4
+	lda	#facedata&WM+640*face_frame4
 	bra	.writeit
 .stillalive
 	a16
@@ -1317,11 +1315,11 @@ printspeclp
 	beq	.bunny
 	cpx	#2
 	beq	.falco
-	lda	#facedata&WM+640*11
+	lda	#facedata&WM+640*face_slippy1
 	bra	.writeit
-.bunny	lda	#facedata&WM+640*7
+.bunny	lda	#facedata&WM+640*face_peppy1
 	bra	.writeit
-.falco	lda	#facedata&WM+640*9
+.falco	lda	#facedata&WM+640*face_falco1
 .writeit
 	sta.l	m_faceptr
 
@@ -1384,25 +1382,6 @@ checkbonus	jsr	calctotalscore
 
 bonertab	dw	2100,1900,1700,1500,1300,1100,900,700,500,300,100,0
 
-
-    IFNE    msu
-pauseStart
-	a8
-	LDA	#audiostate_pause
-	STA	msu_control
-	LDA #$64
-	RTS
-
-pauseEnd
-; the original MSU-1 patch NOP'd instructions
-; to make room and moved those 2 here
-;	STZ $1202 ; cont0
-;	STZ $1204 ; contl0
-	LDA #audiostate_repeat
-	STA msu_control
-	RTS
-    ENDC
-
 ;--------------------------------------------------------------------
 dopause	php
 	a8i16
@@ -1416,9 +1395,10 @@ dopause	php
 	jsl	transfer_l		;transfer bitmap, do strats etc.
 	jsr	printpause
 	jsl	transfer_l		;transfer bitmap, do strats etc.
-    IFNE    msu
-    jsr pauseStart
-    ENDC
+	IFNE	msu1
+	LDA	#audiostate_none
+	STA	msu_control
+	ENDC
 	a8
 .wait	waitdma	100
 	lda	joy1h
@@ -1432,9 +1412,10 @@ dopause	php
 	lda	joy1h
 	bit	#key_start
 	bne	.wait3
-    IFNE    msu
-    jsr pauseEnd
-    endc
+	IFNE	msu1
+	LDA #audiostate_repeat
+	STA msu_control
+	endc
 	stz	cont0
 	stz	contl0
 	stz	cont0l

@@ -381,6 +381,9 @@
 	s_and_var		B,pshipflags3,#~psf3_enginesnd
 	s_or_var	B,pshipflags3,#psf3_nocollisions
 	startbgm	$2
+	IFNE	RUMBLE
+	s_queue_rumble	3,3,60 ; approx. 3sec at max frame rate
+	ENDC
 	routechange	1
 	lda	#0
 	sta.l	m_clrbitmaps
@@ -3185,6 +3188,9 @@ dummyparent
 
 .e_do_3
 	P_SOUNDEFFECT	$49
+	IFNE	RUMBLE
+	P_QUEUERUMBLE	3,3,3
+	ENDC
 	P_SET		worldy,-50
 
 	P_END
@@ -3215,6 +3221,9 @@ dummyparent
 
 .i_do_3
 	P_SOUNDEFFECT	$49
+	IFNE	RUMBLE
+	P_QUEUERUMBLE	3,3,3
+	ENDC
 	P_SET		worldy,-10
 
 	P_END
@@ -5143,7 +5152,18 @@ eguchi1
 
 	P_MSG		133
 	P_REMOVE
+;-------------------------------------------------------------------
+; language extension by kando
+	START_PATH		mes_message
+	
+	P_RELTOPLAYER	ON
+	P_INVISIBLE		ON
 
+	P_MSG2
+	
+	P_WAIT		60
+
+	P_REMOVE
 ;-------------------------------------------------------------------
 
 	START_PATH	e_shawerl

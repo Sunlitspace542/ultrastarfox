@@ -1,3 +1,0 @@
-	IFNE	msu
-	global	transfermsu
-	ENDC

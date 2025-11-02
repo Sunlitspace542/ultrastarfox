@@ -1,0 +1,8 @@
+0x80 = "ä" // Lwr. A w/ umlaut
+0x81 = "ß" // Eszett
+0x82 = "ü" // Lwr. U w/ umlaut
+0x83 = "Ü" // Cap. U w/ umlaut
+0x84 = "ö" // Lwr. O w/ umlaut
+0x85 = "ā" // Lwr. A w/ macron
+0x87 = "ū" // Lwr. U w/ macron
+0x89 = "ō" // Lwr. O w/ macron

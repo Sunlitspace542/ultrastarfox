@@ -58,8 +58,6 @@ initgame_strats_l
 	sta	gameflags2
 	stz	bossflags
 	stz	stratflags
-	lda	#1
-	sta	shieldon
 
 
 	lda	#40
@@ -388,6 +386,7 @@ init_strats_l
 
 ;----------------------------------------------------
 ; view toggle.
+	s_jmp_varAND	B,pshipflags3,#psf3_noviewchange,.npst
 	s_jmp_varNE	W,viewdist,outdist,.npst
 	s_jmp_varNE	B,stayblack,#-1,.npst
 	s_jmp_varAND	B,pshipflags,#psf_noctrl,.npst
@@ -2114,6 +2113,11 @@ removenuke_Istrat
 	s_jmp		remove_Istrat
 
 
+	IFNE	RUMBLE
+bombrumbletab
+	db	$11,$11,$22,$33,$44,$55,$55,$55,$55,$55,$55,$55,$55,$55,$44,$33,$22,$11,$11,rmblend
+	ENDC
+
 nukeexp_Istrat
 	s_start_strat
 	s_set_alvar		W,x,al_sword1,#nukeRATE
@@ -2127,6 +2131,10 @@ nukeexp_Istrat
 	s_end_strat
 nukeexp_strat
 	s_start_strat
+
+	IFNE	RUMBLE
+	s_queue_rumble_table	bombrumbletab	; sequenced rumble effects have priority
+	ENDC
 
 	a16
 	lda	al_sword1,x

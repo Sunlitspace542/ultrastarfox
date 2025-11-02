@@ -174,6 +174,13 @@
  P_UNLINKCHILD      n                make child into normal object
  P_REMOVE           n                remove child n
 
+ ULTRASTARFOX LANGUAGE EXTENSIONS:
+----------------------------------
+ P_CAMERA_LOCKON                     lock camera onto current object
+ P_RETURN_CAMERA                     return the camera to the player
+ P_KILLSHAPE                         kill the current shape
+ P_SETVAR           size,var,value   set a variable
+
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  Note #1: NEVER use FINDSHAPE, LINK, or FINDNEXTSHAPE with CHILD macros
  Note #2: P_GOTO P_NEXT, and P_LOOP AUTOMATICALLY do a P_WAIT 1

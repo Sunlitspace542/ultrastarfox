@@ -32,7 +32,7 @@ m_cfgr		equ	$3037 ; Control Flags Register (W)
 m_scbr		equ	$3038 ; Screen Base Register (W)
 m_clsr		equ	$3039 ; Clock Speed Register (W)
 m_scmr		equ	$303A ; Screen Mode Register (W)
-m_vcr		equ	$303B ; Version Code Register (R)
+m_vcr		equ	$303B ; Version Code Register (R) - Reports $52 if Super FX 3
 m_rambr		equ	$303C ; RAM Bank Register (R)
 m_un3d		equ	$303D ; Unused
 m_cbr		equ	$303E ; Cache Base Register (R)

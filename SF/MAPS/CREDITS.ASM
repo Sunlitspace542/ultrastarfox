@@ -17,7 +17,7 @@
 	end_65816
 
 	mapcode_jsl	initblack_l
-	setvar		stayblack,10
+	setvar.b		stayblack,10
 
 	setvar.b	bg2vofsoverride,1
 	setvar.w	bg2hofsreq,0
@@ -47,8 +47,28 @@
 	pathobj	000,-1050+129,1428,1000,font_d,theendd,6,4
 	mapwait	6000
 	setvar.b	levelfinished,le_endofcreds
-.lp	mapwait	5000
+.lp
+	IFEQ	EXITCREDITS
+	mapwait	5000
 	mapgoto	.lp
+	ENDC
+
+	IFNE	EXITCREDITS
+	mapwait	1
+	start_65816
+	a8
+	lda	cont0
+	and	#key_start
+	lbne	.credits_reboot
+	end_65816
+	mapgoto	.lp
+
+	end_65816
+.credits_reboot
+	jml	restart
+	end_65816
+	mapend
+	ENDC
 
 	IFEQ	PAL
 credwait	=	5000
@@ -96,6 +116,16 @@ actualcreds
 	mapwait	credwait
 	textpath	1000,2000,-200,3500,deutscher,dsideslip,14
 	textpath	1000,2000,200,3500,claude,dsideslip,14,32
+	ENDC
+
+	IFNE	RUMBLE
+	mapwait	credwait
+	textpath	1000,2000,-600,3000,rumbleversion,dsideslip,14,32
+	textpath	1000,2000,-300,3000,programmed,dsideslip,14,32
+	textpath	1000,2000,0000,3000,by,dsideslip,14
+	textpath	1000,2000,0400,4400,kando,dsideslip,14,100
+	textpath	1000,2000,0800,4400,randy,dsideslip,14,100
+	textpath	1000,2000,1200,4400,sunlit,dsideslip,14,100
 	ENDC
 
 	mapwait	9000-31*medpspeed

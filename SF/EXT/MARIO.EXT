@@ -3,7 +3,7 @@
 	global	m_numshapes,mdo_3d_display,m_dotsorstars
 	global	mclrbitmaps2,mclrbitmaps3,m_viewposx
 	global	m_y1
-	global	bg_scrollbuffer,m_damage,m_boostcnt
+	global	bg_scrollbuffer,m_damage
 	global	m_boostanim,m_rotx,m_bigx,m_bigy,mcalc_circle
 	global	m_circlebuf,m_circlebuf2,m_clrbitmaps
 	global	m_x1,m_txtdata,mprintstr,m_z1,m_xp1,mprtdecstop

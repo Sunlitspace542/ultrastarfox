@@ -133,6 +133,7 @@ path_istrat
 	s_mode_entry	.belowplayer,p_belowplayer
 	s_mode_entry	.notfriend,p_notfriend
 	s_mode_entry	.msg,p_msg
+	s_mode_entry	.msg2,p_msg2	; language extension by kando
 	s_mode_entry	.damage,p_damage
 	s_mode_entry	.almostdead,p_almostdead
 	s_mode_entry	.smokeon,p_smokeon
@@ -1260,6 +1261,7 @@ path_istrat
 	jmp		.okdok
 .randomselect
 
+	IFEQ	randomselectmode
 	lda		cock
 	beq		.5050bunnyfrog
 	lda		frog
@@ -1288,6 +1290,21 @@ path_istrat
 	beq		.frog
 	s_jmp_random	.frog
 	jmp		.bunny
+	ELSEIF
+
+	lda	cock
+	beq	.falcodead
+	s_jmp_random	.cock,teammateselectchance
+.falcodead
+	lda	bunny
+	beq	.peppydead
+	s_jmp_random	.bunny,teammateselectchance
+.peppydead
+	lda		frog
+	beq		.nooneleft
+	s_jmp_random	.frog,teammateselectchance
+	bra	.randomselect ; roll again if none picked
+	ENDC
 
 .nooneleft
 	lda		bunny
@@ -1425,6 +1442,15 @@ path_istrat
 ;**********
 .msg	SHORTA
 	getparam	1
+	phx
+	jsl		send_message_l
+	plx
+	jmp		.add2
+
+;**********
+; language extension by kando
+.msg2	SHORTA
+	lda.l	al_sbyte1,x
 	phx
 	jsl		send_message_l
 	plx

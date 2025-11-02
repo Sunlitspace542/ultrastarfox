@@ -1,123 +1,67 @@
 ;###################
 ;# MSU-1 TRACK IDS #
 ;###################
-; based on track order from
-; https://docs.google.com/spreadsheets/d/1_pgX2OIBm2DT4jNIeigdekD9OpZ5tVtaE5Fw2oGWPUc/edit#gid=0
-; errors corrected by Sunlit
-_001_introvideo		equ	$01 ; Intro FMV audio
-_002_dangerous		equ	$02 ; Entering Dangerous Territory
 
-_004_lastboss		equ	$04 ; Last Boss Andross
+; -- OPENING --
+	msutrack	titledemo,1	;Title Demonstration
+	msutrack	title,2	;Title Screen
+	msutrack	controls,3	;Controls
+	msutrack	trainingmode,4	;Training
+	msutrack	map,5	;Map
+	msutrack	briefing,6	;Map Briefing Zoom
+	msutrack	briefingshort,7	;Map Briefing Zoom Short
+	msutrack	scramble,9	;SCRAMBLE Sequence
 
-_007_clearband		equ	$07 ; Clear Band (Space armada also uses this ID, should be clear orch for armada)
-_008_clearorch		equ	$08
-_009_clearorch		equ	$09
-_010_clearorch		equ	$0A
-_011_bossroll		equ	$0B ; Ending (Bosses)
+; -- MAIN STAGES  --
+	; route 1
+	msutrack	level1_1,10 ;Corneria
+	msutrack	level1_2,11 ;Asteroid/Venom Orbital
+	msutrack	level1_3,12 ;Space Armada
+	msutrack	level1_4,13 ;Meteor
+	msutrack	level1_6,14 ;Venom Surface
+	; route 2
+	msutrack	level2_2,15 ;Sector X / Z
+	msutrack	level2_3,16 ;Titania
+	msutrack	level2_4,17 ;Sector Y
+	msutrack	level2_6,18 ;Venom Rt. 2
+	; route 3
+	msutrack	level3_3,19 ;Fortuna
+	msutrack	level3_5,20 ;Macbeth
 
-_017_downband		equ	$11 ; Down Band
+; -- STAGE BOSSES --
+	; route 1
+	msutrack	boss1_1,21 ;Boss Corneria
+	msutrack	boss1_2,22 ;Boss Asteroid
+	msutrack	boss1_3,23 ;Boss Space Armada
+	msutrack	boss1_4,24 ;Boss Meteor
+	; route 2
+	msutrack	boss2_3,25 ;Boss Titania
+	; route 3
+	msutrack	boss3_3,26 ;Boss Fortuna
+	msutrack	boss3_5,27 ;Boss Macbeth
+	; common
+	msutrack	boss1_5a,28 ;Phantron II
+	msutrack	boss1_5b,29 ;Great Commander
+	msutrack	boss1_5c,30 ;Phantron I
+	msutrack	bossandross,31 ;Boss Andross
+	; bonus
+	msutrack	bossootd,32 ;Slot Machine
 
-_020_maintheme		equ	$14 ; Main Theme
+; -- SECRET LEVELS --
+	msutrack	levelblackhole,33 ;Black Hole
+	msutrack	levelootd,34 ;Out of this Dimension
 
-_023_gameover		equ	$17 ; Game Over
-
-_028_ootd			equ	$1C ; OOTD
-
-_030_slotboss		equ	$1E ; Slot Machine Boss
-_031_clearootd		equ	$1F ; Clear OOTD
-_032_clearband		equ	$20 ; Clear Band
-
-_035_sectorxz		equ	$23 ; Sector X/Z
-
-_037_astboss		equ	$25 ; Asteroid Boss
-
-_048_titledemo		equ	$30 ; Title Demonstration
-_049_downorch		equ	$31 ; Down Orch
-
-_057_titlescr		equ	$39 ; Title Screen
-
-_059_titania		equ	$3B ; Titania
-
-_061_titaniaboss	equ	$3D ; Titania Boss
-
-_070_training		equ	$46 ; Training Mode
-_071_controls		equ	$47 ; Controls Select
-
-_073_sectory		equ	$49 ; Sector Y
-
-_075_astboss		equ	$4B ; Asteroid Boss
-
-_082_mapscr			equ	$52 ; Map
-
-_088_downorch		equ	$58 ; Down Orch
-_089_bholeexit		equ	$59 ; Exit Black Hole
-
-_092_misbrief		equ	$5C ; Mission Brief
-
-_094_misbriefshort	equ	$5E ; Mission Brief Short
-
-_096_bholemap		equ $60 ; Black Hole Map
-
-_100_continue		equ	$64 ; Continue
-
-_102_bhole			equ	$66 ; Black Hole
-
-_106_venom2			equ	$6A ; Venom Highway
-
-_108_bossvenomshort	equ	$6C ; Boss Venom Base (Short)
-
-_121_dangerous		equ	$79 ; Entering Dangerous Territory
-
-_134_emergency		equ	$86 ; Emergency Call
-
-_145_corneria		equ	$91 ; Corneria
-_146_bholeenter		equ	$92 ; Black Hole Enter
-_147_cornboss		equ	$93 ; Corneria Boss
-
-_152_secret			equ	$98 ; Secret Activated
-_153_asteroid_vo	equ	$99 ; Asteroid/Venom Orbital
-
-_155_asterboss		equ $9B ; Asteroid Boss
-
-_159_asteroid_vo	equ	$9F ; Asteroid/Venom Orbital
-
-_161_asterboss		equ $A1 ; Asteroid Boss
-
-_164_warpdrive		equ $A4 ; Warp Drive Spool
-
-_170_hyperspeed		equ	$AA ; Warp Drive Engage (exit)
-
-_174_spacearm		equ	$AE ; Space Armada
-_175_dangerarm		equ	$AF ; Dangerous Territory (Armada)
-_176_armboss		equ	$B0 ; Armada Boss Core Type
-
-_178_fortuna		equ $B2 ; Fortuna
-_179_exitlightspeed	equ	$B3 ; Exiting Warp - Entering Stage
-_180_fortboss		equ $B4 ; Fortuna Boss
-
-_191_sectorxz		equ $BF ; Sector X/Z
-
-_193_dangeroussz	equ	$C1 ; Dangerous Territory (Sector Z)
-_194_sectorzboss	equ	$C2 ; Sector Z Boss
-
-_206_downorch		equ	$CE ; Down Orch
-
-_210_macbeth		equ	$D2 ; Macbeth
-_211_meteor			equ	$D3 ; Meteor
-_212_macboss		equ	$D4 ; Macbeth Boss
-_213_meteboss		equ	$D5 ; Meteor Boss
-
-_225_asteroid_vo	equ	$E1 ; Asteroid/Venom Orbital
-_226_bossvenomextd	equ $E2 ; Boss (Venom Base Extended)/Great Commander I
-_227_bossvenomshort	equ	$E3 ; Boss Venom Base (Short)
-
-_243_venom1			equ	$F3 ; Venom 1
-_244_venom3			equ	$F4 ; Venom 3
-
-_246_bossvenom1		equ	$F6 ; Venom 1 Boss
-_247_bossvenom2		equ	$F7 ; Boss Venom Base 2
-_248_lastclear		equ $F8 ; Last Boss Clear
-
-_252_cleardemo		equ	$FC ; Game Clear Demonstration
-
+; -- MISC --
+	msutrack	enteringdangerousterritory,35 ;Entering Dangerous Territory
+	msutrack	staffroll,36 ;Staff Roll
+	msutrack	secretactivated,37 ;Secret Activated
+	msutrack	gameenddemo,38	;Game End Demonstration
+	msutrack	bossroll,39	;Enemy Force Commander Data Roll Sequence
+	msutrack	gameover,40	;Game Over
+	msutrack	clearband,41	;Stage Clear (Band)
+	msutrack	clearorch,42	;Stage Clear (Orch)
+	msutrack	downband,43	;Player Down (Band)
+	msutrack	downorch,44	;Player Down (Orch)
+	msutrack	enterhyperspace,45	;Enter Hyperspace
+	msutrack	exithyperspace,46	;Exit Hyperspace
 ; EOF

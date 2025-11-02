@@ -2,19 +2,25 @@
 
 echo ======
 echo Star Fox Background Maker 9000
-echo Tool by Sunlit, version 1.01_02
+echo Tool by Sunlit, version 1.1
 echo ======
 
 echo[
 echo !!!!!!
-echo Make sure you have reformatted your 512x512px PNG into a 256x1024px "tall" PNG
-echo before feeding it into this script, or else the tilemap format will be wrong!!
-echo See bgchunkorder.png and bgchunkorder_vertical.png for a template.
+echo Make sure you have installed the pillow library for Python first!!
 echo !!!!!!
 echo[
 
-set /p infile="Enter the input 256x1024px PNG file prefix (without extension): "
+set /p infile="Enter the input 512x512 PNG file prefix (without extension): "
 set /p outfile="Enter the prefix for the output CGX/SCR/COL and CCR/PCR files: "
+
+echo[
+echo ======
+echo Converting BG PNG to proper format...
+echo ======
+echo[
+
+python3 bin\pngformatter.py %infile%.png
 
 echo[
 echo ======
@@ -22,7 +28,8 @@ echo Running superfamiconv...
 echo ======
 echo[
 
-bin\superfamiconv.exe -v -i %infile%.png -B 4 --color-zero #00000000 -p %outfile%.pal -t %outfile%.cgx -m %outfile%.scr
+bin\superfamiconv.exe -v -i %infile%_tall.png -B 4 --color-zero #00000000 -p %outfile%.pal -t %outfile%.cgx -m %outfile%.scr
+del %infile%_tall.png
 
 echo[
 echo ======

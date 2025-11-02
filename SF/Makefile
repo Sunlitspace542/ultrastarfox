@@ -30,6 +30,9 @@ COLOR ?= 1
 # Disable assembler ANSI codes (must be handled differently for MSYS2, see below)
 NOANSI=
 
+# Build MSU-1 data file?
+MSU1 ?= 0
+
 # Newline character to use (adjust this if newlines aren't working in your terminal)
 ifeq ($(PLATFORM),windows)
 COLOR=1
@@ -42,14 +45,14 @@ else ifeq ($(PLATFORM),linux)
 NEWLINE=\n
 endif
 
-# If on Linux, use Wine to run MS-DOS Player
+# If on Linux, use Wine to run DOSBox-X Headless
 ifeq ($(UNAME_S),Linux)
 WINE=wine
 else
 WINE=
 endif
 
-# MS-DOS player DOS userland application emulator executable
+# DOSBox-X Headless DOS userland application emulator executable
 ifeq ($(PLATFORM),windows)
 MSDOS=dosbox-x.exe
 else
@@ -60,6 +63,10 @@ endif
 ASM=$(MSDOS) ARGSFXX.EXE
 # Setup heap for SASM and export symbols for ARGSFX
 ASMFLAGS= $(NOANSI) -e__notitle -e__heap=14400 -z
+
+# MSU-1 Data file Assembler
+MSUASM=$(MSDOS) SASMX.EXE
+MSUFLAGS= -m30 -e__heap=14400 -e__notitle
 
 # Linker
 LINK=$(MSDOS) ARGLINK.EXE
@@ -119,6 +126,13 @@ ifeq ($(PLATFORM),windows)
 MAPDEC=..\win_bin\argonautmapdecoder.exe
 else
 MAPDEC=../tools/argonautmapdecoder
+endif
+
+# Script Tokenizer
+ifeq ($(PLATFORM),windows)
+CHRMAP=..\win_bin\chrmap.exe
+else
+CHRMAP=../tools/chrmap
 endif
 
 # USB2SNES CLI Utility
@@ -257,7 +271,7 @@ SOBFILES= \
 #!! If you add/remove/modify a cgx/bin in these two lists, make sure the corresponding files are present here.
 
 # Everything that should be done when make is executed
-all: welcome check-jobs make-allcols msprites crunch fonts sf.sfc donebld
+all: welcome check-jobs text make-allcols msprites crunch fonts sf.msu sf.sfc donebld
 
 welcome:
 	@$(PRINT) "$(YELLOW)Welcome to UltraStarFox!!$(NO_COL)$(NEWLINE)"
@@ -273,7 +287,7 @@ endif
 
 # Check for job flags and print a warning
 check-jobs:
-ifeq ($(PLATFORM),windows)
+ifeq ($(PLATFORM), windows)
 else
 	@$(PRINT) "$(GREEN)Checking parallel build jobs...$(NO_COL)$(NEWLINE)"
 	@case "$(MAKEFLAGS)" in \
@@ -283,6 +297,15 @@ else
 	esac
 endif
 
+# Tokenize German/Japanese script
+text:
+ifeq ($(PLATFORM),windows)
+	$(CHRMAP) --tokenize MSG/chrmapde.dat MSG/GERMAN.INC MSG/GERMAN.MSG
+	$(CHRMAP) --tokenize MSG/chrmapjp.dat MSG/JAPANESE.INC MSG/JAPANESE.MSG
+else
+	$(CHRMAP) --tokenize MSG\chrmapde.dat MSG\GERMAN.INC MSG\GERMAN.MSG
+	$(CHRMAP) --tokenize MSG\chrmapjp.dat MSG\JAPANESE.INC MSG\JAPANESE.MSG
+endif
 
 # Initialize allcols.col
 init-allcols:
@@ -423,7 +446,7 @@ endif
 ifeq ($(PLATFORM),windows)
 	@ren SF.SFC sf.sfc
 else
-	@mv	SF.SFC sf.sfc
+	@$(MV)	SF.SFC sf.sfc
 endif
 ifeq ($(PLATFORM),windows)
 	@$(CHECK) $(COPTS) $@
@@ -445,6 +468,22 @@ else
 endif
 	@$(PRINT) "${BLINK}Build succeeded.$(NO_COL)$(NEWLINE)"
 
+# MSU-1 Data File
+sf.msu:
+ifeq ($(MSU1),1)
+ifeq ($(PLATFORM),windows)
+	@$(ASM) -o "$(NOANSI) -m30 $(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@""
+else
+	@bash -c '\
+	if [ "$(QUIET)" = "true" ]; then \
+		$(ASM) -o "$(NOANSI) -m30 $(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@" > /dev/null 2>&1 || \
+		$(ASM) -o "$(NOANSI) -m30 $(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@"; \
+	else \
+		$(ASM) -o "$(NOANSI) -m30 $(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@"; \
+	fi'
+endif
+endif
+
 donebld: sf.sfc
 
 ifeq ($(PLATFORM),windows)
@@ -454,12 +493,16 @@ ifeq ($(PLATFORM),windows)
 	@$(MAPDEC) SF.MAP ..\symbols.txt
 	@$(DEL) SF.MAP
 	@$(DEL) MSGS.TXT
+	@$(DEL) MSG\GERMAN.MSG
+	@$(DEL) MSG\JAPANESE.MSG
 else
 	@$(MV) sf.sfc ../sf.sfc
 	@{ [ -f BANKS.CSV ] && $(MV) BANKS.CSV ../banks.csv || true; }
 	@$(MAPDEC) SF.MAP ../symbols.txt
 	@$(DEL) SF.MAP
 	@$(DEL) MSGS.TXT
+	@$(DEL) MSG/GERMAN.MSG
+	@$(DEL) MSG/JAPANESE.MSG
 endif
 
 clean:
@@ -479,6 +522,9 @@ ifeq ($(PLATFORM),windows)
 	@$(DEL) sf.sfc
 	@$(DEL) BANKS.CSV
 	@$(DEL) ..\symbols.txt
+	@$(DEL) MSG\GERMAN.MSG
+	@$(DEL) MSG\JAPANESE.MSG
+
 else
 	@$(DEL) ../sf.sfc
 	@$(DEL) ../banks.csv
@@ -493,6 +539,8 @@ else
 	@$(DEL) sf.sfc
 	@$(DEL) BANKS.CSV
 	@$(DEL) ../symbols.txt
+	@$(DEL) MSG/GERMAN.MSG
+	@$(DEL) MSG/JAPANESE.MSG
 endif
 
 upload:
@@ -514,7 +562,7 @@ MSPRITESFILES = $(wildcard MSPRITES/*.BIN)
 STRATFILES = $(wildcard STRAT/*.ASM)
 SHAPEFILES = $(wildcard SHAPES/*.ASM)
 PATHFILES = $(wildcard PATH/*.ASM)
-MSGFILES = $(wildcard MSG/*.INC)
+MSGFILES = $(wildcard MSG/*.*)
 ALLFONFILES = $(wildcard DATA/FONT/*.*)
 COLFILES = $(wildcard DATA/COL/*.COL)
 MARIOFILES = $(wildcard MARIO/*.MC)
@@ -527,7 +575,7 @@ STDFILES = $(INCFILES) $(EXTFILES) $(CFGFILES)
 BANK/BANK0.SOB: \
  $(STDFILES) $(ALLFONFILES) $(STRATFILES) $(PCRFILES) $(SHAPEFILES) \
  BANK/BANK0.ASM \
- ASM/SGTABS.ASM ASM/SGDATA.ASM ASM/MSU.ASM \
+ ASM/SGTABS.ASM ASM/SGDATA.ASM ASM/MSUDRV.ASM \
  DATA/ETABS.DAT DATA/MAP-OBJ.CGX
 
 ## Banks 1, 41

@@ -667,16 +667,16 @@ mariomsg	macro
 mariomsgs
 msg_starfox
 
-	IFEQ	credzname				;if credzname == 0
+	IFEQ	gamename				;if gamename == 0
 	mariomsg	<STAR FOX>
 	ENDC
 
-	IFEQ	credzname-1				;if credzname == 1
+	IFEQ	gamename-1				;if gamename == 1
 	mariomsg	<STARWING>
 	endc
 
-	IFEQ	credzname-2				;if credzname == 2
-	docredzname ; run macro to do credits name
+	IFEQ	gamename-2				;if gamename == 2
+	docredzname ; run macro to insert credits name
 	endc
 
 msg_nintendo
@@ -843,6 +843,20 @@ msg_deutscher
 
 msg_claude
 	mariomsg	<CLAUDE MOYSE>
+
+	IFNE	RUMBLE
+msg_rumbleversion
+	mariomsg	<SHINDOU EDITION>
+
+msg_kando
+	mariomsg	<KANDOWONTU>
+
+msg_randy
+	mariomsg	<RANDAL LINDEN>
+
+msg_sunlit
+	mariomsg	<SUNLIT>
+	ENDC
 
 msg_0	mariomsg	<0>
 msg_1	mariomsg	<1>

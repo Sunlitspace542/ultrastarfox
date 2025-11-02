@@ -1,124 +1,132 @@
-
 # UltraStarFox
-Star Fox / Starwing source code, modified for ease-of-use and ROMHacking.
+
+Star Fox / Starwing source code, modified for ease-of-use and ROMhacking.  
+
+Go [here](#building) to jump straight to the building instructions.  
+
+## Credits (A-Z)
+
+- **H A M G E R** - Wireframe shield meter color changing Super FX code
+- **Kandowontu** - The Original Star Fox Guy, Lifesaver, Rumble System Programmer (Sequences), Rumble Effect Programmer/Polishing, Implemented several features (Mouse, Debug Mode/Crash Handler Restoration, Limit Removals, Easy Wireframes, other fixes and improvements)  
+- **MrL314** - Texture Limit Removal Super FX Code  
+- **Phonymike** - Tools (mugconv, fontconv), ROM Header  
+- **Randal Linden** - Rumble Pad Designer, Rumble Pad Docs, Rumble System Programmer (Rumble Pad NMI Code)  
+- **Repzilon** - Misc. documentation
+- **SegaRetro92** - Texture/Palette Docs, General Graphics Stuff, Author of Several Graphics Tools, German Version GFX/Text Restoration   
+- **Sunlit** - Maintainer, Documentation, Toolchain Engineer, Rumble System Programmer ("Flat Rate" Rumble), Rumble Effect Programmer, Tool Author, German Version GFX/Text Restoration, Release Builder Script  
 
 ## Features
 
+## Cartridge Hardware Support and ROM Configuration
+
 - Uses GSU-2/Super FX 2 @21.4Mhz instead of MARIO Chip 1 @10.7Mhz
-- FastROM support (not recommended to use if you are targeting real hardware with a real Super FX cartridge as it will not boot; SD2SNES/FXPak Pro currently work with FastROM just fine)
-- MSU-1 support (Original ASM patch by Kurrono, ported by Kando and Sunlit)
-- SNES Mouse support and analog stick support via the SNES mouse
-- Very configurable, see SF\CONFIG\CONFIG.INC for more info
-- Lots of free ROM space
+- Super FX MS1 high-speed multiply enabled (if 21mhz is enabled)
+- FastROM support (Do not enable if you are targeting a real cartridge with a real MARIO/GSU-1/GSU-2 IC chip!)
+
+## Accessory Support
+
+- SNES Mouse support and "analog stick" support via the SNES mouse
+- SNES Rumble Pad support and macros (see ``SF\INC\RMBLMACS.INC`` for macros)
+
+## QOL / Ease-of-use
+
+- Very configurable out-of-the-box, see ``SF\CONFIG\CONFIG.INC`` for more info
+- Lots of free ROM space (2MB/16Mbit ROM)
 - Bugfixes and improvements
-- 256 texture slots
-- 250 faces/vertices limit for models
-- Build process modernized and optimized for speed
-- Uses [MS-DOS Player](http://takeda-toshiya.my.coocan.jp/msdos/index.html) to emulate the toolchain, everything else uses modern tools
+- Build process optimized for speed
 - Palettes and graphics crunched, textures interleaved, and fonts built at assembly
 - Uses ARGLINK and ARGSFX from Star Fox 2 as linker and assembler instead of SL and SASM
 - Easier creation of wireframe models (replace face3 and face4 with aface3 and aface4 in your shape file)
+- Upload ROM directly to SNES and boot with QUsb2Snes and a SD2SNES/FXPak Pro flash cartridge
+- Easily create patches for your ROMhack with ``buildrelease.cmd``
+
+## Limits Removed/Increased
+
+- 256 texture slots
+- 250 faces/vertices limit for models
+
+## Miscellaneous
+
 - All Starwing PAL and Germany text/GFX for PAL builds
-- **Kando was involved so you know it's good**
+- **Kando and Randy were involved so you know it's good**
 
 ## Building
 
-```diff  
--IMPORTANT!-
-Note that if you run make with parallel jobs (-j), certain files relevant for debugging will fail to generate properly.
-```
+## Building on Windows
 
-## Windows Setup
+Requirements: Microsoft Windows
 
-Requirements: Microsoft Windows, Github Desktop (or similar, just need something that can run Git)  
+Download repo as ZIP and extract somewhere, or clone the repo with git via the command line.  
 
-Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``  
+To build ROM, run ``build.cmd``.  
 
-Please note that downloading the repo as ZIP will not work.  
+To build ROM with Logging, run ``build to log.cmd``.  
 
-## Windows (MSYS2) Setup
+To clean, run ``clean.cmd``.  
 
-Requirements: Microsoft Windows, MSYS2, Git, Make, GCC
+After building, a debug symbol map will be created at ``SYMBOLS.TXT``, and a bank space report at ``BANKS.CSV``.  
 
-Install MSYS2.  
+## Building on Linux
 
-Run ``MSYS2 MINGW64``.  
+**NOTE: this was tested on Ubuntu, on both real hardware and with the Windows Subsystem for Linux. YMMV.**  
 
-Update MSYS2: ``pacman -Syu``  
+Requirements: Ubuntu (might work with other distros) snap, DOSBox-X, git  
 
-Install dependencies:  ``pacman -Sy git make gcc``  
+Install snapstore: ``sudo apt install snapd``  
 
-Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``  
-
-## Linux/WSL Setup
-
-**NOTE: this was tested on WSL with Ubuntu installed. Your mileage may vary.**  
-
-Requirements: Ubuntu (might work with other distros) Wine, Git  
-
-Update if necessary: ``sudo apt-get update``  
-
-Install dependencies: ``sudo apt install -y wine build-essential git``  
+Install DOSBox-X from snap: ``sudo snap install dosbox-x``  
 
 Clone repository: ``git clone https://github.com/Sunlitspace542/ultrastarfox``  
 
-## Usage
+To build ROM, run ``make``.  
 
-Go to the directory where you cloned the repo.  
-
-Windows without MSYS2:  
-To build, run ``build.cmd``.
-
-To clean, run ``clean.cmd``.
-
-MSYS2/Linux:  
-To build, run ``make``.  
+To build ROM with logging, run ``make log``.  
 
 To clean, run ``make clean``.  
 
-To clean everything (game code + tools), run ``make distclean``.  
+After building, a debug symbol map will be created at ``SYMBOLS.TXT``, and a bank space report at ``BANKS.CSV``.  
 
-All:  
-
-After building, a debug symbol map will be created in the root directory at ``SYMBOLS.TXT``, and a bank space report will be at ``BANKS.CSV``. The ROM will also be with these files.  
-
-## Uploading ROM to SNES over USB with SD2SNES/FXPak(Pro) (Currently Windows Only)
+## Uploading ROM to SNES over USB with SD2SNES/FXPak(Pro)
 
 Uses [USB2SNES-cli](https://github.com/Hyphen-ated/usb2snes-cli) fork by Hyphen-ated. A prebuilt windows EXE is provided.  
 Download [QUSB2SNES](https://github.com/Skarsnik/QUsb2snes/releases).  
 Extract it somewhere and run it. Set it up for an SD2SNES/FXPak Pro.  
 **QUSB2SNES must be running in the background for uploading to function.**  
-You can then run ``make upload`` to upload the ROM to the SNES. ``make boot`` boots the ROM.  
-
-## Notes
-
-- All files that the assembler/linker will interact with should have all caps filenames that follow the MS-DOS 8.3 name format; up to 8 characters for the filename, up to 3 characters for the extension.
-- If you need access to the old MS-DOS/DOSBox-X based build system, see the [legacy](https://github.com/Sunlitspace542/ultrastarfox/tree/legacy) branch.
+You can then run ``send2snes.cmd`` or ``build and send to snes.cmd`` to either upload the current ROM to the SNES or rebuild and upload the freshly built ROM.  
 
 ## Contributing
 
 PRs are welcome!  
-All changes to be submitted should be made to the [dev](https://github.com/Sunlitspace542/ultrastarfox/tree/dev) branch.  
+All changes to be submitted should be made to the [main](https://github.com/Sunlitspace542/ultrastarfox/tree/main) branch.  
 
-## Helpful Links/tools
+## Helpful Links/Tools
 
-[Star Fox - Source Code Mods](https://docs.google.com/document/d/1kdgPCBeQFYsAepSDNpmwO8ZysRJjdnwK_5gWT2FFQEk/edit?usp=sharing)  
+[Star Fox Sound Binary Disassemblies](https://github.com/Sunlitspace542/star-fox-sound-bins)  
+[Star Fox Sound Driver Disassembly](https://github.com/phonymike/starfox_spc_driver)  
+[FastFX Blender Plugin](https://github.com/Sunlitspace542/FastFX)  
+[Argonaut 65816/Super FX Assembly Extension for VS Code](https://github.com/Sunlitspace542/65816-superfx-asm-argonaut-vscode)  
+[ArgSfx/SASM Assembler Manual](https://github.com/Sunlitspace542/ArgSfx-SASM-Docs/tree/main)  
+[SNES Development Manual](https://archive.org/details/SNESDevManual)  
+[fullsnes - SNES Hardware Specifications (by Nocash)](https://problemkaputt.de/fullsnes.htm)  
+[MSU-1 Documentation](https://github.com/Sunlitspace542/MSU-1-Docs)  
 [65c816 Opcodes](https://undisbeliever.net/snesdev/65816-opcodes.html)  
 [65c816 Reference](https://wiki.superfamicom.org/65816-reference)  
-[MARIO (SuperFX) Chip ASM Tutorial/Reference](https://en.m.wikibooks.org/wiki/Super_NES_Programming/Super_FX_tutorial)  
+[Super FX (MARIO) Chip ASM Reference](https://en.m.wikibooks.org/wiki/Super_NES_Programming/Super_FX_tutorial)  
 [EarthBound Music Editor (But for Star Fox)](https://github.com/phonymike/ebmused4sf/)  
 [Star Fox Music Programming Starter Kit (by livvy94)](https://www.dropbox.com/sh/m3sk75dmsyx5tey/AACLDXVcQEJk3ezQCDBitEs7a?dl=0)
 
 ## TODO
+
 1. Optimize game where possible (We already have FastROM and 21Mhz SuperFX 2, can we go any further?)  
-2. Annotate and document code (in progress)  
-3. Disassemble all BIN files in SND directory and integrate into build system, add documentation on custom music and the like  
+2. Annotate and document code (not so sure about doing this anymore)  
+3. Reimplement MSU-1 support using the driver I wrote for Star Fox CD
 
 ## Project Structure
+
 ```
 ultrastarfox
-├── bin: exe files needed to assemble game code
-├── extras: extra graphics files
+├── BIN: exe files needed to assemble game code
+├── optionalstuff: optional graphics files
 ├── SF: Main source code is located here
 │   ├── ASM: Main game code located here (65816)
 │   ├── BANK: Bank data\ASM files
@@ -131,10 +139,10 @@ ultrastarfox
 │   ├── MARIO: .MC MARIO (SuperFX) ASM code
 │   ├── MSG: Message files for English, Japanese, German, and French
 │   ├── MSPRITES: contains interleaved FXGfx format textures
-│   ├── PATH: contains all PATH language code
-│   ├── SHAPES: contains all shape files
+│   ├── PATH: contains all PATH language code (used for some object behaviors)
+│   ├── SHAPES: contains all shape (model) files
 │   ├── SND: sound/music data
-│   └── STRAT: Code for Strategies (Object behaviors)
-├── tools: tools such as PACKER and SHAPED
-└── docs: .md format text files covering various aspects of Star Fox
+│   └── STRAT: Code for Strategies (object behaviors)
+├── TOOLS: tools such as PACKER and SHAPED
+└── DOCS: .md format text files covering various aspects of Star Fox
 ```
