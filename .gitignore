@@ -15,6 +15,12 @@
 *.zip
 *.rar
 
+#patches
+*.bps
+*.BPS
+*.ips
+*.IPS
+
 #backups
 *.bak
 *.BAK
@@ -36,6 +42,9 @@
 *:Zone.Identifier
 
 # VSCode stuff
+# Allow settings and tasks and nothing else
+!/.vscode/settings.json
+!/.vsvode/tasks.json
 */.vscode/*
 
 # Files generated during assembly

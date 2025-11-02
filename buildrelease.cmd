@@ -4,7 +4,7 @@
 
 echo Building full release of UltraStarFox %VER%...
 
-dosbox-x -fastlaunch build.bat
+@call build.cmd
 
 mkdir ".\releases\Release %VER%\USA Patches\"
 mkdir ".\releases\Release %VER%\PAL Patches\"

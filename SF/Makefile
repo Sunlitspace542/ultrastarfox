@@ -300,11 +300,11 @@ endif
 # Tokenize German/Japanese script
 text:
 ifeq ($(PLATFORM),windows)
-	$(CHRMAP) --tokenize MSG/chrmapde.dat MSG/GERMAN.INC MSG/GERMAN.MSG
-	$(CHRMAP) --tokenize MSG/chrmapjp.dat MSG/JAPANESE.INC MSG/JAPANESE.MSG
+	@$(CHRMAP) --tokenize MSG/chrmapde.dat MSG/GERMAN.INC MSG/GERMAN.MSG
+	@$(CHRMAP) --tokenize MSG/chrmapjp.dat MSG/JAPANESE.INC MSG/JAPANESE.MSG
 else
-	$(CHRMAP) --tokenize MSG\chrmapde.dat MSG\GERMAN.INC MSG\GERMAN.MSG
-	$(CHRMAP) --tokenize MSG\chrmapjp.dat MSG\JAPANESE.INC MSG\JAPANESE.MSG
+	@$(CHRMAP) --tokenize MSG\chrmapde.dat MSG\GERMAN.INC MSG\GERMAN.MSG
+	@$(CHRMAP) --tokenize MSG\chrmapjp.dat MSG\JAPANESE.INC MSG\JAPANESE.MSG
 endif
 
 # Initialize allcols.col
@@ -445,8 +445,10 @@ endif
 
 ifeq ($(PLATFORM),windows)
 	@ren SF.SFC sf.sfc
+	@ren SF.MSU sf.msu
 else
-	@$(MV)	SF.SFC sf.sfc
+	@$(MV) SF.SFC sf.sfc
+	@$(MV) SF.MSU sf.msu
 endif
 ifeq ($(PLATFORM),windows)
 	@$(CHECK) $(COPTS) $@
@@ -472,14 +474,14 @@ endif
 sf.msu:
 ifeq ($(MSU1),1)
 ifeq ($(PLATFORM),windows)
-	@$(ASM) -o "$(NOANSI) -m30 $(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@""
+	@$(MSUASM) -o "$(NOANSI) $(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@"
 else
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
-		$(ASM) -o "$(NOANSI) -m30 $(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@" > /dev/null 2>&1 || \
-		$(ASM) -o "$(NOANSI) -m30 $(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@"; \
+		$(MSUASM) -o "$(NOANSI) $(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@" > /dev/null 2>&1 || \
+		$(MSUASM) -o "$(NOANSI) $(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@"; \
 	else \
-		$(ASM) -o "$(NOANSI) -m30 $(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@"; \
+		$(MSUASM) -o "$(NOANSI) $(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@"; \
 	fi'
 endif
 endif
@@ -489,6 +491,8 @@ donebld: sf.sfc
 ifeq ($(PLATFORM),windows)
 	@copy sf.sfc ..\sf.sfc
 	@del sf.sfc
+	@copy sf.msu ..\sf.msu
+	@del sf.msu
 	@if exist BANKS.CSV $(MV) BANKS.CSV ..\banks.csv
 	@$(MAPDEC) SF.MAP ..\symbols.txt
 	@$(DEL) SF.MAP
@@ -497,6 +501,7 @@ ifeq ($(PLATFORM),windows)
 	@$(DEL) MSG\JAPANESE.MSG
 else
 	@$(MV) sf.sfc ../sf.sfc
+	@$(MV) sf.msu ../sf.msu
 	@{ [ -f BANKS.CSV ] && $(MV) BANKS.CSV ../banks.csv || true; }
 	@$(MAPDEC) SF.MAP ../symbols.txt
 	@$(DEL) SF.MAP
@@ -522,6 +527,7 @@ ifeq ($(PLATFORM),windows)
 	@$(DEL) sf.sfc
 	@$(DEL) BANKS.CSV
 	@$(DEL) ..\symbols.txt
+	@$(DEL) MSUDATA\MSUDATA.INC
 	@$(DEL) MSG\GERMAN.MSG
 	@$(DEL) MSG\JAPANESE.MSG
 
@@ -539,6 +545,7 @@ else
 	@$(DEL) sf.sfc
 	@$(DEL) BANKS.CSV
 	@$(DEL) ../symbols.txt
+	@$(DEL) MSUDATA/MSUDATA.INC
 	@$(DEL) MSG/GERMAN.MSG
 	@$(DEL) MSG/JAPANESE.MSG
 endif
