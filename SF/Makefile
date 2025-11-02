@@ -561,6 +561,7 @@ boot:
 ## The great big list of source files to detect changes for and whatnot
 
 INCFILES = $(wildcard INC/*.INC)
+MSUDATA = $(wildcard MSUDATA/*.INC)
 EXTFILES = $(wildcard EXT/*.EXT)
 CFGFILES = $(wildcard CONFIG/*.INC)
 MAPFILES = $(wildcard MAPS/*.*)
@@ -574,7 +575,7 @@ ALLFONFILES = $(wildcard DATA/FONT/*.*)
 COLFILES = $(wildcard DATA/COL/*.COL)
 MARIOFILES = $(wildcard MARIO/*.MC)
 
-STDFILES = $(INCFILES) $(EXTFILES) $(CFGFILES)
+STDFILES = $(INCFILES) $(MSUDATA) $(EXTFILES) $(CFGFILES)
 
 ## Banks to assemble and files they include
 
