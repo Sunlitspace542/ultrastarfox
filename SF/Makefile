@@ -331,7 +331,7 @@ SOUNDBINS := \
 BIN_FILES := $(addsuffix .BIN, $(SOUNDBINS))
 
 # Everything that should be done when make is executed
-all: welcome make-allcols msprites crunch text fonts SGSOUND0 soundbins sf.msu sf.sfc donebld
+all: welcome make-allcols msprites crunch text fonts sf.msu sf.sfc donebld
 
 welcome:
 	@$(PRINT) "$(YELLOW)Welcome to UltraStarFox!$(NO_COL)$(NEWLINE)"
