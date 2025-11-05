@@ -24,6 +24,9 @@ SNDDRIVER ?= 0
 # Assemble sound BINs?
 SNDBINS ?= 0
 
+# Max assembler errors before stopping
+MAXERR=30
+
 ############################
 
 # Detect system type and configure accordingly
@@ -68,15 +71,15 @@ endif
 
 # 65816/Super FX Assembler
 ASM=$(MSDOS) ARGSFXX.EXE
-# Setup heap for SASM and export symbols for ARGSFX
-ASMFLAGS= $(NOANSI) -m30 -e__notitle -e__heap=14400 -z
+ASMFLAGS= $(NOANSI) -m$(MAXERR) -e__notitle -z
 
 # SPC700 Assembler
 SPCASM=../bin/asar
+SPCOPTS=-werror --error-limit=$(MAXERR)
 
 # MSU-1 Data file Assembler
 MSUASM=$(MSDOS) SASMX.EXE
-MSUFLAGS= $(NOANSI) -m30 -e__heap=14400 -e__notitle
+MSUFLAGS= $(NOANSI) -m$(MAXERR) -e__heap=14400 -e__notitle
 
 # Linker
 LINK=$(MSDOS) ARGLINK.EXE
@@ -283,7 +286,7 @@ SOBFILES= \
  BANK/INCBINS.SOB
 
 # Everything that should be done when make is executed
-all: welcome text make-allcols msprites crunch fonts SGSOUND0 soundbins sf.msu sf.sfc donebld
+all: welcome make-allcols msprites crunch text fonts SGSOUND0 soundbins sf.msu sf.sfc donebld
 
 welcome:
 	@$(PRINT) "$(YELLOW)Welcome to UltraStarFox!$(NO_COL)$(NEWLINE)"
@@ -495,7 +498,7 @@ endif
 SGSOUND0: SND/SGSOUND0/SGSOUND0.asm
 ifeq ($(SNDDRIVER),1)
 	$(call print,Assembling sound driver:,$<,$@.BIN)
-	@$(SPCASM) SND/$@/$@.ASM SND/$@.BIN
+	@$(SPCASM) $(SPCOPTS) SND/$@/$@.ASM SND/$@.BIN
 endif
 
 # Assemble sound data BINs (Sources must be provided by user)
