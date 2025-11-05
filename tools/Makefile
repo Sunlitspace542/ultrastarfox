@@ -13,7 +13,7 @@ EXT=.exe
 endif
 
 # Everything to be done
-all: sf_crunch cgx2fx romextender foxfont inccol argonautmapdecoder
+all: sf_crunch cgx2fx romextender foxfont inccol argonautmapdecoder chrmap
 
 clean:
 	@rm -rf ./sf_crunch ./cgx2fx ./romextender ./foxfont ./inccol ./argonautmapdecoder ./chrmap
