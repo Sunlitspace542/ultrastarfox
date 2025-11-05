@@ -2,6 +2,28 @@
 # UltraStarFox Makefile #
 #########################
 
+# Configuration
+
+# Silence the assembler+linker unless an error occurs
+QUIET ?= false
+
+# Whether to colorize build messages
+COLOR ?= 1
+
+# Disable assembler ANSI codes (must be handled differently for MSYS2, see below)
+#NOANSI=-eNOANSI
+NOANSI=
+
+# Build MSU-1 data file?
+MSU1 ?= 0
+
+# You must obtain the disassembly files for the sound driver and sound BINs for these options to function correctly. TBD.
+# Assemble sound driver?
+SNDDRIVER ?= 0
+
+# Assemble sound BINs?
+SNDBINS ?= 0
+
 # Detect what we're running on
 ifeq ($(OS),Windows_NT)
     ifndef MSYSTEM
@@ -12,26 +34,14 @@ ifeq ($(OS),Windows_NT)
         PLATFORM := msys2
     endif
 else
-    # Assume Linux/Unix if not Windows
+    # Assume Linux/UNIX if not Windows
     PLATFORM := linux
 endif
-
-# Silence the assembler+linker unless an error occurs
-QUIET ?= false
 
 ifeq ($(PLATFORM),windows)
 else
 	UNAME_S := $(shell uname -s)
 endif
-
-# Whether to colorize build messages
-COLOR ?= 1
-
-# Disable assembler ANSI codes (must be handled differently for MSYS2, see below)
-NOANSI=
-
-# Build MSU-1 data file?
-MSU1 ?= 0
 
 # Newline character to use (adjust this if newlines aren't working in your terminal)
 ifeq ($(PLATFORM),windows)
@@ -43,13 +53,6 @@ NOANSI=
 NEWLINE=\r\n
 else ifeq ($(PLATFORM),linux)
 NEWLINE=\n
-endif
-
-# If on Linux, use Wine to run DOSBox-X Headless
-ifeq ($(UNAME_S),Linux)
-WINE=wine
-else
-WINE=
 endif
 
 # DOSBox-X Headless DOS userland application emulator executable
@@ -83,8 +86,7 @@ endif
 EXTOPTS= 16 ff
 
 # Checksum Fixer
-
-ifeq ($(UNAME_S),Linux)
+ifeq ($(UNAME_S),linux)
 CHECK=../bin/superfamicheck_linux
 else
 CHECK=../bin/superfamicheck.exe
@@ -98,14 +100,12 @@ else
 MERGE=../tools/cgx2fx
 endif
 
-
 # Graphics Cruncher
 ifeq ($(PLATFORM),windows)
 CRU=..\win_bin\sf_crunch.exe
 else
 CRU=../tools/sf_crunch
 endif
-
 
 # ALLCOLS Builder
 ifeq ($(PLATFORM),windows)
@@ -298,12 +298,20 @@ else
 endif
 
 # Tokenize German/Japanese script
-text:
+text: MSG/GERMAN.MSG MSG/JAPANESE.MSG
+	$(call print3,Tokenizing scripts that use special characters...)
+
+MSG/GERMAN.MSG:
 ifeq ($(PLATFORM),windows)
 	@$(CHRMAP) --tokenize MSG/chrmapde.dat MSG/GERMAN.INC MSG/GERMAN.MSG
-	@$(CHRMAP) --tokenize MSG/chrmapjp.dat MSG/JAPANESE.INC MSG/JAPANESE.MSG
 else
 	@$(CHRMAP) --tokenize MSG\chrmapde.dat MSG\GERMAN.INC MSG\GERMAN.MSG
+endif
+
+MSG/JAPANESE.MSG:
+ifeq ($(PLATFORM),windows)
+	@$(CHRMAP) --tokenize MSG/chrmapjp.dat MSG/JAPANESE.INC MSG/JAPANESE.MSG
+else
 	@$(CHRMAP) --tokenize MSG\chrmapjp.dat MSG\JAPANESE.INC MSG\JAPANESE.MSG
 endif
 
@@ -445,10 +453,14 @@ endif
 
 ifeq ($(PLATFORM),windows)
 	@ren SF.SFC sf.sfc
+ifeq ($(MSU1),1)
 	@ren SF.MSU sf.msu
+endif
 else
 	@$(MV) SF.SFC sf.sfc
+ifeq ($(MSU1),1)
 	@$(MV) SF.MSU sf.msu
+endif
 endif
 ifeq ($(PLATFORM),windows)
 	@$(CHECK) $(COPTS) $@
@@ -491,8 +503,10 @@ donebld: sf.sfc
 ifeq ($(PLATFORM),windows)
 	@copy sf.sfc ..\sf.sfc
 	@del sf.sfc
+ifeq ($(MSU1),1)
 	@copy sf.msu ..\sf.msu
 	@del sf.msu
+endif
 	@if exist BANKS.CSV $(MV) BANKS.CSV ..\banks.csv
 	@$(MAPDEC) SF.MAP ..\symbols.txt
 	@$(DEL) SF.MAP
@@ -501,7 +515,9 @@ ifeq ($(PLATFORM),windows)
 	@$(DEL) MSG\JAPANESE.MSG
 else
 	@$(MV) sf.sfc ../sf.sfc
+ifeq ($(MSU1),1)
 	@$(MV) sf.msu ../sf.msu
+endif
 	@{ [ -f BANKS.CSV ] && $(MV) BANKS.CSV ../banks.csv || true; }
 	@$(MAPDEC) SF.MAP ../symbols.txt
 	@$(DEL) SF.MAP
@@ -514,6 +530,9 @@ clean:
 
 ifeq ($(PLATFORM),windows)
 	@$(DEL) ..\sf.sfc
+ifeq ($(MSU1),1)
+	@$(DEL) ..\sf.msu
+endif
 	@$(DEL) ..\banks.csv
 	@$(DEL) BANK\*.SOB
 	@$(DEL) BANK\*.MAP 
@@ -533,6 +552,9 @@ ifeq ($(PLATFORM),windows)
 
 else
 	@$(DEL) ../sf.sfc
+ifeq ($(MSU1),1)
+	@$(DEL) ../sf.msu
+endif
 	@$(DEL) ../banks.csv
 	@$(DEL) BANK/*.SOB
 	@$(DEL) BANK/*.MAP *.MAP

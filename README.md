@@ -1,3 +1,7 @@
+# !!! WARNING !!!
+PLEASE DO NOT TOUCH THIS! This is highly experimental and not at all done.  
+DO NOT MERGE INTO MAIN EITHER! This branch is based on a very old formerly scrapped version of the codebase and thus its history is very different. I'm going to merge the changes by hand once the modernized build system prototype contained here is working properly.  
+
 # UltraStarFox
 
 Star Fox / Starwing source code, modified for ease-of-use and ROMhacking.  
