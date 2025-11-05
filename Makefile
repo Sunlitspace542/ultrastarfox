@@ -10,7 +10,7 @@ ifeq ($(OS),Windows_NT)
         PLATFORM := msys2
     endif
 else
-    # Assume Linux/Unix if not Windows
+    # Assume Linux/UNIX if not Windows
     PLATFORM := linux
 endif
 

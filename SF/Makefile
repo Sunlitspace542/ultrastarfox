@@ -274,7 +274,7 @@ SOBFILES= \
 all: welcome check-jobs text make-allcols msprites crunch fonts sf.msu sf.sfc donebld
 
 welcome:
-	@$(PRINT) "$(YELLOW)Welcome to UltraStarFox!!$(NO_COL)$(NEWLINE)"
+	@$(PRINT) "$(YELLOW)Welcome to UltraStarFox!$(NO_COL)$(NEWLINE)"
 # Platform Detection
 ifeq ($(PLATFORM),windows)
 	@$(PRINT) "$(GREEN)You're on $(YELLOW)Windows!$(NO_COL)$(NEWLINE)"
@@ -299,16 +299,17 @@ endif
 
 # Tokenize German/Japanese script
 text: MSG/GERMAN.MSG MSG/JAPANESE.MSG
-	$(call print3,Tokenizing scripts that use special characters...)
 
-MSG/GERMAN.MSG:
+MSG/GERMAN.MSG: MSG/JAPANESE.INC
+	$(call print3,Tokenizing German script...)
 ifeq ($(PLATFORM),windows)
 	@$(CHRMAP) --tokenize MSG/chrmapde.dat MSG/GERMAN.INC MSG/GERMAN.MSG
 else
 	@$(CHRMAP) --tokenize MSG\chrmapde.dat MSG\GERMAN.INC MSG\GERMAN.MSG
 endif
 
-MSG/JAPANESE.MSG:
+MSG/JAPANESE.MSG: MSG/JAPANESE.INC
+	$(call print3,Tokenizing Japanese script...)
 ifeq ($(PLATFORM),windows)
 	@$(CHRMAP) --tokenize MSG/chrmapjp.dat MSG/JAPANESE.INC MSG/JAPANESE.MSG
 else
@@ -319,8 +320,8 @@ endif
 init-allcols:
 ifeq ($(PLATFORM),windows)
 	@$(DEL) DATA\COL\allcols.col
-	@copy NUL DATA\COL\allcols.col
-	@copy NUL DATA\COL\col2.tmp
+	@copy NUL DATA\COL\allcols.col >nul
+	@copy NUL DATA\COL\col2.tmp >nul
 else
 	@$(DEL) DATA/COL/allcols.col
 	@touch DATA/COL/allcols.col
@@ -501,18 +502,17 @@ endif
 donebld: sf.sfc
 
 ifeq ($(PLATFORM),windows)
-	@copy sf.sfc ..\sf.sfc
+# I would use move here, but for some reason it doesn't work here
+	@copy sf.sfc ..\sf.sfc >nul
 	@del sf.sfc
 ifeq ($(MSU1),1)
-	@copy sf.msu ..\sf.msu
-	@del sf.msu
+	@copy sf.msu ..\sf.msu >nul
+	@del /q sf.msu
 endif
 	@if exist BANKS.CSV $(MV) BANKS.CSV ..\banks.csv
 	@$(MAPDEC) SF.MAP ..\symbols.txt
 	@$(DEL) SF.MAP
-	@$(DEL) MSGS.TXT
-	@$(DEL) MSG\GERMAN.MSG
-	@$(DEL) MSG\JAPANESE.MSG
+	@if exist MSGS.TXT $(DEL) MSGS.TXT
 else
 	@$(MV) sf.sfc ../sf.sfc
 ifeq ($(MSU1),1)
@@ -522,8 +522,6 @@ endif
 	@$(MAPDEC) SF.MAP ../symbols.txt
 	@$(DEL) SF.MAP
 	@$(DEL) MSGS.TXT
-	@$(DEL) MSG/GERMAN.MSG
-	@$(DEL) MSG/JAPANESE.MSG
 endif
 
 clean:

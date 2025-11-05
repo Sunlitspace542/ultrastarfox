@@ -15,18 +15,6 @@
 			}
 		},
 		{
-			"label": "Assemble ROM and log output to BUILD.LOG",
-			"type": "shell",
-			"command": "make log",
-			"windows": {
-				"command": "buildtolog.cmd"
-			},
-			"group": {
-				"kind":"build",
-				"isDefault": false
-			}
-		},
-		{
 			"label": "Clean Everything",
 			"type": "shell",
 			"command": "make clean",
@@ -41,7 +29,7 @@
 		{
 			"label": "Upload to SNES + Boot [WIN]",
 			"type": "shell",
-			"command": "send2snes.cmd",
+			"command": "upload.cmd && boot.cmd",
 		}
 	]
 }

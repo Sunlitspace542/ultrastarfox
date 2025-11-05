@@ -50,10 +50,13 @@
 # Files generated during assembly
 *.CCR
 *.PCR
-SF/DATA/COL/*.PAC
-SF/DATA/COL/*.pac
-SF/DATA/COL/ALLCOLS.COL
-SF/DATA/COL/allcols.col
+*.PAC
+*.pac
+ALLCOLS.COL
+allcols.col
+MSUDATA.INC
+*.MSG
+*.tmp
 
 # Object files
 *.sob
@@ -62,4 +65,3 @@ SF/DATA/COL/allcols.col
 # Linker Address Maps
 *.map
 *.MAP
-SF/dosbox-x
