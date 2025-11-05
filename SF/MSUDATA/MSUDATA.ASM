@@ -48,6 +48,10 @@ msu1data	MACRO	[label,directive]
 	getmsu1dataaddr	{label}
 	ENDM
 
+	IFD	NOANSI
+	suppress	ansi
+	ENDC
+
 	printf	"%01%32-- Assembling MSU-1 Data File --%00%n"
 
 	; clear data blob addresses file
