@@ -1,4 +1,4 @@
-@..\win_bin\inccol.exe DATA\COL\%1.COL %2 %3
+@..\bin\inccol.exe DATA\COL\%1.COL %2 %3
 
 @move col.tmp DATA\COL\col.tmp
 

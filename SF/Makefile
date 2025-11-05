@@ -77,7 +77,7 @@ LOPTS=-b30 -h1024 -t7d -z
 
 # ROM Extender
 ifeq ($(PLATFORM),windows)
-EXTEND=../win_bin/romextender.exe
+EXTEND=../bin/romextender.exe
 else
 EXTEND=../tools/romextender
 endif
@@ -95,14 +95,14 @@ COPTS=-s -f
 
 # FXGFX Interleaver
 ifeq ($(PLATFORM),windows)
-MERGE=..\win_bin\cgx2fx.exe
+MERGE=..\bin\cgx2fx.exe
 else
 MERGE=../tools/cgx2fx
 endif
 
 # Graphics Cruncher
 ifeq ($(PLATFORM),windows)
-CRU=..\win_bin\sf_crunch.exe
+CRU=..\bin\sf_crunch.exe
 else
 CRU=../tools/sf_crunch
 endif
@@ -116,21 +116,21 @@ endif
 
 # Font Converter
 ifeq ($(PLATFORM),windows)
-FONT=../win_bin/foxfont.exe
+FONT=../bin/foxfont.exe
 else
 FONT=../tools/foxfont
 endif
 
 # Argonaut .MAP File Decoder
 ifeq ($(PLATFORM),windows)
-MAPDEC=..\win_bin\argonautmapdecoder.exe
+MAPDEC=..\bin\argonautmapdecoder.exe
 else
 MAPDEC=../tools/argonautmapdecoder
 endif
 
 # Script Tokenizer
 ifeq ($(PLATFORM),windows)
-CHRMAP=..\win_bin\chrmap.exe
+CHRMAP=..\bin\chrmap.exe
 else
 CHRMAP=../tools/chrmap
 endif
@@ -142,7 +142,7 @@ USB2SNES=../bin/usb2snes-cli.exe
 
 # Print Command
 ifeq ($(PLATFORM),windows)
-PRINT ?= ..\win_bin\printf.exe
+PRINT ?= ..\bin\printf.exe
 else
 PRINT ?= printf
 endif

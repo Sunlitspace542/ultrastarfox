@@ -1,2 +1,2 @@
-@win_bin\mingw32-make.exe
+@bin\mingw32-make.exe
 pause
