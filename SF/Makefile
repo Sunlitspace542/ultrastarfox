@@ -281,7 +281,7 @@ ifeq ($(PLATFORM),windows)
 else ifeq ($(PLATFORM),msys2)
 	@$(PRINT) "$(GREEN)You're on $(YELLOW)MSYS2!$(NO_COL)$(NEWLINE)"
 else ifeq ($(PLATFORM),linux)
-	@$(PRINT) "$(GREEN)You're on $(YELLOW)Linux!$(NO_COL)$(NEWLINE)"
+	@$(PRINT) "$(GREEN)You're on $(YELLOW)*nix!$(NO_COL)$(NEWLINE)"
 endif
 
 
