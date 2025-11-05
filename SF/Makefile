@@ -75,7 +75,7 @@ ASMFLAGS= $(NOANSI) -m$(MAXERR) -e__notitle -z
 
 # SPC700 Assembler
 SPCASM=../bin/asar
-SPCOPTS=-werror --error-limit=$(MAXERR)
+SPCFLAGS=-werror --error-limit=$(MAXERR) --no-title-check
 
 # MSU-1 Data file Assembler
 MSUASM=$(MSDOS) SASMX.EXE
@@ -497,8 +497,8 @@ endif
 # TODO figure out dependencies for this and sound BINs
 SGSOUND0: SND/SGSOUND0/SGSOUND0.asm
 ifeq ($(SNDDRIVER),1)
-	$(call print,Assembling sound driver:,$<,$@.BIN)
-	@$(SPCASM) $(SPCOPTS) SND/$@/$@.ASM SND/$@.BIN
+	$(call print,Assembling:,$<,SND/$@.BIN)
+	@$(SPCASM) $(SPCFLAGS) SND/$@/$@.ASM SND/$@.BIN
 endif
 
 # Assemble sound data BINs (Sources must be provided by user)
