@@ -17,10 +17,8 @@ NOANSI=
 # Build MSU-1 data file?
 MSU1 ?= 0
 
-# You must obtain the disassembly files for the sound driver and sound BINs for these options to function correctly.
-# Assemble sound driver?
-SNDDRIVER ?= 0
-
+# You must obtain the disassembly files for the sound driver and sound BINs
+# for this to function correctly.
 # Assemble sound BINs?
 SNDBINS ?= 0
 
@@ -285,6 +283,53 @@ SOBFILES= \
  BANK/SHBANKS.SOB \
  BANK/INCBINS.SOB
 
+# Sound BINs to assemble
+SOUNDBINS := \
+	GSGSNDA \
+	PSGBGMM \
+	PSGSND2 \
+	PSGSND5 \
+	PSGSNDA \
+	SGBGM1 \
+	SGBGM2 \
+	SGBGM3 \
+	SGBGM4 \
+	SGBGM5 \
+	SGBGM6 \
+	SGBGM7 \
+	SGBGM8 \
+	SGBGM9 \
+	SGBGM10 \
+	SGBGM11 \
+	SGBGMA \
+	SGBGMB \
+	SGBGMC \
+	SGBGMD \
+	SGBGME \
+	SGBGMF \
+	SGBGMG \
+	SGBGMH \
+	SGBGMI \
+	SGBGMJ \
+	SGBGMK \
+	SGBGML \
+	SGBGMM \
+	SGBGMN \
+	SGBGMO \
+	SGBGMP \
+	SGSOUND0 \
+	SGSOUND1 \
+	SGSOUND2 \
+	SGSOUND3 \
+	SGSOUND4 \
+	SGSOUND5 \
+	SGSOUND6 \
+	SGSOUND7 \
+	SGSOUND8 \
+	SGSOUND9 \
+	SGSOUNDA
+BIN_FILES := $(addsuffix .BIN, $(SOUNDBINS))
+
 # Everything that should be done when make is executed
 all: welcome make-allcols msprites crunch text fonts SGSOUND0 soundbins sf.msu sf.sfc donebld
 
@@ -493,19 +538,16 @@ else
 endif
 endif
 
-# Assemble sound driver (Sources must be provided by user)
-# TODO figure out dependencies for this and sound BINs
-SGSOUND0: SND/SGSOUND0/SGSOUND0.asm
-ifeq ($(SNDDRIVER),1)
-	$(call print,Assembling:,$<,SND/$@.BIN)
-	@$(SPCASM) $(SPCFLAGS) SND/$@/$@.ASM SND/$@.BIN
+# Assemble sound BINs (Sources must be provided by user)
+# TODO figure out dependencies for sound driver and sound BINs
+soundbins: $(BIN_FILES)
+
+%.BIN: SND/%/*.asm
+ifeq ($(SNDBINS),1)
+	$(call print,Assembling:,$*.asm,$@)
+	@cd SND/$* && ../../$(SPCASM) $(SPCFLAGS) $*.asm ../$@
 endif
 
-# Assemble sound data BINs (Sources must be provided by user)
-soundbins:
-ifeq ($(SNDBINS),1)
-	@echo "The programmer has a nap. Hold out!! Programmer!!"
-endif
 
 donebld: sf.sfc
 
@@ -555,9 +597,6 @@ endif
 	@$(DEL) MSUDATA\MSUDATA.INC
 	@$(DEL) MSG\GERMAN.MSG
 	@$(DEL) MSG\JAPANESE.MSG
-ifeq ($(SNDDRIVER),1)
-	@$(DEL) SND\SGSOUND0.BIN
-endif
 
 else
 	@$(DEL) ../sf.sfc
@@ -681,7 +720,7 @@ BANK/SHBANKS.SOB: \
  $(STDFILES) $(CCRFILES) $(PCRFILES) $(STRATFILES) $(SHAPEFILES) $(SNDFILES) \
  BANK/SHBANKS.ASM
 
-## Banks 18, 19, 20, 21, 22, 23, 35 
+## Banks 18, 19, 20, 21, 22, 23, 24, 35, 41
 BANK/INCBINS.SOB: \
  $(STDFILES) $(CCRFILES) $(PCRFILES) $(COLFILES) $(SNDFILES) $(MSPRITESFILES) $(MARIOFILES) \
  BANK/INCBINS.ASM \
