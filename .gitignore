@@ -28,11 +28,6 @@
 # build logs
 *.LOG
 *.log
-*/SF/*.DOC
-*/SF/*.doc
-*/SF/*.TMP
-*/SF/*.tmp
-*/SF/*.txt
 *.TXT
 *.txt
 *.CSV
@@ -57,6 +52,9 @@ allcols.col
 MSUDATA.INC
 *.MSG
 *.tmp
+*.TMP
+*.doc
+*.DOC
 
 # Object files
 *.sob
@@ -65,3 +63,8 @@ MSUDATA.INC
 # Linker Address Maps
 *.map
 *.MAP
+
+# Sound driver/BIN sources
+# Allow preassembled BINs and nothing else
+!/SF/SND/*.BIN
+/SF/SND/*

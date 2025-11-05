@@ -19,7 +19,7 @@ MSU1 ?= 0
 
 # You must obtain the disassembly files for the sound driver and sound BINs for these options to function correctly. TBD.
 # Assemble sound driver?
-SNDDRIVER ?= 0
+SNDDRIVER ?= 1
 
 # Assemble sound BINs?
 SNDBINS ?= 0
@@ -62,10 +62,13 @@ else
 MSDOS=./dosbox-x
 endif
 
-# Assembler
+# 65816/Super FX Assembler
 ASM=$(MSDOS) ARGSFXX.EXE
 # Setup heap for SASM and export symbols for ARGSFX
 ASMFLAGS= $(NOANSI) -e__notitle -e__heap=14400 -z
+
+# SPC700 Assembler
+SPCASM=../bin/asar
 
 # MSU-1 Data file Assembler
 MSUASM=$(MSDOS) SASMX.EXE
@@ -271,7 +274,7 @@ SOBFILES= \
 #!! If you add/remove/modify a cgx/bin in these two lists, make sure the corresponding files are present here.
 
 # Everything that should be done when make is executed
-all: welcome check-jobs text make-allcols msprites crunch fonts sf.msu sf.sfc donebld
+all: welcome check-jobs text make-allcols msprites crunch fonts SGSOUND0.BIN soundbins sf.msu sf.sfc donebld
 
 welcome:
 	@$(PRINT) "$(YELLOW)Welcome to UltraStarFox!$(NO_COL)$(NEWLINE)"
@@ -499,6 +502,18 @@ else
 endif
 endif
 
+# Sound driver (Sources must be provided by user)
+SGSOUND0.BIN: SND/SGSOUND0/*.*
+ifeq ($(SNDDRIVER),1)
+	@$(SPCASM) SND/SGSOUND0/SGSOUND0.asm $@
+endif
+
+# Sound data BINs (Sources must be provided by user)
+soundbins:
+ifeq ($(SOUNDBINS),1)
+
+endif
+
 donebld: sf.sfc
 
 ifeq ($(PLATFORM),windows)
@@ -585,7 +600,7 @@ MSUDATA = $(wildcard MSUDATA/*.INC)
 EXTFILES = $(wildcard EXT/*.EXT)
 CFGFILES = $(wildcard CONFIG/*.INC)
 MAPFILES = $(wildcard MAPS/*.*)
-SNDFILES = $(wildcard SND/*.*)
+SNDFILES = $(wildcard SND/*.BIN)
 MSPRITESFILES = $(wildcard MSPRITES/*.BIN)
 STRATFILES = $(wildcard STRAT/*.ASM)
 SHAPEFILES = $(wildcard SHAPES/*.ASM)
