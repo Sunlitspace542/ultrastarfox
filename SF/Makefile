@@ -69,14 +69,14 @@ endif
 # 65816/Super FX Assembler
 ASM=$(MSDOS) ARGSFXX.EXE
 # Setup heap for SASM and export symbols for ARGSFX
-ASMFLAGS= $(NOANSI) -e__notitle -e__heap=14400 -z
+ASMFLAGS= $(NOANSI) -m30 -e__notitle -e__heap=14400 -z
 
 # SPC700 Assembler
 SPCASM=../bin/asar
 
 # MSU-1 Data file Assembler
 MSUASM=$(MSDOS) SASMX.EXE
-MSUFLAGS= -m30 -e__heap=14400 -e__notitle
+MSUFLAGS= $(NOANSI) -m30 -e__heap=14400 -e__notitle
 
 # Linker
 LINK=$(MSDOS) ARGLINK.EXE
@@ -215,14 +215,14 @@ BANK/%.SOB: BANK/%.ASM
 	$(call print,Assembling:,$<,$@)
 
 ifeq ($(PLATFORM),windows)
-	@$(ASM) -o "$(NOANSI) -m30 $(ASMFLAGS) $(subst /,\,$<) -v$(subst /,\,$@)"
+	@$(ASM) -o "$(ASMFLAGS) $(subst /,\,$<) -v$(subst /,\,$@)"
 else
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
-		$(ASM) -o "$(NOANSI) -m30 $(ASMFLAGS) $< -v$@" > /dev/null 2>&1 || \
-		$(ASM) -o "$(NOANSI) -m30 $(ASMFLAGS) $< -v$@"; \
+		$(ASM) -o "$(ASMFLAGS) $< -v$@" > /dev/null 2>&1 || \
+		$(ASM) -o "$(ASMFLAGS) $< -v$@"; \
 	else \
-		$(ASM) -o "$(NOANSI) -m30 $(ASMFLAGS) $< -v$@"; \
+		$(ASM) -o "$(ASMFLAGS) $< -v$@"; \
 	fi'
 endif
 
@@ -478,14 +478,14 @@ endif
 sf.msu:
 ifeq ($(MSU1),1)
 ifeq ($(PLATFORM),windows)
-	@$(MSUASM) -o "$(NOANSI) $(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@"
+	@$(MSUASM) -o "$(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@"
 else
 	@bash -c '\
 	if [ "$(QUIET)" = "true" ]; then \
-		$(MSUASM) -o "$(NOANSI) $(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@" > /dev/null 2>&1 || \
-		$(MSUASM) -o "$(NOANSI) $(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@"; \
+		$(MSUASM) -o "$(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@" > /dev/null 2>&1 || \
+		$(MSUASM) -o "$(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@"; \
 	else \
-		$(MSUASM) -o "$(NOANSI) $(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@"; \
+		$(MSUASM) -o "$(MSUFLAGS) MSUDATA\MSUDATA.ASM -o$@"; \
 	fi'
 endif
 endif
