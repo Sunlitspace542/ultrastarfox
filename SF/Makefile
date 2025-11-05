@@ -5,24 +5,28 @@
 # Configuration
 
 # Silence the assembler+linker unless an error occurs
-QUIET ?= false
+QUIET ?= true
 
 # Whether to colorize build messages
 COLOR ?= 1
 
-# Disable assembler ANSI codes (must be handled differently for MSYS2, see below)
+# Disable assembler ANSI codes
 #NOANSI=-eNOANSI
 NOANSI=
 
 # Build MSU-1 data file?
 MSU1 ?= 0
 
-# You must obtain the disassembly files for the sound driver and sound BINs for these options to function correctly. TBD.
+# You must obtain the disassembly files for the sound driver and sound BINs for these options to function correctly.
 # Assemble sound driver?
-SNDDRIVER ?= 1
+SNDDRIVER ?= 0
 
 # Assemble sound BINs?
 SNDBINS ?= 0
+
+############################
+
+# Detect system type and configure accordingly
 
 # Detect what we're running on
 ifeq ($(OS),Windows_NT)
@@ -48,14 +52,14 @@ ifeq ($(PLATFORM),windows)
 COLOR=1
 NEWLINE=
 else ifeq ($(PLATFORM),msys2)
-# If we detect MSYS, handle disabling asssembler ANSI codes internally in INC/HEADER.INC and use the correct newline
-NOANSI=
 NEWLINE=\r\n
 else ifeq ($(PLATFORM),linux)
 NEWLINE=\n
 endif
 
-# DOSBox-X Headless DOS userland application emulator executable
+############################
+
+# DOSBox-X Headless DOS userland application emulator
 ifeq ($(PLATFORM),windows)
 MSDOS=dosbox-x.exe
 else
@@ -89,7 +93,7 @@ endif
 EXTOPTS= 16 ff
 
 # Checksum Fixer
-ifeq ($(UNAME_S),linux)
+ifeq ($(PLATFORM),linux)
 CHECK=../bin/superfamicheck_linux
 else
 CHECK=../bin/superfamicheck.exe
@@ -141,6 +145,8 @@ endif
 # USB2SNES CLI Utility
 USB2SNES=../bin/usb2snes-cli.exe
 
+############################
+
 # Terminal-specific commands
 
 # Print Command
@@ -158,7 +164,6 @@ MV=mv
 endif
 
 # Delete Command
-
 ifeq ($(PLATFORM),windows)
 DEL=del
 else
@@ -197,6 +202,12 @@ endef
 define merge
 	@$(PRINT) "$(GREEN)Interleaving FXGfx: $(YELLOW)$(1) + $(2) $(GREEN) -> $(BLUE)$@$(NEWLINE)"
 	@$(MERGE) MSPRITES/$(1) MSPRITES/$(2) $@
+endef
+
+# Function to tokenize a script file into a message file
+define tokenize
+	@$(PRINT) "$(GREEN)Tokenizing script: $(YELLOW)MSG/$(2) $(GREEN) -> $(BLUE)$@$(NEWLINE)"
+	@$(CHRMAP) --tokenize MSG/$(1) MSG/$(2) $@
 endef
 
 # Recipe to assemble a .ASM file and create a linkable .SOB file
@@ -271,10 +282,8 @@ SOBFILES= \
  BANK/SHBANKS.SOB \
  BANK/INCBINS.SOB
 
-#!! If you add/remove/modify a cgx/bin in these two lists, make sure the corresponding files are present here.
-
 # Everything that should be done when make is executed
-all: welcome check-jobs text make-allcols msprites crunch fonts SGSOUND0.BIN soundbins sf.msu sf.sfc donebld
+all: welcome text make-allcols msprites crunch fonts SGSOUND0 soundbins sf.msu sf.sfc donebld
 
 welcome:
 	@$(PRINT) "$(YELLOW)Welcome to UltraStarFox!$(NO_COL)$(NEWLINE)"
@@ -287,37 +296,14 @@ else ifeq ($(PLATFORM),linux)
 	@$(PRINT) "$(GREEN)You're on $(YELLOW)*nix!$(NO_COL)$(NEWLINE)"
 endif
 
-
-# Check for job flags and print a warning
-check-jobs:
-ifeq ($(PLATFORM), windows)
-else
-	@$(PRINT) "$(GREEN)Checking parallel build jobs...$(NO_COL)$(NEWLINE)"
-	@case "$(MAKEFLAGS)" in \
-		*-j*) \
-			$(PRINT) "$(RED)WARNING: A parallel job count greater than 1 may cause issues!!$(NO_COL)$(NEWLINE)"; \
-		;; \
-	esac
-endif
-
 # Tokenize German/Japanese script
 text: MSG/GERMAN.MSG MSG/JAPANESE.MSG
 
 MSG/GERMAN.MSG: MSG/JAPANESE.INC
-	$(call print3,Tokenizing German script...)
-ifeq ($(PLATFORM),windows)
-	@$(CHRMAP) --tokenize MSG/chrmapde.dat MSG/GERMAN.INC MSG/GERMAN.MSG
-else
-	@$(CHRMAP) --tokenize MSG\chrmapde.dat MSG\GERMAN.INC MSG\GERMAN.MSG
-endif
+	$(call tokenize,chrmapde.dat,GERMAN.INC)
 
 MSG/JAPANESE.MSG: MSG/JAPANESE.INC
-	$(call print3,Tokenizing Japanese script...)
-ifeq ($(PLATFORM),windows)
-	@$(CHRMAP) --tokenize MSG/chrmapjp.dat MSG/JAPANESE.INC MSG/JAPANESE.MSG
-else
-	@$(CHRMAP) --tokenize MSG\chrmapjp.dat MSG\JAPANESE.INC MSG\JAPANESE.MSG
-endif
+	$(call tokenize,chrmapjp.dat,JAPANESE.INC)
 
 # Initialize allcols.col
 init-allcols:
@@ -399,17 +385,19 @@ DATA/COL/allcols.pac: $(ALLCOLS_PALETTES)
 
 make-allcols: init-allcols DATA/COL/allcols.pac
 
+#!! If you add/remove/modify a cgx/bin in these two lists, make sure the corresponding files are present here.
+
 # FXGFX files to be interleaved
 msprites: MSPRITES/TEX_01.BIN MSPRITES/TEX_23.BIN MSPRITES/TEX_23_A.BIN
 
 # MSPRITES .BIN recipes
-MSPRITES/TEX_01.BIN:
+MSPRITES/TEX_01.BIN: MSPRITES/tex_0.CGX MSPRITES/tex_1.CGX
 	$(call merge,tex_0.CGX,tex_1.CGX)
 
-MSPRITES/TEX_23.BIN:
+MSPRITES/TEX_23.BIN: MSPRITES/tex_2.CGX MSPRITES/tex_3.CGX
 	$(call merge,tex_2.CGX,tex_3.CGX)
 
-MSPRITES/TEX_23_A.BIN:
+MSPRITES/TEX_23_A.BIN: MSPRITES/tex_3.CGX MSPRITES/tex_3_a.CGX
 	$(call merge,tex_2.CGX,tex_3_a.CGX)
 
 # Crunch all compressible GFX
@@ -502,16 +490,18 @@ else
 endif
 endif
 
-# Sound driver (Sources must be provided by user)
-SGSOUND0.BIN: SND/SGSOUND0/*.*
+# Assemble sound driver (Sources must be provided by user)
+# TODO figure out dependencies for this and sound BINs
+SGSOUND0: SND/SGSOUND0/SGSOUND0.asm
 ifeq ($(SNDDRIVER),1)
-	@$(SPCASM) SND/SGSOUND0/SGSOUND0.asm $@
+	$(call print,Assembling sound driver:,$<,$@.BIN)
+	@$(SPCASM) SND/$@/$@.ASM SND/$@.BIN
 endif
 
-# Sound data BINs (Sources must be provided by user)
+# Assemble sound data BINs (Sources must be provided by user)
 soundbins:
-ifeq ($(SOUNDBINS),1)
-
+ifeq ($(SNDBINS),1)
+	@echo "The programmer has a nap. Hold out!! Programmer!!"
 endif
 
 donebld: sf.sfc
@@ -562,6 +552,9 @@ endif
 	@$(DEL) MSUDATA\MSUDATA.INC
 	@$(DEL) MSG\GERMAN.MSG
 	@$(DEL) MSG\JAPANESE.MSG
+ifeq ($(SNDDRIVER),1)
+	@$(DEL) SND\SGSOUND0.BIN
+endif
 
 else
 	@$(DEL) ../sf.sfc
