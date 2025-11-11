@@ -206,7 +206,7 @@ setuprng	MACRO
 	ENDM
 
 xorshiftrng	MACRO
-	; Code taken from https://codebase64.org/doku.php?id=base:16bit_xorshift_random_generator
+	; Code taken from https://codebase64.net/doku.php?id=base:16bit_xorshift_random_generator
 	; should be run with A in 8-bit mode
 	; saves 2 bytes of zp vs the original routine
 	; in C, what this does is:
