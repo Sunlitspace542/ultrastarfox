@@ -2,10 +2,16 @@ cl_under
 	mapplayeroutview
 	mapwait	1000
 
+	IFNE	MSU1
+	mapmsufade
+	ENDC
 	setbgm	$f1
 
 	mapwait	2000
 	setbgm	bgm_fanfare
+	IFNE	MSU1
+	mapmsuplay	clearband,repeat
+	ENDC
 
 	mapwait	3000
 

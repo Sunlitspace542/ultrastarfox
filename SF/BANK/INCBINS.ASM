@@ -176,6 +176,8 @@ firstsndbnk	=	24
 musicsize	=	0
 
 	IFNE	MSU1
+; SUNLITNOTE modified sound driver for MSU-1 may be unnecessary?
+; SOUND.ASM seems to do enough to mute BGM already
 	incsnd	sound0,snd\msusnd0.bin
 	ELSEIF
 	incsnd	sound0,snd\sgsound0.bin
