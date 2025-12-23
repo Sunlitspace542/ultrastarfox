@@ -160,7 +160,7 @@ firsttimeuse
 	fast	; set MARIO chip to 21.4mhz (no clock divider)
 	ENDC ; end conditional
 
-	jsl	briefing_l ; jump to briefing screen subroutine
+	jsl	briefing_l ; jump to controls select screen subroutine
 	jsl	initialise_l ; Initialize game
 	jml	planetseq_l ; Jump to planet routine
 
