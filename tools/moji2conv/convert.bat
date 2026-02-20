@@ -1,0 +1,1 @@
+python3 moji2conv.py MOJI_2.png
