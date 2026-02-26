@@ -7,7 +7,7 @@ org $0000
 ; patch sound driver to mute BGM for MSU-1
 ; assemble with
 ; asar --no-title-check bgmmute.asm bgmmute.bin
-!BASE_ADDR = $08A3	; location of sound $60 pattern table in ARAM
+!BASE_ADDR = $08A3	; location of instruction to patch in ARAM
 dw patch_data_end-patch_data_start		; calculate size in bytes
 dw !BASE_ADDR								; spc destination
 
