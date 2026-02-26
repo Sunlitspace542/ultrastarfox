@@ -123,3 +123,6 @@
 	global	voicepatch,voicepatchlen
 	ENDC
 
+	IFNE	MSU1
+	global	bgmmute,bgmmutelen
+	ENDC

@@ -83,9 +83,16 @@ do_bgm_special	bootapu	#snd_special
 sndtbl
 	IFNE	MSUVOICE
 	snd_data	init,0h,sound0,voicepatch
-	ELSEIF	;IFEQ	MSUVOICE
+	ENDC
+
+	IFNE	MSU1
+	snd_data	init,0h,sound0,bgmmute
+	ENDC
+
+	IFEQ	MSUVOICE+MSU1
 	snd_data	init,0h,sound0
 	ENDC
+
 	snd_data	intro,012h,sound1,orchestra,bgmintro
 	snd_data	title,012h,titlebgm
 	snd_data	ops,012h,sound1,ops_bgm

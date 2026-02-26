@@ -175,16 +175,18 @@ facedata	incbin	data\face.cgx
 firstsndbnk	=	24
 musicsize	=	0
 
-	IFNE	MSU1
-; SUNLITNOTE modified sound driver for MSU-1 may be unnecessary?
-; SOUND.ASM seems to do enough to mute BGM already
-	incsnd	sound0,snd\msusnd0.bin
-	ELSEIF	;IFEQ	MSU1
 	incsnd	sound0,snd\sgsound0.bin
+
+	; patch to sound driver to mute BGM
+	IFNE	MSU1
+	incsnd	bgmmute,snd\bgmmute.bin
+	ENDC	;MSU1
+
+	; patch to sound effect $60 to isolate just the starting beep
 	IFNE	MSUVOICE
 	incsnd	voicepatch,snd\msuvoice.bin
 	ENDC
-	ENDC	;MSU1
+
 	incsnd	sound1,snd\sgsound1.bin
 
 	IFEQ	PAL
