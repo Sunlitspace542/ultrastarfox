@@ -976,6 +976,20 @@ planetseq_l
 	stz	bg2hofs
 	stz	bg2hofs
 
+	IFNE	MSUVOICE
+	savemode
+	a16
+	lda	voiceline
+	sta	msu_track
+	a8
+	jsl	msuaudiobusyloop_l
+	lda #$FF
+	sta	msu_volume
+	lda	#audiostate_norepeat
+	sta	msu_control
+	returnmode
+	ENDC
+
 .muttering2
 	jsr	clearpepperscreen
 	jsr	showplanetname
@@ -2575,6 +2589,11 @@ drawplanetlines_l
 	a8
 	lda.l	stagepaths+7,x
 	sta.l	peppermsg
+
+	IFNE	MSUVOICE
+	sta	voiceline
+	ENDC
+
 	lda.l	stagepaths+8,x
 	sta	currentlevel
 	a16

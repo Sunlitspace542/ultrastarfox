@@ -1757,7 +1757,7 @@ viewoutofLB3_strat
 	s_dec_alvar		B,x,al_sbyte1
 	s_jmp_alvarEQ		B,x,al_sbyte1,#deg22,nextstate
 	s_jmp_alvarNE		B,x,al_sbyte1,#deg360-deg45-deg90,.nsnd
-	trigse			$d	; START SPEECH
+	trigse			$d	; START SPEECH ; come in corneria
 .nsnd
 
 	s_add_var		W,outdist,#1

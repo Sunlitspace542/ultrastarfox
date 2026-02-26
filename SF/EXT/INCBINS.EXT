@@ -119,4 +119,7 @@
 	global	bgbpcr,bgbccr
 	global	obj2ccr
 
+	IFNE	MSUVOICE
+	global	voicepatch,voicepatchlen
+	ENDC
 

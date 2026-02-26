@@ -395,5 +395,13 @@ startsfx_l ; Initialize the SNES
 fnmi_l
 	rtl ; Return from Subroutine Long
 
+	IFNE	msuvoice
+; MSU-1 busy flag wait loop for MSU-1 voice stuff
+msuaudiobusyloop_l
+	bit	msu_status ; Is the audio busy flag set?
+	bvs	msuaudiobusyloop_l ; Loop until it isn't
+	rtl
+	ENDC
+
 
 

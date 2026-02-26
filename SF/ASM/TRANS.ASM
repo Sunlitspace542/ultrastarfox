@@ -221,6 +221,11 @@ stratsfrozen
 	sta	framecount
 .noreset
 
+;	IFNE	msuvoice
+;	lda	voiceline ; voiceline debug
+;	printd	1,2
+;	ENDC
+
 	ifne	mario_stats3d
 
 	lda	framesb ; framerate

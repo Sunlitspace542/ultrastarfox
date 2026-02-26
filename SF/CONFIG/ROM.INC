@@ -13,6 +13,10 @@ SUPERFX3	equ 0
 ; MSU-1 support (not yet implemented)
 msu1		equ	0
 
+; Voice lines for dialogue via MSU-1
+; You have to choose between this or MSU-1 music! You can't have both!!
+msuvoice	equ	0
+
 ; MSU-1 data streaming support
 ; You must add a recipe to all in the makefile to assemble the data file (there are comments there that explain this).
 ; The MSU-1 data file source lives in the MSUDATA directory.
@@ -66,3 +70,12 @@ docredzname	MACRO
 	ENDM
 
 ;####################################################################################################################
+
+; Sanity checks (do not touch)
+
+	IFNE	msu1
+	IFNE	msuvoice
+	printf	"You can't have MSU-1 music and MSU-1 voices on at the same time!!"
+	fail
+	ENDC
+	ENDC

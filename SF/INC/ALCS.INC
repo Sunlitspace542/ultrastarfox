@@ -739,6 +739,10 @@ msu_orch	equ	1
 	zalc	rumble_index,1	; index into rumble_table for sequenced rumbles (0-255)
 	ENDC
 
+	IFNE	MSUVOICE
+	alc	voiceline,2	; Voiceline to play
+	ENDC
+
 ;---------------------------------------------------
 	alc	numshapes,2
 	alc	dlptr,2

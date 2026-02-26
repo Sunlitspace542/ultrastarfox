@@ -663,6 +663,16 @@ send_message_l
 	asl	a
 	tax
 	lda.l	messages,x
+	IFNE	MSUVOICE
+	pha
+	txa
+	beq	.dontdivbyzero
+	lsr	a
+.dontdivbyzero
+	ina
+	sta	voiceline
+	pla
+	ENDC
 	tax
 	a8
 	lda.l	messages&~WM,x
@@ -832,9 +842,22 @@ friends_messages_l
 	a16
 	and	#255
 	tax
+	IFEQ	MSUVOICE
 	a8
 	lda.l	.facesounds,x
 	trigse	a
+	ELSEIF	;IFNE	MSUVOICE
+	a16
+	lda	voiceline
+	sta	msu_track
+	a8
+	jsl	msuaudiobusyloop_l
+	lda	#$FF
+	sta	msu_volume
+	lda	#audiostate_norepeat
+	sta	msu_control
+	trigse	$60
+	ENDC
 
 .finished
 	plp
