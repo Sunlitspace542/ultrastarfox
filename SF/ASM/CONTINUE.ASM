@@ -704,7 +704,11 @@ send_message_l
 	inx
 	stx	friends_msg
 
-	lda	#50
+	IFNE	MSUVOICE
+	lda	#100 ; 2x open time for voices
+	ELSEIF
+	lda	#50 ; time friend's comm window is open (vanilla is 50)
+	ENDC
 	sta	msg_count1
 	stz	msg_count2
 .finished
