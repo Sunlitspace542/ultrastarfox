@@ -1067,6 +1067,9 @@ planetseq_l
 .exitpepper
 	pla
 .exitpepper2
+	IFNE	msuvoice
+	stz	msu_control
+	ENDC
 	trigse	$13
 
 	waitdma	224
