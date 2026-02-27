@@ -1,0 +1,2155 @@
+{
+    "$schema": "https://raw.githubusercontent.com/qwertymodo/msupcmplusplus/master/configs/schema#",
+    "game": "Star Fox",
+    "normalization": 0,
+    "output_prefix": "SF",
+    "verbosity": 2,
+    "tracks": [
+        {
+            "track_number": 1,
+            "file": "fox-1.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 2,
+            "file": "fox-2.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 3,
+            "file": "fox-3.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 4,
+            "file": "fox-4.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 5,
+            "file": "falcon-5.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 6,
+            "file": "falcon-6.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 7,
+            "file": "falcon-7.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 8,
+            "file": "falcon-8.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 9,
+            "file": "falcon-9.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 10,
+            "file": "falcon-10.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 11,
+            "file": "falcon-11.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 12,
+            "file": "falcon-12.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 13,
+            "file": "falcon-13.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 14,
+            "file": "falcon-14.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 15,
+            "file": "falcon-15.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 16,
+            "file": "falcon-16.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 17,
+            "file": "falcon-17.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 18,
+            "file": "falcon-18.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 19,
+            "file": "falcon-19.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 20,
+            "file": "falcon-20.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 21,
+            "file": "falcon-21.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 22,
+            "file": "falcon-22.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 23,
+            "file": "falcon-23.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 24,
+            "file": "falcon-24.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 25,
+            "file": "rabbit-25.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 26,
+            "file": "rabbit-26.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 27,
+            "file": "rabbit-27.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 28,
+            "file": "rabbit-28.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 29,
+            "file": "rabbit-29.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 30,
+            "file": "rabbit-30.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 31,
+            "file": "rabbit-31.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 32,
+            "file": "rabbit-32.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 33,
+            "file": "rabbit-33.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 34,
+            "file": "rabbit-34.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 35,
+            "file": "rabbit-35.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 36,
+            "file": "rabbit-36.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 37,
+            "file": "rabbit-37.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 38,
+            "file": "rabbit-38.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 39,
+            "file": "rabbit-39.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 40,
+            "file": "rabbit-40.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 41,
+            "file": "rabbit-41.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 42,
+            "file": "rabbit-42.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 43,
+            "file": "rabbit-43.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 44,
+            "file": "rabbit-44.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 45,
+            "file": "frog-45.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 46,
+            "file": "frog-46.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 47,
+            "file": "frog-47.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 48,
+            "file": "frog-48.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 49,
+            "file": "frog-49.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 50,
+            "file": "frog-50.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 51,
+            "file": "frog-51.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 52,
+            "file": "frog-52.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 53,
+            "file": "frog-53.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 54,
+            "file": "frog-54.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 55,
+            "file": "frog-55.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 56,
+            "file": "frog-56.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 57,
+            "file": "frog-57.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 58,
+            "file": "frog-58.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 59,
+            "file": "frog-59.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 60,
+            "file": "frog-60.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 61,
+            "file": "frog-61.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 62,
+            "file": "frog-62.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 63,
+            "file": "frog-63.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 64,
+            "file": "frog-64.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 65,
+            "file": "rabbit-65.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 66,
+            "file": "falcon-66.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 67,
+            "file": "rabbit-67.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 68,
+            "file": "frog-68.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 69,
+            "file": "falcon-69.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 70,
+            "file": "rabbit-70.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 71,
+            "file": "frog-71.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 72,
+            "file": "falcon-72.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 73,
+            "file": "rabbit-73.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 74,
+            "file": "frog-74.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 75,
+            "file": "falcon-75.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 76,
+            "file": "rabbit-76.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 77,
+            "file": "frog-77.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 78,
+            "file": "frog-78.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 79,
+            "file": "falcon-79.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 80,
+            "file": "rabbit-80.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 81,
+            "file": "frog-81.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 82,
+            "file": "falcon-82.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 83,
+            "file": "rabbit-83.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 84,
+            "file": "frog-84.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 85,
+            "file": "falcon-85.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 86,
+            "file": "rabbit-86.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 87,
+            "file": "frog-87.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 88,
+            "file": "pepper-88.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "pad_start": 66150,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 89,
+            "file": "pepper-89.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "pad_start": 66150,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 90,
+            "file": "pepper-90.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "pad_start": 66150,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 91,
+            "file": "pepper-91.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "pad_start": 66150,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 92,
+            "file": "pepper-92.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "pad_start": 66150,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 93,
+            "file": "sf-93.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 94,
+            "file": "sf-94.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 95,
+            "file": "sf-95.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 96,
+            "file": "sf-96.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 97,
+            "file": "sf-97.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 98,
+            "file": "sf-98.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 99,
+            "file": "sf-99.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 100,
+            "file": "sf-100.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 101,
+            "file": "sf-101.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 102,
+            "file": "sf-102.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 103,
+            "file": "sf-103.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 104,
+            "file": "sf-104.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 105,
+            "file": "sf-105.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 106,
+            "file": "pepper-106.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "pad_start": 66150,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 107,
+            "file": "pepper-107.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "pad_start": 66150,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 108,
+            "file": "pepper-108.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "pad_start": 66150,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 109,
+            "file": "pepper-109.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "pad_start": 66150,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 110,
+            "file": "pepper-110.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "pad_start": 66150,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 111,
+            "file": "pepper-111.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "pad_start": 66150,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 112,
+            "file": "pepper-112.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "pad_start": 66150,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 113,
+            "file": "pepper-113.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "pad_start": 66150,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 114,
+            "file": "pepper-114.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "pad_start": 66150,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 115,
+            "file": "pepper-115.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "pad_start": 66150,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 116,
+            "file": "pepper-116.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "pad_start": 66150,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 117,
+            "file": "falcon-117.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 118,
+            "file": "pepper-118.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 119,
+            "file": "rabbit-119.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 120,
+            "file": "pepper-120.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 121,
+            "file": "pepper-121.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 122,
+            "file": "pepper-122.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 123,
+            "file": "frog-123.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 124,
+            "file": "falcon-124.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 125,
+            "file": "pepper-125.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 126,
+            "file": "andross-126.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 127,
+            "file": "andross-127.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 128,
+            "file": "andross-128.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 129,
+            "file": "andross-129.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 130,
+            "file": "andross-130.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 131,
+            "file": "andross-131.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 132,
+            "file": "andross-132.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 133,
+            "file": "andross-133.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 134,
+            "file": "andross-134.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 135,
+            "file": "falcon-135.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 136,
+            "file": "falcon-136.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 137,
+            "file": "rabbit-137.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 138,
+            "file": "falcon-138.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 139,
+            "file": "frog-139.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 140,
+            "file": "falcon-140.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 141,
+            "file": "rabbit-141.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        },
+        {
+            "track_number": 142,
+            "file": "frog-142.wav",
+            "use_option": 2,
+            "options": [
+                {
+                    "option": 1,
+                    "trim_start": 0
+                },
+                {
+                    "option": 2,
+                    "loop": 0
+                }
+            ]
+        }
+    ]
+}

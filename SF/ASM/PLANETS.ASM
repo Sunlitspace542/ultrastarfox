@@ -978,15 +978,7 @@ planetseq_l
 
 	IFNE	MSUVOICE
 	savemode
-	a16
-	lda	voiceline
-	sta	msu_track
-	a8
-	jsl	msuaudiobusyloop_l
-	lda #$FF
-	sta	msu_volume
-	lda	#audiostate_norepeat
-	sta	msu_control
+	jsl	playvoiceline_l
 	returnmode
 	ENDC
 

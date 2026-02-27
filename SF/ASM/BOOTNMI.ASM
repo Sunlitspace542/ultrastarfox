@@ -396,10 +396,19 @@ fnmi_l
 	rtl ; Return from Subroutine Long
 
 	IFNE	msuvoice
-; MSU-1 busy flag wait loop for MSU-1 voice stuff
-msuaudiobusyloop_l
+; routine to play a voiceline for msu-1 voice system
+playvoiceline_l
+	a16
+	lda	voiceline
+	sta	msu_track
+	a8
+.msuaudiobusyloop
 	bit	msu_status ; Is the audio busy flag set?
-	bvs	msuaudiobusyloop_l ; Loop until it isn't
+	bvs	.msuaudiobusyloop ; Loop until it isn't
+	lda	#$FF
+	sta	msu_volume
+	lda	#audiostate_norepeat
+	sta	msu_control
 	rtl
 	ENDC
 

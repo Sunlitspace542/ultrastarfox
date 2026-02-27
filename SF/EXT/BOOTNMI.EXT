@@ -1,1 +1,4 @@
 	global	startboot,restart,copy_to_0101_l
+	IFNE	MSUVOICE
+	global	playvoiceline_l
+	ENDC

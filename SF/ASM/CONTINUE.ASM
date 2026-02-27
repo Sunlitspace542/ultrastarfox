@@ -844,15 +844,8 @@ friends_messages_l
 	lda.l	.facesounds,x
 	trigse	a
 	ELSEIF	;IFNE	MSUVOICE
-	a16
-	lda	voiceline
-	sta	msu_track
+	jsl	playvoiceline_l
 	a8
-	jsl	msuaudiobusyloop_l
-	lda	#$FF
-	sta	msu_volume
-	lda	#audiostate_norepeat
-	sta	msu_control
 	trigse	$60
 	ENDC
 
