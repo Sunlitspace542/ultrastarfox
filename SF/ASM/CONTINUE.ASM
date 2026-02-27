@@ -657,20 +657,15 @@ send_message_l
 	php
 	ai16
 	and	#255
+	IFNE	MSUVOICE
+	sta	voiceline
+	ENDC
 	dec	a
 	cmp	#-1
 	beq	.finished
 	asl	a
 	tax
 	lda.l	messages,x
-	IFNE	MSUVOICE
-	pha
-	txa
-	lsr	a
-	ina
-	sta	voiceline
-	pla
-	ENDC
 	tax
 	a8
 	lda.l	messages&~WM,x
