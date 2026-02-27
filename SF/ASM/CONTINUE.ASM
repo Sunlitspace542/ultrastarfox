@@ -666,9 +666,7 @@ send_message_l
 	IFNE	MSUVOICE
 	pha
 	txa
-	beq	.dontdivbyzero
 	lsr	a
-.dontdivbyzero
 	ina
 	sta	voiceline
 	pla
