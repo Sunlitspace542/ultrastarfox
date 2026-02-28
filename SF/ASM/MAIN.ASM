@@ -1395,7 +1395,7 @@ dopause	php
 	jsl	transfer_l		;transfer bitmap, do strats etc.
 	jsr	printpause
 	jsl	transfer_l		;transfer bitmap, do strats etc.
-	IFNE	msu1
+	IFNE	msu1!msuvoice
 	LDA	#audiostate_none
 	STA	msu_control
 	ENDC
@@ -1412,6 +1412,10 @@ dopause	php
 	lda	joy1h
 	bit	#key_start
 	bne	.wait3
+	IFNE	msuvoice
+	LDA #audiostate_norepeat
+	STA msu_control
+	endc
 	IFNE	msu1
 	LDA #audiostate_repeat
 	STA msu_control
