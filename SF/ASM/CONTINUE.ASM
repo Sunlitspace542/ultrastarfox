@@ -846,7 +846,10 @@ friends_messages_l
 	ELSEIF	;IFNE	MSUVOICE
 	jsl	playvoiceline_l
 	a8
-	trigse	$60
+	lda	friends_sound
+	tax
+	lda.l	.facesounds,x
+	trigse	a
 	ENDC
 
 .finished
@@ -875,6 +878,7 @@ friends_messages_l
 	plp
 	rts
 .facesounds
+	IFEQ	MSUVOICE
 	db	$60	; fox
 	db	$60	; fox
 	db	$60	; fox
@@ -899,6 +903,12 @@ friends_messages_l
 	db	$8c	; andross
 	db	$8c	; andross
 	db	$8c	; andross
+	ELSEIF
+	db	$60	; help
+	db	$7b	; down
+	db	$60	; other
+	db	$60	; default
+	ENDC
 
 .displayface
 ; a is frame to show
