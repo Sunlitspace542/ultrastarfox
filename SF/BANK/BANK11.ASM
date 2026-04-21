@@ -15,7 +15,7 @@
 	IFNE	RUMBLE
 	; used by both PCSTRATS and PISTRATS
 hyperspacerumbletab
-	db	$FF,$7F,rmblloop
+	db	$FF,$7F,$FF,$7F,rmblloop
 	ENDC
 	incfile	STRAT\pistrats.asm
 	incfile	STRAT\pcstrats.asm
