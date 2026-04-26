@@ -78,8 +78,8 @@ showtext	macro	[table]			;Shows the full text in a single table
 	ldx	#-2							;load 0 into x index
 .stringloop\@
 	inx
-	lda.l	{table},x				;load the next letter from the current pointer area from the table
-	beq	.stringdone\@				;end this part of the code if equal to 0
+;	lda.l	{table},x				;load the next letter from the current pointer area from the table
+;	beq	.stringdone\@				;end this part of the code if equal to 0
 	inx								;increase x by 1 again (letters after the first one are added in pairs)
 	lda.l	{table},x				;load the next letter from the current pointer area from the table
 	beq	.stringdone\@				;end this part of the code if equal to 0
