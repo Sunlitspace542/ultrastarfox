@@ -675,6 +675,8 @@ send_message_l
 	tay
 	a8
 
+	cpy	#friend_frog+1
+	bcs	.nometer			; no friends outside team should have meter
 	lda.w	friends_hp-1,y
 	beq	.finished2
 

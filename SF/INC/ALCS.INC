@@ -658,8 +658,8 @@ xlen	=	22*1024+450
 	alc	bunny,1
 	alc	cock,1
 	alc	frog,1
-	alc	pepper,1
-	alc	andorf,1
+;	alc	pepper,1
+;	alc	andorf,1
 	alc	hdmacirclebuf1,2
 	alc	hdmacirclebuf2,2
 	alc	whichcircle,1

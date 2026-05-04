@@ -27,11 +27,11 @@ initialise_l ; Initialize game
 
 	lda	#40	; store 40 in all these variables:
 	sta	fox	; hack to allow check for fox's hp
-	sta	frog
 	sta	bunny
 	sta	cock
-	sta	pepper
-	sta	andorf
+	sta	frog
+;	sta	pepper
+;	sta	andorf
 
 	jsl	playerstart_init_l ; Initialize player variables
 	jsl	initplanets_l ; Initialize the planet selection
