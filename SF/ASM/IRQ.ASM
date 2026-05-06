@@ -1209,7 +1209,67 @@ irqbit3	lda	noirqbit3
 	sta	cont1l
 	jsr	mouse_read2	
 	endc
-	
+
+	IFNE	nttpad
+	IFEQ	nttpad-1
+; controller port 1
+ntt_port = 0
+	ENDC
+	IFEQ	nttpad-2
+; controller port 2
+ntt_port = 1
+	ENDC
+; Poll NTT Data Pad
+	a8
+	IFNE	RUMBLE
+; This has to be done to keep rumble from borking the controller read
+	lda	#$01
+	sta	JOYSER0+ntt_port	; Reset Data Counter
+	nop
+	nop
+	stz	JOYSER0+ntt_port
+	nop
+	nop
+;	ldx	#16
+;.nttpoll
+;	bit JOYSER0+ntt_port
+;	dex
+;	bne	.nttpoll
+	REPT	16	; unrolled version of the same loop
+	bit	JOYSER0+ntt_port
+	ENDR
+	ENDC
+	stz	ntttrig+0
+	stz	ntttrig+1
+	stz nttread+0
+	stz nttread+1
+
+;	ldx #16
+;.startlp
+;	lda JOYSER0+ntt_port
+;	lsr a ; shift into carry
+;	ror nttread+1 ; rotate carry into nttread, shift
+;	ror nttread+0 ; rotate carry into nttread, shift
+;	dex
+;	bne .startlp
+	REPT	16	; unrolled version of the same loop
+	lda JOYSER0+ntt_port
+	lsr a ; shift into carry
+	ror nttread+1 ; rotate carry into nttread, shift
+	ror nttread+0 ; rotate carry into nttread, shift
+	ENDR
+
+	a16
+	lda	nttread
+	eor nttlast
+	and nttread
+	sta ntttrig
+
+	lda	nttread
+	sta	nttlast
+	a8
+	ENDC	;nttpad
+
 	jsr	setinidisp
 
 	ldx	vmap1			;Bitmap double buffering
@@ -1358,18 +1418,20 @@ getcont0	a8
 	lda	#0
 	xba
 	tax
+	lda	joy1l
+	and	#$F0	; mask out controller ID bits (e.g. NTT data pad)
 	jmp	(.conttab,x)
 .conttab	dw	typea&WM
 	dw	typeb&WM
 	dw	typec&WM
 	dw	typed&WM
-typea	lda	joy1l
+typea	;lda	joy1l
 	sta	contl0
 	lda	joy1h
 	sta	cont0
 	rts
 
-typeb	lda	joy1l
+typeb	;lda	joy1l
 	sta	contl0
 	lda	joy1h
 	and	#%11000000
@@ -1389,7 +1451,7 @@ typeb	lda	joy1l
 	sta	cont0
 	rts
 
-typec	lda	joy1l
+typec	;lda	joy1l
 	sta	contl0
 	lda	joy1h
 	and	#%00001100
@@ -1407,7 +1469,7 @@ typec	lda	joy1l
 	sta	cont0
 	rts
 
-typed	lda	joy1l
+typed	;lda	joy1l
 	sta	contl0
 	lda	joy1h
 	and	#%00001100

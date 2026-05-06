@@ -713,6 +713,11 @@ xlen	=	22*1024+450
 	alc	mousemodetemp,2
 	alc	boostorbrake,2
 	ENDC
+	IFNE	nttpad
+	alc	nttread,2
+	alc	ntttrig,2
+	alc	nttlast,2
+	ENDC
 	alc	open_text,3 ; SUNLITNOTE changed from 2 bytes to 3, SFCD needed this to keep debug prints working
 	IFNE	msu1
 	alc	msupresent,1

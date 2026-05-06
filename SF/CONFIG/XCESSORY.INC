@@ -19,9 +19,20 @@ analogstick	equ	0
 ; [0 = off, 1 = on]
 rumble	equ	0
 
+; Enable NTT Data Pad support.
+; [0 = off, 1 = on port 1, 2 = on port 2]
+nttpad	equ	0
+
 ;####################################################################################################################
 
 ; Sanity checks (do not touch)
+
+	IFNE	mouseon
+	IFNE	RUMBLE
+	printf	"Mouse doesn't work with rumble yet!"
+	fail
+	ENDC
+	ENDC
 
 	IFEQ	mouseon
 	IFNE	analogstick

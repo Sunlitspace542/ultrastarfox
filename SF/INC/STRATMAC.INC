@@ -1337,7 +1337,6 @@ s_jmp_keyup	MACRO	; #key,label
 	rlbeq	\2	
 	stratmac_end
 	ENDM
-
 ;-----------------------------------------------------------------------------
 s_jmp_lastkeydown	MACRO	; #key,label
 	stratmac_start
@@ -1401,8 +1400,52 @@ s_jmp_anyLRkeyup	MACRO	label,[last]
 	rlbeq	\1
 	stratmac_end
 	ENDM
-
-
+;-----------------------------------------------------------------------------
+	IFNE	nttpad
+s_jmp_nttpadup	MACRO	; #key,label
+	stratmac_start
+	savemode
+	a16
+	lda	ntttrig
+	and	#key_\1
+	returnmode
+	rlbeq	\2
+	stratmac_end
+	ENDM
+;-----------------------------------------------------------------------------
+s_jmp_nttpaddown	MACRO	; #key,label
+	stratmac_start
+	savemode
+	a16
+	lda	ntttrig
+	and	#key_\1
+	returnmode
+	rlbne	\2
+	stratmac_end
+	ENDM
+;-----------------------------------------------------------------------------
+s_jmp_lastnttpadup	MACRO	; #key,label
+	stratmac_start
+	savemode
+	a16
+	lda	nttlast
+	and	#key_\1
+	returnmode
+	rlbeq	\2
+	stratmac_end
+	ENDM
+;-----------------------------------------------------------------------------
+s_jmp_lastnttpaddown	MACRO	; #key,label
+	stratmac_start
+	savemode
+	a16
+	lda	nttlast
+	and	#key_\1
+	returnmode
+	rlbne	\2
+	stratmac_end
+	ENDM
+	ENDC	;nttpad
 ;-----------------------------------------------------------------------------
 s_jmp_random	MACRO	; label, [#random factor] (in percentage form)
 	stratmac_start

@@ -85,7 +85,22 @@ padl_X		equ	pad_X
 padl_TLEFT	equ	pad_TLEFT
 padl_TRIGHT	equ	pad_TRIGHT
 
-
+; NTT Data Pad key codes
+key_0			equ	$0001
+key_1			equ	$0002
+key_2			equ	$0004
+key_3			equ	$0008
+key_4			equ	$0010
+key_5			equ	$0020
+key_6			equ	$0040
+key_7			equ	$0080
+key_8			equ	$0100
+key_9			equ	$0200
+key_star		equ	$0400
+key_pound		equ	$0800
+key_period		equ	$1000
+key_clear		equ	$2000
+key_hangup		equ	$8000
 
 NULL	equ	0
 

@@ -456,7 +456,12 @@
 	s_say_msg		[msg] - call a message
 	s_camera_lockon	[obj] - lock the camera onto an object
 	s_return_camera - return the camera to the player after a lock-on
-
+NTT Data Pad key read macros:
+valid keys are: 0-9, star, pound, period, clear, hangup
+	s_jmp_nttpadup			key,label - if key not pressed, branch to label
+	s_jmp_nttpaddown		key,label - if key pressed, branch to label
+	s_jmp_lastnttpadup		key,label - if key not pressed on last read, branch to label
+	s_jmp_lastnttpaddown	key,label - if key pressed on last read, branch to label
 --------------------------------------------------------------------------
 ```
 

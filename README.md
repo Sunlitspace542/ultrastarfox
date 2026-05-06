@@ -27,6 +27,7 @@ Go [here](#building) to jump straight to the building instructions.
 
 - SNES Mouse support and "analog stick" support via the SNES mouse
 - SNES Rumble Pad support and macros (see ``SF\INC\RMBLMACS.INC`` for macros)
+- SNES NTT Data Pad support and macros to read extra keys (see ``SF\INC\STRATMAC.INC`` for macros)
 
 ## QOL / Ease-of-use
 
