@@ -29,7 +29,14 @@ nttpad	equ	0
 
 	IFNE	mouseon
 	IFNE	RUMBLE
-	printf	"Mouse doesn't work with rumble yet!"
+	printf	"Mouse cannot be used with rumble!"
+	fail
+	ENDC
+	ENDC
+
+	IFNE	mouseon
+	IFEQ	nttpad-2
+	printf	"Mouse and NTT Pad cannot both be on port 2!"
 	fail
 	ENDC
 	ENDC
