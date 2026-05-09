@@ -2,8 +2,15 @@ cl_warp
 	mapplayeroutview
 
 
+	IFNE	MSU1
+	mapmsufade
+	mapwait	2000
+	ENDC
 	setbgm	$f1
 
+	IFNE	MSU1
+	mapmsuplay	clearorch,norepeat
+	ENDC
 	setbgm	bgm_fanfare
 	mapCLplayermode	Warp
 	mapwait	2800		; MUST be 2800 for music timing ! 

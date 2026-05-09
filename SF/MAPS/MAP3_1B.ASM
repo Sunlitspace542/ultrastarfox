@@ -3,10 +3,17 @@ map3_1b
 	incmap	3-1
 
 	fadeoutbgm
+	IFNE	MSU1
+	mapmsufade
+	mapwait	2000
+	ENDC
 	setbgm	bgm_boss1
 
 ; boss A test
 	mapobj	0000,3000,0000,375<<bossa_scale,boss_A_2,bossA_Istrat
+	IFNE	MSU1
+	mapmsuplay	boss1_1,repeat
+	ENDC
 
 	mapwaitboss
 	markboss	boss31

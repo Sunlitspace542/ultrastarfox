@@ -862,6 +862,9 @@ playerwarp_strat
 	s_set_strat		y,hyperspace_Istrat
 .bad	s_set_var		W,psvar_word1,#60
 	startbgm		8
+	IFNE	MSU1
+	s_msuplay	enterhyperspace,norepeat
+	ENDC
 	IFNE	RUMBLE
 	s_queue_rumble_table	hyperspacerumbletab
 	ENDC
@@ -884,6 +887,7 @@ playerwarp_strat
 ;--------------------------------------------------------
 playerwarp1_init
 	startbgm 		$e
+	; SUNLITNOTE MSU1 should we split enterhyperspace into 2 tracks?
 
 	jsr			dupplayer
 	s_set_alvar		B,y,al_sbyte2,#19
