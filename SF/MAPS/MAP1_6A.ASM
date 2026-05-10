@@ -287,6 +287,9 @@ boss1666
 
 	fadeoutbgm
 	setbgm	5
+	IFNE	MSU1
+	mapmsuplay	boss1_5c,repeat
+	ENDC
 
 ; boss B robot test
 	mapobj	0000,0000,-1000,4000,boss_b_1,bossBrob_Istrat

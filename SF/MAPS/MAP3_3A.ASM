@@ -164,6 +164,9 @@ map3_3a
 
 	fadeoutbgm
 	setbgm	bgm_boss1
+	IFNE	MSU1
+	mapmsuplay	boss3_3,repeat
+	ENDC
 	mapobj	0000,-100,0000,4000,boss_d_1,chicken_istrat
 	setalvar	roty,deg180
 	mapwaitboss

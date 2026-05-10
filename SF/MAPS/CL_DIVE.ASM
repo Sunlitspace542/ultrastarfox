@@ -1,8 +1,14 @@
 cl_dive
 	mapplayeroutview
 	setbgm	$f1
+	IFNE	MSU1
+	mapmsufade
+	ENDC
 
 	setbgm	bgm_fanfare
+	IFNE	MSU1
+	mapmsuplay	clearorch,repeat
+	ENDC
 	mapCLplayermode	Dive
 	mapwait	2800
 	

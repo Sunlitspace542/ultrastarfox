@@ -3,8 +3,14 @@ cl_turn
 
 
 	setbgm	$f1
+	IFNE	MSU1
+	mapmsufade
+	ENDC
 
 	setbgm	bgm_fanfare
+	IFNE	MSU1
+	mapmsuplay	clearband,repeat
+	ENDC
 	mapwait	1800
 
 	mapjsr		clfish

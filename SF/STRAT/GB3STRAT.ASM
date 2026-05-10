@@ -2254,6 +2254,9 @@ bossbrobchg4_init		; change to legs.
 	s_init_anim	x,#0
 	s_set_alvar	B,x,al_sbyte1,#30
 	startbgm		6
+	IFNE	MSU1
+	s_msuplay	boss1_5a,repeat
+	ENDC
 
 bossBrobchg4_strat	
 	s_start_strat

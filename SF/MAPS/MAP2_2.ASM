@@ -252,6 +252,9 @@ speed	=	30
 ;chase 3 times
 	fadeoutbgm
 	setbgm	bgm_boss1
+	IFNE	MSU1
+	mapmsuplay	boss1_2,repeat
+	ENDC
 
 ; barricader
 	mapobj	0000,0000,Space_viewCY+1000,1500,boss_1_2,boss1_Istrat

@@ -3,10 +3,6 @@ map3_1b
 	incmap	3-1
 
 	fadeoutbgm
-	IFNE	MSU1
-	mapmsufade
-	mapwait	2000
-	ENDC
 	setbgm	bgm_boss1
 
 ; boss A test

@@ -9,7 +9,7 @@ cl_warp
 	setbgm	$f1
 
 	IFNE	MSU1
-	mapmsuplay	clearorch,norepeat
+	mapmsuplay	clearorch,repeat
 	ENDC
 	setbgm	bgm_fanfare
 	mapCLplayermode	Warp

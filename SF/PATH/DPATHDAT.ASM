@@ -646,6 +646,9 @@ sscale	=	slot_scale-1
 .jackpot
 	P_START65816
 	startbgm	$f1
+	IFNE	MSU1
+	msufade	; SUNLITNOTE not sure of safety
+	ENDC
 	P_END65816
 
 	P_DO		15

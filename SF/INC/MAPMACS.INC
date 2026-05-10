@@ -1908,6 +1908,9 @@ map_farships2	MACRO
 
 fadeoutbgm	MACRO
 	setbgm	$f1
+	IFNE	MSU1
+	mapmsufade
+	ENDC
 	mapwait	medpspeed*30
 	ENDM
 ;-------------------------------------------------------------------------------------

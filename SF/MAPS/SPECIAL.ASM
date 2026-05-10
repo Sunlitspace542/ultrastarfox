@@ -36,6 +36,9 @@ specialmap
 
 	fadeoutbgm
 	setbgm	5
+	IFNE	MSU1
+	mapmsuplay	bossootd,repeat
+	ENDC
 
 	pathobj	0000,3000,0000,4200,slot_0,slotmachine,10,10
 	mapwaitboss 7

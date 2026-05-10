@@ -212,7 +212,9 @@ map1_4
 
 
 	setbgm	bgm_boss1
-
+	IFNE	MSU1
+	mapmsuplay	boss1_4,repeat
+	ENDC
 
 	mapobj	0000,2000,-600,1000,boss_h_0,bossh_istrat
 
