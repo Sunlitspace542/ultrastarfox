@@ -150,8 +150,14 @@ map2_6a
 	
 	incmap	trucker
 	setbgm	$f1
+	IFNE	MSU1
+	mapmsufade
+	ENDC
 	mapwait	medpspeed*15*2
 	setbgm	$12
+	IFNE	MSU1
+	mapmsuplay	enteringdangerousterritory,repeat
+	ENDC
 	markboss	boss26
 	start_65816
 	IFNE	hidehudonbossdeath

@@ -62,6 +62,10 @@
 	msutrack	clearorch,42	;Stage Clear (Orch)
 	msutrack	downband,43	;Player Down (Band)
 	msutrack	downorch,44	;Player Down (Orch)
-	msutrack	enterhyperspace,45	;Enter Hyperspace
+	msutrack	enterhyperspace,45	;Enter Hyperspace (possibly split into 2?)
 	msutrack	exithyperspace,46	;Exit Hyperspace
+	msutrack	continue,47	;Continue
+	msutrack	lastbossclear,48	;Last Boss Clear
+	msutrack	clearootd,49	;Clear (Out of this Dimension)
+	msutrack	blackholewarp,50	;Black Hole Warp
 ; EOF
