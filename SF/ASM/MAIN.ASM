@@ -541,7 +541,7 @@ stagescore	a16 ; Set A to 16 bit
 	a8i16 ; Set A to 8 bit and X/Y to 16 bit
 	bgm	staff ; Set BGM to Staff Roll (Main Theme)
 	IFNE	MSU1
-	msuplay	creditsmap1,norepeat
+	msuplay	staffroll,norepeat
 	ENDC
 	lda	#creditsmap>>16 ; Load credits map shifted right by 16 into A
 	ldx	#creditsmap&$7fff ; Load credits map &7fff into X

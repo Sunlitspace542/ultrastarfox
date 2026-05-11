@@ -2,7 +2,7 @@
 ;-------------------------------------------------------------
 	; define an msu track in MSUTRKS.INC
 msutrack	macro	[track,num]
-bgm{track}	equ	{num}
+msubgm{track}	equ	{num}
 	endm
 ;-------------------------------------------------------------
 	; play an msu track
@@ -13,7 +13,7 @@ msuplay	macro	[track,audiostate]
 
 	a8i16
 	lda	#audiostate_{audiostate}
-	ldx	#bgm{track}
+	ldx	#msubgm{track}
 	jsl	msuplay_l
 
 	plx	;return a&x
@@ -40,7 +40,7 @@ msuplay_alt	macro	[track,audiostate]
 
 	a8i16
 	lda	#audiostate_{audiostate}
-	ldx	#bgm{track}
+	ldx	#msubgm{track}
 	jsl	msuplay_l
 
 	plx	;return a&x
@@ -76,7 +76,7 @@ mapmsuplay	macro	[track,audiostate]
 
 	a8i16
 	lda	#audiostate_{audiostate}
-	ldx	#bgm{track}
+	ldx	#msubgm{track}
 	jsl	msuplay_l
 
 	plx	;return a&x
