@@ -237,7 +237,7 @@ nmihan ; Start of NMI handler
 .rumblehan_dontdectime
 
 .skip_rumble
-	ENDC
+	ENDC	;RUMBLE
 
 	IFNE	MSU1
 ; Handle MSU-1 fades
