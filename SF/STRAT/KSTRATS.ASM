@@ -714,6 +714,9 @@ blackholeexit_Istrat
 	s_set_alvar		B,x,al_sbyte3,#10
 	s_set_strat		x,.strat
 	startbgm	$f5
+	IFNE	MSU1
+	s_msuplay	blackholeexit,norepeat
+	ENDC
 	s_and_var	B,pshipflags3,#~psf3_enginesnd
 .strat
 	s_start_strat
@@ -745,9 +748,6 @@ blackholeexit_Istrat
 	s_set_strat		y,.strat2
 	IFNE	RUMBLE
 	s_queue_rumble	5,5,15
-	ENDC
-	IFNE	MSU1
-	msuplay	blackholeexit,norepeat
 	ENDC
 	trigse		$2c
 .badobj
