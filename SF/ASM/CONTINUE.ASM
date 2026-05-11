@@ -66,6 +66,9 @@ foxy_continue_l
 	lda	#1
 	jsl	setpal_l
 	bgm	continue
+	IFNE	MSU1
+	msuplay	continue,repeat
+	ENDC
 	lda	#%11100000
 	sta	coldata
 	stz	cgadsub

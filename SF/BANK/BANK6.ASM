@@ -16,6 +16,9 @@
 	include	INC\marioi.inc
 	include	EXT\bootnmi.ext
 	
+	IFNE	MSU1
+	include	EXT\msudrv.ext
+	ENDC
 
 	incpublics	EXT\mhofs.ext
 

@@ -63,7 +63,9 @@ endofspecialmap
 
 	setvar.w hposjmp,rotate_hof
 
-
+	IFNE	MSU1
+	mapmsuplay	clearband,repeat
+	ENDC
 	mapjsr	cutcreds
 
 	mapwait	6000

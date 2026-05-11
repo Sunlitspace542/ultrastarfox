@@ -2189,13 +2189,16 @@ blackhole_Istrat
 .do	
 
 	s_jmp_alvarNE		B,x,al_sbyte1,#70,.nbgm
-	startbgm		$f4
+	startbgm		$f4	; transpose + tempo modifier
+	IFNE	MSU1
+	s_msuplay	blackholewarp,norepeat
+	ENDC
 	s_and_var		B,pshipflags3,#~psf3_enginesnd
 .nbgm
 
 
 	s_jmp_alvarNE		B,x,al_sbyte1,#31,.nf
-	startbgm		$f1 
+	startbgm		$f1 ; fade out
 	fadedown
 .nf
 	s_decbne_alvar		B,x,al_sbyte1,.nc

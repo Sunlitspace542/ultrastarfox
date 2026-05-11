@@ -12,6 +12,10 @@
 	include	EXT\paths.ext
 	include	EXT\bootnmi.ext
 
+	IFNE	MSU1
+	include	EXT\msudrv.ext
+	ENDC
+
 	bank	10
 	incfile	STRAT\kstrats.asm
 	incfile	STRAT\ga2strat.asm

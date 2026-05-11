@@ -6128,6 +6128,17 @@ _mvp	MACRO ; src,dest
 	db $44,\2,\1
 	ENDM
 ;---------------------------------------------------------------
+; replicates WDM instruction for SASM
+; Can be used for breakpoints in Mesen (toggle break on WDM in debugger)
+wdm	MACRO ; param
+; example: _mvp	$32,$7E
+	IFEQ	NARG
+	db	$42,$00
+	ELSEIF
+	db	$42,\1
+	ENDC
+	ENDM
+;---------------------------------------------------------------
 ; Incbin a 2bpp CGX file
 inccgx2	MACRO	[filepath,NUMCHRS]
 	inccol	{filepath},0,{NUMCHRS}/2

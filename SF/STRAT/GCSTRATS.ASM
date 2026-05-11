@@ -1264,6 +1264,9 @@ pshipOutofLB1_strat
 	s_set_alvar		B,x,al_sbyte1,#5+18
 	s_jmp_alvarNE	B,x,al_rotx,#-deg45,.nnewbgm
 	startbgm	$7
+	IFNE	MSU1
+	s_msuplay	lastbossclear,norepeat
+	ENDC
 	s_jmp		nextstate
 .nnewbgm
 	s_add_alvar		B,x,al_rotx,#2
