@@ -535,7 +535,7 @@ planetseq_l
 	stz	stage			; cheat
 	lda	whichroute		; cheat
 	inc	a			; cheat
-	cmp	#3			; cheat
+	cmp	#5			; cheat
 	bne	.cheatok3		; cheat
 	lda	#0			; cheat
 .cheatok3	sta	whichroute		; cheat
@@ -553,9 +553,9 @@ planetseq_l
 	stz	stage			; cheat
 	lda	whichroute		; cheat
 	dec	a			; cheat
-	cmp	#3			; cheat
+	cmp	#5			; cheat
 	bcc	.cheatok45		; cheat
-	lda	#2			; cheat
+	lda	#4			; cheat
 .cheatok45	sta	whichroute		; cheat
 .newroute2
 	trigse	se_cursor
@@ -3710,6 +3710,10 @@ stagepaths ; definitions for the 3 map routes and other stages on the map screen
 	dw	.path1-stagepaths	; route 1/2
 	dw	.path6-stagepaths	; route 0/1
 	dw	.path11-stagepaths	; route 2/3
+	IFNE	planetcheat
+	dw	.path19-stagepaths	; Black Hole
+	dw	.otherend-stagepaths	; OOTD
+	ENDC
 
 .path1	local
 ; Corneria 2
