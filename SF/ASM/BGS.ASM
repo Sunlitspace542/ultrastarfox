@@ -804,9 +804,6 @@ bg_gameover_1	init_bg	mode1
 	hofmode	nograd
 	bg2Xscroll	-128
 	bg2Yscroll	0
-	IFNE	MSU1
-	msuplay	gameover,norepeat	; SUNLITNOTE figure out where this is really triggered
-	ENDC
 	space	night
 
 bg_title_1

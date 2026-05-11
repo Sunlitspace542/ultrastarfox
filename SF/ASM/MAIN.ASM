@@ -337,6 +337,9 @@ gameover_l	; Game over screen
 	a8i16 ; Set A to 8 bit and X/Y to 16 bit
 
 	bgm	gameover ; Set BGM to gameover
+	IFNE	MSU1
+	msuplay	gameover,norepeat
+	ENDC
 	stz	defaulttrain ; stz to defaulttrain var
 	lda	#0 ; Load 0 into A
 	sta.l	contexit ; Store A at contexit var

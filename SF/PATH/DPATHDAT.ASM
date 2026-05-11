@@ -647,7 +647,7 @@ sscale	=	slot_scale-1
 	P_START65816
 	startbgm	$f1
 	IFNE	MSU1
-	msufade	; SUNLITNOTE not sure of safety
+	msufade
 	ENDC
 	P_END65816
 
