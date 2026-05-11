@@ -9,7 +9,7 @@ cl_bridge
 	
 	mapCLplayermode	ClearBridge
 	IFNE	MSU1
-	mapmsuplay	clearband,norepeat
+	mapmsuplay	clearband,repeat
 	ENDC
 	setbgm	bgm_fanfare
 	mapwait	2900
