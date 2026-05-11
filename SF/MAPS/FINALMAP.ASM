@@ -121,6 +121,9 @@ finalmap_cont
 	maptexitwait	-200
 	mapplayermode	inspace
 	setbgm	$13
+	IFNE	MSU1
+	mapmsuplay	bossandross,repeat
+	ENDC
 	mapwait	2000
 	mapobj	1000,0,Space_viewCY,-200,face_b,monolith_istrat
 	mapwaitboss	nosound

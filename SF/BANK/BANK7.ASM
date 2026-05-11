@@ -13,6 +13,10 @@
 	include	EXT\expstrat.ext
 	include	EXT\bootnmi.ext
 
+	IFNE	MSU1
+	include EXT\msudrv.ext
+	ENDC
+
 	bank	7
 	incfile	STRAT\gistrats.asm
 	incfile	STRAT\gb3strat.asm

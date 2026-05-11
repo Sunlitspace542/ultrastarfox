@@ -2183,6 +2183,9 @@ bossBrobchg_Istrat
 	s_set_alsflag	x,sflag3		; remove images.
 	s_set_alsflag	x,nohitaffect
 	startbgm		$f1
+	IFNE	MSU1
+	msufade
+	ENDC
 	trigse		$81
 bossBrobchg_strat	
 	s_start_strat
@@ -2254,6 +2257,9 @@ bossbrobchg4_init		; change to legs.
 	s_init_anim	x,#0
 	s_set_alvar	B,x,al_sbyte1,#30
 	startbgm		6
+	IFNE	MSU1
+	s_msuplay	boss1_5a,repeat
+	ENDC
 
 bossBrobchg4_strat	
 	s_start_strat
@@ -2848,6 +2854,9 @@ bossBrobsepexp_Istrat
 	s_set_alsflag	x,colldisable
 	trigse		$81
 	startbgm		$f0
+	IFNE	MSU1
+	msufade
+	ENDC
 bossBrobsepexp_strat
 	s_start_strat
 

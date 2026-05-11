@@ -154,6 +154,9 @@ map3_6
 
 	fadeoutbgm
 	setbgm	5
+	IFNE	MSU1
+	mapmsuplay	boss1_5b,repeat
+	ENDC
 	mapobj	0000,0000,2000,2500,boss_f_3,bossf_Istrat
 	mapwaitboss
 	markboss	boss36

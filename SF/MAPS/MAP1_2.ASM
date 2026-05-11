@@ -196,6 +196,9 @@ map12boss
 .boss
 	fadeoutbgm
 	setbgm	5
+	IFNE	MSU1
+	mapmsuplay	boss1_2,repeat
+	ENDC
 ;---------------
 ; barricader boss
 	mapobj	0000,0000,Space_viewCY+1000,1500,boss_1_2,boss1_Istrat

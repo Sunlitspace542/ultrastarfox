@@ -189,6 +189,9 @@ map3_2
 ; propeller boss
 	fadeoutbgm
 	setbgm	bgm_boss1
+	IFNE	MSU1
+	mapmsuplay	boss1_2,repeat
+	ENDC
 	incmap	webmonst
 	mapwaitboss
 	markboss	boss32

@@ -5,10 +5,6 @@ map1_1b
 
 .boss
 	fadeoutbgm
-	IFNE	MSU1
-	mapmsufade
-	mapwait	2000
-	ENDC
 	setbgm	bgm_boss1
 	IFNE	MSU1
 	mapmsuplay	boss1_1,repeat

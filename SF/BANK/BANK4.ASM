@@ -23,6 +23,10 @@
 	include	EXT\mem.ext
 	include	EXT\kstrats.ext
 
+	IFNE	MSU1
+	include EXT\msudrv.ext
+	ENDC
+
 ;------------------------------------------------------------------
 	bank	4
 	incfile	PATH\paths.asm

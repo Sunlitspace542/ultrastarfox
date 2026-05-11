@@ -292,10 +292,6 @@ high	=	-600
 
 ; boss 2 test
 	fadeoutbgm
-	IFNE	MSU1
-	mapmsufade
-	mapwait	2000
-	ENDC
 	setbgm	5
 	IFNE	MSU1
 	mapmsuplay	boss3_5,repeat

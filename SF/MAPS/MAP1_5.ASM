@@ -173,6 +173,9 @@ map1_5
 ;---------------
 ; entity boss
 	setbgm	5
+	IFNE	MSU1
+	mapmsuplay	boss1_5c,repeat
+	ENDC
 	mapobj	0000,0000,1000,3500,boss_b_1,bossb_Istrat
 	mapwaitboss
 	markboss	boss15

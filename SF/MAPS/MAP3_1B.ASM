@@ -7,6 +7,9 @@ map3_1b
 
 ; boss A test
 	mapobj	0000,3000,0000,375<<bossa_scale,boss_A_2,bossA_Istrat
+	IFNE	MSU1
+	mapmsuplay	boss1_1,repeat
+	ENDC
 
 	mapwaitboss
 	markboss	boss31

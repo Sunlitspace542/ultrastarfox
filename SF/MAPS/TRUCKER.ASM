@@ -24,6 +24,9 @@
 .carryon
 	fadeoutbgm
 	setbgm	5
+	IFNE	MSU1
+	mapmsuplay	boss1_5c,repeat
+	ENDC
 	start_65816
 	trigse	$0b
 	end_65816

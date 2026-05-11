@@ -384,6 +384,9 @@
 	IFNE	RUMBLE
 	s_queue_rumble	3,3,60 ; approx. 3sec at max frame rate
 	ENDC
+	IFNE	MSU1
+	s_msuplay	secretactivated,norepeat
+	ENDC
 	routechange	1
 	lda	#0
 	sta.l	m_clrbitmaps

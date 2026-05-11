@@ -295,6 +295,9 @@ endseq_l	php
 	lda	#$80
 	setinidisp1
 	startbgm	012h
+	IFNE	MSU1
+	msuplay	bossroll,repeat
+	ENDC
 	stz	doingend
 
 	a8i16

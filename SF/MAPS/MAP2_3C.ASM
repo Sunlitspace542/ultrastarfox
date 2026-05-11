@@ -7,6 +7,9 @@ map2_3c
 	end_65816
 	mapwait	1
 	setbgm	5
+	IFNE	MSU1
+	mapmsuplay	boss2_3,repeat
+	ENDC
 	mapwait	5000
 airlock_pos	=	4000
 	incmap	airlock1

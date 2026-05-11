@@ -1,10 +1,16 @@
 cl_bridge
 	mapplayeroutview
 
+	IFNE	MSU1
+	mapmsufade
+	ENDC
 	setbgm	$f1
 	mapwait	2200	; 700
 	
 	mapCLplayermode	ClearBridge
+	IFNE	MSU1
+	mapmsuplay	clearband,norepeat
+	ENDC
 	setbgm	bgm_fanfare
 	mapwait	2900
 

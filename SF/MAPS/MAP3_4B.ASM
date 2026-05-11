@@ -464,8 +464,14 @@ speed	=	30
 
 
 	setbgm	$f1
+	IFNE	MSU1
+	mapmsufade
+	ENDC
 	mapwait	medpspeed*7
 	setbgm	5
+	IFNE	MSU1
+	mapmsuplay	enteringdangerousterritory,repeat
+	ENDC
 
 	mapobj	0000,0000,space_viewCY,4000,colony_0,colony0_Istrat
 	setvarobj	mapvar1
@@ -495,6 +501,9 @@ speed	=	30
 
 	mapjsr	Mtunnelexit
 	setbgm	$f1	; fade out music
+	IFNE	MSU1
+	mapmsufade
+	ENDC
 
 
 	maprts
