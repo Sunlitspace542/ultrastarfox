@@ -746,6 +746,9 @@ blackholeexit_Istrat
 	IFNE	RUMBLE
 	s_queue_rumble	5,5,15
 	ENDC
+	IFNE	MSU1
+	msuplay	blackholeexit,norepeat
+	ENDC
 	trigse		$2c
 .badobj
 .ninto

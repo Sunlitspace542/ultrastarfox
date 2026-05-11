@@ -81,7 +81,7 @@ bg_1_1i_1	init_bg	mode2
 	set_zdepthtable	tunnel
 	bgm	10
 	IFNE	MSU1
-	msuplay	scramble,repeat
+	msuplay	scramble,norepeat
 	ENDC
 	lda	#0
 	sta.l	m_meters
