@@ -55,7 +55,7 @@
 	msutrack	enteringdangerousterritory,35 ;Entering Dangerous Territory
 	msutrack	staffroll,36 ;Staff Roll
 	msutrack	secretactivated,37 ;Secret Activated
-	msutrack	gameenddemo,38	;Game End Demonstration
+	msutrack	gamecleardemo,38	;Game End Demonstration
 	msutrack	bossroll,39	;Enemy Force Commander Data Roll Sequence
 	msutrack	gameover,40	;Game Over
 	msutrack	clearband,41	;Stage Clear (Band)

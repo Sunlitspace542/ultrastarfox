@@ -442,7 +442,7 @@ bg_1_7c_1	init_bg	mode2
 	bg2Yscroll	232-60
 	bgm	endseq
 	IFNE	MSU1
-	msuplay	gameenddemo,repeat
+	msuplay	gamecleardemo,repeat
 	ENDC
 	space	night
 
