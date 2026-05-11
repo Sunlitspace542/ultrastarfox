@@ -3,7 +3,7 @@
 	mapwait	medpspeed*44
 	setbgm	$12
 	IFNE	MSU1
-	mapmsuplay	enteringdangerousterritory,repeat
+	mapmsuplay	dangerous,repeat
 	ENDC
 	
 	mapobj	0000,0000,0000,6000,last_b_0,gnd_Istrat

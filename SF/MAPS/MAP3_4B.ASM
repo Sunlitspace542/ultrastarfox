@@ -470,7 +470,7 @@ speed	=	30
 	mapwait	medpspeed*7
 	setbgm	5
 	IFNE	MSU1
-	mapmsuplay	enteringdangerousterritory,repeat
+	mapmsuplay	dangerous,repeat
 	ENDC
 
 	mapobj	0000,0000,space_viewCY,4000,colony_0,colony0_Istrat
