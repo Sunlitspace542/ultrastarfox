@@ -1634,10 +1634,6 @@ titleseq_l	php
 	IFNE	nointroseq ; If intro sequence disabled
 	a8i16
 
-	IFNE	msu1
-	jsl CheckForMSU ; check for the MSU-1
-	ENDC
-
 	bgm	init
 	
 	ldx	#0
@@ -1739,10 +1735,6 @@ titleredo	a8i16
 
 intro_l
 	a8i16
-
-	IFNE	msu1
-	jsl CheckForMSU ; check for the MSU-1
-	ENDC
 
 	bgm	init
 	ldx	#0

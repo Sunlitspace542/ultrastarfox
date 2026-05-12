@@ -58,6 +58,10 @@ startboot	disable ; Disable Interrupts
 	sta	mousemodetemp	; (enable mouse)
 	ENDC ; End conditional
 
+	IFNE	MSU1
+	jsl	CheckForMSU1_l ; Check for the MSU-1
+	ENDC
+
 	IFEQ	nointroseq ; start conditional: if nointroseq = 0
 	jsl	intro_l ; Jump to Intro Sequence
 	ENDC ; End conditional
@@ -104,7 +108,7 @@ restart	ai16 ; set A/X/Y to 16 bit
 	pha ; Push A to stack
 	ENDC ; End conditional
 	IFNE	msu1
-	lda	msupresent
+	lda	msupresent	; save msu present flag
 	pha
 	ENDC
 
@@ -127,7 +131,7 @@ restart	ai16 ; set A/X/Y to 16 bit
 
 	IFNE	msu1
 	pla
-	sta	msupresent
+	sta	msupresent	; restore msu present flag
 	ENDC
 
 	IFNE	mouseon ; start conditional: If SNES mouse enabled
@@ -165,15 +169,20 @@ firsttimeuse
 	jml	planetseq_l ; Jump to planet routine
 
 ;-----------------------------------------------------------------------
-	IFNE	msu1
-CheckForMSU
+	IFNE	MSU1
+CheckForMSU1_l
 	lda	MSU_ID
 	cmp	#'S'	;-MSU1
-	bne	NoMSU	; Stop checking if it's wrong
-MSUFound
+	bne	.NoMSU	; Stop checking if it's wrong
+	; If chip present, what's its revision number?
+	lda	MSU_STATUS
+	and	#%00000111		; Isolate revision bits
+	cmp	#2
+	bcc	.NoMSU	; Stop checking if revision < 2
+.MSUFound
 	lda	#1
 	sta	msupresent
-NoMSU
+.NoMSU
 	rtl
 	ENDC
 ;-----------------------------------------------------------------------
