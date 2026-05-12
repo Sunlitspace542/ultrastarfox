@@ -3013,7 +3013,10 @@ playerdead_Istrat
 ;------------------------------------
 ; remove arrow warnings.
 	stz	arrows
-
+	IFNE	RUMBLE
+; stop any looping rumbles.
+	s_end_rumble_table
+	ENDC
 ;------------------------------------
 
 	lda	fadetored
