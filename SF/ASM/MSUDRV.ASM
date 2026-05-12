@@ -20,7 +20,7 @@
 ;***************************************************************************
 	INCPUBLICS	ext\msudrv.ext
 
-msudebug	equ	0
+msudebug	equ	1	; Enabled for better backwards compatibility with the old Zeldix PCM sets
 
 ; see MSUMACS.inc for usage
 ;-------------------------------------------------------------
@@ -52,7 +52,9 @@ msuplay_l
 	bit #status_trackmissing
 	beq .donemsuplayback ; error bit set?
 .msufailed
-	stz	msu_volume	; Mute MSU-1 to avoid loud buzzing on hardware
+	stz	msu_volume	; Stop MSU-1 to avoid loud buzzing on hardware
+	stz	msu_control	; Shut chip off
+	stz	msufadeflag
 .donemsuplayback
 	ENDC
 	rtl
