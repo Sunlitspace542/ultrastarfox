@@ -11,10 +11,12 @@
 SUPERFX3	equ 0
 
 ; MSU-1 support [0 = off, 1 = on]
+; SHVC-SOUND-driven music is replaced with MSU-1 driven music.
 msu1		equ	0
 
 ; Voice lines for dialogue via MSU-1
 ; You have to choose between this or MSU-1 music! You can't have both!!
+; [0 = off, 1 = on]
 msuvoice	equ	0
 
 ; MSU-1 data streaming support
