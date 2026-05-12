@@ -13,7 +13,7 @@ Go [here](#building) to jump straight to the building instructions.
 - **Randal Linden** - Rumble Pad Designer, Rumble Pad Docs, Rumble System Programmer (Rumble Pad NMI Code)  
 - **Repzilon** - Misc. documentation
 - **SegaRetro92** - Texture/Palette Docs, General Graphics Stuff, Author of Several Graphics Tools, German Version GFX/Text Restoration   
-- **Sunlit** - Maintainer, Documentation, Toolchain Engineer, Rumble System Programmer ("Flat Rate" Rumble), Rumble Effect Programmer, Tool Author, German Version GFX/Text Restoration, Release Builder Script  
+- **Sunlit** - Maintainer, Documentation, Toolchain Engineer, Rumble System Programmer ("Flat Rate" Rumble), Rumble Effect Programmer, Tool Author, German Version GFX/Text Restoration, Release Builder Script, MSU-1 programming  
 
 ## Features
 
@@ -120,7 +120,6 @@ All changes to be submitted should be made to the [main](https://github.com/Sunl
 
 1. Optimize game where possible (We already have FastROM and 21Mhz SuperFX 2, can we go any further?)  
 2. Annotate and document code (not so sure about doing this anymore)  
-3. Reimplement MSU-1 support using the driver I wrote for Star Fox CD
 
 ## Project Structure
 

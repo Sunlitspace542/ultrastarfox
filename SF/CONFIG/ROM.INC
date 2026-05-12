@@ -10,7 +10,7 @@
 ; Indicates support for Randy Linden's Super FX 3 chip in the ROM header.
 SUPERFX3	equ 0
 
-; MSU-1 support (driver working; cues are done but need testing)
+; MSU-1 support [0 = off, 1 = on]
 msu1		equ	0
 
 ; Voice lines for dialogue via MSU-1
