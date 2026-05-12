@@ -6,10 +6,10 @@
 
 ; Config file includes
 ;#############################################
-	include	CONFIG\GAME.INC		; Game
-	include CONFIG\GRAPHICS.INC ; Graphics
-	include CONFIG\ROM.INC		; ROM
-	include	CONFIG\DEBUG.INC	; Debugging
+	include CONFIG\ROM.INC		; ROM/Cartridge
 	include CONFIG\XCESSORY.INC	; Accessories
+	include	CONFIG\GAME.INC		; Game
+	include	CONFIG\DEBUG.INC	; Debugging
+	include CONFIG\GRAPHICS.INC ; Graphics
 	include	CONFIG\LANGUAGE.INC	; Language
 ;#############################################
