@@ -181,7 +181,7 @@ bg_special_1	init_bg	mode2
 	bgm	special
 	IFNE	MSU1
 	msuplay	levelootd,repeat
-	lda	#msu_orch
+	lda	#msu_band
 	sta	orchorband
 	ENDC
 	hofmode	bhole
@@ -210,16 +210,7 @@ bg_1_3i_1	init_bg	mode2
 	IFNE	MSU1
 	lda	#msu_orch
 	sta	orchorband
-; nasty hack to make the hyperjump exit music work,
-; and have restarts play the correct stage theme
-	lda	bgflags
-	bit	#bgf_restart
-	bne	.level13ok
-	msuplay	exithyperspace,repeat
-	bra	.donelevel13
-.level13ok
-	msuplay	level1_3,repeat
-.donelevel13
+	msuplay	exithyperspace,repeat	; PISTRATS.ASM routine playerwarpout has the level1_3 music trigger
 	ENDC
 	space	night
 
@@ -475,7 +466,7 @@ bg_2_3a_1	init_bg	mode2
 	bgm	23
 	IFNE	MSU1
 	msuplay	level2_3,repeat
-	lda	#msu_orch
+	lda	#msu_band
 	sta	orchorband
 	ENDC
 	bg2Yscroll	232

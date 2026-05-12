@@ -4,6 +4,7 @@ cl_earth
 
 	IFNE	MSU1
 	mapmsufade
+	mapwait	2000
 	ENDC
 	setbgm	$f1
 	

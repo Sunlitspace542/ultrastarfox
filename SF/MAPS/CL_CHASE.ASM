@@ -5,6 +5,7 @@ cl_chase
 	setbgm	$f1
 	IFNE	MSU1
 	mapmsufade
+	mapwait	2000
 	ENDC
 	
 	mapCLplayermode	clearChase

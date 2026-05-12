@@ -128,6 +128,12 @@ actualcreds
 	textpath	1000,2000,1200,4400,sunlit,dsideslip,14,100
 	ENDC
 
+	IFNE	MSU1
+	mapwait	credwait
+	textpath	1000,2000,-200,3500,msu1,dsideslip,14
+	textpath	1000,2000,200,3500,sunlit,dsideslip,14,32
+	ENDC
+
 	mapwait	9000-31*medpspeed
 	maprts
 

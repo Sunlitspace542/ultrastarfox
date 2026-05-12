@@ -113,6 +113,9 @@ map2_4
 ;chase 3 times
 
 	fadeoutbgm
+	IFNE	MSU1
+	mapmsuplay	boss1_2,repeat
+	ENDC
 	setbgm	5
 
 	mapjsr	armsmap

@@ -858,6 +858,11 @@ msg_sunlit
 	mariomsg	<SUNLIT>
 	ENDC
 
+	IFNE	MSU1
+msg_msu1
+	mariomsg	<MSU-1 PROGRAMMING>
+	ENDC
+
 msg_0	mariomsg	<0>
 msg_1	mariomsg	<1>
 msg_2	mariomsg	<2>

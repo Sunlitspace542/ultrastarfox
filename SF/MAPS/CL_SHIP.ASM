@@ -2,9 +2,6 @@ cl_ship3_4
 	setbg	3_4d
 	initbg
 
-	IFNE	MSU1
-	mapmsufade
-	ENDC
 
 	mapCLplayermode	ClearShip2
 	setbgm	bgm_fanfare
@@ -20,10 +17,6 @@ cl_ship3_4
 cl_ship1_3
 	setbg	1_3e
 	initbg
-
-	IFNE	MSU1
-	mapmsufade
-	ENDC
 
 	mapCLplayermode	ClearShip2
 	setbgm	bgm_fanfare

@@ -150,6 +150,9 @@ map2_5
 
 	fadeoutbgm
 	setbgm	5
+	IFNE	MSU1
+	mapmsuplay	boss1_5c,repeat
+	ENDC
 	incmap	castanet
 	mapwaitboss
 	markboss	boss25

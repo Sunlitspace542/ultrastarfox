@@ -32,7 +32,7 @@
 ; -- STAGE BOSSES --
 	; route 1
 	msutrack	boss1_1,21			;Boss Corneria 1/2/3 (Attack Carrier/Destructor)
-	msutrack	boss1_2,22			;Boss Asteroid 1/3 (Rock Crusher/Blade Barrier)
+	msutrack	boss1_2,22			;Boss Asteroid 1/3, Sector Y (Rock Crusher/Blade Barrier/Plasma Hydra)
 	msutrack	boss1_3,23			;Boss Space Armada (Boss of Core Type) (Space Armada/Sector Z, Atomic Base I+II)
 	msutrack	boss1_4,24			;Boss Meteor (Dancing Insector)
 	; route 2
@@ -43,7 +43,7 @@
 	; common
 	msutrack	boss1_5a,28			;Boss (Venom Base 1) (Venom 1, Phantron II)
 	msutrack	boss1_5b,29			;Boss (Venom Base Extended) (Venom 3, Great Commander I+II)
-	msutrack	boss1_5c,30			;Boss (Venom Base Short) (Venom 1+2, Phantron I/Mad Trucker/Galactic Rider)
+	msutrack	boss1_5c,30			;Boss (Venom Base Short) (Venom 1+2, Phantron I/Metal Smasher/Mad Trucker/Galactic Rider)
 	msutrack	bossandross,31		;Boss Andross
 	; bonus
 	msutrack	bossootd,32			;Boss Slot Machine

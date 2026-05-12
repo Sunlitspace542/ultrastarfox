@@ -21,6 +21,9 @@
 	IFNE	RUMBLE
 	global	msg_rumbleversion,msg_randy,msg_sunlit,msg_kando
 	ENDC
+	IFNE	MSU1
+	global	msg_msu1
+	ENDC
 	global	msg_0	
 	global	msg_1	
 	global	msg_2	

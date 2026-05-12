@@ -3,6 +3,10 @@ level3_7
 	initlevel	3_7a,0
 
 	mapjsr	map3_7a
+	IFNE	MSU1
+	mapmsufade
+	mapwait	2000
+	ENDC
 	mapgoto	level1_end
 
 	setbg	3_7b

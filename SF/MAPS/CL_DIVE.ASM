@@ -3,6 +3,7 @@ cl_dive
 	setbgm	$f1
 	IFNE	MSU1
 	mapmsufade
+	mapwait	2000
 	ENDC
 
 	setbgm	bgm_fanfare
