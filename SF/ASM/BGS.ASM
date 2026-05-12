@@ -647,7 +647,7 @@ bg_3_3a_1	init_bg	mode2
 	bgm	33
 	IFNE	MSU1
 	msuplay	level3_3,repeat
-	lda	#msu_orch
+	lda	#msu_band
 	sta	orchorband
 	ENDC
 	planet	mist
