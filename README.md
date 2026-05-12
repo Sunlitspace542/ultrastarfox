@@ -21,7 +21,8 @@ Go [here](#building) to jump straight to the building instructions.
 
 - Uses GSU-2/Super FX 2 @21.4Mhz instead of MARIO Chip 1 @10.7Mhz
 - Super FX MS1 high-speed multiply enabled (if 21mhz is enabled)
-- FastROM support (Do not enable if you are targeting a real cartridge with a real MARIO/GSU-1/GSU-2 IC chip!)
+- FastROM support (Not recommended) (Do not enable if you are targeting a real cartridge with a real MARIO/GSU-1/GSU-2 IC chip!)
+- MSU-1 support
 
 ## Accessory Support
 
