@@ -192,6 +192,18 @@ initplanets_l
 	php
 	a8
 ;	stz	whichroute 	; (not to be cleared unless reset pressed)
+	IFNE	planetcheat
+	IFNE	exitcredits
+	; jump back to valid route to avoid crash if using exitcredits and last route used was ootd/black hole
+	lda whichroute
+	cmp	#3
+	bcc	.dontreset	; if route < 3
+	stz	stage
+	stz	stage+1
+	stz	whichroute
+.dontreset
+	ENDC
+	ENDC
 
 ; set starting time
 	IFNE	cestimeron
