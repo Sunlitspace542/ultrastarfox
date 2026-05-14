@@ -4609,7 +4609,10 @@ mcore1col_Istrat
 	s_jmp			hitflash_Istrat
 mcore1exp_Istrat
 	s_start_strat
-	startbgm		$f0
+	startbgm		$f0	; cut music
+	IFNE	MSU1
+	msufade				; gracefully fade out instead (matter of taste, i think this is better)
+	ENDC
 	trigse			$a1
 	s_set_expstrat		x,mcore1exp_strat
 mcore1exp_strat

@@ -50,6 +50,10 @@ trainingmapredirect	equ	0
 ;; Cheats
 
 
+; Starting laser type on boot
+; [0 = single, 1 = twin, 2 = dual beam]
+lasertype		equ	0
+
 ; No collision for the player
 ; [0 = off, 1 = on]
 godmode			equ	0

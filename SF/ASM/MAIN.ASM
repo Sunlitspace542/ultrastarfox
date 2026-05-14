@@ -1766,6 +1766,18 @@ initscreen_l
 	lda	#255
 	sta	crosshairon
 
+	IFEQ	lasertype-1
+	lda	pshipflags2
+	ora	#psf2_doublaser
+	sta	pshipflags2
+	ENDC
+
+	IFEQ	lasertype-2
+	lda	pshipflags3
+	ora	#psf3_beamball
+	sta	pshipflags3
+	ENDC
+
 	enable
 	rtl
 

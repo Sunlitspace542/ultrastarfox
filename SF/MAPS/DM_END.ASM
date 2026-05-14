@@ -1,9 +1,6 @@
 ; start in tunnel
 ;	initlevel	1_7a
 
-	IFNE	MSU1
-	mapmsufade
-	ENDC
 	mapplayermode	toCslow	
 
 	mapjsr	Ltunnelexit
