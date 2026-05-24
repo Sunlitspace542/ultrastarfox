@@ -10,7 +10,7 @@ Note that for the final file arrangement, the name prefix of all the files neces
 
 3. Obtain a PCM set or make your own. The tracklist is described in `SF\INC\MSUTRKS.INC`.
    
-   - I have prepared a PCM set [here](https://github.com/Sunlitspace542/star-fox-msu1-pcm. If you're using my set, I have included instructions on how to build the set there. You will end up with a bunch of .PCM files named like `sf_msu1-#.pcm`.
+   - I have prepared a PCM set [here](https://github.com/Sunlitspace542/star-fox-msu1-pcm). If you're using my set, I have included instructions on how to build the set there. You will end up with a bunch of .PCM files named like `sf_msu1-#.pcm`.
 
 4. Create a dummy `.msu` file. This is required to indicate that the MSU-1 should be used. It can be left empty or filled with some placeholder data.
 
