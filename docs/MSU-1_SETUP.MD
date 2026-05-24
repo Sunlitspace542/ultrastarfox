@@ -19,10 +19,11 @@ Note that for the final file arrangement, the name prefix of all the files neces
 ```
 sf_msu1.sfc - Program ROM (i.e. the game)
 
-sf_msu1.msu - MSU-1 data file (required for chip detection) if using Ares, you may need to rename this to "msu1.data.rom".
+sf_msu1.msu - MSU-1 data file (required for chip detection); if using Ares, you may need to rename this to "msu1.data.rom"
 
 sf_msu1-#.pcm - Audio tracks
 ```
 
 Note how all the file name prefixes are the same.
+
 I recommend you rename the files to lowercase so the various emulators can properly detect that the chip is being used and such.
