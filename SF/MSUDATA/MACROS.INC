@@ -18,7 +18,7 @@ getmsu1dataaddr	macro	[label]
 	fclose	msudata.inc
 	ENDM
 
-	; include msu-1 data, gets addr and length
+	; include msu-1 data, gets addr and length for program rom to reference
 	; directive can probably be just about any valid assembler command
 msu1data	MACRO	[label,directive]
 {label}

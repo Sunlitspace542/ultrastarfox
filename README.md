@@ -140,6 +140,7 @@ ultrastarfox
 │   ├── MARIO: .MC MARIO (SuperFX) ASM code
 │   ├── MSG: Message files for English, Japanese, German, and French
 │   ├── MSPRITES: contains interleaved FXGfx format textures
+│   ├── MSUDATA: source and macros to construct an MSU-1 data file for data streaming
 │   ├── PATH: contains all PATH language code (used for some object behaviors)
 │   ├── SHAPES: contains all shape (model) files
 │   ├── SND: sound/music data

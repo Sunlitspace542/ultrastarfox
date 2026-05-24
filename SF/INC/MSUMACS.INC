@@ -144,6 +144,8 @@ msu1_setseekport	macro [addr]
 
 ;--------------------------------------------------------------
 ; Stream MSU-1 data to memory
+; e.g. if I defined a data region in MSUDATA.ASM called msu1data_placeholder, I would do:
+;	msustream	some_destination_addr,msu1data_placeholder
 msustream	macro	[dest,addr]
 	pha
 	phy

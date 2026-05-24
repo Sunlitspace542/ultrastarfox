@@ -20,8 +20,11 @@ msu1		equ	0
 msuvoice	equ	0
 
 ; MSU-1 data streaming support
+; PLEASE READ: THIS IS FOR *DATA STREAMING* USING THE MSU-1, NOT AUDIO PLAYBACK.
+; If you just want MSU-1 music, set msu1 to 1.
 ; You must add a recipe to all in the makefile to assemble the data file (there are comments there that explain this).
 ; The MSU-1 data file source lives in the MSUDATA directory.
+; the msustream macro can then be used to read the MSU-1 data file regions defined in MSUDATA.ASM into memory.
 msudata		equ	0
 
 ; enable/disable FastROM [1 = on, 0=off]

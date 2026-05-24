@@ -29,4 +29,5 @@
 
 ; - - - - BEGIN DATA - - - - - 
 
+	; sample data region definition
 	msu1data	msu1data_placeholder,<db	"ULTRASTARFOX">
