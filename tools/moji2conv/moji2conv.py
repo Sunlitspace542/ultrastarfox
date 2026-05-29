@@ -11,8 +11,11 @@ def png_to_1bpp_bin(
     img = Image.open(input_png).convert("RGBA")
     width, height = img.size
 
-    if width % 8 != 0:
-        raise ValueError("Image width must be a multiple of 8")
+    if width != 16:
+        raise ValueError("Image must be 16px wide")
+
+    if width % 16 != 0:
+        raise ValueError("Image height must be a multiple of 16")
 
     pixels = img.load()
     out = bytearray()
@@ -49,7 +52,7 @@ def png_to_1bpp_bin(
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Convert a 16x1280px RGBA PNG of MOJI_2.FON into 1BPP 16x16 .FON format."
+        description="Convert a RGBA PNG of MOJI_2.FON into 1BPP 16x16 .FON format. Input PNG must be 16 pixels wide and PNG height must be a multiple of 16."
     )
     parser.add_argument("input", help="Input PNG")
     #parser.add_argument("output", help="Output binary")

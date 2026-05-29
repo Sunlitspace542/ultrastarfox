@@ -141,3 +141,12 @@ Becomes:
 message	white,fox,<        ASTEROIDEN GƒRTEL>,other	; (94)
 ```
 For detokenization, it does the reverse.  
+
+## moji2conv
+**Tool made by Sunlit**  
+Tool to convert an RGBA PNG of MOJI_2.FON back into 1BPP 16x16 .FON format.  
+Input PNG must be 16 pixels wide and PNG height must be a multiple of 16.  
+To use:  
+``python3 moji2conv.py MOJI_2.png``  
+Or if on Windows:  
+``convert.bat``  
