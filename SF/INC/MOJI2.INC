@@ -42,13 +42,4 @@ m2_9	equ		$25
 m2_ex	equ		$26 ; '!'
 m2_qu	equ		$27 ; '?'
 m2_sp	equ		$28 ; ' '
-m2sf_S	equ		$29
-m2sf_T	equ		$2A
-m2sf_A	equ		$2B
-m2sf_R	equ		$2C
-m2sf_sp	equ		$2D ; ' '
-m2sf_F	equ		$2E
-m2sf_O	equ		$2F
-m2sf_X	equ		$30
-; $31-$40 unused
-m2_pc	equ		$41 ; '%'
+m2_pc	equ		$29 ; '%'

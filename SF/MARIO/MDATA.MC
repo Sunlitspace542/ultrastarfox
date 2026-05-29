@@ -598,26 +598,16 @@ mscalechars
 msgtmp	macro
 	defs	1,"[1]\1"
 
+	;convert numbers, blanks, and special characters to tokens
+
 	; ARGSFX appears to start strings at index 0,
 	; while SASM starts strings at index 1.
 
 	IFD	_SASM
-	IFS	1,1," "
-	defs	1,"h"
-	ENDC
-	ENDC
-
-	IFD	_ARGSFX
-	IFS	1,0," "
-	defs	1,"h"
-	ENDC
-	ENDC
-
-	IFD	_SASM
-	REPT	12
-	irs	3,"0","1","2","3","4","5","6","7","8","9","#","-"
+	REPT	15
+	irs	3,"-","0","1","2","3","4","5","6","7","8","9","!","?"," ","#"
 	run	" IFS 1,1,'%$3'"
-	irs	3,"\\","]","^","_","`","a","b","c","d","e","","["
+	irs	3,"[","\\","]","^","_","`","a","b","c","d","e","f","g","h","i"
 	defs	1,"%$3"
 	ENDC
 	ENDR
@@ -626,10 +616,10 @@ msgtmp	macro
 
 
 	IFD	_ARGSFX
-	REPT	12
-	irs	3,"0","1","2","3","4","5","6","7","8","9","#","-"
+	REPT	15
+	irs	3,"-","0","1","2","3","4","5","6","7","8","9","!","?"," ","#"
 	run	" IFS 1,0,'%$3'"
-	irs	3,"\\","]","^","_","`","a","b","c","d","e","","["
+	irs	3,"[","\\","]","^","_","`","a","b","c","d","e","f","g","h","i"
 	defs	1,"%$3"
 	ENDC
 	ENDR
