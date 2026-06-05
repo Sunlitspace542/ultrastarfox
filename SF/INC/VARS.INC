@@ -115,7 +115,6 @@ xmempt	=	$7e2000	;extended RAM
 xxmempt	=	$7f0000	;extended RAM
 zmmempt	=	$700000
 mmempt	=	$700200
-bitmap1		equ	16384
 bitmapbase	equ	$700000
 
 WM	equ	$ffff	; wordmask
@@ -252,6 +251,10 @@ gametranlen2	equ	10752
 paltranlen1	equ	(gamemaxtrans*3)/4
 paltranlen2	equ	gamemaxtrans-paltranlen1
 
+bitmap1		equ	(64*K)-gameBMPSZ ; change 64 to 60 to reserve 4kb for save data
+dec_base	equ	bitmap1-K	; decrunch buffer is 1kb before bitmap
+marioram_end	equ	dec_base
+
 ; irq vars
 tm_planets	equ	8
 tm_fox		equ	10
@@ -259,7 +262,6 @@ tm_fox2		equ	12
 tm_fox3		equ	14
 tm_planets2	equ	34
 
-dec_base	equ	2800h
 
 	TIME	_TIME
 _HOUR	=	_TIME>>24&$FF

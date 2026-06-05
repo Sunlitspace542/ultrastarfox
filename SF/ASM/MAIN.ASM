@@ -1592,20 +1592,15 @@ initscreen_l
 	sta	inidisp
 	sta	vmainc
 
+	ai16
 ;Clear VRAM
-	lda	#$00
-	ldx	#127
-.ly	ldy	#0
+	lda	#0
+	ldx	#127*256
 .li	sta	vmdatal
-	sta	vmdatah
-	dey
-	bne	.li
 	dex
-	bne	.ly
-
+	bne	.li
 
 ;Set screen to blank chars
-	ai16
 	lda	#vsc_base1
 	sta	vmaddl
 	lda	#gamenum_col*gamenum_row+1

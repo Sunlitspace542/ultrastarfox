@@ -3,7 +3,7 @@
 Zero_Page_free	=	$100-zmempt
 Work_RAM_free	=	$2000-wmempt
 Extended_RAM_free	=	$7f0000-xmempt
-Mario_RAM_free	=	($700000+bitmap1)-mmempt
+Mario_RAM_free	=	($700000+marioram_end)-mmempt
 ZMario_RAM_free	=	$700200-zmmempt
 Extended_Alblks_free	=	al_size-alx_sizeof
 Allcols_Lines_free	=	maxcolscru-__totpallines
@@ -17,7 +17,7 @@ Allcols_Lines_free	=	maxcolscru-__totpallines
 	report	<ZMARIO RAM Free>,ZMario_RAM_free,($200)
 	ENDC
 	IFNE	mmempt-$700200
-	report	<MARIO RAM Free>,Mario_RAM_free,(bitmap1-$200)
+	report	<MARIO RAM Free>,Mario_RAM_free,(marioram_end-$200)
 	ENDC
 
 	report	<Ext. Alblks Free>,Extended_Alblks_free,alx_sizeof

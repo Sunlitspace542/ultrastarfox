@@ -4708,7 +4708,7 @@ rlbl	=	0
 	report	<Zero Page Free>,Zero_Page_free,$100
 	report	<Work Ram Free>,Work_RAM_free,($2000-$300)
 	report	<Extended Ram Free>,Extended_RAM_free,($800000-$7e2000)
-	report	<Mario Ram Free>,Mario_RAM_free,(bitmap1-$200)
+	report	<Mario Ram Free>,Mario_RAM_free,(marioram_end-$200)
 	report	<ZMario Ram Free>,ZMario_RAM_free,(200)
 	report	<Mario Code>,mariocodelen,TotalRomUsed
 	report	<Strategy Code>,Total_Stratfile_len,TotalRomUsed

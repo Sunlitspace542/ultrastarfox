@@ -230,17 +230,21 @@ initialise_ram
 
 	ai16 ; Set A/X/Y to 16 bit
 
-	ldx	#32768-8	; (load #32760 into X) Clear MARIO chip RAM
-.ooop2
+; clear $70000 - $70FFFF (64kb)
+	ldx #$0000 ; Clear MARIO RAM
+.70page
 	stz.w	0,x ; Store 0 @ addr in X
 	stz.w	2,x ; Store 0 @ addr in X + 2
 	stz.w	4,x ; Store 0 @ addr in X + 4
 	stz.w	6,x ; Store 0 @ addr in X + 6
 	txa ; Transfer X to A
-	sec ; Set carry flag
-	sbc	#8 ; Subtract 8 from A
+	clc ; Clear carry flag
+	adc	#8 ; Add 8 to A
 	tax ; Transfer A to X
-	BPL	.ooop2 ; repeat until x = 0
+	bne	.70page ; repeat until x != 0
+; if you want to reserve 4kb for save data use these 2 lines instead of bne .70page:
+;	cpx	#$F000
+;	bcc	.71page
 
 	a8 ; set A to 8 bit
 	IFNE	FASTROM ; start conditional: if FASTROM !=0 (=1)
