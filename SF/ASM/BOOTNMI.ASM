@@ -244,7 +244,7 @@ initialise_ram
 	bne	.70page ; repeat until x != 0
 ; if you want to reserve 4kb for save data use these 2 lines instead of bne .70page:
 ;	cpx	#$F000
-;	bcc	.71page
+;	bcc	.70page
 
 	a8 ; set A to 8 bit
 	IFNE	FASTROM ; start conditional: if FASTROM !=0 (=1)
