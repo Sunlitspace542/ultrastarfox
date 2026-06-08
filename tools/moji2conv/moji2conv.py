@@ -14,7 +14,7 @@ def png_to_1bpp_bin(
     if width != 16:
         raise ValueError("Image must be 16px wide")
 
-    if width % 16 != 0:
+    if height % 16 != 0:
         raise ValueError("Image height must be a multiple of 16")
 
     pixels = img.load()
