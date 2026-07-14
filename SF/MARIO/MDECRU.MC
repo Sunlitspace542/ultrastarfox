@@ -339,7 +339,7 @@ mgetbits3	dec	rsrc
 
 
 mdecclear
-	iwt	r1,#$200
+	iwt	r1,#dec_base ;$200
 	move	r12,#(32768/2)-$100
 	move	r13,r15
 	sub	r0
