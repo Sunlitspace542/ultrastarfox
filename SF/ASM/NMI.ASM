@@ -56,11 +56,18 @@ copy_to_0101_l
 	rtl ; Return from subroutine (Long)
 
 ;---------------------------------------------------------------------------
+nonmihan	equ	1	;Remove unused NMI handler (saves memory+cycles in IRQ)
 
 nmihan ; Start of NMI handler
 	blink	2 ; Yellow BLINK
 	blink	2 ; Yellow BLINK
+	IFNE	NONMIHAN
+	rti		; $0108 NMI
+	nop
+	nop
+	ELSEIF
 	brl	.nmi	;$0108	NMI ; Branch to .NMI sublabel
+	ENDC
 	nop		;$010b ; No Operation
 .irq	ai16		;$010c	irq
 	pha	; Push A to stack
@@ -260,9 +267,11 @@ nmihan ; Start of NMI handler
 	lda	timeupr ; Load TIMEUPR register into A
 	IFEQ	RUMBLE
 	bra	.exit ; branch to .exit sublabel
-	ELSEIF
+	ELSEIF	;IFNE	RUMBLE
+	IFEQ	NONMIHAN
 	brl	.exit ; branch to .exit sublabel
-	ENDC
+	ENDC	;NONMIHAN
+	ENDC	;RUMBLE
 	longa
 
 	IFEQ	RUMBLE
@@ -271,6 +280,7 @@ nmihan ; Start of NMI handler
 	ENDC
 .brk
 .nmi
+	IFEQ	NONMIHAN
 	ai16 ; Set A/X/Y to 16 bit
 	pha ; Push A to stack
 	phb ; Push data bank to stack
@@ -292,6 +302,7 @@ nmihan ; Start of NMI handler
 	nastyon ; Turn MARIO chip nasty mode on
 	a8 ; Set A to 8 bit
 	lda	rdnmir ; Load RDNMIR register into A
+	ENDC	;NONMIHAN
 
 .exit	ai16
 	ply ; Pull Y from stack
