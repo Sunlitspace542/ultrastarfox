@@ -251,7 +251,7 @@ gametranlen2	equ	10752
 paltranlen1	equ	(gamemaxtrans*3)/4
 paltranlen2	equ	gamemaxtrans-paltranlen1
 
-bitmap1		equ	(64*K)-gameBMPSZ ; change 64 to 60 to reserve 4kb for save data
+bitmap1		equ	(52*K)-gameBMPSZ ; set to 48 to reserve 4kb for save data
 dec_base	equ	bitmap1-K	; decrunch buffer is 1kb before bitmap
 marioram_end	equ	dec_base
 
