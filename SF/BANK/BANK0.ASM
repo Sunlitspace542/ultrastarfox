@@ -153,8 +153,17 @@ abort_vn
 	; This data was required by Nintendo to be present, the actual SNES hardware does not care about this data.
 	; This data is required for emulators/flashcarts to determine how to emulate the cartridge.
 	;
-	IFNE	FASTROM 
-	db	$20					; Map Mode
+	IFNE	SUPERFX3
+	db	$30
+	ELSEIF	;IFEQ	SUPERFX3
+
+	IFNE	FASTROM
+	db	$20
+	ELSEIF	;IFEQ	FASTROM
+	db	$20
+	ENDC	;FASTROM
+
+	ENDC	;SUPERFX3
 							 ; (20) SlowROM LoROM
 							 ; (30) FastROM LoROM
 	ELSEIF
