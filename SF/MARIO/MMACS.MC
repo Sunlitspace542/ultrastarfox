@@ -8,30 +8,27 @@
 ;		Argonaut Software Ltd.
 
 ; Simulate MERGE instruction in software for Super FX 3
+;uint16_t value = (_state.R[7] & 0xFF00) | (_state.R[8] >> 8);
+;WriteDestReg(value);
 domerge	macro	dreg
 	IFNE	SUPERFX3
-	with	r7
-	hib	; r7 = (r7 & $FF00) >> 8
-	with	r8
-	hib	; r8 = (r8 & $FF00) >> 8
-
-	REPT	8
-	with	r7
-	rol	; r7 = (r7 << 8)
-	ENDR
+	from	r8
+ to	\1
+	hib
 
 	with	r7
-	or	r8
 
-	IFNE	NARG
-	move	\1,r7	;TODO is this needed?
-	ELSEIF
-	move	r0,r7
-	ENDC
+	hib
+
+	with	r7
+	swap
+
+	with	\1
+	or	r7
 	ELSEIF
 	merge
 	ENDC
-	ENDM
+	endm
 
 ; increment word in memory
 ;

@@ -33,7 +33,7 @@ msudata		equ	0
 ; The Super FX 3 however, does support FastROM.
 ; See BANK\BANK0.ASM, section 'Cartridge information'
 	IFNE	SUPERFX3
-FASTROM		equ 1
+FASTROM		equ 1	; GSU3 requires FastROM ROM map to function
 	ELSEIF
 FASTROM		equ 0
 	ENDC

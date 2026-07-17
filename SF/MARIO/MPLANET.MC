@@ -616,7 +616,7 @@ mdrawuvlistx
 	asr			
 	with	rnewl		
 	add	r0		
-	domerge			
+	domerge	r0
 	lsr
 	lsr
 	miwt	rt,$1f3f
@@ -664,7 +664,7 @@ mdrawuvlistx
 .xp
 	inc	ruvlist		
 	inc	ruvlist		
-	domerge			
+	domerge	r0
 	lsr
 	lsr
 	miwt	rt,$1f3f
