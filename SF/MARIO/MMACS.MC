@@ -8,8 +8,7 @@
 ;		Argonaut Software Ltd.
 
 ; Simulate MERGE instruction in software for Super FX 3
-;uint16_t value = (_state.R[7] & 0xFF00) | (_state.R[8] >> 8);
-;WriteDestReg(value);
+; Trashes low byte of R7 so we back up R7 to RAM and restore afterward
 domerge	macro	dreg
 	IFNE	SUPERFX3
 	sm	[m_r7backup&WM],r7
