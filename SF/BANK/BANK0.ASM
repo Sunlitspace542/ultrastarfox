@@ -105,7 +105,7 @@ abort_vn
 	db	6					; Expansion RAM Size (5 = 32kbyte, 6 = 64kbyte)
 	db	0					; Special Version
 	IFNE	RUMBLE
-	db	$'R'				; Cartridge Type (Sub-number)
+	db	'R'				; Cartridge Type (Sub-number)
 							; (52) Rumble controller support
 	ELSEIF
 	db	0					; (0) None
@@ -166,11 +166,6 @@ abort_vn
 	ENDC	;SUPERFX3
 							 ; (20) SlowROM LoROM
 							 ; (30) FastROM LoROM
-	ELSEIF
-	db	$20					; Map Mode
-							 ; (20) SlowROM LoROM
-							 ; (30) FastROM LoROM
-	ENDC
 	IFEQ	SUPERFX3
 	db	$14					; Cartridge Type
 	ELSEIF
