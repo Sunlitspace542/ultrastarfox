@@ -11,13 +11,13 @@
 ; Trashes low byte of R7 so we back up R7 to RAM and restore afterward
 domerge	macro	dreg
 	IFNE	SUPERFX3
-	sm	[m_r7backup&WM],r7
+	sm	[m_r7backup&WM],r7	; Save R7 to RAM
+
 	from	r8
- to	\1
+	to	\1
 	hib
 
 	with	r7
-
 	hib
 
 	with	r7
@@ -25,7 +25,8 @@ domerge	macro	dreg
 
 	with	\1
 	or	r7
-	lm	r7,[m_r7backup&WM]
+
+	lm	r7,[m_r7backup&WM]	; Restore R7
 	ELSEIF
 	merge
 	ENDC

@@ -4372,8 +4372,7 @@ setlevel	macro
 	endm
 
 ;------------------------------------------------------------------------
-
-
+; TODO: correctly map ROM for FX3
 bankend	macro
 	IFEQ	NARG
 		printf	"BANKEND: Which bank are we talking about here?"
@@ -4422,6 +4421,7 @@ totalromspaceleft = totalromspaceleft+bank\1left
 
 ;------------------------------------------------------------------------
 ;;	list	T+ on macros
+; TODO: correctly map ROM for FX3
 bank	macro
 
 	IFEQ	NARG

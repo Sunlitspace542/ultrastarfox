@@ -7,7 +7,10 @@
 ; Cartridge Configuration
 
 ; Super FX 3 support [0 = off, 1 = on]
-; Will not work yet! GSU3 makes lots of changes to memory map and behavior! Those have yet to be done!
+; Seems to work, but some things may not be up to spec just yet.
+; ROM map isn't properly set up yet.
+; Real FX3 hardware does not fire IRQs and the IRQ handler needs to be retrofitted/replaced to reflect this.
+; MesenCE still fires an IRQ on STOP, thus the game works.
 SUPERFX3	equ 0
 
 ; MSU-1 support [0 = off, 1 = on]
