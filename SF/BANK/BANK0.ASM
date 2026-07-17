@@ -104,9 +104,9 @@ abort_vn
 	db	0,0,0,0,0,0,0		; Fixed Value
 	db	6					; Expansion RAM Size (5 = 32kbyte, 6 = 64kbyte)
 	db	0					; Special Version
-	IFNE	SUPERFX3
-	db	$52					; Cartridge Type (Sub-number)
-							; (52) Super FX 3 (The Ultimate DOOM) - the Super FX Version Code Register $303B also reports $52
+	IFNE	RUMBLE
+	db	$'R'				; Cartridge Type (Sub-number)
+							; (52) Rumble controller support
 	ELSEIF
 	db	0					; (0) None
 	ENDC
