@@ -43,22 +43,22 @@ cfgr_noirq	equ	%10000000	; IRQs DISABLED
 cfgr_ms1		equ	%00100000	; HighSpeed Multiply ON (MS1)
 	ELSEIF
 ; Super FX 3 registers 0-15
-regs		equ	$3000
-mr0			equ	$3000 ; Default source/destination register
-mr1			equ	$3002 ; Pixel plot X position register
-mr2			equ	$3004 ; Pixel plot Y position register
-mr3			equ	$3006
-mr4			equ	$3008 ; Lower 16 bit result of LMULT
-mr5			equ	$300a
-mr6			equ	$300c ; Multiplier for FMULT and LMULT
-mr7			equ	$300e ; Fixed point texel X position for MERGE
-mr8			equ	$3010 ; Fixed point texel Y position for MERGE
-mr9			equ	$3012
-mr10		equ	$3014
-mr11		equ	$3016 ; Return address set by LINK
-mr12		equ	$3018 ; Loop counter
-mr13		equ	$301a ; Loop point address
-mr14		equ	$301c ; ROM address for GETB, GETBH, GETBL, GETBS
+regs		equ	$7000
+mr0			equ	$7000 ; Default source/destination register
+mr1			equ	$7002 ; Pixel plot X position register
+mr2			equ	$7004 ; Pixel plot Y position register
+mr3			equ	$7006
+mr4			equ	$7008 ; Lower 16 bit result of LMULT
+mr5			equ	$700a
+mr6			equ	$700c ; Multiplier for FMULT and LMULT
+mr7			equ	$700e ; Fixed point texel X position for MERGE
+mr8			equ	$7010 ; Fixed point texel Y position for MERGE
+mr9			equ	$7012
+mr10		equ	$7014
+mr11		equ	$7016 ; Return address set by LINK
+mr12		equ	$7018 ; Loop counter
+mr13		equ	$701a ; Loop point address
+mr14		equ	$701c ; ROM address for GETB, GETBH, GETBL, GETBS
 mr15		equ	$701e ; Program counter - set to 0 when a STOP command is hit
 
 ; Super FX 3 control registers
