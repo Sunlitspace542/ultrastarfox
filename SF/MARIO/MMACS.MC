@@ -8,7 +8,7 @@
 ;		Argonaut Software Ltd.
 
 ; Simulate MERGE instruction in software for Super FX 3
-domerge	macro
+domerge	macro	dreg
 	IFNE	SUPERFX3
 	with	r7
 	hib	; r7 = (r7 & $FF00) >> 8
@@ -23,7 +23,11 @@ domerge	macro
 	with	r7
 	or	r8
 
+	IFNE	NARG
+	move	\1,r7	;TODO is this needed?
+	ELSEIF
 	move	r0,r7
+	ENDC
 	ELSEIF
 	merge
 	ENDC
