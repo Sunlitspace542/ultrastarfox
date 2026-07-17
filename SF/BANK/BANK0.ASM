@@ -105,7 +105,7 @@ abort_vn
 	db	6					; Expansion RAM Size (5 = 32kbyte, 6 = 64kbyte)
 	db	0					; Special Version
 	IFNE	RUMBLE
-	db	'R'				; Cartridge Type (Sub-number)
+	db	'R'					; Cartridge Type (Sub-number)
 							; (52) Rumble controller support
 	ELSEIF
 	db	0					; (0) None
