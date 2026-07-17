@@ -162,7 +162,11 @@ abort_vn
 							 ; (20) SlowROM LoROM
 							 ; (30) FastROM LoROM
 	ENDC
+	IFEQ	SUPERFX3
 	db	$14					; Cartridge Type
+	ELSEIF
+	db	$17
+	ENDC
 							 ; (13) MARIO Chip 1 / Super FX 1 (StarFox 1)
 							 ; (14) Super FX 2 (DOOM)
 							 ; (15) Battery + Super FX 2 (Yoshi's Island, StarFox 2)
