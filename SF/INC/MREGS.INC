@@ -78,6 +78,6 @@ m_un3d		equ	$703D ; Unused
 m_cbr		equ	$703E ; Cache Base Register (R)
 
 ; Super FX 3 Config Register (CFGR, $7037) bits
-cfgr_noirq	equ	%00000000	; No IRQs on GSU3
+cfgr_noirq	equ	%10000000	; No IRQs on GSU3
 cfgr_ms1		equ	%00100000	; HighSpeed Multiply ON (MS1)
 	ENDC

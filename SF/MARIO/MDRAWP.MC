@@ -489,7 +489,7 @@ cthlines
 	ifeq	0	; texture map
 	move	r13,pc
 
-	merge		; r0 = (ryp & $ff00) + (rxp & $ff00)>>8
+	domerge		; r0 = (ryp & $ff00) + (rxp & $ff00)>>8
 	and	rmask
 	to	r14
 	add	rspdata
@@ -976,7 +976,7 @@ tscansize	=	mtscanexit-mtscanstart
 	ifeq	1	; calculated texture
 	move	r13,pc
 
-	merge		; r0 = (ryp & $ff00) + (rxp & $ff00)>>8
+	domerge		; r0 = (ryp & $ff00) + (rxp & $ff00)>>8
 ;	and	rmask
 	with	ryp
 	add	rypi
@@ -1068,7 +1068,7 @@ cthlines
 	mcache
 	move	r13,pc
 
-	merge		; r0 = (ryp & $ff00) + (rxp & $ff00)>>8
+	domerge		; r0 = (ryp & $ff00) + (rxp & $ff00)>>8
 	and	rmask
 	to	r14
 	add	rspdata
@@ -1093,7 +1093,7 @@ cthlines
 ; new "merge" instruction code
 
 	getc
-	merge		; r0 = (ryp & $ff00) + (rxp & $ff00)>>8
+	domerge		; r0 = (ryp & $ff00) + (rxp & $ff00)>>8
 	and	rmask
 	to	r14
 	or	rspdata
@@ -1109,7 +1109,7 @@ cthlines
 
 	getc
 	to	r14
-	merge		; r0 = (ryp & $ff00) + (rxp & $ff00)>>8
+	domerge		; r0 = (ryp & $ff00) + (rxp & $ff00)>>8
 	plot
 	with	ryp
 	add	rypi
@@ -1216,7 +1216,7 @@ newthlinesplot
 
 	move	r13,pc
 
-	merge		; r0 = (ryp & $ff00) + (rxp & $ff00)>>8
+	domerge		; r0 = (ryp & $ff00) + (rxp & $ff00)>>8
 	and	rmask
 	to	r14
 	add	rspdata

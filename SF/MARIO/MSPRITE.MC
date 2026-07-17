@@ -611,7 +611,7 @@ msprloop	macro
 	move	rxp,rxpy
  	move	rcnt,rypy
 
-	merge
+	domerge
 	to	r14
 	add	rspdata
 	with	rxp
@@ -621,7 +621,7 @@ msprloop	macro
 ;	plot
 
 .fsprite16y_scaleloop
-	merge
+	domerge
 	getc
 	to	r14
 	add	rspdata
@@ -663,7 +663,7 @@ msprrotloop	macro
 	move	r13,pc
 
 .cfsprite16x_loop
-	merge			; = 9
+	domerge			; = 9
 
 	ifeq	\1-32
 	bcc	.cfinspr
@@ -688,7 +688,7 @@ msprrotloop	macro
 	nop
 	to	r14
 	add	rspdata
-;	merge
+;	domerge
 ;	bcs	.cfoutspr
 	getc
 	plot
@@ -701,7 +701,7 @@ msprrotloop	macro
 	add	rxpi
 	with	ryp
 	add	rypi
-	merge
+	domerge
 ;	bcc	.cfinsprstill
 
 	ifeq	\1-32
@@ -724,7 +724,7 @@ msprrotloop	macro
 	nop
 	to	r14
 	add	rspdata
-	merge
+	domerge
 
 	move	r13,pc
 
@@ -746,7 +746,7 @@ msprrotloop	macro
 	add	rypi
 ;	loop
 	jmp	r13
-	merge
+	domerge
 
 	endc
 
@@ -830,7 +830,7 @@ msprite_rot_exit
 	ifne	0
 
 	miwt	r13,cfsprite16x_loop
-	merge
+	domerge
 
 cfsprite16x_loop
 	bcs	cfsprskip
@@ -845,7 +845,7 @@ cfsprite16x_loop
 	with	ryp
 	add	rypi
 	getc
-	merge		= 9 / 9 / 15
+	domerge		= 9 / 9 / 15
 	loop
 	plot
 
@@ -857,7 +857,7 @@ cfsprskip
 	with	ryp
 	add	rypi
 	loop
-	merge		= 9 / 9 / 15
+	domerge		= 9 / 9 / 15
 
 	endc
 
@@ -922,7 +922,7 @@ cfsprite16x_rotate
 	mcache
 	miwt	r13,cfsprite16x_loop
 
-	merge
+	domerge
 
 cfsprite16x_loop
 	bcs	cfsprskip
@@ -941,7 +941,7 @@ cfsprskip
 	with	ryp
 	add	rypi
 	loop
-	merge		= 9 / 9 / 16
+	domerge		= 9 / 9 / 16
 
 	miwt	pc,cfsprrts
 ;	jmp	r0
@@ -975,7 +975,7 @@ c	=	b13 + b5 + v
 z	=	b12 + b4 + c
 
 	getc
-	merge		; r14 = (ryp & $ff00) + (rxp & $ff00)>>8
+	domerge		; r14 = (ryp & $ff00) + (rxp & $ff00)>>8
 	plot
 	with	ryp
 	add	rypi
@@ -985,7 +985,7 @@ z	=	b12 + b4 + c
 
 	getc
 	to	r14
-	merge		; r0 = (ryp & $ff00) + (rxp & $ff00)>>8
+	domerge		; r0 = (ryp & $ff00) + (rxp & $ff00)>>8
 	plot
 	with	ryp
 	add	rypi
@@ -994,7 +994,7 @@ z	=	b12 + b4 + c
 
 
 	getc
-	merge		; r0 = (ryp & $ff00) + (rxp & $ff00)>>8
+	domerge		; r0 = (ryp & $ff00) + (rxp & $ff00)>>8
 	to	r14
 	or	rspdata
 	with	ryp
@@ -1006,7 +1006,7 @@ z	=	b12 + b4 + c
 
 
 	getc
-	merge		; r0 = (ryp & $ff00) + (rxp & $ff00)>>8
+	domerge		; r0 = (ryp & $ff00) + (rxp & $ff00)>>8
 	and	mask
 	to	r14
 	or	rspdata
@@ -1023,7 +1023,7 @@ z	=	b12 + b4 + c
 	with	ryp
 	add	rypi
 
-	merge		; r0 = (ryp & $ff00)+(rxp & $ff00)>>8, s=b15+b7
+	domerge		; r0 = (ryp & $ff00)+(rxp & $ff00)>>8, s=b15+b7
 	bmi	nextpix
 	getc
 
@@ -1327,7 +1327,7 @@ ry0	equr	13
 ;	mcache
 	move	r13,pc
 
-	merge
+	domerge
 	and	rmask
 	to	r14
 	add	rspdata
@@ -1400,7 +1400,7 @@ m7cfsprite16x_rotate
 	mcache
 	move	r13,pc
 
-	merge
+	domerge
 	and	rmask
 	to	r14
 	add	rspdata

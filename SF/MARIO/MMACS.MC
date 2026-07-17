@@ -7,6 +7,27 @@
 ;      	Copyright 1991
 ;		Argonaut Software Ltd.
 
+; Simulate MERGE instruction in software for Super FX 3
+domerge	macro
+	IFNE	SUPERFX3
+	with	r7
+	hib	; r7 = (r7 & $FF00) >> 8
+	with	r8
+	hib	; r8 = (r8 & $FF00) >> 8
+
+	REPT	9
+	with	r7
+	rol	; r7 = (r7 << 8)
+	ENDR
+
+	with	r7
+	or	r8
+
+	move	r0,r7
+	ELSEIF
+	merge
+	ENDC
+	ENDM
 
 ; increment word in memory
 ;

@@ -32,7 +32,11 @@ msudata		equ	0
 ; Emulators/Flashcarts support it due to inaccurate implementations of the hardware.
 ; The Super FX 3 however, does support FastROM.
 ; See BANK\BANK0.ASM, section 'Cartridge information'
+	IFNE	SUPERFX3
+FASTROM		equ 1
+	ELSEIF
 FASTROM		equ 0
+	ENDC
 
 ; Disables the Super FX clock divider, 
 ; doubling the clock speed from 10.7mhz to 21.4mhz on GSU series Super FX Chips (GSU-1/2).

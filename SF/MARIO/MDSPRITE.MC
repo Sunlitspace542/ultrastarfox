@@ -509,7 +509,7 @@ musprite_entry_nopush
 
 .norm
 	move	rtemp2,r12
-	merge
+	domerge
 	to	rspritedata
 	add	rspritedata
 
@@ -561,7 +561,7 @@ musprite_entry_nopush
 
 	ibt	rxinc,#0	; clear the x increment
 
-	merge
+	domerge
 	to	r14
 	add	rspritedata	; set sprite address & fetch
 
@@ -573,7 +573,7 @@ musprite_entry_nopush
 .normloop
 	with	rxinc
 	add	rxyscale
-	merge
+	domerge
 	getc
 	to	r14
 	add	rspritedata
