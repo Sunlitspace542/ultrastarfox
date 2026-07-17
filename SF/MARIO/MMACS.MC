@@ -15,7 +15,7 @@ domerge	macro
 	with	r8
 	hib	; r8 = (r8 & $FF00) >> 8
 
-	REPT	9
+	REPT	8
 	with	r7
 	rol	; r7 = (r7 << 8)
 	ENDR
