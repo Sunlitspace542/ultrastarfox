@@ -12,6 +12,7 @@
 ;WriteDestReg(value);
 domerge	macro	dreg
 	IFNE	SUPERFX3
+	sm	[m_r7backup&WM],r7
 	from	r8
  to	\1
 	hib
@@ -25,6 +26,7 @@ domerge	macro	dreg
 
 	with	\1
 	or	r7
+	lm	r7,[m_r7backup&WM]
 	ELSEIF
 	merge
 	ENDC

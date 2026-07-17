@@ -43,6 +43,7 @@ yyy	mario	on
 	incfile	MARIO\mpart.mc
 	incfile	MARIO\mbumwipe.mc
 	incfile	MARIO\mhud.mc
+	incfile	MARIO\malcs.mc
 	mario	off
 
 
