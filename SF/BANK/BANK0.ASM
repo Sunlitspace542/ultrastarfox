@@ -164,8 +164,10 @@ abort_vn
 	ENDC
 	db	$14					; Cartridge Type
 							 ; (13) MARIO Chip 1 / Super FX 1 (StarFox 1)
-							 ; (14) Super FX 2 (DOOM) / Super FX 3 (The Ultimate DOOM)
+							 ; (14) Super FX 2 (DOOM)
 							 ; (15) Battery + Super FX 2 (Yoshi's Island, StarFox 2)
+							 ; (17) Super FX 3 (The Ultimate DOOM)
+							 ; (18) Super FX 3 + Battery (presumably?)
 							 ; (1A) Battery + Super FX 1 (Stunt Race FX)
 	db	$0b					; ROM Size (0A = 8mbit, 0B = 16mbit)
 	db	$00					; RAM Size (if 0, use exp RAM size above)

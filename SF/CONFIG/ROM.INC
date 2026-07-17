@@ -7,7 +7,7 @@
 ; Cartridge Configuration
 
 ; Super FX 3 support [0 = off, 1 = on]
-; Indicates support for Randy Linden's Super FX 3 chip in the ROM header.
+; Will not work yet! GSU3 makes lots of changes to memory map and behavior! Those have yet to be done!
 SUPERFX3	equ 0
 
 ; MSU-1 support [0 = off, 1 = on]
