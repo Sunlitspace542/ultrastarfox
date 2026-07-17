@@ -72,14 +72,9 @@ nmihan ; Start of NMI handler
 .irq	ai16		;$010c	irq
 	pha	; Push A to stack
 	lda.l	m_sfr ; Load m_sfr into A (MARIO chip flags?)
-
-	IFEQ	RUMBLE
-	bmi	.qexit ; branch if a = 1
-	ELSEIF
 	bpl	.irqq
 .qexit	pla ; Pull A from stack
 	rti ; Return from interrupt
-	ENDC
 
 .irqq
 	phb ; Push data bank to stack
@@ -265,19 +260,11 @@ nmihan ; Start of NMI handler
 	a8 ; Set A to 8 bit
 	inc	framec ; increment frame count?
 	lda	timeupr ; Load TIMEUPR register into A
-	IFEQ	RUMBLE
-	bra	.exit ; branch to .exit sublabel
-	ELSEIF	;IFNE	RUMBLE
 	IFEQ	NONMIHAN
 	brl	.exit ; branch to .exit sublabel
 	ENDC	;NONMIHAN
-	ENDC	;RUMBLE
 	longa
 
-	IFEQ	RUMBLE
-.qexit	pla ; Pull A from stack
-	rti ; Return from interrupt
-	ENDC
 .brk
 .nmi
 	IFEQ	NONMIHAN
