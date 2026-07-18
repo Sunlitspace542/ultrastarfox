@@ -19,15 +19,6 @@ rors	MACRO	[string,offset]
 
 	ENDC	;_ARGSFX
 ;------------------------------------------------------------------------
-;**
-;* Print an error message and fail assembly.
-;* @param errormsg - string describing the error.
-;*
-printerror	macro	[errormsg]
-	printf	"%q%f%q (%l) %01%31Error: {errormsg}%00%n"
-	error+
-	ENDM
-;------------------------------------------------------------------------
 
 ; Define Long
 ; From Star Fox 2
