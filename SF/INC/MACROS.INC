@@ -19,6 +19,15 @@ rors	MACRO	[string,offset]
 
 	ENDC	;_ARGSFX
 ;------------------------------------------------------------------------
+;**
+;* Print an error message and fail assembly.
+;* @param errormsg - string describing the error.
+;*
+printerror	macro	[errormsg]
+	printf	"%q%f%q (%l) %01%31Error: {errormsg}%00%n"
+	error+
+	ENDM
+;------------------------------------------------------------------------
 
 ; Define Long
 ; From Star Fox 2
@@ -4372,7 +4381,6 @@ setlevel	macro
 	endm
 
 ;------------------------------------------------------------------------
-; TODO: correctly map ROM for FX3
 bankend	macro
 	IFEQ	NARG
 		printf	"BANKEND: Which bank are we talking about here?"
@@ -4420,8 +4428,6 @@ totalromspaceleft = totalromspaceleft+bank\1left
 	endm
 
 ;------------------------------------------------------------------------
-;;	list	T+ on macros
-; TODO: correctly map ROM for FX3
 bank	macro
 
 	IFEQ	NARG
@@ -4446,7 +4452,86 @@ Assembling_bank	=	\1
 	endm
 
 ;------------------------------------------------------------------------
+bank64end	macro
 
+	IFEQ	SUPERFX3
+		printerror <GSU-3 is required to create a 64kb bank!>
+	ENDC
+
+	IFEQ	NARG
+		printerror	<BANK64END: missing bank number parameter>
+	ENDC
+
+	IFLE	\1-63
+		printerror	<BANK64END: Can't have a 64kb bank at this position!>
+	ENDC
+
+	IFGT	\1-95
+		printerror	<BANK64END: Can't have more than 32 64kb banks!>
+	ENDC
+
+banknumber = (\1)-63
+	IFNE	FASTROM
+bank\1left	=	65536-(*-(((banknumber-1)*$10000)+$E00000))
+	ELSEIF
+bank\1left	=	65536-(*-(((banknumber-1)*$10000)+$600000))
+	ENDC
+
+	IFND	totalromspaceleft
+totalromspaceleft	=	0
+	ENDC
+
+totalromspaceleft = totalromspaceleft+bank\1left
+
+	IFLT	bank\1left
+		progress_off
+		printf	"%00%05%31%01Error: 64KB Bank \1 is out of space by ",-bank\1left," bytes.%00%n"
+		error+
+		progress_on
+	ENDC
+
+	; Write free space info to BANKS.CSV
+	fopen	+BANKS.CSV
+	printf	"\1,%xbank\1left %n"
+	fclose	BANKS.CSV
+
+	printf	"%01%36-- %xbank\1left  bytes free.%00%n"
+	endm
+;------------------------------------------------------------------------
+bank64	macro
+
+	IFEQ	SUPERFX3
+		printerror <GSU-3 is required to create a 64kb bank!>
+	ENDC
+
+	IFLE	\1-63
+		printerror	<BANK64: Can't make a 64kb bank at this position!>
+	ENDC
+
+	IFGT	\1-95
+		printerror	<BANK64: Can't have more than 32 64kb banks!>
+	ENDC
+
+	IFEQ	NARG
+		progress_off
+		printerror	<BANK64: missing bank number parameter>
+		progress_on
+		MEXIT
+	ENDC
+
+	printf	"%01%36-- 64KB BANK \1:%00%n"
+
+banknumber = (\1)-63
+	IFNE	FASTROM
+	org (((banknumber-1))*$10000)+$E00000,$200000+($10000*(banknumber-1))
+	ELSEIF
+	org (((banknumber-1))*$10000)+$600000,$200000+($10000*(banknumber-1))
+	ENDC
+
+banknum	=	\1
+Assembling_bank	=	\1
+	endm
+;------------------------------------------------------------------------
 
 ;--- Mario Nasty mode macros -------------
 nastyon	macro
