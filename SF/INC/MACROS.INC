@@ -5630,7 +5630,10 @@ databank	MACRO
 	ENDM
 
 ;-------------------------------------------------------------------
-incsnd	MACRO			;INCBINS A FILE AND 'SPLITS' IT!
+incsnd	MACRO			;INCBINS A FILE AND 'SPLITS' IT! (for 32KB banks)
+	IFGT	firstsndbnk-63
+		printerror	<INCSND: 32KB banks only!>
+	ENDC
 rompos	=	(firstsndbnk*$8000)+musicsize
 sndbank	=	(rompos/$8000)
 sndoffset	=	rompos-(sndbank*$8000)
@@ -5648,7 +5651,28 @@ sndoffset	=	rompos-(sndbank*$8000)
 musicsize	=	musicsize+\1len
 
 	ENDM
+;-------------------------------------------------------------------
+incsnd64	MACRO			;INCBINS A FILE AND 'SPLITS' IT! (for 64KB banks)
+	IFEQ	SUPERFX3
+		printerror <GSU-3 is required to create 64kb banks!>
+	ENDC
 
+	IFLT	firstsndbnk-64
+		printerror	<INCSND64: 64KB banks only!>
+	ENDC
+rompos	=	$200000+musicsize
+sndoffset	=	rompos&$FFFF
+cpubank	=	($E0+(firstsndbnk-64))+((rompos-$200000)/$10000)
+
+	org (cpubank*$10000)+sndoffset,rompos+($10000*(firstsndbnk-64))
+
+
+\1	incbin	\2
+\1len	equ	(@-rompos)-$100000
+
+musicsize	=	musicsize+\1len
+
+	ENDM
 ;-------------------------------------------------------------------
 bgm	MACRO			;DNLDS THE BGM AND SET
 	IFNE	LONGA
@@ -5684,8 +5708,8 @@ snd_\1	equ	*-sndtbl
 	run	" db %$1>>16"
 	run	" dw %$1len"
 	endr
-	dw	0
-	db	0
+	dw	$0000 ;change to $ABAB if sound data is in 64kb banks
+	db	$00 ;change to $AB if sound data is in 64kb banks
 	endm
 
 ;-------------------------------------------------------------------

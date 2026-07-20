@@ -168,7 +168,7 @@ sboot_repeat
 	inc	address+2
 	stz	address+1
 	stz	address
-	ldy	#$8000
+	ldy	#$8000 ;change to $0000 if sound data is in 64kb banks
 .cok1
 	xba
 	lda	#0
@@ -180,7 +180,7 @@ sboot_loop	xba
 	inc	address+2
 	stz	address+1
 	stz	address
-	ldy	#$8000
+	ldy	#$8000 ;change to $0000 if sound data is in 64kb banks
 .cok2
 	xba
 sboot_wait1	cmp	apu_port0
@@ -199,19 +199,6 @@ sboot_zero	adc	#3
 sboot_entry1
 	pha			;>
 sboot_entry4
-	ifeq	1
-	phx
-	phy
-	pha
-	php
-	a8i16
-	stratdebug
-	plp
-	pla
-	ply
-	plx
-	endc
-
 	a16
 	lda	[address],y		;m16
 	beq	sboot_entry3
@@ -265,7 +252,17 @@ sboot_entry3
 	a16
 	stz	address
 	lda	ktpy
-	beq	.end
+	beq	.end ;If sound data is in 32KB banks
+
+;If sound data is in 64kb banks:
+;	cmp	#$ABAB
+;	bne	.not_end
+; these lines added for the highly unlikely case audio data falls at $ABAB 
+;	lda	address+2
+;	cmp	#$AB
+;	beq	.end
+;.not_end
+
 	tay
 	clc
 	adc	ktpz
@@ -273,7 +270,7 @@ sboot_entry3
 	jmp	sboot_entry4
 .end
 	a16
-	lda	#0400h
+	lda	#$0400 ; Start of sound driver in ARAM
 	sta	apu_port2
 
 	ai8
@@ -326,19 +323,6 @@ boot_zero	adc	#3
 boot_entry1
 	pha			;>
 boot_entry4
-	ifeq	1
-	phx
-	phy
-	pha
-	php
-	a8i16
-	stratdebug
-	plp
-	pla
-	ply
-	plx
-	endc
-
 	a16
 	lda	[address],y		;m16
 	lbeq	sboot_entry3
