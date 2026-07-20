@@ -18,9 +18,23 @@
 	global	msg_composer,msg_yamamoto,msg_theend
 	global	msg_yajima,msg_kimura,msg_tony,msg_shimizu,msg_ian,msg_dan
 	global	msg_nishida,msg_english,msg_japanese,msg_software
+
 	IFNE	RUMBLE
-	global	msg_rumbleversion,msg_randy,msg_sunlit,msg_kando
+	global	msg_rumbleversion,msg_kando
 	ENDC
+
+	IFNE	RUMBLE!SUPERFX3
+	global	msg_randy
+	ENDC
+
+	IFNE	RUMBLE!MSU1!SUPERFX3
+	global	msg_sunlit
+	ENDC
+
+	IFNE	SUPERFX3
+	global	msg_superfx3,msg_fx3conversion,msg_designedby
+	ENDC
+
 	IFNE	MSU1
 	global	msg_msu1
 	ENDC

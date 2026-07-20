@@ -165,7 +165,7 @@ nmihan ; Start of NMI handler
 	lda	rumble_index
 	beq	.notable	; If rumble_index == 0, handle timed rumbles
 	ldx	rumble_index
-	lda.l	rumble_table,x - 1
+	lda.l	rumble_table-1,x
 	inx
 	stx	rumble_index
 	cmp #0

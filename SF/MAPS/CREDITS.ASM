@@ -128,6 +128,18 @@ actualcreds
 	textpath	1000,2000,1200,4400,sunlit,dsideslip,14,100
 	ENDC
 
+	IFNE	SUPERFX3
+	mapwait	credwait
+	textpath	1000,2000,-300,2500,superfx3,dsideslip,14
+	textpath	1000,2000,0000,3000,designedby,dsideslip,14,32
+	textpath	1000,2000,0300,3000,randy,dsideslip,14,32
+
+	mapwait	credwait
+	textpath	1000,2000,-300,3200,fx3conversion,dsideslip,14
+	textpath	1000,2000,0000,3000,randy,dsideslip,14,32
+	textpath	1000,2000,0300,3000,sunlit,dsideslip,14,32
+	ENDC
+
 	IFNE	MSU1
 	mapwait	credwait
 	textpath	1000,2000,-200,3500,msu1,dsideslip,14

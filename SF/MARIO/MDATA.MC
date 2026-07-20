@@ -840,10 +840,14 @@ msg_rumbleversion
 
 msg_kando
 	mariomsg	<KANDOWONTU>
+	ENDC
 
+	IFNE	RUMBLE!SUPERFX3
 msg_randy
 	mariomsg	<RANDAL LINDEN>
+	ENDC
 
+	IFNE	RUMBLE!MSU1!SUPERFX3
 msg_sunlit
 	mariomsg	<SUNLIT>
 	ENDC
@@ -851,6 +855,15 @@ msg_sunlit
 	IFNE	MSU1
 msg_msu1
 	mariomsg	<MSU-1 PROGRAMMING>
+	ENDC
+
+	IFNE	SUPERFX3
+msg_superfx3
+	mariomsg	<SUPER FX 3>
+msg_designedby
+	mariomsg	<DESIGNED BY>
+msg_fx3conversion
+	mariomsg	<SUPER FX 3 CONVERSION>
 	ENDC
 
 msg_0	mariomsg	<0>
