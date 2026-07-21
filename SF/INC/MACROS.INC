@@ -5652,6 +5652,7 @@ musicsize	=	musicsize+\1len
 
 	ENDM
 ;-------------------------------------------------------------------
+; Work in progress, kinda broken right now
 incsnd64	MACRO			;INCBINS A FILE AND 'SPLITS' IT! (for 64KB banks)
 	IFEQ	SUPERFX3
 		printerror <GSU-3 is required to create 64kb banks!>
