@@ -254,12 +254,12 @@ musicsize	=	0
 
 	; If sound data is in 32kb banks
 	ifgt	@-$200000
-	printerror	"%01%31MORE THAN 16 MEGA-BITS OF ROM USED!!%n%00"
+	printerror	"MORE THAN 16 MEGA-BITS OF ROM USED!!"
 	endc
 
 	; If sound data is in 64kb banks
 	;ifgt	@-$400000
-	;printerror	"%01%31MORE THAN 32 MEGA-BITS OF ROM USED!!%n%00"
+	;printerror	"MORE THAN 32 MEGA-BITS OF ROM USED!!"
 	;endc
 
 	include	INC\tail.inc
