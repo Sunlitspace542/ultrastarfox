@@ -50,7 +50,6 @@ Go [here](#building) to jump straight to the building instructions.
 ## Miscellaneous
 
 - All Starwing PAL and Germany text/GFX for PAL builds
-- **Kando and Randy were involved so you know it's good**
 
 ## Building
 
