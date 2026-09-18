@@ -40,12 +40,6 @@
 	ENDC
 	ENDC
 
-	IFEQ	_MONTH-8
-	IFEQ	_DAY-26
-	printf	"Happy birthday Kando!%n"
-	ENDC
-	ENDC
-
 	IFEQ	_MONTH-4
 	IFEQ	_DAY-5
 	printf	"Happy birthday Sunlit!%n"
