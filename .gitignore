@@ -61,3 +61,6 @@ SF/DATA/COL/ALLCOLS.COL
 # Linker Address Maps
 *.map
 *.MAP
+
+# SFView stuff
+*.SFEOPTIM
