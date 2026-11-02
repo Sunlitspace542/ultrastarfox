@@ -148,7 +148,7 @@ player_shapes
 	IFNE 	hipolyarwing
 
 	def_playership	mydemo_4,mydemo_l,mydemo_r,mydemo_b	
-pwireshapes	def_playership	wiremydemo_4,wiremydemo_r,wiremydemo_l,wiremydemo_b		; 1 
+pwireshapes	def_playership	wiremydemo_4,wiremydemo_l,wiremydemo_r,wiremydemo_b		; 1 
 pnullshapes	def_playership	nullshape,nullshape,nullshape,nullshape	; 2
 	def_playership	my_up,my_up,my_up,my_up			; 5
 	def_playership	nullshape,nullshape,nullshape,nullshape	; 2
