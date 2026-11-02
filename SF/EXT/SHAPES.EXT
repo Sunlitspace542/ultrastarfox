@@ -3,6 +3,9 @@
 	extern	mydemo_l
 	extern	mydemo_r
 	extern	mydemo_b
+	extern	Bmydemo_l
+	extern	Bmydemo_r
+	extern	Bmydemo_b
 	extern	mydemoLG_4
 	extern	mydemoLG_l
 	extern	mydemoLG_r

@@ -145,17 +145,17 @@ maxpships	=	maxpships+1
 maxpships	=	0
 player_shapes
 
-	IFNE 	hipolyarwing
+	IFNE	hipolyarwing
 
 	def_playership	mydemo_4,mydemo_l,mydemo_r,mydemo_b	
 pwireshapes	def_playership	wiremydemo_4,wiremydemo_l,wiremydemo_r,wiremydemo_b		; 1 
 pnullshapes	def_playership	nullshape,nullshape,nullshape,nullshape	; 2
 	def_playership	my_up,my_up,my_up,my_up			; 5
 	def_playership	nullshape,nullshape,nullshape,nullshape	; 2
-pblackshapes	def_playership	Bmyship_4,Bmyship_r,Bmyship_l,Bmyship_b
+pblackshapes	def_playership	Bmyship_4,Bmydemo_l,Bmydemo_r,Bmydemo_b
 	def_playership	mydemoLG_4,mydemoLG_r,mydemoLG_l,mydemoLG_b
 
-	ELSEIF
+	ELSEIF	;IFEQ	hipolyarwing
 
 ; replacing the default ship is fairly easy.
 ; add your shape to one of the shape files and then replace references of the myship models with your model's name.
@@ -169,7 +169,7 @@ pnullshapes	def_playership	nullshape,nullshape,nullshape,nullshape	; 2
 pblackshapes	def_playership	Bmyship_4,Bmyship_r,Bmyship_l,Bmyship_b
 	def_playership	myzoom_4,myzoom_r,myzoom_l,myzoom_b
 
-	ENDC
+	ENDC	;hipolyarwing
 
 
 ;*****************************************************************************

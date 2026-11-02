@@ -201,6 +201,8 @@ mydemo_4_EBSP
 
 mydemo_l
 	ShapeHdr	mydemo_l_P,0,mydemo_l_F,0,0,0,0,0,playerB_col,35,14,60,60,id_0_c,0,0,0,0,<mydemo_l>
+Bmydemo_l
+	ShapeHdr	mydemo_l_P,0,mydemo_l_F,0,0,0,0,0,playerB_col,35,14,60,60,black_c,0,0,0,0,<mydemo_l>
 mydemoLG_l
 	ShapeHdr	mydemo_l_P,0,mydemo_l_F,0,-80,0,0,4,0,35,14,60,60,id_0_c,0,0,0,0,<mydemo_l>
 	elseif
@@ -374,6 +376,8 @@ mydemo_l_EBSP
 
 mydemo_r
 	ShapeHdr	mydemo_r_P,0,mydemo_r_F,0,0,0,0,0,playerB_col,35,14,60,60,id_0_c,0,0,0,0,<mydemo_r>
+Bmydemo_r
+	ShapeHdr	mydemo_r_P,0,mydemo_r_F,0,0,0,0,0,playerB_col,35,14,60,60,black_c,0,0,0,0,<mydemo_r>
 mydemoLG_r
 	ShapeHdr	mydemo_r_P,0,mydemo_r_F,0,-80,0,0,4,0,35,14,60,60,id_0_c,0,0,0,0,<mydemo_r>
 	elseif
@@ -547,6 +551,8 @@ mydemo_r_EBSP
 
 mydemo_b
 	ShapeHdr	mydemo_b_P,0,mydemo_b_F,0,0,0,0,0,playerB_col,24,12,60,60,id_0_c,0,0,0,0,<mydemo_b>
+Bmydemo_b
+	ShapeHdr	mydemo_b_P,0,mydemo_b_F,0,0,0,0,0,playerB_col,24,12,60,60,black_c,0,0,0,0,<mydemo_b>
 mydemoLG_b
 	ShapeHdr	mydemo_b_P,0,mydemo_b_F,0,-80,0,0,4,0,24,12,60,60,id_0_c,0,0,0,0,<mydemo_b>
 	elseif
