@@ -153,7 +153,7 @@ pnullshapes	def_playership	nullshape,nullshape,nullshape,nullshape	; 2
 	def_playership	my_up,my_up,my_up,my_up			; 5
 	def_playership	nullshape,nullshape,nullshape,nullshape	; 2
 pblackshapes	def_playership	Bmyship_4,Bmydemo_l,Bmydemo_r,Bmydemo_b
-	def_playership	mydemoLG_4,mydemoLG_r,mydemoLG_l,mydemoLG_b
+	def_playership	mydemoLG_4,mydemoLG_l,mydemoLG_r,mydemoLG_b
 
 	ELSEIF	;IFEQ	hipolyarwing
 
