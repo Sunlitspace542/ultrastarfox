@@ -3501,8 +3501,10 @@ zaco_8p_f1	Faces
 ;--Shape file ----- C:\SHED\SHAPES\MY_W.TXT ----
 	ifne	DO_HDR
 
+	IFEQ	hipolyarwing
 MY_W
 	ShapeHdr	MY_W_P,0,MY_W_F,0,-10,0,0,0,playerB_col,34,14,80,80,id_0_c,0,0,0,0,<MY_W>
+	ENDC
 	elseif
 MY_W_P
 	datahdr

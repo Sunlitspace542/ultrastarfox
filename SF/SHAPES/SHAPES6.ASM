@@ -709,7 +709,8 @@ mydemo_b_EBSP
 
 ;--Shape file ----- wiremydemo_4 ---- Generated with FastFX
 	ifne	DO_HDR
-
+my_w
+	ShapeHdr	wiremydemo_4_P,0,wiremydemo_4_F,0,-10,0,0,0,playerB_col,35,14,60,60,id_0_c,0,0,0,0,<wiremydemo_4>
 wiremydemo_4
 	ShapeHdr	wiremydemo_4_P,0,wiremydemo_4_F,0,-10,0,0,0,playerB_col,35,14,60,60,id_0_c,0,0,0,0,<wiremydemo_4>
 	elseif
