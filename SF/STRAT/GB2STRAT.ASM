@@ -266,6 +266,9 @@ bossFCdie_init
 	s_set_strat		x,bossFCdie_strat
 bossFCdie_strat
 	s_start_strat
+	IFNE	greatcommanderfix
+	s_or_var		B,pshipflags3,#psf3_nocollisions ; prevent cheap death if player nearly dead and boss is dying
+	ENDC
 
 	s_jmp_notdelay		1,.nzn
 	s_achase_alvar		B,x,al_rotz,#0,6
