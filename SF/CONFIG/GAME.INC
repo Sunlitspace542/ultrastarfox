@@ -8,6 +8,13 @@
 
 ; for player health values and other object equates, see INC\STRATEQU.INC.
 
+; Fix janky collisions on Great Commander I.
+; The time the headlights are open and able to be hit is increased,
+; and the collision box size on the headlights is tripled.
+; Still challenging, but much easier.
+; [0 = off, 1 = on]
+greatcommanderfix	equ	0
+
 ; Restore Laser Upgrade enemy code to spawn helperball items instead of laser upgrades
 ; [0 = off, 1 = on]
 wnglzrman_helpball	equ	0

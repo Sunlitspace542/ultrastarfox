@@ -450,14 +450,25 @@ bossFtur_cont
 
 	s_decbne_alvar		B,x,al_sbyte2,.nchg
 	s_not_alsflag		x,sflag1
+	IFNE	greatcommanderfix
+	s_set_alvar		B,x,al_sbyte2,#40+10	; open time
+	ELSEIF
 	s_set_alvar		B,x,al_sbyte2,#40	; open time
+	ENDC
 	s_jmp_alsflag		x,sflag1,.opentime	
 	s_set_alvar		B,x,al_sbyte2,#70	; closed time
 .opentime	
 .nchg
 	s_jmp_alsflag		x,sflag1,.open
-.close	
+.close
+	IFNE	greatcommanderfix
+	s_cmp_anim		x,#2-1 ; if headlight frame > 2, dont make invulnerable
+	s_bcs	.allowhitsclose
+	ENDC
 	s_set_alsflag		x,nohitaffect
+	IFNE	greatcommanderfix
+.allowhitsclose
+	ENDC
 	s_jmp_notdelay		1,.nanim
 	s_cmp_anim		x,#0
 	s_beq			.nanim

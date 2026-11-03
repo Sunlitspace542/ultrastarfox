@@ -2501,7 +2501,7 @@ boss_f_8_f1	Faces
 	ifne	DO_HDR
 
 boss_f_9
-	ShapeHdr	boss_f_9_P,0,boss_f_9_F,0,0,0,0,bossF_scale-1,0,10,10,10,9,id_1_c,0,0,0,0,<boss_f_9>
+	ShapeHdr	boss_f_9_P,0,boss_f_9_F,0,0,0,0,bossF_scale-1,0,10*bossF_colscale,10*bossF_colscale,10*bossF_colscale,9*bossF_colscale,id_1_c,0,0,0,0,<boss_f_9>
 	elseif
 boss_f_9_P
 	Frames	4

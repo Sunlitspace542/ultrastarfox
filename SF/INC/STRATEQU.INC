@@ -301,6 +301,12 @@ boss8_circ	equ	150<<boss8_scale
 bossA_scale	equ	2
 bossB_scale	equ	2
 bossF_scale	equ	3
+; collision scale of the weak points on Great Commander I.
+	IFNE	greatcommanderfix
+bossF_colscale	equ 3
+	ELSEIF
+bossF_colscale	equ 1
+	ENDC
 bossH_scale	equ	2
 mybase_scale	equ	3
 
