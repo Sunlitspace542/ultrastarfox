@@ -47,6 +47,15 @@
 ; ship that forms and player turns.
 bossF_Istrat		; 0000,0000,2000,2500,boss_f_3,bossf_Istrat
  	s_start_strat
+	IFNE	greatcommanderfix ; force 3rd person view and block changing the view
+	s_jmp_varNE	B,splayerflymode,#spfm_inside,.dontchgview
+	s_set_var	B,splayerflymode,#spfm_tonorm
+	s_set_objtobeplayer	y
+	s_set_strat		y,playeroutofcock_Istrat
+.dontchgview
+	s_set_var	W,viewdist,#outviewdist ; reset view to normal
+	s_or_var	B,pshipflags3,#psf3_noviewchange
+	ENDC
 	s_set_aldata	x,#hardHP,#hardAP
 	s_set_alptrs	x,bossFC_strat,hitflash_Istrat,explode_Istrat
 
@@ -353,6 +362,9 @@ bossFCdie2_strat
 
 playerbossFdie_strat
 	s_start_strat
+	IFNE	greatcommanderfix
+	s_and_var		B,pshipflags3,#~psf3_noviewchange
+	ENDC
 	s_neg_alvar		B,x,al_vz
 	s_neg_var		W,pviewvelz
 	s_sub_var		W,pviewposz,#medpspeed*2
