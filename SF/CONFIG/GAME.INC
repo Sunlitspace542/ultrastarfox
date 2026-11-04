@@ -12,6 +12,8 @@
 ; The time the headlights are open and able to be hit is increased,
 ; and the collision box size on the headlights is tripled.
 ; Still challenging, but much easier.
+; The softlock caused by changing the view during the 180 turn is fixed
+; by forcing the view into third person and disabling view changes.
 ; [0 = off, 1 = on]
 greatcommanderfix	equ	0
 
