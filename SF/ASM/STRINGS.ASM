@@ -1,4 +1,3 @@
-	strats_start
 ;***************************************************************************
 ;*                                                                         *
 ;*                           UltraStarFox                                  *
@@ -20,6 +19,7 @@
 ;***************************************************************************
 	INCPUBLICS	EXT\strings.ext
 
+	strats_start
 ; Define your strings to be printed with the kandoprint macro here.
 ;! Make sure to define them as global labels in STRINGS.EXT.
 
