@@ -353,7 +353,7 @@ muldivtab ; ($0800-$08FF)
 ; stub unused tables
 alogtab8s
 alogtab8sl
-nalogtab8sl
+nalogtab8s
 nalogtab8sl
 muldivtab
 	ENDC
