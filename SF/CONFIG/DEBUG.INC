@@ -12,6 +12,10 @@ debuginfo			equ	0
 ; [0 = off, 1 = on]
 debuginfo2			equ	0
 
+; use new verbose crash handler
+; [0 = off, 1 = on]
+usenewblink			equ	0
+
 ; 3D Stats (FPS, shapes drawn, etc.)
 ; Requires that debuginfo be enabled.
 ; [0 = off, 1 = on]

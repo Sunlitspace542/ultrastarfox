@@ -40,6 +40,7 @@
 	include	EXT\paths.ext
 	include	EXT\mem.ext
 	include	EXT\endseq.ext
+	include	EXT\blink.ext
 
 ;------------------------------------
 ; Write BANKS.CSV header
@@ -74,13 +75,17 @@ Do_HDR	=	0
 start	jmp.l	startboot ; Entrypoint
 
 
+cop_vn
+break_vn
+	IFNE	usenewblink
+	jml	newblink
+	ENDC
+
 cop_ve
 abort_ve
 nmi_ve
 irq_ve
-cop_vn
 reset_vn
-break_vn
 abort_vn
 	rti
 

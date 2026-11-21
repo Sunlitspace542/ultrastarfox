@@ -105,7 +105,7 @@ planetdmapos2	dw	100
 	bankend	3
 
 
-
+;	bank	31	; do not uncomment, documentation purposes only
 	IFNE	FASTROM
 	org	$9f8000+$3db0,$8000*$1f+$3db0
 	ELSEIF
@@ -115,17 +115,20 @@ planetdmapos2	dw	100
 	incfile	ASM\debug.asm
 	incfile	ASM\bootnmi.asm
 	incfile	STRAT\stratrou.asm
+	IFEQ	usenewblink
 	incfile	ASM\blink.asm
+	ELSEIF	;IFNE	usenewblink
+	incfile	ASM\newblink.asm
+	ENDC
 	incfile	ASM\nmi.asm
 	incfile	ASM\draw.asm
-	incfile	ASM\endseq.asm
 	bankend	31
 
 	bank	36
 	inccru	bgf1pcr,data\f-1.pcr
 	incfile	ASM\cont.asm
 	incfile	ASM\sound.asm
-
+	incfile	ASM\endseq.asm
 	bankend	36
 ;------------------------------------------------------------------
 
