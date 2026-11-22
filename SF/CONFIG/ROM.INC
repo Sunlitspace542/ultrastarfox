@@ -16,6 +16,12 @@ SUPERFX3	equ 0
 ; SHVC-SOUND-driven music is replaced with MSU-1 driven music.
 msu1		equ	0
 
+; MSU-1 video player
+; [0 = off, 1 = on]
+MSUVIDEO	equ	0
+; 1 to allocate new RAM for player, or 0 to shadow existing RAM.
+MSUVIDEO_useAlcs	equ	1
+
 ; Voice lines for dialogue via MSU-1
 ; You have to choose between this or MSU-1 music! You can't have both!!
 ; [0 = off, 1 = on]
@@ -87,6 +93,13 @@ docredzname	MACRO
 	IFNE	msu1
 	IFNE	msuvoice
 	printf	"You can't have MSU-1 music and MSU-1 voices on at the same time!!"
+	fail
+	ENDC
+	ENDC
+
+	IFNE	msuvideo
+	IFEQ	msu1
+	printf	"msu1 must be set to 1 to use msuvideo!"
 	fail
 	ENDC
 	ENDC

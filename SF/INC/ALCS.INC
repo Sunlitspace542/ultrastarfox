@@ -748,6 +748,30 @@ msu_orch	equ	1
 	alc	voiceline,2	; Voiceline to play
 	ENDC
 
+	IFNE	MSUVIDEO
+	IFNE	MSUVIDEO_useAlcs
+	alc	msuvideoirq,1 ; IRQ handler flag for MSU-1 video player.
+	alc	lineCounter,1 ; IRQ count within the current frame.
+	alc	frameValueA,1 ; alternate frame line limit.
+	alc	frameValueB,1 ; line limit used at the audio-frame boundary.
+	alc	audioFrameLimit,1 ; number of frames before switching line limits
+	alc	frameLineLimit,1 ; line count that ends the current frame.
+	alc	audioFrameCounter,1 ; counts frames up to audioFrameLimit.
+	alc	videoFrameCount,1 ; total video frames from the stream header.
+	alc	streamValue,1 ; extra stream header value, currently unused.
+	alc	audioStartPending,1 ; starts the MSU-1 track at the first frame boundary.
+	alc	bgTileBank,1 ; selects the active video tile bank.
+	alc	dmaSourceBank,1 ; source bank for the next DMA transfer.
+	alc	dmaSourceAddress,2 ; source address for the next DMA transfer.
+	alc	dmaDestination,1 ; B-bus destination register for the next DMA transfer.
+	alc	dmaTransferLength,2 ; byte length for the next DMA transfer.
+	alc	dmaMode,1 ; mode for the next DMA transfer.
+	alc	currentButtons,2 ; latest sampled controller state.
+	alc	pressedButtons,2 ; newly pressed controller buttons.
+	alc	previousButtons,1 ; controller state from the previous sample.
+	ENDC
+	ENDC
+
 ;---------------------------------------------------
 	alc	numshapes,2
 	alc	dlptr,2

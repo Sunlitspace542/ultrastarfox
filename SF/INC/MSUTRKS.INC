@@ -75,4 +75,7 @@
 	msutrack	enterhyperspace1,50	;Warp Drive Spool (Asteroid Warp)
 	msutrack	enterhyperspace2,51	;Warp Drive Engage (Asteroid Warp Out)
 	msutrack	exithyperspace,52	;Coming out of Warp Speed (Exit hyperspace)
+
+; -- OPENING FMV --
+	msutrack	openingfmv,53		;Intro FMV
 ; EOF

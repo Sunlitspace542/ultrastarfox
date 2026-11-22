@@ -127,6 +127,9 @@ planetdmapos2	dw	100
 	incfile	ASM\cont.asm
 	incfile	ASM\sound.asm
 	incfile	ASM\endseq.asm
+	IFNE	MSUVIDEO
+	incfile	ASM\MSUVIDEO.ASM
+	ENDC
 	bankend	36
 ;------------------------------------------------------------------
 
