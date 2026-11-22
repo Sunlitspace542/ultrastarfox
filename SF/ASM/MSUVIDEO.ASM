@@ -36,7 +36,6 @@ audioFrameLimit	equ	$0003 ; number of frames before switching line limits.
 frameLineLimit	equ	$0004 ; line count that ends the current frame.
 audioFrameCounter	equ	$0005 ; counts frames up to audioFrameLimit.
 videoFrameCount	equ	$0006 ; total video frames from the stream header.
-streamValue	equ	$0007 ; extra stream header value, currently unused.
 audioStartPending	equ	$0008 ; starts the MSU-1 track at the first frame boundary.
 bgTileBank	equ	$0009 ; selects the active video tile bank.
 dmaSourceBank	equ	$000A ; source bank for the next DMA transfer.
@@ -458,7 +457,7 @@ play_video_frames
 	lda msu_read
 	sta videoFrameCount
 	lda msu_read
-	sta streamValue
+	sta videoFrameCount+1
 	lda msu_read
 	sta frameLineLimit
 	sta frameValueA

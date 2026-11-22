@@ -757,8 +757,7 @@ msu_orch	equ	1
 	alc	audioFrameLimit,1 ; number of frames before switching line limits
 	alc	frameLineLimit,1 ; line count that ends the current frame.
 	alc	audioFrameCounter,1 ; counts frames up to audioFrameLimit.
-	alc	videoFrameCount,1 ; total video frames from the stream header.
-	alc	streamValue,1 ; extra stream header value, currently unused.
+	alc	videoFrameCount,2 ; total video frames from the stream header.
 	alc	audioStartPending,1 ; starts the MSU-1 track at the first frame boundary.
 	alc	bgTileBank,1 ; selects the active video tile bank.
 	alc	dmaSourceBank,1 ; source bank for the next DMA transfer.
