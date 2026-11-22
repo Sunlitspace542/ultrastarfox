@@ -20,38 +20,25 @@
 ; Copies NMI/IRQ handler to RAM at addr $0101
 copy_to_0101_l
 	php ; Push Processor status to stack
+	phb ; Push DBR onto stack (MVN changes it to destination bank)
 
 	ai16
 	ldx	#nmihan&WM ; src data addr
 	ldy	#$0101 ; dest data addr
 	lda	#nmihanend-nmihan-1 ; len of data to copy
 	IFNE	FASTROM
-	_mvn	$9f,$80
+	_mvn	(nmihan>>16),$80
 	ELSEIF
-	_mvn	$1f,$00
+	_mvn	(nmihan>>16),$00
 	ENDC
 
-	a8i16 ; set A to 8 bit and X/Y to 16 bit
+	; Copy xroutines into RAM
+	ldx	#xrstart&WM ; src data addr
+	ldy	#xroutines&WM ; dest data addr
+	lda	#xlen-1 ; len of data to copy
+	_mvn	(xrstart>>16),(xroutines>>16)
 
-; old NMIHAN uploader code, retained for future reference
-;	ldx	#nmihanend-nmihan-1 ; Load size of NMI handler routine into X(?)
-;.codeloop2	lda.l	nmihan,x ; Load (Long) NMIHAN + size of NMIHAN into A(?)
-;	sta.l	$0101,x ; Store A (Long) at $0101 + size of NMIHAN(?)
-;	dex ; Decrement X
-;	bpl	.codeloop2 ; repeat until x = 0
-
-	; xlen = 22*1024+450
-	ldx	#xlen-1 ; Load xlen-1 (22977) into X
-.codeloop4	
-	IFNE	fastrom ; Start conditional: if FASTROM !=0 (=1)
-	lda.l	$828000,x ; Load contents of addr $828000 + 22977 into A (Long)
-	elseif ; else if FASTROM =0
-	lda.l	$28000,x ; Load contents of addr $28000 + 22977 into A (Long)
-	endc ; End conditional
-	sta.l	xroutines,x ; Store (Long) contents of A into xroutines variable + 22977
-	dex ; decrement X
-	bpl	.codeloop4 ; repeat until x = 0
-
+	plb ; Pull DBR from stack
 	plp ; Pull Processor status from stack
 	rtl ; Return from subroutine (Long)
 

@@ -58,14 +58,16 @@ scr_offset	equ	(vchr_logback-vchr_physback)/16
 ;-------------------------------------------------------
 	bank	2
 	IFNE	FASTROM
-	ifne	*-$828000
+xrstart	equ	$828000
+	ifne	*-xrstart
 	error	<X Routines bank must be start of bank 2>
 	endc
-	ELSEIF
-	ifne	*-$28000
+	ELSEIF	;IFEQ	FASTROM
+xrstart	equ	$028000
+	ifne	*-xrstart
 	error	<X Routines bank must be start of bank 2>
 	endc
-	ENDC
+	ENDC	;FASTROM
 	
 	org	xroutines,$8000*2
 ramstart	incfile	ASM\ramstuff.asm
@@ -77,11 +79,7 @@ xroutinesreport ; TAIL will report X routines free
 
 	chkmemoryexceeded	xlen-xoffset,<X routines>,<>
 
-	IFNE	FASTROM
-	org	$828000+xoffset,$8000*2+xoffset
-	ELSEIF
-	org	$28000+xoffset,$8000*2+xoffset
-	ENDC
+	org	xrstart+xoffset,$8000*2+xoffset
 
 	incfile	ASM\trans.asm
 	incfile	ASM\main.asm
