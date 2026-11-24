@@ -31,9 +31,9 @@ irqCounter	equ	transbmp1 ; RAM address incremented by the game's IRQ handler.
 	IFEQ	MSUVIDEO_useAlcs
 lineCounter	equ	$0000 ; IRQ count within the current frame.
 frameValueA	equ	$0001 ; alternate frame line limit.
-frameValueB	equ	$0002 ; line limit used at the audio-frame boundary.
+;frameValueB	equ	$0002 ; line limit used at the audio-frame boundary. Identical to frameValueA.
 audioFrameLimit	equ	$0003 ; number of frames before switching line limits.
-frameLineLimit	equ	$0004 ; line count that ends the current frame.
+;frameLineLimit	equ	$0004 ; line count that ends the current frame. Identical to frameValueA.
 audioFrameCounter	equ	$0005 ; counts frames up to audioFrameLimit.
 videoFrameCount	equ	$0006 ; total video frames from the stream header.
 audioStartPending	equ	$0008 ; starts the MSU-1 track at the first frame boundary.
@@ -43,10 +43,10 @@ dmaSourceAddress	equ	$000B ; source address for the next DMA transfer.
 dmaDestination	equ	$000D ; B-bus destination register for the next DMA transfer.
 dmaTransferLength	equ	$000E ; byte length for the next DMA transfer.
 dmaMode	equ	$0010 ; mode for the next DMA transfer.
-currentButtons	equ	$0020 ; latest sampled controller state.
-pressedButtons	equ	$0022 ; newly pressed controller buttons.
-previousButtons	equ	$0026 ; controller state from the previous sample.
 	ENDC
+currentButtons	equ	cont0l ; latest sampled controller state.
+pressedButtons	equ	trig0 ; newly pressed controller buttons.
+previousButtons	equ	contl0l ; controller state from the previous sample.
 
 PlayerCodeHook	; Jump into the video player from here.
 	jsr	uploadmsuvideoirq	; Upload video IRQ handler
@@ -459,10 +459,10 @@ play_video_frames
 	lda msu_read
 	sta videoFrameCount+1
 	lda msu_read
-	sta frameLineLimit
+;	sta frameValueA ;frameLineLimit
 	sta frameValueA
 	lda msu_read
-	sta frameValueB
+;	sta frameValueA ;frameValueB
 	lda msu_read
 	sta audioFrameLimit
 	lda #$01
@@ -488,7 +488,7 @@ wait_for_irq
 increment_line_counter
 	inc lineCounter
 	lda lineCounter
-	cmp frameLineLimit
+	cmp frameValueA ;frameLineLimit
 	bne wait_for_irq
 	lda audioStartPending
 	beq check_audio_restart
@@ -500,13 +500,13 @@ check_audio_restart
 	cmp audioFrameLimit
 	bne increment_audio_frame
 	stz audioFrameCounter
-	lda frameValueB
+	lda frameValueA ;frameValueB
 	bra store_audio_frame
 increment_audio_frame
 	lda frameValueA
 	inc audioFrameCounter
 store_audio_frame
-	sta frameLineLimit
+	sta frameValueA ;frameLineLimit
 reset_line_state
 	stz lineCounter
 	dex
