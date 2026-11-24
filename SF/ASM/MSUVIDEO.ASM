@@ -23,7 +23,11 @@
 
 ; User configuration
 playerBank	equ	(*>>16) ; Bank containing PlayerCodeOffset.
+	IFEQ	MSUVOICE
 fmv_msutrack	equ	msubgmopeningfmv ; MSU-1 audio track to play.
+	ELSEIF
+fmv_msutrack	equ	0 ; MSU-1 audio track to play. (moved so it doesn't get in the way of voicelines)
+	ENDC
 msuvideoaddr	equ	$00000000 ; 32-bit Address of video data in the MSU file
 
 ; Scratch RAM
@@ -567,7 +571,7 @@ wait_for_audio
 	bne wait_for_audio
 	lda #$FF
 	sta msu_volume
-	lda #$01
+	lda #audiostate_norepeat
 	sta msu_control
 	rts
 

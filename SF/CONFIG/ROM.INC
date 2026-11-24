@@ -8,7 +8,7 @@
 
 ; Super FX 3 support [0 = off, 1 = on]
 ; Seems to work, but some things may not be up to spec just yet.
-; Real FX3 hardware does not fire IRQs and the IRQ handler needs to be retrofitted/replaced to reflect this.
+; Real FX3 hardware does not fire IRQs and the IRQ handler should be retrofitted/replaced to reflect this.
 ; MesenCE still fires an IRQ on STOP, thus the game works.
 SUPERFX3	equ 0
 
@@ -17,6 +17,8 @@ SUPERFX3	equ 0
 msu1		equ	0
 
 ; MSU-1 video player
+; If msuvoice is set to 1, the audio track for the video is track 0.
+; If msu1 is set to 1, the audio track for the video is defined in INC\MSUTRKS.INC.
 ; [0 = off, 1 = on]
 MSUVIDEO	equ	0
 ; 1 to allocate new RAM for player, or 0 to shadow existing RAM.
@@ -93,13 +95,6 @@ docredzname	MACRO
 	IFNE	msu1
 	IFNE	msuvoice
 	printf	"You can't have MSU-1 music and MSU-1 voices on at the same time!!"
-	fail
-	ENDC
-	ENDC
-
-	IFNE	msuvideo
-	IFEQ	msu1
-	printf	"msu1 must be set to 1 to use msuvideo!"
 	fail
 	ENDC
 	ENDC
