@@ -559,9 +559,8 @@ start_audio_track
 	sta msu_track
 	stz msu_track2
 .wait_for_audio
-	lda msu_status
-	and #$40
-	bne .wait_for_audio
+	bit msu_status
+	bvs .wait_for_audio
 	lda #$FF
 	sta msu_volume
 	lda #audiostate_norepeat
