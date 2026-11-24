@@ -272,7 +272,7 @@ initialise_ram
 	tax ; transfer A to X
 	bpl	.sssp ; repeat until x = 0
 
-	ldx	#$fe ; load $FE into X
+	ldx	#$fe+12 ; load $FE into X (+12 for the unused bytes after zeropage and before irqhan)
 .zpage	stz	0,x ; store 0 at addr in X
 	dex ; decrement X
 	dex ; decrement X
