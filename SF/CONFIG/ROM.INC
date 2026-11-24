@@ -20,7 +20,7 @@ msu1		equ	0
 ; If msu1 is set to 0, the audio track for the video is track 0.
 ; If msu1 is set to 1, the audio track for the video is defined in INC\MSUTRKS.INC.
 ; [0 = off, 1 = on]
-MSUVIDEO	equ	1
+MSUVIDEO	equ	0
 ; 1 to allocate new RAM for player, or 0 to shadow existing RAM.
 MSUVIDEO_useAlcs	equ	1
 
