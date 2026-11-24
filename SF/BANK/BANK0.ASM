@@ -84,6 +84,7 @@ break_vn
 cop_ve
 abort_ve
 nmi_ve
+nmi_vn
 irq_ve
 reset_vn
 abort_vn
@@ -230,41 +231,22 @@ hdr_region	equ	$00			; Destination Code (JPN)
 ;Hardware Vectors--------------------
 
 	;Native (65816 Mode)
-	org	$00ffe0,$7fe0
-	dw	$00,$00				; 4 bytes unused
-	IFD	_SASM
-	dw	cop_vn				; COP
-	dw	break_vn			; BRK
-	dw	abort_vn			; ABORT
-	ENDC
-	IFD	_ARGSFX
+	org	$00ffe4,$7fe4
 	dw	cop_vn&WM			; COP
 	dw	break_vn&WM			; BRK
 	dw	abort_vn&WM			; ABORT
-	ENDC
-	dw	$0108				; NMI
+	dw	nmi_vn&WM			; NMI
 	dw	$0000				; unused (would be RESET, but the SNES always boots in Emulation mode)
-	dw	$010c				; IRQ
+	dw	$010C				; IRQ
 
 	;Emulation (6502 Mode)
-	org	$00fff0,$7ff0
-	dw	$00,$00				; unused
-	IFD	_SASM
-	dw	cop_ve				; COP
-	dw	$00					; unused (would be BRK, but BRK and IRQ share the same vector in Emulation mode)
-	dw	abort_ve			; ABORT
-	dw	nmi_ve				; NMI
-	dw	start				; RESET
-	dw	irq_ve				; IRQ/BRK
-	ENDC
-	IFD	_ARGSFX
+	org	$00fff4,$7ff4
 	dw	cop_ve&WM			; COP
 	dw	$00					; unused (would be BRK, but BRK and IRQ share the same vector in Emulation mode)
 	dw	abort_ve&WM			; ABORT
 	dw	nmi_ve&WM			; NMI
 	dw	start&WM			; RESET
 	dw	irq_ve&WM			; IRQ/BRK
-	ENDC
 
 ;------------------------------------
 

@@ -57,7 +57,7 @@ PlayerCodeHook_l	; Long jump into the video player from here.
 	jmp PlayerCodeOffset
 PlayerReturnHook
 ; Resume normal execution after the video player finishes here.
-	jsl	copy_to_0101_l	; Reupload normal IRQ handler
+	jsl	copy_to_010c_l	; Reupload normal IRQ handler
 	jml	restart	; Go to controls screen
 
 PlayerCodeOffset

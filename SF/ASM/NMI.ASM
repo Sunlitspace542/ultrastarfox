@@ -13,23 +13,23 @@
 ;*   File: NMI.ASM                                                         *
 ;*_________________________________________________________________________*
 ;*                                                                         *
-;*  Descr: NMI/IRQ handler.                                                *
+;*  Descr: IRQ handler.                                                    *
 ;*                                                                         *
 ;***************************************************************************
 
-; Copies NMI/IRQ handler to RAM at addr $0101
-copy_to_0101_l
+; Copies IRQ handler to RAM at addr $010C
+copy_to_010c_l
 	php ; Push Processor status to stack
 	phb ; Push DBR onto stack (MVN changes it to destination bank)
 
 	ai16
-	ldx	#nmihan&WM ; src data addr
-	ldy	#$0101 ; dest data addr
-	lda	#nmihanend-nmihan-1 ; len of data to copy
+	ldx	#irqhan&WM ; src data addr
+	ldy	#$010C ; dest data addr
+	lda	#irqhanend-irqhan-1 ; len of data to copy
 	IFNE	FASTROM
-	_mvn	(nmihan>>16),$80
+	_mvn	(irqhan>>16),$80
 	ELSEIF
-	_mvn	(nmihan>>16),$00
+	_mvn	(irqhan>>16),$00
 	ENDC
 
 	; Copy xroutines into RAM
@@ -43,20 +43,10 @@ copy_to_0101_l
 	rtl ; Return from subroutine (Long)
 
 ;---------------------------------------------------------------------------
-nonmihan	equ	1	;Remove unused NMI handler (saves memory+cycles in IRQ)
 
-nmihan ; Start of NMI handler
-	blink	2 ; Yellow BLINK
-	blink	2 ; Yellow BLINK
-	IFNE	NONMIHAN
-	rti		; $0108 NMI
-	nop
-	nop
-	ELSEIF
-	brl	.nmi	;$0108	NMI ; Branch to .NMI sublabel
-	ENDC
-	nop		;$010b ; No Operation
-.irq	ai16		;$010c	irq
+irqhan	; Start of IRQ handler
+.irq	; $010c	irq
+	ai16
 	pha	; Push A to stack
 	lda.l	m_sfr ; Load m_sfr into A (MARIO chip flags?)
 	bpl	.irqq
@@ -247,36 +237,7 @@ nmihan ; Start of NMI handler
 	a8 ; Set A to 8 bit
 	inc	framec ; increment frame count?
 	lda	timeupr ; Load TIMEUPR register into A
-	IFEQ	NONMIHAN
-	brl	.exit ; branch to .exit sublabel
-	ENDC	;NONMIHAN
 	longa
-
-.brk
-.nmi
-	IFEQ	NONMIHAN
-	ai16 ; Set A/X/Y to 16 bit
-	pha ; Push A to stack
-	phb ; Push data bank to stack
-	phx ; Push X to stack
-	phy ; Push Y to stack
-	a8 ; Set A to 8 bit
-	IFNE	FASTROM ; Start conditional: if FASTROM !=0 (=1)
-	lda	#$80 ; load $80 into A (Bank 80 for FastROM)
-	pha ; Push A to stack
-	plb ; Pull data bank from stack
-	ELSEIF ; if FASTROM =0
-	lda	#0 ; Load #0 into stack (Bank 0 for SlowROM)
-	pha ; Push A to stack
-	plb ; Pull data bank from stack
-	ENDC ; End conditional
-
-	nastyoff ; Turn MARIO chip nasty mode off
-	jsl	fnmi_l ; Jump to fnmi_l (Long)
-	nastyon ; Turn MARIO chip nasty mode on
-	a8 ; Set A to 8 bit
-	lda	rdnmir ; Load RDNMIR register into A
-	ENDC	;NONMIHAN
 
 .exit	ai16
 	ply ; Pull Y from stack
@@ -285,5 +246,5 @@ nmihan ; Start of NMI handler
 	pla	; Pull A from stack
 	rti ; Return from interrupt
 
-nmihanend ; End of NMI Handler
+irqhanend ; End of IRQ Handler
 

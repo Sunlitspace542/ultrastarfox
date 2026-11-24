@@ -278,7 +278,7 @@ initialise_ram
 	dex ; decrement X
 	bpl	.zpage ; repeat until x = 0
 
-	jsl	copy_to_0101_l ; Copy NMI handler to RAM at $0101
+	jsl	copy_to_010c_l ; Copy NMI handler to RAM at $010c
 
 ; NTSC/PAL
 	a8 ; set A to 8 bit
@@ -408,11 +408,6 @@ startsfx_l ; Initialize the SNES
 	sta	$420d ; Store 0 @ 420D (memsel) (Disable FastROM)
 	ENDC ; end conditional
 
-	rtl ; Return from Subroutine Long
-
-	shorta ; Tell SASM that this code uses 8 bit A
-	longi ; Tell SASM that this code uses 16 bit X/Y
-fnmi_l
 	rtl ; Return from Subroutine Long
 
 	IFNE	msuvoice
