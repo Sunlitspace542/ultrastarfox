@@ -286,6 +286,10 @@ initialise_ram
 	and	#1<<4 ; Get bit 4, which indicates the region of the PPU (0=NTSC/60Hz, 1=PAL/50Hz)
 	sta	ntscpal ; Store A at ntscpal variable
 
+	; this hides the screen blink at the start
+	stz	cgadd
+	stz	cgdata
+	stz	cgdata ; set first color to black
 
 	plp ; Pull Processor Status from Stack
 	rts ; Return to Subroutine
