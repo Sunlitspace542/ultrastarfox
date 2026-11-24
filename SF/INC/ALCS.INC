@@ -750,7 +750,6 @@ msu_orch	equ	1
 
 	IFNE	MSUVIDEO
 	IFNE	MSUVIDEO_useAlcs
-	alc	msuvideoirq,1 ; IRQ handler flag for MSU-1 video player.
 	alc	lineCounter,1 ; IRQ count within the current frame.
 	alc	frameValueA,1 ; alternate frame line limit.
 ;	alc	frameValueB,1 ; line limit used at the audio-frame boundary. Identical to frameValueA.

@@ -23,7 +23,7 @@
 
 ; User configuration
 playerBank	equ	(*>>16) ; Bank containing PlayerCodeOffset.
-	IFEQ	MSUVOICE
+	IFNE	MSU1
 fmv_msutrack	equ	msubgmopeningfmv ; MSU-1 audio track to play.
 	ELSEIF
 fmv_msutrack	equ	0 ; MSU-1 audio track to play. (moved so it doesn't get in the way of voicelines)
@@ -52,16 +52,15 @@ currentButtons	equ	cont0l ; latest sampled controller state.
 pressedButtons	equ	trig0 ; newly pressed controller buttons.
 previousButtons	equ	contl0l ; controller state from the previous sample.
 
-PlayerCodeHook	; Jump into the video player from here.
+PlayerCodeHook_l	; Long jump into the video player from here.
 	jsr	uploadmsuvideoirq	; Upload video IRQ handler
-	jml PlayerCodeOffset
+	jmp PlayerCodeOffset
 PlayerReturnHook
 ; Resume normal execution after the video player finishes here.
 	jsl	copy_to_0101_l	; Reupload normal IRQ handler
 	jml	restart	; Go to controls screen
 
 PlayerCodeOffset
-; Restore any instructions overwritten by the hook here.
 	pha
 	phx
 	phy
@@ -69,13 +68,13 @@ PlayerCodeOffset
 	a8
 	lda msu_id ; check whether MSU-1 is present
 	cmp #'S'
-	beq msu_available
+	beq .msu_available
 	plp
 	ply
 	plx
 	pla
-	jml PlayerReturnHook ; MSU-1 not present
-msu_available
+	jmp PlayerReturnHook ; MSU-1 not present
+.msu_available
 	phb
 	IFNE	FASTROM
 	lda #$80
@@ -86,28 +85,22 @@ msu_available
 	pha
 	plb
 	ENDC
-;;;;;
-	lda #$01
-	sta msuvideoirq ; flag to have irq increment transbmp1
-;;;;;
 	jmp play_video
 
 endroutine
 ;;;;;
 	sei
-	stz msuvideoirq
 ;;;;;
 	stz msu_control
 	pla
 	pla ; correct stack
 	plb
-; Restore any additional state here if needed.
 	stz hdmaen ; disable HDMA
 	plp
 	ply
 	plx
 	pla
-	jml PlayerReturnHook
+	jmp PlayerReturnHook
 
 PlayerTableOffset
 
@@ -203,14 +196,14 @@ clear_dma_registers
 
 ; Wait for one complete VBlank interval.
 wait_for_vblank
-wait_for_vblank_end
+.wait_for_vblank_end
 	lda hvbjoyr
 	and #$80
-	bne wait_for_vblank_end
-wait_for_vblank_start
+	bne .wait_for_vblank_end
+.wait_for_vblank_start
 	lda hvbjoyr
 	and #$80
-	beq wait_for_vblank_start
+	beq .wait_for_vblank_start
 	rts
 
 ; Reset CPU and PPU state used by playback.
@@ -439,9 +432,9 @@ initialize_msu_video
 	ldx #(msuvideoaddr>>16)
 	stx msu_seek3
 	ENDC
-msu_wait_for_ready
+.msu_wait_for_ready
 	bit msu_status
-	bmi msu_wait_for_ready
+	bmi .msu_wait_for_ready
 	ldx #$0000
 	stx vmaddl
 	lda #$04
@@ -474,13 +467,13 @@ play_video_frames
 	ldx videoFrameCount
 	dex
 process_scanline
-wait_for_irq
+.wait_for_irq
 	lda irqCounter
-	beq wait_for_irq
+	beq .wait_for_irq
 	jsr check_stop_input
 	lda lineCounter
 	cmp #$02
-	bpl increment_line_counter
+	bpl .increment_line_counter
 	lda #$18
 	sta ch0addrb
 	lda #$09
@@ -489,32 +482,32 @@ wait_for_irq
 	sty ch0dataddrl
 	lda #$01
 	sta mdmaen
-increment_line_counter
+.increment_line_counter
 	inc lineCounter
 	lda lineCounter
 	cmp frameValueA ;frameLineLimit
-	bne wait_for_irq
+	bne .wait_for_irq
 	lda audioStartPending
-	beq check_audio_restart
+	beq .check_audio_restart
 	lda #$01
 	jsr start_audio_track
 	stz audioStartPending
-check_audio_restart
+.check_audio_restart
 	lda audioFrameCounter
 	cmp audioFrameLimit
-	bne increment_audio_frame
+	bne .increment_audio_frame
 	stz audioFrameCounter
-	lda frameValueA ;frameValueB
-	bra store_audio_frame
-increment_audio_frame
-	lda frameValueA
+;	lda frameValueA ;frameValueB
+	bra .store_audio_frame
+.increment_audio_frame
+;	lda frameValueA
 	inc audioFrameCounter
-store_audio_frame
-	sta frameValueA ;frameLineLimit
+.store_audio_frame
+;	sta frameValueA ;frameLineLimit
 reset_line_state
 	stz lineCounter
 	dex
-	beq finish_video
+	beq .finish_video
 	stz cgadd
 	lda #$22
 	sta ch0addrb
@@ -525,29 +518,29 @@ reset_line_state
 	lda #$01
 	sta mdmaen
 	lda bgTileBank
-	bne disable_bg_tiles
+	bne .disable_bg_tiles
 	lda #$04
 	sta bg12nba
 	sta bgTileBank
 	ldy #$0000
 	sty vmaddl
 	jmp process_scanline
-disable_bg_tiles
+.disable_bg_tiles
 	stz bg12nba
 	stz bgTileBank
 	ldy #$4000
 	sty vmaddl
 	jmp process_scanline
-finish_video
+.finish_video
 	jmp endroutine
 ; Clear the IRQ counter and detect a newly pressed button.
 check_stop_input
 	stz irqCounter
 	lda pressedButtons
-	beq no_button_press
+	beq .no_button_press
 	ldx #$0001 ; button press detected; stop video
 	rts
-no_button_press
+.no_button_press
 	phy
 	lda joy1h
 	sta currentButtons
@@ -565,10 +558,10 @@ start_audio_track
 	lda #fmv_msutrack
 	sta msu_track
 	stz msu_track2
-wait_for_audio
+.wait_for_audio
 	lda msu_status
 	and #$40
-	bne wait_for_audio
+	bne .wait_for_audio
 	lda #$FF
 	sta msu_volume
 	lda #audiostate_norepeat
@@ -620,13 +613,7 @@ msuvideoirqhan
 	plb
 	ENDC
 
-	IFNE	MSUVIDEO
-	lda	msuvideoirq
-	beq	.msuvideo_normalirq
-	inc	irqCounter
-	bra	.msuvideo_doneirq
-.msuvideo_normalirq
-	ENDC
+	inc	irqCounter	; increment IRQ counter
 
 	nastyon
 	jsl	irqcode_l

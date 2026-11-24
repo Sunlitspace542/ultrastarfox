@@ -12,12 +12,12 @@
 ; MesenCE still fires an IRQ on STOP, thus the game works.
 SUPERFX3	equ 0
 
-; MSU-1 support [0 = off, 1 = on]
+; MSU-1 music support [0 = off, 1 = on]
 ; SHVC-SOUND-driven music is replaced with MSU-1 driven music.
 msu1		equ	0
 
-; MSU-1 video player
-; If msuvoice is set to 1, the audio track for the video is track 0.
+; Enable ikari_01's MSU-1 video player.
+; If msu1 is set to 0, the audio track for the video is track 0.
 ; If msu1 is set to 1, the audio track for the video is defined in INC\MSUTRKS.INC.
 ; [0 = off, 1 = on]
 MSUVIDEO	equ	0

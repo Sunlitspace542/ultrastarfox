@@ -71,7 +71,7 @@ startboot	disable ; Disable Interrupts
 
 	a8 ; set A to 8 bit
 	IFNE	MSUVIDEO
-	jml	PlayerCodeHook	; Start video player
+	jml	PlayerCodeHook_l	; Start video player
 	ENDC
 	lda	#0 ; Load 0 into A
 	sta.l	contexit ; Store A @ contexit (variable allocated in Extended RAM)
