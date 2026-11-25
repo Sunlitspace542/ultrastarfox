@@ -37,11 +37,7 @@ s_queue_rumble	MACRO	[left,right,time]
 	ENDM
 
 ; Same as above, but for PATHs
-P_QUEUERUMBLE	MACRO	[left,right,time]
-	P_START65816
-	s_queue_rumble	{left},{right},{time}
-	P_END65816
-	ENDM
+; P_QUEUERUMBLE moved to PATHS.ASM and PATHMACS.ASM
 
 ; Uses a table for sequenced rumbles
 s_queue_rumble_table	MACRO	[table]

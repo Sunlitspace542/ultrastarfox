@@ -250,7 +250,9 @@ path_istrat
 	s_mode_entry	.addworldz,p_addworldz
 	s_mode_entry	.addws,p_addws
 	s_mode_entry	.wait1,p_wait1
-	s_mode_entry	.score,p_score
+	IFNE	RUMBLE
+	s_mode_entry	.queuerumble,p_queuerumble
+	ENDC
 	s_mode_table_end
 
 
@@ -2648,14 +2650,28 @@ path_istrat
 	jmp	.add1
 
 ;**********
-.score	SHORTA
-	a16
-	getparam	1
-	clc
-	adc.l	playerscore
-	sta.l	playerscore
-	jmp	.add3
+	IFNE	RUMBLE
+.queuerumble	SHORTA
+	phb
+	IFNE	FASTROM
+	lda	#$80
+	pha
+	plb
+	ELSEIF
+	lda	#0
+	pha
+	plb
+	ENDC
 
+	getparam	1
+	sta	rumble_cmd
+	getparam	2
+	sta	rumble_time
+
+	plb
+	jmp	.add3
+	ENDC
+;**********
 
 ;--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 	SHORTA

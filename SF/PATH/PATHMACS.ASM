@@ -1893,11 +1893,6 @@ MYNARG	=	NARG
 	pathmac_end
 		ENDM
 ;--------------------------------------------------------------------
-P_SCORE	MACRO	[score]
-	pathmac_start
-	pathmac_end
-	ENDM
-;--------------------------------------------------------------------
 P_CAMERA_LOCKON	macro
 	p_start65816
 	s_camera_lockon	x	;camera lock-on
@@ -1921,6 +1916,29 @@ P_SETVAR	MACRO	[size,var,value]
 	s_set_var		{size},{var},{value}
 	P_END65816
 	ENDM
+;--------------------------------------------------------------------
+	IFNE	RUMBLE
+;**
+;* Queue up rumble command to be executed on the next NMI/IRQ cycle
+;* @param left - left motor intensity (0-15)
+;* @param right - right motor intensity (0-15)
+;* @param time - time to rumble in frames (0-255)
+;*
+;**
+P_QUEUERUMBLE	MACRO	[left,right,time]
+	pathmac_start
+MYNARG	=	NARG
+	PNARG	3
+
+	db	p_queuerumble
+
+	db	({right}<<4)+({left})
+	db	{time}
+	; 3 bytes of data
+
+	pathmac_end
+	ENDM
+	ENDC
 ;--------------------------------------------------------------------
 
 

@@ -35,7 +35,6 @@
                                      this allows access to a child's
                                      variables
  P_UNBECOME                          back to normal
- P_SCORE            num              add to player's score
 
  MODE MACROS:
 -------------

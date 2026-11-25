@@ -18,7 +18,6 @@
 	alc	friends_meter,1
 	alc	exitintro,1
 	alc	currentlevel,1
-	xalc	playerscore,2
 
 	xalc	maprestartjsrptr,2
 	xalc	maprestartnumjsr,2
