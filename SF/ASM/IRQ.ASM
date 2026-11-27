@@ -1822,9 +1822,10 @@ window_buffer	php
 ;*																*
 ;*		Super NES Mouse BIOS									*
 ;*		March 10, 1992        									*
-;*		Modified by Kandowontu for ultrastarfox					*
+;*		Modified by Kandowontu and Sunlit for UltraStarFox		*
 ;*		(c) 1992 Nintendo of America Inc.						*
 ;*		2022 Kandowontu											*
+;*		2026 Sunlit												*
 ;*																*
 ;****************************************************************
 ;
@@ -1887,33 +1888,14 @@ mouse_read2
 	and	#%00000001
 	bne	.10		; Automatic read okay?
 
-	ldx	#$01		; Joy 2
 	lda	joy2l
 	jsr	mouse_data
-
-	lda	connect_st1
-	beq	.20
 
 	jsr	speed_change	
 	stz	connect_st1
 	plp
 	plb
 	rts
-.20
-	dex
-	lda	joy1l		; Joy 1    
-	jsr	mouse_data
-
-	lda	connect_st0
-	beq	.30
-
-	jsr	speed_change	
-	stz	connect_st0
-.30
-	plp
-	plb
-	rts
-
 
 mouse_data
 	sta	reg0l		; (421a 4218 save to reg0)  
@@ -1921,55 +1903,55 @@ mouse_data
 	cmp	#$01		; Is mouse connected?        
 	beq	.m10
 
-	stz	mouse_con0,x	; No connection
+	stz	mouse_con1	; No connection
 
-	stz	mouse_x0,x
-	stz	mouse_y0,x
-	stz	mouse_sw0,x
-	stz	mouse_swt0,x
-	stz	mouse_sb0,x
+	stz	mouse_x1
+	stz	mouse_y1
+	stz	mouse_sw1
+	stz	mouse_swt1
+	stz	mouse_sb1
 	
 	rts
 .m10
-	lda	mouse_con0,x	; When mouse is connected, speed will change
+	lda	mouse_con1	; When mouse is connected, speed will change
 	bne	.m20		; Previous connection status
 				;	(mouse.com judged by lower 1 bit)
 
 	lda	#$01		; Connection check flag ON
-	sta	mouse_con0,x
-	sta	connect_st0,x
+	sta	mouse_con1
+	sta	connect_st1
 	rts
 
   
 .m20
 	lda	#$01		; Connection check flag ON
-	sta	mouse_con0,x
+	sta	mouse_con1
 	ldy	#16		; Read 16-bit data
 .m30
-	lda	JOYSER0,x
+	lda	JOYSER1
 	lsr	a
-	rol	mouse_x0,x
-	rol	mouse_y0,x
+	rol	mouse_x1
+	rol	mouse_y1
 	dey
 	bne	.m30
 
-	stz	mouse_sw0,x
+	stz	mouse_sw1
 
 	rol	reg0l
-	rol	mouse_sw0,x
+	rol	mouse_sw1
 	rol	reg0l
-	rol	mouse_sw0,x	; Switch Turbo  
+	rol	mouse_sw1	; Switch Turbo  
 
-	lda	mouse_sw0,x
-	eor	mouse_sb0,x	; Get Switch trigger 
+	lda	mouse_sw1
+	eor	mouse_sb1	; Get Switch trigger 
 	bne	.m40
 
-	stz	mouse_swt0,x
+	stz	mouse_swt1
 	rts
 .m40
-	lda	mouse_sw0,x
-	sta	mouse_swt0,x
-	sta	mouse_sb0,x
+	lda	mouse_sw1
+	sta	mouse_swt1
+	sta	mouse_sb1
 	rts
 
 
@@ -2000,7 +1982,7 @@ speed_change
 	php
 	ai8
 
-	lda	mouse_con0,x	
+	lda	mouse_con1
 	beq	.s25
 
 	lda	#$10		
@@ -2009,7 +1991,7 @@ speed_change
 .s10
 	lda	#$01
 	sta	JOYSER0
-	lda	JOYSER0,x		; Speed change (1 step)
+	lda	JOYSER1		; Speed change (1 step)
 	stz	JOYSER0
 
 	lda	#$01		; Read Speed data   
@@ -2017,24 +1999,24 @@ speed_change
 	lda	#$00
 	sta	JOYSER0
 
-	sta	mouse_sp0,x	; Speed register clear  
+	sta	mouse_sp1	; Speed register clear  
 
 	ldy	#10		; Shift register read has no meaning
 .s20
-	lda	JOYSER0,x
+	lda	JOYSER1
 	dey
 	bne	.s20
 
-	lda	JOYSER0,x		; Read Speed  
+	lda	JOYSER1		; Read Speed  
 	lsr	a
-	rol	mouse_sp0,x
+	rol	mouse_sp1
 
-	lda	JOYSER0,x
+	lda	JOYSER1
 	lsr	a
-	rol	mouse_sp0,x
-	lda	mouse_sp0,x
+	rol	mouse_sp1
+	lda	mouse_sp1
 
-	cmp	mouse_sp_set0,x	; Set speed or not? 
+	cmp	mouse_sp_set1	; Set speed or not? 
 	beq	.s30
 
 	dec	reg0h		; For error check         
@@ -2042,7 +2024,7 @@ speed_change
 
 .s25
 	lda	#$80		; Speed change error    
-	sta	mouse_sp0,x
+	sta	mouse_sp1
 .s30
 	plp
 	rts
