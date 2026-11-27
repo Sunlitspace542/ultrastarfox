@@ -3,6 +3,10 @@
 
 	incfile	ASM\irq.asm
 
+	IFNE	MOUSEON
+	incfile	ASM\mouse.asm
+	ENDC
+
 	incfile	ASM\hdmatabs.asm
 
 ;-------------------------------------

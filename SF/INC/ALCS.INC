@@ -799,7 +799,9 @@ msu_orch	equ	1
 	alc	spectot,1
 	alc	defaultID,2
 
+	IFNE	MOUSEON
 	include	INC\mousealc.inc
+	ENDC
 	include	INC\kalcs.inc
 	include	INC\dalcs.inc
 	include	INC\ealcs.inc

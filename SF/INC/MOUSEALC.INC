@@ -1,18 +1,3 @@
-	IFNE	mouseon
-;****************************************************************
-;*																*
-;*		MOUSEALC.INC											*
-;*		Super NES Mouse System file								*
-;*		March 10, 1992        									*
-;*		Modified by Kandowontu and Sunlit for UltraStarFox		*
-;*		(c) 1992 Nintendo of America Inc.						*
-;*		2022 Kandowontu											*
-;*		2026 Sunlit												*
-;*																*
-;****************************************************************
-;===================================================================
-;		RAM Definitions
-;
 	alc	reg0l,1			; Work registers
 	alc	reg0h,1
 	alc	mouse_sp_set1,1	; Mouse Speed Setting (joy2)
@@ -24,4 +9,3 @@
 	alc	mouse_swt1,1	; Mouse button trigger (joy2)
 	alc	mouse_sb1,1		; Previous switch status (joy2)
 	alc	connect_st1,1	; Connection-start confirmation
-	ENDC	;mouseon
