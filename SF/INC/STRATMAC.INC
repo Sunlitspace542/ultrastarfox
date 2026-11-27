@@ -6633,8 +6633,19 @@ MYNARG	=	NARG
 	rlbne	\4
 	stratmac_end
 	ENDM
-
-
+;-----------------------------------------------------------------------------
+;* short range version for destinations within signed 8-bit range
+s_bra_varAND		MACRO	size,var,value,label	
+	stratmac_start
+MYNARG	=	NARG
+	CHK_NARG	4
+	CHG_MODE	\1
+	lda	\2
+	and	\3
+	CHG_MODEBACK	\1
+	bne	\4
+	stratmac_end
+	ENDM
 ;-----------------------------------------------------------------------------
 s_jmpNOT_varAND		MACRO	size,var,value,label	
 	stratmac_start
@@ -6647,7 +6658,19 @@ MYNARG	=	NARG
 	rlbeq	\4
 	stratmac_end
 	ENDM
-
+;-----------------------------------------------------------------------------
+;* short range version for destinations within signed 8-bit range
+s_braNOT_varAND		MACRO	size,var,value,label	
+	stratmac_start
+MYNARG	=	NARG
+	CHK_NARG	4
+	CHG_MODE	\1
+	lda	\2
+	and	\3
+	CHG_MODEBACK	\1
+	beq	\4
+	stratmac_end
+	ENDM
 ;-----------------------------------------------------------------------------
 s_jmp_ABSalvarmore	MACRO		size,obj1,alvar,value,label
 	stratmac_start
@@ -6808,6 +6831,18 @@ MYNARG	=	NARG
 		stratmac_end
 	ENDM
 ;-----------------------------------------------------------------------------
+;* short range version for destinations within signed 8-bit range
+s_bra_varzero		MACRO		size,var,label
+	stratmac_start
+MYNARG	=	NARG
+	CHK_NARG	3
+	CHG_MODE	\1
+	lda.\0	\2
+	CHG_MODEBACK	\1
+	beq	\3
+		stratmac_end
+	ENDM
+;-----------------------------------------------------------------------------
 s_jmp_varnotzero		MACRO		size,var,label
 	stratmac_start
 MYNARG	=	NARG
@@ -6816,6 +6851,18 @@ MYNARG	=	NARG
 	lda.\0	\2
 	CHG_MODEBACK	\1
 	rlbne	\3
+		stratmac_end
+	ENDM
+;-----------------------------------------------------------------------------
+;* short range version for destinations within signed 8-bit range
+s_bra_varnotzero		MACRO		size,var,label
+	stratmac_start
+MYNARG	=	NARG
+	CHK_NARG	3
+	CHG_MODE	\1
+	lda.\0	\2
+	CHG_MODEBACK	\1
+	bne	\3
 		stratmac_end
 	ENDM
 ;-----------------------------------------------------------------------------

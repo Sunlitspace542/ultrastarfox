@@ -1877,8 +1877,8 @@ playermove_srou
 	s_set_alvar		W,x,al_worldy,maxpmoveY
 
 	IFNE	mouseon
-	s_jmp_varZERO	B,mouse_con1,.normalwingbounce
-	s_jmp_varAND	B,pshipflags,#psf_noctrl,.normalwingbounce
+	s_bra_varZERO	B,mouse_con1,.normalwingbounce
+	s_bra_varAND	B,pshipflags,#psf_noctrl,.normalwingbounce
 	a16
 	lda			plrotx
 	sec
@@ -1981,8 +1981,8 @@ playermove_srou
 
 
 	IFNE	MOUSEON
-	s_jmp_varZERO	B,mouse_con1,.normalbounce
-	s_jmp_varAND	B,pshipflags,#psf_noctrl,.normalbounce
+	s_bra_varZERO	B,mouse_con1,.normalbounce
+	s_bra_varAND	B,pshipflags,#psf_noctrl,.normalbounce
 	a16
 	lda			plrotx
 	nega
@@ -2335,13 +2335,13 @@ playermove_srou
 .nztl
 	s_add_var		W,plrotz,#Zrotspeed
 	IFNE	mouseon
-	s_jmp_varNOTZERO	B,mouse_con1,.mouseleftleft0
+	s_bra_varNOTZERO	B,mouse_con1,.mouseleftleft0
 	ENDC	;mouseon
 	s_add_var		W,plroty,#Zrotspeed
 	IFNE	mouseon
 	s_bra	.eplrc
 .mouseleftleft0
-	s_jmpNOT_varAND	B,pshipflags,#psf_noctrl,.mouseleftleft
+	s_braNOT_varAND	B,pshipflags,#psf_noctrl,.mouseleftleft
 	s_add_var		W,plroty,#Zrotspeed
 	bra	.eplrc
 .mouseleftleft
@@ -2360,13 +2360,13 @@ playermove_srou
 .nztr
 	s_sub_var		W,plrotz,#Zrotspeed
 	IFNE	mouseon
-	s_jmp_varNOTZERO	B,mouse_con1,.mouserightright0
+	s_bra_varNOTZERO	B,mouse_con1,.mouserightright0
 	ENDC	;mouseon
 	s_sub_var		W,plroty,#Zrotspeed
 	IFNE	mouseon
 	s_bra	.eprrc
 .mouserightright0
-	s_jmpNOT_varAND	B,pshipflags,#psf_noctrl,.mouserightright
+	s_braNOT_varAND	B,pshipflags,#psf_noctrl,.mouserightright
 	s_sub_var		W,plroty,#Zrotspeed
 	bra	.eprrc
 .mouserightright
@@ -2479,13 +2479,13 @@ playermove_srou
 
 	s_jmp_keyup		jup,.nhu
 	IFNE	mouseon
-	s_jmp_varNOTZERO	B,mouse_con1,.mouseupup0
+	s_bra_varNOTZERO	B,mouse_con1,.mouseupup0
 	ENDC	;mouseon
 	s_add_var		W,plrotx,#Xrotspeed
 	IFNE	mouseon
 	s_bra	.nhu
 .mouseupup0
-	s_jmpNOT_varAND	B,pshipflags,#psf_noctrl,.mouseupup
+	s_braNOT_varAND	B,pshipflags,#psf_noctrl,.mouseupup
 	s_add_var		W,plrotx,#Xrotspeed
 	bra	.nhu
 .mouseupup
@@ -2495,13 +2495,13 @@ playermove_srou
 	s_jmp_keyup		jdown,.nhd
 ;	s_jmp_alvarlesseq	W,x,al_worldy,minpmoveY,.nhd
 	IFNE	mouseon
-	s_jmp_varNOTZERO	B,mouse_con1,.mousedowndown0
+	s_bra_varNOTZERO	B,mouse_con1,.mousedowndown0
 	ENDC	;mouseon
 	s_sub_var		W,plrotx,#Xrotspeed
 	IFNE	mouseon
 	s_bra	.nhd
 .mousedowndown0
-	s_jmpNOT_varAND	B,pshipflags,#psf_noctrl,.mousedowndown
+	s_braNOT_varAND	B,pshipflags,#psf_noctrl,.mousedowndown
 	s_sub_var		W,plrotx,#Xrotspeed
 	bra	.nhd
 .mousedowndown
@@ -2658,8 +2658,8 @@ playermove_srou
 ;-----------------------------------------------------------------------
 
 	IFNE	mouseon
-	s_jmp_varZERO	B,mouse_con1,.dochase1
-	s_jmpNOT_varAND	B,pshipflags,#psf_noctrl,.nochase1
+	s_bra_varZERO	B,mouse_con1,.dochase1
+	s_braNOT_varAND	B,pshipflags,#psf_noctrl,.nochase1
 .dochase1
 	ENDC	;mouseon
 	s_Achase_var		W,plroty,#0,3
@@ -2695,8 +2695,8 @@ playermove_srou
 ;-------------------------------------------------------------------
 
 	IFNE	mouseon
-	s_jmp_varZERO	B,mouse_con1,.dochase2
-	s_jmpNOT_varAND	B,pshipflags,#psf_noctrl,.nochase2
+	s_bra_varZERO	B,mouse_con1,.dochase2
+	s_braNOT_varAND	B,pshipflags,#psf_noctrl,.nochase2
 .dochase2
 	ENDC	;mouseon
 	s_Achase_var	W,plrotx,#0,3
@@ -2882,8 +2882,8 @@ playerfire_srou
 	s_set_var		B,specialdelay,#1
 
 	IFNE	mouseon
-	s_jmp_varZERO	B,mouse_con1,.nomouse4
-	s_jmp_varAND	B,pshipflags,#psf_noctrl,.nomouse4
+	s_bra_varZERO	B,mouse_con1,.nomouse4
+	s_bra_varAND	B,pshipflags,#psf_noctrl,.nomouse4
 	lda	mouse_sw1
 	cmp	#2
 	beq	.bombtime
@@ -2914,8 +2914,8 @@ playerfire_srou
 ;------------------------------------------------------------
 
 	IFNE	mouseon
-	s_jmp_varZERO	B,mouse_con1,.nomouse3
-	s_jmp_varAND	B,pshipflags,#psf_noctrl,.nomouse3
+	s_bra_varZERO	B,mouse_con1,.nomouse3
+	s_bra_varAND	B,pshipflags,#psf_noctrl,.nomouse3
 	lda	mouse_sw1
 	cmp	#1
 	beq	.firetime
