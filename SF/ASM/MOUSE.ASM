@@ -105,10 +105,6 @@ mouse_data
 	lsr	a
 	rol	mouse_x1
 	rol	mouse_y1
-	nop					; Read delay for hyperkin mouse support, loop should be at least 170 master clocks.
-	nop					; Less delay is needed if using abs/far rol, and/or SlowROM.
-	nop					; This loop is 188 clocks in FastROM; it has 1 excess NOP for safety.
-	nop					; (Mario Paint takes 190 clocks.)
 	dey
 	bne	.m30
 
