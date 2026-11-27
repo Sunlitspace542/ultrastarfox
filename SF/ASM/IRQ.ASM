@@ -1839,34 +1839,31 @@ window_buffer	php
 		db	'START OF SNES MOUSE BIOS'	;do not delete
 ; original: 'START OF MOUSE BIOS'
 
-;*******************************************************************
-;*  ============================================================== *
-;*        Mouse_read                                               *
-;*  ============================================================== *
-;*								   								   *
-;*  If this routine is called every frame, then the mouse status   *
-;*     will be set to the appropriate registers.                   *
-;*                                                                 *
-;* INPUT                                                           *
-;*     None (Mouse key read automatically)                         *
-;*                                                                 *
-;* OUTPUT                                                          *
-;*     Connection status (mouse_con) D1=1 Mouse connected to Joy2  *
-;*                                                                 *
-;*     Switch (mouse_sw1)  D0=left switch turbo                    *
-;*                         D1=right switch turbo                   *
-;*                                                                 *
-;*     Switch (mouse_swt1) D0=left switch trigger                  *
-;*                         D1=right switch trigger                 *
-;*                                                                 *
-;*     Mouse movement (ball) value                                 *
-;*            (mouse_x) D7=0 Positive Turn, D7=1 Negative Turn     *
-;*			     D6-D0 X movement value							   *
-;*            (mouse_y) D7=0 Positive Turn, D7=1 Negative Turn     *
-;*			     D6-D0 Y movement value                			   *
-;*                                                                 *
-;*                                                                 *
-;******************************************************************* 
+;***************************************************************************
+;*  =====================================================================  *
+;*                      Mouse read (mouse_read)                            *
+;*  =====================================================================  *
+;*                                                                         *
+;*  Calling this routine once per frame sets the mouse state in the        *
+;*  registers listed below.                                                *
+;*  The contents of the A and Y registers are destroyed by the call.       *
+;*                                                                         *
+;*  Input                                                                  *
+;*  None (auto joypad read enabled)                                        *
+;*                                                                         *
+;*  Output                                                                 *
+;*  Connection state (mouse_con1): D0=1 means mouse connected to Joy 2     *
+;*                                                                         *
+;*  Buttons (mouse_sw1): D0=left button held                               *
+;*                       D1=right button held                              *
+;*                                                                         *
+;*  Buttons (mouse_swt1): D0=left-button trigger                           *
+;*                        D1=right-button trigger                          *
+;*                                                                         *
+;*  Mouse movement (mouse_x): D7=0 forward/1 reverse, D6-D0 = X movement   *
+;*                 (mouse_y): D7=0 forward/1 reverse, D6-D0 = Y movement   *
+;*                                                                         *
+;***************************************************************************
 
 mouse_read
 	PHB
@@ -1881,28 +1878,28 @@ mouse_read
 	ENDC
 
 	php
-	ai8
+	ai8					; 8-bit mode
 .10
 	lda	hvbjoyr
 	and	#%00000001
-	bne	.10		; Automatic read okay?
+	bne	.10				; Is automatic data read ready?
 
 	lda	joy2l
 	jsr	mouse_data
 
-	jsr	speed_change	
+	jsr	speed_change	; Change speed only immediately after connection
 	stz	connect_st1
 	plp
 	plb
 	rts
 
 mouse_data
-	sta	reg0l		; (421a 4218 save to reg0)  
+	sta	reg0l			; ($421A or $4218 is stored in reg0l)
 	and	#%00001111
-	cmp	#$01		; Is mouse connected?        
+	cmp	#$01			; Is a mouse connected?
 	beq	.m10
 
-	stz	mouse_con1	; No connection
+	stz	mouse_con1		; Not connected
 
 	stz	mouse_x1
 	stz	mouse_y1
@@ -1912,20 +1909,17 @@ mouse_data
 	
 	rts
 .m10
-	lda	mouse_con1	; When mouse is connected, speed will change
-	bne	.m20		; Previous connection status
-				;	(mouse.com judged by lower 1 bit)
+	lda	mouse_con1		; Always change speed once when a mouse first connects
+	bne	.m20			; Previous connection state (checked from the low mouse_con bit)
 
-	lda	#$01		; Connection check flag ON
+	lda	#$01			; Set mouse-connection confirmation flag
 	sta	mouse_con1
-	sta	connect_st1
+	sta	connect_st1		; Indicates that this is immediately after connection
 	rts
 
   
 .m20
-	lda	#$01		; Connection check flag ON
-	sta	mouse_con1
-	ldy	#16		; Read 16-bit data
+	ldy	#16				; Read the remaining 16 bits of data
 .m30
 	lda	JOYSER1
 	lsr	a
@@ -1939,10 +1933,10 @@ mouse_data
 	rol	reg0l
 	rol	mouse_sw1
 	rol	reg0l
-	rol	mouse_sw1	; Switch Turbo  
+	rol	mouse_sw1		; Held button state
 
 	lda	mouse_sw1
-	eor	mouse_sb1	; Get Switch trigger 
+	eor	mouse_sb1		; Detect button trigger
 	bne	.m40
 
 	stz	mouse_swt1
@@ -1954,54 +1948,57 @@ mouse_data
 	rts
 
 
-;*******************************************************************
-;*  =============================================================  *
-;*	Speed_change                                   		   		   *
-;*  =============================================================  *
-;*  Set speed to mouse_sp_set.                                     *
-;*  If this routine is called without setting mouse_sp_set, then   *
-;*      previous speed will be assigned to current speed.          *
-;*  Normally, mouse speed data will be saved to mouse_sp.	   	   *
-;*  If mouse speed cannot be set properly, then error code will    *
-;*  	be set to mouse_sp.					   					   *
-;*								   								   *
-;* INPUT							   							   *
-;*      MOUSE_sp_set1= JOY2 setting speed                          *
-;* OUTPUT							   							   *
-;*      MOUSE_sp1 = Joy2 Mouse speed                               *
-;*	          (0=slow, 1=medium, 2=fast, $80=error code)       	   *
-;*******************************************************************
+;*************************************************************************
+;*  ===================================================================  *
+;*                 Mouse speed change (speed_change)                     *
+;*  ===================================================================  *
+;*                                                                       *
+;*  Set the speed in mouse_sp_set1 and call this routine.                *
+;*  If mouse_sp_set1 is not set before the call, the most recently       *
+;*  selected speed (the same as the current speed) is set again.         *
+;*  On successful completion, mouse_sp1 receives the speed read from     *
+;*  the mouse.                                                           *
+;*  If the requested speed cannot be set, this routine stores an error   *
+;*  code in mouse_sp1 and exits.                                         *
+;*  The contents of the A and Y registers are destroyed by the call.     *
+;*                                                                       *
+;*  Input: MOUSE_SP_SET1=Joy 2 requested speed                           *
+;*                                                                       *
+;*  Output: MOUSE_SP1=mouse speed on Joy 2                               *
+;*          (0=slow, 1=medium, 2=fast, $80=error)                        *
+;*                                                                       *
+;*************************************************************************
 
 speed_change
 	php
 	ai8
 
-	lda	mouse_con1
+	lda	mouse_con1		; Speed cannot be changed when no mouse is connected
 	beq	.s25
 
-	lda	#$10		
-	sta	reg0h		
+	lda	#$10			; Counter used to detect an error
+	sta	reg0h			; Return an error if it cannot be matched after 16 changes
 
 .s10
 	lda	#$01
 	sta	JOYSER0
-	lda	JOYSER1		; Speed change (1 step)
+	lda	JOYSER1			; Change the speed by one step
 	stz	JOYSER0
 
-	lda	#$01		; Read Speed data   
-	sta	JOYSER0		; Shift register clear
+	lda	#$01			; Prepare to read speed data
+	sta	JOYSER0			; Clear the shift register
 	lda	#$00
 	sta	JOYSER0
 
-	sta	mouse_sp1	; Speed register clear  
+	sta	mouse_sp1		; Clear the speed register
 
-	ldy	#10		; Shift register read has no meaning
+	ldy	#10				; Drain the shift register
 .s20
 	lda	JOYSER1
 	dey
 	bne	.s20
 
-	lda	JOYSER1		; Read Speed  
+	lda	JOYSER1			; Read the speed
 	lsr	a
 	rol	mouse_sp1
 
@@ -2010,14 +2007,14 @@ speed_change
 	rol	mouse_sp1
 	lda	mouse_sp1
 
-	cmp	mouse_sp_set1	; Set speed or not? 
+	cmp	mouse_sp_set1	; Did it reach the requested speed?
 	beq	.s30
 
-	dec	reg0h		; For error check         
+	dec	reg0h			; Limit attempts (used to detect an error)
 	bne	.s10
 
 .s25
-	lda	#$80		; Speed change error    
+	lda	#$80			; Speed-change error
 	sta	mouse_sp1
 .s30
 	plp
