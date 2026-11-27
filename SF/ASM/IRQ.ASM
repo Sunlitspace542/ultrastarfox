@@ -1207,7 +1207,7 @@ irqbit3	lda	noirqbit3
 	jsr	getcont0
 	lda	cont1
 	sta	cont1l
-	jsr	mouse_read2	
+	jsr	mouse_read
 	endc
 
 	IFNE	nttpad
@@ -1848,17 +1848,16 @@ window_buffer	php
 ;*     will be set to the appropriate registers.                   *
 ;*                                                                 *
 ;* INPUT                                                           *
-;*     None (Mouse key read automatically                          *
+;*     None (Mouse key read automatically)                         *
 ;*                                                                 *
 ;* OUTPUT                                                          *
-;*     Connection status (mouse_con) D0=1 Mouse connected to Joy1  *
-;*	                             D1=1 Mouse connected to Joy2  	   *
+;*     Connection status (mouse_con) D1=1 Mouse connected to Joy2  *
 ;*                                                                 *
-;*     Switch (mouse_sw0,1)  D0=left switch turbo                  *
-;*                           D1=right switch turbo                 *
+;*     Switch (mouse_sw1)  D0=left switch turbo                    *
+;*                         D1=right switch turbo                   *
 ;*                                                                 *
-;*     Switch (mouse_swt0,1) D0=left switch trigger                *
-;*                           D1=right switch trigger               *
+;*     Switch (mouse_swt1) D0=left switch trigger                  *
+;*                         D1=right switch trigger                 *
 ;*                                                                 *
 ;*     Mouse movement (ball) value                                 *
 ;*            (mouse_x) D7=0 Positive Turn, D7=1 Negative Turn     *
@@ -1869,7 +1868,7 @@ window_buffer	php
 ;*                                                                 *
 ;******************************************************************* 
 
-mouse_read2
+mouse_read
 	PHB
 	IFNE	FASTROM
 	lda	#$80
@@ -1959,8 +1958,7 @@ mouse_data
 ;*  =============================================================  *
 ;*	Speed_change                                   		   		   *
 ;*  =============================================================  *
-;*  Set speed to mouse_sp_set.  Give mouse port the value of x and *
-;*	call this routine.					   						   *
+;*  Set speed to mouse_sp_set.                                     *
 ;*  If this routine is called without setting mouse_sp_set, then   *
 ;*      previous speed will be assigned to current speed.          *
 ;*  Normally, mouse speed data will be saved to mouse_sp.	   	   *
@@ -1968,14 +1966,10 @@ mouse_data
 ;*  	be set to mouse_sp.					   					   *
 ;*								   								   *
 ;* INPUT							   							   *
-;*      X=connection port (X:0=joy1 1=joy2)                        *
-;*      MOUSE_sp_seT0= JOY1 setting speed                          *
-;*      MOUSE_sp_seT1= JOY2 setting speed                          *
+;*      MOUSE_sp_set1= JOY2 setting speed                          *
 ;* OUTPUT							   							   *
-;*      MOUSE_sp0 = Joy1 Mouse speed                               *
-;*	          (0=slow, 1=medium, 2=fast, $80=error code        	   *
 ;*      MOUSE_sp1 = Joy2 Mouse speed                               *
-;*	          (0=slow, 1=medium, 2=fast, $80=error code        	   *
+;*	          (0=slow, 1=medium, 2=fast, $80=error code)       	   *
 ;*******************************************************************
 
 speed_change
