@@ -7,9 +7,9 @@
 ; Enable SNES mouse on controller port 2.
 ; If using this, setting "crosshairalwayson" to 1 is recommended.
 ; Controls:
-; Left click - Fire
-; Right click - Bomb
-; Left+right click - BOOST or BRAKE
+; Left click - fire
+; Right click - fomb
+; Left+right click - boost/brake (see below)
 ; Double clicking left+right within 9 frames will toggle between boost and brake.
 ; [0 = off, 1 = on]
 mouseon	equ	0
