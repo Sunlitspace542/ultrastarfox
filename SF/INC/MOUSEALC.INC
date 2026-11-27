@@ -1,6 +1,6 @@
 	alc	reg0l,1			; Work registers
 	alc	reg0h,1
-	alc	mouse_sp_set1,1	; Mouse Speed Setting (joy2)
+	alc	mouse_sp_set1,1	; Mouse Speed Setting 0=slow, 1=medium, 2=fast, $80=error (joy2)
 	alc	mouse_con1,1	; Mouse connection port D0=4017
 	alc	mouse_y1,1		; Mouse Y-direction  (joy2)
 	alc	mouse_x1,1		; Mouse X-direction  (joy2)
