@@ -70,6 +70,12 @@ irqhan	; Start of IRQ handler
 	ENDC ; End conditional
 
 	IFNE	RUMBLE
+
+	IFNE	mouseon
+	lda	mouse_con1
+	bne	.to_skip_rumble
+	ENDC
+
 ; Randy's rumble controller fix for hardware
 ; HACK: Force re-read of controller bits to get timing right for rumble handler
 

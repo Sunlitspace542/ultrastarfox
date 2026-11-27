@@ -12,6 +12,7 @@
 ; Left+right click - boost/brake (see below)
 ; Double clicking left+right within 9 frames will toggle between boost and brake.
 ; If no mouse is plugged in, game reverts to standard joypad controls.
+; If used with rumble, rumble is disabled while the mouse is plugged in.
 ; [0 = off, 1 = on]
 mouseon	equ	0
 
@@ -42,14 +43,6 @@ nttpad	equ	0
 ;####################################################################################################################
 
 ; Sanity checks (do not touch)
-
-	IFNE	mouseon
-	IFNE	RUMBLE
-	printf	"Mouse cannot be used with rumble!"
-	fail
-	ENDC
-	ENDC
-
 	IFNE	mouseon
 	IFEQ	nttpad-2
 	printf	"Mouse and NTT Pad cannot both be on port 2!"
