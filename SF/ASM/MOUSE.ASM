@@ -61,8 +61,10 @@ mouse_read
 	lda	connect_st1		; Was mouse just connected?
 	beq	.20				; No, skip initial speed change
 
+	IFNE	mouse_speed
 	lda	#mouse_speed	; Prepare to change speed
 	sta	mouse_sp_set1	; Note that speed changes do not affect Hyperkin mouse
+	ENDC
 
 	jsr	speed_change	; Change speed only immediately after connection
 	stz	connect_st1
