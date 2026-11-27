@@ -3327,16 +3327,16 @@ cestimer_l
 	printnuml	timerx+1,timery,cesminute	; Print minutes
 	bra	.seconds	; Print 'M', 'TIME', and the current seconds
 .onedig
-	kandoprint	(timerx+1),timery,ceszerotxt	; Print fake 0 in 10s place
+	printstring	(timerx+1),timery,ceszerotxt	; Print fake 0 in 10s place
 	printnuml	timerx+2,timery,cesminute	; Print single-digit minutes in 1s place
 	bra	.seconds	; Print 'M', 'TIME', and the current seconds
 .seconds
-	kandoprint	(timerx+3),timery,cesmintext	; "M"
+	printstring	(timerx+3),timery,cesmintext	; "M"
 	; print seconds
 	printnuml	timerx+4,timery,cessecond10	; Print current seconds 10s place value
 	printnuml	timerx+5,timery,cessecond	; Print current seconds 1s place value
-	kandoprint	(timerx+6),timery,cessectext	; "S"
-	kandoprint	(timerx+1),(timery-1),cestimetext	; "TIME"
+	printstring	(timerx+6),timery,cessectext	; "S"
+	printstring	(timerx+1),(timery-1),cestimetext	; "TIME"
 .notimer
 
 	a8

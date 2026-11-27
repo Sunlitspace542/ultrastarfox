@@ -101,7 +101,7 @@ showtxt	macro	[table]
 
 ; Combines settxt and showtxt together to print a string
 ; at the defined column and row.
-kandoprint	macro	[column,row,table]
+printstring	macro	[column,row,table]
 	settxt	\1,\2				; Set position for upcoming text
 	showtxt	\3					; Show specified string on screen at specified row and column
 	ENDM
@@ -127,7 +127,7 @@ printvar	macro	[var]				;displays value of a variable to set text point
 
 ;------------------------------------------------------------------------
 
-; Defines a string to be printed with kandoprint
+; Defines a string to be printed with printstring
 ; Usage...
 ;	definestring	mycoolstring,<my cool string>
 definestring	MACRO	[label,text]
@@ -136,6 +136,7 @@ definestring	MACRO	[label,text]
 	UPPER	2			; Uppercase it
 	run	' db "%$2"'		; Write the string
 	dw	0				; Terminate string
+	db	0				; Terminate string
 	ENDM
 
 ;------------------------------------------------------------------------
