@@ -1224,10 +1224,10 @@ ntt_port = 1
 	IFNE	RUMBLE
 ; This has to be done to keep rumble from borking the controller read
 	lda	#$01
-	sta	JOYSER0+ntt_port	; Reset Data Counter
+	sta	JOYSER0	; Reset Data Counter
 	nop
 	nop
-	stz	JOYSER0+ntt_port
+	stz	JOYSER0
 	nop
 	nop
 ;	ldx	#16
@@ -1837,46 +1837,6 @@ window_buffer	php
 ;****************************************************************
 		db	'START OF SNES MOUSE BIOS'	;do not delete
 ; original: 'START OF MOUSE BIOS'
-;	incpublics	mouse.ext
-;================================================================
-;		RAM Definition    
-;================================================================
-
-;reg0
-;reg0l		ds	1	; Work registers
-;reg0h		ds	1
-
-;mouse_con	ds	1	;
-;mouse_con0	ds	1	; Mouse connection port D0=4016
-;mouse_con1	ds	1	; Mouse connection port D0=4017
-
-;mouse_sp_set
-;mouse_sp_set0	ds	1	; Mouse Speed Setting (joy1)
-;mouse_sp_set1	ds	1	; Mouse Speed Setting (joy2)
-
-;mouse_sp
-;mouse_sp0	ds	1	; Mouse Speed (joy1)
-;mouse_sp1	ds	1	; Mouse Speed (joy2)
-
-;mouse_y0	ds	1	; Mouse Y-direction  (joy1)
-;mouse_y1	ds	1	; Mouse Y-direction  (joy2)
-;mouse_x0	ds	1	; Mouse X-direction  (joy1)
-;mouse_x1	ds	1	; Mouse X-direction  (joy2)
-
-;mouse_sw
-;mouse_sw0	ds	1	; Mouse button turbo
-;mouse_sw1	ds	1	; Mouse button turbo
-
-;mouse_swt
-;mouse_swt0	ds	1	; Mouse button trigger
-;mouse_swt1	ds	1	; Mouse button trigger
-
-;mouse_sb			; Previous Switch status
-;mouse_sb0	ds	1
-;mouse_sb1	ds	1
-
-;cursol_x	ds	1	; Cursor X position    
-;cursol_y	ds	1	; Cursor Y position
 
 ;*******************************************************************
 ;*  ============================================================== *
@@ -1921,14 +1881,14 @@ mouse_read2
 	ENDC
 
 	php
-	;sep	#$30		
+	ai8
 .10
-	lda	$4212
+	lda	hvbjoyr
 	and	#%00000001
 	bne	.10		; Automatic read okay?
 
 	ldx	#$01		; Joy 2
-	lda	$421a
+	lda	joy2l
 	jsr	mouse_data
 
 	lda	connect_st1
@@ -1941,7 +1901,7 @@ mouse_read2
 	rts
 .20
 	dex
-	lda	$4218		; Joy 1    
+	lda	joy1l		; Joy 1    
 	jsr	mouse_data
 
 	lda	connect_st0
@@ -1986,7 +1946,7 @@ mouse_data
 	sta	mouse_con0,x
 	ldy	#16		; Read 16-bit data
 .m30
-	lda	$4016,x
+	lda	JOYSER0,x
 	lsr	a
 	rol	mouse_x0,x
 	rol	mouse_y0,x
@@ -2038,9 +1998,9 @@ mouse_data
 
 speed_change
 	php
-	sep	#$30
+	ai8
 
-	lda	mouse_con,x	
+	lda	mouse_con0,x	
 	beq	.s25
 
 	lda	#$10		
@@ -2048,28 +2008,28 @@ speed_change
 
 .s10
 	lda	#$01
-	sta	$4016
-	lda	$4016,x		; Speed change (1 step)
-	stz	$4016
+	sta	JOYSER0
+	lda	JOYSER0,x		; Speed change (1 step)
+	stz	JOYSER0
 
 	lda	#$01		; Read Speed data   
-	sta	$4016		; Shift register clear
+	sta	JOYSER0		; Shift register clear
 	lda	#$00
-	sta	$4016
+	sta	JOYSER0
 
 	sta	mouse_sp0,x	; Speed register clear  
 
 	ldy	#10		; Shift register read has no meaning
 .s20
-	lda	$4016,x
+	lda	JOYSER0,x
 	dey
 	bne	.s20
 
-	lda	$4016,x		; Read Speed  
+	lda	JOYSER0,x		; Read Speed  
 	lsr	a
 	rol	mouse_sp0,x
 
-	lda	$4016,x
+	lda	JOYSER0,x
 	lsr	a
 	rol	mouse_sp0,x
 	lda	mouse_sp0,x
