@@ -2421,6 +2421,11 @@ playermove_srou
 
 
 .rightmouse									;if mouse, jumps here
+	s_test_var		B,pmovelimitAND,#pml_Bbottom
+	beq			.dztr2
+	s_jmp_lower		x,svar_word1,.nztr2
+.dztr2	s_sub_var		B,player_Ztilt,#deg45/15
+.nztr2
 	s_sub_var		W,plrotz,#Zrotspeed
 	lda.w			al_roty,x
 	cmp				#(-deg11*(2))

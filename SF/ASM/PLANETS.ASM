@@ -257,6 +257,12 @@ planetseq_l
 ; make sure NMI gets processed before interrupts are switched off
 ; so we know the timed rumble is done
 .waitforrumbletoend
+	IFNE	mouseon
+	lda	mouse_con1
+	beq	.dontzerorumbletimer
+	stz	rumble_time
+.dontzerorumbletimer
+	ENDC
 	lda	rumble_time
 	bne	.waitforrumbletoend
 	ENDC
