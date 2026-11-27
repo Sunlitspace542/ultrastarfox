@@ -14,7 +14,9 @@
 ; [0 = off, 1 = on]
 mouseon	equ	0
 
-; Enable analog controls via the SNES mouse.
+; Instead of the ship constantly chasing the mouse position,
+; the ship only moves when the mouse moves.
+; Can be used for analog controls via the SNES mouse.
 ; mouseon must be set to 1.
 ; Make sure to unbind D-Pad U/D/L/R in your emulator.
 ; Up and down on the mouse may need to be manually inverted dependent on preference.

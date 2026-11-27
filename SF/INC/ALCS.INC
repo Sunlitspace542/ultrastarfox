@@ -709,9 +709,7 @@ xlen	=	22*1024+450
 
 ;ADD NEW ALCS HERE------------------------------
 	IFNE	mouseon
-	alc	mousemode,2
-	alc	mousemodetemp,2
-	alc	boostorbrake,2
+	alc	boostorbrake,1
 	ENDC
 	IFNE	nttpad
 	alc	nttread,2

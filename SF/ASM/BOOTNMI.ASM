@@ -52,12 +52,6 @@ startboot	disable ; Disable Interrupts
 	fast ; Tell MARIO chip to run @ 21.4mhz (no clock divider)
 	ENDC ; end conditional
 
-	IFNE	mouseon ; start conditional: If SNES mouse enabled
-	lda	#1 ; Load 1 into A
-	sta	mousemode		; store A at these variables
-	sta	mousemodetemp	; (enable mouse)
-	ENDC ; End conditional
-
 	IFNE	MSU1
 	jsl	CheckForMSU1_l ; Check for the MSU-1
 	ENDC
@@ -104,12 +98,6 @@ restart	ai16 ; set A/X/Y to 16 bit
 	lda	c_type ; Load controller type into A
 	pha ; push A to stack
 
-	IFNE	mouseon ; start conditional: If SNES mouse enabled
-	lda	mousemode ; load value in mousemode var to A
-	pha ; Push A to stack
-	lda	mousemodetemp ; load value in mousemode temp var to A
-	pha ; Push A to stack
-	ENDC ; End conditional
 	IFNE	msu1
 	lda	msupresent	; save msu present flag
 	pha
@@ -136,13 +124,6 @@ restart	ai16 ; set A/X/Y to 16 bit
 	pla
 	sta	msupresent	; restore msu present flag
 	ENDC
-
-	IFNE	mouseon ; start conditional: If SNES mouse enabled
-	pla ; Pull A from stack
-	sta	mousemodetemp ; store A at mousemodetemp var
-	pla ; Pull A from stack
-	sta	mousemode ; store A at mousemode var
-	ENDC ; End conditional
 
 	pla ; pull A from stack
 	sta	c_type ; Store A to controller type variable

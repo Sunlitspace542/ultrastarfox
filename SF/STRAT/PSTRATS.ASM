@@ -1877,8 +1877,7 @@ playermove_srou
 	s_set_alvar		W,x,al_worldy,maxpmoveY
 
 	IFNE	mouseon
-	lda	mousemode
-	beq	.normalwingbounce
+	s_jmp_varAND	B,pshipflags,#psf_noctrl,.normalwingbounce
 	a16
 	lda			plrotx
 	sec
@@ -1981,8 +1980,7 @@ playermove_srou
 
 
 	IFNE	MOUSEON
-	lda	mousemode
-	beq	.normalbounce
+	s_jmp_varAND	B,pshipflags,#psf_noctrl,.normalbounce
 	a16
 	lda			plrotx
 	nega
@@ -2109,8 +2107,7 @@ playermove_srou
 	lbcc			.npsd
 
 	IFNE	MOUSEON
-	lda	mousemode
-	lbeq	.nomouse4
+	s_jmp_varAND	B,pshipflags,#psf_noctrl,.nomouse4
 	lda	boostorbrake
 	lbne	.nomouse4
 	s_jmp_alvareq	B,x,al_sbyte5,#70,.noswapper2
@@ -2141,7 +2138,7 @@ playermove_srou
 	bra	.nomouse4
 	
 .swaptobrake											;when ready to swap, go here
-	turnonoff	boostorbrake
+	s_not_var		B,boostorbrake,#1
 	s_set_alvar		B,x,al_sbyte5,#60					;frame timer for brake
 	s_set_alvar		B,x,al_sbyte6,#0
 	bra	.nomouse4
@@ -2190,8 +2187,7 @@ playermove_srou
 .npsi
 ;--------------------------------------------------------
 	IFNE	MOUSEON
-	lda	mousemode
-	lbeq	.nomousebrake
+	s_jmp_varAND	B,pshipflags,#psf_noctrl,.nomousebrake
 	lda	boostorbrake
 	lbeq	.nomousebrake
 	s_jmp_alvareq	B,x,al_sbyte5,#60,.noswapper21
@@ -2223,7 +2219,7 @@ playermove_srou
 	bra	.brake
 	
 .swaptobrake1											;when ready to swap, go here
-	turnonoff	boostorbrake
+	s_not_var		B,boostorbrake,#1
 	s_set_alvar		B,x,al_sbyte5,#70
 	s_set_alvar		B,x,al_sbyte6,#1
 	bra	.brake
@@ -2339,9 +2335,7 @@ playermove_srou
 	ENDC
 	
 	IFNE	mouseon
-	a8
-	lda	mousemode
-	bne	.mouseleftleft
+	s_jmpNOT_varAND	B,pshipflags,#psf_noctrl,.mouseleftleft
 	s_add_var		W,plroty,#Zrotspeed
 	bra	.eplrc
 .mouseleftleft
@@ -2364,8 +2358,7 @@ playermove_srou
 	ENDC
 
 	IFNE	mouseon
-	lda	mousemode
-	bne	.mouserightright
+	s_jmpNOT_varAND	B,pshipflags,#psf_noctrl,.mouserightright
 	s_sub_var		W,plroty,#Zrotspeed
 	bra	.eprrc
 .mouserightright
@@ -2373,8 +2366,7 @@ playermove_srou
 	ENDC
 .eprrc
 	IFNE	mouseon
-	lda	mousemode
-	lbeq	.nomouse5
+	s_jmp_varAND	B,pshipflags,#psf_noctrl,.nomouse5
 	lda	mouse_x1
 	IFNE	analogstick
 	lbeq	.zerocheck
@@ -2482,8 +2474,7 @@ playermove_srou
 	ENDC
 
 	IFNE	mouseon
-	lda	mousemode
-	bne	.mouseupup
+	s_jmpNOT_varAND	B,pshipflags,#psf_noctrl,.mouseupup
 	s_add_var		W,plrotx,#Xrotspeed
 	bra	.nhu
 .mouseupup
@@ -2496,8 +2487,7 @@ playermove_srou
 	s_sub_var		W,plrotx,#Xrotspeed
 	ENDC
 	IFNE	mouseon
-	lda	mousemode
-	bne	.mousedowndown
+	s_jmpNOT_varAND	B,pshipflags,#psf_noctrl,.mousedowndown
 	s_sub_var		W,plrotx,#Xrotspeed
 	bra	.nhd
 .mousedowndown
@@ -2505,8 +2495,7 @@ playermove_srou
 	ENDC
 .nhd
 	IFNE	mouseon
-	lda	mousemode
-	lbeq	.no_yctrl
+	s_jmp_varAND	B,pshipflags,#psf_noctrl,.no_yctrl
 	lda	mouse_y1		;loading mouse_y1
 	IFNE	analogstick
 	lbeq	.no_yctrl
@@ -2654,8 +2643,7 @@ playermove_srou
 ;-----------------------------------------------------------------------
 
 	IFNE	mouseon
-	lda	mousemode
-	bne	.nochase1
+	s_jmpNOT_varAND	B,pshipflags,#psf_noctrl,.nochase1
 	ENDC
 	s_Achase_var		W,plroty,#0,3
 
@@ -2690,8 +2678,7 @@ playermove_srou
 ;-------------------------------------------------------------------
 
 	IFNE	mouseon
-	lda	mousemode
-	bne	.nochase2
+	s_jmpNOT_varAND	B,pshipflags,#psf_noctrl,.nochase2
 	ENDC
 	s_Achase_var	W,plrotx,#0,3
 .nochase2	
@@ -2876,8 +2863,7 @@ playerfire_srou
 	s_set_var		B,specialdelay,#1
 
 	IFNE	mouseon
-	lda	mousemode
-	beq	.nomouse4
+	s_jmp_varAND	B,pshipflags,#psf_noctrl,.nomouse4
 	lda	mouse_sw1
 	cmp	#2
 	beq	.bombtime
@@ -2908,8 +2894,7 @@ playerfire_srou
 ;------------------------------------------------------------
 
 	IFNE	mouseon
-	lda	mousemode
-	beq	.nomouse3
+	s_jmp_varAND	B,pshipflags,#psf_noctrl,.nomouse3
 	lda	mouse_sw1
 	cmp	#1
 	beq	.firetime

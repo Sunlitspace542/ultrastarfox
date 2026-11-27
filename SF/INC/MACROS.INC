@@ -48,17 +48,6 @@ rndval	=	$5a79
 
 ;------------------------------------------------------------------------
 
-turnonoff	macro	[var]		;turns a variable on or off, whichever is the opposite of its current state
-	pha							;push anything in the accumulator out into the stack to retrieve later
-	lda	{var}					;load the variable into the accumulator
-	and	#1
-	eor	#1
-	sta	{var}
-	pla							;pull accumulator back out that we pushed earlier
-	endm
-
-;------------------------------------------------------------------------
-
 settext	macro	[column,row]					;Sets the column + row for upcoming text
 	a16											;16 bit accumulator
 	pha
