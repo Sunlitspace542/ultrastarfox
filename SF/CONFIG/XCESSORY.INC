@@ -8,7 +8,7 @@
 ; If using this, setting "crosshairalwayson" to 1 is recommended.
 ; Controls:
 ; Left click - fire
-; Right click - fomb
+; Right click - bomb
 ; Left+right click - boost/brake (see below)
 ; Double clicking left+right within 9 frames will toggle between boost and brake.
 ; If no mouse is plugged in, game reverts to standard joypad controls.
